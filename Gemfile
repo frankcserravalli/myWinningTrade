@@ -2,54 +2,48 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# database
+gem 'pg'
+# gem 'sqlite3'
 
-gem 'sqlite3'
 
+# assets
+gem 'jquery-rails'
+gem 'compass-rails'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
+  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass_twitter_bootstrap', git: 'git://github.com/vwall/compass-twitter-bootstrap.git'
 end
 
-gem 'jquery-rails'
+gem 'chosen-rails'
+gem 'underscore-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+# views
+gem 'slim-rails'
+gem 'simple_form'
+gem 'country_select'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# model
+gem 'migrant'
+gem 'squeel'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# development
+gem 'letter_opener', group: :development
 
-# To use debugger
-# gem 'debugger'
 
-gem "devise"
-gem "therubyracer"
-gem "compass-rails"
-gem "slim-rails"
-gem "letter_opener", :group => :development
-gem "newrelic_rpm"
-gem "migrant"
-gem "squeel"
-gem "factory_girl_rails", :group => ["development", "test"]
-gem "rspec-rails", :group => ["development", "test"]
-gem "simplecov", :require => false, :group => :test
-gem "compass_twitter_bootstrap", :git => "git://github.com/vwall/compass-twitter-bootstrap.git", :group => :assets
-gem "chosen-rails"
-gem "underscore-rails"
-gem "simple_form"
-gem "country_select"
+# test
+gem 'factory_girl_rails', group: %w(development test)
+gem 'rspec-rails', group: %w(development test)
+gem 'simplecov', require: false, group: :test
+
+# omniauth
+gem 'omniauth-twitter', git: 'git://github.com/arunagw/omniauth-twitter.git'
+
+
+# monitoring
+gem 'newrelic_rpm'
