@@ -207,6 +207,7 @@ DEPENDENCIES
   letter_opener
   migrant
   newrelic_rpm
+  oauth
   omniauth-twitter!
   pg
   rails (= 3.2.6)

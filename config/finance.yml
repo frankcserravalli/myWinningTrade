@@ -1,0 +1,7 @@
+development:
+  consumer_key: dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--
+  consumer_secret: bdfea171ad0b83ab75cd3962092bb5cfd533371a
+
+test:
+  consumer_key: dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--
+  consumer_secret: bdfea171ad0b83ab75cd3962092bb5cfd533371a
