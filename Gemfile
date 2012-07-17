@@ -4,8 +4,6 @@ gem 'rails', '3.2.6'
 
 # database
 gem 'pg'
-# gem 'sqlite3'
-
 
 # assets
 gem 'jquery-rails'
@@ -38,12 +36,15 @@ gem 'letter_opener', group: :development
 
 # test
 gem 'factory_girl_rails', group: %w(development test)
-gem 'rspec-rails', group: %w(development test)
+gem 'rspec-rails', group: [:development, :test]
 gem 'simplecov', require: false, group: :test
 
 # omniauth
+gem 'oauth'
 gem 'omniauth-twitter', git: 'git://github.com/arunagw/omniauth-twitter.git'
 
 
 # monitoring
 gem 'newrelic_rpm'
+
+gem 'yql'
