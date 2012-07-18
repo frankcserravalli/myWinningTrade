@@ -46,6 +46,7 @@ gem 'oauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
+gem 'omniauth-openid' # Google
 
 
 # monitoring

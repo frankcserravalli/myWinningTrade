@@ -1,3 +1,5 @@
 h1 Login
 
-= link_to 'log in with twitter', '/auth/twitter'
+ul
+  - %w(facebook linkedin google).each do |provider|
+    li = link_to "log in with #{provider}", "/auth/#{provider}"
