@@ -14,12 +14,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass_twitter_bootstrap', git: 'git://github.com/vwall/compass-twitter-bootstrap.git'
+  gem 'compass_twitter_bootstrap'
 end
 
+# ui
 gem 'chosen-rails'
 gem 'underscore-rails'
-
 
 # views
 gem 'slim-rails'
@@ -38,13 +38,18 @@ gem 'letter_opener', group: :development
 gem 'factory_girl_rails', group: %w(development test)
 gem 'rspec-rails', group: [:development, :test]
 gem 'simplecov', require: false, group: :test
+#gem 'webmock', group: :test
+
 
 # omniauth
 gem 'oauth'
-gem 'omniauth-twitter', git: 'git://github.com/arunagw/omniauth-twitter.git'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 
 
 # monitoring
 gem 'newrelic_rpm'
 
+# yahoo api
 gem 'yql'
