@@ -1,11 +1,11 @@
 require 'oauth'
+require 'ostruct'
 
 class Finance
 	cattr_accessor :credentials
 
 	def current_stock_details(symbol)
-		execute_yql("select * from yahoo.finance.quotes where symbol='#{symbol}'")
-		#execute_yql("show tables")
+		execute_yql("select * from yahoo.finance.quotes where symbol='#{symbol}'").quote
 	end
 
 	def execute_yql(yql_query)
@@ -19,10 +19,23 @@ class Finance
 		  diagnostics: false
 		}
 
-        # merge params into escaped query string
+    # merge params into escaped query string
 		query_string = params.map{ |k,v| "#{k}=#{OAuth::Helper.escape(v)}" }.join('&')
 
-		response = access_token.request(:get, '/v1/yql?' + query_string)
-		return JSON.parse(response.body)
+    response = access_token.request(:get, '/v1/yql?' + query_string)
+
+    results = MultiJson.load(response.body)['query']['results']
+	  return self.class.create_openstruct(results)
 	end
+
+	def self.create_openstruct(value)
+		# recursively builds an openstruct for a given hash
+	  case value
+	    when Hash
+	      OpenStruct.new(Hash[value.map { |k, v| [k.to_s.underscore, create_openstruct(v)] }])
+	    else
+	      value
+	  end
+	end
+
 end
