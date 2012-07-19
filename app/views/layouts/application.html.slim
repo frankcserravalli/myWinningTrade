@@ -7,5 +7,6 @@ html
     = csrf_meta_tags
 
   body class=controller_name
+    = render partial: 'navbar'
     = render partial: 'flash', locals: { flash: flash }
     = yield

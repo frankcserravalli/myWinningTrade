@@ -1,0 +1,21 @@
+#stock-suggest
+  background-color: whiteSmoke
+
+  // display label and ul elements in a single inline row
+  label, ul
+    +inline-block
+    margin: 0
+  ul
+    +inline-block-list
+
+  label
+    padding: 0 20px
+    padding-top: 1px /* hack to line up with ul */
+    text-transform: uppercase
+    color: #777
+
+  ul
+    li
+      // add spacing on list items except last child
+      &:not(:last-child)
+        margin-right: 10px

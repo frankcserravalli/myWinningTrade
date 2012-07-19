@@ -1,0 +1,6 @@
+#stock-suggest
+  label Trending stocks
+  ul
+    - %w(YUM AAPL GOOG COOL).each do |suggestion|
+      li
+        = link_to suggestion, stock_path(symbol: suggestion)
