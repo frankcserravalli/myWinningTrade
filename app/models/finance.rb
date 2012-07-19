@@ -2,10 +2,21 @@ require 'oauth'
 require 'ostruct'
 
 class Finance
+	class QueryFailed < Exception; end;
+
 	cattr_accessor :credentials
 
 	def current_stock_details(symbol)
-		execute_yql("select * from yahoo.finance.quotes where symbol='#{symbol}'").quote
+		symbol.gsub!(/[^\w]/, '')
+
+		execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange
+								 from yahoo.finance.quotes where symbol='#{symbol}'").quote.tap do |quote|
+
+			return nil unless quote.stock_exchange
+
+			quote.current_price = quote.ask_realtime || quote.ask
+			quote.open ||= quote.previous_close
+		end
 	end
 
 	def execute_yql(yql_query)
@@ -24,7 +35,12 @@ class Finance
 
     response = access_token.request(:get, '/v1/yql?' + query_string)
 
-    results = MultiJson.load(response.body)['query']['results']
+    begin
+    	results = MultiJson.load(response.body)['query']['results']
+    rescue Exception => e
+    	raise QueryFailed.new("'#{yql_query}' (#{e}), response: #{response.body}")
+    end
+
 	  return self.class.create_openstruct(results)
 	end
 

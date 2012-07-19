@@ -7,7 +7,6 @@ describe "Finance" do
 
 		quote.symbol.should == 'AAPL'
 		quote.name.should == 'Apple Inc.'
-
 	end
 
 	it 'should correctly format a given nested hash into an openstruct object' do
