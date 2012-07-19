@@ -9,7 +9,7 @@ class Finance
 	def current_stock_details(symbol)
 		symbol.gsub!(/[^\w]/, '')
 
-		execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange
+		execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime
 								 from yahoo.finance.quotes where symbol='#{symbol}'").quote.tap do |quote|
 
 			return nil unless quote.stock_exchange
