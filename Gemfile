@@ -38,6 +38,8 @@ gem 'letter_opener', group: :development
 gem 'factory_girl_rails', group: %w(development test)
 gem 'rspec-rails', group: [:development, :test]
 gem 'simplecov', require: false, group: :test
+gem 'vcr', group: :test
+gem 'fakeweb', group: :test
 #gem 'webmock', group: :test
 
 
