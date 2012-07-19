@@ -11,4 +11,6 @@ en:
     expired:
       error: 'Your login has expired, please log in again.'
     required:
-      error: 'Please log in'
+      error: 'Please log in.'
+  stock:
+    invalid_symbol: 'No stock matches the symbol %{symbol}.'
