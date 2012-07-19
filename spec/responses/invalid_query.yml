@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://query.yahooapis.com/v1/yql?q=INVALID%20STATEMENT&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - OAuth gem v0.4.6
+      authorization:
+      - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
+        oauth_nonce="vZTJYzQzDxIDG2dzpXlsBGKAwoZFejofES1YSJKdeU", oauth_signature="cqS54CHeRukM%2FpgyBQNhrJrQXtY%3D",
+        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1342701636", oauth_version="1.0"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      x-yql-host:
+      - engine2.yql.bf1.yahoo.com
+      access-control-allow-origin:
+      - ! '*'
+      content-type:
+      - application/json;charset=utf-8
+      vary:
+      - Accept-Encoding
+      date:
+      - Thu, 19 Jul 2012 12:40:37 GMT
+      server:
+      - YTS/1.20.10
+      age:
+      - '0'
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"error":{"lang":"en-US","description":"Query syntax error(s) [line
+        1:0 expecting statement_ql got ''INVALID'']"}}'
+    http_version: '1.1'
+  recorded_at: Thu, 19 Jul 2012 12:40:37 GMT
+recorded_with: VCR 2.2.3
