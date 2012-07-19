@@ -1,0 +1,12 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = link_to 'My Winning Trade', root_path, class: 'brand'
+      nav.nav.pull-right
+        li
+          span.navbar-text = current_user.name
+        li
+          = link_to logout_path do
+            i.icon-signout
+            ' Log out
+
