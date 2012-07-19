@@ -10,3 +10,4 @@
 //= require chosen-jquery
 //= require underscore
 //= require jquery.html5-placeholder-shim
+//= require stock-search
