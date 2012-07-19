@@ -32,7 +32,7 @@ gem 'squeel'
 
 # development
 gem 'letter_opener', group: :development
-
+gem 'copycopter_client', '~> 2.0.1'
 
 # test
 gem 'factory_girl_rails', group: %w(development test)
