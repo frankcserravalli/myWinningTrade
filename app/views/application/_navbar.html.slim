@@ -1,7 +1,7 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      = link_to 'My Winning Trade', root_path, class: 'brand'
+      = link_to t('.brand', default: 'My Winning Trade'), root_path, class: 'brand'
       - if current_user
         nav.nav.pull-right
           li
@@ -9,5 +9,5 @@
           li
             = link_to logout_path do
               i.icon-signout
-              ' Log out
+              = t('.log_out', default: 'Log out')
 
