@@ -1,5 +1,15 @@
 = render partial: 'stock/search'
 
-h2 #{params[:symbol]}
+h1
+  = @stock.symbol
+  ' &nbsp;
+  small = @stock.name
+
+hr
+
+table.table.table-striped
+  tbody
+    tr
+
 
 = @stock.inspect
