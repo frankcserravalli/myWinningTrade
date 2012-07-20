@@ -23,6 +23,7 @@ gem 'underscore-rails'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'country_select'
+gem 'copycopter_client', '~> 2.0.1'
 
 # model
 gem 'migrant'
