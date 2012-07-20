@@ -21,6 +21,8 @@ class Finance
 		end
 
 		def execute_yql(yql_query)
+			self.reload_credentials unless self.credentials
+
 			consumer = OAuth::Consumer.new(self.credentials['consumer_key'], self.credentials['consumer_secret'], site: 'http://query.yahooapis.com')
 			access_token = OAuth::AccessToken.new(consumer)
 
@@ -43,6 +45,11 @@ class Finance
 	    end
 
 		  return self.create_openstruct(results)
+		end
+
+		def reload_credentials
+			self.credentials = YAML::load_file(Rails.root.join('config', 'finance.yml'))[Rails.env.to_s]
+			raise "No finance API credentials specified for environment #{Rails.env}" unless self.credentials
 		end
 
 		def create_openstruct(value)
