@@ -1,5 +1,4 @@
-h1 Login
-
-ul
+ul#login-providers
   - %w(facebook linkedin google).each do |provider|
-    li = link_to "log in with #{provider}", "/auth/#{provider}"
+    li = link_to "/auth/#{provider}" do
+      ' log in with #{provider}
