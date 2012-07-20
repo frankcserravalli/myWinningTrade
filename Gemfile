@@ -56,3 +56,5 @@ gem 'newrelic_rpm'
 
 # yahoo api
 gem 'yql'
+
+gem 'heroku'
