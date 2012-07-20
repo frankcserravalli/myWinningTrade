@@ -8,5 +8,8 @@ html
 
   body class=controller_name
     = render partial: 'navbar'
-    = render partial: 'flash', locals: { flash: flash }
-    = yield
+    .container
+      = render partial: 'account/infobar'
+      = render partial: 'flash', locals: { flash: flash }
+      = yield
+      = render partial: 'stock/portfolio'
