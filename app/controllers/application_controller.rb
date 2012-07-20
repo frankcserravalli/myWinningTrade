@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     session[:current_user_id] = user.try(:id)
   end
   def require_login
-  	redirect_to login_url, error: I18n.t('sessions.required.error') unless current_user
+  	redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
   end
 
 end
