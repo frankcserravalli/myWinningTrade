@@ -4,10 +4,9 @@ class StockController < ApplicationController
     @stock = Finance.new.current_stock_details(symbol)
 
     if @stock.nil?
-      error = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
-      redirect_to root_path, error: error
+      alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
+      redirect_to root_path, alert: alert
     end
 
   end
-
 end
