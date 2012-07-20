@@ -1,2 +1,3 @@
 - flash.each do |key,value|
-  p class=key = value
+  - alert_class = { alert: 'alert-error' , notice: 'alert-success' }[key]
+  p class="alert #{alert_class}" = value

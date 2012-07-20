@@ -1,5 +1,19 @@
 = render partial: 'stock/search'
 
-h2 #{params[:symbol]}
+h1
+  = @stock.symbol
+  ' &nbsp;
+  small = @stock.name
 
-= @stock.inspect
+- fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
+
+table.table.table-striped.table-compact
+  tbody
+  - fields.each_slice(2) do |row_fields|
+    tr
+      - row_fields.each do |field|
+        th = field.humanize
+        td = @stock.send(field) || 'N/A'
+      - if row_fields.count < 2
+        th &nbsp;
+        td &nbsp;
