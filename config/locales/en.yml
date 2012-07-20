@@ -1,16 +1,1 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  sessions:
-    create:
-      notice: 'You have been logged in.'
-      error: 'Could not authenticate :('
-    destroy:
-      notice: 'You have been logged out.'
-    expired:
-      error: 'Your login has expired, please log in again.'
-    required:
-      error: 'Please log in.'
-  stock:
-    invalid_symbol: 'No stock matches the symbol %{symbol}.'

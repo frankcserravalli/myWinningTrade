@@ -11,15 +11,15 @@ class SessionsController < ApplicationController
   def create
     self.current_user = User.find_or_create_from_auth_hash(auth_hash)
     if current_user.valid?
-      redirect_to root_url, notice: I18n.t('sessions.create.notice')
+      redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: 'You have been logged in.')
     else
-      redirect_to login_url, error: I18n.t('sessions.create.error')
+      redirect_to login_url, error: I18n.t('flash.sessions.create.error', default: 'Could not authenticate :(')
     end
   end
 
   def destroy
     self.current_user = nil
-    redirect_to login_url, notice: I18n.t('sessions.destroy.notice')
+    redirect_to login_url, notice: I18n.t('flash.sessions.destroy.notice', default: 'You have been logged out.')
   end
 
   protected
