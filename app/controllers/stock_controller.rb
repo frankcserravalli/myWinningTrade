@@ -1,6 +1,6 @@
 class StockController < ApplicationController
   def show
-  	symbol = params[:symbol]
+  	symbol = params[:symbol].upcase
     @stock = Finance.new.current_stock_details(symbol)
 
     if @stock.nil?
