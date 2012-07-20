@@ -5,11 +5,9 @@ gem 'rails', '3.2.6'
 # database
 gem 'pg'
 
-# assets
-gem 'jquery-rails'
-gem 'compass-rails'
-
 group :assets do
+  gem 'jquery-rails'
+  gem 'compass-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'
@@ -25,23 +23,25 @@ gem 'underscore-rails'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'country_select'
+gem 'copycopter_client', '~> 2.0.1'
 
 # model
 gem 'migrant'
 gem 'squeel'
 
-# development
-gem 'letter_opener', group: :development
-gem 'copycopter_client', '~> 2.0.1'
+group :development do
+  gem 'letter_opener'
+end
 
-# test
-gem 'factory_girl_rails', group: %w(development test)
-gem 'rspec-rails', group: [:development, :test]
-gem 'simplecov', require: false, group: :test
-gem 'vcr', group: :test
-gem 'fakeweb', group: :test
-#gem 'webmock', group: :test
+group :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'simplecov', require: false
+  gem 'vcr'
+  gem 'fakeweb'
+end
 
+gem 'thin'
 
 # omniauth
 gem 'oauth'

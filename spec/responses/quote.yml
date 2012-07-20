@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://query.yahooapis.com/v1/yql?q=select%20Name%2C%20Symbol%2C%20Ask%2C%20AskRealtime%2C%20DaysRange%2C%20YearRange%2C%20Open%2C%20PreviousClose%2C%20Volume%2C%20DividendYield%2C%20EarningsShare%2C%20StockExchange%2C%20LastTradeTime%0A%09%09%09%09%09%09%09%09%20from%20yahoo.finance.quotes%20where%20symbol%3D%27AAPL%27&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
+    uri: http://query.yahooapis.com/v1/yql?q=select%20Name%2C%20Symbol%2C%20Ask%2C%20AskRealtime%2C%20DaysRange%2C%20YearRange%2C%20Open%2C%20PreviousClose%2C%20Volume%2C%20DividendYield%2C%20EarningsShare%2C%20StockExchange%2C%20LastTradeTime%2C%20EPSEstimateCurrentYear%2C%20EPSEstimateNextYear%2C%20EPSEstimateNextQuarter%0A%09%09%09%09%09%09%09%09%09%20from%20yahoo.finance.quotes%20where%20symbol%3D%27AAPL%27&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
     body:
       encoding: US-ASCII
       string: ''
@@ -13,15 +13,15 @@ http_interactions:
       - OAuth gem v0.4.6
       authorization:
       - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
-        oauth_nonce="HidobdQNp1OrggjFy9dGlacKwffhmTl309YY197SuwY", oauth_signature="NccfudMYTfnO%2BaAjrGIZSWpk2HU%3D",
-        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1342700555", oauth_version="1.0"
+        oauth_nonce="zur42pEIpb9yktv50VAF7awZrVjIhjltjVDkvSgdaI", oauth_signature="pFfo%2BvyX05W8fQ%2Becg%2F6PMkPYkU%3D",
+        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1342777084", oauth_version="1.0"
   response:
     status:
       code: 200
       message: OK
     headers:
       x-yql-host:
-      - engine10.yql.ac4.yahoo.com
+      - engine7.yql.ac4.yahoo.com
       access-control-allow-origin:
       - ! '*'
       cache-control:
@@ -31,18 +31,18 @@ http_interactions:
       vary:
       - Accept-Encoding
       date:
-      - Thu, 19 Jul 2012 12:22:36 GMT
+      - Fri, 20 Jul 2012 09:38:06 GMT
       server:
       - YTS/1.20.10
       age:
-      - '0'
+      - '2'
       connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"query":{"count":1,"created":"2012-07-19T12:22:36Z","lang":"en-US","results":{"quote":{"AskRealtime":"610.25","EarningsShare":"41.042","DaysRange":"N/A
-        - N/A","Name":"Apple Inc.","Open":null,"PreviousClose":"606.26","Symbol":"AAPL","LastTradeTime":"4:00pm","Volume":"39126","YearRange":"353.02
-        - 644.00","StockExchange":"NasdaqNM","DividendYield":null,"Ask":"610.25"}}}}'
+      string: ! '{"query":{"count":1,"created":"2012-07-20T09:38:07Z","lang":"en-US","results":{"quote":{"AskRealtime":"616.76","EarningsShare":"41.042","EPSEstimateCurrentYear":"46.87","EPSEstimateNextYear":"54.37","EPSEstimateNextQuarter":"10.29","DaysRange":"N/A
+        - N/A","Name":"Apple Inc.","Open":null,"PreviousClose":"614.32","Symbol":"AAPL","LastTradeTime":"4:00pm","Volume":"0","YearRange":"353.02
+        - 644.00","StockExchange":"NasdaqNM","DividendYield":null,"Ask":"616.76"}}}}'
     http_version: '1.1'
-  recorded_at: Thu, 19 Jul 2012 12:22:37 GMT
+  recorded_at: Fri, 20 Jul 2012 09:38:07 GMT
 recorded_with: VCR 2.2.3
