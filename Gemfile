@@ -36,6 +36,7 @@ gem 'squeel'
 
 group :development do
   gem 'letter_opener'
+  gem 'heroku'
 end
 
 group :test do
@@ -65,5 +66,4 @@ gem 'newrelic_rpm'
 
 # yahoo api
 gem 'yql'
-
-gem 'heroku'
+gem 'rest-client'

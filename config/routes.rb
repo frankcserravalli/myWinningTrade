@@ -6,6 +6,10 @@ MyWinningTrade::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get '/stock/:symbol', to: 'stock#show', as: :stock, symbol: /\w{1,5}/
-
+  resources :stock, only: :show, constraints: { id: /\w{1,5}/ } do
+    member do
+      get :details
+      get :price_history
+    end
+  end
 end
