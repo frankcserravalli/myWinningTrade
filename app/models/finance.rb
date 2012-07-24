@@ -50,6 +50,7 @@ class Finance
 									 					 AND endDate   = '#{ansi_date(end_date-1.day)}'", false)
 
 			stock_quote = execute_yql("SELECT Name, Symbol FROM yahoo.finance.quotes WHERE symbol='#{symbol}'", false)
+      puts history.inspect
 
 			OpenStruct.new(
 				symbol:
