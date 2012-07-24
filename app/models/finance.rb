@@ -84,13 +84,12 @@ class Finance
 	    # merge params into escaped query string
 			query_string = params.map{ |k,v| "#{k}=#{OAuth::Helper.escape(v)}" }.join('&')
 
+	 	  start_time = Time.now.to_f
 	    response = access_token.request(:get, '/v1/yql?' + query_string)
-
-	    start_time = Time.now.to_f
 
 	    begin
 	    	results = MultiJson.load(response.body)['query']['results']
-	    	Rails.logger.debug "YQL (#{((Time.now.to_f-start_time)*1000.0).round} ms / #{(response.body.length / 1024.0).round} KB): #{yql_query}" unless Rails.env.production?
+	    	Rails.logger.debug "  YQL (#{((Time.now.to_f-start_time)*1000.0).round} ms / #{(response.body.length / 1024.0).round} KB): #{yql_query}" unless Rails.env.production?
 	    rescue Exception => e
 	    	raise QueryFailed.new("'#{yql_query}' (#{e}), response: #{response.body}")
 	    end
