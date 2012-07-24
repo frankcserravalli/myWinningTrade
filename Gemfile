@@ -56,3 +56,4 @@ gem 'newrelic_rpm'
 
 # yahoo api
 gem 'yql'
+gem 'rest-client'

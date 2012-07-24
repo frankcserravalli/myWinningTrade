@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe "Finance" do
+  before do
+    @api = Finance
+  end
+
 	it "should return the details of a given stock" do
 		VCR.use_cassette('quote') do
-			@api = Finance
 			quote = @api.current_stock_details('AAPL')
 
 			quote.symbol.should == 'AAPL'
@@ -15,7 +18,17 @@ describe "Finance" do
 		end
 	end
 
-	it "should raise a consistent exception on failed requests" do
+  it "should return the price of a stock every week day for the past 6 months" do
+    cassette_date =
+
+    VCR.use_cassette('stock_price_history', :record => :new_episodes) do
+
+      @history = @api.stock_price_history('AAPL')
+      raise @history.inspect
+    end
+  end
+
+	it "should raise a consistent exception on failed queries" do
 		VCR.use_cassette('invalid_query') do
 			expect {
 	      Finance.execute_yql("INVALID QUERY")
