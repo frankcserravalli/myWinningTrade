@@ -7,12 +7,14 @@ gem 'pg'
 
 group :assets do
   gem 'jquery-rails'
+  gem 'jquery-ui-rails'
   gem 'compass-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass_twitter_bootstrap'
+  gem 'momentjs-rails'
 end
 
 # ui
@@ -25,12 +27,16 @@ gem 'simple_form'
 gem 'country_select'
 gem 'copycopter_client', '~> 2.0.1'
 
+# graphing
+gem 'rickshaw_rails'
+
 # model
 gem 'migrant'
 gem 'squeel'
 
 group :development do
   gem 'letter_opener'
+  gem 'heroku'
 end
 
 group :test do
