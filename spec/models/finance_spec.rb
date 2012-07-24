@@ -19,12 +19,17 @@ describe "Finance" do
 	end
 
   it "should return the price of a stock every week day for the past 6 months" do
-    cassette_date =
+    cassette_date = Time.at(1343052000).to_date
 
     VCR.use_cassette('stock_price_history', :record => :new_episodes) do
-
       @history = @api.stock_price_history('AAPL')
-      raise @history.inspect
+      @history.symbol.should == 'AAPL'
+      @history.name.should == 'Apple Inc.'
+
+      dates = @history.price_history.collect { |k| Time.at(k.first).to_date }.uniq
+
+      dates.should include(cassette_date)
+      dates.should include(cassette_date - 6.months)
     end
   end
 
