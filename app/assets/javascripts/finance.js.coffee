@@ -6,7 +6,7 @@ class @Finance
 
   subscribe: (reference, stock_symbols_list, callback) ->
     # accept a single string or comma separated list of stock symbols
-    stock_symbols = stock_symbols_list.split(',') # TODO sanitize
+    stock_symbols = stock_symbols_list.split(',') # TODO sanitize with regex
 
     # enforce uppercasing of symbol
     stock_symbols = _.map stock_symbols, (symbol) ->
@@ -24,6 +24,7 @@ class @Finance
   unsubscribe: (reference) ->
     # remove subscription
     delete @subscriptions[reference]
+    # TODO remove stocks that are no longer in unique set
 
   # TICKER:
   start_ticking: ->
@@ -36,7 +37,7 @@ class @Finance
 
   tick: ->
     console.log 'tick'
-
+    # TODO
     # stock SET = ...
     # ajax request with stock array
     # response:
@@ -49,5 +50,3 @@ class @Finance
     window.f = new Finance(5000)
     # f.start_ticking()
   )
-
-
