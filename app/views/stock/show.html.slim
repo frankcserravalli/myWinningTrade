@@ -65,39 +65,11 @@ form#side_panel
     #timeline
     #slider
 
-
 javascript:
-  var Finance = {
 
-    stocks: [],
-
-    subscribeStock: function(stock, callback) {
-      // stock not found?
-      this.stockCallbacks = stock;
-    }
-
-    unsubscribeStock: function(stock) {
-      // error if stock not found
-      // remove stock/callback
-    }
-
-    processTick: function() {
-      // ajax request with stock array
-      // response:
-      // - stock not found, unsubscribe?
-      // - for each stock response, run callback
-    }
-
+  $(function() {
+    Finance.init();
   }
-
-
-updateGraph, 'aapl', 'cool'
-updateBuyingPower, 'aapl', 'goog'
-
-
-
-
-javascript:
   // set up our data series with 50 random data points
 
   var seriesData = [ [], [], [], [], [], [], [], [], [] ];

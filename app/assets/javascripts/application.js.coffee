@@ -13,4 +13,5 @@
 //= require moment
 //= require rickshaw_with_d3
 //= require init
+//= require finance
 //= require stock-search
