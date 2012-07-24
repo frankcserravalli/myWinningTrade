@@ -72,6 +72,7 @@ GEM
     faraday (0.8.1)
       multipart-post (~> 1.1)
     fssm (0.2.9)
+    haml (3.1.6)
     hashie (1.2.0)
     heroku (2.29.0)
       heroku-api (~> 0.2.13)
@@ -84,6 +85,9 @@ GEM
     hike (1.2.1)
     httpauth (0.1)
     i18n (0.6.0)
+    jasminerice (0.0.9)
+      coffee-rails
+      haml
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -253,6 +257,7 @@ DEPENDENCIES
   factory_girl_rails
   fakeweb
   heroku
+  jasminerice
   jquery-rails
   jquery-ui-rails
   letter_opener

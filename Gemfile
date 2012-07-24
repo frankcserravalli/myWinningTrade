@@ -46,6 +46,10 @@ group :test do
   gem 'fakeweb'
 end
 
+group :development, :test do
+  gem 'jasminerice'
+end
+
 gem 'thin'
 
 # omniauth

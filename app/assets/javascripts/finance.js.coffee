@@ -1,4 +1,4 @@
-class Finance
+class @Finance
   constructor: (@tick_interval) ->
 
   stocks: []
