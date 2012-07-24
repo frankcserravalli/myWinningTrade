@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require init
+//= require jquery.ui.all
+//= require jquery.html5-placeholder-shim
 //= require bootstrap-dropdown
 //= require bootstrap-tab
 //= require bootstrap-tooltip
@@ -9,5 +10,7 @@
 //= require bootstrap-collapse
 //= require chosen-jquery
 //= require underscore
-//= require jquery.html5-placeholder-shim
+//= require moment
+//= require rickshaw_with_d3
+//= require init
 //= require stock-search
