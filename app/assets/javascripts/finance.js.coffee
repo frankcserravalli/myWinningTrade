@@ -50,3 +50,4 @@ class @Finance
     window.f = new Finance(5000)
     # f.start_ticking()
   )
+

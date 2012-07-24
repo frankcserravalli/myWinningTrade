@@ -1,0 +1,26 @@
+updateGraph, 'aapl', 'cool'
+updateBuyingPower, 'aapl', 'goog'
+
+
+<span class="quote" data-symbol="AAPL"> $25 </span>
+
+$(".quote").each =>
+  Finance.subscribe 'currentPrice', @data('symbol'), (stock) =>
+    @html(stock.price)
+
+$(".buyingpower").each =>
+  ticker.subscribe @data('symbols'), (stocks) =>
+    @html(_.sum(stocks.currentPifec))
+
+
+addstock:
+  $.get('/history_of_unicorns') ->
+    series = new Series(data)
+    Graph.addseries(series)
+      Finance.subscribe 'currentPrice', @data('symbol'), (stock) =>
+        series.data.push(stock.latest_price)
+
+    Finance.subscribe 'updatedEverything' =>
+      Graph.drawyourself
+
+
