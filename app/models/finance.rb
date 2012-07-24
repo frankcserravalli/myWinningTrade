@@ -32,6 +32,8 @@ class Finance
 				intraday_body.gsub!(/(\d+\.\d{4})"/, '\1')
 				intraday_body.sub!('finance_charts_json_callback', '')
 
+				return nil if intraday_body.include?('errorid')
+
 				intraday_details = MultiJson.load(intraday_body)
 			rescue Exception => e
 				raise QueryFailed.new("Yahoo Intraday Request Failed: #{e}, HTTP response: #{intraday_body.to_s}")
