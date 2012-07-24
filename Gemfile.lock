@@ -178,11 +178,8 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-<<<<<<< HEAD
-=======
     rickshaw_rails (0.0.3)
       railties (>= 3.1.0)
->>>>>>> 229755d8bc335c190853b67dfdebcc48215d791a
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -274,11 +271,8 @@ DEPENDENCIES
   omniauth-twitter
   pg
   rails (= 3.2.6)
-<<<<<<< HEAD
   rest-client
-=======
   rickshaw_rails
->>>>>>> 229755d8bc335c190853b67dfdebcc48215d791a
   rspec-rails
   sass-rails (~> 3.2.3)
   simple_form
