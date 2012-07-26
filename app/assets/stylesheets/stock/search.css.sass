@@ -1,1 +1,20 @@
 #stock-search
+  $font-size: 24px
+
+  input.stock-name
+    font-size: $font-size
+    padding: 10px
+    width: 600px
+    height: 40px
+
+    // fix placeholder misalignment with input text
+    $placeholder-padding-top: 7px
+    &:-moz-placeholder
+      padding-top: $placeholder-padding-top
+    &::-webkit-input-placeholder
+      padding-top: $placeholder-padding-top
+
+  input[type=submit]
+    font-size: $font-size
+    height: 60px
+    margin-left: 10px

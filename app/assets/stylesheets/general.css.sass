@@ -1,3 +1,21 @@
 // add padding for navbar
 body
-  padding-top: $navbarHeight + 10px
+  padding-top: ($navbarHeight * 2) + 10px
+
+.navbar
+  a
+    +transition(color 0.4s)
+    &.brand
+      +transition((color 0.4s), (text-shadow 0.4s))
+      &:hover
+        +text-shadow(0 0 1px $linkColor)
+        color: white  
+
+// just temp styling
+.infobar
+  top: $navbarHeight
+  color: #555
+  .navbar-inner
+    background: #eee
+    .navbar-text
+      margin-right: 10px

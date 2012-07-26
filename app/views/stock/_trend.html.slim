@@ -1,0 +1,5 @@
+.stock-trend data-stock-symbol=stock.symbol
+  span.trend-direction = '^'
+  span.stock-symbol = stock.symbol
+  span.current-price = number_to_currency(stock.current_price, format: '%u %n')
+  span.percent-change = number_to_percentage(0, precision: 2)

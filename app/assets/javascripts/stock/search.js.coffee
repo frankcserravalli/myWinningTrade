@@ -2,7 +2,7 @@ $(document).ready ->
   # TODO: do not allow non alphanumeric characters to even be input
 
   $('#stock-search form').submit (e) ->
-    input_elem = $('input.stock_name',this)
+    input_elem = $('input.stock-name',this)
 
     # fetch value, strip non alphanumeric characters and uppercase
     symbol = input_elem.val().replace(/\W+/g,'').toUpperCase()
