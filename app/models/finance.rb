@@ -9,20 +9,33 @@ class Finance
 
 	class << self
 		def current_stock_details(symbol)
-			symbol = sanitize_symbol(symbol)
+			details = stock_details_for_list([symbol])[symbol]
+		end
 
-			execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter, PERatio, TwoHundreddayMovingAverage, FiftydayMovingAverage, LastTradeDate
-									 from yahoo.finance.quotes where symbol='#{symbol}'").quote.tap do |quote|
+		def stock_details_for_list(symbol_list)
+			symbol_list = symbol_list.collect { |symbol| sanitize_symbol(symbol) }
 
-				return nil unless quote.stock_exchange
+			response = execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter, PERatio, TwoHundreddayMovingAverage, FiftydayMovingAverage, LastTradeDate
+									 				    from yahoo.finance.quotes where symbol IN ('#{symbol_list.join(',')}')")['quote']
 
-				quote.current_price = quote.ask_realtime || quote.ask
-				quote.open ||= quote.previous_close
-				quote.fifty_day_moving_average = quote.delete_field(:fiftyday_moving_average)
-				quote.two_hundred_day_moving_average = quote.delete_field(:two_hundredday_moving_average)
+			response = [response] if symbol_list.length == 1
 
-				quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
+			details = response.collect do |quote|
+				if quote['StockExchange']
+					quote = create_openstruct(quote)
+					quote.current_price = quote.ask_realtime || quote.ask
+					quote.open ||= quote.previous_close
+					quote.fifty_day_moving_average = quote.delete_field(:fiftyday_moving_average)
+					quote.two_hundred_day_moving_average = quote.delete_field(:two_hundredday_moving_average)
+
+					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
+					quote
+				else
+					nil
+				end
 			end
+
+			return Hash[symbol_list.zip(details)]
 		end
 
 		def stock_price_history(symbol)
@@ -51,9 +64,9 @@ class Finance
 
 			history = execute_yql("SELECT Close, Date FROM yahoo.finance.historicaldata WHERE symbol = '#{symbol}'
 							 	 					   AND startDate = '#{ansi_date(start_date)}'
-									 					 AND endDate   = '#{ansi_date(end_date-1.day)}'", false)
+									 					 AND endDate   = '#{ansi_date(end_date-1.day)}'")
 
-			stock_quote = execute_yql("SELECT Name, Symbol FROM yahoo.finance.quotes WHERE symbol='#{symbol}'", false)
+			stock_quote = execute_yql("SELECT Name, Symbol FROM yahoo.finance.quotes WHERE symbol='#{symbol}'")
 
 			OpenStruct.new(
 				symbol:
@@ -74,7 +87,7 @@ class Finance
 			date.strftime('%Y-%m-%d')
 		end
 
-		def execute_yql(yql_query, auto_create_openstruct = true)
+		def execute_yql(yql_query)
 			self.reload_credentials unless self.credentials
 
 			consumer = OAuth::Consumer.new(self.credentials['consumer_key'], self.credentials['consumer_secret'], site: 'http://query.yahooapis.com')
@@ -100,7 +113,7 @@ class Finance
 	    	raise QueryFailed.new("'#{yql_query}' (#{e}), response: #{response.body}")
 	    end
 
-		  return (auto_create_openstruct)? self.create_openstruct(results) : results
+		  results
 		end
 
 		def reload_credentials
