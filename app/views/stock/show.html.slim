@@ -4,7 +4,8 @@
   .span6
     h1
       = @stock.name
-      = render partial: 'stock/summary', locals: { stock: @stock }
+    
+    = render partial: 'stock/trend', locals: { stock: @stock }
 
   .span6
     select#graph-span

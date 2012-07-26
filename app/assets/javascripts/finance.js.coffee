@@ -5,6 +5,7 @@ class @Finance
     @references = [] # just a bit of sugar
 
   subscribe: (reference, stock_symbols_list = '', callback) ->
+
     # accept a single string or comma separated list of stock symbols
     stock_symbols = stock_symbols_list.split(',')
 
@@ -46,31 +47,36 @@ class @Finance
   start_ticking: ->
     # run tick immediately, and set a regular interval
     @tick()
-    @ticker = setInterval @tick, @tick_interval_ms
+    @ticker = setInterval ( =>
+      @tick()
+    ), @tick_interval_ms
 
   stop_ticking: ->
     clearInterval(@ticker)
     @ticker = null
 
   tick: ->
-    #$.ajax '/...',
-    #  type: 'GET',
-    #  dataType: 'json',
-    #  data: @stocks,
-    #  success: (data, textStatus, jqXHR) =>
-        # payload = do_whatever_transforms(data['stocks'])
-    #    @latest_payload = payload
-    #    @runCallbacks()
+    # do nothing if there are no subscriptions
+    return if _.isEmpty(@subscriptions)
+
+    query_string = $.param({ stocks: @stocks })
+
+    $.ajax '/stock/details?' + query_string,
+      type: 'GET'
+      dataType: 'JSON'
+      success: (payload, textStatus, jqXHR) =>
+        @latest_payload = payload
+        @run_callbacks()
 
     # alternatively, when testing,
     # @latest_stock_data = 'mockmockmock'
-    @runCallbacks()
+    #@run_callbacks()
 
   run_callbacks: ->
     _.each @references, (reference) =>
-      # prepare (pluck) stock data or send thru all data
+      cherry_picked_payload = @latest_payload # TODO cherry pick
       subscription = @subscriptions[reference]
-      subscription.callback('[stocks]')
+      subscription.callback(cherry_picked_payload)
 
   receive_stock_data: (stock_data) ->
     # ~ for each stock's value:
@@ -81,8 +87,7 @@ class @Finance
     # ~ just ignore those callbacks?
     # ~ send null through?
 
-
-  $(->
-    window.f = new Finance(5000)
-    # f.start_ticking()
-  )
+$(->
+  window.finance = new Finance(5000)
+  finance.start_ticking()
+)

@@ -10,7 +10,8 @@ html
   body class=controller_name
     = render partial: 'navbar'
     = render partial: 'flash', locals: { flash: flash }
+    = render partial: 'account/infobar' if current_user
+    
     .container
-      = render partial: 'account/infobar' if current_user
       = yield
       = render partial: 'stock/portfolio' if current_user

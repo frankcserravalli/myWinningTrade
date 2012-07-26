@@ -1,4 +1,4 @@
 #stock-search
   form.form-inline
-    input.stock_name type='text' placeholder=t('.symbol_placeholder', default: 'Enter a stock name') value=params[:id].try(:upcase)
+    input.stock-name type='text' placeholder=t('.symbol_placeholder', default: 'Start typing a stock name or ticker symbol&hellip;'.html_safe) value=params[:id].try(:upcase)
     input.btn.btn-primary type='submit' value=t('.go', default: 'Go')
