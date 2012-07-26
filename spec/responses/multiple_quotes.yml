@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://query.yahooapis.com/v1/yql?q=select%20Name%2C%20Symbol%2C%20Ask%2C%20AskRealtime%2C%20DaysRange%2C%20YearRange%2C%20Open%2C%20PreviousClose%2C%20Volume%2C%20DividendYield%2C%20EarningsShare%2C%20StockExchange%2C%20LastTradeTime%2C%20EPSEstimateCurrentYear%2C%20EPSEstimateNextYear%2C%20EPSEstimateNextQuarter%2C%20PERatio%2C%20TwoHundreddayMovingAverage%2C%20FiftydayMovingAverage%2C%20LastTradeDate%0A%09%09%09%09%09%09%09%09%09%20%09%09%09%09%20%20%20%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20%28%27AAPL%2CGOOG%2Cfake%27%29&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - OAuth gem v0.4.6
+      authorization:
+      - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
+        oauth_nonce="IBonpload7d1IDfIAJkWFqO6fgd56gnv8CxCG9ZA4", oauth_signature="%2FqJYZ5jvvXcsfhpKvYRFvXeWI18%3D",
+        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1343316224", oauth_version="1.0"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      x-yql-host:
+      - engine1.yql.ac4.yahoo.com
+      access-control-allow-origin:
+      - ! '*'
+      cache-control:
+      - no-cache
+      content-type:
+      - application/json;charset=utf-8
+      vary:
+      - Accept-Encoding
+      date:
+      - Thu, 26 Jul 2012 15:23:47 GMT
+      server:
+      - YTS/1.20.10
+      age:
+      - '1'
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"query":{"count":3,"created":"2012-07-26T15:23:47Z","lang":"en-US","results":{"quote":[{"AskRealtime":"575.25","LastTradeDate":"7/26/2012","EarningsShare":"42.548","EPSEstimateCurrentYear":"44.42","EPSEstimateNextYear":"52.60","EPSEstimateNextQuarter":"15.28","DaysRange":"573.56
+        - 580.40","FiftydayMovingAverage":"588.809","TwoHundreddayMovingAverage":"553.828","Name":"Apple
+        Inc.","Open":"579.82","PreviousClose":"574.97","PERatio":"13.51","Symbol":"AAPL","LastTradeTime":"11:08am","Volume":"6513097","YearRange":"353.02
+        - 644.00","StockExchange":"NasdaqNM","DividendYield":null,"Ask":"575.25"},{"AskRealtime":"612.78","LastTradeDate":"7/26/2012","EarningsShare":"33.732","EPSEstimateCurrentYear":"42.53","EPSEstimateNextYear":"49.37","EPSEstimateNextQuarter":"11.78","DaysRange":"612.25
+        - 616.87","FiftydayMovingAverage":"579.046","TwoHundreddayMovingAverage":"603.454","Name":"Google
+        Inc.","Open":"615.00","PreviousClose":"607.99","PERatio":"18.02","Symbol":"GOOG","LastTradeTime":"11:08am","Volume":"734653","YearRange":"480.60
+        - 670.25","StockExchange":"NasdaqNM","DividendYield":null,"Ask":"612.78"},{"AskRealtime":null,"LastTradeDate":null,"EarningsShare":null,"EPSEstimateCurrentYear":null,"EPSEstimateNextYear":null,"EPSEstimateNextQuarter":null,"DaysRange":"N/A
+        - N/A","FiftydayMovingAverage":null,"TwoHundreddayMovingAverage":null,"Name":"FAKE","Open":null,"PreviousClose":null,"PERatio":null,"Symbol":"FAKE","LastTradeTime":null,"Volume":null,"YearRange":"N/A
+        - N/A","StockExchange":null,"DividendYield":null,"Ask":null}]}}}'
+    http_version: '1.1'
+  recorded_at: Thu, 26 Jul 2012 15:23:47 GMT
+recorded_with: VCR 2.2.3

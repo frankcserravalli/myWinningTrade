@@ -9,12 +9,12 @@ class StockController < ApplicationController
   end
 
   def details
-    @details = Finance.current_stock_details(params[:id])
-    render json: @details.marshal_dump
+    @details = Finance.stock_details_for_list(params[:stocks].to_a)
+    render json: @details
   end
 
   def price_history
     @price_history = Finance.stock_price_history(params[:id])
-    render json: @price_history
+    render json: @price_history.marshal_dump
   end
 end
