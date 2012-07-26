@@ -1,12 +1,18 @@
 = render partial: 'search'
 
-h1
-  = @stock.symbol
-  ' &nbsp;
-  small = @stock.name
-
 .row
-  #slider
+  .span6
+    h1
+      = @stock.name
+      = render partial: 'stock/summary', locals: { stock: @stock }
+
+  .span6
+    select#graph-span
+      option Live
+      option 7 days
+      option 30 days
+      option 3 months
+      option 6 months
 
 br
 

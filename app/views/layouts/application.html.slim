@@ -9,8 +9,8 @@ html
 
   body class=controller_name
     = render partial: 'navbar'
+    = render partial: 'flash', locals: { flash: flash }
     .container
       = render partial: 'account/infobar' if current_user
-      = render partial: 'flash', locals: { flash: flash }
       = yield
       = render partial: 'stock/portfolio' if current_user
