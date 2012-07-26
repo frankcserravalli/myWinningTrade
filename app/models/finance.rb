@@ -11,7 +11,7 @@ class Finance
 		def current_stock_details(symbol)
 			symbol = sanitize_symbol(symbol)
 
-			execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter, PERatio, TwoHundreddayMovingAverage, FiftydayMovingAverage
+			execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter, PERatio, TwoHundreddayMovingAverage, FiftydayMovingAverage, LastTradeDate
 									 from yahoo.finance.quotes where symbol='#{symbol}'").quote.tap do |quote|
 
 				return nil unless quote.stock_exchange
@@ -20,6 +20,8 @@ class Finance
 				quote.open ||= quote.previous_close
 				quote.fifty_day_moving_average = quote.delete_field(:fiftyday_moving_average)
 				quote.two_hundred_day_moving_average = quote.delete_field(:two_hundredday_moving_average)
+
+				quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
 			end
 		end
 
