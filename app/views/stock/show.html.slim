@@ -68,7 +68,7 @@ javascript:
     url: '/stock/#{@stock.symbol}/price_history.json',
     dataType: 'JSON',
     success: function(data) {
-      var data_points = data.table.price_history;
+      var data_points = data.price_history;
       var data_points2 = _.map(data_points, function(p) {
        return { x: p[0], y: p[1] };
       });
