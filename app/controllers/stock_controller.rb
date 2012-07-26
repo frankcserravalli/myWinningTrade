@@ -1,12 +1,5 @@
 class StockController < ApplicationController
   def show
-    # CACHING to save dev time:
-    # %w(off capture replay)
-    cache = 'replay'
-
-    # CACHING replay
-    @stock = session[:stock] and return if cache =='replay'
-
   	symbol = params[:id].upcase
     @stock = Finance.current_stock_details(symbol)
 
@@ -14,10 +7,6 @@ class StockController < ApplicationController
       alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
       redirect_to root_path, alert: alert
     end
-
-    # CACHING capture
-    session[:stock] = @stock if cache == 'capture'
-
   end
 
   def details
