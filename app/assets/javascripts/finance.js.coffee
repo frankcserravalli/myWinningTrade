@@ -6,9 +6,9 @@ class @Finance
 
   subscribe: (reference, stock_symbols_list = '', callback) ->
     # accept a single string or comma separated list of stock symbols
-    stock_symbols = stock_symbols_list.split(',') # TODO sanitize with regex
+    stock_symbols = stock_symbols_list.split(',')
 
-    # strip non alphanumeric characters and uppercase symbol
+    # strip non alphanumeric characters and uppercase the symbols
     stock_symbols = _.map stock_symbols, (symbol) ->
       symbol.replace(/\W+/g,'').toUpperCase()
 
@@ -28,10 +28,10 @@ class @Finance
     # find subscription and exit if not found
     subscription = @subscriptions[reference]
     return false unless subscription
-    
+
     # store this subscription's stock_symbols for later consideration
     potential_removals = subscription.stock_symbols
-  
+
     # remove subscription reference
     @references = _.without(@references, reference)
 
@@ -53,8 +53,6 @@ class @Finance
     @ticker = null
 
   tick: ->
-    # TODO seems my understanding of this is not compatible
-    # with how the controller is currently written
     #$.ajax '/...',
     #  type: 'GET',
     #  dataType: 'json',

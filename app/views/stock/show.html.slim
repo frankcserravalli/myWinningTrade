@@ -5,207 +5,85 @@ h1
   ' &nbsp;
   small = @stock.name
 
-- fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
+.row
+  #slider
 
-table.table.table-striped.table-compact
-  tbody
-  - fields.each_slice(2) do |row_fields|
-    tr
-      - row_fields.each do |field|
-        th = field.humanize
-        td = @stock.send(field) || 'N/A'
-      - if row_fields.count < 2
-        th &nbsp;
-        td &nbsp;
+br
 
-form#side_panel
-  h1 Random data in the future
-  section
-    #legend
-  section
-    #renderer_form.toggler
-      input#area type='radio' name='renderer' value='area' checked='checked'
-      label for='area' area
-      input#bar type='radio' name='renderer' value='bar'
-      label for='bar' bar
-      input#line type='radio' name='renderer' value='line'
-      label for='line' line
-      input#scatter type='radio' name='renderer' value='scatterplot'
-      label for='scatter' scatter
-  section
-    #offset_form
-      label for='stack'
-        input#stack type='radio' name='offset' value='zero' checked='checked'
-        span stack
-      label for='stream'
-        input#stream type='radio' name='offset' value='wiggle'
-        span stream
-      label for='pct'
-        input#pct type='radio' name='offset' value='expand'
-        span pct
-      label for='value'
-        input#value type='radio' name='offset' value='value'
-
-    #interpolation_form
-      label for='cardinal'
-        input#cardinal type='radio' name='interpolation' value='cardinal' checked='checked'
-        span cardinal
-      label for='linear'
-        input#linear type='radio' name='interpolation' value='linear'
-        span linear
-      label for='step'
-        input#step type='radio' name='interpolation' value='step-after'
-        span step
-  section
-    h6 Smoothing
-    #smoother
-
-  #chart_container
+.row
+  .span10
     #chart
-    #timeline
-    #slider
+      .spinner
+  .span2
+    #legend
 
 javascript:
 
-  // set up our data series with 50 random data points
-  var seriesData = [ [], [], [], [], [], [], [], [], [] ];
-  var random = new Rickshaw.Fixtures.RandomData(150);
+  function initGraph(data) {
 
-  for (var i = 0; i < 150; i++) {
-    random.addData(seriesData);
-  }
-
-  var palette = new Rickshaw.Color.Palette( { scheme: 'classic9' } );
-
-  // instantiate our graph!
-  var graph = new Rickshaw.Graph( {
+  var graph = new Rickshaw.Graph({
     element: document.getElementById("chart"),
-    width: 900,
-    height: 500,
+    width: 770,
+    height: 350,
     renderer: 'area',
     stroke: true,
     series: [
       {
-        color: palette.color(),
-        data: seriesData[0],
-        name: 'Moscow'
-      }, {
-        color: palette.color(),
-        data: seriesData[1],
-        name: 'Shanghai'
-      }, {
-        color: palette.color(),
-        data: seriesData[2],
-        name: 'Amsterdam'
-      }, {
-        color: palette.color(),
-        data: seriesData[3],
-        name: 'Paris'
-      }, {
-        color: palette.color(),
-        data: seriesData[4],
-        name: 'Tokyo'
-      }, {
-        color: palette.color(),
-        data: seriesData[5],
-        name: 'London'
-      }, {
-        color: palette.color(),
-        data: seriesData[6],
-        name: 'New York'
+        color: 'steelblue', // palette.color(),
+        data: data,
+        name: '#{@stock.name}'
       }
     ]
-  } );
+  });
 
   graph.render();
 
-  var slider = new Rickshaw.Graph.RangeSlider( {
-    graph: graph,
-    element: $('#slider')
-  } );
-
-  var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-    graph: graph
-  } );
-
-  var annotator = new Rickshaw.Graph.Annotate( {
-    graph: graph,
-    element: document.getElementById('timeline')
-  } );
-
-  var legend = new Rickshaw.Graph.Legend( {
-    graph: graph,
-    element: document.getElementById('legend')
-
-  } );
-
-  var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
-    graph: graph,
-    legend: legend
-  } );
-
-  var order = new Rickshaw.Graph.Behavior.Series.Order( {
-    graph: graph,
-    legend: legend
-  } );
-
-  var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
-    graph: graph,
-    legend: legend
-  } );
-
-  var smoother = new Rickshaw.Graph.Smoother( {
-    graph: graph,
-    element: $('#smoother')
-  } );
+  var slider = new Rickshaw.Graph.RangeSlider({ graph: graph, element: $('#slider') });
+  var hoverDetail = new Rickshaw.Graph.HoverDetail({ graph: graph });
+  var legend = new Rickshaw.Graph.Legend({ graph: graph, element: document.getElementById('legend') });
+  var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({ graph: graph, legend: legend });
+  var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({ graph: graph, legend: legend });
 
   var ticksTreatment = 'glow';
 
-  var xAxis = new Rickshaw.Graph.Axis.Time( {
-    graph: graph,
-    ticksTreatment: ticksTreatment
-  } );
+  var xAxis = new Rickshaw.Graph.Axis.Time({ graph: graph, ticksTreatment: ticksTreatment });
+  var yAxis = new Rickshaw.Graph.Axis.Y({ graph: graph, tickFormat: Rickshaw.Fixtures.Number.formatKMBT, ticksTreatment: ticksTreatment });
 
   xAxis.render();
-
-  var yAxis = new Rickshaw.Graph.Axis.Y( {
-    graph: graph,
-    tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-    ticksTreatment: ticksTreatment
-  } );
-
   yAxis.render();
-
-
-  var controls = new RenderControls( {
-    element: document.querySelector('form'),
-    graph: graph
-  } );
-
-  // add some data every so often
-
-  var messages = [
-    "Changed home page welcome message",
-    "Minified JS and CSS",
-    "Changed button color from blue to green",
-    "Refactored SQL query to use indexed columns",
-    "Added additional logging for debugging",
-    "Fixed typo",
-    "Rewrite conditional logic for clarity",
-    "Added documentation for new methods"
-  ];
-
-  setInterval( function() {
-    random.addData(seriesData);
-    graph.update();
-
-  }, 3000 );
-
-  function addAnnotation(force) {
-    if (messages.length > 0 && (force || Math.random() >= 0.95)) {
-      annotator.add(seriesData[2][seriesData[2].length-1].x, messages.shift());
-    }
   }
 
-  addAnnotation(true);
-  setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
+
+  $.ajax({
+    url: '/stock/#{@stock.symbol}/price_history.json',
+    dataType: 'JSON',
+    success: function(data) {
+      var data_points = data.table.price_history;
+      var data_points2 = _.map(data_points, function(p) {
+       return { x: p[0], y: p[1] };
+      });
+      initGraph(data_points2)
+    }
+
+  });
+
+  // subscribe to:
+  // -- add data to seriesData
+  // -- graph.update()
+
+
+br
+
+- fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
+.row
+  table.table.table-striped.table-compact
+    tbody
+    - fields.each_slice(2) do |row_fields|
+      tr
+        - row_fields.each do |field|
+          th = field.humanize
+          - value = @stock.send(field)
+          td = value ? number_with_delimiter(value) : 'N/A'
+        - if row_fields.count < 2
+          th &nbsp;
+          td &nbsp;

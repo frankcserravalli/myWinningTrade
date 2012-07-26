@@ -2,7 +2,7 @@ describe 'Finance', ->
   finance = null
   beforeEach ->
     finance = new Finance(0)
-  
+
   describe 'subscribing', ->
     it 'accepts subscriptions based on a given reference key', ->
       expect(finance.subscriptions['ref']).not.toBeDefined
@@ -18,7 +18,7 @@ describe 'Finance', ->
       finance.subscribe 'ref', 'GOOG'
       stock_symbols = finance.subscriptions['ref'].stock_symbols
       expect(stock_symbols).toContain 'GOOG'
-    
+
     it 'accepts a comma-separated string list of stock symbols for subscribing', ->
       finance.subscribe 'ref', 'GOOG,AAPL'
       stock_symbols = finance.subscriptions['ref'].stock_symbols
@@ -38,24 +38,24 @@ describe 'Finance', ->
       expect(finance.stocks.length).toEqual 2
       expect(finance.stocks).toContain 'GOOG'
       expect(finance.stocks).toContain 'AAPL'
-    
+
     describe 'normalizing stock symbol to chomped alphanumeric/caps only', ->
       it 'normalizes a single stock symbol', ->
         finance.subscribe 'ref', ' goog --/""  '
         subscription = finance.subscriptions['ref']
         expect(subscription.stock_symbols).toEqual ['GOOG']
-      
+
       it 'normalizes a comma-separated string list of stock symbols', ->
         finance.subscribe 'ref', '  ..goog  ,  aapl--/""'
         stock_symbols = finance.subscriptions['ref'].stock_symbols
         expect(stock_symbols.length).toEqual 2
         expect(stock_symbols).toContain 'GOOG'
         expect(stock_symbols).toContain 'AAPL'
-  
+
   describe 'unsubscribing', ->
     it 'removes subscriptions based on a given reference key', ->
       finance.subscribe 'ref', 'GOOG'
-      expect(finance.subscriptions['ref']).toBeDefined  
+      expect(finance.subscriptions['ref']).toBeDefined
       finance.unsubscribe 'ref'
       expect(finance.subscriptions['ref']).not.toBeDefined
 
@@ -76,15 +76,15 @@ describe 'Finance', ->
       expect(finance.stocks).toContain 'GOOG'
       finance.unsubscribe 'ref'
       expect(finance.stocks).not.toContain 'GOOG'
-      
+
     it 'only removes a stock from the unique set if no remaining subscriptions require it', ->
       finance.subscribe 'ref1', 'GOOG, AAPL, COOL'
-      
+
       finance.subscribe 'ref2', 'AAPL, YUM, CAKE'
       expect(finance.stocks).toContain 'AAPL'
       expect(finance.stocks).toContain 'YUM'
       expect(finance.stocks).toContain 'CAKE'
-      
+
       finance.unsubscribe 'ref2'
       expect(finance.stocks).toContain 'AAPL'
       expect(finance.stocks).not.toContain 'YUM'
