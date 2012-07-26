@@ -18,6 +18,15 @@ describe "Finance" do
 		end
 	end
 
+  it "should return the details of a list of stocks" do
+    VCR.use_cassette('multiple_quotes') do
+      quote = @api.stock_details_for_list(['AAPL', 'GOOG', 'fake'])
+      quote.keys.should == ['AAPL', 'GOOG', 'fake']
+      quote['AAPL'].symbol.should == 'AAPL'
+      quote['fake'].should be_nil
+    end
+  end
+
   it "should return the price of a stock every week day for the past 6 months" do
     cassette_date = Time.at(1343052000).to_date
 
