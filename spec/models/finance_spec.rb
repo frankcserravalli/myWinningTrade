@@ -12,7 +12,7 @@ describe "Finance" do
 			quote.symbol.should == 'AAPL'
 			quote.name.should == 'Apple Inc.'
 
-			[:name, :symbol, :ask, :ask_realtime, :days_range, :year_range, :open, :previous_close, :volume, :dividend_yield, :earnings_share, :stock_exchange, :last_trade_time, :current_price, :eps_estimate_current_year, :eps_estimate_next_year, :eps_estimate_next_quarter].each do |key|
+			[:name, :symbol, :ask, :ask_realtime, :days_range, :year_range, :open, :previous_close, :volume, :dividend_yield, :earnings_share, :stock_exchange, :last_trade_time, :current_price, :eps_estimate_current_year, :eps_estimate_next_year, :eps_estimate_next_quarter, :pe_ratio, :two_hundred_day_moving_average, :fifty_day_moving_average].each do |key|
 				quote.respond_to?(key).should be_true
 			end
 		end

@@ -11,13 +11,15 @@ class Finance
 		def current_stock_details(symbol)
 			symbol = sanitize_symbol(symbol)
 
-			execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter
+			execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter, PERatio, TwoHundreddayMovingAverage, FiftydayMovingAverage
 									 from yahoo.finance.quotes where symbol='#{symbol}'").quote.tap do |quote|
 
 				return nil unless quote.stock_exchange
 
 				quote.current_price = quote.ask_realtime || quote.ask
 				quote.open ||= quote.previous_close
+				quote.fifty_day_moving_average = quote.delete_field(:fiftyday_moving_average)
+				quote.two_hundred_day_moving_average = quote.delete_field(:two_hundredday_moving_average)
 			end
 		end
 
@@ -50,7 +52,6 @@ class Finance
 									 					 AND endDate   = '#{ansi_date(end_date-1.day)}'", false)
 
 			stock_quote = execute_yql("SELECT Name, Symbol FROM yahoo.finance.quotes WHERE symbol='#{symbol}'", false)
-      puts history.inspect
 
 			OpenStruct.new(
 				symbol:
