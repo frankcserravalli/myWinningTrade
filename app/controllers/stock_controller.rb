@@ -1,4 +1,5 @@
 class StockController < ApplicationController
+
   def show
   	symbol = params[:id].upcase
     @stock = Finance.current_stock_details(symbol)

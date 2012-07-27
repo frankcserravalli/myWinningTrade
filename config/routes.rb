@@ -14,4 +14,5 @@ MyWinningTrade::Application.routes.draw do
       get :details
     end
   end
+
 end

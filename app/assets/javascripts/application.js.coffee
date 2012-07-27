@@ -1,4 +1,5 @@
 //= require libraries
+//= require rickshaw/snappy_slider
 //= require general
 //= require flash
 //= require finance

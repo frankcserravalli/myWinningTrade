@@ -4,24 +4,17 @@
   .span6
     h1
       = @stock.name
-    
-    = render partial: 'stock/trend', locals: { stock: @stock }
-
+    #slider
   .span6
-    select#graph-span
-      option Live
-      option 7 days
-      option 30 days
-      option 3 months
-      option 6 months
+    = render partial: 'stock/trend', locals: { stock: @stock }
 
 br
 
 .row
-  .span10
+  .span8
     #chart
       .spinner
-  .span2
+  .span4
     #legend
 
 javascript:
@@ -49,11 +42,11 @@ javascript:
   graph.render();
   window.graph = graph;
 
-  var slider = new Rickshaw.Graph.RangeSlider({ graph: graph, element: $('#slider') });
+  var slider = new SnappySlider({ graph: graph, element: $('#slider') });
+
   var hoverDetail = new Rickshaw.Graph.HoverDetail({ graph: graph });
-  var legend = new Rickshaw.Graph.Legend({ graph: graph, element: document.getElementById('legend') });
-  var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({ graph: graph, legend: legend });
-  var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({ graph: graph, legend: legend });
+
+  //var legend = new Rickshaw.Graph.Legend({ graph: graph, element: document.getElementById('legend') });
 
   var ticksTreatment = 'glow';
 
@@ -88,14 +81,17 @@ br
 
 - fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
 .row
-  table.table.table-striped.table-compact
-    tbody
-    - fields.each_slice(2) do |row_fields|
-      tr
-        - row_fields.each do |field|
-          th = field.humanize
-          - value = @stock.send(field)
-          td = value ? number_with_delimiter(value) : 'N/A'
-        - if row_fields.count < 2
-          th &nbsp;
-          td &nbsp;
+  .span6
+    ' Buy/Sell form
+  .span6
+    table.table.table-striped.table-compact
+      tbody
+      - fields.each_slice(2) do |row_fields|
+        tr
+          - row_fields.each do |field|
+            th = field.humanize
+            - value = @stock.send(field)
+            td = value ? number_with_delimiter(value) : 'N/A'
+          - if row_fields.count < 2
+            th &nbsp;
+            td &nbsp;
