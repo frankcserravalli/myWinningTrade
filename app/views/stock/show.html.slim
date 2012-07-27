@@ -6,8 +6,8 @@
       = @stock.name
     #slider
   .span6
-    .btn-group data-toggle='buttons-radio'
-      button.btn.btn-primary.active data-value='live' Live
+    .btn-group#graph-timescale data-toggle='buttons-radio'
+      button.btn.btn-primary.active data-value='live' Last day
       button.btn.btn-primary data-value='historical' Historical
 
     = render partial: 'stock/trend', locals: { stock: @stock }
@@ -22,12 +22,17 @@ br
     #legend
 
 javascript:
+  function plotInputData(inputData) {
+    return _.map(inputData, function(p) {
+       return { x: p[0], y: p[1] };
+    });
+  }
 
   function initGraph(data) {
 
   var min_y = _.min(_.pluck(data,'y'));
 
-  var graph = new Rickshaw.Graph({
+  window.graph = new Rickshaw.Graph({
     element: document.getElementById("chart"),
     width: 770,
     height: 500,
@@ -41,8 +46,8 @@ javascript:
         name: '#{@stock.name}'
       }
     ]
-    graph.inputData = data;
   });
+  graph.inputData = data;
 
   graph.render();
   window.graph = graph;
@@ -62,25 +67,40 @@ javascript:
   yAxis.render();
   }
 
+  $(function() {
+    $.ajax({
+      url: '/stock/#{@stock.symbol}/price_history.json',
+      dataType: 'JSON',
+      success: function(data) {
+        initGraph({
+          live: plotInputData(data.price_history.live),
+          historical: plotInputData(data.price_history.historical)
+        });
+        $("#graph-timescale").show();
+      }
+    });
 
-  $.ajax({
-    url: '/stock/#{@stock.symbol}/price_history.json',
-    dataType: 'JSON',
-    success: function(data) {
-      var data_points = data.price_history;
-      var data_points = _.map(data.price_history, function(p) {
-       return { x: p[0], y: p[1] };
-      });
-      //window.deets = data_points2;
-      initGraph(data_points)
-    }
+    $('#graph-timescale .btn').click(function(event) {
+      $('#graph-timescale .btn').removeClass('active');
+      var element = $(event.target);
+      element.addClass('active');
+      window.graph.series[0].data = window.graph.inputData[element.data('value')];
+
+      if (element.data('value') == 'historical') {
+        $('#slider').show();
+      }
+      else {
+        $('#slider').hide();
+      }
+
+      graph.render();
+      return false;
+    });
 
   });
-
   // subscribe to:
   // -- add data to seriesData
   // -- graph.update()
-
 
 br
 

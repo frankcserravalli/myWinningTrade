@@ -73,9 +73,10 @@ class Finance
 					stock_quote['quote']['Symbol'],
 				name:
 					stock_quote['quote']['Name'],
-				price_history:
-					historical_series = history['quote'].reverse.collect { |day| [Time.parse(day['Date']).to_i, day['Close'].to_f] } +
-					intraday_details['series'].collect { |series| [series['Timestamp'], series['close'].to_f] }
+				price_history: {
+					historical: history['quote'].reverse.collect { |day| [Time.parse(day['Date']).to_i, day['Close'].to_f] },
+					live: intraday_details['series'].collect { |series| [series['Timestamp'], series['close'].to_f] }
+				}
 			)
 		end
 
