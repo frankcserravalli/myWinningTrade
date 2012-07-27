@@ -50,6 +50,14 @@ describe "Finance" do
 	  end
 	end
 
+  it "should search for stock names and symbols matching given text" do
+    VCR.use_cassette('search_for_stock') do
+      @suggestions = Finance.search_for_stock('app')
+      @suggestions.detect { |s| s['symbol'] == 'APPA' }.should be_true
+      @suggestions.detect { |s| s['name'] == 'Applied Materials Inc.' }.should be_true
+    end
+  end
+
 	it 'should correctly format a given nested hash into an openstruct object' do
 		hash = {
       'Key' => 'value',
@@ -62,7 +70,6 @@ describe "Finance" do
 
     openstruct.key.should == 'value'
     openstruct.nested_key.nested_key1.should == 'value'
-
 	end
 
 end
