@@ -7,7 +7,7 @@ Rickshaw.Graph.StockHoverDetail = Rickshaw.Class.create({
 
     this.xFormatter = args.xFormatter || function(x) {
       //recturn new Date( x * 1000 ).toLocaleString();
-      date = moment.unix(x)
+      date = moment(x*1000)
 
       if (date.diff(date.sod()) == 0) {
         return date.format("ddd Do MMM YYYY")

@@ -90,17 +90,20 @@ javascript:
         initGraph(window.graphInputData.live);
         $("#graph-timescale").show();
         var stock_symbol =  '#{@stock.symbol}';
-        window.finance.subscribe('chart', stock_symbol, function(payload){
-          stock_details = payload[stock_symbol].table
-          var current_unix_timestamp = moment().unix();
-          var current_price = parseFloat(stock_details['current_price'])
-          var data_point = { x: current_unix_timestamp, y: current_price }
-          window.graphInputData['live'].push(data_point);
-          if($('#graph-timescale .btn[data-value="live"]').is('.active')){
-            window.graph.series[0].data.push(data_point);
-            window.graph.update();
-          }
-        })
+
+        if (#{@stock.currently_trading.to_s}) {
+          window.finance.subscribe('chart', stock_symbol, function(payload){
+            stock_details = payload[stock_symbol].table
+            var current_unix_timestamp = moment().unix();
+            var current_price = parseFloat(stock_details['current_price'])
+            var data_point = { x: current_unix_timestamp, y: current_price }
+            window.graphInputData['live'].push(data_point);
+            if($('#graph-timescale .btn[data-value="live"]').is('.active')){
+              window.graph.series[0].data.push(data_point);
+              window.graph.update();
+            }
+          })
+        }
       }
     });
 
