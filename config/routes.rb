@@ -12,6 +12,7 @@ MyWinningTrade::Application.routes.draw do
     end
     collection do
       get :details
+      get :search
     end
   end
 end
