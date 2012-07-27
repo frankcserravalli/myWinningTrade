@@ -57,7 +57,7 @@ class Finance
 			end
 
 			stock_time_offset = intraday_details['meta']['gmtoffset'].to_i
-			last_trading_day = Time.at(intraday_details['Timestamp']['max']+stock_time_offset+Time.now.gmt_offset)
+			last_trading_day = Time.at(intraday_details['Timestamp']['max']+stock_time_offset-Time.now.gmt_offset)
 
 			end_date = last_trading_day
 			start_date = end_date - 6.months
@@ -74,8 +74,8 @@ class Finance
 				name:
 					stock_quote['quote']['Name'],
 				price_history:
-					history['quote'].reverse.collect { |day| [Time.parse(day['Date']).to_i, day['Close'].to_f] } +
-					intraday_details['series'].collect { |series| [series['Timestamp']+stock_time_offset-Time.now.gmt_offset, series['close'].to_f] }
+					historical_series = history['quote'].reverse.collect { |day| [Time.parse(day['Date']).to_i, day['Close'].to_f] } +
+					intraday_details['series'].collect { |series| [series['Timestamp'], series['close'].to_f] }
 			)
 		end
 

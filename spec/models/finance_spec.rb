@@ -38,7 +38,7 @@ describe "Finance" do
       dates = @history.price_history.collect { |k| Time.at(k.first).to_date }.uniq
 
       dates.should include(cassette_date)
-      dates.should include(cassette_date - 6.months)
+      dates.should include((cassette_date - 6.months).at_end_of_week+1.day)
     end
   end
 
