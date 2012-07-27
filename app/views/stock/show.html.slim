@@ -6,6 +6,10 @@
       = @stock.name
     #slider
   .span6
+    .btn-group data-toggle='buttons-radio'
+      button.btn.btn-primary.active data-value='live' Live
+      button.btn.btn-primary data-value='historical' Historical
+
     = render partial: 'stock/trend', locals: { stock: @stock }
 
 br
@@ -33,10 +37,11 @@ javascript:
     series: [
       {
         color: 'steelblue', // palette.color(),
-        data: data,
+        data: data.live,
         name: '#{@stock.name}'
       }
     ]
+    graph.inputData = data;
   });
 
   graph.render();
@@ -63,11 +68,11 @@ javascript:
     dataType: 'JSON',
     success: function(data) {
       var data_points = data.price_history;
-      var data_points2 = _.map(data_points, function(p) {
+      var data_points = _.map(data.price_history, function(p) {
        return { x: p[0], y: p[1] };
       });
       //window.deets = data_points2;
-      initGraph(data_points2)
+      initGraph(data_points)
     }
 
   });
