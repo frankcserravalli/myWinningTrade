@@ -88,6 +88,6 @@ class @Finance
     # ~ send null through?
 
 $(->
-  window.finance = new Finance(5000)
+  window.finance = new Finance(60000)
   finance.start_ticking()
 )

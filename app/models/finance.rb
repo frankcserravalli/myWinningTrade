@@ -21,7 +21,7 @@ class Finance
 			response = [response] if symbol_list.length == 1
 
 			details = response.collect do |quote|
-				if quote['StockExchange']
+				if quote['Ask']
 					quote = create_openstruct(quote)
 					quote.current_price = quote.ask_realtime || quote.ask
 					quote.open ||= quote.previous_close

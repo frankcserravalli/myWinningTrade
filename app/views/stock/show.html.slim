@@ -7,27 +7,25 @@ hr
     = render partial: 'stock/trend', locals: { stock: @stock }
   .span4
     br
-    .btn-group#graph-timescale data-toggle='buttons-radio'
-      button.btn.btn-primary.active data-value='live' Last day
+    .btn-group#graph-timescale.pull-right data-toggle='buttons-radio'
       button.btn.btn-primary data-value='historical' Older
+      button.btn.btn-primary.active data-value='live' Last day
+
 br
 
 .chart_wrapper
   .row
-    .span10
+    .span12
       #slider
-    .span2
 
   br
 
   .row
-    .span10
+    .span12
       #chart
         .spinner
           = image_tag 'graph_spinner.gif'
           h3 Loading, please wait&hellip;
-    .span2
-      #legend
 
 
 javascript:
@@ -40,14 +38,17 @@ javascript:
   function initGraph(data) {
 
   var min_y = _.min(_.pluck(data,'y'));
+  var max_y = _.max(_.pluck(data,'y'));
 
-  window.graph = new Rickshaw.Graph({
+  $('#chart').empty();
+
+  var graph = new Rickshaw.Graph({
     element: document.getElementById("chart"),
-    width: 770,
+    width: 940,
     height: 500,
     renderer: 'line',
     stroke: true,
-    min: min_y,
+    min: min_y-((max_y-min_y)*0.1),
     series: [
       {
         color: 'steelblue', // palette.color(),
@@ -56,14 +57,10 @@ javascript:
       }
     ]
   });
-  graph.inputData = data;
 
   $('#chart .spinner').hide();
 
   graph.render();
-  window.graph = graph;
-
-  var slider = new SnappySlider({ graph: graph, element: $('#slider') });
 
   var hoverDetail = new Rickshaw.Graph.StockHoverDetail({ graph: graph });
 
@@ -76,35 +73,54 @@ javascript:
 
   xAxis.render();
   yAxis.render();
+
+  window.graph = graph;
   }
 
   $(function() {
+    $('#graph-timescale').hide();
     $.ajax({
       url: '/stock/#{@stock.symbol}/price_history.json',
       dataType: 'JSON',
       success: function(data) {
-        initGraph({
+        window.graphInputData = {
           live: plotInputData(data.price_history.live),
           historical: plotInputData(data.price_history.historical)
-        });
+        }
+        initGraph(window.graphInputData.live);
         $("#graph-timescale").show();
+        var stock_symbol =  '#{@stock.symbol}';
+        window.finance.subscribe('chart', stock_symbol, function(payload){
+          stock_details = payload[stock_symbol].table
+          var current_unix_timestamp = moment().unix();
+          var current_price = parseFloat(stock_details['current_price'])
+          var data_point = { x: current_unix_timestamp, y: current_price }
+          window.graphInputData['live'].push(data_point);
+          if($('#graph-timescale .btn[data-value="live"]').is('.active')){
+            window.graph.series[0].data.push(data_point);
+            window.graph.update();
+          }
+        })
       }
     });
 
     $('#graph-timescale .btn').click(function(event) {
-      $('#graph-timescale .btn').removeClass('active');
       var element = $(event.target);
+
+      if (element.is('.active')) return false;
+      $('#graph-timescale .btn').removeClass('active');
+
       element.addClass('active');
-      window.graph.series[0].data = window.graph.inputData[element.data('value')];
+      initGraph(window.graphInputData[element.data('value')]);
 
       if (element.data('value') == 'historical') {
         $('#slider').show();
+        window.graph.slider = new SnappySlider({ graph: graph, element: $('#slider') });
       }
       else {
         $('#slider').hide();
+        $('#slider').slider('destroy');
       }
-
-      graph.render();
       return false;
     });
 
@@ -117,9 +133,7 @@ br
 
 - fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
 .row
-  .span6 style='background-color: #eee; height: 300px'
-    ' Buy/Sell form
-  .span6
+  .span12
     table.table.table-striped.table-compact
       tbody
       - fields.each_slice(2) do |row_fields|
