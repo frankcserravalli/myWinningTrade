@@ -1,25 +1,35 @@
 = render partial: 'search'
-
-.row
-  .span6
-    h1
-      = @stock.name
-    #slider
-  .span6
-    .btn-group data-toggle='buttons-radio'
-      button.btn.btn-primary.active data-value='live' Live
-      button.btn.btn-primary data-value='historical' Historical
-
-    = render partial: 'stock/trend', locals: { stock: @stock }
-
-br
+hr
 
 .row
   .span8
-    #chart
-      .spinner
+    h1 = @stock.name
+    = render partial: 'stock/trend', locals: { stock: @stock }
   .span4
-    #legend
+    br
+    .btn-group data-toggle='buttons-radio'
+      button.btn.btn-primary.active data-value='live' Live
+      button.btn.btn-primary data-value='historical' Historical
+br
+
+
+.chart_wrapper
+  .row
+    .span10
+      #slider
+    .span2
+
+  br
+
+  .row
+    .span10
+      #chart
+        .spinner
+          = image_tag 'graph_spinner.gif'
+          h3 Loading, please wait&hellip;
+    .span2
+      #legend
+
 
 javascript:
 
@@ -37,12 +47,14 @@ javascript:
     series: [
       {
         color: 'steelblue', // palette.color(),
-        data: data.live,
+        data: data,
         name: '#{@stock.name}'
       }
     ]
-    graph.inputData = data;
+
   });
+
+  $('#chart .spinner').hide();
 
   graph.render();
   window.graph = graph;
@@ -86,7 +98,7 @@ br
 
 - fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
 .row
-  .span6
+  .span6 style='background-color: #eee; height: 300px'
     ' Buy/Sell form
   .span6
     table.table.table-striped.table-compact
