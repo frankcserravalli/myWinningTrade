@@ -79,6 +79,17 @@ class Finance
 			)
 		end
 
+		def search_for_stock(search_text)
+			search_text.gsub!(/[^\w \.]/, '')
+
+			response = RestClient.get "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=#{CGI::escape(search_text)}&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
+			response.gsub!(/[\(\)]/, '')
+		  response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
+
+		  suggestions = MultiJson.load(response)
+		  suggestions['ResultSet']['Result']
+		end
+
 		def sanitize_symbol(symbol)
 			symbol.gsub(/[^\w]/, '')
 		end

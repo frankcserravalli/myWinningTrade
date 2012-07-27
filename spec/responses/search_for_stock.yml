@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=app&callback=YAHOO.Finance.SymbolSuggest.ssCallback
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "dmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24veC1qYXZhc2NyaXB0OyBjaGFyc2V0PXV0Zi04
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Y2FjaGUtY29udHJvbA==":
+      - !binary |-
+        cHVibGljLCBtYXgtYWdlPTIxNjAw
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        RnJpLCAyNyBKdWwgMjAxMiAwNzo1MTo0MCBHTVQ=
+      !binary "Y29udGVudC1sZW5ndGg=":
+      - !binary |-
+        Mzk2
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7ST327CIBSHX4VwtSXOB/AOa3VNrFZpjGbZBdKzStY/DOiy
+        xvjuo40x2KnZhV7C78CX73DYkNf5vD8WBSs49Gmdb8uMVmkK2vS19liWbRn/
+        fNrjJegqMxQMHuzxogJV4wFmUuLeMcKDtz3W7QU2IVFkk4LlgAcIkxyU4KxA
+        REqmIOuhoOB9WwA/fNcWUN+uTC3bcnpMRkLL5q7QXx/T447/VQlT40PPJZJo
+        6iKlzKCLmYX0OmZG6Igs/gEKSdwBCUhQyIyVZJl+ENTzLkEFVyXyhOL2iEZe
+        qeTd0fFyOnHQsaoALSETqShPD/oY5ygirnOEoh1TOevC5sPhddg89tApvwFb
+        Ba7kihVpxVSCRuJbJFAkjagCLphprP147PAjb+3w/Q7Llp5bLdtpdl5SlYzv
+        bEt1WSkO+s/nuEszQ+r2MhQFIMo+wNSonaXm+zfzc8bdLG5wN7RreoE6CYLA
+        wU5e7Po0MxNVVrKHpia5i+374fD8CwAA//8DAM1f55fPBAAA
+    http_version: !binary |-
+      MS4x
+  recorded_at: Fri, 27 Jul 2012 07:51:40 GMT
+recorded_with: VCR 2.2.3
