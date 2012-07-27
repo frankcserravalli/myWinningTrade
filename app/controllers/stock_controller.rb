@@ -19,4 +19,9 @@ class StockController < ApplicationController
     @price_history = Finance.stock_price_history(params[:id])
     render json: @price_history.marshal_dump
   end
+
+  def search
+    @suggestions = Finance.search_for_stock(params[:query].to_s)
+    render json: @suggestions
+  end
 end
