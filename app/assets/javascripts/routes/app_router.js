@@ -1,16 +1,24 @@
 MyWinningTrade.Router = Ember.Router.extend({
-  enableLogging: true,
-  location: 'hash',
-  root: Ember.State.extend({
-    index: Ember.State.extend({
-      route: '/'
+  location: 'history',
+  root: Ember.Route.extend({
 
-      // You'll likely want to connect a view here.
-      //connectOutlets: function(router) {
-      //  router.get('applicationController').connectOutlet(App.MainView);
-      //}
+    index: Ember.Route.extend({
+      route: '/',
+      connectOutlets: function(router) {
+        router.get('applicationController').connectOutlet('loading')
+      },
+      enter: function(router) { console.log('loading stuff') },
+      dashboard: Ember.Route.extend({
+        route: '/dashboard',
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('dashboard')
+        }
+      })
+    }),
 
-      // Layout your routes here...
+    stock: Ember.Route.extend({
+
     })
+
   })
 });

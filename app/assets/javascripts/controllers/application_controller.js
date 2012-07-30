@@ -1,3 +1,1 @@
-MyWinningTrade.ApplicationController = Ember.Controller.extend({
-});
-
+MyWinningTrade.ApplicationController = Ember.Controller.extend({});

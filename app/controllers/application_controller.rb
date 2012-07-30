@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  def ember
+    render layout: 'base'
+  end
+
   protected
   # authentication
   helper_method :current_user
