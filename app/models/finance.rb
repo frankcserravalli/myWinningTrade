@@ -88,7 +88,7 @@ class Finance
 		  response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 		  suggestions = MultiJson.load(response)
-		  suggestions['ResultSet']['Result']
+		  suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 		end
 
 		def sanitize_symbol(symbol)
