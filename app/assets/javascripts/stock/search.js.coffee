@@ -5,7 +5,7 @@ $(document).ready ->
     input_elem = $('input.stock-name',this)
 
     # fetch value, strip non alphanumeric characters and uppercase
-    symbol = input_elem.val().replace(/\W+/g,'').toUpperCase()
+    symbol = input_elem.val().replace(/[^a-zA-Z0-9\.\-]+/g,'').toUpperCase()
 
     # update the input with the stripped value
     input_elem.val(symbol)

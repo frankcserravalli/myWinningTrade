@@ -11,7 +11,7 @@ class @Finance
 
     # strip non alphanumeric characters and uppercase the symbols
     stock_symbols = _.map stock_symbols, (symbol) ->
-      symbol.replace(/[^a-zA-Z\.]+/g,'').toUpperCase()
+      symbol.replace(/[^a-zA-Z0-9\.\-]+/g,'').toUpperCase()
 
     # save subscription reference
     @references = _.union(@references, reference)
