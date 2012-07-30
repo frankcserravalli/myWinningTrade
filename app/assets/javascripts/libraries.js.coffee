@@ -1,6 +1,9 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery.ui.core
+//= require jquery.ui.autocomplete
+//= require jquery.ui.slider
+//= require jquery.ui.tabs
 //= require jquery.html5-placeholder-shim
 //= require bootstrap-dropdown
 //= require bootstrap-tab

@@ -21,7 +21,7 @@ class StockController < ApplicationController
   end
 
   def search
-    @suggestions = Finance.search_for_stock(params[:query].to_s)
+    @suggestions = Finance.search_for_stock(params[:term].to_s)
     render json: @suggestions
   end
 end
