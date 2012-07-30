@@ -44,9 +44,14 @@ describe 'Finance', ->
         finance.subscribe 'ref', ' goog --/""  '
         subscription = finance.subscriptions['ref']
         expect(subscription.stock_symbols).toEqual ['GOOG']
+      
+      it 'allows a "." in stock symbol', ->
+        finance.subscribe 'ref', 'abc.de'
+        subscription = finance.subscriptions['ref']
+        expect(subscription.stock_symbols).toEqual ['ABC.DE']
 
       it 'normalizes a comma-separated string list of stock symbols', ->
-        finance.subscribe 'ref', '  ..goog  ,  aapl--/""'
+        finance.subscribe 'ref', '  goog  ,  aapl--/""'
         stock_symbols = finance.subscriptions['ref'].stock_symbols
         expect(stock_symbols.length).toEqual 2
         expect(stock_symbols).toContain 'GOOG'
@@ -91,13 +96,17 @@ describe 'Finance', ->
       expect(finance.stocks).not.toContain 'CAKE'
 
   it 'applies callbacks (rename me)', ->
-    response = null
-    finance.subscribe 'ref', 'GOOG', (payload) ->
-      response = payload
-
-    expect(response).toEqual null
-    finance.run_callbacks()
-    expect(response).toEqual '[stocks]'
-
     # rather than doing this by demonstration, do this by theory
     # you can make a spy and check that it receives 'call'
+
+    response = null
+
+    prepared_payload = { 'GOOG': 'secret' }
+
+    finance.latest_payload = prepared_payload
+    expect(response).toEqual null
+
+    finance.subscribe 'ref', 'GOOG', (payload) ->
+      response = payload
+    finance.run_callbacks()
+    expect(response).toEqual prepared_payload

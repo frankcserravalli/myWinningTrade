@@ -11,7 +11,7 @@ class @Finance
 
     # strip non alphanumeric characters and uppercase the symbols
     stock_symbols = _.map stock_symbols, (symbol) ->
-      symbol.replace(/\W+/g,'').toUpperCase()
+      symbol.replace(/[^a-zA-Z\.]+/g,'').toUpperCase()
 
     # save subscription reference
     @references = _.union(@references, reference)
@@ -67,10 +67,6 @@ class @Finance
       success: (payload, textStatus, jqXHR) =>
         @latest_payload = payload
         @run_callbacks()
-
-    # alternatively, when testing,
-    # @latest_stock_data = 'mockmockmock'
-    #@run_callbacks()
 
   run_callbacks: ->
     _.each @references, (reference) =>
