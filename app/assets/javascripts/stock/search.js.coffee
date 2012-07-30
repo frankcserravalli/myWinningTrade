@@ -28,10 +28,6 @@ $(document).ready ->
     focus: (event, ui) ->
       $("#stock-search .stock-name").val(ui.item.symbol)
       false
-    search: (event, ui) ->
-      $("<div class='loader'></div>").insertAfter('#stock-search .stock-name')
-    open: (event, ui) ->
-      $('#stock-search .loader').remove()
 
   .data("autocomplete")._renderItem = (ul, item) ->
     $("<li></li>").data('item.autocomplete', item)
