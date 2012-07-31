@@ -8,5 +8,5 @@
 //= require_self
 
 $(function() {
-  MyWinningTrade.initialize();
-  });
+  App.initialize();
+});

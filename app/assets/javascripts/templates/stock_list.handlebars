@@ -1,0 +1,12 @@
+<h1>list of stocks</h1>
+
+{{view Ember.TextField}}
+
+<ul>
+  {{#each stocks}}
+    {{#view App.StockItemView}}
+  	    {{name}}
+  	    <a {{action deleteStock target="controller"}}>delete</a>
+    {{/view}}
+  {{/each}}
+</ul>

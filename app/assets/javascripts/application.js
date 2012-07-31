@@ -17,7 +17,7 @@
 //= require rickshaw_with_d3
 //= require flash
 //= require finance
-//= require handlebars-1.0.0.beta.6
+//= require handlebars-1.0.0.beta.6.js
 //= require ember-latest
 //= require_self
 //= require ember_app
@@ -25,4 +25,4 @@
 //= require_tree .//stock
 //= require general
 
-MyWinningTrade = Ember.Application.create();
+App = Ember.Application.create();
