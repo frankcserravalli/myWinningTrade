@@ -1,8 +1,8 @@
 MyWinningTrade::Application.routes.draw do
 
   root to: 'application#ember'
-  match '*route', to: 'application#ember'
-  
+  #match '*route', to: 'application#ember'
+
   get '/dashboard', to: 'sessions#dashboard'
 
   get '/login', to: 'sessions#new'
