@@ -1,5 +1,15 @@
 <script type='text/x-handlebars' data-template-name='graph_view'>
-  <a {{action viewHistorical target="view"}}>Historical</a>
-  <a {{action viewIntraday target="view"}}>Intraday</a>
-  <div class="chart"></div>
+    
+
+  <div class="chart_wrapper">
+    <div class="btn-group">
+      <button class='btn' {{action viewHistorical target="controller"}}>Historical</button>
+      <button class='btn' {{action viewIntraday target="controller"}}>Intraday</button>
+    </div>
+
+    {{#if loadedStocksIsEmpty}} <progress></progress> {{/if}}
+
+   <div class="chart"></div>
+
+  </div>
 </script>

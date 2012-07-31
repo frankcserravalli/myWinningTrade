@@ -1,0 +1,14 @@
+<script type='text/x-handlebars' data-template-name='stock_item'>
+<strong>{{symbol}}</strong>
+
+{{#if isLoaded}}
+  {{name}}
+{{else}}
+  <progress></progress>
+{{/if}}
+
+{{#unless isMain}}
+<a {{action deleteStock target="controller" href="true"}}>&times;</a>
+{{/unless}}
+
+</script>

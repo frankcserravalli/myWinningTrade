@@ -1,3 +1,3 @@
 App.StockItemView = Em.View.extend
-	tagName: 'li'
-	content: null
+  templateName: 'stock_item'
+  tagName: 'li'
