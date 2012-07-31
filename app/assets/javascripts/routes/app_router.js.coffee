@@ -5,3 +5,4 @@ App.Router = Ember.Router.extend
       route: '/'
       connectOutlets: (router) ->
         router.get('applicationController').connectOutlet('stockList')
+        router.get('stockListController').addStock('AAPL')

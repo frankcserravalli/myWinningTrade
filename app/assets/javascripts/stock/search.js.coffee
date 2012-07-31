@@ -20,15 +20,19 @@ $(document).ready ->
     # prevent form submission
     e.preventDefault()
 
-  $("#stock-search .stock-name").autocomplete
-    source: '/stock/search'
-    select: (event, ui) ->
-      window.location = "/stock/#{ui.item.symbol}"
-      false
-    focus: (event, ui) ->
-      $("#stock-search .stock-name").val(ui.item.symbol)
-      false
-  .data("autocomplete")._renderItem = (ul, item) ->
-    $("<li></li>").data('item.autocomplete', item)
-                  .append("<a><span class='tip'>#{item.exchDisp}</span> #{item.symbol} <br /><small>#{item.name}</small></a>")
-                  .appendTo(ul)
+  # autocomplete = $("#stock-search .stock-name").autocomplete
+  #   source: '/stock/search'
+  #   select: (event, ui) ->
+  #     window.location = "/stock/#{ui.item.symbol}"
+  #     false
+  #   focus: (event, ui) ->
+  #     $("#stock-search .stock-name").val(ui.item.symbol)
+  #     false
+
+
+  # autocomplete.data("autocomplete")._renderItem = (ul, item) ->
+  #   $("<li></li>").data('item.autocomplete', item)
+  #                 .append("<a><span class='tip'>#{item.exchDisp}</span> #{item.symbol} <br /><small>#{item.name}</small></a>")
+  #                 .appendTo(ul)
+
+  # window.meh = autocomplete.data("autocomplete")

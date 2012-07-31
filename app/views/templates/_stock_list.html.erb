@@ -1,0 +1,29 @@
+<script type='text/x-handlebars' data-template-name='stock_list'>
+
+{{view App.GraphView loadedStocksBinding="controller.loadedStocks"}}
+
+<h1>list of stocks</h1>
+
+{{view Ember.TextField classNames="autocomplete"}}
+
+{{#if stocks.length}}
+<ul>
+  {{#each stocks}}
+    {{#view App.StockItemView}}
+
+      {{#if isLoaded}}
+        {{name}}
+        {{#unless isMain}}
+          <a {{action deleteStock target="controller"}}>delete</a>
+        {{/unless}}
+      {{else}}
+        loading {{symbol}}
+      {{/if}}
+    {{/view}}
+  {{/each}}
+</ul>
+{{else}}
+  <br />
+  <em>No stocks to display!</em>
+{{/if}}
+</script>

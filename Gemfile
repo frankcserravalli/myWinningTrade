@@ -17,7 +17,7 @@ group :assets do
   gem 'momentjs-rails'
 end
 
-gem 'ember-rails'
+#gem 'ember-rails'
 
 # ui
 gem 'chosen-rails'
