@@ -1,7 +1,8 @@
 ul#login-providers
-  list-style: none
+  +inline-block-list
   margin: 31px 0 62px 207px
-  display: inline-block
+  overflow: visible
+  height: 250px
   li
     margin: 15px 37px 15px 0
     float: left
@@ -16,14 +17,34 @@ ul#login-providers
       border-radius: 8em
       color: white
       box-shadow: 1px 1px 0px #999
+      margin: 0
+      position: absolute
+      z-index: 1
+      +transition((width 0.5s), (height 0.5s), (padding 0.5s), (margin 0.5s), (font-size 0.5s), (border-radius 0.5s), (opacity 0.5s))
       &:hover
         opacity: 0.7
         text-decoration: none
+        border-radius: 8em
+        width: 16em
+        height: 10em
+        padding: 95px 0 0
+        margin: -40px 0 0 -55px
+        font-size: 16px
+        z-index: 999
+        strong
+          font-size: 24px
       strong
+        +transition((font-size 0.5s))
         font-size: 17px
+        
     &.provider-facebook a
       background: #3B5998
-    &.provider-linkedin a
-      background: #4393BB
-    &.provider-google a
-      background: #d3280e
+    &.provider-linkedin
+      margin-left: 140px
+      a
+        background: #4393BB
+
+    &.provider-google
+      margin-left: 140px
+      a
+        background: #d3280e
