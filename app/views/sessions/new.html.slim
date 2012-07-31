@@ -1,4 +1,14 @@
+/how do we get the nav bar to not show here?/
+h1.jumbo My Winning Trade
+p.intro Here we should add some brief introduction text explaing what <strong>My Winning Trade</strong> is all about. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit commodo consequat.
 ul#login-providers
   - %w(facebook linkedin google).each do |provider|
-    li = link_to "/auth/#{provider}" do
-      ' log in with #{provider}
+    li class="provider-#{provider}" = link_to "/auth/#{provider}" do
+      ' log in with
+      br
+      strong #{provider}
+  
+#footer
+  a href="#" Terms & Conditions
+  a href="#" Contact
+
