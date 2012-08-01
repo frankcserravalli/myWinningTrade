@@ -4,6 +4,7 @@ App.Router = Ember.Router.extend
     index: Ember.Route.extend
       route: '/ember'
       connectOutlets: (router) ->
-        router.get('applicationController').connectOutlet('stockList')
+        router.get('applicationController').connectOutlet('graphOutlet','graph')
+        router.get('applicationController').connectOutlet('stockListOutlet','stockList')
         router.get('stockListController').addStock('AAPL') # TODO add main
         router.get('stockListController').addStock('GOOG')

@@ -75,13 +75,13 @@ class @Finance
       required_stock_symbols = subscription.stock_symbols
 
       required_data_is_available = _.all required_stock_symbols, (stock_symbol) ->
-        _.has(payload, stock_symbol)
+        _.has payload, stock_symbol
 
       if required_data_is_available
         cherry_picked_payload = {}
         _.each subscription.stock_symbols, (stock_symbol) ->
           cherry_picked_payload[stock_symbol] = payload[stock_symbol]
-        subscription.callback(cherry_picked_payload)
+        subscription.callback cherry_picked_payload
 
 
 $(->

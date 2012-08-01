@@ -1,6 +1,6 @@
 App.GraphView = Em.View.extend
-  templateName: 'graph_view'
-  stocksBinding: 'App.router.stockListController.loadedStocks'
+  templateName: 'graph'
+  stocksBinding: 'controller.stocks'
 
   seriesData: (->
     palette = new Rickshaw.Color.Palette({ scheme: 'classic9' })
@@ -12,7 +12,7 @@ App.GraphView = Em.View.extend
         name: item.name
         color: palette.color()
       }
-  ).property('stocks')
+  ).property('stocks.@each')
 
   buildGraph: ->
     console.log 'building graph'
@@ -37,6 +37,6 @@ App.GraphView = Em.View.extend
       (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
       (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
 
-  seriesDataDidChange: (->
-    @buildGraph()
-  ).observes('seriesData')
+  didInsertElement: ->
+    @addObserver 'seriesData', ->
+      @buildGraph()

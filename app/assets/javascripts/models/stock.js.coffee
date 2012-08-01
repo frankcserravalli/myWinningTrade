@@ -5,7 +5,7 @@ App.Stock = Em.Object.extend
       @setProperties(data)
       @set 'isLoaded', true
       #@set 'live', data.quotes.live
-      @subscribe_to_live_updates()
+      #@subscribe_to_live_updates()
 
   subscribe_to_live_updates: ->
     window.finance.subscribe @, @get('symbol'), (payload) =>
