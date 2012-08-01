@@ -4,8 +4,9 @@ App.Stock = Em.Object.extend
     jQuery.getJSON "/stock/#{@get('symbol')}/price_history.json", (data) =>
       @setProperties(data)
       @set 'isLoaded', true
+      #@set 'live', data.quotes.live
       @subscribe_to_live_updates()
-      
+
   subscribe_to_live_updates: ->
     window.finance.subscribe @, @get('symbol'), (payload) =>
       stock_details = payload[@get('symbol')].table
@@ -15,6 +16,6 @@ App.Stock = Em.Object.extend
       console.log 'ticking for ' + @get('symbol')
       # add new 'quote'
       # update graph
-  
+
   unsubscribe_from_live_updates: ->
     window.finance.unsubscribe @

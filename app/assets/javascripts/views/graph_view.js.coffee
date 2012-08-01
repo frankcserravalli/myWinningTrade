@@ -23,13 +23,13 @@ App.GraphView = Em.View.extend
       height: 230
       renderer: 'line'
       stroke: true
-      series: @get('seriesData') # depending on 
+      series: @get('seriesData') # depending on graph view type
     @graph.render()
     hoverDetail = new Rickshaw.Graph.StockHoverDetail({ graph: @graph })
     ticksTreatment = 'glow'
     (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
     (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
 
-  didInsertElement: (element) ->
-    @addObserver 'seriesData', -> # TODO shouldnt this just be a property, not introduced onInsert?
-      @buildGraph()
+  seriesDataObserver: (->
+    @buildGraph()
+  ).observes('seriesData')
