@@ -1,23 +1,13 @@
 <script type='text/x-handlebars' data-template-name='stock_list'>
-<div class="row">
 
-<div class="span8">
-  {{view App.GraphView}}
-</div>
+<h3>Compare stocks</h3>
 
-<div class="span4">
-  
-   <h3>Compare stocks</h3>
+{{view Ember.TextField classNames="autocomplete" placeholder="Start typing a stock name.."}}
 
-  {{view Ember.TextField classNames="autocomplete" placeholder="Start typing a stock name.."}}
-
-  <ul>
-    {{#each stocks}}
-      {{view App.StockItemView}}
-    {{/each}}
-  </ul>
-</div>
-
-</div>
+<ul>
+  {{#each stocks}}
+    {{view App.StockItemView}}
+  {{/each}}
+</ul>
 
 </script>
