@@ -1,18 +1,25 @@
 App.GraphView = Em.View.extend
   templateName: 'graph'
   stocksBinding: 'controller.stocks'
+  currentPeriodBinding: 'controller.currentPeriod'
+
+  stocksLastUpdatedAtDidChange: ( ->
+    console.log 'last updated at changed'
+    @buildGraph()
+  ).observes('App.router.stockListController.lastUpdatedAt')
+
 
   seriesData: (->
     palette = new Rickshaw.Color.Palette({ scheme: 'classic9' })
-    _.map @get('stocks'), (item) ->
+    _.map @get('stocks'), (item) =>
       palette.color()
       {
-        data: _.map item.price_history.historical, (quote) ->
+        data: _.map item.price_history[@get 'currentPeriod'], (quote) ->
           { x: quote[0], y: quote[1] }
         name: item.name
         color: palette.color()
       }
-  ).property('stocks.@each')
+  ).property('stocks.@each').property('currentPeriod')
 
   buildGraph: ->
     console.log 'building graph'
@@ -21,9 +28,8 @@ App.GraphView = Em.View.extend
       @graph.series.active = ->
         @filter (s) ->
           !s.disabled
-
       @graph.update()
-    else
+     else
       @graph = new Rickshaw.Graph
         element: $('.chart',@$()).get(0)
         width: 620
