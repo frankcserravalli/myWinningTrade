@@ -7,8 +7,10 @@ App.GraphController = Em.Controller.extend
 
   currentPeriod: 'historical'
   toggleCurrentPeriod: (event) ->
-    period = event.target.dataset.period
-    @set 'currentPeriod', period
+    if event.target.dataset.period == 'intraday'
+      @set 'currentPeriod', 'live'
+    else
+      @set 'currentPeriod', 'historical'
 
   buttonHistoricalClasses: ( ->
     classes = 'btn'

@@ -19,29 +19,22 @@ App.GraphView = Em.View.extend
         name: item.name
         color: palette.color()
       }
-  ).property('stocks.@each').property('currentPeriod')
+  ).property('stocks.@each', 'currentPeriod')
 
   buildGraph: ->
-    console.log 'building graph'
-    if @graph
-      @graph.series = new Rickshaw.Series @get('seriesData')
-      @graph.series.active = ->
-        @filter (s) ->
-          !s.disabled
-      @graph.update()
-     else
-      @graph = new Rickshaw.Graph
-        element: $('.chart',@$()).get(0)
-        width: 620
-        height: 230
-        renderer: 'line'
-        stroke: true
-        series: @get('seriesData') # depending on graph view type
-      @graph.render()
-      hoverDetail = new Rickshaw.Graph.StockHoverDetail({ graph: @graph })
-      ticksTreatment = 'glow'
-      (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
-      (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
+    $('.chart',@$()).empty()
+    @graph = new Rickshaw.Graph
+      element: $('.chart',@$()).get(0)
+      width: 620
+      height: 230
+      renderer: 'line'
+      stroke: true
+      series: @get('seriesData') # depending on graph view type
+    @graph.render()
+    @details = new Rickshaw.Graph.StockHoverDetail({ graph: @graph })
+    ticksTreatment = 'glow'
+    (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
+    (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
 
   didInsertElement: ->
     @addObserver 'seriesData', ->
