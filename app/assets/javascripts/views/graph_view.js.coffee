@@ -30,6 +30,6 @@ App.GraphView = Em.View.extend
     (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
     (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
 
-  seriesDataObserver: (->
+  seriesDataDidChange: (->
     @buildGraph()
   ).observes('seriesData')

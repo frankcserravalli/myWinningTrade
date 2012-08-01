@@ -69,19 +69,20 @@ class @Finance
         @run_callbacks()
 
   run_callbacks: ->
+    payload = @latest_payload
     _.each @references, (reference) =>
-      cherry_picked_payload = @latest_payload # TODO cherry pick
       subscription = @subscriptions[reference]
-      subscription.callback(cherry_picked_payload)
+      required_stock_symbols = subscription.stock_symbols
 
-  receive_stock_data: (stock_data) ->
-    # ~ for each stock's value:
-    # ~ if stock is nil, (is it reasonable to ever expect that except in server failure?)
-    # ~ do what?
-    # ~ remove any callbacks using it?
-    # ~ repair the array?
-    # ~ just ignore those callbacks?
-    # ~ send null through?
+      required_data_is_available = _.all required_stock_symbols, (stock_symbol) ->
+        _.has(payload, stock_symbol)
+
+      if required_data_is_available
+        cherry_picked_payload = {}
+        _.each subscription.stock_symbols, (stock_symbol) ->
+          cherry_picked_payload[stock_symbol] = payload[stock_symbol]
+        subscription.callback(cherry_picked_payload)
+
 
 $(->
   window.finance = new Finance(5000)
