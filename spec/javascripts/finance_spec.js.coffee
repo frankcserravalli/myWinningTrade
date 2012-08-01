@@ -41,17 +41,17 @@ describe 'Finance', ->
 
     describe 'normalizing stock symbol to chomped alphanumeric/caps only', ->
       it 'normalizes a single stock symbol', ->
-        finance.subscribe 'ref', ' goog --/""  '
+        finance.subscribe 'ref', ' goog /""  '
         subscription = finance.subscriptions['ref']
         expect(subscription.stock_symbols).toEqual ['GOOG']
-      
+
       it 'allows a "." in stock symbol', ->
         finance.subscribe 'ref', 'abc.de'
         subscription = finance.subscriptions['ref']
         expect(subscription.stock_symbols).toEqual ['ABC.DE']
 
       it 'normalizes a comma-separated string list of stock symbols', ->
-        finance.subscribe 'ref', '  goog  ,  aapl--/""'
+        finance.subscribe 'ref', '  goog  ,  aapl/""'
         stock_symbols = finance.subscriptions['ref'].stock_symbols
         expect(stock_symbols.length).toEqual 2
         expect(stock_symbols).toContain 'GOOG'
@@ -95,18 +95,43 @@ describe 'Finance', ->
       expect(finance.stocks).not.toContain 'YUM'
       expect(finance.stocks).not.toContain 'CAKE'
 
-  it 'applies callbacks (rename me)', ->
-    # rather than doing this by demonstration, do this by theory
-    # you can make a spy and check that it receives 'call'
+  describe 'processing callbacks', ->
 
-    response = null
+    # Improvement: rather than doing this by demonstration, do this by theory
+    # i.e. you can make a spy and check that it receives 'call'
+    it 'runs subscription callbacks with a payload', ->
+      prepared_payload = { 'GOOG': 'secret' }
+      finance.latest_payload = prepared_payload
 
-    prepared_payload = { 'GOOG': 'secret' }
+      response = null
+      finance.subscribe 'ref', 'GOOG', (payload) ->
+        response = payload
 
-    finance.latest_payload = prepared_payload
-    expect(response).toEqual null
+      finance.run_callbacks()
+      expect(response).toEqual prepared_payload
 
-    finance.subscribe 'ref', 'GOOG', (payload) ->
-      response = payload
-    finance.run_callbacks()
-    expect(response).toEqual prepared_payload
+    it 'cherry-picks payload data if there are multiple subscriptions', ->
+      prepared_payload = { 'GOOG': 'Google', 'AAPL': 'Apple' }
+      finance.latest_payload = prepared_payload
+
+      response = null
+      finance.subscribe 'ref', 'GOOG', (payload) ->
+        response = payload
+
+      finance.run_callbacks()
+      expect(response['GOOG']).toBeDefined()
+      expect(response['AAPL']).not.toBeDefined()
+
+    it 'only runs a subscription callback if all required data can be delivered', ->
+      prepared_payload = { 'GOOG': 'Google' }
+      finance.latest_payload = prepared_payload
+
+      callback_was_called = false
+      finance.subscribe 'ref', 'COOL', (payload) ->
+        callback_was_called = true
+
+      finance.run_callbacks()
+      expect(callback_was_called).toBeFalsy()
+
+
+

@@ -9,6 +9,7 @@ App.Stock = Em.Object.extend
 
   subscribe_to_live_updates: ->
     window.finance.subscribe @, @get('symbol'), (payload) =>
+      console.log payload[@get('symbol')]
       stock_details = payload[@get('symbol')].table
       current_unix_timestamp = moment().unix()
       current_price = parseFloat(stock_details['current_price'])
