@@ -1,10 +1,12 @@
 App.Router = Ember.Router.extend
+  enableLogging: true
   location: 'history'
   root: Ember.Route.extend
     index: Ember.Route.extend
-      route: '/ember'
-      connectOutlets: (router) ->
+      route: '/stock/:stock_id'
+      connectOutlets: (router,stock) ->
+        console.log 'connecting outlets'
+        console.log stock
         router.get('applicationController').connectOutlet('graphOutlet','graph')
         router.get('applicationController').connectOutlet('stockListOutlet','stockList')
-        router.get('stockListController').addStock('AAPL') # TODO add main
-        router.get('stockListController').addStock('GOOG')
+        router.get('stockListController').get('stocks').pushObject(stock)

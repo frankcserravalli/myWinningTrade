@@ -1,11 +1,14 @@
 <script type='text/x-handlebars' data-template-name='graph'>
 <div class="chart_wrapper">
-  <div class="btn-group">
-    <button {{bindAttr class="buttonHistoricalClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='historical'>Historical</button>
-    <button {{bindAttr class="buttonIntradayClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='intraday'>Intraday</button>
-  </div>
+  {{#if stocksIsEmpty}}
+    <progress></progress>
+  {{else}}
+    <div class="btn-group">
+      <button {{bindAttr class="buttonHistoricalClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='historical'>Historical</button>
+      <button {{bindAttr class="buttonIntradayClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='intraday'>Intraday</button>
+    </div>
+  {{/if}}
 
-  {{#if stocksIsEmpty}} <progress></progress> {{/if}}
 
  <div class="chart"></div>
 

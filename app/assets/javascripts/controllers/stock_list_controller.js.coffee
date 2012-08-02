@@ -31,10 +31,10 @@ App.StockListController = Em.Controller.extend
 
   amendSubscriptions: ->
     window.finance.unsubscribe @
-    loaded_stocks_symbols = _.pluck(@get('loadedStocks'),'symbol')
+    loaded_stocks_symbols = _.pluck(@get('loadedStocks'),'id')
     window.finance.subscribe @, loaded_stocks_symbols.join(','), (payload) =>
       @get('stocks').forEach (stock) ->
-        stock_details = payload[stock.symbol]
+        stock_details = payload[stock.get('symbol')]
         stock.update_details(stock_details)
       @set 'lastUpdatedAt', moment().unix()
 
