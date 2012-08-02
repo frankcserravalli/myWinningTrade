@@ -1,8 +1,12 @@
 <script type='text/x-handlebars' data-template-name='stock_item'>
+<span class='label'>COLOR</span>
+
 <strong>{{id}}</strong>
 
 {{#if isLoaded}}
   {{name}}
+  <span class='current-price'>{{current_price}}</span>
+  <span class='percent-change'>{{earnings_share}}</span>
 {{else}}
   <progress></progress>
 {{/if}}

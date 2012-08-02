@@ -11,13 +11,13 @@ App.GraphController = Em.Controller.extend
     @set 'currentPeriod', event.target.dataset.period
 
   buttonHistoricalClasses: ( ->
-    classes = 'btn'
+    classes = 'btn btn-large'
     classes += ' btn-primary' if @get('currentPeriod') == 'historical'
     classes
   ).property('currentPeriod')
 
   buttonLiveClasses: ( ->
-    classes = 'btn'
+    classes = 'btn btn-large'
     classes += ' btn-primary' if @get('currentPeriod') == 'live'
     classes
   ).property('currentPeriod')

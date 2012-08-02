@@ -7,23 +7,6 @@ javascript:
   $(function() {
     App.rootElement = '#ember';
     App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
+    console.log(App.payload)
     App.initialize();
   })
-
-br
-
-- fields = %w(current_price stock_exchange eps_estimate_current_year earnings_share eps_estimate_next_year days_range eps_estimate_next_quarter open previous_close last_trade_time volume year_range dividend_yield)
-.row
-  .span12
-    table.table.table-striped.table-compact
-      tbody
-      - fields.each_slice(2) do |row_fields|
-        tr
-          - row_fields.each do |field|
-            th = field.humanize
-            - value = @stock.send(field)
-            td = value ? number_with_delimiter(value) : 'N/A'
-          - if row_fields.count < 2
-            th &nbsp;
-            td &nbsp;
-
