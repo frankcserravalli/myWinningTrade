@@ -32,10 +32,14 @@ ul#login-providers
         font-size: 16px
         z-index: 999
         strong
-          font-size: 24px
+          font-size: 32px
+          padding-top: 12px
       strong
-        +transition((font-size 0.5s))
+        +transition((font-size 0.5s), (padding 0.5s))
         font-size: 17px
+        padding-top: 0
+        display: block
+
         
     &.provider-facebook a
       background: #3B5998
@@ -43,7 +47,6 @@ ul#login-providers
       margin-left: 140px
       a
         background: #4393BB
-
     &.provider-google
       margin-left: 140px
       a
