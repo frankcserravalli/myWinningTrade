@@ -2,6 +2,17 @@ require 'oauth'
 require 'ostruct'
 require 'rest_client'
 
+class Array
+  def uniq_by(&blk)
+    transforms = []
+    self.select do |el|
+      should_keep = !transforms.include?(t=blk[el])
+      transforms << t
+      should_keep
+    end
+  end
+end
+
 class Finance
 	class QueryFailed < Exception; end;
 	L2N = { 'M' => 1_000_000, 'B' => 1_000_000_000 }.freeze
@@ -93,7 +104,7 @@ class Finance
 					stock_quote.name,
 				price_history: {
 					historical: history.reverse.collect { |day| [day[:date].to_time.to_i, day[:close].to_f] },
-					live: intraday_details['series'].collect { |series| [series['Timestamp'], series['close'].to_f] }
+					live: intraday_details['series'].collect { |series| [series['Timestamp'].to_i/1.minute*1.minute, series['close'].to_f] }.uniq_by(&:first)
 				}
 			)
 		end

@@ -7,9 +7,9 @@ Rickshaw.Graph.StockHoverDetail = Rickshaw.Class.create({
 
     this.xFormatter = args.xFormatter || function(x) {
       //recturn new Date( x * 1000 ).toLocaleString();
-      date = moment(x*1000)
+      date = moment(x*1000+(moment().zone()*60000))
 
-      if (date.diff(date.sod()) == 0) {
+      if (graph.currentPeriod && graph.currentPeriod == 'historical') {
         return date.format("ddd Do MMM YYYY")
       } else {
         return date.format("ddd Do MMM YYYY - H:mm");

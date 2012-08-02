@@ -24,24 +24,21 @@ App.GraphView = Em.View.extend
 
     seriesData.quoteList = _.map @get('stocks'), (stock) =>
       relevant_quotes = _.filter stock.price_history[current_period], (quote) ->
-        detected = _.detect all_times, ->
-          quote[0]
+        detected = _.detect all_times, (time) ->
+          time == quote[0]
+        detected?
 
-        console.log(detected)
-        detected
+      if relevant_quotes.length > 0
+        series_minimums.push (_.min relevant_quotes, (quote) ->
+          quote[1])[1]
 
-      console.log(relevant_quotes.length)
-
-      series_minimums.push (_.min relevant_quotes, (quote) ->
-        quote[1])[1]
-
-      series_maximums.push (_.max relevant_quotes, (quote) ->
-        quote[1])[1]
+        series_maximums.push (_.max relevant_quotes, (quote) ->
+          quote[1])[1]
 
       palette.color()
       {
         data: _.map relevant_quotes, (quote) ->
-          { x: quote[0], y: quote[1] }
+          { x: quote[0]-moment().zone()*60, y: quote[1] }
         name: stock.name
         color: palette.color()
       }
@@ -71,6 +68,7 @@ App.GraphView = Em.View.extend
     ticksTreatment = 'glow'
     (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
     (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
+    @graph.currentPeriod = @get 'currentPeriod'
 
 
     $('.slider',@$()).slider('destroy')

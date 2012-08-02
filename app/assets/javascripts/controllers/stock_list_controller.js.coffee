@@ -30,7 +30,6 @@ App.StockListController = Em.Controller.extend
   amendSubscriptions: ->
     window.finance.unsubscribe @
     loaded_stocks_symbols = _.pluck(@get('loadedStocks'),'id')
-    console.log loaded_stocks_symbols
     window.finance.subscribe @, loaded_stocks_symbols.join(','), (payload) =>
       current_unix_timestamp = moment().unix()
       @get('loadedStocks').forEach (stock) ->
