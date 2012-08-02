@@ -4,6 +4,8 @@ App.GraphView = Em.View.extend
   currentPeriodBinding: 'controller.currentPeriod'
 
   stocksLastUpdatedAtDidChange: ( ->
+    console.log 'rebuilding graph'
+    # TODO make this only rebuild if current view is live? or just update graph..
     @buildGraph()
   ).observes('App.router.stockListController.lastUpdatedAt')
 
@@ -69,6 +71,12 @@ App.GraphView = Em.View.extend
     ticksTreatment = 'glow'
     (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
     (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
+
+
+    $('.slider',@$()).slider('destroy')
+    delete @graph.slider
+    if @get('currentPeriod') == 'historical'
+      @graph.slider = new SnappySlider({ graph: @graph, element: $('.slider',@$()), view: @ });
 
   didInsertElement: ->
     @addObserver 'seriesData', ->

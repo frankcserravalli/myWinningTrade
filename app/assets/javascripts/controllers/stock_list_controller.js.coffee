@@ -8,7 +8,7 @@ App.StockListController = Em.Controller.extend
   ).property('stocks.@each.isLoaded')
 
   loadedStocksDidChange: (->
-    @amendSubscriptions()
+    #@amendSubscriptions()
   ).observes('loadedStocks.@each')
 
   stocksIsEmpty: ( ->
