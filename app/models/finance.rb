@@ -53,8 +53,8 @@ class Finance
 			start_time = Time.now.to_f
 			csv = RestClient.get "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbol_list.join(',')}&f=#{field_mappings.values.join}"
 
-			all_details = csv.split("\n").collect do |row|
-				details = Hash[field_mappings.keys.zip(row.split(',').collect { |v| v.to_s.strip.gsub(/['"]/, '')} )]
+			all_details = CSV.parse(csv).collect do |row|
+				details = Hash[field_mappings.keys.zip(row.collect { |v| v.to_s.strip.gsub(/['"]/, '')} )]
 				quote = create_openstruct(details)
 
 				unless quote.name == quote.symbol
