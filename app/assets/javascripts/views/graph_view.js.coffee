@@ -11,25 +11,60 @@ App.GraphView = Em.View.extend
 
   seriesData: (->
     palette = new Rickshaw.Color.Palette({ scheme: 'classic9' })
-    _.map @get('stocks'), (item) =>
+    seriesData = new Object
+    current_period = @get 'currentPeriod'
+    series_minimums = []
+    series_maximums = []
+
+    all_times = _.intersection.apply(_, _.map(@get('stocks'), (stock) ->
+      _.map stock.price_history[current_period], (quote) ->
+        quote[0]
+    ))
+
+    seriesData.quoteList = _.map @get('stocks'), (stock) =>
+      relevant_quotes = _.filter stock.price_history[current_period], (quote) ->
+        detected = _.detect all_times, ->
+          quote[0]
+
+        console.log(detected)
+        detected
+
+      console.log(relevant_quotes.length)
+
+      series_minimums.push (_.min relevant_quotes, (quote) ->
+        quote[1])[1]
+
+      series_maximums.push (_.max relevant_quotes, (quote) ->
+        quote[1])[1]
+
       palette.color()
       {
-        data: _.map item.price_history[@get 'currentPeriod'], (quote) ->
+        data: _.map relevant_quotes, (quote) ->
           { x: quote[0], y: quote[1] }
-        name: item.name
+        name: stock.name
         color: palette.color()
       }
+
+    seriesData.minimum = _.min(series_minimums)
+    seriesData.maximum = _.max(series_maximums)
+    seriesData.deltaRange = seriesData.maximum - seriesData.minimum
+    seriesData
+
   ).property('stocks.@each', 'currentPeriod')
 
   buildGraph: ->
     $('.chart',@$()).empty()
+    seriesData = @get('seriesData')
+
     @graph = new Rickshaw.Graph
       element: $('.chart',@$()).get(0)
       width: 620
       height: 230
+      min: seriesData.minimum - seriesData.deltaRange*0.3
+      max: seriesData.maximum + seriesData.deltaRange*0.3
       renderer: 'line'
       stroke: true
-      series: @get('seriesData') # depending on graph view type
+      series: seriesData.quoteList # depending on graph view type
     @graph.render()
     @details = new Rickshaw.Graph.StockHoverDetail({ graph: @graph })
     ticksTreatment = 'glow'
