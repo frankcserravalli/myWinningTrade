@@ -10,7 +10,6 @@ App.GraphView = Em.View.extend
         @get('seriesData').quoteList[index].data.push({ x: @get('lastUpdatedAt')-moment().zone()*60, y: parseFloat(stock.current_price) })
 
     @graph.update()
-    console.log(@graph)
   ).observes('App.router.stockListController.lastUpdatedAt')
 
 
@@ -73,6 +72,12 @@ App.GraphView = Em.View.extend
     (new Rickshaw.Graph.Axis.Time({ graph: @graph, ticksTreatment: ticksTreatment })).render()
     (new Rickshaw.Graph.Axis.Y({ graph: @graph, ticksTreatment: ticksTreatment })).render()
     @graph.currentPeriod = @get 'currentPeriod'
+
+
+    $('.slider',@$()).slider('destroy')
+    delete @graph.slider
+    if @get('currentPeriod') == 'historical'
+      @graph.slider = new SnappySlider({ graph: @graph, element: $('.slider',@$()), view: @ });
 
   didInsertElement: ->
     @addObserver 'seriesData', ->

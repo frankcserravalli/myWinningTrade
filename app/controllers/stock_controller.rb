@@ -6,7 +6,7 @@ class StockController < ApplicationController
 
     if @stock.nil?
       alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
-      redirect_to root_path, alert: alert
+      redirect_to dashboard_path, alert: alert
     end
   end
 

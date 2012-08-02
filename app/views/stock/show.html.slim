@@ -3,6 +3,12 @@
 hr
 
 #ember
+javascript:
+  $(function() {
+    App.rootElement = '#ember';
+    App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
+    App.initialize();
+  })
 
 br
 
@@ -21,9 +27,3 @@ br
             th &nbsp;
             td &nbsp;
 
-javascript:
-  $(function() {
-    App.rootElement = '#ember'
-    App.payload = { name: 'Preloaded stock name' }
-    App.initialize();
-  })
