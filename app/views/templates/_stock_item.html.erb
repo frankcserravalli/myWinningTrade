@@ -1,5 +1,5 @@
 <script type='text/x-handlebars' data-template-name='stock_item'>
-<strong>{{symbol}}</strong>
+<strong>{{id}}</strong>
 
 {{#if isLoaded}}
   {{name}}
@@ -8,7 +8,7 @@
 {{/if}}
 
 {{#unless isMain}}
-<a {{action deleteStock target="controller" href="true"}}>&times;</a>
+<a {{action removeStock target="view" href="true"}}>&times;</a>
 {{/unless}}
 
 </script>

@@ -1,5 +1,13 @@
 <script type='text/x-handlebars' data-template-name='application'>
-<h1>MyWinningTrade</h1>
+
+<div class="row">
+  <div class="span12">
+    <h1>{{stock.name}}</h1>
+    {{stock}}
+  </div>
+</div>
+
+<br />
 
 <div class="row">
   <div class="span8">{{outlet graphOutlet}}</div>

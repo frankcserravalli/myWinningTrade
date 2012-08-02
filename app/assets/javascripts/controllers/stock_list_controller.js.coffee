@@ -4,7 +4,7 @@ App.StockListController = Em.Controller.extend
   lastUpdatedAt: null
 
   loadedStocks: (->
-    @stocks.filterProperty('isLoaded', true)
+    @get('stocks').filterProperty('isLoaded', true)
   ).property('stocks.@each.isLoaded')
 
   loadedStocksDidChange: (->
@@ -19,22 +19,21 @@ App.StockListController = Em.Controller.extend
     @get('loadedStocks').length == 0
   ).property('loadedStocks')
 
-  deleteStock: (event) ->
-    stock = event.view.get('context') # TODO change context?
-    stock.unsubscribe_from_live_updates()
-    @stocks.removeObject(stock)
+  removeStock: (stock) ->
+    @get('stocks').removeObject(stock)
 
   addStock: (symbol) ->
-    new_stock = App.Stock.create({ symbol: symbol, isMain: @get('stocksIsEmpty') })
-    new_stock.load()
-    @stocks.pushObject(new_stock)
+    new_stock = App.Stock.create({ id: symbol, isMain: @get('stocksIsEmpty') })
+    new_stock.load(@)
+    @get('stocks').pushObject(new_stock)
 
   amendSubscriptions: ->
     window.finance.unsubscribe @
-    loaded_stocks_symbols = _.pluck(@get('loadedStocks'),'symbol')
+    loaded_stocks_symbols = _.pluck(@get('loadedStocks'),'id')
+    console.log loaded_stocks_symbols
     window.finance.subscribe @, loaded_stocks_symbols.join(','), (payload) =>
-      @get('stocks').forEach (stock) ->
-        stock_details = payload[stock.symbol]
-        stock.update_details(stock_details)
-      @set 'lastUpdatedAt', moment().unix()
-
+      current_unix_timestamp = moment().unix()
+      @get('loadedStocks').forEach (stock) ->
+        stock_details = payload[stock.get('symbol')]
+        stock.update_details(stock_details, current_unix_timestamp)
+      @set 'lastUpdatedAt', current_unix_timestamp

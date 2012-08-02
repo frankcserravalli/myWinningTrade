@@ -7,5 +7,5 @@
 //= require_self
 
 $(function() {
-  App.initialize();
+  //App.initialize();
 });

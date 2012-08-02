@@ -4,7 +4,6 @@ App.GraphView = Em.View.extend
   currentPeriodBinding: 'controller.currentPeriod'
 
   stocksLastUpdatedAtDidChange: ( ->
-    console.log 'last updated at changed'
     @buildGraph()
   ).observes('App.router.stockListController.lastUpdatedAt')
 
