@@ -2,9 +2,15 @@ App.GraphView = Em.View.extend
   templateName: 'graph'
   stocksBinding: 'controller.stocks'
   currentPeriodBinding: 'controller.currentPeriod'
+  lastUpdatedAtBinding: 'controller.lastUpdatedAt'
 
   stocksLastUpdatedAtDidChange: ( ->
-    @buildGraph()
+    @get('stocks').forEach (stock, index) =>
+      if @get('lastUpdatedAt')
+        @get('seriesData').quoteList[index].data.push({ x: @get('lastUpdatedAt')-moment().zone()*60, y: parseFloat(stock.current_price) })
+
+    @graph.update()
+    console.log(@graph)
   ).observes('App.router.stockListController.lastUpdatedAt')
 
 

@@ -1,5 +1,6 @@
 App.GraphController = Em.Controller.extend
   stocksBinding: 'App.router.stockListController.loadedStocks'
+  lastUpdatedAtBinding: 'App.router.stockListController.lastUpdatedAt'
 
   stocksIsEmpty: ( ->
     @get('stocks').length == 0
