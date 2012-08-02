@@ -29,6 +29,7 @@ gem 'copycopter_client', '~> 2.0.1'
 
 # graphing
 gem 'rickshaw_rails'
+gem 'market_beat'
 
 # model
 gem 'migrant'

@@ -13,15 +13,15 @@ http_interactions:
       - OAuth gem v0.4.6
       authorization:
       - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
-        oauth_nonce="3Ww0VMSwrQ1i9Xe3nRdiLV68e9j415GpNekJ2uGWag", oauth_signature="eEPAqqBTnEfQpcjhD%2F9nrI507yY%3D",
-        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1342707006", oauth_version="1.0"
+        oauth_nonce="1Yrj0tVWuTizNPMGzk48TD4Eup1MNY9nJVe3TlYrBLQ", oauth_signature="2ULvFvZ1ku%2FdY5sZyg5rCECLy7g%3D",
+        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1343924603", oauth_version="1.0"
   response:
     status:
       code: 400
       message: Bad Request
     headers:
       x-yql-host:
-      - engine3.yql.ac4.yahoo.com
+      - engine10.yql.bf1.yahoo.com
       access-control-allow-origin:
       - ! '*'
       content-type:
@@ -29,11 +29,11 @@ http_interactions:
       vary:
       - Accept-Encoding
       date:
-      - Thu, 19 Jul 2012 14:10:08 GMT
+      - Thu, 02 Aug 2012 16:23:28 GMT
       server:
       - YTS/1.20.10
       age:
-      - '2'
+      - '1'
       connection:
       - close
     body:
@@ -41,5 +41,5 @@ http_interactions:
       string: ! '{"error":{"lang":"en-US","description":"Query syntax error(s) [line
         1:0 expecting statement_ql got ''INVALID'']"}}'
     http_version: '1.1'
-  recorded_at: Thu, 19 Jul 2012 14:10:09 GMT
+  recorded_at: Thu, 02 Aug 2012 16:23:24 GMT
 recorded_with: VCR 2.2.3

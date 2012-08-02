@@ -2,48 +2,40 @@
 http_interactions:
 - request:
     method: get
-    uri: http://query.yahooapis.com/v1/yql?q=select%20Name%2C%20Symbol%2C%20Ask%2C%20AskRealtime%2C%20DaysRange%2C%20YearRange%2C%20Open%2C%20PreviousClose%2C%20Volume%2C%20DividendYield%2C%20EarningsShare%2C%20StockExchange%2C%20LastTradeTime%2C%20EPSEstimateCurrentYear%2C%20EPSEstimateNextYear%2C%20EPSEstimateNextQuarter%2C%20PERatio%2C%20TwoHundreddayMovingAverage%2C%20FiftydayMovingAverage%2C%20LastTradeDate%0A%09%09%09%09%09%09%09%09%09%20%09%09%09%09%20%20%20%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20%28%27AAPL%27%29&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
+    uri: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=nsab2mwopvyext1e7e8e9rm4m3d1
     body:
       encoding: US-ASCII
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
       user-agent:
-      - OAuth gem v0.4.6
-      authorization:
-      - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
-        oauth_nonce="0Ftio3ijSxerQ27EnVqncFci3teZmFF4L1qw973AK4", oauth_signature="vRL3ieGw4wiyB0HQZctiQDNn6Ms%3D",
-        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1343316227", oauth_version="1.0"
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      x-yql-host:
-      - engine4.yql.ac4.yahoo.com
-      access-control-allow-origin:
-      - ! '*'
-      cache-control:
-      - no-cache
-      content-type:
-      - application/json;charset=utf-8
-      vary:
-      - Accept-Encoding
       date:
-      - Thu, 26 Jul 2012 15:23:50 GMT
-      server:
-      - YTS/1.20.10
-      age:
-      - '4'
+      - Thu, 02 Aug 2012 16:23:28 GMT
+      p3p:
+      - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
+        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
+        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      cache-control:
+      - private
       connection:
       - close
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/octet-stream
     body:
       encoding: US-ASCII
-      string: ! '{"query":{"count":1,"created":"2012-07-26T15:23:51Z","lang":"en-US","results":{"quote":{"AskRealtime":"575.28","LastTradeDate":"7/26/2012","EarningsShare":"42.548","EPSEstimateCurrentYear":"44.42","EPSEstimateNextYear":"52.60","EPSEstimateNextQuarter":"15.28","DaysRange":"573.56
-        - 580.40","FiftydayMovingAverage":"588.809","TwoHundreddayMovingAverage":"553.828","Name":"Apple
-        Inc.","Open":"579.82","PreviousClose":"574.97","PERatio":"13.51","Symbol":"AAPL","LastTradeTime":"11:08am","Volume":"6521429","YearRange":"353.02
-        - 644.00","StockExchange":"NasdaqNM","DividendYield":null,"Ask":"575.28"}}}}'
+      string: ! "\"Apple Inc.\",\"AAPL\",604.80,604.80,\"600.25 - 610.69\",\"353.02
+        - 644.00\",603.00,606.81,6565257,N/A,42.548,\"NasdaqNM\",\"12:08pm\",44.16,52.53,15.27,14.26,560.089,592.008,\"8/2/2012\"\r\n"
     http_version: '1.1'
-  recorded_at: Thu, 26 Jul 2012 15:23:51 GMT
+  recorded_at: Thu, 02 Aug 2012 16:23:23 GMT
 recorded_with: VCR 2.2.3

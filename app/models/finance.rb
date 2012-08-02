@@ -2,8 +2,20 @@ require 'oauth'
 require 'ostruct'
 require 'rest_client'
 
+class Array
+  def uniq_by(&blk)
+    transforms = []
+    self.select do |el|
+      should_keep = !transforms.include?(t=blk[el])
+      transforms << t
+      should_keep
+    end
+  end
+end
+
 class Finance
 	class QueryFailed < Exception; end;
+	L2N = { 'M' => 1_000_000, 'B' => 1_000_000_000 }.freeze
 
 	cattr_accessor :credentials
 
@@ -15,27 +27,52 @@ class Finance
 		def stock_details_for_list(symbol_list)
 			symbol_list = symbol_list.collect { |symbol| sanitize_symbol(symbol) }
 
-			response = execute_yql("select Name, Symbol, Ask, AskRealtime, DaysRange, YearRange, Open, PreviousClose, Volume, DividendYield, EarningsShare, StockExchange, LastTradeTime, EPSEstimateCurrentYear, EPSEstimateNextYear, EPSEstimateNextQuarter, PERatio, TwoHundreddayMovingAverage, FiftydayMovingAverage, LastTradeDate
-									 				    from yahoo.finance.quotes where symbol IN ('#{symbol_list.join(',')}')")['quote']
+			field_mappings = {
+				name: 'n',
+				symbol: 's',
+				ask: 'a',
+				ask_realtime: 'b2',
+				days_range: 'm',
+				year_range: 'w',
+				open: 'o',
+				previous_close: 'p',
+				volume: 'v',
+				dividend_yield: 'y',
+				earnings_share: 'e',
+				stock_exchange: 'x',
+				last_trade_time: 't1',
+				eps_estimate_current_year: 'e7',
+				eps_estimate_next_year: 'e8',
+				eps_estimate_next_quarter: 'e9',
+				pe_ratio: 'r',
+				two_hundred_day_moving_average: 'm4',
+				fifty_day_moving_average: 'm3',
+				last_trade_date: 'd1'
+			}
 
-			response = [response] if symbol_list.length == 1
+			start_time = Time.now.to_f
+			csv = RestClient.get "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbol_list.join(',')}&f=#{field_mappings.values.join}"
 
-			details = response.collect do |quote|
-				if quote['Ask']
-					quote = create_openstruct(quote)
+			all_details = CSV.parse(csv).collect do |row|
+				details = Hash[field_mappings.keys.zip(row.collect { |v| v.to_s.strip.gsub(/['"]/, '')} )]
+				quote = create_openstruct(details)
+
+				unless quote.name == quote.symbol
+					begin
+						quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
+					rescue
+							raise quote.last_trade_date.inspect
+					end
+
 					quote.current_price = quote.ask_realtime || quote.ask
-					quote.open ||= quote.previous_close
-					quote.fifty_day_moving_average = quote.delete_field(:fiftyday_moving_average)
-					quote.two_hundred_day_moving_average = quote.delete_field(:two_hundredday_moving_average)
-
-					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
 					quote
 				else
 					nil
 				end
 			end
 
-			return Hash[symbol_list.zip(details)]
+			Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
+			return Hash[symbol_list.zip(all_details)]
 		end
 
 		def stock_price_history(symbol)
@@ -62,20 +99,17 @@ class Finance
 			end_date = last_trading_day
 			start_date = end_date - 6.months
 
-			history = execute_yql("SELECT Close, Date FROM yahoo.finance.historicaldata WHERE symbol = '#{symbol}'
-							 	 					   AND startDate = '#{ansi_date(start_date)}'
-									 					 AND endDate   = '#{ansi_date(end_date-1.day)}'")
-
-			stock_quote = execute_yql("SELECT Name, Symbol FROM yahoo.finance.quotes WHERE symbol='#{symbol}'")
+			history = MarketBeat.quotes(symbol, ansi_date(start_date), ansi_date(end_date))
+			stock_quote = current_stock_details(symbol)
 
 			OpenStruct.new(
 				symbol:
-					stock_quote['quote']['Symbol'],
+					stock_quote.symbol,
 				name:
-					stock_quote['quote']['Name'],
+					stock_quote.name,
 				price_history: {
-					historical: history['quote'].reverse.collect { |day| [Time.parse(day['Date']).to_i, day['Close'].to_f] },
-					live: intraday_details['series'].collect { |series| [series['Timestamp'], series['close'].to_f] }
+					historical: history.reverse.collect { |day| [day[:date].to_time.to_i, day[:close].to_f] },
+					live: intraday_details['series'].collect { |series| [series['Timestamp'].to_i/1.minute*1.minute, series['close'].to_f] }.uniq_by(&:first)
 				}
 			)
 		end
@@ -121,6 +155,7 @@ class Finance
 	    begin
 	    	results = MultiJson.load(response.body)['query']['results']
 	    	Rails.logger.debug "  YQL (#{((Time.now.to_f-start_time)*1000.0).round} ms / #{(response.body.length / 1024.0).round} KB): #{yql_query}" unless Rails.env.production?
+	    	raise
 	    rescue Exception => e
 	    	raise QueryFailed.new("'#{yql_query}' (#{e}), response: #{response.body}")
 	    end
