@@ -83,11 +83,7 @@ class Finance
 			end_date = last_trading_day
 			start_date = end_date - 6.months
 
-			history = execute_yql("SELECT Close, Date FROM yahoo.finance.historicaldata WHERE symbol = '#{symbol}'
-							 	 					   AND startDate = '#{ansi_date(start_date)}'
-									 					 AND endDate   = '#{ansi_date(end_date-1.day)}'")
-
-			#stock_quote = execute_yql("SELECT Name, Symbol FROM yahoo.finance.quotes WHERE symbol='#{symbol}'")
+			history = MarketBeat.quotes(symbol, ansi_date(start_date), ansi_date(end_date))
 			stock_quote = current_stock_details(symbol)
 
 			OpenStruct.new(
@@ -96,7 +92,7 @@ class Finance
 				name:
 					stock_quote.name,
 				price_history: {
-					historical: history['quote'].reverse.collect { |day| [Time.parse(day['Date']).to_i, day['Close'].to_f] },
+					historical: history.reverse.collect { |day| [day[:date].to_time.to_i, day[:close].to_f] },
 					live: intraday_details['series'].collect { |series| [series['Timestamp'], series['close'].to_f] }
 				}
 			)
@@ -143,6 +139,7 @@ class Finance
 	    begin
 	    	results = MultiJson.load(response.body)['query']['results']
 	    	Rails.logger.debug "  YQL (#{((Time.now.to_f-start_time)*1000.0).round} ms / #{(response.body.length / 1024.0).round} KB): #{yql_query}" unless Rails.env.production?
+	    	raise
 	    rescue Exception => e
 	    	raise QueryFailed.new("'#{yql_query}' (#{e}), response: #{response.body}")
 	    end
