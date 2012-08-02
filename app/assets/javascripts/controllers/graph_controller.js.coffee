@@ -7,10 +7,7 @@ App.GraphController = Em.Controller.extend
 
   currentPeriod: 'historical'
   toggleCurrentPeriod: (event) ->
-    if event.target.dataset.period == 'intraday'
-      @set 'currentPeriod', 'live'
-    else
-      @set 'currentPeriod', 'historical'
+    @set 'currentPeriod', event.target.dataset.period
 
   buttonHistoricalClasses: ( ->
     classes = 'btn'
@@ -18,8 +15,8 @@ App.GraphController = Em.Controller.extend
     classes
   ).property('currentPeriod')
 
-  buttonIntradayClasses: ( ->
+  buttonLiveClasses: ( ->
     classes = 'btn'
-    classes += ' btn-primary' if @get('currentPeriod') == 'intraday'
+    classes += ' btn-primary' if @get('currentPeriod') == 'live'
     classes
   ).property('currentPeriod')

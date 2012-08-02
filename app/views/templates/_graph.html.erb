@@ -5,7 +5,7 @@
   {{else}}
     <div class="btn-group">
       <button {{bindAttr class="buttonHistoricalClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='historical'>Historical</button>
-      <button {{bindAttr class="buttonIntradayClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='intraday'>Intraday</button>
+      <button {{bindAttr class="buttonLiveClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='live'>Intraday</button>
     </div>
   {{/if}}
 

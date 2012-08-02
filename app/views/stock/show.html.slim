@@ -1,136 +1,14 @@
 = render partial: 'search'
+
 hr
 
 .row
-  .span8
+  .span12
     h1 = @stock.name
     = render partial: 'stock/trend', locals: { stock: @stock }
-  .span4
-    br
-    .btn-group#graph-timescale.pull-right data-toggle='buttons-radio'
-      button.btn.btn-primary data-value='historical' Historical
-      button.btn.btn-primary.active data-value='live' Intraday
-
-br
-
-.chart_wrapper
-  .row
-    .span12
-      #slider
-
-  br
-
-  .row
-    .span12
-      #chart
-        .spinner
-          = image_tag 'graph_spinner.gif'
-          h3 Loading, please wait&hellip;
 
 
-javascript:
-  function plotInputData(inputData) {
-    return _.map(inputData, function(p) {
-       return { x: p[0], y: p[1] };
-    });
-  }
-
-  function initGraph(data) {
-
-  var min_y = _.min(_.pluck(data,'y'));
-  var max_y = _.max(_.pluck(data,'y'));
-
-  $('#chart').empty();
-
-  var graph = new Rickshaw.Graph({
-    element: document.getElementById("chart"),
-    width: 940,
-    height: 500,
-    renderer: 'line',
-    stroke: true,
-    min: min_y-((max_y-min_y)*0.1),
-    series: [
-      {
-        color: 'steelblue', // palette.color(),
-        data: data,
-        name: '#{@stock.name}'
-      }
-    ]
-  });
-
-  $('#chart .spinner').hide();
-
-  graph.render();
-
-  var hoverDetail = new Rickshaw.Graph.StockHoverDetail({ graph: graph });
-
-  //var legend = new Rickshaw.Graph.Legend({ graph: graph, element: document.getElementById('legend') });
-
-  var ticksTreatment = 'glow';
-
-  var xAxis = new Rickshaw.Graph.Axis.Time({ graph: graph, ticksTreatment: ticksTreatment });
-  var yAxis = new Rickshaw.Graph.Axis.Y({ graph: graph, ticksTreatment: ticksTreatment });
-
-  xAxis.render();
-  yAxis.render();
-
-  window.graph = graph;
-  }
-
-  $(function() {
-    $('#graph-timescale').hide();
-    $.ajax({
-      url: '/stock/#{@stock.symbol}/price_history.json',
-      dataType: 'JSON',
-      success: function(data) {
-        window.graphInputData = {
-          live: plotInputData(data.price_history.live),
-          historical: plotInputData(data.price_history.historical)
-        }
-        initGraph(window.graphInputData.live);
-        $("#graph-timescale").show();
-        var stock_symbol =  '#{@stock.symbol}';
-
-        if (#{@stock.currently_trading.to_s}) {
-          window.finance.subscribe('chart', stock_symbol, function(payload){
-            stock_details = payload[stock_symbol].table
-            var current_unix_timestamp = moment().unix();
-            var current_price = parseFloat(stock_details['current_price'])
-            var data_point = { x: current_unix_timestamp, y: current_price }
-            window.graphInputData['live'].push(data_point);
-            if($('#graph-timescale .btn[data-value="live"]').is('.active')){
-              window.graph.series[0].data.push(data_point);
-              window.graph.update();
-            }
-          })
-        }
-      }
-    });
-
-    $('#graph-timescale .btn').click(function(event) {
-      var element = $(event.target);
-
-      if (element.is('.active')) return false;
-      $('#graph-timescale .btn').removeClass('active');
-
-      element.addClass('active');
-      initGraph(window.graphInputData[element.data('value')]);
-
-      if (element.data('value') == 'historical') {
-        $('#slider').show();
-        window.graph.slider = new SnappySlider({ graph: graph, element: $('#slider') });
-      }
-      else {
-        $('#slider').hide();
-        $('#slider').slider('destroy');
-      }
-      return false;
-    });
-
-  });
-  // subscribe to:
-  // -- add data to seriesData
-  // -- graph.update()
+#ember
 
 br
 
@@ -148,3 +26,9 @@ br
           - if row_fields.count < 2
             th &nbsp;
             td &nbsp;
+
+javascript:
+  $(function() {
+    App.rootElement = '#ember'
+    App.initialize();
+  })

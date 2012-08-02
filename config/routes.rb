@@ -1,8 +1,6 @@
 MyWinningTrade::Application.routes.draw do
 
-  root to: redirect('/ember')
-  get '*p', to: 'application#ember'
-
+  root to: redirect('/dashboard')
   get '/dashboard', to: 'sessions#dashboard'
 
   get '/login', to: 'sessions#new'
