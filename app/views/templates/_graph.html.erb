@@ -1,5 +1,6 @@
 <script type='text/x-handlebars' data-template-name='graph'>
 <div class="chart_wrapper">
+<p>adfkl</p>
   {{#if stocksIsEmpty}}
     <progress></progress>
   {{else}}
@@ -7,8 +8,8 @@
       <button {{bindAttr class="buttonHistoricalClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='historical'>Historical</button>
       <button {{bindAttr class="buttonLiveClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='live'>Intraday</button>
     </div>
+    <hr />
   {{/if}}
-
 
  <div class="chart"></div>
 

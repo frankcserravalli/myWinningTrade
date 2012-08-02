@@ -2,12 +2,6 @@
 
 hr
 
-.row
-  .span12
-    h1 = @stock.name
-    = render partial: 'stock/trend', locals: { stock: @stock }
-
-
 #ember
 
 br
@@ -30,5 +24,6 @@ br
 javascript:
   $(function() {
     App.rootElement = '#ember'
+    App.payload = { name: 'Preloaded stock name' }
     App.initialize();
   })

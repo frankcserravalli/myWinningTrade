@@ -5,17 +5,19 @@ App.Stock = Em.Object.extend
     @get 'id'
   ).property('id')
 
-  load: ->
+  load: (controller) ->
     jQuery.getJSON "/stock/#{@get('id')}/price_history.json", (data) =>
       @setProperties(data)
       @set 'isLoaded', true
+    .error =>
+      @set 'error', true
+      controller.removeStock(@)
 
-  update_details: (details) ->
+  update_details: (details, unix_timestamp) ->
     new_details = details.table
     @setProperties(new_details)
-    current_unix_timestamp = moment().unix()
     current_price = parseFloat(new_details['current_price'])
-    data_point = [current_unix_timestamp, current_price]
+    data_point = [unix_timestamp, current_price]
     @get('price_history').live.push(data_point)
 
 App.Stock.find = (stock_symbol) ->
