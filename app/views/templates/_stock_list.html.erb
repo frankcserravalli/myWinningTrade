@@ -2,9 +2,9 @@
 
 <h3>Compare</h3>
 
-{{view Ember.TextField classNames="autocomplete" placeholder="Start typing a stock name.."}}
+{{view Ember.TextField classNames="autocomplete span3" placeholder="Start typing a stock name.."}}
 
-<ul>
+<ul class='stock-compare'>
   {{#each stocks}}
     {{view App.StockItemView}}
   {{/each}}

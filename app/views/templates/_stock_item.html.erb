@@ -3,6 +3,11 @@
 
 <strong>{{id}}</strong>
 
+{{#unless isMain}}
+<a class="close" {{action removeStock target="view" href="true"}}>&times;</a>
+{{/unless}}
+
+
 {{#if isLoaded}}
   {{name}}
   {{view App.StockTrendView stockBinding="this" templateName="stock_trend_small"}}
@@ -10,8 +15,5 @@
   <progress></progress>
 {{/if}}
 
-{{#unless isMain}}
-<a {{action removeStock target="view" href="true"}}>&times;</a>
-{{/unless}}
 
 </script>

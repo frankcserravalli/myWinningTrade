@@ -41,6 +41,7 @@ App.GraphView = Em.View.extend
           quote[1])[1]
 
       palette.color()
+
       {
         data: _.map relevant_quotes, (quote) ->
           { x: quote[0]-moment().zone()*60, y: quote[1] }
@@ -61,8 +62,8 @@ App.GraphView = Em.View.extend
 
     @graph = new Rickshaw.Graph
       element: $('.chart',@$()).get(0)
-      width: 780
-      height: 450
+      width: 700
+      height: 320
       min: seriesData.minimum - seriesData.deltaRange*0.3
       max: seriesData.maximum + seriesData.deltaRange*0.3
       renderer: 'line'

@@ -64,7 +64,11 @@ class Finance
           # calculate stock trend
           close = quote.previous_close.to_f
           current = quote.current_price.to_f
-					quote.percent_change = (((current-close) / close)*100).round(2)
+          point_change = (current - close)
+
+          quote.point_change = (point_change >= 0 ? '+' : '') + point_change.round(2).to_s
+
+					quote.percent_change = ((point_change / close)*100).round(2)
 					quote.trend_direction = quote.percent_change >= 0 ? 'up' : 'down'
 
 					quote
@@ -113,6 +117,8 @@ class Finance
 				  stock_quote.currently_trading,
 				current_price:
 				  stock_quote.current_price,
+				point_change:
+				  stock_quote.point_change,
 				percent_change:
 				  stock_quote.percent_change,
         trend_direction:
