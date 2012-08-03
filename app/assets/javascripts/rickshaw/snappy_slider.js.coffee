@@ -6,7 +6,7 @@ class @SnappySlider
 
     unless @view.get('sliderPos')
       # set slider to midpoint unless there is a stored value
-      @view.set('sliderPos',@graph.series[0].data[(@graph.series[0].data.length/2)].x)
+      @view.set('sliderPos',@graph.series[0].data[parseInt(@graph.series[0].data.length/2)].x)
 
     sliderDidChange = (event, ui) =>
       # save new slider pos

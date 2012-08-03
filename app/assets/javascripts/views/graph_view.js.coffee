@@ -6,8 +6,9 @@ App.GraphView = Em.View.extend
 
   stocksLastUpdatedAtDidChange: ( ->
     @get('stocks').forEach (stock, index) =>
-      if @get('lastUpdatedAt')
-        @get('seriesData').quoteList[index].data.push({ x: @get('lastUpdatedAt')-moment().zone()*60, y: parseFloat(stock.current_price) })
+      if (@get('lastUpdatedAt') && (@get('currentPeriod') == 'live'))
+        new_data_point = { x: @get('lastUpdatedAt')-moment().zone()*60, y: parseFloat(stock.current_price) }
+        @get('seriesData').quoteList[index].data.push(new_data_point)
 
     @graph.update()
   ).observes('App.router.stockListController.lastUpdatedAt')
