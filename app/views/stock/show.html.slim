@@ -12,15 +12,15 @@ h2 Buy #{@stock.name}
   p You do not currently own any shares in #{@stock.name}
 
 .row
-  .well.span6.order_form style='background-color:#e1e2ef'
+  .well.span6.order_form style='background-color:#edeef9'
     = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal'} do |f|
       .price-info.stock-trend[data-stock-symbol=@stock.symbol]
         .name Current price:
         .current-price#buy_price =  number_to_currency(@stock.current_price)
 
-      = f.input :volume, :label => ' x Volume to buy', input_html: { value: 1, maxlength: 10 }
+      = f.input :volume, :label => 'Volume to buy', input_html: { value: 1, maxlength: 10 }
       div.price-info
-        .name = '='
+        .name Total price to purchase:
         #buy_price_calculation = number_to_currency(@stock.current_price)
 
       div.price-info
