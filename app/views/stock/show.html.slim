@@ -3,10 +3,26 @@
 hr
 
 #ember
+
+.span6
+  h2 Buy #{@stock.name}
+  = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'simple-form form-horizontal'} do |f|
+    .price-info.stock-trend[data-stock-symbol=@stock.symbol]
+      .name Current price:
+      .current-price#buy_price = "$ #{@stock.current_price}"
+
+    = f.input :volume, :label => 'Volume to buy', input_html: { value: 1, maxlength: 10 }
+    div.price-info
+      .name Expected cost:
+      #buy_price_calculation = "$ #{@stock.current_price}"
+
+    .form-actions
+      = f.submit 'Buy', class: 'btn-primary btn btn-large'
+
+
 javascript:
   $(function() {
     App.rootElement = '#ember';
     App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
-    console.log(App.payload)
     App.initialize();
   })
