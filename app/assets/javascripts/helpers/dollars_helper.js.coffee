@@ -1,3 +1,4 @@
-Handlebars.registerHelper 'dollars', (property) ->
-  value = Ember.getPath(@, property)
-  new Handlebars.SafeString('$ '+value)
+Handlebars.registerHelper 'dollars', (property, opts) ->
+  transformFunc = (value) ->
+    '$ ' + value
+  return Ember.HandlebarsTransformView.helper(@, property, transformFunc, opts)

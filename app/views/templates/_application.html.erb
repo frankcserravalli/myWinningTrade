@@ -3,15 +3,15 @@
 <div class="row">
   <div class="span12">
     <h1>{{stock.name}}</h1>
-    {{view App.StockTrendView}}
+    {{#with stock}}{{view App.StockTrendView stockBinding="this"}}{{/with}}
   </div>
 </div>
 
 <br />
 
 <div class="row">
-  <div class="span10">{{outlet graphOutlet}}</div>
-  <div class="span2">{{outlet stockListOutlet}}</div>
+  <div class="span9">{{outlet graphOutlet}}</div>
+  <div class="span3">{{outlet stockListOutlet}}</div>
 </div>
 
 {{#with stock}}

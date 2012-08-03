@@ -3,16 +3,17 @@
 
 <strong>{{id}}</strong>
 
+{{#unless isMain}}
+<a class="close" {{action removeStock target="view" href="true"}}>&times;</a>
+{{/unless}}
+
+
 {{#if isLoaded}}
   {{name}}
-  <span class='current-price'>{{current_price}}</span>
-  <span class='percent-change'>{{earnings_share}}</span>
+  {{view App.StockTrendView stockBinding="this" templateName="stock_trend_small"}}
 {{else}}
   <progress></progress>
 {{/if}}
 
-{{#unless isMain}}
-<a {{action removeStock target="view" href="true"}}>&times;</a>
-{{/unless}}
 
 </script>

@@ -5,11 +5,12 @@ App.GraphView = Em.View.extend
   lastUpdatedAtBinding: 'controller.lastUpdatedAt'
 
   stocksLastUpdatedAtDidChange: ( ->
-    @get('stocks').forEach (stock, index) =>
-      if (@get('lastUpdatedAt') && (@get('currentPeriod') == 'live'))
+    no_stocks_trading = _.isEmpty(@get('stocks').filterProperty('currently_trading', true))
+    return if no_stocks_trading
+    if (@get('lastUpdatedAt') && (@get('currentPeriod') == 'live'))
+      @get('stocks').forEach (stock, index) =>
         new_data_point = { x: @get('lastUpdatedAt')-moment().zone()*60, y: parseFloat(stock.current_price) }
         @get('seriesData').quoteList[index].data.push(new_data_point)
-
     @graph.update()
   ).observes('App.router.stockListController.lastUpdatedAt')
 
@@ -40,6 +41,7 @@ App.GraphView = Em.View.extend
           quote[1])[1]
 
       palette.color()
+
       {
         data: _.map relevant_quotes, (quote) ->
           { x: quote[0]-moment().zone()*60, y: quote[1] }
@@ -60,8 +62,8 @@ App.GraphView = Em.View.extend
 
     @graph = new Rickshaw.Graph
       element: $('.chart',@$()).get(0)
-      width: 780
-      height: 450
+      width: 700
+      height: 320
       min: seriesData.minimum - seriesData.deltaRange*0.3
       max: seriesData.maximum + seriesData.deltaRange*0.3
       renderer: 'line'

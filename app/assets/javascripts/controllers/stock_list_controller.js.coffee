@@ -32,6 +32,8 @@ App.StockListController = Em.Controller.extend
     loaded_stocks_symbols = _.pluck(@get('loadedStocks'),'id')
     window.finance.subscribe @, loaded_stocks_symbols.join(','), (payload) =>
       current_unix_timestamp = moment().unix()
+      no_stocks_trading = _.isEmpty(@get('loadedStocks').filterProperty('currently_trading', true))
+      return if no_stocks_trading
       @get('loadedStocks').forEach (stock) ->
         stock_details = payload[stock.get('symbol')]
         stock.update_details(stock_details, current_unix_timestamp)

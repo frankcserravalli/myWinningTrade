@@ -20,10 +20,6 @@ App.Stock = Em.Object.extend
     data_point = [unix_timestamp, current_price]
     @get('price_history').live.push(data_point)
 
-  priceHistoryDidChange: ( ->
-    console.log "new history for #{@get 'symbol'}"
-  ).observes('price_history')
-
 App.Stock.find = (stock_symbol) ->
   s = App.Stock.create({ id: stock_symbol, isMain: true })
   s.load()
