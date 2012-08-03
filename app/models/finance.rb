@@ -60,6 +60,13 @@ class Finance
 				unless quote.name == quote.symbol
 					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
 					quote.current_price = quote.ask_realtime || quote.ask
+
+          # calculate stock trend
+          close = quote.previous_close.to_f
+          current = quote.current_price.to_f
+					quote.percent_change = (((current-close) / close)*100).round(2)
+					quote.trend_direction = quote.percent_change >= 0 ? 'up' : 'down'
+
 					quote
 				else
 					nil
@@ -102,6 +109,14 @@ class Finance
 					stock_quote.symbol,
 				name:
 					stock_quote.name,
+				currently_trading:
+				  stock_quote.currently_trading,
+				current_price:
+				  stock_quote.current_price,
+				percent_change:
+				  stock_quote.percent_change,
+        trend_direction:
+          stock_quote.trend_direction,
 				price_history: {
 					historical: history.reverse.collect { |day| [day[:date].to_time.to_i, day[:close].to_f] },
 					live: intraday_details['series'].collect { |series| [series['Timestamp'].to_i/1.minute*1.minute, series['close'].to_f] }.uniq_by(&:first)

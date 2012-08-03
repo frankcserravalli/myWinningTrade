@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span12">
     <h1>{{stock.name}}</h1>
-    {{view App.StockTrendView}}
+    {{#with stock}}{{view App.StockTrendView stockBinding="this"}}{{/with}}
   </div>
 </div>
 
