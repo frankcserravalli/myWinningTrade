@@ -6,7 +6,7 @@ App.GraphController = Em.Controller.extend
     @get('stocks').length == 0
   ).property('stocks')
 
-  currentPeriod: 'historical'
+  currentPeriod: 'live'
   toggleCurrentPeriod: (event) ->
     @set 'currentPeriod', event.target.dataset.period
 
