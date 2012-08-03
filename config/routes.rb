@@ -1,7 +1,7 @@
 MyWinningTrade::Application.routes.draw do
 
   root to: redirect('/dashboard')
-  get '/dashboard', to: 'sessions#dashboard'
+  get '/dashboard', to: 'stock#dashboard'
 
   get '/login', to: 'sessions#new'
   match '/auth/:provider/callback', to: 'sessions#create'
@@ -15,6 +15,7 @@ MyWinningTrade::Application.routes.draw do
       get :details
       get :search
     end
-  end
 
+    resource :buy, only: :create
+  end
 end

@@ -11,13 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717092711) do
+ActiveRecord::Schema.define(:version => 20120803134136) do
+
+  create_table "orders", :force => true do |t|
+    t.integer "user_id"
+    t.decimal "price",                       :precision => 10, :scale => 2
+    t.integer "volume",        :limit => 8
+    t.string  "type",          :limit => 15
+    t.decimal "value",                       :precision => 10, :scale => 2
+    t.integer "user_stock_id"
+  end
+
+  add_index "orders", ["type"], :name => "index_orders_on_type"
+  add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
+  add_index "orders", ["user_stock_id"], :name => "index_orders_on_user_stock_id"
+
+  create_table "stocks", :force => true do |t|
+    t.string "name"
+    t.string "symbol", :limit => 7
+  end
+
+  create_table "user_stocks", :force => true do |t|
+    t.integer "user_id"
+    t.integer "stock_id"
+    t.integer "shares_owned", :limit => 8, :default => 0
+  end
+
+  add_index "user_stocks", ["stock_id"], :name => "index_user_stocks_on_stock_id"
+  add_index "user_stocks", ["user_id"], :name => "index_user_stocks_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string "email"
-    t.string "name"
-    t.string "provider", :limit => 16
-    t.string "uid"
+    t.string  "email"
+    t.string  "name"
+    t.string  "provider",        :limit => 16
+    t.string  "uid"
+    t.decimal "account_balance",               :precision => 10, :scale => 2, :default => 50000.0
   end
 
   add_index "users", ["provider"], :name => "index_users_on_provider"

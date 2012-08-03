@@ -5,13 +5,13 @@
       span.navbar-text
         strong Account
       span.navbar-text
-        i Value 
-        ' &nbsp; $ x,xxx.xx
-      
+        em Value
+        | $ x,xxx.xx
+
       span.navbar-text
-        i Buying power 
-        ' &nbsp; $ x,xxx.xx
-        
+        em Buying power
+        | $ x,xxx.xx
+
       span.navbar-text
-        i Cash 
-        ' &nbsp; $ x,xxx.xx
+        em Cash
+        = number_to_currency(current_user.account_balance)

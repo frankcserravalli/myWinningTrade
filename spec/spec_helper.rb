@@ -5,6 +5,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'vcr'
+require 'factory_girl'
 
 VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join('spec', 'responses')
@@ -16,6 +17,11 @@ end
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    FactoryGirl.definition_file_paths = [
+      File.join(Rails.root, 'spec', 'factories')
+    ]
+  end
   # config.mock_with :factory_girl
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -36,4 +42,5 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.include FactoryGirl::Syntax::Methods
 end

@@ -1,8 +1,3 @@
-- alert_types = { alert: { item_class: 'alert-error', icon_class: 'icon-warning-sign' }, notice: { item_class: 'alert-success', icon_class: 'icon-thumbs-up' } }
 ul#flash
-  - flash.each do |flash_type,flash_message|
-    - alert_opts = alert_types[flash_type]
-    li class=alert_opts[:item_class]
-      i class=alert_opts[:icon_class]
-      ' &nbsp;
-      = flash_message
+  - flash.each do |key,value|
+    li class=key = value

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if current_user.valid?
       redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: 'You have been logged in.')
     else
-      redirect_to login_url, error: I18n.t('flash.sessions.create.error', default: 'Could not authenticate :(')
+      redirect_to login_url, alert: I18n.t('flash.sessions.create.alert', default: 'Could not authenticate :(')
     end
   end
 
