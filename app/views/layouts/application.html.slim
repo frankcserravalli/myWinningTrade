@@ -4,7 +4,7 @@ html
 
   body class=controller_name
     = render 'navbar'
-    = render partial: 'flash', locals: { flash: flash }
     = render partial: 'account/infobar'
     .container
+      = render partial: 'flash', locals: { flash: flash }
       = yield

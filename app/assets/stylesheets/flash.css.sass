@@ -1,26 +1,20 @@
-ul#flash 
-  $width: 300px
+ul#flash
   $padding: 10px
+  margin: 0
 
   +no-bullets
-  position: fixed
-  z-index: 1040 // above navbar
-  margin: 0
-  
-  top: 0
-  left: 50%
-
-  width: $padding + $width + $padding
 
   li
-    width: $width
+    margin: 10px 0
     padding: $padding
-    text-align: center
-    margin-left: -50%
-
     background-color: transparent
     font-weight: bold
 
-    margin-bottom: 5px
-
-
+  .alert
+    background-color: #ffefef
+    color: #cc0000
+    border: 1px solid #ffefef
+  .notice
+    background-color: #efffef
+    color: #33a033
+    border: 1px solid #efffef

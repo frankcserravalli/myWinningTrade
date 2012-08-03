@@ -8,7 +8,6 @@ App.Stock = Em.Object.extend
   load: (controller) ->
     jQuery.getJSON "/stock/#{@get('id')}/price_history.json", (data) =>
       @setProperties(data)
-      console.log data
       @set 'isLoaded', true
     .error =>
       @set 'error', true
