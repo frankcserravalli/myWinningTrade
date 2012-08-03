@@ -7,7 +7,7 @@ hr
 h2 Buy #{@stock.name}
 
 - if @user_stock
-  p You currently own #{@user_stock.shares_owned} shares in #{@stock.name}
+  p You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
 - else
   p You do not currently own any shares in #{@stock.name}
 
