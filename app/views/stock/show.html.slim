@@ -7,6 +7,5 @@ javascript:
   $(function() {
     App.rootElement = '#ember';
     App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
-    console.log(App.payload)
     App.initialize();
   })
