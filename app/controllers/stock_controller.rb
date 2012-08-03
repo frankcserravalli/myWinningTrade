@@ -5,6 +5,8 @@ class StockController < ApplicationController
   def show
   	symbol = params[:id].upcase
     @stock = Finance.current_stock_details(symbol)
+    @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
+
     @buy_order = Buy.new
 
     if @stock.nil?
