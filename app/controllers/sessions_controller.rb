@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
-
-  def dashboard
-    require_login
-  end
+  skip_before_filter :require_login, except: :destroy
 
   def new
     redirect_to root_url and return if current_user
