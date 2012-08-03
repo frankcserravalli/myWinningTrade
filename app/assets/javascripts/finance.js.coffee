@@ -85,6 +85,6 @@ class @Finance
 
 
 $(->
-  window.finance = new Finance(5000)
+  window.finance = new Finance(30000)
   finance.start_ticking()
 )
