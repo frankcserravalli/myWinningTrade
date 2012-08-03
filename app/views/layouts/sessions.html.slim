@@ -3,7 +3,7 @@ html
   = render 'head'
 
   body class=controller_name
-    = render partial: 'navbar'
+    = render 'navbar' if current_user
     = render partial: 'flash', locals: { flash: flash }
     .container
       = yield

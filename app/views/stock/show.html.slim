@@ -12,7 +12,7 @@ h2 Buy #{@stock.name}
   p You do not currently own any shares in #{@stock.name}
 
 .row
-  .well.span6.order_form
+  .well.span6.order_form style='background-color:#e1e2ef'
     = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal'} do |f|
       .price-info.stock-trend[data-stock-symbol=@stock.symbol]
         .name Current price:
