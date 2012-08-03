@@ -8,7 +8,7 @@ $ ->
       # TODO more here...
       $('.current-price',e).html('$' + stock_details.current_price)
 
-  $('#buy_volume').on 'keyup', (event) ->
+  $('#buy_volume').on 'keyup ', (event) ->
     volume = parseFloat($(event.target).val().replace('$', ''));
 
     if isNaN(volume) || volume <= 0

@@ -4,34 +4,33 @@ hr
 
 #ember
 
-.span6
-  h2 Buy #{@stock.name}
+h2 Buy #{@stock.name}
 
-  - if @user_stock
-    p You currently own #{@user_stock.shares_owned} shares in #{@stock.name}
-  - else
-    p You do not currently own any shares in #{@stock.name}
+- if @user_stock
+  p You currently own #{@user_stock.shares_owned} shares in #{@stock.name}
+- else
+  p You do not currently own any shares in #{@stock.name}
 
-  = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'simple-form form-horizontal'} do |f|
-    .price-info.stock-trend[data-stock-symbol=@stock.symbol]
-      .name Current price:
-      .current-price#buy_price =  number_to_currency(@stock.current_price)
+.row
+  .well.span6.order_form
+    = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal'} do |f|
+      .price-info.stock-trend[data-stock-symbol=@stock.symbol]
+        .name Current price:
+        .current-price#buy_price =  number_to_currency(@stock.current_price)
 
-    = f.input :volume, :label => 'Volume to buy', input_html: { value: 1, maxlength: 10 }
-    div.price-info
-      .name Expected cost:
-      #buy_price_calculation = number_to_currency(@stock.current_price)
+      = f.input :volume, :label => ' x Volume to buy', input_html: { value: 1, maxlength: 10 }
+      div.price-info
+        .name = '='
+        #buy_price_calculation = number_to_currency(@stock.current_price)
 
-    div.price-info
-      .name Your current cash:
-      #current_cash = number_to_currency(current_user.account_balance)
-    div.price-info
-      .name Cash after purchase:
-      #cash_after_purchase_calculation = number_to_currency(current_user.account_balance.to_f-@stock.current_price.to_f)
+      div.price-info
+        .name Your current cash:
+        #current_cash = number_to_currency(current_user.account_balance)
+      div.price-info
+        .name Cash after purchase:
+        #cash_after_purchase_calculation = number_to_currency(current_user.account_balance.to_f-@stock.current_price.to_f)
 
-    .form-actions
       = f.submit 'Buy', class: 'btn-primary btn btn-large'
-
 
 javascript:
   $(function() {
