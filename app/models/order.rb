@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
     value  :decimal, precision: 10, scale: 2, validates: :numericality
   end
 
-  attr_accessible :user, :volume
+  attr_accessible :user, :volume, :user_stock
   validates_presence_of :user_stock_id, :user_id
 
   def place!(stock)
