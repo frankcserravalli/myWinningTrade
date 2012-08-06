@@ -49,4 +49,29 @@ describe "Order" do
       @order.errors.should_not be_empty
     end
   end
+
+  context "selling" do
+    before do
+      @apple = Stock.create!(name: 'Apple Inc.', symbol: 'AAPL')
+      @user_stock = @user.user_stocks.create!(stock: @apple)
+      @user_stock.update_attribute(:shares_owned, 100)
+    end
+
+    it "should sell stocks owned by the user" do
+      @order = Sell.new(volume: 50, user: @user)
+
+      @order.place!(@stock_details).should be_true
+      @user.reload
+      @user.account_balance.to_f.should == 50000.0 + @order.volume * @order.price
+
+      @user_stock.reload.shares_owned.should == 50
+    end
+
+    it "should not sell more shares than owned by the user" do
+      @order = Sell.new(volume: 1000, user: @user)
+
+      @order.place!(@stock_details).should be_false
+      @order.errors.should_not be_empty
+    end
+  end
 end
