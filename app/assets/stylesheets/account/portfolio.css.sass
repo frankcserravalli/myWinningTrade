@@ -1,15 +1,22 @@
-ul#portfolio
-  margin: 0
-  +no-bullets
-  li
-    padding: 5px 0
-    .portfolio-cell
-      +inline-block
-      margin-right: 10px
-      &.stock-name
-        width: 100px
-      &.stock-symbol
-        width: 100px
-      &.user_stock-shares_owned
-      &.stock-current_price
-      &.stock-current_value
+#portfolio_holder
+  +boxify
+  margin: 15px 0
+  ul#portfolio
+    margin: 0
+    +no-bullets
+    li
+      padding: 5px 0
+      border-bottom: 1px solid #e4e4e4
+      &:hover
+        background: #efefef
+      .portfolio-cell
+        +inline-block
+        padding: 0 3px
+        margin-right: 10px
+        &.stock-name
+          width: 180px
+        &.stock-symbol
+          width: 100px
+        &.user_stock-shares_owned
+        &.stock-current_price
+        &.stock-current_value

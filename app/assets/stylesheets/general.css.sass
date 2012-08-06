@@ -8,16 +8,23 @@ body
     +transition(color 0.4s)
     &.brand
       +transition((color 0.4s), (text-shadow 0.4s))
+      color: #fff
+      font-family: 'Shanti', 'open sans'
       &:hover
         +text-shadow(0 0 1px $linkColor)
-        color: white
+        color: #4E6377
 
 // just temp styling
 .infobar
   top: $navbarHeight
-  color: #555
+  color: #3c5063
+  box-shadow: 0 1px 1px #4e6377
   .navbar-inner
-    background: #eee
+    background: #3c5063
+    border-top: 1px solid #4e6377
+    border-bottom: 1px solid #272D37
+    color: #fff
+    text-shadow: 0 1px 1px #000
     .navbar-text
       margin-right: 10px
       em
@@ -49,3 +56,20 @@ p.intro
   text-align: center
   a
     margin: 0 10px
+
+#advert
+  width: 170px
+  height: 50px
+  background: #e4e4e4
+  float: right
+  +border-radius(6px)
+  margin-bottom: -30px
+  color: #999
+  padding: 30px
+  text-align: center
+  margin-top: 20px
+  
+h1, h2, h3 
+  font-family: 'Shanti', 'open sans'
+  color: #3c5063
+

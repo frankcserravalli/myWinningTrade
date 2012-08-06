@@ -14,8 +14,10 @@
   <div class="span3">{{outlet stockListOutlet}}</div>
 </div>
 
+<div style='display:none'>
 {{#with stock}}
   {{view App.StockTableView}}
 {{/with}}
+</div>
 
 </script>

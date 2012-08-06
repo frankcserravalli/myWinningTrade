@@ -62,7 +62,7 @@ App.GraphView = Em.View.extend
 
     @graph = new Rickshaw.Graph
       element: $('.chart',@$()).get(0)
-      width: 700
+      width: 680
       height: 320
       min: seriesData.minimum - seriesData.deltaRange*0.3
       max: seriesData.maximum + seriesData.deltaRange*0.3
