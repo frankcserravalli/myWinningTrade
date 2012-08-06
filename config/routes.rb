@@ -15,6 +15,7 @@ MyWinningTrade::Application.routes.draw do
       get :search
     end
 
-    resource :order, only: :create
+    resource :buy, only: :create
+    resource :sell, only: :create
   end
 end

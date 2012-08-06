@@ -4,7 +4,7 @@ class Sell < Order
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
 
     unless self.user_stock && self.user_stock.shares_owned.to_i >= volume.to_i
-      self.errors.add(:user, "You do not own enough shares (#{volume}) in #{stock.symbol}")
+      self.errors.add(:user, "You cannot sell #{volume} shares in #{stock.symbol} as you only currently own #{self.user_stock.shares_owned.to_i}")
       return false
     end
 
