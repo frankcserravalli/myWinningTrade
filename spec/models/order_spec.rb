@@ -63,7 +63,6 @@ describe "Order" do
       @order.place!(@stock_details).should be_true
       @user.reload
       @user.account_balance.to_f.should == 50000.0 + @order.volume * @order.price
-
       @user_stock.reload.shares_owned.should == 50
     end
 
