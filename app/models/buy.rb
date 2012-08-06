@@ -13,10 +13,8 @@ class Buy < Order
       user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_owned, self.user_stock.shares_owned.to_i + volume.to_i)
 
-      if save
-        return true
-      else
-        raise ActiveRecord::Rollback
+      save.tap do |successful|
+        raise ActiveRecord::Rollback unless successful
       end
     end
   end

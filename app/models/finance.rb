@@ -32,6 +32,8 @@ class Finance
 				symbol: 's',
 				ask: 'a',
 				ask_realtime: 'b2',
+				bid: 'b',
+				bid_realtime: 'b3',
 				days_range: 'm',
 				year_range: 'w',
 				open: 'o',
@@ -60,6 +62,7 @@ class Finance
 				unless quote.name == quote.symbol
 					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
 					quote.current_price = quote.ask_realtime || quote.ask
+					quote.current_bid = quote.bid_realtime || quote.bid
 
           # calculate stock trend
           close = quote.previous_close.to_f
