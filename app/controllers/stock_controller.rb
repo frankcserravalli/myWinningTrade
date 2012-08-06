@@ -1,5 +1,5 @@
 class StockController < ApplicationController
- def dashboard
+  def dashboard
   end
 
   def show
