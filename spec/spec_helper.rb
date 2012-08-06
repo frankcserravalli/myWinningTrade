@@ -18,9 +18,9 @@ end
 
 module AuthenticationHelper
   def authenticate
-    @user = create(:user)
-    session[:current_user_id] = @user.id
-    @user
+    create(:user).tap do |user|
+      subject.send('current_user=', user)
+    end
   end
 end
 
@@ -43,7 +43,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  # config.mock_with :factory_girl
+  config.mock_with :mocha
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
