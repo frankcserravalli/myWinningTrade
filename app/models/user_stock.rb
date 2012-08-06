@@ -6,5 +6,6 @@ class UserStock < ActiveRecord::Base
 
   structure do
     shares_owned  10**12, default: 0
+    cost_basis
   end
 end
