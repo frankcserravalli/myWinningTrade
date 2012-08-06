@@ -4,33 +4,57 @@ hr
 
 #ember
 
-h2 Buy #{@stock.name}
-
-- if @user_stock
-  p You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
-- else
-  p You do not currently own any shares in #{@stock.name}
 
 .row
   .well.span6.order_form style='background-color:#edeef9'
-    = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal'} do |f|
-      .price-info.stock-trend[data-stock-symbol=@stock.symbol]
-        .name Current price:
-        .current-price#buy_price =  number_to_currency(@stock.current_price)
+    h2 Buy #{@stock.name}
+    - if @user_stock
+      p You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
+    - else
+      p You do not currently own any shares in #{@stock.name}
 
-      = f.input :volume, :label => 'Volume to buy', input_html: { value: 1, maxlength: 10 }
-      div.price-info
-        .name Total price to purchase:
-        #buy_price_calculation = number_to_currency(@stock.current_price)
+    = render partial: 'order_form', locals: { verb: 'buy' }
+  .well.span6.order_form style='background-color:#edeef9'
+    = render partial: 'order_form', locals: { verb: 'sell'}
 
-      div.price-info
-        .name Your current cash:
-        #current_cash = number_to_currency(current_user.account_balance)
-      div.price-info
-        .name Cash after purchase:
-        #cash_after_purchase_calculation = number_to_currency(current_user.account_balance.to_f-@stock.current_price.to_f)
+  / .well.span6.order_form style='background-color:#edeef9'
+  /   = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal'} do |f|
+  /     .price-info.stock-trend[data-stock-symbol=@stock.symbol]
+  /       .name Current price:
+  /       .current-price#buy_price =  number_to_currency(@stock.current_price)
 
-      = f.submit 'Buy', class: 'btn-primary btn btn-large'
+  /     = f.input :volume, :label => 'Volume to buy', input_html: { value: 1, maxlength: 10 }
+  /     div.price-info
+  /       .name Total price to purchase:
+  /       #buy_price_calculation = number_to_currency(@stock.current_price)
+
+  /     div.price-info
+  /       .name Your current cash:
+  /       #current_cash = number_to_currency(current_user.account_balance)
+  /     div.price-info
+  /       .name Cash after purchase:
+  /       #cash_after_purchase_calculation = number_to_currency(current_user.account_balance.to_f-@stock.current_price.to_f)
+
+  /     = f.submit 'Buy', class: 'btn-primary btn btn-large'
+  / .well.span6.order_form style='background-color:#edeef9'
+  /     = simple_form_for @sell_order, url: stock_sell_path(stock_id: params[:id]), html: { class: 'form-horizontal'} do |f|
+  /     .price-info.stock-trend[data-stock-symbol=@stock.symbol]
+  /       .name Current price:
+  /       .current-price#buy_price =  number_to_currency(@stock.current_price)
+
+  /     = f.input :volume, :label => 'Volume to sell', input_html: { value: 1, maxlength: 10 }
+  /     div.price-info
+  /       .name Total price to purchase:
+  /       #buy_price_calculation = number_to_currency(@stock.current_price)
+
+  /     div.price-info
+  /       .name Your current cash:
+  /       #current_cash = number_to_currency(current_user.account_balance)
+  /     div.price-info
+  /       .name Cash after purchase:
+  /       #cash_after_purchase_calculation = number_to_currency(current_user.account_balance.to_f-@stock.current_price.to_f)
+
+
 
 javascript:
   $(function() {

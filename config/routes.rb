@@ -1,5 +1,4 @@
 MyWinningTrade::Application.routes.draw do
-
   root to: redirect('/dashboard')
   get '/dashboard', to: 'stock#dashboard'
 
@@ -16,6 +15,6 @@ MyWinningTrade::Application.routes.draw do
       get :search
     end
 
-    resource :buy, only: :create
+    resource :order, only: :create
   end
 end
