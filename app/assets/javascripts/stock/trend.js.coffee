@@ -5,7 +5,6 @@ $ ->
     finance.subscribe e, symbol, (payload) =>
 
       stock_details = payload[symbol].table
-      # TODO more here...
       $('.current-price',e).html('$' + stock_details.current_price)
 
   $('#buy_volume').on 'keyup change', (event) ->
