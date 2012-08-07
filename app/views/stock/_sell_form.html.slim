@@ -1,0 +1,29 @@
+= simple_form_for @sell_order, url: stock_sell_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'sell_form'} do |f|
+  .control-group.stock-trend data-stock-symbol=@stock.symbol
+    label.control-label Current price
+    .controls
+      .current-price#sell_price = number_to_currency(@stock.current_bid)
+
+  = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
+
+  .control-group
+    label.control-label Total price to sell
+    .controls
+      #sell_price_calculation = number_to_currency(@stock.current_bid)
+
+  .control-group
+    label.control-label Your current cash
+    .controls
+      #current_cash = number_to_currency(current_user.account_balance)
+
+  .control-group
+    label.control-label Shares remaining after sale
+    .controls
+      #shares_remaining = @user_stock.shares_owned - 1
+
+  .control-group
+    label.control-label Your cash after selling:
+    .controls
+    #cash_sell_calculation = number_to_currency(current_user.account_balance.to_f+@stock.current_bid.to_f)
+
+  = f.submit 'Sell', class: 'btn-primary btn btn-large'

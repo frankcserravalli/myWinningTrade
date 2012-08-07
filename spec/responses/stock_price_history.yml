@@ -148,7 +148,7 @@ http_interactions:
           :572.5100,\"open\" :572.7500,\"volume\" :15400 } \n, { \"Timestamp\" :1343399640,\"close\"
           :572.5000,\"high\" :572.5000,\"low\" :572.5000,\"open\" :572.5000,\"volume\"
           :500 } \n\n]\n} "
-        net_http_res: &70179901846720 !ruby/object:Net::HTTPOK
+        net_http_res: &70111956849940 !ruby/object:Net::HTTPOK
           http_version: '1.0'
           code: '200'
           message: OK
@@ -297,15 +297,15 @@ http_interactions:
               :572.5100,\"open\" :572.7500,\"volume\" :15400 } \n, { \"Timestamp\"
               :1343399640,\"close\" :572.5000,\"high\" :572.5000,\"low\" :572.5000,\"open\"
               :572.5000,\"volume\" :500 } \n\n]\n} "
-            net_http_res: *70179901846720
-            args: &70179902561440
+            net_http_res: *70111956849940
+            args: &70111957718500
               :method: :get
               :url: http://chartapi.finance.yahoo.com/instrument/1.0/aapl/chartdata;type=quote;range=1d/json
               :headers: {}
             code: 200
           read: true
           __read_body_previously_called: true
-        args: *70179902561440
+        args: *70111957718500
         code: 200
     http_version: '1.1'
   recorded_at: Fri, 27 Jul 2012 14:34:33 GMT
@@ -430,41 +430,8 @@ http_interactions:
       - application/octet-stream
     body:
       encoding: US-ASCII
-      string: !ruby/string
-        str: ! "\"Apple Inc.\",\"AAPL\",599.26,599.26,\"587.82 - 599.44\",\"353.02
-          - 644.00\",591.00,585.16,4556744,N/A,42.548,\"NasdaqNM\",\"10:12am\",44.26,52.50,15.26,13.75,554.203,589.525,\"7/30/2012\"\r\n"
-        net_http_res: &70179903007400 !ruby/object:Net::HTTPOK
-          http_version: '1.0'
-          code: '200'
-          message: OK
-          header:
-            date:
-            - Mon, 30 Jul 2012 14:27:45 GMT
-            p3p:
-            - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM
-              DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
-              IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
-            cache-control:
-            - private
-            connection:
-            - close
-            transfer-encoding:
-            - chunked
-            content-type:
-            - application/octet-stream
-          body: !ruby/string
-            str: ! "\"Apple Inc.\",\"AAPL\",599.26,599.26,\"587.82 - 599.44\",\"353.02
-              - 644.00\",591.00,585.16,4556744,N/A,42.548,\"NasdaqNM\",\"10:12am\",44.26,52.50,15.26,13.75,554.203,589.525,\"7/30/2012\"\r\n"
-            net_http_res: *70179903007400
-            args: &70179902452300
-              :method: :get
-              :url: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=nsab2mwopvyext1e7e8e9rm4m3d1
-              :headers: {}
-            code: 200
-          read: true
-          __read_body_previously_called: true
-        args: *70179902452300
-        code: 200
+      string: ! "\"Apple Inc.\",\"AAPL\",599.26,599.26,\"587.82 - 599.44\",\"353.02
+        - 644.00\",591.00,585.16,4556744,N/A,42.548,\"NasdaqNM\",\"10:12am\",44.26,52.50,15.26,13.75,554.203,589.525,\"7/30/2012\"\r\n"
     http_version: '1.1'
   recorded_at: Mon, 30 Jul 2012 14:27:40 GMT
 - request:
@@ -645,4 +612,42 @@ http_interactions:
         Ljc3LDQ0Ny4yOCwxMDcxMDIzMwo=
     http_version: '1.1'
   recorded_at: Thu, 02 Aug 2012 09:07:47 GMT
+- request:
+    method: get
+    uri: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=nsab2bb3mwopvyext1e7e8e9rm4m3d1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 06 Aug 2012 13:58:02 GMT
+      p3p:
+      - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
+        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
+        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      cache-control:
+      - private
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/octet-stream
+    body:
+      encoding: US-ASCII
+      string: ! "\"Apple Inc.\",\"AAPL\",617.95,617.95,617.86,617.86,\"615.26 - 618.58\",\"353.02
+        - 644.00\",617.15,615.70,1161664,N/A,42.548,\"NasdaqNM\",\"9:43am\",44.16,52.53,15.27,14.47,560.827,594.096,\"8/6/2012\"\r\n"
+    http_version: '1.1'
+  recorded_at: Mon, 06 Aug 2012 13:57:55 GMT
 recorded_with: VCR 2.2.3

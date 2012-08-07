@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL,GOOG,fake&f=nsab2bb3mwopvyext1e7e8e9rm4m3d1
+    uri: http://download.finance.yahoo.com/d/quotes.csv?s=153MX&f=nsab2bb3mwopvyext1e7e8e9rm4m3d1
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Mon, 06 Aug 2012 13:58:22 GMT
+      - Mon, 06 Aug 2012 15:24:25 GMT
       p3p:
       - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
         TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
@@ -34,11 +34,7 @@ http_interactions:
       - application/octet-stream
     body:
       encoding: US-ASCII
-      string: ! "\"Apple Inc.\",\"AAPL\",618.04,618.04,617.95,617.95,\"615.26 - 618.58\",\"353.02
-        - 644.00\",617.15,615.70,1175754,N/A,42.548,\"NasdaqNM\",\"9:43am\",44.16,52.53,15.27,14.47,560.827,594.096,\"8/6/2012\"\r\n\"Google
-        Inc.\",\"GOOG\",641.32,641.32,640.92,640.92,\"639.22 - 641.29\",\"480.60 -
-        670.25\",639.85,641.33,151283,N/A,33.732,\"NasdaqNM\",\"9:43am\",42.53,49.39,11.77,19.01,604.049,591.142,\"8/6/2012\"\r\n\"FAKE\",\"FAKE\",N/A,N/A,N/A,N/A,\"N/A
-        - N/A\",\"N/A - N/A\",N/A,N/A,N/A,N/A,N/A,\"N/A\",\"N/A\",N/A,N/A,N/A,N/A,N/A,N/A,\"N/A\"\r\n"
+      string: ! "\"153MX\",\"153MX\",N/A,N/A,N/A,N/A,\"N/A - N/A\",\"N/A - N/A\",N/A,N/A,N/A,N/A,N/A,\"N/A\",\"N/A\",N/A,N/A,N/A,N/A,N/A,N/A,\"N/A\"\r\n"
     http_version: '1.1'
-  recorded_at: Mon, 06 Aug 2012 13:58:15 GMT
+  recorded_at: Mon, 06 Aug 2012 15:24:18 GMT
 recorded_with: VCR 2.2.3
