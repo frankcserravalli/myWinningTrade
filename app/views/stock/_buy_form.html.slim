@@ -1,4 +1,4 @@
-= simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form'} do |f|
+= simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'buy_form'} do |f|
   .control-group.stock-trend data-stock-symbol=@stock.symbol
     label.control-label Current price
     .controls
