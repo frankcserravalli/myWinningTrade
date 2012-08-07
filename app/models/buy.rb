@@ -1,7 +1,10 @@
 class Buy < Order
+
+  before_save :calculate_cost_basis, on: :create
+
   def place!(stock)
     order_price = volume.to_f * stock.current_price.to_f
-    unless user.account_balance >= order_price
+    if user.account_balance < order_price
       self.errors.add(:user, "Insufficient funds, $#{(order_price - user.account_balance).round} more required to complete purchase.")
       return false
     end
@@ -18,4 +21,10 @@ class Buy < Order
       end
     end
   end
+
+  protected
+  def calculate_cost_basis
+    self.cost_basis = (self.value / self.volume).abs
+  end
+
 end

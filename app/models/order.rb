@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
 
     # Value is the total effect on the account balance (i.e. negative for buys)
     value  :decimal, precision: 10, scale: 2, validates: :numericality
+    cost_basis :decimal, precision: 10, scale: 2
   end
 
   attr_accessible :user, :volume, :user_stock

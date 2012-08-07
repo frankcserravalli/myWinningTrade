@@ -8,16 +8,19 @@ describe 'UserStock' do
   	apple = Stock.create!(name: 'Apple Inc.', symbol: 'AAPL')
     user_stock = user.user_stocks.create!(stock: apple)
 
-    transaction_total = ((stock_price = 1) * (stock_volume = 5)) + transaction_fee
+    transaction_total = ((stock_price = 1.0) * (stock_volume = 5)) + transaction_fee
     transaction_total *= -1 # negative amount for buys
 
-    buy = Buy.create(user: user, user_stock: user_stock, price: stock_price, volume: stock_volume, value: transaction_total)
+    buy = Buy.new(user: user, user_stock: user_stock, volume: stock_volume)
+    buy.price = stock_price
+    buy.value = transaction_total
+    buy.save!
 
-    buy.cost_basis.should == transaction_total / stock_volume
-
+    buy.cost_basis.should == (transaction_total / stock_volume).abs
   end
 
   it 'calculates the average cost basis for user_stock on a new buy order' do
+
   end
 
 end
