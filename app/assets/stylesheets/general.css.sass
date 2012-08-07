@@ -29,6 +29,17 @@ body
       margin-right: 10px
       em
         margin-right: 1em
+    .myportfolio
+      +background(linear-gradient(#7B946F, #59744c))
+      border: 1px solid #7B946F
+      width: 208px
+      height: 22px
+      display: block
+      float: right
+      margin: 1px 0 0 0
+      padding: 15px 10px 10px 10px
+      span
+        font-size: 12px
 
 h1.jumbo
   font-size: 60px
@@ -59,17 +70,39 @@ p.intro
 
 #advert
   width: 170px
-  height: 71px
+  height: 59px
   background: #e4e4e4
   float: right
   +border-radius(6px)
-  margin-bottom: -30px
+  margin-bottom: -21px
   color: #999
   padding: 30px
   text-align: center
   margin-top: 20px
+  border: 1px solid #CDD0D4
+  border-color: #E4E4E4 #CDD0D4 #C2C2C7 #E4E4E4
+
   
 h1, h2, h3 
   font-family: 'Shanti', 'open sans'
   color: #3c5063
 
+.sml_btn
+  +background(linear-gradient(#9aabbb, #7d91a3))
+  border: #74889b 1px solid
+  padding: 5px 12px
+  display: inline-block
+  font-weight: bold
+  +border-radius(2px)
+  margin-right: 6px
+  font-size: 10px
+  color: #535050
+  text-shadow: 0 0 1px #fff
+  +transition((background 0.4s), (color 0.4s), (border 0.4s))
+  &:hover 
+    cursor: pointer
+    +background(linear-gradient(#3c5063, #445d74))
+    text-shadow: 0 0 1px #5c6f81
+    border: #2d4359 1px solid
+    text-decoration: none
+    color: #a3b5c6
