@@ -3,10 +3,10 @@
 #ember
 
 .row
-  .well.span6.order_form style='background-color:#edeef9'
+  .buybox.span6.order_form 
     h2 Buy #{@stock.name}
     = render partial: 'buy_form'
-  .well.span6.order_form style='background-color:#edeef9'
+  .buybox.span6.order_form
     h2 Sell #{@stock.name}
     - if @user_stock && @user_stock.shares_owned.to_i > 0
       p#current_shares You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
