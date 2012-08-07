@@ -29,10 +29,12 @@
         font-size: 10px
         color: #535050
         text-shadow: 0 0 1px #fff
+        +transition((background 0.4s), (color 0.4s), (border 0.4s))
         &:hover 
           cursor: pointer
-          background: #3c5063
+          +background(linear-gradient(#3c5063, #445d74))
           text-shadow: 0 0 1px #9aabbb
+          border: #2d4359 1px solid
           text-decoration: none
           color: #fff
       // add spacing on list items except last child
