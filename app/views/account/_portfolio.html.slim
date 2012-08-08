@@ -1,7 +1,6 @@
 #portfolio_holder
   a.sml_btn.pull-right Export
   h2 Portfolio
-  hr
   - user_stocks = current_user.user_stocks.includes(:stock)
   ul#portfolio
     - user_stocks.each do |user_stock|

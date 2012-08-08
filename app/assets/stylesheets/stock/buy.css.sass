@@ -2,47 +2,78 @@
   +boxify
   float: left
   width: 438px
-  min-height: 415px
+  min-height: 406px
   h2
     color: #59744C
     text-shadow: 0 1px 1px #fff
+  .order-form
+    border-color: #b2bfcb
+    background: #fff
+    +boxify
+    padding: 10px 15px
+    margin-top: 8px
+    min-height: 258px
+    .control-group
+      border-bottom: 1px solid #efefef
+      width: 414px!important
+      display: block
+      margin-bottom: 14px
+    .control-label
+      width: 178px
+      text-align: left
+      float: left
+    .controls
+      margin-left: 0
+      width: 150px
+      float: left
+      div
+        border: 0
+      input.numeric
+        width: 30px
+        margin-top: -5px
+      .current-price
+        color: #59744C
+      #buy_price_calculation, #current_cash, #cash_buy_calculation, #sell_price_calculation, #shares_remaining, #cash_sell_calculation
+        font-weight: bold
+        line-height: 26px
 
-.sellbox h2
-  color: #a7743e
-  font-weight: bold
-  span
-    font-weight: normal
+    .invalid
+      color: red
+    button.btn.btn-large, input[type="submit"].btn.btn-large 
+      +transition(background 0.4s)
+      +background(linear-gradient(#7B946F, #59744c))
+      border: 1px solid #4c6540
+      border-color: #7B946F #4c6540 #4c6540 #7B946F
+      width: 108px
+      font-family: 'Shanti', 'open sans'
+      display: block
+      text-transform: uppercase
+      text-shadow: 1px 0  1px #222
+      font-weight:bold
+      border-radius: 2px
+      float: right
+      margin: 1px 0 0 0
+      padding: 8px
+      &:hover
+        +background(linear-gradient(#59744c, #7B946F))
+        
+.sellbox 
+  h2
+    color: #a7743e
+    font-weight: bold
+    span
+      font-weight: normal
+  .order-form 
+    height: 301px
+    .controls
+      .current-price
+        color: #A7743E
+    button.btn.btn-large, input[type="submit"].btn.btn-large
+      +transition(background 0.4s)
+      +background(linear-gradient(#b37a3e, #99632a))
+      border: 1px solid #4c6540
+      border-color: #99632a #8b4e0e #8b4e0e #99632a
+      &:hover
+        +background(linear-gradient(#99632a, #b37a3e))
   
 
-.order-form
-  border-color: #b2bfcb
-  +boxify
-  padding: 10px
-  margin-top: 8px
-  min-height: 280px
-  .control-group
-    border-bottom: 1px solid #efefef
-    width: 170px!important
-    display: block
-  .controls
-    margin-left: 170px
-
-
-  .invalid
-    color: red
-  button.btn.btn-large, input[type="submit"].btn.btn-large 
-    +transition(background 0.4s)
-    +background(linear-gradient(#7B946F, #59744c))
-    border: 1px solid #4c6540
-    border-color: #7B946F #4c6540 #4c6540 #7B946F
-    width: 108px
-    font-family: 'Shanti', 'open sans'
-    display: block
-    text-transform: uppercase
-    font-weight:bold
-    border-radius: 2px
-    float: right
-    margin: 1px 0 0 0
-    padding: 8px
-    &:hover
-      +background(linear-gradient(#59744c, #7B946F))
