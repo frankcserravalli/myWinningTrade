@@ -22,6 +22,16 @@ class User < ActiveRecord::Base
   	end
   end
 
+  def export_orders_as_csv
+    CSV.generate do |csv|
+      csv << ['Symbol', 'Name', 'Type', 'Time', 'Volume', 'Bid/Ask Price', 'Net Asset Value']
+
+      orders.includes(:stock).all.each do |order|
+        csv << [order.stock.symbol, order.stock.name, order.type.titleize, order.created_at, order.volume, order.price, order.value.abs].collect(&:to_s)
+      end
+    end
+  end
+
   protected
   def create_initial_balance
     self.account_balance ||= OPENING_BALANCE
