@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   belongs_to :user_stock
   belongs_to :user
 
+  has_one :stock, through: :user_stock
+
   structure do
     price  :decimal, precision: 10, scale: 2, validates: :numericality
     volume 10**12, validates: { numericality: { greater_than: 0 } }
@@ -9,6 +11,7 @@ class Order < ActiveRecord::Base
 
     # Value is the total effect on the account balance (i.e. negative for buys)
     value  :decimal, precision: 10, scale: 2, validates: :numericality
+    timestamps
   end
 
   attr_accessible :user, :volume, :user_stock

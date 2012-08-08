@@ -1,5 +1,6 @@
 hr
 h2 Portfolio
+= link_to('Export CSV', orders_path)
 - user_stocks = current_user.user_stocks.includes(:stock)
 ul#portfolio
   - user_stocks.each do |user_stock|
