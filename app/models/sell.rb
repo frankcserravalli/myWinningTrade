@@ -1,4 +1,7 @@
 class Sell < Order
+
+  after_save :reduce_buy_volume_remaining, on: :create
+
   def place!(stock)
     order_price = volume.to_f * stock.current_price.to_f
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
@@ -20,4 +23,24 @@ class Sell < Order
       end
     end
   end
+
+  protected
+  def reduce_buy_volume_remaining
+    # TODO replace this with an association:
+    # Also, migrant doesnt seem to add created_at, so we're sorting by id here
+    buys = Buy.where(user_stock_id: self.user_stock.id).with_volume_remaining.order(:id)
+
+    volume_to_reduce = self.volume
+    buys.each do |buy|
+      if volume_to_reduce > 0
+        buy_volume_remaining = buy.volume_remaining
+        reducable_amount = [buy_volume_remaining, volume_to_reduce].min
+        buy_volume_remaining -= reducable_amount
+        volume_to_reduce -= reducable_amount
+        puts buy_volume_remaining
+        buy.update_attribute :volume_remaining, buy_volume_remaining
+      end
+    end
+  end
+
 end

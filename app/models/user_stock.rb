@@ -1,6 +1,7 @@
 class UserStock < ActiveRecord::Base
   belongs_to :user
   belongs_to :stock
+  has_many :orders
 
   attr_accessible :stock
 
