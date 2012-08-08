@@ -1,5 +1,5 @@
 #portfolio_holder
-  a.sml_btn.pull-right Export
+  = link_to('Export CSV', orders_path)
   h2 Portfolio
   - user_stocks = current_user.user_stocks.includes(:stock)
   ul#portfolio
@@ -12,6 +12,3 @@
           .portfolio-cell.user_stock-shares_owned = user_stock.shares_owned
           .portfolio-cell.stock-current_price = 'TODO'
           .portfolio-cell.stock-current_value = 'TODO'
-
-  br
-  br
