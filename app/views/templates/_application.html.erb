@@ -1,8 +1,8 @@
 <script type='text/x-handlebars' data-template-name='application'>
 
 <div class="row">
-  <div class="span12">
-    <h1 class="largename">{{stock.name}}</h1>
+  <div class="span12 graph_header">
+    <h1>{{stock.name}}</h1>
     {{#with stock}}{{view App.StockTrendView stockBinding="this"}}{{/with}}
   </div>
 </div>
@@ -14,10 +14,8 @@
   <div class="span3">{{outlet stockListOutlet}}</div>
 </div>
 
-<div style='display:none'>
 {{#with stock}}
   {{view App.StockTableView}}
 {{/with}}
-</div>
 
 </script>

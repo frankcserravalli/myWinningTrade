@@ -4,10 +4,15 @@
 
 .row
   .buybox.span6.order_form 
-    h2 Buy #{@stock.name}
+    h2
+      ' Buy 
+      span #{@stock.name}
+    p Prices may be delayed slightly from the current exchange prices
     = render partial: 'buy_form'
-  .buybox.span6.order_form
-    h2 Sell #{@stock.name}
+  .sellbox.span6.order_form
+    h2
+      ' Sell 
+      span #{@stock.name}
     - if @user_stock && @user_stock.shares_owned.to_i > 0
       p#current_shares You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
       = render partial: 'sell_form'
