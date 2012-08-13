@@ -1,5 +1,6 @@
 App.StockListView = Ember.View.extend
   templateName: 'stock_list'
+  classNames: 'stock-compare-wrapper'
   didInsertElement: ->
     text_field = $('.autocomplete',@$())
     text_field.autocomplete({

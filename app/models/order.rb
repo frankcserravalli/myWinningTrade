@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
   belongs_to :user_stock
   belongs_to :user
 
+  has_one :stock, through: :user_stock
+
   structure do
     price  :decimal, precision: 10, scale: 2, validates: :numericality
     volume 10**12, validates: { numericality: { greater_than: 0 } }
@@ -14,7 +16,6 @@ class Order < ActiveRecord::Base
     value  :decimal, precision: 10, scale: 2, validates: :numericality
     cost_basis :decimal, precision: 10, scale: 2
     capital_gain :decimal, precision: 10, scale: 2
-
     timestamps
   end
 

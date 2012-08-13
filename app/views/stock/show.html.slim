@@ -1,15 +1,22 @@
 = render partial: 'search'
 
-hr
+.row
+  .span12
+    #chartview
 
 #ember
 
 .row
-  .well.span6.order_form style='background-color:#edeef9'
-    h2 Buy #{@stock.name}
+  .buybox.span6.order_form
+    h2
+      ' Buy
+      span #{@stock.name}
+    p Prices may be delayed slightly from the current exchange prices
     = render partial: 'buy_form'
-  .well.span6.order_form style='background-color:#edeef9'
-    h2 Sell #{@stock.name}
+  .sellbox.span6.order_form
+    h2
+      ' Sell
+      span #{@stock.name}
     - if @user_stock && @user_stock.shares_owned.to_i > 0
       p#current_shares You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
       = render partial: 'sell_form'
@@ -21,6 +28,16 @@ javascript:
     App.rootElement = '#ember';
     App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
     App.initialize();
-  })
+  });
 
+  var tradingview_widget_options = {};
+  tradingview_widget_options.width  = 940;
+  tradingview_widget_options.height = 450;
+  tradingview_widget_options.symbol = '#{@stock.symbol}';
+  tradingview_widget_options.interval = 'D';
+  tradingview_widget_options.toolbar_bg = '#E4E8EB';
+  tradingview_widget_options.allow_symbol_change = true;
+  tradingview_widget_options.container_id = 'chartview';
+  tradingview_widget_options.hide_side_toolbar = false;
+  new TradingView.widget(tradingview_widget_options);
 = render partial: 'account/portfolio'

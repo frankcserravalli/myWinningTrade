@@ -1,17 +1,14 @@
-= @portfolio.inspect
-hr
-h2 Portfolio
-- user_stocks = current_user.user_stocks.includes(:stock)
-ul#portfolio
-  - user_stocks.each do |user_stock|
-    - stock = user_stock.stock
-    li
-      = link_to stock_path(stock.symbol) do
-        .portfolio-cell.stock-name = stock.name
-        .portfolio-cell.stock-symbol = stock.symbol
-        .portfolio-cell.user_stock-shares_owned = user_stock.shares_owned
-        .portfolio-cell.stock-current_price = 'TODO'
-        .portfolio-cell.stock-current_value = 'TODO'
-
-br
-br
+#portfolio_holder
+  = link_to('Export CSV', orders_path)
+  h2 Portfolio
+  - user_stocks = current_user.user_stocks.includes(:stock)
+  ul#portfolio
+    - user_stocks.each do |user_stock|
+      - stock = user_stock.stock
+      li
+        = link_to stock_path(stock.symbol) do
+          .portfolio-cell.stock-name = stock.name
+          .portfolio-cell.stock-symbol = stock.symbol
+          .portfolio-cell.user_stock-shares_owned = user_stock.shares_owned
+          .portfolio-cell.stock-current_price = 'TODO'
+          .portfolio-cell.stock-current_value = 'TODO'

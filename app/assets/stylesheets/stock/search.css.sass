@@ -1,5 +1,6 @@
 #stock-search
   $font-size: 24px
+  margin: 20px 0 10px
 
   $input-padding-vertical: 10px
   $input-padding-horizontal: 10px
@@ -9,6 +10,7 @@
     padding: $input-padding-vertical $input-padding-horizontal
     width: 600px
     height: 40px
+    background: #fff
 
     // fix placeholder misalignment with input text
     $placeholder-padding-top: $input-padding-vertical - 3px
@@ -22,8 +24,8 @@
     height: 60px
     margin-left: 10px
 
-  .ui-autocomplete-loading
-    background: asset-url("textbox_spinner.gif", image) 98% center no-repeat
+.ui-autocomplete-loading
+  background: asset-url("textbox_spinner.gif", image) 98% center no-repeat
 
 .ui-autocomplete
   li, li:hover

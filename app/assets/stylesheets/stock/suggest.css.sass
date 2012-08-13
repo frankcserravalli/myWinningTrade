@@ -1,5 +1,8 @@
 #stock-suggest
-  background-color: whiteSmoke
+  +boxify
+  padding: 7px!important
+  width: 668px
+  margin-top: -6px
 
   // display label and ul elements in a single inline row
   label, ul
@@ -11,11 +14,33 @@
   label
     padding: 0 20px
     padding-top: 1px /* hack to line up with ul */
-    text-transform: uppercase
     color: #777
 
   ul
     li
+      a
+        +background(linear-gradient(#9aabbb, #7d91a3))
+        text-transform: uppercase
+        border: #74889b 1px solid
+        padding: 5px 12px
+        display: inline-block
+        font-weight: bold
+        +border-radius(2px)
+        margin-right: 6px
+        font-size: 10px
+        color: #535050
+        text-shadow: 0 0 1px #fff
+        +transition((background 0.4s), (color 0.4s), (border 0.4s))
+        &:hover 
+          cursor: pointer
+          +background(linear-gradient(#3c5063, #445d74))
+          text-shadow: 0 0 1px #5c6f81
+          border: #2d4359 1px solid
+          text-decoration: none
+          color: #a3b5c6
       // add spacing on list items except last child
       &:not(:last-child)
         margin-right: 10px
+
+
+        

@@ -6,7 +6,7 @@
   {{/if}}
 
   {{#unless stocksIsEmpty}}
-    <div class="btn-group">
+    <div class="btn-group time_tab">
       <button {{bindAttr class="buttonHistoricalClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='historical'>Historical</button>
       <button {{bindAttr class="buttonLiveClasses"}} {{action toggleCurrentPeriod target="controller"}} data-period='live'>Intraday</button>
     </div>

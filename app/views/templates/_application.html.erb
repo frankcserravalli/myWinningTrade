@@ -1,19 +1,5 @@
 <script type='text/x-handlebars' data-template-name='application'>
 
-<div class="row">
-  <div class="span12">
-    <h1>{{stock.name}}</h1>
-    {{#with stock}}{{view App.StockTrendView stockBinding="this"}}{{/with}}
-  </div>
-</div>
-
-<br />
-
-<div class="row">
-  <div class="span9">{{outlet graphOutlet}}</div>
-  <div class="span3">{{outlet stockListOutlet}}</div>
-</div>
-
 {{#with stock}}
   {{view App.StockTableView}}
 {{/with}}
