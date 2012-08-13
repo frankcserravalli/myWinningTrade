@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   	end
   end
 
+  def display_name
+    (name.blank?)? email : name
+  end
+
   def export_orders_as_csv
     CSV.generate do |csv|
       csv << ['Symbol', 'Name', 'Type', 'Time', 'Volume', 'Bid/Ask Price', 'Net Asset Value']
