@@ -1,8 +1,10 @@
 class Buy < Order
 
+  scope :with_volume_remaining, where{ volume_remaining > 0 }
+
   before_save :calculate_cost_basis, on: :create
   before_save :set_volume_remaining, on: :create
-  scope :with_volume_remaining, where{ volume_remaining > 0 }
+  after_save :recalculate_user_stock_cost_basis, on: :create
 
   def place!(stock)
     order_price = volume.to_f * stock.current_price.to_f
@@ -18,9 +20,7 @@ class Buy < Order
       user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_owned, self.user_stock.shares_owned.to_i + volume.to_i)
 
-      save.tap do |successful|
-        raise ActiveRecord::Rollback unless successful
-      end
+      save.tap { |successful| raise ActiveRecord::Rollback unless successful }
     end
   end
 
@@ -31,6 +31,10 @@ class Buy < Order
 
   def set_volume_remaining
     self.volume_remaining = self.volume
+  end
+
+  def recalculate_user_stock_cost_basis
+    self.user_stock.recalculate_cost_basis!
   end
 
 end

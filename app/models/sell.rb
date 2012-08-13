@@ -18,17 +18,15 @@ class Sell < Order
       user.update_attribute(:account_balance, user.account_balance + order_price)
       self.user_stock.update_attribute(:shares_owned, self.user_stock.shares_owned.to_i - volume.to_i)
 
-      save.tap do |successful|
-        raise ActiveRecord::Rollback unless successful
-      end
+      save.tap { |successful| raise ActiveRecord::Rollback unless successful }
     end
   end
+
 
   protected
   def reduce_buy_volume_remaining
     # TODO replace this with an association:
-    # Also, migrant doesnt seem to add created_at, so we're sorting by id here
-    buys = Buy.where(user_stock_id: self.user_stock.id).with_volume_remaining.order(:id)
+    buys = Buy.where(user_stock_id: self.user_stock.id).with_volume_remaining.order(:created_at)
 
     volume_to_reduce = self.volume
     buys.each do |buy|

@@ -29,39 +29,48 @@ describe 'UserStock' do
     sell
   end
 
-  it 'sets the volume_remaining when creating a buy order' do
-    buy = new_buy(1.0, 50)
-    buy.volume_remaining.should == 50
+  describe 'buying' do
+
+    it 'sets the volume_remaining when creating a buy order' do
+      buy = new_buy(1.0, 50)
+      buy.volume_remaining.should == 50
+    end
+
+    it 'calculates the cost basis for a new buy order' do
+      stock_price = 1.0
+      stock_volume = 50
+      buy = new_buy(stock_price, stock_volume)
+      buy.cost_basis.should == cost_basis(stock_price, stock_volume)
+    end
+
+    it 'recalculates the average cost basis for user_stock on a new buy order' do
+      first_buy = new_buy(1.0, 50)
+      user_stock.reload.cost_basis.should == first_buy.cost_basis
+
+      second_buy = new_buy(1.1, 50)
+
+      recalculated_cost_basis = (56.0 + 61.0) / (50 + 50)
+      user_stock.reload.cost_basis.should == recalculated_cost_basis
+    end
+
   end
 
-  it 'subtracts from volume_remaining when new sell order is created' do
-    buy = new_buy(1.0, 50)
-    sell = new_sell(1.0, 40)
-    buy_id = buy.id
-    puts buy_id
-    b = Buy.find(buy_id)
-    puts b.inspect
-  end
+  describe 'selling' do
 
-  it 'subtracts from volume_remaining on multiple buys when a new sell order is created' do
-  end
+    it 'subtracts from volume_remaining when new sell order is created' do
+      buy = new_buy(1.0, 50)
+      sell = new_sell(1.0, 40)
+      buy.reload.volume_remaining.should == 10
+    end
 
+    it 'subtracts from volume_remaining on multiple buys when a new sell order is created' do
+      # creates multiple sell orders
+    end
 
-  it 'calculates the cost basis for a new buy order' do
-    stock_price = 1.0
-    stock_volume = 50
-    buy = new_buy(stock_price, stock_volume)
-    buy.cost_basis.should == cost_basis(stock_price, stock_volume)
-  end
+    it 'recalculates'
 
-  pending 'calculates the average cost basis for user_stock on a new buy order' do
-    first_buy = new_buy(1.0, 50)
-    user_stock.cost_basis.should == buy.cost_basis
+    it 'calculates capital gain / loss for each sale'
 
-    second_buy = new_buy(1.5, 50)
-    #user_stock.cost_basis.should ==
-
-    raise user_stock.inspect
   end
 
 end
