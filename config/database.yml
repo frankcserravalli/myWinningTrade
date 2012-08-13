@@ -9,4 +9,5 @@ test:
   database: my_winning_trade_test
   user: platform45
   host: localhost
+  template: template0
 
