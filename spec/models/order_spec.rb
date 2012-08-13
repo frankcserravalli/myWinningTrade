@@ -10,6 +10,7 @@ describe "Order" do
   let(:user) { create(:user, account_balance: 50000) }
   let(:stock) { Stock.create!(name: 'Apple Inc.', symbol: 'AAPL') }
   let(:user_stock) { user.user_stocks.create!(stock: stock) }
+  let(:transaction_fee) { Order::TRANSACTION_FEE }
 
   context "buying" do
     before do
@@ -60,15 +61,16 @@ describe "Order" do
 
     it 'calculates capital gain / loss on each sale relating to its relevant buy' do
       current_price = @stock_details.current_price.to_f
-      buy = new_buy(current_price, 50, user, user_stock)
+      stock_volume = 50.0
+      buy = new_buy(current_price, stock_volume, user, user_stock)
 
-      cost_basis = ((current_price * 50) + 6) / 50
+      cost_basis = ((current_price * stock_volume) + transaction_fee) / stock_volume
       buy.cost_basis.should == cost_basis
 
       order = Sell.new(user: user, volume: 40, buy: buy)
       order.place!(@stock_details).should be_true
 
-      order.capital_gain.round(2).should == -(6 / 50.0).round(2) # since stock price hasn't changed
+      order.capital_gain.round(2).should == -(transaction_fee / stock_volume).round(2) # since stock price hasn't changed
 
     end
   end

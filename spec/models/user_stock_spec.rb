@@ -28,8 +28,8 @@ describe 'UserStock' do
 
       second_buy = new_buy(1.1, 50, user, user_stock)
 
-      recalculated_cost_basis = (56.0 + 61.0) / (50 + 50)
-      user_stock.reload.cost_basis.should == recalculated_cost_basis
+      recalculated_cost_basis = -(first_buy.value + second_buy.value) / (first_buy.volume + second_buy.volume)
+      user_stock.reload.cost_basis.round(2).should == recalculated_cost_basis.round(2)
     end
   end
 

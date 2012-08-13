@@ -1,10 +1,11 @@
 class SellTransaction
   include ActiveModel::Validations
   def persisted; false; end
-  attr_accessor :price, :volume, :value, :user, :stock, :user_stock
-
+  
+  ATTRIBUTES = [:price, :volume, :value, :user, :stock, :user_stock]
+  attr_accessor *ATTRIBUTES
   def initialize(attributes = {})
-    attributes.each { |name, value| send("#{name}=", value) }
+    attributes.each { |name, value| send("#{name}=", value) if ATTRIBUTES.include?(name.to_sym) }
   end
 
   def place!(stock)
