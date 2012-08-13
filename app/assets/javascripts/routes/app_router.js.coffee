@@ -7,5 +7,3 @@ App.Router = Ember.Router.extend
         stock.setProperties(App.payload)
         router.get('applicationController').set('stock',stock)
         router.get('stockListController').get('stocks').pushObject(stock)
-        router.get('applicationController').connectOutlet('graphOutlet','graph')
-        router.get('applicationController').connectOutlet('stockListOutlet','stockList')
