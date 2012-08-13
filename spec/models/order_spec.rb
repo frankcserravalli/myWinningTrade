@@ -1,20 +1,19 @@
 require 'spec_helper'
 
 describe "Order" do
-  before do
-    @user = create(:user)
-    @user.update_attribute(:account_balance, 50000)
-  end
-
   before(:all) do
     VCR.use_cassette('quote') do
       @stock_details = Finance.current_stock_details('AAPL')
     end
   end
 
+  let(:user) { create(:user, account_balance: 50000) }
+  let(:stock) { Stock.create!(name: 'Apple Inc.', symbol: 'AAPL') }
+  let(:user_stock) { user.user_stocks.create!(stock: stock) }
+
   context "buying" do
     before do
-      @order = Buy.new(user: @user, volume: 2)
+      @order = Buy.new(user: user, volume: 2)
     end
 
     it "should reflect a credit for buying a stock" do
@@ -27,18 +26,17 @@ describe "Order" do
     it "should import a system stock if it does not yet exist" do
       @order.place!(@stock_details)
 
-      @user.stocks.first.should_not be_nil
-      @user.user_stocks.first.shares_owned.should == 2
+      user.stocks.first.should_not be_nil
+      user.user_stocks.first.shares_owned.should == 2
     end
 
     it "should accept a buy for elligible users and stocks" do
       @order.place!(@stock_details).should be_true
-
-      @user.reload.account_balance.to_f.should == 50000.0 + @user.orders.last.value.to_f
+      user.reload.account_balance.to_f.should == 50000.0 + user.orders.last.value.to_f
     end
 
     it "should not accept a buy for a user with insufficient funds" do
-      @user.update_attribute(:account_balance, 0)
+      user.update_attribute(:account_balance, 0)
       @order.place!(@stock_details).should be_false
       @order.errors.should_not be_empty
     end
@@ -51,26 +49,28 @@ describe "Order" do
   end
 
   context "selling" do
-    before do
-      @apple = Stock.create!(name: 'Apple Inc.', symbol: 'AAPL')
-      @user_stock = @user.user_stocks.create!(stock: @apple)
-      @user_stock.update_attribute(:shares_owned, 100)
+    it 'subtracts from buy volume_remaining when new sell order is created' do
+      buy = new_buy(1.0, 50, user, user_stock)
+
+      order = Sell.new(user: user, volume: 40, buy: buy)
+      order.place!(@stock_details).should be_true
+
+      buy.reload.volume_remaining.should == 10
     end
 
-    it "should sell stocks owned by the user" do
-      @order = Sell.new(volume: 50, user: @user)
+    it 'calculates capital gain / loss on each sale relating to its relevant buy' do
+      current_price = @stock_details.current_price.to_f
+      buy = new_buy(current_price, 50, user, user_stock)
 
-      @order.place!(@stock_details).should be_true
-      @user.reload
-      @user.account_balance.to_f.should == 50000.0 + @order.volume * @order.price
-      @user_stock.reload.shares_owned.should == 50
-    end
+      cost_basis = ((current_price * 50) + 6) / 50
+      buy.cost_basis.should == cost_basis
 
-    it "should not sell more shares than owned by the user" do
-      @order = Sell.new(volume: 1000, user: @user)
+      order = Sell.new(user: user, volume: 40, buy: buy)
+      order.place!(@stock_details).should be_true
 
-      @order.place!(@stock_details).should be_false
-      @order.errors.should_not be_empty
+      order.capital_gain.round(2).should == -(6 / 50.0).round(2) # since stock price hasn't changed
+
     end
   end
+
 end

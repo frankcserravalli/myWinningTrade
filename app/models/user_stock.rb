@@ -22,7 +22,7 @@ class UserStock < ActiveRecord::Base
   		total_volume += buy.volume_remaining
     end
 
-    new_cost_basis = total_cost / total_volume
+    new_cost_basis = total_volume == 0 ? 0 : (total_cost / total_volume)
 
   	self.update_attribute :cost_basis, new_cost_basis
   end

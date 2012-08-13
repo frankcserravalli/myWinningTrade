@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813093407) do
+ActiveRecord::Schema.define(:version => 20120813152344) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120813093407) do
     t.integer  "volume_remaining", :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "capital_gain",                   :precision => 10, :scale => 2
   end
 
   add_index "orders", ["type"], :name => "index_orders_on_type"

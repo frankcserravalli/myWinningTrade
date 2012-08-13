@@ -2,9 +2,9 @@ class Buy < Order
 
   scope :with_volume_remaining, where{ volume_remaining > 0 }
 
-  before_save :calculate_cost_basis, on: :create
-  before_save :set_volume_remaining, on: :create
-  after_save :recalculate_user_stock_cost_basis, on: :create
+  before_create :calculate_cost_basis
+  before_create :set_volume_remaining
+  after_create :recalculate_user_stock_cost_basis
 
   def place!(stock)
     order_price = volume.to_f * stock.current_price.to_f
@@ -30,7 +30,7 @@ class Buy < Order
   end
 
   def set_volume_remaining
-    self.volume_remaining = self.volume
+    self.volume_remaining ||= self.volume
   end
 
   def recalculate_user_stock_cost_basis
