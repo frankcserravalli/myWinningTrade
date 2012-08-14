@@ -1,6 +1,7 @@
 .infobar.navbar.navbar-fixed-top
   - cash = current_user.account_balance
   - portfolio_value = @portfolio[:current_value]
+  - portfolio_percent_gain = @portfolio[:percent_gain]
   - account_value = cash + portfolio_value
   .navbar-inner
     .container
@@ -17,4 +18,9 @@
       .myportfolio
          em Your Portfolio: 
          span.portfolio-value = number_to_currency(portfolio_value)
-         span.up (TODO)
+         ' &nbsp;
+         span
+           ' (
+           = '+' if portfolio_percent_gain > 0
+           = portfolio_percent_gain
+           '%)

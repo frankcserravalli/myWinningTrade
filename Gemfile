@@ -42,6 +42,8 @@ group :development do
   gem 'heroku'
 end
 
+gem 'high_voltage'
+
 group :test do
   gem 'mocha', require: false
   gem 'capybara'
