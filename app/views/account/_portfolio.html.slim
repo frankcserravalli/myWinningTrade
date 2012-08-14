@@ -1,14 +1,17 @@
 #portfolio_holder
   = link_to('Export CSV', orders_path)
   h2 Portfolio
-  - user_stocks = current_user.user_stocks.includes(:stock)
   ul#portfolio
-    - user_stocks.each do |user_stock|
-      - stock = user_stock.stock
+    - @portfolio[:stocks].each do |stock_symbol, s|
       li
-        = link_to stock_path(stock.symbol) do
-          .portfolio-cell.stock-name = stock.name
-          .portfolio-cell.stock-symbol = stock.symbol
-          .portfolio-cell.user_stock-shares_owned = user_stock.shares_owned
-          .portfolio-cell.stock-current_price = 'TODO'
-          .portfolio-cell.stock-current_value = 'TODO'
+        = link_to stock_path(stock_symbol) do
+          .portfolio-cell.stock-name = s[:name]
+          .portfolio-cell.stock-symbol = stock_symbol
+          .portfolio-cell.user_stock-shares_owned = s[:shares_owned]
+          .portfolio-cell.stock-current_price = s[:current_price]
+          .portfolio-cell.stock-current_value = s[:current_value]
+          .portfolio-cell.stock-cost_basis = s[:cost_basis]
+          .portfolio-cell.stock-capital_gain = s[:capital_gain].round(3)
+
+  - if @portfolio[:stocks].empty?
+    em Your portfolio is empty! Make some purchases to start trading stocks.

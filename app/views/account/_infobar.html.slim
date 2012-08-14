@@ -1,16 +1,11 @@
-- # this must be reworked at some point not to just override .navbar
 .infobar.navbar.navbar-fixed-top
   .navbar-inner
     .container
       span.navbar-text
         strong Account
       span.navbar-text
-        em Value
-        | $ x,xxx.xx
-
-      span.navbar-text
-        em Buying power
-        | $ x,xxx.xx
+        em Portfolio
+        = number_to_currency(@portfolio[:current_value])
 
       span.navbar-text
         em Cash

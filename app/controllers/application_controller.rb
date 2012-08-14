@@ -23,23 +23,26 @@ class ApplicationController < ActionController::Base
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
       stock_details = Finance.stock_details_for_list(stock_symbols)
 
-      stock_details.each do |stock_symbol, details|
+      p[:current_value] = 0
+      p[:stocks] = {}
+
+      user_stocks.each do |user_stock|
+        stock_symbol = user_stock.stock.symbol
+        details = stock_details[stock_symbol]
+        current_price = details.current_price.to_f
+        current_value = current_price * user_stock.shares_owned
+        p[:stocks][stock_symbol] = {
+          name: user_stock.stock.name,
+          current_price: current_price,
+          shares_owned: user_stock.shares_owned,
+          current_value: current_value,
+          cost_basis: user_stock.cost_basis,
+          capital_gain: current_price - user_stock.cost_basis
+        }
+        p[:current_value] += current_value
       end
-
-      # user_stock.current_value = shares_owned * current (bid?)
-      # user_stock.cost_basis
-      # portfolio.total_value = sum(user_stock.total_value)
-
-      # how to deal with multiple purchases of the same stock?
-      # --------------
-      # user_stock: cost_basis (purchase_price + fee) / num_stocks
-      # user_stock: net capital gain/loss [current_value - cost_basis]
-
     end
 
   end
 
 end
-
-# add cost_basis to 'buy'
-# on buy/sell: update cache cost_basis
