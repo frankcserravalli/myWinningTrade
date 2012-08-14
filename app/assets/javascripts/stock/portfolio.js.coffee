@@ -1,8 +1,9 @@
 $ ->
-  setInterval ($('.portfolio-list').each (index, stock_item) ->
+  update = ->
     $.ajax
       url: "/stock/portfolio"
       success: (html) ->
-        $(stock_item).replaceWith(html)
-  ), 5000
+        $(".portfolio-list").replaceWith(html)
+  setInterval(update, 60000)
+
 
