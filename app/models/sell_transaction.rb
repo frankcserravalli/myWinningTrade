@@ -1,7 +1,9 @@
 class SellTransaction
   include ActiveModel::Validations
-  def persisted; false; end
-  
+  include ActiveModel::Conversion
+
+  def persisted?; false; end
+
   ATTRIBUTES = [:price, :volume, :value, :user, :stock, :user_stock]
   attr_accessor *ATTRIBUTES
   def initialize(attributes = {})
