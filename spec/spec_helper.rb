@@ -66,3 +66,19 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include AuthenticationHelper
 end
+
+
+def cost_basis(stock_price, stock_volume)
+  (((stock_price * stock_volume) + Order::TRANSACTION_FEE) / stock_volume).abs
+end
+
+# probably should be using a factory here
+def new_buy(stock_price, stock_volume, user, user_stock)
+  transaction_total = (stock_price * stock_volume) + Order::TRANSACTION_FEE
+  transaction_total *= -1 # negative amount for buys
+  buy = Buy.new(user: user, user_stock: user_stock, volume: stock_volume)
+  buy.price = stock_price
+  buy.value = transaction_total
+  buy.save!
+  buy
+end

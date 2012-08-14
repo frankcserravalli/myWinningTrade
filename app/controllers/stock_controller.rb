@@ -8,7 +8,7 @@ class StockController < ApplicationController
     @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
 
     @buy_order = Buy.new
-    @sell_order = Sell.new
+    @sell_order = SellTransaction.new
 
     if @stock.nil?
       alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')

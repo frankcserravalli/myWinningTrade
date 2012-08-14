@@ -73,3 +73,10 @@ gem 'newrelic_rpm'
 # yahoo api
 gem 'yql'
 gem 'rest-client'
+
+# guard
+group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+end
