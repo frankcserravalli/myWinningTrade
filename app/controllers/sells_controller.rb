@@ -5,7 +5,7 @@ class SellsController < ApplicationController
     @order = SellTransaction.new(params[:sell].merge(user: current_user))
 
     if @order.place!(@stock_details)
-      flash[:notice] = "Successfully sold #{@order.volume} #{params[:stock_id]} for $#{@order.value.round(2)}"
+      flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
       redirect_to(stock_path(params[:stock_id]))
     else
       redirect_to(stock_path(params[:stock_id]), alert: "#{@order.errors.values.join}")

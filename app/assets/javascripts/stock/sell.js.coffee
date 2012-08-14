@@ -1,5 +1,5 @@
 $ ->
-  $('#sell_transaction_volume').on 'keyup change', (event) ->
+  $('#sell_volume').on 'keyup change', (event) ->
     volume = parseFloat($(event.target).val().replace('$', ''));
 
     if isNaN(volume) || volume <= 0

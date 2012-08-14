@@ -23,12 +23,12 @@ class SellTransaction
     end
 
     buys = user_stock.buys.with_volume_remaining.order(:created_at)
-    volume_remaining_to_sell = volume
+    volume_remaining_to_sell = volume.to_i
 
     Sell.transaction do
       # TODO transaction fee (rollback if not enough cash after this sale?)
       buys.each do |buy|
-      	this_sale_volume = [buy.volume, volume_remaining_to_sell].min
+      	this_sale_volume = [buy.volume.to_i, volume_remaining_to_sell].min
         sell = Sell.new(volume: this_sale_volume, user: user, buy: buy)
         sell.place!(stock)
         volume_remaining_to_sell -= this_sale_volume
