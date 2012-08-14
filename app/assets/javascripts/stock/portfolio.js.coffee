@@ -4,5 +4,5 @@ $ ->
       url: "/stock/portfolio"
       success: (html) ->
         $(stock_item).replaceWith(html)
-  ), 60000
+  ), 5000
 
