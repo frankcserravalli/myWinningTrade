@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Mon, 06 Aug 2012 13:58:21 GMT
+      - Tue, 14 Aug 2012 09:24:31 GMT
       p3p:
       - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
         TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
@@ -34,8 +34,46 @@ http_interactions:
       - application/octet-stream
     body:
       encoding: US-ASCII
-      string: ! "\"Apple Inc.\",\"AAPL\",618.04,618.04,617.95,617.95,\"615.26 - 618.58\",\"353.02
-        - 644.00\",617.15,615.70,1175754,N/A,42.548,\"NasdaqNM\",\"9:43am\",44.16,52.53,15.27,14.47,560.827,594.096,\"8/6/2012\"\r\n"
+      string: ! "\"Apple Inc.\",\"AAPL\",634.26,634.26,632.96,632.96,\"N/A - N/A\",\"354.24
+        - 644.00\",N/A,630.00,2385,0.42,42.548,\"NasdaqNM\",\"4:00pm\",44.11,52.50,15.31,14.81,571.091,601.681,\"8/13/2012\"\r\n"
     http_version: '1.1'
-  recorded_at: Mon, 06 Aug 2012 13:58:14 GMT
+  recorded_at: Tue, 14 Aug 2012 09:24:31 GMT
+- request:
+    method: get
+    uri: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=nsab2bb3mwopvyext1e7e8e9rm4m3d1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 14 Aug 2012 09:24:32 GMT
+      p3p:
+      - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
+        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
+        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      cache-control:
+      - private
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/octet-stream
+    body:
+      encoding: US-ASCII
+      string: ! "\"Apple Inc.\",\"AAPL\",634.26,634.26,632.96,632.96,\"N/A - N/A\",\"354.24
+        - 644.00\",N/A,630.00,2385,0.42,42.548,\"NasdaqNM\",\"4:00pm\",44.11,52.50,15.31,14.81,571.091,601.681,\"8/13/2012\"\r\n"
+    http_version: '1.1'
+  recorded_at: Tue, 14 Aug 2012 09:24:32 GMT
 recorded_with: VCR 2.2.3
