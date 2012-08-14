@@ -5,6 +5,8 @@ MyWinningTrade::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  get '/terms', to: 'pages#show', id: 'terms'
+
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
       get :price_history

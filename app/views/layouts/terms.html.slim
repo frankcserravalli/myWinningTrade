@@ -1,0 +1,8 @@
+doctype 5
+html
+  = render 'head'
+
+  body class=controller_name
+    = render partial: 'navbar'
+    .container
+      = yield

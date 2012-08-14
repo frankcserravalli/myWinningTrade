@@ -1,0 +1,16 @@
+#terms_wrapper
+  h1 Terms &amp; Conditions
+  .terms
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis nibh ac turpis aliquam cursus tincidunt sit amet odio. Phasellus vel velit vitae velit imperdiet porta. Cras eleifend, nunc ut convallis mollis, nunc risus gravida ligula, vitae aliquam orci diam quis magna. Vestibulum pellentesque, purus et suscipit eleifend, tellus sapien varius est, convallis malesuada turpis tortor vitae nisi. Nulla facilisi. Duis imperdiet scelerisque adipiscing. Donec a nulla mi. Cras tortor nisi, imperdiet in cursus aliquet, lobortis nec ligula. Fusce commodo pretium diam, ac auctor ipsum porta sit amet. Sed sit amet commodo purus.
+    p Mauris adipiscing erat vel turpis luctus sagittis in sodales enim. Donec vitae urna turpis, non suscipit urna. Aliquam erat volutpat. Pellentesque lacinia fermentum consectetur. Etiam rhoncus semper urna sed scelerisque. Donec adipiscing dui at tortor dictum eu eleifend augue ultricies. In posuere lorem at lorem hendrerit eu imperdiet libero viverra. Quisque auctor, magna eget semper facilisis, tortor elit ornare enim, sagittis commodo est felis id purus.
+    p Donec laoreet ipsum lorem. Ut ac quam quis risus luctus tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus in ipsum eget erat varius aliquet ac id quam. Quisque quis ligula libero. Aenean ullamcorper ornare nulla in tincidunt. Cras nec dolor lectus, vitae scelerisque elit. Fusce ac sapien diam.
+    p Quisque posuere, leo at sodales commodo, purus magna rutrum diam, sit amet porttitor nunc neque in tellus. Ut venenatis pellentesque nunc eu lobortis. Maecenas luctus arcu cursus eros commodo tempus. Proin ac erat urna. Pellentesque volutpat suscipit neque. Praesent et nisi in odio convallis convallis sit amet sit amet elit. Vivamus sit amet arcu a elit volutpat aliquet a a nisi. Integer non diam dolor, sit amet hendrerit odio. Aenean dictum, ligula eget tempor feugiat, purus felis vehicula tortor, at luctus dolor neque id eros. Aenean sed sem non quam pulvinar sollicitudin iaculis in lacus. Phasellus vitae auctor quam. Vestibulum laoreet, tellus non porttitor vestibulum, velit lacus posuere turpis, in rutrum ante mi nec magna. Sed vel ipsum vel sapien luctus suscipit.
+    p Nullam fringilla blandit fermentum. In metus leo, luctus sed fringilla tempor, elementum eu ligula. Quisque velit lacus, imperdiet in feugiat vel, imperdiet a dolor. Donec a quam a ligula accumsan adipiscing. Pellentesque sodales diam non risus scelerisque sed aliquam metus dictum. Nam imperdiet quam vel nibh fermentum ut semper sapien molestie. Aliquam et eros ac turpis tempus consectetur in et velit. Cras eget velit in mi placerat faucibus ut non enim. Aliquam erat volutpat. Sed quis lacinia lorem. Phasellus vitae nunc sem, nec commodo lacus. Nam vel justo enim.
+
+  - if current_user
+    = link_to dashboard_path, class: 'btn btn-large btn-primary' do
+      strong I accept,
+      '&nbsp;let me in already!
+  - else
+    = link_to root_path, class: 'btn btn-large btn-primary' do
+      '&raquo; Log in

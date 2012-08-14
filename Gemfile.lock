@@ -101,6 +101,7 @@ GEM
       rubyzip
     heroku-api (0.2.13)
       excon (~> 0.15.4)
+    high_voltage (1.1.1)
     hike (1.2.1)
     httpauth (0.1)
     i18n (0.6.0)
@@ -301,6 +302,7 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   heroku
+  high_voltage
   jasminerice
   jquery-rails
   jquery-ui-rails

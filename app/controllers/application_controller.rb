@@ -2,8 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login
 
-  protected
-  # authentication
+ # authentication
   helper_method :current_user
   def current_user
     @current_user ||= User.find_by_id(session[:current_user_id])
@@ -24,11 +23,13 @@ class ApplicationController < ActionController::Base
       stock_details = Finance.stock_details_for_list(stock_symbols)
 
       p[:current_value] = 0
+      p[:purchase_value] = 0
       p[:stocks] = {}
 
       user_stocks.each do |user_stock|
         stock_symbol = user_stock.stock.symbol
         details = stock_details[stock_symbol]
+        purchase_value = user_stock.cost_basis * user_stock.shares_owned
         current_price = details.current_price.to_f
         current_value = current_price * user_stock.shares_owned
         p[:stocks][stock_symbol] = {
@@ -37,10 +38,12 @@ class ApplicationController < ActionController::Base
           shares_owned: user_stock.shares_owned,
           current_value: current_value,
           cost_basis: user_stock.cost_basis,
-          capital_gain: current_price - user_stock.cost_basis
+          capital_gain: current_price - user_stock.cost_basis,
         }
         p[:current_value] += current_value
+        p[:purchase_value] += purchase_value
       end
+      p[:percent_gain] = ((p[:current_value] - p[:purchase_value]) / p[:purchase_value]).round(3)
     end
 
   end
