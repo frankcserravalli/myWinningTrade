@@ -26,6 +26,7 @@ class Finance
 
 		def stock_details_for_list(symbol_list)
 			symbol_list = symbol_list.collect { |symbol| sanitize_symbol(symbol) }
+			return [] if symbol_list.blank?
 
 			field_mappings = {
 				name: 'n',
