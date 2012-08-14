@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813152344) do
+ActiveRecord::Schema.define(:version => 20120814194014) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120813152344) do
     t.string  "provider",        :limit => 16
     t.string  "uid"
     t.decimal "account_balance",               :precision => 10, :scale => 2, :default => 50000.0
+    t.boolean "accepted_terms",                                               :default => false
   end
 
   add_index "users", ["provider"], :name => "index_users_on_provider"

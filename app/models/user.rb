@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     provider 	       'linkedin', limit: 16, index: true, validates: :presence
     uid 			       '1234', index: true, validates: :presence
     account_balance  :decimal, scale: 2, precision: 10, default: 0.0
+    accepted_terms   :boolean, default: false
   end
 
   attr_protected :account_balance
