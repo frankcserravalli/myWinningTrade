@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(:version => 20120813152344) do
     t.string   "type",             :limit => 15
     t.decimal  "value",                          :precision => 10, :scale => 2
     t.integer  "user_stock_id"
-    t.decimal  "cost_basis",                     :precision => 10, :scale => 2
-    t.integer  "volume_remaining", :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "cost_basis",                     :precision => 10, :scale => 2
+    t.integer  "volume_remaining", :limit => 8
     t.decimal  "capital_gain",                   :precision => 10, :scale => 2
   end
 
