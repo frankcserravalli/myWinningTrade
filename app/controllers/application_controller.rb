@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login
+  before_filter :require_acceptance_of_terms, if: :current_user
 
  # authentication
   helper_method :current_user
@@ -13,6 +14,11 @@ class ApplicationController < ActionController::Base
   end
   def require_login
   	redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
+  end
+
+  # authorization
+  def require_acceptance_of_terms
+    redirect_to terms_path and return unless current_user && current_user.accepted_terms?
   end
 
   before_filter :load_portfolio, if: :current_user

@@ -5,7 +5,8 @@ MyWinningTrade::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get '/terms', to: 'pages#show', id: 'terms'
+  get '/terms', to: 'terms#show', as: :terms
+  post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
