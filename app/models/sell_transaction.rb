@@ -26,7 +26,6 @@ class SellTransaction
     volume_remaining_to_sell = volume.to_i
 
     Sell.transaction do
-      # TODO transaction fee (rollback if not enough cash after this sale?)
       buys.each do |buy|
       	this_sale_volume = [buy.volume.to_i, volume_remaining_to_sell].min
         sell = Sell.new(volume: this_sale_volume, user: user, buy: buy)
@@ -35,6 +34,7 @@ class SellTransaction
         break if volume_remaining_to_sell == 0
       end
     end
+    self.user.update_attribute(:account_balance, self.user.reload.account_balance - Order::TRANSACTION_FEE)
 
     user_stock.reload.recalculate_cost_basis!
     return true

@@ -24,6 +24,9 @@
       p You do not have any shares to sell in #{@stock.name}
 
 javascript:
+  MyWinningTrade = new Object();
+  MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}
+
   $(function() {
     App.rootElement = '#ember';
     App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
