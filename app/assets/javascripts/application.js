@@ -16,14 +16,9 @@
 //= require moment
 //= require flash
 //= require finance
-//= require handlebars-1.0.0.beta.6.js
-//= require ember-latest
 //= require_self
-//= require ember_app
 //= require_tree .//stock
 //= require general
-
-App = Ember.Application.create();
 
 Number.prototype.formatMoney = function(c, d, t){
 var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;

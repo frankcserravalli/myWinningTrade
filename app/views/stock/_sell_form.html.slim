@@ -4,7 +4,7 @@
     .controls
       .current-price#sell_price = number_to_currency(@stock.current_bid)
 
-  = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
+  = f.input :volume, :label => "Volume to sell", input_html: { value: 1, maxlength: 10 }, as: :numeric
 
   .control-group
     label.control-label Income from sale
