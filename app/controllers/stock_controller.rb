@@ -30,4 +30,8 @@ class StockController < ApplicationController
     @suggestions = Finance.search_for_stock(params[:term].to_s)
     render json: @suggestions
   end
+
+  def portfolio
+    render partial: 'account/portfolio'
+  end
 end
