@@ -4,8 +4,6 @@
   .span12
     #chartview
 
-#ember
-
 .row
   .buybox.span6.order_form
     h2
@@ -23,15 +21,12 @@
     - else
       p You do not have any shares to sell in #{@stock.name}
 
-javascript:
-  MyWinningTrade = new Object();
-  MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}
+br
+= render partial: 'table'
 
-  $(function() {
-    App.rootElement = '#ember';
-    App.payload = #{raw @stock.marshal_dump.to_json}; //preload stock with data on hand
-    App.initialize();
-  });
+javascript:
+  var MyWinningTrade = new Object();
+  MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}
 
   var tradingview_widget_options = {};
   tradingview_widget_options.width  = 940;
@@ -43,4 +38,5 @@ javascript:
   tradingview_widget_options.container_id = 'chartview';
   tradingview_widget_options.hide_side_toolbar = false;
   new TradingView.widget(tradingview_widget_options);
+
 = render partial: 'account/portfolio'

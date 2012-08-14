@@ -68,7 +68,7 @@ gem 'omniauth-openid' # Google
 
 
 # monitoring
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 # yahoo api
 gem 'yql'

@@ -1,0 +1,42 @@
+.row
+  .span12
+    table.table.table-striped.table-compact.boxify
+      tbody
+        tr
+          th Stock Exchange
+          td = @stock.stock_exchange
+          th Earnings Share
+          td = @stock.earnings_share
+          th Dividend Yield
+          td = @stock.dividend_yield
+        tr
+          th EPS Estimate Current Year
+          td = @stock.eps_estimate_current_year
+          th EPS Estimate Next Year
+          td = @stock.eps_estimate_next_year
+          th EPS Estimate Next Quarter
+          td = @stock.eps_estimate_next_quarter
+
+        tr
+          th Days Range
+          td = @stock.days_range
+          th Open 
+          td = @stock.open
+          th Previous Close
+          td = @stock.previous_close
+
+        tr
+          th Last Trade Time
+          td = @stock.last_trade_time
+          th Last Trade Date
+          td = @stock.last_trade_date
+          th Year Range
+          td = @stock.year_range
+
+        tr
+          th PE Ratio
+          td = @stock.pe_ratio
+          th Volume
+          td = @stock.volume
+          th Financial statements
+          td = link_to "List of filings for #{@stock.symbol}", @stock.statements_url, target: '_new'
