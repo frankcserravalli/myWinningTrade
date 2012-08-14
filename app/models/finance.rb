@@ -64,6 +64,8 @@ class Finance
 					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
 					quote.current_price = quote.ask_realtime || quote.ask
 					quote.current_bid = quote.bid_realtime || quote.bid
+					quote.sale_price = quote.current_bid.to_f - Order::TRANSACTION_FEE
+
 					quote.statements_url = "http://investing.money.msn.com/investments/sec-filings/?symbol=#{quote.symbol}"
 
           # calculate stock trend

@@ -1,3 +1,5 @@
+#{User.last.inspect}
+
 $ ->
   $('#buy_volume').on 'keyup change', (event) ->
     volume = parseFloat($(event.target).val().replace('$', ''));
