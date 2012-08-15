@@ -12,7 +12,7 @@
           .portfolio-cell.stock-cost_basis title='Cost basis' = number_to_currency(s[:cost_basis])
           - stock_is_gaining = s[:percent_gain] >= 0
           .portfolio-cell.stock-capital_gain class=(stock_is_gaining ? 'trending-up' : 'trending-down') title='Capital gain'
-            = ' +' if stock_is_gaining
+            = '+' if stock_is_gaining
             = s[:percent_gain]
             ' %
 
