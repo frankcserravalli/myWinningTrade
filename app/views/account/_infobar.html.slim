@@ -17,11 +17,11 @@
         = number_to_currency(cash)
 
       .myportfolio class=(portfolio_is_gaining ? 'portfolio-trending-up' : 'portfolio-trending-down')
-         em Your Portfolio: 
+         'Your Portfolio: 
          span.portfolio-value = number_to_currency(portfolio_value)
          ' &nbsp;
          span class=(portfolio_is_gaining ? 'trending-up' : 'trending-down')
            ' (
            = '+' if portfolio_is_gaining
            = portfolio_percent_gain
-           '%)
+           '% )

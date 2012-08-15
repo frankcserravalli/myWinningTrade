@@ -37,8 +37,6 @@ body
     td
       border-right: 1px solid #dfdcdc
       width: 132px    
-      &:last-child
-        border-right: 0    
     th
       border-right: 1px solid #efefef
       width: 142px
@@ -53,6 +51,7 @@ table.boxify
   top: $navbarHeight
   color: #3c5063
   box-shadow: 0 1px 1px #4e6377
+  background: #fff
   .navbar-inner
     background: #3c5063
     border-top: 1px solid #4e6377
@@ -64,17 +63,24 @@ table.boxify
       em
         margin-right: 1em
     .myportfolio
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7B946F', endColorstr='#59744c')
-      +background(linear-gradient(#7B946F, #59744c))
-      border: 1px solid #7B946F
       width: 208px
       height: 22px
+      font-size: 12px
       display: block
       float: right
       margin: 1px 0 0 0
       padding: 15px 10px 10px 10px
       span
-        font-size: 12px
+        font-size: 11px
+      &.portfolio-trending-up
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7B946F', endColorstr='#59744c')
+        +background(linear-gradient(#7B946F, #59744c))
+        border: 1px solid #7B946F
+
+      &.portfolio-trending-down
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa432f', endColorstr='#953320')
+        +background(linear-gradient(#aa432f, #953320))
+        border: 1px solid #b52d13
 
  
 #footer
