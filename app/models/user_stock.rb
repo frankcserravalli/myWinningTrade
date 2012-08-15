@@ -5,6 +5,8 @@ class UserStock < ActiveRecord::Base
   has_many :buys
   has_many :sells
 
+  scope :with_shares_owned, where{{ shares_owned > 0 }}
+
   attr_accessible :stock
 
   structure do
