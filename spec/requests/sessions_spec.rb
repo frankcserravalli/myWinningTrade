@@ -8,6 +8,7 @@ describe 'Sessions' do
     fill_in 'email', with: 'joe@example.com'
     click_button 'Sign In'
 
+    click_link 'accept-terms'
     page.current_path.should == dashboard_path
 
     visit logout_path

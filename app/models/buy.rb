@@ -7,7 +7,7 @@ class Buy < Order
   after_create :recalculate_user_stock_cost_basis
 
   def place!(stock)
-    order_price = volume.to_f * stock.current_price.to_f
+    order_price = volume.to_f * stock.current_price.to_f + TRANSACTION_FEE
     if user.account_balance < order_price
       self.errors.add(:user, "Insufficient funds, $#{(order_price - user.account_balance).round} more required to complete purchase.")
       return false
