@@ -1,6 +1,6 @@
 #portfolio_holder
   +boxify
-  margin: 16px 0
+  margin: 16px 0 90px
   h2
     margin-bottom: 6px
   ul#portfolio
@@ -19,17 +19,24 @@
         background: #b2bfcb
       .portfolio-cell
         +inline-block
-        padding: 0 10px
+        padding: 3px 10px
         margin-right: 10px
-        &.stock-name
-          width: 280px
+        width: 90px 
         &.stock-symbol
-          width: 150px
-        &.user_stock-shares_owned
-          width: 50px
-          text-align: center
+          width: 120px
+        &.stock-name
+          width: 220px
         &.stock-current_price
+          width: 105px
+        &.user_stock-shares_owned
+          width: 125px
+        &.stock-cost_basis
           width: 100px
-        &.stock-current_value
-          width: 100px
+        &.stock-capital_gain
+          width: 65px
+          &.trending-up
+            color: green
+          &.trending-down
+            color: red
+        
           
