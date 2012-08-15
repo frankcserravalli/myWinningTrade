@@ -10,7 +10,11 @@
           .portfolio-cell.stock-current_price title='Current price' = number_to_currency(s[:current_price])
           .portfolio-cell.user_stock-shares_owned title='Shares you own' = "#{s[:shares_owned]} shares"
           .portfolio-cell.stock-cost_basis title='Cost basis' = number_to_currency(s[:cost_basis])
-          .portfolio-cell.stock-capital_gain.trending-up title='Capital gain' = "+ #{s[:capital_gain].round(3)} %"
+          - stock_is_gaining = s[:percent_gain] >= 0
+          .portfolio-cell.stock-capital_gain class=(stock_is_gaining ? 'trending-up' : 'trending-down') title='Capital gain'
+            = '+' if stock_is_gaining
+            = s[:percent_gain]
+            ' %
 
   - if @portfolio[:stocks].empty?
     em Your portfolio is empty! Make some purchases to start trading stocks.
