@@ -8,6 +8,11 @@
 .container
   .row
     .span6
+      .boxify
+        = render partial: 'table'
+      
+      
+    .span6
 
       ul.nav.nav-tabs
         li.active.buy = link_to 'Buy Stocks', '#buy', 'data-toggle' => 'tab'
@@ -32,15 +37,13 @@
           - else
             p You do not have any shares to sell in #{@stock.name}
 
-    .span6  
-      = render partial: 'table'
 
 javascript:
   var MyWinningTrade = new Object();
   MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}
 
   var tradingview_widget_options = {};
-  tradingview_widget_options.width  = 940;
+  tradingview_widget_options.width  = 920;
   tradingview_widget_options.height = 450;
   tradingview_widget_options.symbol = '#{@stock.symbol}';
   tradingview_widget_options.interval = 'D';
