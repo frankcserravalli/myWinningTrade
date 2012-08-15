@@ -3,9 +3,11 @@
     margin-right: 10px
 
   &.trending-up
-    color: green
+    .point-change, .percent-change
+      color: green
   &.trending-down
-    color: red
+    .point-change, .percent-change
+      color: red
 
   .trend-direction
 
@@ -18,3 +20,22 @@
 
   .percent-change
     font-size: 0.8rem
+
+
+.trending-up  
+  .trend-direction
+    background: image-url('up.png') no-repeat 0 2px
+    width: 14px
+    height: 14px
+    display: block
+    float: left
+    padding: 0
+
+.trending-down   
+  .trend-direction
+    background: image-url('down.png') no-repeat 0 2px
+    width: 14px
+    height: 14px
+    display: block
+    float: left
+    padding: 0

@@ -1,11 +1,52 @@
+.nav-tabs > li.active.buy > a, .nav-tabs > li.active.sell > a
+  color: #59744C
+  font-weight: bold
+  font-size: 16px
+  margin-top: 0
+  font-family: 'Shanti'
+.nav-tabs > li.active.sell > a
+  color: #A7743E
+  
+.nav-tabs > li > a
+  background: #c6d2de
+  color: #fff
+  border-color: rgba(154, 171, 187, 0.6)
+  border-bottom: 0
+  margin-top: 1px
+  font-weight: bold
+  font-size: 15px
+  font-family: 'Shanti'
+  &:hover
+    background: #adbac7
+    color: #54687b
+    border-color:  rgba(114, 138, 160, 0.8)
+    border-bottom: 0
+
+
+
+.nav-tabs
+  position: relative
+  z-index: 10
+  
+.tab-content
+  margin: -19px 0 0 -20px
+  position: relative
+  z-index: 8
+
 .buybox, .sellbox
   +boxify
   float: left
   width: 438px
-  min-height: 406px
+  min-height: 429px
+  +border-radius(0 0 4px 4px)
+  p
+    color: #999
   h2
     color: #59744C
+    font-weight: bold
     text-shadow: 0 1px 1px #fff
+    span
+      font-weight: normal
   .order-form
     border-color: #b2bfcb
     background: #fff
@@ -24,12 +65,13 @@
       float: left
     .controls
       margin-left: 0
-      width: 150px
+      width: 220px
+      color: #484B4F
       float: left
       div
         border: 0
       input.numeric
-        width: 30px
+        width: 70px
         margin-top: -5px
       .current-price
         color: #59744C
@@ -39,7 +81,7 @@
 
     .invalid
       color: red
-    button.btn.btn-large, input[type="submit"].btn.btn-large 
+    input[type="submit"]
       +transition(background 0.4s)
       +background(linear-gradient(#7B946F, #59744c))
       border: 1px solid #4c6540
@@ -75,5 +117,7 @@
       border-color: #99632a #8b4e0e #8b4e0e #99632a
       &:hover
         +background(linear-gradient(#99632a, #b37a3e))
+  &.disabled
+    opacity: 0.6
   
 
