@@ -9,7 +9,9 @@
   .control-group
     label.control-label Total price to buy
     .controls
-      #buy_price_calculation = number_to_currency(@stock.buy_price)
+      #buy_price_calculation
+        span.amount = number_to_currency(@stock.buy_price)
+        span.fee_notice style='font-weight: normal; font-size: 80%' &nbsp;&nbsp;(incl. #{number_to_currency(Order::TRANSACTION_FEE, precision: 0)} transaction fee)
 
   .control-group
     label.control-label Your current cash

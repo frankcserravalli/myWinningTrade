@@ -7,11 +7,11 @@
         = link_to stock_path(stock_symbol) do
           .portfolio-cell.stock-symbol = stock_symbol
           .portfolio-cell.stock-name = s[:name]
-          .portfolio-cell.stock-current_price title='Current price' = number_to_currency(s[:current_price])
-          .portfolio-cell.user_stock-shares_owned title='Shares you own' = "#{s[:shares_owned]} shares"
-          .portfolio-cell.stock-cost_basis title='Cost basis' = number_to_currency(s[:cost_basis])
+          .portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])
+          .portfolio-cell.user_stock-shares_owned rel='tooltip' title='Shares you own' = "#{pluralize(s[:shares_owned],'share')}"
+          .portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(s[:cost_basis])
           - stock_is_gaining = s[:percent_gain] >= 0
-          .portfolio-cell.stock-capital_gain class=(stock_is_gaining ? 'trending-up' : 'trending-down') title='Capital gain'
+          .portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'trending-up' : 'trending-down')
             = '+' if stock_is_gaining
             = s[:percent_gain]
             ' %

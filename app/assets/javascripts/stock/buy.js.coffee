@@ -5,11 +5,13 @@ $ ->
     volume = parseFloat($(event.target).val().replace('$', ''));
 
     if isNaN(volume) || volume <= 0
-      $("#buy_price_calculation, #cash_buy_calculation").html("Volume must be greater than 0")
+      $("#buy_price_calculation .amount, #cash_buy_calculation").html("Volume must be greater than 0")
+      $("#buy_price_calculation .fee_notice").hide()
       $("#cash_buy_calculation").addClass('invalid')
     else
       cost_to_purchase = parseFloat($('#buy_price').html().replace('$', ''))*volume + MyWinningTrade.transaction_fee
-      $('#buy_price_calculation').html('$'+ cost_to_purchase.formatMoney(2, '.', ','))
+      $('#buy_price_calculation .amount').html('$'+ cost_to_purchase.formatMoney(2, '.', ','))
+      $("#buy_price_calculation .fee_notice").show()
 
       cash_after_purchase = parseFloat($("#current_cash").html().replace(/[$,]/g, '')) - cost_to_purchase
       $("#cash_buy_calculation").html('$'+cash_after_purchase.formatMoney(2, '.', ','));
