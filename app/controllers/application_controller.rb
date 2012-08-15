@@ -38,13 +38,16 @@ class ApplicationController < ActionController::Base
         purchase_value = user_stock.cost_basis.to_f * user_stock.shares_owned.to_f
         current_price = details.current_price.to_f
         current_value = current_price * user_stock.shares_owned.to_f
+        shares_owned = user_stock.shares_owned
+        cost_basis = user_stock.cost_basis.to_f
         p[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
           current_price: current_price,
-          shares_owned: user_stock.shares_owned.to_f,
+          shares_owned: shares_owned,
           current_value: current_value,
-          cost_basis: user_stock.cost_basis.to_f,
-          capital_gain: current_price - user_stock.cost_basis.to_f,
+          cost_basis: cost_basis,
+          capital_gain: current_price - cost_basis,
+          percent_gain: ((current_price - cost_basis) / cost_basis).round(3)
         }
         p[:current_value] += current_value
         p[:purchase_value] += purchase_value
