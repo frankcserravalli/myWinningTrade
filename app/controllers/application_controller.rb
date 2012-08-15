@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_portfolio, if: :current_user
   def load_portfolio
     @portfolio = {}.tap do |p|
-      user_stocks = current_user.user_stocks.includes(:stock)
+      user_stocks = current_user.user_stocks.includes(:stock).with_shares_owned
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
       stock_details = Finance.stock_details_for_list(stock_symbols)
 

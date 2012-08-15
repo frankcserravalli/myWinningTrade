@@ -7,6 +7,8 @@ class UserStock < ActiveRecord::Base
 
   attr_accessible :stock
 
+  scope :with_shares_owned, where{ shares_owned > 0 }
+
   structure do
     shares_owned  10**12, default: 0
     cost_basis :decimal, precision: 10, scale: 2
