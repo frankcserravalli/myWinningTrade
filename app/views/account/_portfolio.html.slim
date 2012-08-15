@@ -1,5 +1,5 @@
 #portfolio_holder.portfolio-list
-  = link_to('Export CSV', orders_path)
+  = link_to('Export CSV', orders_path, class: "sml_btn pull-right")
   h2 Portfolio
   ul#portfolio
     - @portfolio[:stocks].each do |stock_symbol, s|

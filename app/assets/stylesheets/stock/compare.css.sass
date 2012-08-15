@@ -1,10 +1,12 @@
 .stock-compare-wrapper
   +boxify
   color: red
-  height: 380px
+  height: 348px
   width: 209px
   margin-left: -12px
   margin-bottom: 20px
+  h3
+    font-size: 22px
   
   input
     width: 195px
@@ -15,11 +17,41 @@ ul.stock-compare
   +no-bullets
   margin: 0
   li
+    border-bottom: 1px solid #e4e4e4
+    padding: 5px 0
+    color: #525252
     .colorbox
       $width: 10px
       +inline-block
       width: $width
       height: $width
-
-    border-bottom: 1px dashed #ccc
-    padding: 5px 0
+      background: #59744C
+      +border-radius(2px)
+      margin-top: -1px
+    .fullstockname
+      width: 194px
+      display: inline-block
+    .stock-trend
+      float: right
+      width: 142px
+      .current-price, .point-change, .percent-change
+        font-size: 11px
+        margin-right: 3px
+    
+.close 
+  color: #fff
+  text-shadow: 0 1px 0 #525252
+  opacity: 0.2
+  filter: alpha(opacity=20)
+  background: #525252
+  border-radius: 11px
+  padding: 1px 4px
+  
+.trend-direction
+  background: image-url('up.png') no-repeat
+  width: 14px
+  height: 14px
+  display: block
+  float: left
+  padding: 0
+  
