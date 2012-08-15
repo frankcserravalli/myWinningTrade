@@ -6,7 +6,7 @@ $ ->
       $("#sell_price_calculation, #cash_sell_calculation, #shares_remaining").html("You must sell at least 1 share")
       $("#shares_remaining").addClass('invalid')
     else
-      cash_from_sale = parseFloat($('#sell_price').html().replace('$', ''))*volume - MyWinningTrade.transaction_fee
+      cash_from_sale = parseFloat($('#sell_price').html().replace('$', ''))*volume
       $('#sell_price_calculation').html('$'+ cash_from_sale.formatMoney(2, '.', ','))
 
       cash_after_sale = parseFloat($("#current_cash").html().replace(/[$,]/g, '')) + cash_from_sale

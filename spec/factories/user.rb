@@ -5,5 +5,6 @@ FactoryGirl.define do
     name             'Joe Bloggs'
     provider         'developer'
     uid              '1234'
+    accepted_terms   true
   end
 end

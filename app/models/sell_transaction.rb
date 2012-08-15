@@ -34,7 +34,6 @@ class SellTransaction
         break if volume_remaining_to_sell == 0
       end
     end
-    self.user.update_attribute(:account_balance, self.user.reload.account_balance - Order::TRANSACTION_FEE)
 
     user_stock.reload.recalculate_cost_basis!
     return true

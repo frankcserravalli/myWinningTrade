@@ -21,7 +21,7 @@ describe "Order" do
       @stock_details.current_price = "20.00"
 
       @order.place!(@stock_details)
-      @order.value.to_f.should == -(20.00 * 2.0)
+      @order.value.to_f.should == -(20.00 * 2.0) - Order::TRANSACTION_FEE
     end
 
     it "should import a system stock if it does not yet exist" do

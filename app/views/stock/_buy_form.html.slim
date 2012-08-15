@@ -9,7 +9,7 @@
   .control-group
     label.control-label Total price to buy
     .controls
-      #buy_price_calculation = number_to_currency(@stock.current_price)
+      #buy_price_calculation = number_to_currency(@stock.buy_price)
 
   .control-group
     label.control-label Your current cash
@@ -19,6 +19,6 @@
   .control-group
     label.control-label Your cash after purchase:
     .controls
-      #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.current_price.to_f)
+      #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
 
   = f.submit 'Buy', class: 'btn-primary btn btn-large'
