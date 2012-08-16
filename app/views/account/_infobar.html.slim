@@ -17,8 +17,9 @@
         = number_to_currency(cash)
 
       .myportfolio class=(portfolio_is_gaining ? 'portfolio-trending-up' : 'portfolio-trending-down')
-         'Your Portfolio: 
+         'Your Portfolio:
          span.portfolio-value = number_to_currency(portfolio_value)
+         = link_to default: 'My Winning Trade'), root_path, class: 'brand'
          ' &nbsp;
          span class=(portfolio_is_gaining ? 'trending-up' : 'trending-down')
            ' (
