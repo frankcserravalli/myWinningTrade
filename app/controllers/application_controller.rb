@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
           current_value: current_value,
           cost_basis: cost_basis,
           capital_gain: current_price - cost_basis,
-          percent_gain: ((current_price - cost_basis) / cost_basis).round(3)
+          percent_gain: ((current_price - cost_basis) * 100 / cost_basis).round(1)
         }
         p[:current_value] += current_value
         p[:purchase_value] += purchase_value
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
       if p[:purchase_value].to_f == 0.0
         p[:percent_gain] = 0.0
       else
-        p[:percent_gain] = ((p[:current_value] - p[:purchase_value]) / p[:purchase_value]).round(3)
+        p[:percent_gain] = ((p[:current_value] - p[:purchase_value]) * 100 / p[:purchase_value]).round(1)
       end
     end
 
