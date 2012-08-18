@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a385381-66ab-40e7-80d8-a7c6802c6d6c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/account/_adsense.html.slim" afterPath="$PROJECT_DIR$/app/views/account/_adsense.html.slim" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/account/_adsense.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
     </list>
     <ignored path="myWinningTrade.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +35,7 @@
       <file leaf-file-name="_adsense.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/account/_adsense.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="25" selection-start="146" selection-end="146" vertical-scroll-proportion="0.08279431">
+            <state line="5" column="71" selection-start="219" selection-end="219" vertical-scroll-proportion="0.103492886">
               <folding />
             </state>
           </provider>
@@ -774,7 +776,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/account/_adsense.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="25" selection-start="146" selection-end="146" vertical-scroll-proportion="0.08279431">
+        <state line="5" column="71" selection-start="219" selection-end="219" vertical-scroll-proportion="0.103492886">
           <folding />
         </state>
       </provider>
