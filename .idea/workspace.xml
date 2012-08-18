@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a385381-66ab-40e7-80d8-a7c6802c6d6c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/ads_controller.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/ads_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/ads_helper.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
     </list>
     <ignored path="myWinningTrade.iws" />
@@ -26,7 +24,7 @@
       <file leaf-file-name="application.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="30" selection-start="260" selection-end="260" vertical-scroll-proportion="0.22464898">
+            <state line="9" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="0.22464898">
               <folding />
             </state>
           </provider>
@@ -35,7 +33,7 @@
       <file leaf-file-name="ads_helper.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/helpers/ads_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
+            <state line="34" column="53" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -60,8 +58,8 @@
         <option value="$PROJECT_DIR$/app/views/application/_third_party_scripts.html.slim" />
         <option value="$PROJECT_DIR$/app/views/application/_googleadsense.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/googleadsense.js" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
         <option value="$PROJECT_DIR$/app/helpers/ads_helper.rb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
       </list>
     </option>
   </component>
@@ -470,24 +468,6 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby">
-      <module name="" />
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="" />
@@ -634,12 +614,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="2" class="java.lang.String" itemvalue="Rails.Production: myWinningTrade" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Development: myWinningTrade" />
-      <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: myWinningTrade" />
-      <item index="5" class="java.lang.String" itemvalue="IRB console.IRB console" />
+      <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: myWinningTrade" />
+      <item index="1" class="java.lang.String" itemvalue="IRB console.IRB console" />
+      <item index="2" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="3" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="4" class="java.lang.String" itemvalue="Rails.Production: myWinningTrade" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Development: myWinningTrade" />
     </list>
     <recent_temporary>
       <list size="3">
@@ -813,6 +793,11 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ads_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.40350878" />
@@ -820,14 +805,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/ads_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
+        <state line="34" column="53" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="30" selection-start="260" selection-end="260" vertical-scroll-proportion="0.22464898">
+        <state line="9" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="0.22464898">
           <folding />
         </state>
       </provider>
