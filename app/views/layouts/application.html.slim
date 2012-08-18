@@ -7,7 +7,6 @@ html data-uuid=current_user.try(:id)
     = render partial: 'account/infobar'
     .container
       = render partial: 'flash', locals: { flash: flash }
-    .advert
-      = render partial: 'account/adsense'
+      #advert Advertising space
       = yield
     = render 'third_party_scripts'
