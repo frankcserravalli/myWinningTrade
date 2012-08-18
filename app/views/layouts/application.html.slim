@@ -8,13 +8,14 @@ html data-uuid=current_user.try(:id)
     .container
       = render partial: 'flash', locals: { flash: flash }
       #advert
-        javascript google_ad_client="ca-pub-6411672013871167";
-            /* myWinningTrade */
-        javascript google_ad_slot="8452713730";
-        javascript google_ad_width=232;
-        javascript google_ad_height=121;
-            //-->
-        javascript src="http://pagead2.googlesyndication.com/pagead/show_ads.js"
+        javascript
+                      google_ad_client = "ca-pub-6411672013871167";
+                      /* myWinningTrade */
+                      google_ad_slot = "8452713730";
+                      google_ad_width = 232;
+                      google_ad_height = 121;
+                      //-->
+                      src="http://pagead2.googlesyndication.com/pagead/show_ads.js"
 
       = yield
     = render 'third_party_scripts'
