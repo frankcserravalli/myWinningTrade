@@ -7,6 +7,16 @@ html data-uuid=current_user.try(:id)
     = render partial: 'account/infobar'
     .container
       = render partial: 'flash', locals: { flash: flash }
-      #advert Advertising space
+      #advert <script type="text/javascript"><!--
+              google_ad_client = "ca-pub-6411672013871167";
+              /* myWinningTrade */
+              google_ad_slot = "8452713730";
+              google_ad_width = 180;
+              google_ad_height = 150;
+              //-->
+              </script>
+              <script type="text/javascript"
+              src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>
       = yield
     = render 'third_party_scripts'
