@@ -7,7 +7,7 @@ html data-uuid=current_user.try(:id)
     = render partial: 'account/infobar'
     .container
       = render partial: 'flash', locals: { flash: flash }
-    #advert
+    .advert
       <%= ad_unit(:leader_board, "8452713730" %>
 
       = yield
