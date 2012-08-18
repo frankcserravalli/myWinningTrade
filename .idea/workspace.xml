@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a385381-66ab-40e7-80d8-a7c6802c6d6c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/googleadsense.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/googleadsense.js" />
     </list>
     <ignored path="myWinningTrade.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,19 +21,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="8" selection-start="442" selection-end="442" vertical-scroll-proportion="0.31047866">
+            <state line="14" column="18" selection-start="332" selection-end="332" vertical-scroll-proportion="-8.96">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="googleadsense.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="googleadsense.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/googleadsense.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
+            <state line="4" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0802005">
               <folding />
             </state>
           </provider>
@@ -57,8 +57,8 @@
         <option value="$PROJECT_DIR$/README.markdown" />
         <option value="$PROJECT_DIR$/app/views/application/_third_party_scripts.html.slim" />
         <option value="$PROJECT_DIR$/app/views/application/_googleadsense.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/googleadsense.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/googleadsense.js" />
       </list>
     </option>
   </component>
@@ -761,16 +761,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/googleadsense.js">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
+        <state line="14" column="18" selection-start="332" selection-end="332" vertical-scroll-proportion="-8.96">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/googleadsense.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="8" selection-start="442" selection-end="442" vertical-scroll-proportion="0.31047866">
+        <state line="4" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0802005">
           <folding />
         </state>
       </provider>
