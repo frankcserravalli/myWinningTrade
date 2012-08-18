@@ -7,7 +7,7 @@ html data-uuid=current_user.try(:id)
     = render partial: 'account/infobar'
     .container
       = render partial: 'flash', locals: { flash: flash }
-      #advert = render 'googleadsense'
+      #advert = render 'application/googleadsense'
 
 
       = yield
