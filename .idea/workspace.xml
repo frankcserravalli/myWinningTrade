@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a385381-66ab-40e7-80d8-a7c6802c6d6c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.slim" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/account/_adsense.html.slim" afterPath="$PROJECT_DIR$/app/views/account/_adsense.html.slim" />
     </list>
     <ignored path="myWinningTrade.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,10 +21,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="255" selection-end="255" vertical-scroll-proportion="0.20698577">
+            <state line="10" column="41" selection-start="283" selection-end="283" vertical-scroll-proportion="-6.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_adsense.html.slim" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/account/_adsense.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="25" selection-start="146" selection-end="146" vertical-scroll-proportion="0.08279431">
               <folding />
             </state>
           </provider>
@@ -64,8 +73,8 @@
         <option value="$PROJECT_DIR$/config/initializers/omniauth.rb" />
         <option value="$PROJECT_DIR$/app/views/terms/show.html.slim" />
         <option value="$PROJECT_DIR$/README.markdown" />
-        <option value="$PROJECT_DIR$/app/views/account/_adsense.html.slim" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.slim" />
+        <option value="$PROJECT_DIR$/app/views/account/_adsense.html.slim" />
       </list>
     </option>
   </component>
@@ -756,16 +765,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/account/_adsense.html.slim">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="25" selection-start="146" selection-end="146" vertical-scroll-proportion="0.08279431">
+        <state line="10" column="41" selection-start="283" selection-end="283" vertical-scroll-proportion="-6.4">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.slim">
+    <entry file="file://$PROJECT_DIR$/app/views/account/_adsense.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="255" selection-end="255" vertical-scroll-proportion="0.20698577">
+        <state line="4" column="25" selection-start="146" selection-end="146" vertical-scroll-proportion="0.08279431">
           <folding />
         </state>
       </provider>
