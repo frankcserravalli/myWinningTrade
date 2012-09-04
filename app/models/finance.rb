@@ -62,8 +62,11 @@ class Finance
 
 				unless quote.name == quote.symbol
 					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
-					quote.current_price = quote.ask_realtime || quote.ask
+					quote.current_price = [quote.ask_realtime, quote.ask, quote.previous_close].detect do |value|
+						value.to_f > 0.0
+					end
 					quote.current_bid = quote.bid_realtime || quote.bid
+
 					quote.buy_price = quote.current_price.to_f + Order::TRANSACTION_FEE
 
 					quote.statements_url = "http://investing.money.msn.com/investments/sec-filings/?symbol=#{quote.symbol}"
