@@ -20,3 +20,9 @@ coverage/
 .DS_Store
 
 .idea/workspace.xml
+
+*.crt
+
+*.csr
+
+*.key
