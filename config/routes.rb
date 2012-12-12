@@ -1,7 +1,4 @@
 MyWinningTrade::Application.routes.draw do
-  get '/mu-5d9c2a33-c3a9f9bc-9a40fca3-2b407512' do
-    '42'
-  end
   get '/dashboard', to: 'stock#dashboard'
 
   get '/login', to: 'sessions#new'
