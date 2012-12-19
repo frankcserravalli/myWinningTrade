@@ -24,7 +24,7 @@ class ShortSellBorrow < Order
     transaction do
       self.value = -order_price
       self.price = stock.current_price
-      user.update_attribute(:account_balance, user.account_balance + order_price)
+      user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_borrowed, self.user_stock.shares_borrowed.to_i + volume.to_i)
 
       save.tap { |successful| raise ActiveRecord::Rollback unless successful }
