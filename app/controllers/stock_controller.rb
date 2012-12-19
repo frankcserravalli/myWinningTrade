@@ -8,6 +8,7 @@ class StockController < ApplicationController
     @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
 
     @buy_order = Buy.new
+    @short_sell_borrow_order = ShortSellBorrow.new
     @sell_order = SellTransaction.new
 
     if @stock.nil?

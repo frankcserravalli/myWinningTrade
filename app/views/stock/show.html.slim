@@ -17,6 +17,8 @@
       ul.nav.nav-tabs
         li.active.buy = link_to 'Buy Stocks', '#buy', 'data-toggle' => 'tab'
         li.sell = link_to 'Sell Stocks', '#sell', 'data-toggle' => 'tab'
+        li.sell = link_to 'Short Stocks', '#short', 'data-toggle' => 'tab'
+        li.sell = link_to 'Cover Stocks', '#cover', 'data-toggle' => 'tab'
 
       .tab-content
         .tab-pane.active.buybox.order_form.span6#buy
@@ -26,6 +28,7 @@
           p Prices may be delayed slightly from the current exchange prices
           = render partial: 'buy_form'
         - can_sell_stock = @user_stock && @user_stock.shares_owned.to_i > 0
+        - can_cover_stock = @user_stock && @user_stock.shares_borrowed.to_i > 0
 
         .tab-pane.sellbox.order_form.span6#sell class=('disabled' unless can_sell_stock)
           h2
@@ -37,6 +40,22 @@
           - else
             p You do not have any shares to sell in #{@stock.name}
 
+        .tab-pane.sellbox.order_form.span6#short
+          h2
+            ' Short
+            span #{@stock.name}
+            p Prices may be delayed slightly from the current exchange prices
+            = render partial: 'short_sell_borrow_form'
+
+        .tab-pane.sellbox.order_form.span6#cover class=('disabled' unless can_cover_stock)
+          h2
+            ' Cover
+            span #{@stock.name}
+          - if can_cover_stock
+            p#current_shares You're currently borrowing #{pluralize @user_stock.shares_borrowed, 'share'} in #{@stock.name}
+            = render partial: 'short_sell_cover_form'
+          - else
+            p You do not have any shares to cover in #{@stock.name}
 
 javascript:
   var MyWinningTrade = new Object();

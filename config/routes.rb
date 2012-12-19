@@ -20,6 +20,8 @@ MyWinningTrade::Application.routes.draw do
 
     resource :buy, only: :create
     resource :sell, only: :create
+    resource :short_sell_borrow, only: :create
+    resource :short_sell_cover, only: :create
   end
 
   resources :orders, only: [:index]

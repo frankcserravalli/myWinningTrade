@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814194014) do
+ActiveRecord::Schema.define(:version => 20121214185723) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(:version => 20120814194014) do
     t.string   "type",             :limit => 15
     t.decimal  "value",                          :precision => 10, :scale => 2
     t.integer  "user_stock_id"
+    t.decimal  "cost_basis",                     :precision => 10, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "cost_basis",                     :precision => 10, :scale => 2
     t.integer  "volume_remaining", :limit => 8
     t.decimal  "capital_gain",                   :precision => 10, :scale => 2
+    t.integer  "user_short_id"
   end
 
   add_index "orders", ["type"], :name => "index_orders_on_type"
@@ -39,8 +40,10 @@ ActiveRecord::Schema.define(:version => 20120814194014) do
   create_table "user_stocks", :force => true do |t|
     t.integer "user_id"
     t.integer "stock_id"
-    t.integer "shares_owned", :limit => 8,                                :default => 0
-    t.decimal "cost_basis",                :precision => 10, :scale => 2
+    t.integer "shares_owned",     :limit => 8,                                :default => 0
+    t.decimal "cost_basis",                    :precision => 10, :scale => 2
+    t.integer "shares_borrowed",  :limit => 8,                                :default => 0
+    t.decimal "short_cost_basis",              :precision => 10, :scale => 2
   end
 
   add_index "user_stocks", ["stock_id"], :name => "index_user_stocks_on_stock_id"

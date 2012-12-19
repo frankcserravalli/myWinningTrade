@@ -73,6 +73,83 @@ describe "Order" do
       order.capital_gain.round(2).should == -(transaction_fee / stock_volume).round(2) # since stock price hasn't changed
 
     end
+
+    it 'should have a positive capital gain when the stock price increases' do 
+      buy_price = 0.01
+      stock_volume = 50.0
+      buy = new_buy(buy_price, stock_volume, user, user_stock)
+
+      order = Sell.new(user: user, volume: 40, buy: buy)
+      order.place!(@stock_details).should be_true
+
+      order.capital_gain.round(2).should > 0
+
+    end
+
+    it 'should have a negative capital gain when the stock price decreases' do 
+      buy_price = 99999.00
+      stock_volume = 50.0
+      buy = new_buy(buy_price, stock_volume, user, user_stock)
+
+      order = Sell.new(user: user, volume: 40, buy: buy)
+      order.place!(@stock_details).should be_true
+
+      order.capital_gain.round(2).should < 0
+
+    end
+  end
+
+  context "short sell borrowing" do
+    before do
+      @order = ShortSellBorrow.new(user: user, volume: 2)
+    end
+    it "should not accept borrow orders with negative volumes" do
+      @order.volume = -100
+      @order.place!(@stock_details).should be_false
+      @order.errors.should_not be_empty
+    end
+    it "should not accept a buy for a user with insufficient funds" do
+      user.update_attribute(:account_balance, 0)
+      @order.place!(@stock_details).should be_false
+      @order.errors.should_not be_empty
+    end
+    it "should have order type of ShortSellBorrow" do
+      @order.type.should == "ShortSellBorrow"
+    end
+  end
+
+  context "short sell covering" do
+    it 'subtracts from short sell borrow volume_remaining when new short sell cover order is created' do
+      short_sell_borrow = new_short_sell_borrow(1.0, 50, user, user_stock)
+
+      order = ShortSellCover.new(user: user, volume: 40, short_sell_borrow: short_sell_borrow)
+      order.place!(@stock_details).should be_true
+
+      short_sell_borrow.reload.volume_remaining.should == 10
+    end
+
+    it "has a positive capital gain when the stock price declines" do
+      borrow_price = 99999.05 # Start with a really high value
+      stock_volume = 50.0
+      short_sell_borrow = new_short_sell_borrow(borrow_price, stock_volume, user, user_stock)
+
+      order = ShortSellCover.new(user: user, volume: 40, short_sell_borrow: short_sell_borrow)
+      order.place!(@stock_details).should be_true
+
+      order.capital_gain.round(2).should > 0
+    end
+
+    it "has a negative capital gain when the stock price increases" do
+      borrow_price = 0.01 # Start with a really low value
+      stock_volume = 50.0
+      short_sell_borrow = new_short_sell_borrow(borrow_price, stock_volume, user, user_stock)
+
+      order = ShortSellCover.new(user: user, volume: 40, short_sell_borrow: short_sell_borrow)
+      order.place!(@stock_details).should be_true
+
+      order.capital_gain.round(2).should < 0
+    end
+
   end
 
 end
