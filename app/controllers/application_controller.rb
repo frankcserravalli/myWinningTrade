@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
       user_shorts = current_user.user_stocks.includes(:stock).with_shares_borrowed
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
       stock_details = Finance.stock_details_for_list(stock_symbols)
+      short_symbols = user_shorts.map { |s| s.stock.symbol }
+      short_details = Finance.stock_details_for_list(short_symbols)
 
       p[:current_value] = 0
       p[:purchase_value] = 0
@@ -56,8 +58,9 @@ class ApplicationController < ActionController::Base
       end
 
       user_shorts.each do |user_stock|
+        Rails.logger.info(user_stock.stock.symbol)
         stock_symbol = user_stock.stock.symbol
-        details = stock_details[stock_symbol]
+        details = short_details[stock_symbol]
         purchase_value = user_stock.short_cost_basis.to_f * user_stock.shares_borrowed.to_f
         current_price = details.current_price.to_f
         current_value = current_price * user_stock.shares_borrowed.to_f
