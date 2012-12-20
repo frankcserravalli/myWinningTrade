@@ -63,7 +63,8 @@ class ApplicationController < ActionController::Base
         details = short_details[stock_symbol]
         purchase_value = user_stock.short_cost_basis.to_f * user_stock.shares_borrowed.to_f
         current_price = details.current_price.to_f
-        current_value = current_price * user_stock.shares_borrowed.to_f
+        current_value = ((user_stock.short_cost_basis.to_f - current_price) * user_stock.shares_borrowed.to_f)
+
         shares_borrowed = user_stock.shares_borrowed
         short_cost_basis = user_stock.short_cost_basis.to_f
         p[:shorts][stock_symbol] = {
