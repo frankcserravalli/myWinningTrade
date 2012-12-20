@@ -58,13 +58,12 @@ class ApplicationController < ActionController::Base
       end
 
       user_shorts.each do |user_stock|
-        Rails.logger.info(user_stock.stock.symbol)
         stock_symbol = user_stock.stock.symbol
         details = short_details[stock_symbol]
-        purchase_value = user_stock.short_cost_basis.to_f * user_stock.shares_borrowed.to_f
+        # Purchase value not needed. We never subtracted for shorted stocks.
+        #purchase_value = user_stock.short_cost_basis.to_f * user_stock.shares_borrowed.to_f
         current_price = details.current_price.to_f
         current_value = ((user_stock.short_cost_basis.to_f - current_price) * user_stock.shares_borrowed.to_f)
-
         shares_borrowed = user_stock.shares_borrowed
         short_cost_basis = user_stock.short_cost_basis.to_f
         p[:shorts][stock_symbol] = {
@@ -77,7 +76,7 @@ class ApplicationController < ActionController::Base
           percent_gain: (-(current_price - short_cost_basis) * 100 / short_cost_basis).round(1)
         }
         p[:current_value] += current_value
-        p[:purchase_value] += purchase_value
+        p[:purchase_value] += current_value
       end
 
       if p[:purchase_value].to_f == 0.0
