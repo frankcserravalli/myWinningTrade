@@ -20,15 +20,17 @@
         li.sell = link_to 'Short Stocks', '#short', 'data-toggle' => 'tab'
         li.sell = link_to 'Cover Stocks', '#cover', 'data-toggle' => 'tab'
 
+      - can_sell_stock = @user_stock && @user_stock.shares_owned.to_i > 0
+      - can_cover_stock = @user_stock && @user_stock.shares_borrowed.to_i > 0
       .tab-content
         .tab-pane.active.buybox.order_form.span6#buy
           h2
             ' Buy
             span #{@stock.name}
           p Prices may be delayed slightly from the current exchange prices
+          - if can_cover_stock
+            p#current_shares You're currently borrowing #{pluralize @user_stock.shares_borrowed, 'share'} in #{@stock.name} at $#{@user_stock.short_cost_basis}/share. Shares you purchase will be applied to cover your short position.
           = render partial: 'buy_form'
-        - can_sell_stock = @user_stock && @user_stock.shares_owned.to_i > 0
-        - can_cover_stock = @user_stock && @user_stock.shares_borrowed.to_i > 0
 
         .tab-pane.sellbox.order_form.span6#sell class=('disabled' unless can_sell_stock)
           h2
