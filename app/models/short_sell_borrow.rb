@@ -13,7 +13,7 @@ class ShortSellBorrow < Order
       return false
     end
 
-    order_price = volume.to_f * stock.current_price.to_f + TRANSACTION_FEE
+    order_price = volume.to_f * stock.current_price.to_f
 
     if user.account_balance < order_price
       self.errors.add(:user, "Insufficient funds, $#{(order_price - user.account_balance).round} more required to complete purchase.")

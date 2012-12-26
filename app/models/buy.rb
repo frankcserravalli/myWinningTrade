@@ -6,6 +6,8 @@ class Buy < Order
   before_create :set_volume_remaining
   after_create :recalculate_user_stock_cost_basis
 
+  attr_accessor :flash_cover
+
   def place!(stock)
 
     if stock.current_price.to_f <= 0.0
@@ -20,7 +22,33 @@ class Buy < Order
       return false
     end
 
+
+
     super
+
+    @shares_to_short = 0
+
+    if self.volume <= self.user_stock.shares_borrowed
+      @shares_to_short = self.volume
+      self.volume = 0
+    end
+    if self.volume > self.user_stock.shares_borrowed && self.user_stock.shares_borrowed > 0
+      @shares_to_short = self.user_stock.shares_borrowed
+      self.volume = self.volume - self.user_stock.shares_borrowed
+    end
+
+    if @shares_to_short.to_i > 0
+      @short_params = {}
+      @short_params[:volume] = @shares_to_short
+      @short_order = ShortTransaction.new(@short_params.merge(user: user))
+      if @short_order.place!(stock)
+        self.flash_cover = "Successfully covered #{@short_order.volume} #{stock.symbol} for $#{@short_order.value.round(2)}"
+      end
+      if self.volume == 0
+        return false
+      end
+    end
+
     transaction do
       self.value = -order_price
       self.price = stock.current_price
@@ -32,6 +60,7 @@ class Buy < Order
   end
 
   protected
+
   def calculate_cost_basis
     self.cost_basis = (self.value / self.volume).abs
   end

@@ -31,6 +31,7 @@ class ShortTransaction < ActiveRecord::Base
         cover = ShortSellCover.new(volume: this_sale_volume, user: user, short_sell_borrow: short)
         cover.place!(stock)
         volume_remaining_to_sell -= this_sale_volume
+        self.value = stock.current_price.to_f * this_sale_volume.to_f
         break if volume_remaining_to_sell == 0
       end
     end

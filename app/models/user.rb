@@ -29,10 +29,13 @@ class User < ActiveRecord::Base
 
   def export_orders_as_csv
     CSV.generate do |csv|
-      csv << ['Symbol', 'Name', 'Type', 'Time', 'Volume', 'Bid/Ask Price', 'Net Asset Value', 'Cost Basis', 'Capital Gain/Loss']
+      csv << ['Symbol', 'Name', 'Type', 'Time', 'Volume', 'Bid/Ask Price', 'Net Asset Value', 'Cost Basis', 'Capital Gain/Loss', 'Tax Liability']
 
       orders.includes(:stock).all.each do |order|
-        csv << [order.stock.symbol, order.stock.name, order.type.titleize, order.created_at, order.volume, order.price, order.value.abs, order.cost_basis, order.capital_gain].collect(&:to_s)
+        order.cost_basis = (order.cost_basis.to_f * order.volume.to_f).round(2)
+        total_capital_gain = (order.capital_gain.to_f * order.volume.to_f).round(2)
+        tax_liability = (order.capital_gain.to_f * 0.3).round(2)
+        csv << [order.stock.symbol, order.stock.name, order.type.titleize, order.created_at, order.volume, order.price, order.value.abs, order.cost_basis, total_capital_gain, tax_liability].collect(&:to_s)
       end
     end
   end

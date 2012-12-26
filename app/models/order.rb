@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
 
   structure do
     price  :decimal, precision: 10, scale: 2, validates: :numericality
-    volume 10**12, validates: { numericality: { greater_than: 0 } }
+    volume 10**12, validates: { numericality: { greater_than: 0, message: "Did not process a buy with zero volume." } }
     volume_remaining 10**12
     type   index: true, limit: 15
 
