@@ -19,6 +19,8 @@ coverage/
 
 .DS_Store
 
+.powder
+
 .idea/workspace.xml
 
 *.crt
@@ -26,3 +28,8 @@ coverage/
 *.csr
 
 *.key
+
+.powenv
+*.swp
+*.swo
+*.swn
