@@ -1,0 +1,2 @@
+class StopLossTransactionsController < ApplicationController
+end
