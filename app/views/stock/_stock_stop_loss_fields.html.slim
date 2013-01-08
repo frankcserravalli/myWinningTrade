@@ -1,0 +1,3 @@
+= f.input :measure, :collection => ["Above", "Below"], :selected => "Above"
+= f.input :price_target, :label => "Price target", input_html: { value: @stock.current_price, maxlength: 10 }, as: :float
+

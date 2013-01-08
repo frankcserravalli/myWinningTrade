@@ -1,15 +1,13 @@
-= simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'buy_form'} do |f|
+= simple_form_for @stop_loss_buy_transaction, url: stock_stop_loss_transaction_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'stop_loss_buy_transaction_form'} do |f|
   .control-group.stock-trend data-stock-symbol=@stock.symbol
     label.control-label Current price
     .controls
       .current-price#buy_price = number_to_currency(@stock.current_price)
 
   = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
-  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "buy" }
-  #hidden-buy-later
-    = render partial: 'stock/stock_later_field', locals: { f: f }
-  #hidden-buy-stop-loss
-    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
+  = f.input :measure, :collection => [:above, :below]
+  = f.input :price_target, :label => "Price target", input_html: { value: @stock.current_price, maxlength: 10 }
+  = f.input :type, :as => :hidden, :input_html => { :value => "Buy" }
 
   .control-group
     label.control-label Total price to buy
@@ -28,5 +26,4 @@
     .controls
       #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
 
-  .control-group
-    = f.submit 'Buy', class: 'btn-primary btn btn-large'
+  = f.submit 'Set Buy', class: 'btn-primary btn btn-large'

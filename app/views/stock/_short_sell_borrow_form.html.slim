@@ -5,6 +5,11 @@
       .current-price#borrow_price = number_to_currency(@stock.current_price)
 
   = f.input :volume, :label => "Volume to borrow", input_html: { value: 1, maxlength: 10 }
+  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "short" }
+  #hidden-short-later
+    = render partial: 'stock/stock_later_field', locals: { f: f }
+  #hidden-short-stop-loss
+    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
 
   .control-group
     label.control-label Borrow total
@@ -13,4 +18,5 @@
         span.amount = number_to_currency(@stock.current_price)
         .notice style='font-weight: normal; font-size: 80%'
 
-  = f.submit 'Short', class: 'btn-primary btn btn-large'
+  .control-group
+    = f.submit 'Short', class: 'btn-primary btn btn-large'

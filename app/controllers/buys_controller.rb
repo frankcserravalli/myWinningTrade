@@ -1,6 +1,7 @@
 class BuysController < ApplicationController
   after_filter :flash_cover, :only => :create
   after_filter :flash_alert, :only => :create
+  before_filter {|controller| controller.when_to_execute_order('buy') }
 
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound

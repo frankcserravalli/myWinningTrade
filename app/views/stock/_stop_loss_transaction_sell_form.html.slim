@@ -1,15 +1,13 @@
-= simple_form_for @sell_order, as: :sell, url: stock_sell_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'sell_form'} do |f|
+= simple_form_for @stop_loss_sell_transaction, url: stock_stop_loss_transaction_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'stop_loss_sell_transaction_form'} do |f|
   .control-group.stock-trend data-stock-symbol=@stock.symbol
     label.control-label Current price
     .controls
       .current-price#sell_price = number_to_currency(@stock.current_bid)
 
   = f.input :volume, :label => "Volume to sell", input_html: { value: 1, maxlength: 10 }, as: :numeric
-  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "sell" }
-  #hidden-sell-later
-    = render partial: 'stock/stock_later_field', locals: { f: f }
-  #hidden-sell-stop-loss
-    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
+  = f.input :measure, :collection => [:above, :below]
+  = f.input :price_target, :label => "Price target", input_html: { value: @stock.current_price, maxlength: 10 }
+  = f.input :type, :as => :hidden, :input_html => { :value => "Sell" }
 
   .control-group
     label.control-label Income from sale
@@ -31,5 +29,5 @@
     .controls
       #cash_sell_calculation = number_to_currency(current_user.account_balance.to_f+@stock.current_bid.to_f)
 
-  .control-group
-    = f.submit 'Sell', class: 'btn-primary btn btn-large'
+  = f.submit 'Set Sell', class: 'btn-primary btn btn-large'
+

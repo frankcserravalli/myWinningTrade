@@ -22,6 +22,8 @@ MyWinningTrade::Application.routes.draw do
     resource :sell, only: :create
     resource :short_sell_borrow, only: :create
     resource :short_sell_cover, only: :create
+    resource :date_time_transaction, only: [:create, :destroy]
+    resource :stop_loss_transaction, only: [:create, :destroy]
   end
 
   resources :orders, only: [:index]

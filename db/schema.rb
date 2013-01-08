@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214185723) do
+ActiveRecord::Schema.define(:version => 20130103203609) do
+
+  create_table "date_time_transactions", :force => true do |t|
+    t.integer  "user_stock_id"
+    t.integer  "user_id"
+    t.integer  "volume",        :limit => 8
+    t.string   "order_type"
+    t.string   "status",                     :default => "pending"
+    t.datetime "execute_at"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
+
+  add_index "date_time_transactions", ["user_id"], :name => "index_date_time_transactions_on_user_id"
+  add_index "date_time_transactions", ["user_stock_id"], :name => "index_date_time_transactions_on_user_stock_id"
+
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -25,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20121214185723) do
     t.datetime "updated_at"
     t.integer  "volume_remaining", :limit => 8
     t.decimal  "capital_gain",                   :precision => 10, :scale => 2
-    t.integer  "user_short_id"
   end
 
   add_index "orders", ["type"], :name => "index_orders_on_type"
@@ -36,6 +50,22 @@ ActiveRecord::Schema.define(:version => 20121214185723) do
     t.string "name"
     t.string "symbol", :limit => 7
   end
+
+  create_table "stop_loss_transactions", :force => true do |t|
+    t.integer  "user_stock_id"
+    t.integer  "user_id"
+    t.integer  "volume",        :limit => 8
+    t.string   "order_type"
+    t.string   "status",                     :default => "pending"
+    t.string   "measure"
+    t.decimal  "price_target"
+    t.datetime "execute_at"
+    t.datetime "updated_at"
+    t.datetime "created_at"
+  end
+
+  add_index "stop_loss_transactions", ["user_id"], :name => "index_stop_loss_transactions_on_user_id"
+  add_index "stop_loss_transactions", ["user_stock_id"], :name => "index_stop_loss_transactions_on_user_stock_id"
 
   create_table "user_stocks", :force => true do |t|
     t.integer "user_id"

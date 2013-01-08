@@ -1,4 +1,5 @@
 class SellsController < ApplicationController
+  before_filter {|controller| controller.when_to_execute_order('sell') }
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 

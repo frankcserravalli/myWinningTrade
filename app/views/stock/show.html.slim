@@ -29,22 +29,9 @@
           p Prices may be delayed slightly from the current exchange prices
           - if can_cover_stock
             p#current_shares You're currently borrowing #{pluralize @user_stock.shares_borrowed, 'share'} in #{@stock.name} at $#{@user_stock.short_cost_basis}/share. Shares you purchase will be applied to cover your short position.
-
-          ul.nav.nav-tabs
-            li.active.now = link_to 'Now', '#buynow', 'data-toggle' => 'tab'
-            li.later = link_to 'Later', '#buylater', 'data-toggle' => 'tab'
-            li.stoploss = link_to 'Stop-Loss', '#buystoploss', 'data-toggle' => 'tab'
       
-          .tab-content
-            .tab-pane.active.span6#buynow
-              = render partial: 'buy_form'
+          = render partial: 'buy_form'
           
-            .tab-pane.span6#buylater
-              p Buy later
-
-            .tab-pane.span6#buystoploss
-              p Stop Loss
-              
         .tab-pane.sellbox.order_form.span6#sell class=('disabled' unless can_sell_stock)
           h2
             ' Sell
@@ -52,6 +39,7 @@
           - if can_sell_stock
             p#current_shares You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
             = render partial: 'sell_form'
+
           - else
             p You do not have any shares to sell in #{@stock.name}
 
@@ -61,7 +49,6 @@
             span #{@stock.name}
           p Prices may be delayed slightly from the current exchange prices
           = render partial: 'short_sell_borrow_form'
-
 
 javascript:
   var MyWinningTrade = new Object();
@@ -79,3 +66,5 @@ javascript:
   new TradingView.widget(tradingview_widget_options);
 
 = render partial: 'account/portfolio'
+= render partial: 'account/upcoming_transactions'
+= render partial: 'account/pending_positions'

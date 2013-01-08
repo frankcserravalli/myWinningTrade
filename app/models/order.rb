@@ -6,6 +6,11 @@ class Order < ActiveRecord::Base
 
   has_one :stock, through: :user_stock
 
+  attr_accessor :when
+  attr_accessor :measure
+  attr_accessor :price_target
+  attr_accessor :execute_at
+
   structure do
     price  :decimal, precision: 10, scale: 2, validates: :numericality
     volume 10**12, validates: { numericality: { greater_than: 0, message: "Did not process a buy with zero volume." } }
