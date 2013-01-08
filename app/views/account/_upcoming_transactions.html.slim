@@ -1,11 +1,7 @@
 .listing-container
-  h2 Upcoming Transactions
-  table.table
-    thead
-      tr
-        th 
-        th 
-    tbody
+  - if !@portfolio[:date_time_transactions].empty?
+    h2 Upcoming Transactions
+    table.table
       - @portfolio[:date_time_transactions].each do |trans|
         - @dt_type = trans.order_type
         - @dt_type = "Short" if @dt_type == "ShortSellBorrow"
@@ -14,5 +10,7 @@
           td 
             span.pull-right 
               = link_to("Cancel", stock_date_time_transaction_path(trans.id), :method => :delete, :class => "delete", :confirm => "Are you sure you want to cancel this order?")
+  - else
+    p You have no upcoming transactions.
 
 
