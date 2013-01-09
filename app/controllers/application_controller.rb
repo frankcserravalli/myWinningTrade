@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     when "At Market"
       params[type].except!(:when, "execute_at(1i)", "execute_at(2i)", "execute_at(3i)", "execute_at(4i)", "execute_at(5i)", :measure, :price_target)
       return
-    when "Later"
+    when "Future"
       params[type].except!(:when, :measure, :price_target)
       params[type][:order_type] = @order_type
       @order = DateTimeTransaction.new(params[type].merge(user: current_user))

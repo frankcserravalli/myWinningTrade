@@ -6,7 +6,7 @@ $ ->
       when "At Market"
         $("#hidden-"+type+"-later").css "display", "none"
         $("#hidden-"+type+"-stop-loss").css "display", "none"
-      when "Later"
+      when "Future"
         $("#hidden-"+type+"-later").css "display", "inline"
         $("#hidden-"+type+"-stop-loss").css "display", "none"
       when "Stop-Loss"
