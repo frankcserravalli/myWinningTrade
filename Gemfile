@@ -85,4 +85,6 @@ end
 
 gem 'powder'
 gem 'prawn'
-gem 'rufus-scheduler'
+gem 'whenever', :require => false
+gem 'clockwork'
+gem 'thin'

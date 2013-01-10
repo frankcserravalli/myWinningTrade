@@ -42,4 +42,9 @@ class StopLossTransaction < ActiveRecord::Base
     end
   end
 
+  def self.cron_check
+    puts "cron_check stop_loss_t"
+    Rails.logger.info "cron_check stop_loss_transaction"
+  end
+
 end
