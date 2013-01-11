@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20130103203609) do
     t.string   "status",                     :default => "pending"
     t.string   "measure"
     t.decimal  "price_target"
-    t.datetime "execute_at"
+    t.datetime "executed_at"
     t.datetime "updated_at"
     t.datetime "created_at"
   end

@@ -8,7 +8,7 @@ class CreateStopLossTransactions < ActiveRecord::Migration
       t.string   "status",                     :default => "pending"
       t.string   "measure"
       t.decimal  "price_target"
-      t.datetime "execute_at"
+      t.datetime "executed_at"
       t.datetime "updated_at"
       t.datetime "created_at"
     end
