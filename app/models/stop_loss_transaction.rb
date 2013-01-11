@@ -4,7 +4,7 @@ class StopLossTransaction < ActiveRecord::Base
   scope :pending,   where( status: 'pending' )
   scope :processed, where( status: 'processed' )
   scope :failed,    where( status: 'failed' )
-  
+
   belongs_to :user_stock
   belongs_to :user
 
@@ -33,18 +33,67 @@ class StopLossTransaction < ActiveRecord::Base
     self.save
   end
 
-  def execute!(stock)
-  end
-
   def check_for_valid_volume
     if order_type == 'Sell' && volume > self.user_stock.shares_owned
       errors.add(:volume, "Cannot sell more shares than you own")
     end
   end
 
-  def self.cron_check
-    puts "cron_check stop_loss_t"
-    Rails.logger.info "cron_check stop_loss_transaction"
+  def self.evaluate_pending_orders
+    puts "begining evaluating pending orders..."
+    @orders = StopLossTransaction.pending
+    puts "#{@orders.size} orders"
+    @orders.each do |order|
+      order_model = order.order_type
+      order_model = "SellTransaction" if order_model == "Sell"
+      order_model = order_model.constantize
+      puts order_model.new 
+      symbol = order.user_stock.stock.symbol
+      place_the_order = false
+
+      puts "user #{order.user_id} would like to #{order.order_type} #{symbol} when price is #{order.measure} #{order.price_target}"
+      puts "checking price for #{symbol}..." 
+      details = Finance.current_stock_details(symbol)
+      current_price = details.current_price.to_f
+      puts "current price for #{symbol} is #{current_price}"
+      puts "comparing prices..."
+
+      new_order = {}
+      new_order[:volume] = order.volume
+
+      @order_to_execute = order_model.new(new_order.merge(user: order.user))
+
+      if order.measure == "Above"
+        if current_price > order.price_target
+          puts "executing a #{order.order_type} because current price #{current_price} > #{order.price_target}"
+          place_the_order = true
+        end
+      end
+
+      if order.measure == "Below"
+        if current_price < order.price_target
+          place_the_order = true
+          puts "executing a #{order.order_type} because current price #{current_price} < #{order.price_target}"
+        end
+      end
+
+      if place_the_order
+        puts "placing the order..."
+        puts @order_to_execute.to_json
+        transaction do
+          if @order_to_execute.place!(details)
+            order.status = "processed"
+            order.executed_at = Time.now
+            puts "ORDER PLACED"
+          else
+            puts "ORDER NOT PLACED"
+            order.status = "failed"
+          end
+          order.save
+        end
+      end
+      puts "done evaluating pending orders"
+    end
   end
 
 end

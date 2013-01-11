@@ -9,7 +9,6 @@ handler do |job|
 end
 
 puts "testing clockwork!"
-every(10.seconds, 'StopLossTransaction.cron_check'){
-  puts "aaaaa"
-  StopLossTransaction.cron_check
+every(60.seconds, 'StopLossTransaction.cron_check'){
+  StopLossTransaction.evaluate_pending_orders
 }

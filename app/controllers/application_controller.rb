@@ -58,8 +58,9 @@ class ApplicationController < ActionController::Base
     @portfolio = {}.tap do |p|
       user_stocks = current_user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = current_user.user_stocks.includes(:stock).with_shares_borrowed
-      user_date_time_transactions = current_user.date_time_transactions.pending.upcoming
-      user_stop_loss_transactions = current_user.stop_loss_transactions.pending
+      pending_date_time_transactions = current_user.date_time_transactions.pending.upcoming
+      pending_stop_loss_transactions = current_user.stop_loss_transactions.pending
+      processed_stop_loss_transactions = current_user.stop_loss_transactions.processed
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
       stock_details = Finance.stock_details_for_list(stock_symbols)
       short_symbols = user_shorts.map { |s| s.stock.symbol }
@@ -69,20 +70,9 @@ class ApplicationController < ActionController::Base
       p[:purchase_value] = 0
       p[:stocks] = {}
       p[:shorts] = {}
-      p[:date_time_transactions] = user_date_time_transactions 
-      p[:stop_loss_transactions] = user_stop_loss_transactions
-
-      user_date_time_transactions.each do |date_time_transaction|
-        stock_symbol = date_time_transaction.user_stock.stock.symbol
-        Rails.logger.info stock_symbol
-        #Rails.logger.info date_time_transaction.execute_at
-        Rails.logger.info date_time_transaction.execute_at.strftime("%A, %B %d, %Y")
-        @readable_date = date_time_transaction.execute_at.strftime("%I:%M %p")
-        Rails.logger.info @readable_date
-        @time_of = date_time_transaction.execute_at.strftime("%A, %B %d, %Y")
-        @time_distance = distance_of_time_in_words(Time.now, date_time_transaction.execute_at)
-        Rails.logger.info @time_distance
-      end
+      p[:pending_date_time_transactions] = pending_date_time_transactions 
+      p[:pending_stop_loss_transactions] = pending_stop_loss_transactions
+      p[:processed_stop_loss_transactions] = processed_stop_loss_transactions
 
       user_stocks.each do |user_stock|
         stock_symbol = user_stock.stock.symbol

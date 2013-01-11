@@ -1,8 +1,8 @@
 .listing-container
-  - if !@portfolio[:date_time_transactions].empty?
-    h2 Upcoming Transactions
+  h2 Upcoming Transactions
+  - if !@portfolio[:pending_date_time_transactions].empty?
     table.table
-      - @portfolio[:date_time_transactions].each do |trans|
+      - @portfolio[:pending_date_time_transactions].each do |trans|
         - @dt_type = trans.order_type
         - @dt_type = "Short" if @dt_type == "ShortSellBorrow"
         tr

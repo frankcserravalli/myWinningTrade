@@ -34,8 +34,6 @@ class DateTimeTransaction < ActiveRecord::Base
     self.save
   end
 
-  def execute!(stock)
-  end
 
   def execute_at_is_in_future
     if execute_at < Time.now
@@ -46,6 +44,13 @@ class DateTimeTransaction < ActiveRecord::Base
   def check_for_valid_volume
     if order_type == 'Sell' && volume > self.user_stock.shares_owned
       errors.add(:volume, "Cannot sell more shares than you own")
+    end
+  end
+
+  def self.evaluate_pending_orders
+    @orders = DateTimeTransaction.pending
+    puts "{@orders.size}"
+    @orders.each do |order|
     end
   end
 

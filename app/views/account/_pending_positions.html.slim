@@ -1,8 +1,8 @@
 .listing-container
-  -if !@portfolio[:stop_loss_transactions].empty?
-    h2 Pending Positions
+  h2 Pending Positions
+  -if !@portfolio[:pending_stop_loss_transactions].empty?
     table.table
-      - @portfolio[:stop_loss_transactions].each do |trans|
+      - @portfolio[:pending_stop_loss_transactions].each do |trans|
         - @sl_type = trans.order_type
         - @sl_type = "Short" if @sl_type == "ShortSellBorrow"
         tr
