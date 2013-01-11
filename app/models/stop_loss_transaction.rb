@@ -20,7 +20,7 @@ class StopLossTransaction < ActiveRecord::Base
     timestamps
   end
 
-  attr_accessible :user, :user_stock, :volume, :order_type, :measure, :price_target, :status, :execute_at
+  attr_accessible :user, :user_stock, :volume, :order_type, :measure, :price_target, :status, :execute_at, :executed_at
 
   def place!(stock)
     # This method will place a stop_loss_transaction order
