@@ -6,7 +6,7 @@ String.class_eval do
     if self.to_s == "Sell"
       return "Sold"
     end
-    if self.to_s == "ShortSellBorrow"
+    if self.to_s == "ShortSellBorrow" || self.to_s == "Short"
       return "Covered"
     end
   end

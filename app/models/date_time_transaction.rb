@@ -36,7 +36,7 @@ class DateTimeTransaction < ActiveRecord::Base
 
 
   def execute_at_is_in_future
-    if execute_at < Time.now
+    if execute_at < Time.now && status != "processed" && status != "failed"
       errors.add(:execute_at, "Trade must be set in the future")
     end
   end
@@ -48,9 +48,60 @@ class DateTimeTransaction < ActiveRecord::Base
   end
 
   def self.evaluate_pending_orders
-    @orders = DateTimeTransaction.pending
+    puts "evaluating pending date time orders"
+    @orders = DateTimeTransaction.pending.upcoming
     puts "{@orders.size}"
     @orders.each do |order|
+      order_model = order.order_type
+      order_model = "SellTransaction" if order_model == "Sell"
+      order_model = order_model.constantize
+      puts order_model.new 
+      symbol = order.user_stock.stock.symbol
+      place_the_order = false
+
+      puts "user #{order.user_id} would like to #{order.order_type} #{symbol} when date is #{order.execute_at}"
+      puts "checking price for #{symbol}..." 
+      details = Finance.current_stock_details(symbol)
+      current_price = details.current_price.to_f
+      puts "current price for #{symbol} is #{current_price}"
+      puts "comparing prices..."
+
+      new_order = {}
+      new_order[:volume] = order.volume
+
+      @order_to_execute = order_model.new(new_order.merge(user: order.user))
+
+      @now = Time.now
+
+      puts "current time is #{@now}"
+
+      if @now > order.execute_at
+        puts "Ready to execute"
+        place_the_order = true
+      else
+        puts "Not ready to execute"
+      end
+
+      if place_the_order
+        puts "placing the order..."
+        puts @order_to_execute.to_json
+        transaction do
+          if @order_to_execute.place!(details)
+            order.status = "processed"
+            puts "ORDER PLACED"
+          else
+            puts "ORDER NOT PLACED"
+            order.status = "failed"
+          end
+          if order.save
+            puts "order saved"
+          else
+            puts "order not saved"
+            raise ActiveRecord::Rollback
+          end
+        end
+      end
+      puts "done evaluating pending orders"
     end
   end
 

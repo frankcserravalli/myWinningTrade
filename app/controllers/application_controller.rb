@@ -59,6 +59,7 @@ class ApplicationController < ActionController::Base
       user_stocks = current_user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = current_user.user_stocks.includes(:stock).with_shares_borrowed
       pending_date_time_transactions = current_user.date_time_transactions.pending.upcoming
+      processed_date_time_transactions = current_user.date_time_transactions.processed
       pending_stop_loss_transactions = current_user.stop_loss_transactions.pending
       processed_stop_loss_transactions = current_user.stop_loss_transactions.processed
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
@@ -71,6 +72,7 @@ class ApplicationController < ActionController::Base
       p[:stocks] = {}
       p[:shorts] = {}
       p[:pending_date_time_transactions] = pending_date_time_transactions 
+      p[:processed_date_time_transactions] = processed_date_time_transactions 
       p[:pending_stop_loss_transactions] = pending_stop_loss_transactions
       p[:processed_stop_loss_transactions] = processed_stop_loss_transactions
 
@@ -82,6 +84,8 @@ class ApplicationController < ActionController::Base
         current_value = current_price * user_stock.shares_owned.to_f
         shares_owned = user_stock.shares_owned
         cost_basis = user_stock.cost_basis.to_f
+        percent_gain = ((current_price - cost_basis) * 100 / cost_basis).round(1)
+        percent_gain = 0.0 if percent_gain.to_s == "Infinity"
         p[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
           current_price: current_price,
@@ -89,7 +93,7 @@ class ApplicationController < ActionController::Base
           current_value: current_value,
           cost_basis: cost_basis,
           capital_gain: current_price - cost_basis,
-          percent_gain: ((current_price - cost_basis) * 100 / cost_basis).round(1)
+          percent_gain: percent_gain 
         }
         p[:current_value] += current_value
         p[:purchase_value] += purchase_value

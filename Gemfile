@@ -86,6 +86,5 @@ end
 
 gem 'powder'
 gem 'prawn'
-gem 'whenever', :require => false
 gem 'clockwork'
 gem 'thin'

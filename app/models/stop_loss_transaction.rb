@@ -40,7 +40,7 @@ class StopLossTransaction < ActiveRecord::Base
   end
 
   def self.evaluate_pending_orders
-    puts "begining evaluating pending orders..."
+    puts "begining evaluating  pending stop loss orders..."
     @orders = StopLossTransaction.pending
     puts "#{@orders.size} orders"
     @orders.each do |order|
@@ -89,7 +89,12 @@ class StopLossTransaction < ActiveRecord::Base
             puts "ORDER NOT PLACED"
             order.status = "failed"
           end
-          order.save
+          if order.save
+            puts "order saved"
+          else
+            puts "order not saved"
+            raise ActiveRecord::Rollback
+          end
         end
       end
       puts "done evaluating pending orders"

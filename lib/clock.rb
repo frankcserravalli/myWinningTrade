@@ -8,7 +8,9 @@ handler do |job|
   puts "Running #{job}"
 end
 
-puts "testing clockwork!"
-every(60.seconds, 'StopLossTransaction.cron_check'){
+every(60.seconds, 'evaluating stop loss orders...'){
   StopLossTransaction.evaluate_pending_orders
+}
+every(60.seconds, 'evaluating date time orders...'){
+  DateTimeTransaction.evaluate_pending_orders
 }
