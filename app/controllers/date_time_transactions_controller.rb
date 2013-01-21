@@ -2,8 +2,6 @@ class DateTimeTransactionsController < ApplicationController
   after_filter :flash_alert, :only => :create
   
   def create
-    
-    Rails.logger.info params
 
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
     @date_time_transaction = DateTimeTransaction.new(params[:date_time_transaction].merge(user: current_user))
@@ -17,6 +15,8 @@ class DateTimeTransactionsController < ApplicationController
   end
 
   def destroy
+    Rails.logger.info params
+    exit
     @date_time_transaction = DateTimeTransaction.find_by_id(params[:stock_id])
     if @date_time_transaction && current_user.id == @date_time_transaction.user_id
       if @date_time_transaction.delete

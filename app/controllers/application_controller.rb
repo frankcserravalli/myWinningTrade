@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
 
     return false unless @user
 
+
     @portfolio = {}.tap do |p|
       user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
