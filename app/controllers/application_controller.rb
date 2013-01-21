@@ -63,7 +63,6 @@ class ApplicationController < ActionController::Base
 
     return false unless @user
 
-
     @portfolio = {}.tap do |p|
       user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
@@ -77,6 +76,7 @@ class ApplicationController < ActionController::Base
       short_details = Finance.stock_details_for_list(short_symbols)
 
       p[:current_value] = 0
+      p[:cash] = @user.account_balance.to_f
       p[:purchase_value] = 0
       p[:stocks] = {}
       p[:shorts] = {}
@@ -135,6 +135,7 @@ class ApplicationController < ActionController::Base
       else
         p[:percent_gain] = ((p[:current_value] - p[:purchase_value]) * 100 / p[:purchase_value]).round(1)
       end
+      p[:account_value] = (p[:cash].to_f + p[:current_value].to_f).round(2)
     end
 
   end
