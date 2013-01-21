@@ -33,7 +33,13 @@ MyWinningTrade::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      resources :buys, only: :create
+      resources :sells, only: :create
       resources :users do
+      resource :short_sell_borrows, only: :create
+      resource :short_sell_covers, only: :create
+      resource :date_time_transactions, only: [:create, :destroy]
+      resource :stop_loss_transactions, only: [:create, :destroy]
         collection do
           get 'pending_date_time_transactions'
           get 'pending_stop_loss_transactions'

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-  	redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
+    redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
   end
 
   # authorization
@@ -55,16 +55,21 @@ class ApplicationController < ActionController::Base
   end
 
   def load_portfolio
-    current_user ||= User.find_by_id(params[:user_id])
-    return false unless current_user
+    if current_user
+      @user = current_user
+    else
+      @user = User.find_by_id(params[:user_id])
+    end
+
+    return false unless @user
 
     @portfolio = {}.tap do |p|
-      user_stocks = current_user.user_stocks.includes(:stock).with_shares_owned
-      user_shorts = current_user.user_stocks.includes(:stock).with_shares_borrowed
-      pending_date_time_transactions = current_user.date_time_transactions.pending.upcoming
-      processed_date_time_transactions = current_user.date_time_transactions.processed
-      pending_stop_loss_transactions = current_user.stop_loss_transactions.pending
-      processed_stop_loss_transactions = current_user.stop_loss_transactions.processed
+      user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
+      user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
+      pending_date_time_transactions = @user.date_time_transactions.pending.upcoming
+      processed_date_time_transactions = @user.date_time_transactions.processed
+      pending_stop_loss_transactions = @user.stop_loss_transactions.pending
+      processed_stop_loss_transactions = @user.stop_loss_transactions.processed
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
       stock_details = Finance.stock_details_for_list(stock_symbols)
       short_symbols = user_shorts.map { |s| s.stock.symbol }
