@@ -41,4 +41,7 @@ class StockController < ApplicationController
   def portfolio
     render partial: 'account/portfolio'
   end
+
+  def profit_loss
+  end
 end

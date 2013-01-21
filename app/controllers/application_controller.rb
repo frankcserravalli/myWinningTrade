@@ -55,6 +55,9 @@ class ApplicationController < ActionController::Base
   end
 
   def load_portfolio
+    current_user ||= User.find_by_id(params[:user_id])
+    return false unless current_user
+
     @portfolio = {}.tap do |p|
       user_stocks = current_user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = current_user.user_stocks.includes(:stock).with_shares_borrowed

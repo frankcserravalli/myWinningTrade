@@ -1,6 +1,9 @@
 class Order < ActiveRecord::Base
   TRANSACTION_FEE = 6.0
 
+  scope :of_stock, lambda{ |stock_symbol| where('stock.symbol ' => stock_symbol) }
+  scope :with_limit, lambda { |lim| limit(lim) }
+
   belongs_to :user_stock
   belongs_to :user
 
