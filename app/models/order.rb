@@ -1,6 +1,10 @@
 class Order < ActiveRecord::Base
   TRANSACTION_FEE = 6.0
 
+  default_scope order('created_at DESC')
+  scope :of_users_stock, lambda{ |user_stock_id| where('user_stock_id' => user_stock_id) }
+  scope :with_limit, lambda { |lim| limit(lim) }
+
   belongs_to :user_stock
   belongs_to :user
 

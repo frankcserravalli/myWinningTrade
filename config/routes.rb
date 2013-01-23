@@ -1,5 +1,6 @@
 MyWinningTrade::Application.routes.draw do
   get '/dashboard', to: 'stock#dashboard'
+  get '/user/profit_loss', to: 'stock#profit_loss'
 
   get '/login', to: 'sessions#new'
   match '/auth/:provider/callback', to: 'sessions#create'
@@ -29,4 +30,31 @@ MyWinningTrade::Application.routes.draw do
   resources :orders, only: [:index]
 
   root to: redirect('/dashboard')
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :buys, only: :create
+      resources :sells, only: :create
+      resources :stocks do
+        collection do
+          get 'search'
+          get 'details'
+        end
+      end
+      resources :users do
+        collection do
+          get 'pending_date_time_transactions'
+          get 'pending_stop_loss_transactions'
+          get 'portfolio'
+          get 'stock_info'
+          get 'stock_order_history'
+        end
+      end
+      resource :short_sell_borrows, only: :create
+      resource :short_sell_covers, only: :create
+      resource :date_time_transactions, only: [:create, :destroy]
+      resource :stop_loss_transactions, only: [:create, :destroy]
+    end
+  end
+
 end

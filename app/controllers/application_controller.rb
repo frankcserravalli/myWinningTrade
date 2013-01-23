@@ -17,12 +17,18 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-  	redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
+    redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
   end
 
-  # authorization
   def require_acceptance_of_terms
     redirect_to terms_path and return unless current_user && current_user.accepted_terms?
+  end
+
+  # api authentication
+  def valid_user_id
+    @user = User.find_by_id(params[:user_id])
+    return @user if @user
+    respond_with "Invalid user"
   end
 
   # inside buys, sells, shortsellborrows controllers
@@ -55,19 +61,28 @@ class ApplicationController < ActionController::Base
   end
 
   def load_portfolio
+    if current_user
+      @user = current_user
+    else
+      @user = User.find_by_id(params[:user_id])
+    end
+
+    return false unless @user
+
     @portfolio = {}.tap do |p|
-      user_stocks = current_user.user_stocks.includes(:stock).with_shares_owned
-      user_shorts = current_user.user_stocks.includes(:stock).with_shares_borrowed
-      pending_date_time_transactions = current_user.date_time_transactions.pending.upcoming
-      processed_date_time_transactions = current_user.date_time_transactions.processed
-      pending_stop_loss_transactions = current_user.stop_loss_transactions.pending
-      processed_stop_loss_transactions = current_user.stop_loss_transactions.processed
+      user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
+      user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
+      pending_date_time_transactions = @user.date_time_transactions.pending.upcoming
+      processed_date_time_transactions = @user.date_time_transactions.processed
+      pending_stop_loss_transactions = @user.stop_loss_transactions.pending
+      processed_stop_loss_transactions = @user.stop_loss_transactions.processed
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
       stock_details = Finance.stock_details_for_list(stock_symbols)
       short_symbols = user_shorts.map { |s| s.stock.symbol }
       short_details = Finance.stock_details_for_list(short_symbols)
 
       p[:current_value] = 0
+      p[:cash] = @user.account_balance.to_f
       p[:purchase_value] = 0
       p[:stocks] = {}
       p[:shorts] = {}
@@ -126,6 +141,7 @@ class ApplicationController < ActionController::Base
       else
         p[:percent_gain] = ((p[:current_value] - p[:purchase_value]) * 100 / p[:purchase_value]).round(1)
       end
+      p[:account_value] = (p[:cash].to_f + p[:current_value].to_f).round(2)
     end
 
   end
