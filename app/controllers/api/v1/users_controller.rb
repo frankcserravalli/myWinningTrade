@@ -36,6 +36,20 @@ module Api
           end
         end
 
+        def stock_order_history
+          stock = Stock.find_by_symbol(params[:symbol])
+          if stock
+            user_stock = @user.user_stocks.where(stock_id: stock.id).first
+            if user_stock
+              respond_with @user.orders.of_users_stock(user_stock.id) 
+            else
+              respond_with "User has not traded stock"
+            end
+          else
+            respond_with "Stock not yet traded"
+          end
+        end
+
     end
   end
 end
