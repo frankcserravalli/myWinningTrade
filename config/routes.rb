@@ -38,6 +38,7 @@ MyWinningTrade::Application.routes.draw do
       resources :stocks do
         collection do
           get 'search'
+          get 'details'
         end
       end
       resources :users do
