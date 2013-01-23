@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130103203609) do
 
-  create_table "date_time_transactions", :force => true do |t|
+  create_table "date_time_transactions", :force => false do |t|
     t.integer  "user_stock_id"
     t.integer  "user_id"
     t.integer  "volume",        :limit => 8
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20130103203609) do
   add_index "date_time_transactions", ["user_stock_id"], :name => "index_date_time_transactions_on_user_stock_id"
 
 
-  create_table "orders", :force => true do |t|
+  create_table "orders", :force => false do |t|
     t.integer  "user_id"
     t.decimal  "price",                          :precision => 10, :scale => 2
     t.integer  "volume",           :limit => 8
@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(:version => 20130103203609) do
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
   add_index "orders", ["user_stock_id"], :name => "index_orders_on_user_stock_id"
 
-  create_table "stocks", :force => true do |t|
+  create_table "stocks", :force => false do |t|
     t.string "name"
     t.string "symbol", :limit => 7
   end
 
-  create_table "stop_loss_transactions", :force => true do |t|
+  create_table "stop_loss_transactions", :force => false do |t|
     t.integer  "user_stock_id"
     t.integer  "user_id"
     t.integer  "volume",        :limit => 8
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20130103203609) do
   add_index "stop_loss_transactions", ["user_id"], :name => "index_stop_loss_transactions_on_user_id"
   add_index "stop_loss_transactions", ["user_stock_id"], :name => "index_stop_loss_transactions_on_user_stock_id"
 
-  create_table "user_stocks", :force => true do |t|
+  create_table "user_stocks", :force => false do |t|
     t.integer "user_id"
     t.integer "stock_id"
     t.integer "shares_owned",     :limit => 8,                                :default => 0
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20130103203609) do
   add_index "user_stocks", ["stock_id"], :name => "index_user_stocks_on_stock_id"
   add_index "user_stocks", ["user_id"], :name => "index_user_stocks_on_user_id"
 
-  create_table "users", :force => true do |t|
+  create_table "users", :force => false do |t|
     t.string  "email"
     t.string  "name"
     t.string  "provider",        :limit => 16
