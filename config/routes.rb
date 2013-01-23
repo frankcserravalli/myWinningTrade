@@ -46,6 +46,7 @@ MyWinningTrade::Application.routes.draw do
           get 'pending_date_time_transactions'
           get 'pending_stop_loss_transactions'
           get 'portfolio'
+          get 'stock_info'
         end
       end
       resource :short_sell_borrows, only: :create
