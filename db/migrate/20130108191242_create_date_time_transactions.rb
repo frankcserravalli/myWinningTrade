@@ -1,6 +1,6 @@
 class CreateDateTimeTransactions < ActiveRecord::Migration
   def self.up
-    create_table "date_time_transactions", :force => true do |t|
+    create_table "date_time_transactions", :force => false do |t|
       t.integer  "user_stock_id"
       t.integer  "user_id"
       t.integer  "volume",        :limit => 8
