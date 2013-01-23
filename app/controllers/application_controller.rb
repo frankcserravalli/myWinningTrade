@@ -20,9 +20,15 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
   end
 
-  # authorization
   def require_acceptance_of_terms
     redirect_to terms_path and return unless current_user && current_user.accepted_terms?
+  end
+
+  # api authentication
+  def valid_user_id
+    @user = User.find_by_id(params[:user_id])
+    return @user if @user
+    respond_with "Invalid user"
   end
 
   # inside buys, sells, shortsellborrows controllers
