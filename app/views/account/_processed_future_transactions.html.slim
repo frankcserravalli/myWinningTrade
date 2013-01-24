@@ -1,5 +1,4 @@
-.listing-container
-  h2 Processed Future Transactions
+ul#portfolio
   - if !@portfolio[:processed_date_time_transactions].empty?
     table.table
       - @portfolio[:processed_date_time_transactions].each do |trans|

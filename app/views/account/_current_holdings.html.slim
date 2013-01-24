@@ -1,0 +1,5 @@
+ul#portfolio
+  - @portfolio[:stocks].each do |stock_symbol, s|
+      = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
+  - if @portfolio[:stocks].empty?
+    em Your portfolio is empty! Make some purchases to start trading stocks.

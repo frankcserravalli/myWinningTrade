@@ -1,5 +1,4 @@
-.listing-container
-  h2 Processed Positions
+ul#portfolio
   -if !@portfolio[:processed_stop_loss_transactions].empty?
     table.table
       - @portfolio[:processed_stop_loss_transactions].each do |trans|

@@ -1,6 +1,5 @@
-.listing-container
-  h2 Upcoming Future Transactions
-  - if !@portfolio[:pending_date_time_transactions].empty?
+ul#portfolio
+  -if !@portfolio[:pending_date_time_transactions].empty?
     table.table
       - @portfolio[:pending_date_time_transactions].each do |trans|
         - @dt_type = trans.order_type

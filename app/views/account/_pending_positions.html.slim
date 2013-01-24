@@ -1,5 +1,4 @@
-.listing-container
-  h2 Pending Positions
+ul#portfolio
   -if !@portfolio[:pending_stop_loss_transactions].empty?
     table.table
       - @portfolio[:pending_stop_loss_transactions].each do |trans|

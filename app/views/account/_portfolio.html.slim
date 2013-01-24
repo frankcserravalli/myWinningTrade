@@ -1,14 +1,31 @@
-#portfolio_holder.portfolio-list
-  = link_to('Export CSV', orders_path, class: "sml_btn pull-right")
-  h2 Portfolio
-  ul#portfolio
-    - @portfolio[:stocks].each do |stock_symbol, s|
-      = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
-
-  h2 Shorted Positions
-  ul#portfolio
-    - @portfolio[:shorts].each do |stock_symbol, s|
-      = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
-
-  - if @portfolio[:stocks].empty?
-    em Your portfolio is empty! Make some purchases to start trading stocks.
+#portfolio_holder.portfolio_list
+	= link_to('Export CSV', orders_path, class: "sml_btn pull-right")
+	h2 Portfolio
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+	      h2 Long Positions
+	  #collapseOne.accordion-body.collapse.in
+	    .accordion-inner
+	      = render partial: 'account/current_holdings'
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapsesix"
+	      h2 Shorted Positions
+	  #collapsesix.accordion-body.collapse
+	    .accordion-inner
+	      = render partial: 'account/shorting'
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseTwo"
+	      h2 Upcoming Future Transactions
+	  #collapseTwo.accordion-body.collapse
+	    .accordion-inner
+	      = render partial: 'account/upcoming_future_transactions'
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapsefour"
+	      h2 Pending Positions
+	  #collapsefour.accordion-body.collapse
+	    .accordion-inner
+	    	= render partial: 'account/pending_positions'
