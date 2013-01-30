@@ -38,5 +38,11 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def self.summary_per_stock
+    self.includes(:stock).all.each do |order|
+      Rails.logger.info order.to_json
+    end
+  end
+
 end
 

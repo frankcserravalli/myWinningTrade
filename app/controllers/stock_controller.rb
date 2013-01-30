@@ -42,6 +42,33 @@ class StockController < ApplicationController
     render partial: 'account/portfolio'
   end
 
-  def profit_loss
+  def trading_analysis
+    #current_user.orders.summary_per_stock
+    user_stocks = current_user.user_stocks.includes(:stock)
+    Rails.logger.info user_stocks.to_json
+    @stock_summary = {}.tap do |s|
+      s[:stocks] = {}
+      user_stocks.each do |user_stock|
+        stock_symbol = user_stock.stock.symbol
+        
+        revenue = 0
+        capital_at_risk = 0
+        tax_liability = 0
+        current_user.orders.where(user_stock_id: user_stock.id).each do |order|
+          revenue += (order.capital_gain.to_f * order.volume.to_f).round(2)
+          capital_at_risk += order.cost_basis.to_f
+          tax_liability += (order.capital_gain.to_f * 0.3).round(2)
+        end
+        Rails.logger.info capital_at_risk
+        Rails.logger.info revenue
+        s[:stocks][stock_symbol] = {
+          name: user_stock.stock.name,
+          revenue: revenue.round(2),
+          capital_at_risk: capital_at_risk.round(2),
+          tax_liability: tax_liability.round(2)
+        }
+      end
+    end
+    Rails.logger.info @stock_summary
   end
 end

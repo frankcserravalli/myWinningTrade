@@ -1,0 +1,35 @@
+= render partial: 'stock/search'
+= render partial: 'stock/suggest'
+
+#trading_analysis.container
+  .row
+    .span12
+      h1.centered-text Trading Analysis
+      h2.centered-text #{current_user.name}
+
+  .row
+    .span12
+      ul.nav.nav-tabs
+        li.active = link_to 'Summary', '#summary', 'data-toggle' => 'tab'
+        li = link_to 'Profit Loss', '#profit_loss', 'data-toggle' => 'tab'
+        li = link_to 'Capital at Risk', '#capital_at_risk', 'data-toggle' => 'tab'
+        li = link_to 'Graphs', '#graphs', 'data-toggle' => 'tab'
+        li = link_to 'Risk', '#risk', 'data-toggle' => 'tab'
+
+      .tab-content
+        
+        .tab-pane.active.span9#summary
+          = render partial: 'stock/trading_analysis/summary'
+
+        .tab-pane.span9#profit_loss
+          = render partial: 'stock/trading_analysis/profit_loss'
+        
+        .tab-pane.span9#capital_at_risk
+          = render partial: 'stock/trading_analysis/capital_at_risk'
+        
+        .tab-pane.span9#graphs
+          = render partial: 'stock/trading_analysis/graphs'
+        
+        .tab-pane.span9#risk
+          = render partial: 'stock/trading_analysis/risk'
+          
