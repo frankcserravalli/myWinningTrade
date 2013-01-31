@@ -4,15 +4,15 @@ h2 Capital at Risk
 ul
   - @stock_summary[:stocks].each_key do |stock_symbol|
     li
-      | Symbol:
+      | Symbol: '
       = stock_symbol
     li
-      | Name:
+      | Name: '
       = @stock_summary[:stocks][stock_symbol][:name]
     li
-      | Capital At Risk:
+      | Capital At Risk: '
       = @stock_summary[:stocks][stock_symbol][:capital_at_risk]
     li
-      | Percentage:
+      | Percentage: '
       = @stock_summary[:stocks][stock_symbol][:capital_invested_percentage]
 

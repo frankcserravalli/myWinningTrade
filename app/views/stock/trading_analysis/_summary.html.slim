@@ -9,13 +9,15 @@ ul#analysis
       ul
         li
           = key2
-          | :
+          | : '
           = value2
   li Summary
   - @stock_summary[:summary].each do |key, value|
     ul
-      li = key
-      li = value
+      li
+        = key
+        | : '
+        = value
 
 
 
