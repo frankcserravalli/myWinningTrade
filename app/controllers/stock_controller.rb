@@ -48,26 +48,72 @@ class StockController < ApplicationController
     Rails.logger.info user_stocks.to_json
     @stock_summary = {}.tap do |s|
       s[:stocks] = {}
+
+      # It's really not 50,000, but lets write the query to find the current
+      # total capital for later
+      total_capital = 50000
+      net_income_before_taxes = 0
+      taxes = 0
+
+      # Here we are handling all of the users stocks
       user_stocks.each do |user_stock|
+
+        # Declaring some variables for the block that follows
         stock_symbol = user_stock.stock.symbol
-        
         revenue = 0
         capital_at_risk = 0
         tax_liability = 0
-        current_user.orders.where(user_stock_id: user_stock.id).each do |order|
+        returns = 0
+        avg_holding_period = 0
+
+        # Here we are combining all the orders
+        current_user.orders.of_users_stock(user_stock.id).each do |order|
           revenue += (order.capital_gain.to_f * order.volume.to_f).round(2)
           capital_at_risk += order.cost_basis.to_f
           tax_liability += (order.capital_gain.to_f * 0.3).round(2)
+          returns += (order.capital_gain - tax_liability).round(2)
+
+          # Variables needing worked on
+          # How do I find avg holding period?
+          avg_holding_period += 1
+
         end
+
+        capital_invested_percentage = (capital_at_risk / total_capital).round(2)
+
+        # Inserting the stocks into the hash key stocks
+        s[:stocks][stock_symbol] = {
+            name: user_stock.stock.name,
+            revenue: revenue,
+            capital_at_risk: capital_at_risk.round(2),
+            tax_liability: tax_liability,
+            returns: returns,
+            capital_invested_percentage: capital_invested_percentage
+        }
+
+        net_income_before_taxes += returns
+        taxes += tax_liability
+
+        # Debugging
         Rails.logger.info capital_at_risk
         Rails.logger.info revenue
-        s[:stocks][stock_symbol] = {
-          name: user_stock.stock.name,
-          revenue: revenue.round(2),
-          capital_at_risk: capital_at_risk.round(2),
-          tax_liability: tax_liability.round(2)
-        }
+        Rails.logger.info tax_liability
+        Rails.logger.info returns
+        Rails.logger.info capital_invested_percentage
+
       end
+
+
+
+      net_income_after_taxes = net_income_before_taxes - taxes
+      gross_profit = net_income_before_taxes
+      sums = net_income_before_taxes
+      net_income = net_income_after_taxes
+
+
+      # TODO grab the overall results of the users stocks and insert it into a hash
+
+
     end
     Rails.logger.info @stock_summary
   end
