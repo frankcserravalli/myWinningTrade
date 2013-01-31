@@ -45,20 +45,13 @@ class StockController < ApplicationController
   def trading_analysis
     # current_user.orders.total_summary
 
-    # TODO combine summary per stock with total summary
-    # I'm prefer to move all collection of stock information
-    # into one method to prevent extra work,
-    # unless there is a summary of users portfolio in the db, right
-    # now I can't find it. Note that summary_per_stock must be taken
-    # out of Order Model and replaced with summary_total, but I'm unsure
-    # if summary_per_stock was a work in progress. More research necessary
-    #
 
 
     user_stocks = current_user.user_stocks.includes(:stock)
 
     @stock_summary = {}.tap do |s|
-      s = { :stocks => {}, :summary => {} }
+      s[:stocks] = {}
+      s[:summary] = {}
 
       # We need to get a query of the total capital, first find out where it's
       # at in the model
@@ -82,7 +75,7 @@ class StockController < ApplicationController
           revenue += (order.capital_gain.to_f * order.volume.to_f).round(2)
           capital_at_risk += order.cost_basis.to_f
           tax_liability += (order.capital_gain.to_f * 0.3).round(2)
-          returns += (order.capital_gain - tax_liability).round(2)
+          #returns += (order.capital_gain - tax_liability).round(2)
 
           # Variables needing worked on
           # How do I find avg holding period?
@@ -105,25 +98,19 @@ class StockController < ApplicationController
         net_income_before_taxes += returns
         taxes += tax_liability
 
-        # Debugging
-        Rails.logger.info capital_at_risk
-        Rails.logger.info revenue
-        Rails.logger.info tax_liability
-        Rails.logger.info returns
-        Rails.logger.info capital_invested_percentage
-
       end
 
       net_income_after_taxes = net_income_before_taxes - taxes
-      gross_profit = net_income_before_taxes
-      sums = net_income_before_taxes
-      net_income = net_income_after_taxes
+
+      s[:summary] = {
+          net_income_before_taxes: net_income_before_taxes,
+          net_income_after_taxes: net_income_after_taxes,
+          sums: net_income_before_taxes,
+          net_income: net_income_after_taxes,
+          gross_profit: net_income_before_taxes
+      }
 
     end
-
-    # Debugging
-    Rails.logger.info user_stocks.to_json
-    Rails.logger.info @stock_summary
 
   end
 end
