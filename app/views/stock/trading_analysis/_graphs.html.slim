@@ -1,1 +1,7 @@
 h2 Graphs
+
+ul
+  - @stock_summary[:stocks].each do |key, value|
+    li = key
+    li = (@stock_summary[:stocks][key][:capital_at_risk] / @stock_summary[:summary][:total_capital]).round(2)
+

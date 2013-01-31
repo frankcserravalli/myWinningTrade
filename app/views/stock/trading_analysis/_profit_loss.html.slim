@@ -4,9 +4,25 @@ ul
 
   li Trading Activities
   ul
-    li
-      | Revenues
-      = @stock_summary[:stocks][:revenue]
+    - @stock_summary[:stocks].each do |key, value|
+      - if @stock_summary[:stocks][key][:revenue] < 0
+        li Net Revenue
+        ul
+          li
+            | Name:
+            = @stock_summary[:stocks][key][:name]
+          li
+            | Net Revenue:
+            = @stock_summary[:stocks][key][:revenue]
+      - else
+        li Net Loss
+        ul
+          li
+            | Name:
+            = @stock_summary[:stocks][key][:name]
+          li
+            | Net Revenue:
+            = @stock_summary[:stocks][key][:revenue]
 
 
   li

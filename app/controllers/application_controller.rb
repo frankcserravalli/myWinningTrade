@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def overall_summary(current_user)
+  def stocks_summary(current_user)
     user_stocks = current_user.user_stocks.includes(:stock)
 
     @stock_summary = {}.tap do |s|
@@ -70,16 +70,16 @@ class ApplicationController < ActionController::Base
 
       # We need to get a query of the total capital, first find out where it's
       # at in the model
-      total_capital = 50000
+      total_capital = 0
       net_income_before_taxes = 0
       taxes = 0
       net_losses = 0
       net_revenue = 0
 
-      # Here we are handling all of the users stocks
+
+
       user_stocks.each do |user_stock|
 
-        # Declaring some variables for the block that follows
         stock_symbol = user_stock.stock.symbol
         revenue = 0
         capital_at_risk = 0
@@ -87,14 +87,13 @@ class ApplicationController < ActionController::Base
         returns = 0
         avg_holding_period = 0
 
-
-        # Here we are combining all the orders
         current_user.orders.of_users_stock(user_stock.id).each do |order|
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
           revenue += stock_revenue_calculation
           capital_at_risk += order.cost_basis.to_f
           tax_liability += (order.capital_gain.to_f * 0.3)
           returns += (order.capital_gain.to_f - tax_liability)
+          total_capital += capital_at_risk
 
           if stock_revenue_calculation < 0
             net_losses += stock_revenue_calculation
@@ -107,9 +106,10 @@ class ApplicationController < ActionController::Base
 
         end
 
+
+
         capital_invested_percentage = (capital_at_risk / total_capital)
 
-        # Inserting the stocks into the hash key stocks
         s[:stocks][stock_symbol] = {
             name: user_stock.stock.name,
             revenue: revenue.round(2),
@@ -134,7 +134,8 @@ class ApplicationController < ActionController::Base
           gross_profit: net_income_before_taxes.round(2),
           net_revenue: net_revenue,
           net_losses: net_losses,
-          taxes: taxes.round(2)
+          taxes: taxes.round(2),
+          total_capital: total_capital.round(2)
       }
 
     end

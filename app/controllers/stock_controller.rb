@@ -45,7 +45,7 @@ class StockController < ApplicationController
 
   def trading_analysis
 
-    overall_summary(current_user)
+    stocks_summary(current_user)
 
   end
 end
