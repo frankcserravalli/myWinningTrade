@@ -61,22 +61,19 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def stocks_summary(current_user)
+  def stock_summary(current_user)
     user_stocks = current_user.user_stocks.includes(:stock)
 
     @stock_summary = {}.tap do |s|
       s[:stocks] = {}
       s[:summary] = {}
 
-      # We need to get a query of the total capital, first find out where it's
-      # at in the model
+      # Is total_capital equal to the total amount of money invested?
       total_capital = 0
       net_income_before_taxes = 0
       taxes = 0
       net_losses = 0
       net_revenue = 0
-
-
 
       user_stocks.each do |user_stock|
 
@@ -106,8 +103,6 @@ class ApplicationController < ActionController::Base
 
         end
 
-
-
         capital_invested_percentage = (capital_at_risk / total_capital)
 
         s[:stocks][stock_symbol] = {
@@ -116,7 +111,7 @@ class ApplicationController < ActionController::Base
             capital_at_risk: capital_at_risk.round(2),
             tax_liability: tax_liability.round(2),
             returns: returns.round(2),
-            capital_invested_percentage: capital_invested_percentage.round(2)
+
         }
 
         net_income_before_taxes += returns
@@ -137,6 +132,11 @@ class ApplicationController < ActionController::Base
           taxes: taxes.round(2),
           total_capital: total_capital.round(2)
       }
+
+      # Here I'm inserting the capital invested percentage into each stock
+      s[:stocks].each_key do |stock_symbol|
+        s[:stocks][stock_symbol][:capital_invested_percentage] = (s[:stocks][stock_symbol][:capital_at_risk] / s[:summary][:total_capital]).round(2) * 100
+      end
 
     end
 

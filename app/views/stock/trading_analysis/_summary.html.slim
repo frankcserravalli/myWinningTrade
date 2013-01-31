@@ -7,13 +7,17 @@ ul#analysis
           li = key2
           - value2.each do |key3, value3|
             ul
-              li = key3
-              li = value3
+              li
+                = key3
+                | :
+                = value3
         -else
-            div Summary
+         - if
             ul
-              li = key2
-              li = value2
+              li
+                = key2
+                | :
+                = value2
 
 
 
