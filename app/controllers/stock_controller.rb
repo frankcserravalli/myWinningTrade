@@ -72,27 +72,26 @@ class StockController < ApplicationController
 
         # Here we are combining all the orders
         current_user.orders.of_users_stock(user_stock.id).each do |order|
-          revenue += (order.capital_gain.to_f * order.volume.to_f).round(2)
+          revenue += (order.capital_gain.to_f * order.volume.to_f)
           capital_at_risk += order.cost_basis.to_f
-          tax_liability += (order.capital_gain.to_f * 0.3).round(2)
-          #returns += (order.capital_gain - tax_liability).round(2)
+          tax_liability += (order.capital_gain.to_f * 0.3)
+          returns += (order.capital_gain.to_f - tax_liability)
 
-          # Variables needing worked on
           # How do I find avg holding period?
           avg_holding_period += 1
 
         end
 
-        capital_invested_percentage = (capital_at_risk / total_capital).round(2)
+        capital_invested_percentage = (capital_at_risk / total_capital)
 
         # Inserting the stocks into the hash key stocks
         s[:stocks][stock_symbol] = {
             name: user_stock.stock.name,
-            revenue: revenue,
+            revenue: revenue.round(2),
             capital_at_risk: capital_at_risk.round(2),
-            tax_liability: tax_liability,
-            returns: returns,
-            capital_invested_percentage: capital_invested_percentage
+            tax_liability: tax_liability.round(2),
+            returns: returns.round(2),
+            capital_invested_percentage: capital_invested_percentage.round(2)
         }
 
         net_income_before_taxes += returns
@@ -103,11 +102,11 @@ class StockController < ApplicationController
       net_income_after_taxes = net_income_before_taxes - taxes
 
       s[:summary] = {
-          net_income_before_taxes: net_income_before_taxes,
-          net_income_after_taxes: net_income_after_taxes,
-          sums: net_income_before_taxes,
-          net_income: net_income_after_taxes,
-          gross_profit: net_income_before_taxes
+          net_income_before_taxes: net_income_before_taxes.round(2),
+          net_income_after_taxes: net_income_after_taxes.round(2),
+          sums: net_income_before_taxes.round(2),
+          net_income: net_income_after_taxes.round(2),
+          gross_profit: net_income_before_taxes.round(2)
       }
 
     end
