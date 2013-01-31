@@ -46,11 +46,12 @@ class StockController < ApplicationController
     # current_user.orders.total_summary
 
     # TODO combine summary per stock with total summary
-    # I'm preferred to move all code into one method to prevent extra work,
+    # I'm prefer to move all collection of stock information
+    # into one method to prevent extra work,
     # unless there is a summary of users portfolio in the db, right
     # now I can't find it. Note that summary_per_stock must be taken
     # out of Order Model and replaced with summary_total, but I'm unsure
-    # if summary_per_stock was a work in progress.
+    # if summary_per_stock was a work in progress. More research necessary
     #
 
 
