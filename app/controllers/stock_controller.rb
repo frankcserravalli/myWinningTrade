@@ -43,19 +43,24 @@ class StockController < ApplicationController
   end
 
   def trading_analysis
-    #current_user.orders.summary_per_stock
-
-    # TODO combine total summary with summary per stock
-    # Prefer to move all code into one method to prevent extra work,
-    # unless there is a summary of users portfolio in the db, right
-    # now I can't find it
     # current_user.orders.total_summary
+
+    # TODO combine summary per stock with total summary
+    # I'm preferred to move all code into one method to prevent extra work,
+    # unless there is a summary of users portfolio in the db, right
+    # now I can't find it. Note that summary_per_stock must be taken
+    # out of Order Model and replaced with summary_total, but I'm unsure
+    # if summary_per_stock was a work in progress.
+    #
+
 
     user_stocks = current_user.user_stocks.includes(:stock)
 
     @stock_summary = {}.tap do |s|
-      s[:stocks] = {}
+      s = { :stocks => {}, :summary => {} }
 
+      # We need to get a query of the total capital, first find out where it's
+      # at in the model
       total_capital = 50000
       net_income_before_taxes = 0
       taxes = 0
@@ -118,5 +123,6 @@ class StockController < ApplicationController
     # Debugging
     Rails.logger.info user_stocks.to_json
     Rails.logger.info @stock_summary
+
   end
 end
