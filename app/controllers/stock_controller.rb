@@ -52,10 +52,13 @@ class StockController < ApplicationController
     # current_user.orders.total_summary
 
     user_stocks = current_user.user_stocks.includes(:stock)
-    Rails.logger.info user_stocks.to_json
+
     @stock_summary = {}.tap do |s|
       s[:stocks] = {}
 
+      total_capital = 50000
+      net_income_before_taxes = 0
+      taxes = 0
 
       # Here we are handling all of the users stocks
       user_stocks.each do |user_stock|
@@ -105,21 +108,15 @@ class StockController < ApplicationController
 
       end
 
-
-
       net_income_after_taxes = net_income_before_taxes - taxes
       gross_profit = net_income_before_taxes
       sums = net_income_before_taxes
       net_income = net_income_after_taxes
 
-
-      # TODO grab the overall results of the users stocks and insert it into a hash
-
-
     end
 
-
-
+    # Debugging
+    Rails.logger.info user_stocks.to_json
     Rails.logger.info @stock_summary
   end
 end
