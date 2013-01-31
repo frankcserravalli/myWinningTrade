@@ -44,16 +44,18 @@ class StockController < ApplicationController
 
   def trading_analysis
     #current_user.orders.summary_per_stock
+
+    # TODO combine total summary with summary per stock
+    # Prefer to move all code into one method to prevent extra work,
+    # unless there is a summary of users portfolio in the db, right
+    # now I can't find it
+    # current_user.orders.total_summary
+
     user_stocks = current_user.user_stocks.includes(:stock)
     Rails.logger.info user_stocks.to_json
     @stock_summary = {}.tap do |s|
       s[:stocks] = {}
 
-      # It's really not 50,000, but lets write the query to find the current
-      # total capital for later
-      total_capital = 50000
-      net_income_before_taxes = 0
-      taxes = 0
 
       # Here we are handling all of the users stocks
       user_stocks.each do |user_stock|
@@ -115,6 +117,9 @@ class StockController < ApplicationController
 
 
     end
+
+
+
     Rails.logger.info @stock_summary
   end
 end
