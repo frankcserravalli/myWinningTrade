@@ -2,18 +2,18 @@ h2 Summary
 
 ul#analysis
   - @stock_summary.each do |key, value|
-    - value.each do |key2, value2|
-      -if key.eql? :stocks
-        li = key2
-        - value2.each do |key3, value3|
-          ul
-            li = key3
-            li = value3
-      -else
-          div Summary
-          ul
-            li = key2
-            li = value2
+      - value.each do |key2, value2|
+        -if key.eql? :stocks
+          li = key2
+          - value2.each do |key3, value3|
+            ul
+              li = key3
+              li = value3
+        -else
+            div Summary
+            ul
+              li = key2
+              li = value2
 
 
 

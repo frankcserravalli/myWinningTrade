@@ -1,1 +1,29 @@
 h2 Profit and Loss
+
+ul
+
+  li Trading Activities
+  ul
+    li
+      | Revenues
+      = @stock_summary[:stocks][:revenue]
+
+
+  li
+    | Net Revenue:
+    = @stock_summary[:summary][:net_revenue]
+  li
+    | Net Losses:
+    = @stock_summary[:summary][:net_losses]
+
+  li
+    | Gross Profitability:
+    = @stock_summary[:summary][:gross_profit]
+
+  li
+    | Tax Liability Incurred:
+    = @stock_summary[:summary][:taxes]
+
+  li
+    | Net Income:
+    = @stock_summary[:summary][:net_income]
