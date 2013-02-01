@@ -31,6 +31,8 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
+    bourne (1.1.2)
+      mocha (= 0.10.5)
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -143,7 +145,7 @@ GEM
       rails (>= 3.0.0)
       term-ansicolor
     mime-types (1.19)
-    mocha (0.12.3)
+    mocha (0.10.5)
       metaclass (~> 0.0.1)
     momentjs-rails (1.6.2)
       railties (~> 3.1)
@@ -253,6 +255,9 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    shoulda-matchers (1.4.2)
+      activesupport (>= 3.0.0)
+      bourne (~> 1.1.2)
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -326,7 +331,7 @@ DEPENDENCIES
   letter_opener
   market_beat
   migrant
-  mocha
+  mocha (~> 0.10.5)
   momentjs-rails
   oauth
   omniauth-facebook
@@ -341,6 +346,7 @@ DEPENDENCIES
   rickshaw_rails
   rspec-rails
   sass-rails (~> 3.2.3)
+  shoulda-matchers (~> 1.4.2)
   simple_form
   simplecov
   slim-rails

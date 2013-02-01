@@ -46,7 +46,7 @@ end
 gem 'high_voltage'
 
 group :test do
-  gem 'mocha', require: false
+  gem 'mocha', '~> 0.10.5' #, require: false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
@@ -54,6 +54,8 @@ group :test do
   gem 'simplecov', require: false
   gem 'vcr'
   gem 'fakeweb'
+  gem "shoulda-matchers", "~> 1.4.2"
+
 end
 
 group :development, :test do

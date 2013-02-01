@@ -9,6 +9,13 @@ MyWinningTrade::Application.routes.draw do
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
+
+
+  get '/users/profile', to: 'users#profile', as: 'profile'
+  get '/users/edit', to: 'users#edit'
+  put '/users/update', to: 'users#update'
+
+
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
       get :price_history
