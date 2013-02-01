@@ -13,8 +13,7 @@ MyWinningTrade::Application.routes.draw do
 
   get '/users/profile', to: 'users#profile', as: 'profile'
   get '/users/edit', to: 'users#edit'
-  # Uncomment if we plan on letting users update profile
-  #put '/users/update', to: 'users#update'
+  put '/users/update', to: 'users#update'
 
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do

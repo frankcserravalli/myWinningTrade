@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user = User.find(current_user)
+    @user = current_user
 
     respond_to do |format|
       format.html # edit.html.erb
@@ -18,10 +18,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user)
+    #@user = User.find(current_user)
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if current_user.update_attributes(params[:user])
         format.html do
           redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
         end
