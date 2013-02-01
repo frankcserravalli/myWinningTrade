@@ -29,6 +29,8 @@ describe UsersController do
 
     end
 
+# Uncomment if we plan on letting users update profile
+=begin
     context "when updating their profile" do
       before do
         put :update, id: @user.id, user: {'name' => 'Billy Jean'}
@@ -43,6 +45,8 @@ describe UsersController do
         @user.name.should eq("Billy Jean")
       end
     end
+=end
+
 
   end
 

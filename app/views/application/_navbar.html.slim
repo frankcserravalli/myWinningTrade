@@ -5,7 +5,7 @@
       - if current_user
         nav.nav.pull-right
           li
-            span.navbar-text = current_user.name
+            a.navbar-text href="#{profile_path}" = current_user.name
           li
             = link_to logout_path do
               i.icon-signout
