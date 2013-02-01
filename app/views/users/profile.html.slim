@@ -1,6 +1,24 @@
-p
-  strong Name:
-  = @user.name
+= render partial: 'stock/search'
+= render partial: 'stock/suggest'
 
-= link_to 'Edit', users_edit_path
+#trading_analysis.container
+  .row
+    .span12
+      h1.centered-text Profile
+      h2.centered-text #{current_user.name}
+
+  .row
+    .span12
+      ul.nav.nav-tabs
+        li.active = link_to 'Summary', '#summary', 'data-toggle' => 'tab'
+        li = link_to 'Settings', '#settings', 'data-toggle' => 'tab'
+
+      .tab-content
+
+        .tab-pane.active.span9#summary
+          = render 'form'
+
+        .tab-pane.span9#settings
+          = render 'form'
+
 

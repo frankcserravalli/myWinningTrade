@@ -17,9 +17,6 @@ class UsersController < ApplicationController
     end
   end
 
-# Will we be allowing users to edit their
-# profile outside of setting up a payment plan?
-=begin
   def update
     @user = User.find(current_user)
 
@@ -35,8 +32,6 @@ class UsersController < ApplicationController
      end
     end
 
-
-
   end
-=end
+
 end

@@ -10,11 +10,8 @@ describe "User Routing" do
     expect(get: 'users/edit').to route_to({ controller: 'users', action: 'edit' })
   end
 
-# Uncomment if we are adding ability for user to update profile
-=begin
   it "should route to users#update" do
     expect(put: 'users/update').to route_to({ controller: 'users', action: 'update' })
   end
-=end
 
 end
