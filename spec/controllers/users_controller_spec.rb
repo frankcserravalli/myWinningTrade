@@ -29,6 +29,17 @@ describe UsersController do
 
     end
 
+    context "when visiting the user subscription page" do
+      before do
+        get :subscription
+      end
+
+      it { should respond_with(:success) }
+      it { should render_template(:subscription) }
+      it { should assign_to(:user) }
+
+    end
+
     context "when updating their profile" do
       before do
         put :update, id: @user.id, user: {'name' => 'Billy Jean'}

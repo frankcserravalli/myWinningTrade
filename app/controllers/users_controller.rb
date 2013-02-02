@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def subscription
+    @user = current_user
+  end
+
   def update
     #@user = User.find(current_user)
 

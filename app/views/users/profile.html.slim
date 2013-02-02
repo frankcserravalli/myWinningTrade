@@ -1,15 +1,18 @@
 = render partial: 'stock/search'
 = render partial: 'stock/suggest'
 
-#trading_analysis.container
+#profile.container
   .row
-    .span12
-      h1 #{current_user.name}
-      button.btn.btn-primary Edit Profile
-      button.btn.btn-primary Add Subscription
+    h1.span6 #{current_user.name}
+    .span6
+      a.pull-right.btn.btn-primary href="#{users_edit_path}" Edit Profile
+      a.pull-right.btn.btn-primary href="#{users_subscription_path}" Add Subscription
 
 
   .row
     .span12
-      div #{}
+      div #{current_user.name}
+      div #{current_user.email}
+
+
 

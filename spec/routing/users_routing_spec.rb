@@ -10,6 +10,10 @@ describe "User Routing" do
     expect(get: 'users/edit').to route_to({ controller: 'users', action: 'edit' })
   end
 
+  it "should route to users#subscription" do
+    expect(get: 'users/subscription').to route_to({ controller: 'users', action: 'subscription' })
+  end
+
   it "should route to users#update" do
     expect(put: 'users/update').to route_to({ controller: 'users', action: 'update' })
   end

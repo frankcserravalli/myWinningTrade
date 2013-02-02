@@ -14,7 +14,7 @@ MyWinningTrade::Application.routes.draw do
   get '/users/profile', to: 'users#profile', as: 'profile'
   get '/users/edit', to: 'users#edit'
   put '/users/update', to: 'users#update'
-
+  get '/users/subscription', to: 'users#subscription'
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
