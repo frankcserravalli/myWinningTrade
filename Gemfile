@@ -3,90 +3,136 @@ source 'https://rubygems.org'
 #gem 'rails', '3.2.6'
 gem 'rails', '3.2.11'
 
-# database
-gem 'pg'
+# Database
+# ========
+gem "pg", "~> 0.14.1"
 
 group :assets do
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'compass-rails'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyrhino'
+  gem "jquery-rails", "~> 2.2.0"
+
+  gem "jquery-ui-rails", "~> 3.0.1"
+
+  gem "compass-rails", "~> 1.0.3"
+
+  gem 'sass-rails',   '~> 3.2.6'
+
+  gem 'coffee-rails', '~> 3.2.2'
+
+  gem "therubyrhino", "~> 2.0.2"
+
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass_twitter_bootstrap'
-  gem 'momentjs-rails'
+
+  gem "compass_twitter_bootstrap", "~> 2.2.2.2"
+
+  gem "momentjs-rails", "~> 1.7.2"
 end
 
-gem 'market_beat'
+# UI
+# ===
+gem "chosen-rails", "~> 0.9.11.2"
 
-# ui
-gem 'chosen-rails'
-gem 'underscore-rails'
+gem "underscore-rails", "~> 1.4.3"
 
-# views
-gem 'slim-rails'
-gem 'simple_form'
-gem 'country_select'
+# Views
+# =====
+gem "slim-rails", "~> 1.1.0"
+
+gem "simple_form", "~> 2.0.4"
+
+gem "country_select", "~> 1.1.3"
+
 gem 'copycopter_client', '~> 2.0.1'
 
-# graphing
-gem 'rickshaw_rails'
-gem 'market_beat'
+# Graphing
+# ========
 
-# model
-gem 'migrant'
-gem 'squeel'
+gem "rickshaw_rails", "~> 0.0.4"
+
+gem "market_beat", "~> 0.2.0"
+
+# Model
+# =====
+
+gem "migrant", "~> 1.4.0"
+
+gem "squeel", "~> 1.0.15"
 
 group :development do
-  gem 'letter_opener'
-  gem 'heroku'
+  gem "letter_opener", "~> 1.0.0"
+
+  gem "heroku", "~> 2.34.0"
 end
 
-gem 'high_voltage'
-
 group :test do
-  gem 'mocha', '~> 0.10.5' #, require: false
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-  gem 'simplecov', require: false
-  gem 'vcr'
-  gem 'fakeweb'
+  gem 'mocha', '~> 0.10.5', require: false
+
+  gem "capybara", "~> 2.0.2"
+
+  gem "database_cleaner", "~> 0.9.1"
+
+  gem "factory_girl_rails", "~> 4.2.0"
+
+  gem "rspec-rails", "~> 2.12.2"
+
+  gem "simplecov", "~> 0.7.1", require: false
+
+  gem "vcr", "~> 2.4.0"
+
+  gem "fakeweb", "~> 1.3.0"
+
   gem "shoulda-matchers", "~> 1.4.2"
 
 end
 
 group :development, :test do
-  gem 'jasminerice'
+  gem "jasminerice", "~> 0.0.10"
 end
 
-gem 'thin'
+# OmniAuth
+# ========
 
-# omniauth
-gem 'oauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'omniauth-linkedin'
-gem 'omniauth-openid' # Google
+gem "oauth", "~> 0.4.7"
 
+gem "omniauth-twitter", "~> 0.0.14"
 
-# monitoring
+gem "omniauth-facebook", "~> 1.4.1"
+
+gem "omniauth-linkedin", "~> 0.0.8"
+
+gem "omniauth-openid", "~> 1.0.1" # Google
+
+# Monitoring
+# ==========
 #gem 'newrelic_rpm'
 
-# yahoo api
-gem 'yql'
-gem 'rest-client'
+# Yahoo API
+# ========
+gem "yql", "~> 0.0.2"
 
-# guard
+gem "rest-client", "~> 1.6.7"
+
+# Guard
+# =====
 group :development do
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'guard-bundler'
+  gem "guard", "~> 1.6.2"
+
+  gem "guard-rspec", "~> 2.4.0"
+
+  gem "guard-bundler", "~> 1.0.0"
 end
 
-gem 'powder'
-gem 'prawn'
-gem 'clockwork'
-gem 'thin'
+gem "clockwork", "~> 0.4.1"
+
+gem "high_voltage", "~> 1.2.1"
+
+gem "powder", "~> 0.1.8"
+
+gem "prawn", "~> 0.12.0"
+
+gem "stripe", "~> 1.7.9"
+
+gem "thin", "~> 1.5.0"
+
+gem "term-ansicolor", "~> 1.0.7"
+
+
