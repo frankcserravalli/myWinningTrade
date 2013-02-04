@@ -16,6 +16,7 @@
 //= require moment
 //= require flash
 //= require finance
+//= require stripe
 //= require_self
 //= require_tree .//stock
 //= require general
