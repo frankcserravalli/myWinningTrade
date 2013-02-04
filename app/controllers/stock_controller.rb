@@ -1,4 +1,12 @@
 class StockController < ApplicationController
+
+  class Analysis < Prawn::Document
+    def to_pdf
+      text "Hello world"
+      render
+    end
+  end
+
   def dashboard
   end
 
@@ -48,6 +56,16 @@ class StockController < ApplicationController
   end
 
   def trading_analysis_pdf
-    stock_summary(current_user)
+
+    output = Analysis.new.to_pdf
+
+    respond_to do |format|
+      format.pdf do
+        send_data output, :filename => "trading_analysis.pdf",
+                  :type => "application/pdf"
+      end
+    end
   end
+
+
 end
