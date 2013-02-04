@@ -1,7 +1,5 @@
 class StockController < ApplicationController
 
-
-
   def dashboard
   end
 
@@ -50,7 +48,7 @@ class StockController < ApplicationController
     @stock_summary = current_user.stock_summary
   end
 
-
+  # TODO We need to move this somewhere else
   class Analysis < Prawn::Document
     def to_pdf
       text "Hello world"
