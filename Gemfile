@@ -88,3 +88,5 @@ gem 'powder'
 gem 'prawn'
 gem 'clockwork'
 gem 'thin'
+gem "koala", "~> 1.6.0"
+
