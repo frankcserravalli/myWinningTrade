@@ -1,11 +1,6 @@
 class StockController < ApplicationController
 
-  class Analysis < Prawn::Document
-    def to_pdf
-      text "Hello world"
-      render
-    end
-  end
+
 
   def dashboard
   end
@@ -52,7 +47,15 @@ class StockController < ApplicationController
   end
 
   def trading_analysis
-    stock_summary(current_user)
+    @stock_summary = current_user.stock_summary
+  end
+
+
+  class Analysis < Prawn::Document
+    def to_pdf
+      text "Hello world"
+      render
+    end
   end
 
   def trading_analysis_pdf
