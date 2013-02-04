@@ -1,21 +1,31 @@
 = form_tag method='POST', action: nil, class: 'payment-form' do
 
     span Card Number
+
+    br
+
     input.card-number type="text" size="20" autocomplete="off"
 
     br
 
     span CVC
+
+    br
+
     input.card-cvc type="text" size="4" autocomplete="off"
 
     br
 
-    span Expiration (MM/YYYY)
+    span Expiration Date
+
+    br
+
     = select_month nil, {add_month_numbers: true}, {name: nil, class: "card-expiry-month"}
     = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, class: "card-expiry-year"}
 
     br
 
+    = submit_tag "Submit Payment", class: "btn btn-success submit-button"
     = link_to 'Back', profile_path, class: "btn btn-primary"
 
-    = submit_tag "Submit Payment", class: "btn btn-success submit-button"
+
