@@ -44,8 +44,10 @@ class StockController < ApplicationController
   end
 
   def trading_analysis
-
     stock_summary(current_user)
+  end
 
+  def trading_analysis_pdf
+    stock_summary(current_user)
   end
 end
