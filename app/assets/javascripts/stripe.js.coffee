@@ -2,20 +2,20 @@
 Stripe.setPublishableKey 'YOUR_PUBLISHABLE_KEY'
 
 
-$('#payment-form').submit(function(event) {
+$('.payment-form').submit( (event) ->
 
-# Disable the submit button to prevent repeated clicks
-$('.submit-button').prop 'disabled', true
+  # Disable the submit button to prevent repeated clicks
+  $('.submit-button').prop 'disabled', true
 
-Stripe.createToken({
-number: $('.card-number').val(),
-cvc: $('.card-cvc').val(),
-exp_month: $('.card-expiry-month').val(),
-exp_year: $('.card-expiry-year').val()
-}, stripeResponseHandler);
+  Stripe.createToken({
+  number: $('.card-number').val(),
+  cvc: $('.card-cvc').val(),
+  exp_month: $('.card-expiry-month').val(),
+  exp_year: $('.card-expiry-year').val()
+  }, stripeResponseHandler)
 
-# Prevent the form from submitting with the default action
-return false;
-});
+  # Prevent the form from submitting with the default action
+  return false
+)
 
 
