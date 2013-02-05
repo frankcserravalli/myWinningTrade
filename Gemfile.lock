@@ -133,6 +133,10 @@ GEM
       launchy
     libwebsocket (0.1.5)
       addressable
+    linkedin (0.3.7)
+      hashie (~> 1.2)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     listen (0.4.7)
       rb-fchange (~> 0.0.5)
       rb-fsevent (~> 0.9.1)
@@ -332,6 +336,7 @@ DEPENDENCIES
   jquery-ui-rails
   koala (~> 1.6.0)
   letter_opener
+  linkedin (~> 0.3.7)
   market_beat
   migrant
   mocha

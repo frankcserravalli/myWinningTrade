@@ -89,4 +89,5 @@ gem 'prawn'
 gem 'clockwork'
 gem 'thin'
 gem "koala", "~> 1.6.0"
+gem "linkedin", "~> 0.3.7"
 
