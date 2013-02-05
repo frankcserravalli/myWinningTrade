@@ -28,3 +28,31 @@ client.update_status('is playing with the LinkedIn Ruby gem')
 
 # clear status for the currently logged in user
 client.clear_status
+
+
+=begin
+Application Details
+Company:
+
+    Conclave Labs
+
+Application Name:
+
+    My Winning Trade
+
+API Key:
+
+    7imqhpb5d9cm
+
+Secret Key:
+
+    dUtYyIdxvrqpbdXA
+
+OAuth User Token:
+
+    d96692b5-7bad-4845-9e27-625f8aedb086
+
+OAuth User Secret:
+
+    0a6474c5-0b21-4e14-8136-7bc7e442fb7f
+=end
