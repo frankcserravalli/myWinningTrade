@@ -5,7 +5,7 @@ describe Api::V1::UsersController do
     @token = scramble_token(Time.now, create_random_string)
   end
 
-  describe "post new" do
+  describe "post create" do
     context "with an user who does everything right" do
       it "returns http success" do
         post :create, user: FactoryGirl.attributes_for(:user)
@@ -40,22 +40,22 @@ describe Api::V1::UsersController do
 
       # TODO turn one when validations set up for model
       it "should get returned an error message" do
-        post :create, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user, provider: "")
 
-        response.body.should == {}
+        response.body.should == "{}"
       end
 
       it "returns with no ios token" do
-        post :create, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user, provider: "")
 
         parsed_body = JSON.parse(response.body)
 
-        parsed_body["ios_token"].should == {}
+        parsed_body["ios_token"].should == nil
       end
 
       it "should not create a new user" do
         expect do
-          post :create, user: FactoryGirl.attributes_for(:user)
+          post :create, user: FactoryGirl.attributes_for(:user, provider: "")
         end.to change{ User.count }.by(0)
       end
 
