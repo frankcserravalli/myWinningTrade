@@ -2,8 +2,117 @@ module Api
   module V1
     class UsersController < ApplicationController
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
-      before_filter :valid_user_id
+      skip_before_filter :valid_user_id
       respond_to :json
+
+
+      skip_before_filter :require_iphone_login, :only => [:new, :authenticate]
+      skip_before_filter :verify_authenticity_token
+
+      # call this to sign up a user
+      #
+      # Params Needed
+      # =============
+      # user (more details to come)
+      # So you will send the json for user like this..
+      # { "user": { "name": "", "email": "", etc etc } }
+      #
+      def new
+        scrambled_token = scramble_token(Time.now, create_random_string)
+        @user = User.new(params[:user])
+        if @user.save
+          render :json => { :user_id => @user.id, :ios_token => scrambled_token}
+        else
+          render :json => {}
+        end
+      end
+
+      # Authenticate User and provide them an ios token
+      #
+      # Params Needed
+      # =============
+      # email
+      # password
+      #
+      def authenticate
+        scrambled_token = scramble_token(Time.now, create_random_string)
+        @user = User.find_by_email(params[:email])#.try(:authenticate, params[:password])
+        if @user
+          render :json => { :user_id => @user.id, :ios_token => scrambled_token }
+        else
+          render :json => {}
+        end
+      end
+
+
+      # Destroy an User's account
+      #
+      # Params Needed
+      # =============
+      # email
+      # password
+      #
+      def destroy
+        @user = User.find_by_email(params[:email])#.try(:authenticate, params[:password])
+        if @user
+          @user.destroy
+          render :text => 'Account deleted'
+        else
+          render :json => {}
+        end
+      end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         def pending_date_time_transactions
           respond_with @user.date_time_transactions.pending

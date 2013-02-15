@@ -17,6 +17,8 @@
 config/database.yml
 coverage/
 
+/config/database.yml
+
 .DS_Store
 
 .powder
