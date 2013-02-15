@@ -1,5 +1,6 @@
-require 'linkedin'
 
+require 'linkedin'
+=begin
 # get your api keys at https://www.linkedin.com/secure/developer
 client = LinkedIn::Client.new('your_consumer_key', 'your_consumer_secret')
 rtoken = client.request_token.token
@@ -28,7 +29,7 @@ client.update_status('is playing with the LinkedIn Ruby gem')
 
 # clear status for the currently logged in user
 client.clear_status
-
+=end
 
 =begin
 Application Details
