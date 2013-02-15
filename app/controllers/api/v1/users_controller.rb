@@ -3,11 +3,11 @@ module Api
     class UsersController < ApplicationController
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
       skip_before_filter :valid_user_id
+      skip_before_filter :require_iphone_login, :only => [:create, :authenticate]
       respond_to :json
 
 
-      skip_before_filter :require_iphone_login, :only => [:new, :authenticate]
-      skip_before_filter :verify_authenticity_token
+
 
       # call this to sign up a user
       #
@@ -17,7 +17,7 @@ module Api
       # So you will send the json for user like this..
       # { "user": { "name": "", "email": "", etc etc } }
       #
-      def new
+      def create
         scrambled_token = scramble_token(Time.now, create_random_string)
         @user = User.new(params[:user])
         if @user.save

@@ -9,6 +9,9 @@ MyWinningTrade::Application.routes.draw do
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
+
+
+
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
       get :price_history
@@ -33,6 +36,10 @@ MyWinningTrade::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      post 'users/authenticate' => 'users#authenticate'
+      post 'users/create' => 'users#create'
+      delete 'users/destroy' => 'users#destroy'
+
       resources :buys, only: :create
       resources :sells, only: :create
       resources :stocks do
@@ -48,6 +55,7 @@ MyWinningTrade::Application.routes.draw do
           get 'portfolio'
           get 'stock_info'
           get 'stock_order_history'
+
         end
       end
       resource :short_sell_borrows, only: :create

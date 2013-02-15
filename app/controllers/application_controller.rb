@@ -1,6 +1,7 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include UsersHelper
   before_filter :require_login
   before_filter :require_acceptance_of_terms, if: :current_user
   before_filter :load_portfolio, if: :current_user

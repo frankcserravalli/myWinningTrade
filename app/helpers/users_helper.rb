@@ -26,9 +26,9 @@ module UsersHelper
     string = string.shuffle[0,25].join
   end
 
-  def require_login
-    # Runs on all controllers except the Rails admin controller
-    unless params[:controller].eql? "rails_admin/main"
+  def require_iphone_login
+    # Runs all iphone controllers
+    if params[:controller].match(/v1/)
       # TODO Yes, there is an easier way to do this. I'll work on it later.
       if params.has_key? :ios_token
         eight_hours_ago = Time.now - 8.hours

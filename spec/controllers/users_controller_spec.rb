@@ -8,13 +8,13 @@ describe Api::V1::UsersController do
   describe "post new" do
     context "with an user who does everything right" do
       it "returns http success" do
-        post :new, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user)
 
         response.should be_success
       end
 
       it "returns with an ios token" do
-        post :new, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user)
 
         parsed_body = JSON.parse(response.body)
 
@@ -22,16 +22,16 @@ describe Api::V1::UsersController do
       end
 
       it "returns with an created user" do
-        post :new, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user)
 
         parsed_body = JSON.parse(response.body)
 
-        JSON.parse(parsed_body["user"])["email"].should == 'developers@example.com'
+        parsed_body["user_id"].should == User.last.id
       end
 
       it "should create a new user" do
         expect do
-          post :new, user: FactoryGirl.attributes_for(:user)
+          post :create, user: FactoryGirl.attributes_for(:user)
         end.to change{ User.count }.by(1)
       end
     end
@@ -40,13 +40,13 @@ describe Api::V1::UsersController do
 
       # TODO turn one when validations set up for model
       it "should get returned an error message" do
-        post :new, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user)
 
         response.body.should == {}
       end
 
       it "returns with no ios token" do
-        post :new, user: FactoryGirl.attributes_for(:user)
+        post :create, user: FactoryGirl.attributes_for(:user)
 
         parsed_body = JSON.parse(response.body)
 
@@ -55,7 +55,7 @@ describe Api::V1::UsersController do
 
       it "should not create a new user" do
         expect do
-          post :new, user: FactoryGirl.attributes_for(:user)
+          post :create, user: FactoryGirl.attributes_for(:user)
         end.to change{ User.count }.by(0)
       end
 
@@ -81,7 +81,7 @@ describe Api::V1::UsersController do
 
         parsed_body = JSON.parse(response.body)
 
-        JSON.parse(parsed_body["user"])["email"].should == 'developers@example.com'
+        parsed_body["user_id"].should == User.last.id
       end
 
       it "returns http success" do
@@ -129,13 +129,13 @@ describe Api::V1::UsersController do
 
       it "doesn't delete the user when there is no ios token" do
         expect do
-          delete :destroy, email: @user.email #, password: @user.password
+          delete :destroy #, password: @user.password
         end.to change{ User.count }.by(0)
       end
 
       it "doesn't delete the user when there is no email" do
         expect do
-          delete :destroy, email: @user.email #, password: @user.password
+          delete :destroy #, password: @user.password
         end.to change{ User.count }.by(0)
       end
     end
