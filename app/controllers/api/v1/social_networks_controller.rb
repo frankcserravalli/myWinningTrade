@@ -12,10 +12,10 @@ module Api
                            :uid => @data['uid'])
         if @user
           # Signed In, token is sent through because the user is signed in
-          render :json => { :data => @user, :ios_token => scrambled_token, :status => 200 }
+          render :json => { :data => @user.to_json, :ios_token => scrambled_token, :status => 200 }
         else
           # User doesn't exist, redirect to sign up page with info grabbed from facebook oauth
-          render :json => { :data => @data, :status => :unauthorized }
+          render :json => { :data => @data.to_json, :status => :unauthorized }
         end
       end
     end

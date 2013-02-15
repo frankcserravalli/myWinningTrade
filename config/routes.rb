@@ -39,6 +39,8 @@ MyWinningTrade::Application.routes.draw do
       post 'users/authenticate' => 'users#authenticate'
       post 'users/create' => 'users#create'
       delete 'users/destroy' => 'users#destroy'
+      match '/auth/:provider/callback', to: 'social_networks#authenticate'
+
 
       resources :buys, only: :create
       resources :sells, only: :create
