@@ -29,5 +29,5 @@
       #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
 
   .control-group
-    = f.submit 'Buy Stocks and Share with Friends', class: 'btn-primary btn btn-large pull-right'
-    = f.submit 'Buy Stocks', class: 'btn-primary btn btn-large pull-left'
+    = f.submit 'Buy Stocks and Share with Friends', value="share", class: 'btn-primary btn btn-large pull-right'
+    = f.submit 'Buy Stocks', value="no-share", class: 'btn-primary btn btn-large pull-left'

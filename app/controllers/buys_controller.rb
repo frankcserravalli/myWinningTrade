@@ -9,6 +9,9 @@ class BuysController < ApplicationController
     @buy_order = Buy.new(params[:buy].merge(user: current_user))
     if @buy_order.place!(@stock_details)
       flash[:notice] = "Successfully purchased #{@buy_order.volume} #{params[:stock_id]} for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+      if params[:commit] == 'share'
+        # Share to the social network
+      end
       redirect_to(stock_path(params[:stock_id]))
     else
       redirect_to(stock_path(params[:stock_id]))
