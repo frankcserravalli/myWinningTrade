@@ -6,13 +6,23 @@ class SellsController < ApplicationController
     @order = SellTransaction.new(params[:sell].merge(user: current_user))
 
     if @order.place!(@stock_details)
-      flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
       if params[:commit] == 'share'
-        share_to_network("sell")
+        session['oauth'] = Koala::Facebook::OAuth.new(ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], 'localhost:3000/sells/callback')
+
+        redirect_to session['oauth'].url_for_oauth_code()
+      else
+        flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
+
+        redirect_to(stock_path(params[:stock_id]))
       end
-      redirect_to(stock_path(params[:stock_id]))
     else
       redirect_to(stock_path(params[:stock_id]), alert: "#{@order.errors.values.join}")
     end
+  end
+
+  def callback
+    @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
+    @graph.put_wall_post("Testing out something. It works!")
+    redirect_to dashboard_path
   end
 end
