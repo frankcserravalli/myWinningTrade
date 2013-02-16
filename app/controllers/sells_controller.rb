@@ -37,7 +37,7 @@ class SellsController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully sold #{@order.volume} shares from #{@stock.name}"
+    response = "Successfully sold #{@order.volume} shares from #{@stock.name} on My Winning Trade."
 
     flash[:notice] = response
 

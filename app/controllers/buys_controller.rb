@@ -42,7 +42,7 @@ class BuysController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} on My Winning Trade."
 
     flash[:notice] = response
 
