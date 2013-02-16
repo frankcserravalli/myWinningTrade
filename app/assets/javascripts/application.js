@@ -11,6 +11,8 @@
 //= require bootstrap-popover
 //= require bootstrap-button
 //= require bootstrap-collapse
+//= require bootstrap-modal
+//= require bootstrap-transition
 //= require chosen-jquery
 //= require underscore
 //= require moment

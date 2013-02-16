@@ -50,6 +50,10 @@
           p Prices may be delayed slightly from the current exchange prices
           = render partial: 'short_sell_borrow_form'
 
+= render partial: 'share_buy_modal'
+
+= render partial: 'share_sell_modal'
+
 javascript:
   var MyWinningTrade = new Object();
   MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}

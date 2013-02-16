@@ -7,7 +7,7 @@ class SellsController < ApplicationController
 
     if @order.place!(@stock_details)
       if params[:commit] == 'share'
-        session['oauth'] = Koala::Facebook::OAuth.new(298514626925253, "0de422445cad2b8ad09d8ecb8b748189", 'localhost:3000/sells/callback')
+        session['oauth'] = Koala::Facebook::OAuth.new("298514626925253", "0de422445cad2b8ad09d8ecb8b748189", 'localhost:3000/sells/callback')
 
         redirect_to session['oauth'].url_for_oauth_code()
       else
