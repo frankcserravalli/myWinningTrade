@@ -9,8 +9,9 @@ MyWinningTrade::Application.routes.draw do
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
-
   get '/trading_analysis_pdf', to: 'stock#trading_analysis_pdf'
+
+  get 'buys/callback', to: 'buys#callback'
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do

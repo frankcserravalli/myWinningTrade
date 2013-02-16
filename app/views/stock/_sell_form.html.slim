@@ -32,5 +32,5 @@
       #cash_sell_calculation = number_to_currency(current_user.account_balance.to_f+@stock.current_bid.to_f)
 
   .control-group
-    = f.submit 'Sell Stocks and Share with Friends', value="share", class: 'btn-primary btn btn-large pull-right'
-    = f.submit 'Sell Stocks', value="no-share", class: 'btn-primary btn btn-large pull-left'
+    button.btn-primary.btn.btn-large.pull-right name="commit" type="submit" value="share" Sell Stocks and Share with Friends
+    button.btn-primary.btn.btn-large.pull-left name="commit" type="submit" value="no-share" Sell Stocks

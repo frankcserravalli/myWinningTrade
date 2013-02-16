@@ -146,4 +146,13 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def linkedin_share
+    client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA', LINKEDIN_CONFIGURATION)
+    request_token = client.request_token(:oauth_callback =>
+                                             "http://#{request.host_with_port}/buys/callback")
+    session[:rtoken] = request_token.token
+    session[:rsecret] = request_token.secret
+    redirect_to client.request_token.authorize_url
+  end
+
 end

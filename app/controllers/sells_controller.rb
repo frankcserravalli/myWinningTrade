@@ -8,7 +8,7 @@ class SellsController < ApplicationController
     if @order.place!(@stock_details)
       flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
       if params[:commit] == 'share'
-        # Share to the social network
+        share_to_network("sell")
       end
       redirect_to(stock_path(params[:stock_id]))
     else
