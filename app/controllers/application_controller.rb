@@ -149,14 +149,14 @@ class ApplicationController < ActionController::Base
   def linkedin_share_connect(controller)
     client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA', LINKEDIN_CONFIGURATION)
     request_token = client.request_token(:oauth_callback =>
-                                             "http://#{request.host_with_port}/#{controller}/callback")
+                                             "http://#{request.host_with_port}/#{controller}/callback_linkedin")
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     redirect_to client.request_token.authorize_url
   end
 
   def facebook_share_connect(controller)
-    session['oauth'] = Koala::Facebook::OAuth.new("298514626925253", "0de422445cad2b8ad09d8ecb8b748189", 'localhost:3000/#{controller}/callback')
+    session['oauth'] = Koala::Facebook::OAuth.new("298514626925253", "0de422445cad2b8ad09d8ecb8b748189", 'localhost:3000/#{controller}/callback_facebook')
     redirect_to session['oauth'].url_for_oauth_code()
   end
 

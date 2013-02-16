@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   after_filter :flash_cover, :only => :create
   after_filter :flash_alert, :only => :create
-  before_filter(:except => [:callback]) { |controller| controller.when_to_execute_order('buy') }
+  before_filter(:except => [:callback_facebook, :callback_linkedin]) { |controller| controller.when_to_execute_order('buy') }
 
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
@@ -34,23 +34,9 @@ class BuysController < ApplicationController
   def callback_linkedin
     #TODO redirect to stock if user denies request
 
-    client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA')
-
-    if session[:atoken].nil?
-      pin = params[:oauth_verifier]
-
-      atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
-
-      session[:atoken] = atoken
-
-      session[:asecret] = asecret
-    else
-      client.authorize_from_access(session[:atoken], session[:asecret])
-    end
-
     @current_user = current_user
 
-    @buy_order = Buy.where(id: @current_user.id).last
+    @buy_order = Buy.where(id: @current_user.id).first
 
     @stock_id = UserStock.find(@buy_order.user_stock_id)
 
@@ -58,11 +44,30 @@ class BuysController < ApplicationController
 
     response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
 
-    client.add_share(:comment => response)
-
     flash[:notice] = response
 
-    redirect_to(stock_path(@stock.symbol))
+    if params.has_key? "oauth_problem"
+      redirect_to(stock_path(@stock.symbol))
+    else
+      client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA')
+
+      if session[:atoken].nil?
+        pin = params[:oauth_verifier]
+
+        atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
+
+        session[:atoken] = atoken
+
+        session[:asecret] = asecret
+      else
+        client.authorize_from_access(session[:atoken], session[:asecret])
+      end
+
+      client.add_share(:comment => response)
+
+
+      redirect_to(stock_path(@stock.symbol))
+    end
   end
 
   def flash_cover
