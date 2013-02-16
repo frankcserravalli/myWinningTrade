@@ -10,7 +10,12 @@ class BuysController < ApplicationController
       if params[:commit] == 'share'
         linkedin_share
       else
-        flash[:notice] = "Successfully purchased #{@buy_order.volume} #{params[:stock_id]} for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+        @stock_id = UserStock.find(@buy_order.user_stock_id)
+
+        @stock_name = Stock.find(@stock_id.stock_id)
+
+        flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+
         redirect_to(stock_path(params[:stock_id]))
       end
     else
@@ -35,15 +40,19 @@ class BuysController < ApplicationController
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
 
-    #@buy_order = Buy.where(id: session[:current_user_id])
+    @current_user = current_user
 
-    #@stock_id = UserStock.find(@buy_order.user_stock_id)
+    @buy_order = Buy.where(id: @current_user.id).last
 
-    client.add_share(:comment => "is using Linkedin share gem")
+    @stock_id = UserStock.find(@buy_order.user_stock_id)
 
-    #flash[:notice] = "Successfully purchased #{@buy_order.volume} #{params[:stock_id]} for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+    @stock_name = Stock.find(@stock_id.stock_id)
 
-    flash[:notice] = "It works"
+    response = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+
+    client.add_share(:comment => response)
+
+    flash[:notice] = response
 
     redirect_to(stock_path(@stock_id))
   end
