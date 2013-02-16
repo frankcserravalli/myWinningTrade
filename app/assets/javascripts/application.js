@@ -18,6 +18,7 @@
 //= require moment
 //= require flash
 //= require finance
+//= require submit_form_and_share
 //= require_self
 //= require_tree .//stock
 //= require general

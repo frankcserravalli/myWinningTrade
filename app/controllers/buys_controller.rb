@@ -7,14 +7,16 @@ class BuysController < ApplicationController
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
     @buy_order = Buy.new(params[:buy].merge(user: current_user))
     if @buy_order.place!(@stock_details)
-      if params[:commit] == 'share'
-        linkedin_share
+      if params[:soc_network].eql? "linkedin"
+        linkedin_share_connect("buys")
+      elsif params[:soc_network].eql? "facebook"
+        facebook_share_connect("buys")
       else
         @stock_id = UserStock.find(@buy_order.user_stock_id)
 
         @stock_name = Stock.find(@stock_id.stock_id)
 
-        flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+        flash[:notice] = "#{params[:soc_network]}Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
 
         redirect_to(stock_path(params[:stock_id]))
       end
@@ -23,8 +25,14 @@ class BuysController < ApplicationController
     end
   end
 
-  def callback
-    #TODO redirect to dashboard if user denies request
+  def callback_facebook
+    @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
+    @graph.put_wall_post("Testing out something. It works!")
+    redirect_to dashboard_path
+  end
+
+  def callback_linkedin
+    #TODO redirect to stock if user denies request
 
     client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA')
 
@@ -46,15 +54,15 @@ class BuysController < ApplicationController
 
     @stock_id = UserStock.find(@buy_order.user_stock_id)
 
-    @stock_name = Stock.find(@stock_id.stock_id)
+    @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
 
     client.add_share(:comment => response)
 
     flash[:notice] = response
 
-    redirect_to(stock_path(@stock_id))
+    redirect_to(stock_path(@stock.symbol))
   end
 
   def flash_cover

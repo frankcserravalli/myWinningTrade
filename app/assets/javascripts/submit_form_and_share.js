@@ -1,13 +1,41 @@
-$('.submit-the-sell-and-share').on('click', function(e){
-  // We don't want this to act as a link so cancel the link action
-  e.preventDefault();
+$(document).ready(function() {
+  $('.submit-the-sell-and-share-via-fb').on('click', function(e){
+    e.preventDefault();
 
-  $('#sell_form').submit();
-});
+    var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("facebook");
 
-$('.submit-the-buy-and-share').on('click', function(e){
-  // We don't want this to act as a link so cancel the link action
-  e.preventDefault();
+    $('#sell_form').append($(input));
 
-  $('#buy_form').submit();
+    $('#sell_form').submit();
+  });
+
+  $('.submit-the-sell-and-share-via-li').on('click', function(e){
+    e.preventDefault();
+
+    var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("linkedin");
+
+    $('#sell_form').append($(input));
+
+    $('#sell_form').submit();
+  });
+
+  $('.submit-the-buy-and-share-via-fb').on('click', function(e){
+    e.preventDefault();
+
+    var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("facebook");
+
+    $('#buy_form').append($(input));
+
+    $('#buy_form').submit();
+  });
+
+  $('.submit-the-buy-and-share-via-li').on('click', function(e){
+    e.preventDefault();
+
+    var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("linkedin");
+
+    $('#buy_form').append($(input));
+
+    $('#buy_form').submit();
+  });
 });
