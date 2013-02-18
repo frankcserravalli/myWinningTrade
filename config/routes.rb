@@ -3,14 +3,11 @@ MyWinningTrade::Application.routes.draw do
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/login', to: 'sessions#new'
-  match '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
-
-
-
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
@@ -39,7 +36,7 @@ MyWinningTrade::Application.routes.draw do
       post 'users/authenticate' => 'users#authenticate'
       post 'users/create' => 'users#create'
       delete 'users/destroy' => 'users#destroy'
-      match '/auth/:provider/callback', to: 'social_networks#authenticate'
+      post '/auth/:provider/callback', to: 'social_networks#authenticate'
 
 
       resources :buys, only: :create
