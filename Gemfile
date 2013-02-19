@@ -88,6 +88,6 @@ gem 'powder'
 gem 'prawn'
 gem 'clockwork'
 gem 'thin'
-gem "koala", "~> 1.6.0"
+gem "koala", :git => "git://github.com/arsduo/koala.git"
 gem "linkedin", "~> 0.3.7"
 
