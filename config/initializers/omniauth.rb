@@ -4,7 +4,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, "349566425142206", "37279cb9a30d14949d011cadc12fd1ae" # Conclave account
   provider :linkedin, 'xoc3a06gsosd', '41060V6v5K38dnV4' # Frank's Account is better.
   provider :openid, name: 'google', identifier: 'https://www.google.com/accounts/o8/id'
-  provider :twitter, 'LkrpCeFlzfBdDiahjXWA', 'nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE'
 end
 
 LINKEDIN_CONFIGURATION = { :site => 'https://api.linkedin.com',
@@ -12,11 +11,5 @@ LINKEDIN_CONFIGURATION = { :site => 'https://api.linkedin.com',
                            :request_token_path =>'/uas/oauth/requestToken?scope=rw_nus',
                            :access_token_path => '/uas/oauth/accessToken' }
 
-Twitter.configure do |config|
-  config.consumer_key = "nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE"
-  config.consumer_secret = "nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE"
-  config.oauth_token = "YOUR_OAUTH_TOKEN"
-  config.oauth_token_secret = "YOUR_OAUTH_TOKEN_SECRET"
-end
 
 

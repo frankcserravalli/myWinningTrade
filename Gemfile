@@ -90,6 +90,5 @@ gem 'prawn'
 gem 'clockwork'
 gem 'thin'
 gem "koala", :git => "git://github.com/arsduo/koala.git"
-gem "twitter", "~> 4.5.0"
 gem "linkedin", "~> 0.3.7"
 
