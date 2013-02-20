@@ -34,7 +34,7 @@ class BuysController < ApplicationController
   end
 
   def callback_linkedin
-    redirect_to dashboard_path
+    #redirect_to dashboard_path
 
     @current_user = current_user
 
@@ -69,6 +69,8 @@ class BuysController < ApplicationController
 
       redirect_to(stock_path(@stock.symbol))
     end
+
+    redirect_to(stock_path(@stock.symbol))
   end
 
   def callback_twitter

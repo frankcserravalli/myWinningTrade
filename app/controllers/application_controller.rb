@@ -149,7 +149,10 @@ class ApplicationController < ActionController::Base
   def linkedin_share_connect(controller)
     client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA', LINKEDIN_CONFIGURATION)
     request_token = client.request_token(:oauth_callback =>
-                                             "https://#{request.host_with_port}/#{controller}/callback_linkedin")
+                                             "https://powerful-forest-8344.herokuapp.com/dashboard")
+    #"https://#{request.host_with_port}/#{controller}/callback_linkedin"
+
+
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     redirect_to client.request_token.authorize_url
