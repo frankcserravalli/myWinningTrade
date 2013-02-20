@@ -34,8 +34,6 @@ class BuysController < ApplicationController
   end
 
   def callback_linkedin
-    #TODO redirect to stock if user denies request
-
     @current_user = current_user
 
     @buy_order = Buy.where(id: @current_user.id).first
@@ -66,7 +64,6 @@ class BuysController < ApplicationController
       end
 
       client.add_share(:comment => response)
-
 
       redirect_to(stock_path(@stock.symbol))
     end

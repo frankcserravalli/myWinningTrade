@@ -65,6 +65,7 @@ class SellsController < ApplicationController
     end
   end
 
+
   def callback_twitter
     #Twitter.update("I'm tweeting with @gem!")
   end
