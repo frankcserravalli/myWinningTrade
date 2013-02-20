@@ -162,8 +162,4 @@ class ApplicationController < ActionController::Base
     session['oauth'] = Koala::Facebook::OAuth.new("298514626925253", "0de422445cad2b8ad09d8ecb8b748189", "https://#{request.host_with_port}/#{controller}/callback_facebook")
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end
-
-  def twitter_share_connect(controller)
-    redirect_to "https://#{request.host_with_port}/auth/twitter"
-  end
 end

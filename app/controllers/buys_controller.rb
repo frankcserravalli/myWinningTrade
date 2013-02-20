@@ -12,7 +12,7 @@ class BuysController < ApplicationController
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("buys")
       elsif params[:soc_network].eql? "twitter"
-        twitter_share_connect("buys")
+        redirect_to "http://twitter.com/share?text=Some%20text%20goes%20here"
       else
         @stock_id = UserStock.find(@buy_order.user_stock_id)
 
