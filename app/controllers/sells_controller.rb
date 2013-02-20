@@ -11,6 +11,7 @@ class SellsController < ApplicationController
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("sells")
       elsif params[:soc_network].eql? "twitter"
+        twitter_share_connect("buys")
       else
         flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
 
