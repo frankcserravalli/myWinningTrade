@@ -25,6 +25,7 @@ class BuysController < ApplicationController
     else
       redirect_to(stock_path(params[:stock_id]))
     end
+    redirect_to(stock_path(params[:stock_id]))
   end
 
   def callback_facebook
