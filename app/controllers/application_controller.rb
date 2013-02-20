@@ -163,7 +163,4 @@ class ApplicationController < ActionController::Base
   def twitter_share_connect(controller)
     #redirect_to "http://localhost:3000/auth/twitter"
   end
-
-  end
-
 end

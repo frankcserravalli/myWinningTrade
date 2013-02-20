@@ -20,15 +20,3 @@ Twitter.configure do |config|
 end
 
 
-=begin
-Your application's OAuth settings. Keep the "Consumer secret" a secret. This key should never be human-readable in your application.
-
-Access level Read-only
-About the application permission model
-Consumer key LkrpCeFlzfBdDiahjXWA
-Consumer secret nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE
-Request token URLhttps://api.twitter.com/oauth/request_token
-Authorize URLhttps://api.twitter.com/oauth/authorize
-Access token URLhttps://api.twitter.com/oauth/access_token
-Callback URLNone
-=end

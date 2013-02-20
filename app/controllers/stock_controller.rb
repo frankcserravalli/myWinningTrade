@@ -22,7 +22,6 @@ class StockController < ApplicationController
       alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
       redirect_to dashboard_path, alert: alert
     end
-
   end
 
   def details
@@ -57,7 +56,6 @@ class StockController < ApplicationController
   end
 
   def trading_analysis_pdf
-
     output = Analysis.new.to_pdf
 
     respond_to do |format|
@@ -67,6 +65,5 @@ class StockController < ApplicationController
       end
     end
   end
-
-
 end
+
