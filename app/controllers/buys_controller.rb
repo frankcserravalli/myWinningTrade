@@ -25,7 +25,6 @@ class BuysController < ApplicationController
     else
       redirect_to(stock_path(params[:stock_id]))
     end
-    redirect_to(stock_path(params[:stock_id]))
   end
 
   def callback_facebook
@@ -35,7 +34,6 @@ class BuysController < ApplicationController
   end
 
   def callback_linkedin
-
     @current_user = current_user
 
     @buy_order = Buy.where(id: @current_user.id).first
@@ -48,7 +46,7 @@ class BuysController < ApplicationController
 
     flash[:notice] = response
 
-    if params.has_key? "oauth_problem"
+    if params.has_key? "oauth_problem" or !params[:oauth_problem].blank?
       redirect_to(stock_path(@stock.symbol))
     else
       client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA')
@@ -69,8 +67,6 @@ class BuysController < ApplicationController
 
       redirect_to(stock_path(@stock.symbol))
     end
-
-    redirect_to(stock_path(@stock.symbol))
   end
 
   def callback_twitter
