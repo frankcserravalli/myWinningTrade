@@ -69,10 +69,6 @@ class BuysController < ApplicationController
     end
   end
 
-  def callback_twitter
-    #Twitter.update("I'm tweeting with @gem!")
-  end
-
   def flash_cover
     if !@buy_order.flash_cover.blank?
       flash[:cover] = @buy_order.flash_cover

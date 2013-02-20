@@ -65,9 +65,4 @@ class SellsController < ApplicationController
       redirect_to(stock_path(@stock.symbol))
     end
   end
-
-
-  def callback_twitter
-    #Twitter.update("I'm tweeting with @gem!")
-  end
 end
