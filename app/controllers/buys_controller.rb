@@ -11,6 +11,8 @@ class BuysController < ApplicationController
         linkedin_share_connect("buys")
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("buys")
+      elsif params[:soc_network].eql? "twitter"
+        twitter_share_connect("buys")
       else
         @stock_id = UserStock.find(@buy_order.user_stock_id)
 
@@ -68,6 +70,10 @@ class BuysController < ApplicationController
 
       redirect_to(stock_path(@stock.symbol))
     end
+  end
+
+  def callback_twitter
+    #Twitter.update("I'm tweeting with @gem!")
   end
 
   def flash_cover

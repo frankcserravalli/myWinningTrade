@@ -13,8 +13,10 @@ MyWinningTrade::Application.routes.draw do
 
   get 'buys/callback_linkedin', to: 'buys#callback_linkedin'
   get 'buys/callback_facebook', to: 'buys#callback_facebook'
+  get 'buys/callback_twitter', to: 'buys#callback_twitter'
   get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
+  get 'sells/callback_twitter', to: 'sells#callback_twitter'
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
