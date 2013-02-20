@@ -4,7 +4,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, "298514626925253", "0de422445cad2b8ad09d8ecb8b748189" # Conclave account
   provider :linkedin, 'xoc3a06gsosd', '41060V6v5K38dnV4' # Frank's Account is better.
   provider :openid, name: 'google', identifier: 'https://www.google.com/accounts/o8/id'
-  #provider :twitter, 'XXXX', 'YYYY'
+  provider :twitter, 'LkrpCeFlzfBdDiahjXWA', 'nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE'
 end
 
 LINKEDIN_CONFIGURATION = { :site => 'https://api.linkedin.com',
@@ -13,8 +13,22 @@ LINKEDIN_CONFIGURATION = { :site => 'https://api.linkedin.com',
                            :access_token_path => '/uas/oauth/accessToken' }
 
 Twitter.configure do |config|
-  config.consumer_key = "YOUR_CONSUMER_KEY"
-  config.consumer_secret = "YOUR_CONSUMER_SECRET"
+  config.consumer_key = "nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE"
+  config.consumer_secret = "nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE"
   config.oauth_token = "YOUR_OAUTH_TOKEN"
   config.oauth_token_secret = "YOUR_OAUTH_TOKEN_SECRET"
 end
+
+
+=begin
+Your application's OAuth settings. Keep the "Consumer secret" a secret. This key should never be human-readable in your application.
+
+Access level Read-only
+About the application permission model
+Consumer key LkrpCeFlzfBdDiahjXWA
+Consumer secret nEvMPm0ZKTaOB3cOoffnrratlSlndmJaalJv4RPzjE
+Request token URLhttps://api.twitter.com/oauth/request_token
+Authorize URLhttps://api.twitter.com/oauth/authorize
+Access token URLhttps://api.twitter.com/oauth/access_token
+Callback URLNone
+=end
