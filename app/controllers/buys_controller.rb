@@ -34,15 +34,16 @@ class BuysController < ApplicationController
   end
 
   def callback_linkedin
+
     @current_user = current_user
 
-    @order = Order.where(user_id: @current_user.id).first
+    @buy_order = Buy.where(id: @current_user.id).first
 
-    @stock_id = UserStock.find(@order.user_stock_id)
+    @stock_id = UserStock.find(@buy_order.user_stock_id)
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully sold #{@order.volume} shares from #{@stock.name} on My Winning Trade."
+    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} on My Winning Trade."
 
     flash[:notice] = response
 
@@ -67,6 +68,8 @@ class BuysController < ApplicationController
 
       redirect_to(stock_path(@stock.symbol))
     end
+
+    redirect_to(stock_path(@stock.symbol))
   end
 
   def callback_twitter
