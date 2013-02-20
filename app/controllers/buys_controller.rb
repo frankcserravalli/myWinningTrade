@@ -34,6 +34,8 @@ class BuysController < ApplicationController
   end
 
   def callback_linkedin
+    redirect_to dashboard_path
+
     @current_user = current_user
 
     @buy_order = Buy.where(id: @current_user.id).first
