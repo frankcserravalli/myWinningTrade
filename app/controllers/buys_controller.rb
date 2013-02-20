@@ -36,7 +36,7 @@ class BuysController < ApplicationController
   def callback_linkedin
     @current_user = current_user
 
-    @buy_order = Order.where(id: @current_user.id).first
+    @buy_order = Buy.where(user_id: @current_user.id).first
 
     @stock_id = UserStock.find(@buy_order.user_stock_id)
 
