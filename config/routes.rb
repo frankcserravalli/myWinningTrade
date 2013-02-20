@@ -11,7 +11,7 @@ MyWinningTrade::Application.routes.draw do
 
   get '/trading_analysis_pdf', to: 'stock#trading_analysis_pdf'
 
-  post 'buys/callback_linkedin', to: 'buys#callback_linkedin'
+  get 'buys/callback_linkedin', to: 'buys#callback_linkedin'
   get 'buys/callback_facebook', to: 'buys#callback_facebook'
   get 'buys/callback_twitter', to: 'buys#callback_twitter'
   get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
