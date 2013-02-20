@@ -19,6 +19,17 @@ $(document).ready(function() {
     $('#sell_form').submit();
   });
 
+  $('.submit-the-sell-and-share-via-tw').on('click', function(e){
+    e.preventDefault();
+
+    var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("twitter");
+
+    $('#sell_form').append($(input));
+
+    $('#sell_form').submit();
+  });
+
+
   $('.submit-the-buy-and-share-via-fb').on('click', function(e){
     e.preventDefault();
 
@@ -33,6 +44,16 @@ $(document).ready(function() {
     e.preventDefault();
 
     var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("linkedin");
+
+    $('#buy_form').append($(input));
+
+    $('#buy_form').submit();
+  });
+
+  $('.submit-the-buy-and-share-via-tw').on('click', function(e){
+    e.preventDefault();
+
+    var input = $("<input>").attr("type", "hidden").attr("name", "soc_network").val("twitter");
 
     $('#buy_form').append($(input));
 

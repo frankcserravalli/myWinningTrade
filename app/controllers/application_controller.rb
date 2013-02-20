@@ -160,7 +160,10 @@ class ApplicationController < ActionController::Base
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end
 
-  def twitter_share_connect()
+  def twitter_share_connect(controller)
+    #redirect_to "http://localhost:3000/auth/twitter"
+  end
+
   end
 
 end
