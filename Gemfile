@@ -89,6 +89,7 @@ gem 'powder'
 gem 'prawn'
 gem 'clockwork'
 gem 'thin'
+gem "fb_graph", "~> 2.6.4"
 gem "koala", :git => "git://github.com/arsduo/koala.git"
 gem "linkedin", "~> 0.3.7"
 

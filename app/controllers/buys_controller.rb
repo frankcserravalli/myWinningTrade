@@ -27,11 +27,37 @@ class BuysController < ApplicationController
     end
   end
 
+
+
+
+
+
+
+
+
+
+
   def callback_facebook
     @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
     @graph.put_wall_post("Testing out something. It works!")
     redirect_to dashboard_path
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   def callback_linkedin
     @current_user = current_user
