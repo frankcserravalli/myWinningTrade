@@ -102,6 +102,27 @@ class StockController < ApplicationController
         text "Net Income:"
         text stock_summary[:summary][:net_income]
 
+        # Capital At Risk Page
+        ul
+        - @stock_summary[:stocks].each_key do |stock_symbol|
+        li
+        | Symbol: '
+      = stock_symbol
+    li
+      | Name: '
+        = @stock_summary[:stocks][stock_symbol][:name]
+        li
+        | Capital At Risk: '
+      = @stock_summary[:stocks][stock_symbol][:capital_at_risk]
+    li
+      | Percentage: '
+        = @stock_summary[:stocks][stock_symbol][:capital_invested_percentage]
+
+        #Graph page
+        - @stock_summary[:stocks].each_key do |stock_symbol|
+        li = stock_symbol
+        li = @stock_summary[:stocks][stock_symbol][:capital_invested_percentage]
+
 
       render
     end
