@@ -11,7 +11,9 @@ class SellsController < ApplicationController
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("sells")
       elsif params[:soc_network].eql? "twitter"
-        @stock = Stock.find(params[:stock_id])
+        @stock_id = UserStock.find(@order.user_stock_id)
+
+        @stock = Stock.find(@stock_id.stock_id)
 
         # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
         stock_name = @stock.name.gsub!(/\s/, "%20")
