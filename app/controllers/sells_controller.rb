@@ -23,11 +23,23 @@ class SellsController < ApplicationController
   end
 
   def callback_facebook
+    @current_user = current_user
+
+    @order = Order.where(user_id: @current_user.id).first
+
+    @stock_id = UserStock.find(@order.user_stock_id)
+
+    @stock = Stock.find(@stock_id.stock_id)
+
+    response = "Successfully sold #{@order.volume} shares from #{@stock.name} on My Winning Trade."
+
+    flash[:notice] = response
+
     @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
 
-    @graph.put_wall_post("Testing out something. It works!")
+    @graph.put_wall_post response
 
-    redirect_to dashboard_path
+    redirect_to(stock_path(@stock.symbol))
   end
 
   def callback_linkedin

@@ -155,31 +155,7 @@ class ApplicationController < ActionController::Base
     redirect_to client.request_token.authorize_url
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   def facebook_share_connect(controller)
-    #session['oauth'] = Koala::Facebook::OAuth.new("298514626925253", "0de422445cad2b8ad09d8ecb8b748189", "https://#{request.host_with_port}/#{controller}/callback_facebook")
     session['oauth'] = Koala::Facebook::OAuth.new("349566425142206", "37279cb9a30d14949d011cadc12fd1ae", "https://#{request.host_with_port}/#{controller}/callback_facebook")
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end

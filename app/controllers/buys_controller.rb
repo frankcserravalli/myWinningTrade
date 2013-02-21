@@ -27,37 +27,25 @@ class BuysController < ApplicationController
     end
   end
 
-
-
-
-
-
-
-
-
-
-
   def callback_facebook
+    @current_user = current_user
+
+    @buy_order = Buy.where(user_id: @current_user.id).first
+
+    @stock_id = UserStock.find(@buy_order.user_stock_id)
+
+    @stock = Stock.find(@stock_id.stock_id)
+
+    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} on My Winning Trade."
+
+    flash[:notice] = response
+
     @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
-    @graph.put_wall_post("Testing out something. It works!")
-    redirect_to dashboard_path
+
+    @graph.put_wall_post(response)
+
+    redirect_to(stock_path(@stock.symbol))
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def callback_linkedin
     @current_user = current_user
