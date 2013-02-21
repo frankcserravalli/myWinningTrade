@@ -11,7 +11,9 @@ class SellsController < ApplicationController
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("sells")
       elsif params[:soc_network].eql? "twitter"
-        redirect_to "http://twitter.com/share?text=Some%20text%20goes%20here"
+        @stock = Stock.find(params[:stock_id])
+
+        redirect_to "http://twitter.com/share?text=Successfully%20sold%20#{@order.volume}%20shares%20from%20#{@stock.name}%20on%20My%20Winning%20Trade."
       else
         flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
 
