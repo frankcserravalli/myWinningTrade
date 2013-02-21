@@ -68,8 +68,10 @@ class StockController < ApplicationController
         value.to_s
       end
 
+      start_new_page
+
       # Profit Loss Section
-      text Trading Activities
+      text "Trading Activities"
 
       stock_summary[:stocks].each do |key, value|
         if stock_summary[:stocks][key][:revenue] < 0
@@ -78,51 +80,56 @@ class StockController < ApplicationController
           text stock_summary[:stocks][key][:name]
 
           text "Net Revenue:"
-          text stock_summary[:stocks][key][:revenue]
+          text stock_summary[:stocks][key][:revenue].to_s
         else
           text "Stock has a Net Loss"
           text "Name:"
           text stock_summary[:stocks][key][:name]
           text "Net Revenue:"
-          text stock_summary[:stocks][key][:revenue]
+          text stock_summary[:stocks][key][:revenue].to_s
         end
         text "Net Revenue:"
-        text stock_summary[:summary][:net_revenue]
+        text stock_summary[:summary][:net_revenue].to_s
 
         text "Net Losses:"
-        text stock_summary[:summary][:net_losses]
+        text stock_summary[:summary][:net_losses].to_s
 
         text "Gross Profitability:"
-        text stock_summary[:summary][:gross_profit]
+        text stock_summary[:summary][:gross_profit].to_s
 
 
         text "Tax Liability Incurred:"
-        text stock_summary[:summary][:taxes]
+        text stock_summary[:summary][:taxes].to_s
 
         text "Net Income:"
-        text stock_summary[:summary][:net_income]
+        text stock_summary[:summary][:net_income].to_s
+      end
 
-        # Capital At Risk Page
-        ul
-        - @stock_summary[:stocks].each_key do |stock_symbol|
-        li
-        | Symbol: '
-      = stock_symbol
-    li
-      | Name: '
-        = @stock_summary[:stocks][stock_symbol][:name]
-        li
-        | Capital At Risk: '
-      = @stock_summary[:stocks][stock_symbol][:capital_at_risk]
-    li
-      | Percentage: '
-        = @stock_summary[:stocks][stock_symbol][:capital_invested_percentage]
+      start_new_page
 
-        #Graph page
-        - @stock_summary[:stocks].each_key do |stock_symbol|
-        li = stock_symbol
-        li = @stock_summary[:stocks][stock_symbol][:capital_invested_percentage]
+      # Capital At Risk Page
 
+      stock_summary[:stocks].each_key do |stock_symbol|
+        text "Symbol:"
+        text stock_symbol
+
+        text "Name:"
+        stock_summary[:stocks][stock_symbol][:name]
+
+        text "Capital At Risk:"
+        text stock_summary[:stocks][stock_symbol][:capital_at_risk].to_s
+
+        text "Percentage:"
+        text stock_summary[:stocks][stock_symbol][:capital_invested_percentage].to_s
+      end
+
+      start_new_page
+
+      #Graph page
+      stock_summary[:stocks].each_key do |stock_symbol|
+        text stock_symbol
+        text stock_summary[:stocks][stock_symbol][:capital_invested_percentage].to_s
+      end
 
       render
     end
