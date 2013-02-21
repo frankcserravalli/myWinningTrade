@@ -1,5 +1,4 @@
 class StockController < ApplicationController
-
   def dashboard
   end
 
@@ -50,15 +49,66 @@ class StockController < ApplicationController
 
   # TODO We need to move this somewhere else
   class Analysis < Prawn::Document
-    def to_pdf
-      text "Hello world"
+    def to_pdf(stock_summary)
+
+      # Summary Section
+      stock_summary[:stocks].each do |key, value|
+        text key.to_s
+        value.each do |key2, value2|
+          text key2.to_s
+          # This is to create a space
+          text " "
+          text value2.to_s
+        end
+      end
+      stock_summary[:summary].each do |key, value|
+        text key.to_s
+        # This is to create a space
+        text " "
+        value.to_s
+      end
+
+      # Profit Loss Section
+      text Trading Activities
+
+      stock_summary[:stocks].each do |key, value|
+        if stock_summary[:stocks][key][:revenue] < 0
+          text "Stock has a Net Revenue"
+          text "Name:"
+          text stock_summary[:stocks][key][:name]
+
+          text "Net Revenue:"
+          text stock_summary[:stocks][key][:revenue]
+        else
+          text "Stock has a Net Loss"
+          text "Name:"
+          text stock_summary[:stocks][key][:name]
+          text "Net Revenue:"
+          text stock_summary[:stocks][key][:revenue]
+        end
+        text "Net Revenue:"
+        text stock_summary[:summary][:net_revenue]
+
+        text "Net Losses:"
+        text stock_summary[:summary][:net_losses]
+
+        text "Gross Profitability:"
+        text stock_summary[:summary][:gross_profit]
+
+
+        text "Tax Liability Incurred:"
+        text stock_summary[:summary][:taxes]
+
+        text "Net Income:"
+        text stock_summary[:summary][:net_income]
+
+
       render
     end
   end
 
   def trading_analysis_pdf
-
-    output = Analysis.new.to_pdf
+    output = Analysis.new.to_pdf(current_user.stock_summary)
 
     respond_to do |format|
       format.pdf do
