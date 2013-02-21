@@ -3,3 +3,5 @@ ul#portfolio
     = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
   - if @portfolio[:stocks].empty?
     em You have no shorted stocks.
+  - else
+    em Found the bug
