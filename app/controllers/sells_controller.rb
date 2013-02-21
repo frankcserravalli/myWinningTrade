@@ -13,7 +13,10 @@ class SellsController < ApplicationController
       elsif params[:soc_network].eql? "twitter"
         @stock = Stock.find(params[:stock_id])
 
-        redirect_to "http://twitter.com/share?text=Successfully%20sold%20#{@order.volume}%20shares%20from%20#{@stock.name}%20on%20My%20Winning%20Trade"
+        # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
+        stock_name = @stock.name.gsub!(/\s/, "%20")
+
+        redirect_to "http://twitter.com/share?text=Successfully%20sold%20#{@order.volume}%20shares%20from%20#{stock_name}%20on%20My%20Winning%20Trade."
       else
         flash[:notice] = "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
 

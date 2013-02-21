@@ -14,7 +14,10 @@ class BuysController < ApplicationController
       elsif params[:soc_network].eql? "twitter"
         @stock = Stock.find(params[:stock_id])
 
-        redirect_to "http://twitter.com/share?text=Successfully%20purchased%20#{@buy_order.volume}%20#{@stock.name}%20stocks%20for%20$#{-@buy_order.value.round(2)}%20on%20My%20Winning%20Trade"
+        # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
+        stock_name = @stock.name.gsub!(/\s/, "%20")
+
+        redirect_to "http://twitter.com/share?text=Successfully%20purchased%20#{@buy_order.volume}%20#{stock_name}%20stocks%20for%20$#{-@buy_order.value.round(2)}%20on%20My%20Winning%20Trade"
       else
         @stock_name = Stock.find(params[:stock_id])
 
