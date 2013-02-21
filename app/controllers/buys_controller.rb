@@ -41,14 +41,18 @@ class BuysController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} on My Winning Trade."
+    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)}."
 
     flash[:notice] = response
 
     @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
 
-    @graph.put_wall_post(response)
-
+    # Here we are preventing an error from Facebook when an user posts the same exact message twice
+    begin
+      @graph.put_wall_post(response + "on My Winning Trade.")
+    rescue
+      flash[:notice] = response + " but your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
+    end
     redirect_to(stock_path(@stock.symbol))
   end
 
