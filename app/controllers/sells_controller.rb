@@ -11,7 +11,7 @@ class SellsController < ApplicationController
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("sells")
       elsif params[:soc_network].eql? "twitter"
-        @stock_id = UserStock.find(@order.user_stock_id)
+        @stock_id = UserStock.find(@order.user_stock)
 
         @stock = Stock.find(@stock_id.stock_id)
 
