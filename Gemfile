@@ -85,6 +85,7 @@ group :development do
 end
 
 gem 'powder'
-gem 'prawn'
 gem 'clockwork'
 gem 'thin'
+gem "pdfkit", "~> 0.5.3"
+gem "wkhtmltopdf-binary", "~> 0.9.9.1"

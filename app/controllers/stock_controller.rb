@@ -47,6 +47,7 @@ class StockController < ApplicationController
     @stock_summary = current_user.stock_summary
   end
 
+=begin
   # TODO We need to move this somewhere else
   class Analysis < Prawn::Document
     def to_pdf(stock_summary)
@@ -70,6 +71,10 @@ class StockController < ApplicationController
 
       start_new_page
 
+      max_gain = 0
+
+      max_loss = 0
+
       # Profit Loss Section
       text "Trading Activities"
 
@@ -85,7 +90,7 @@ class StockController < ApplicationController
           text "Stock has a Net Loss"
           text "Name:"
           text stock_summary[:stocks][key][:name]
-          text "Net Revenue:"
+          text "Net Loss:"
           text stock_summary[:stocks][key][:revenue].to_s
         end
         text "Net Revenue:"
@@ -97,13 +102,31 @@ class StockController < ApplicationController
         text "Gross Profitability:"
         text stock_summary[:summary][:gross_profit].to_s
 
-
         text "Tax Liability Incurred:"
         text stock_summary[:summary][:taxes].to_s
 
         text "Net Income:"
         text stock_summary[:summary][:net_income].to_s
+
+        #text "Max Gain"
+        if stock_summary[:summary][:net_income] > max_gain
+          max_gain = stock_summary[:summary][:net_income]
+        end
+
+        #text "Max Loss"
+        if stock_summary[:summary][:net_income] > max_loss
+          max_loss = stock_summary
+        end
+
       end
+
+
+
+      start_new_page
+
+      # Max Gain vs Max Loss
+
+
 
       start_new_page
 
@@ -131,12 +154,189 @@ class StockController < ApplicationController
         text stock_summary[:stocks][stock_symbol][:capital_invested_percentage].to_s
       end
 
+
+      # Determine Capital asset pricing model
+        # Risk free rate
+        # beta of the security
+          # covariance of market return with stock return
+          # variance of market return
+        # expected market return
+
+
+
+      # capital at risk
+      # average holding period
+      # capital invested/total capital
+      # risk free return
+      # excess return
+      # average
+      # std dev
+      # Benchmark ß
+      # Trader α
+
       render
     end
   end
+=end
+
+
+
+
+
+
 
   def trading_analysis_pdf
-    output = Analysis.new.to_pdf(current_user.stock_summary)
+    #output = Analysis.new.to_pdf(current_user.stock_summary)
+    html = '<h2>Summary</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Revenues</th>
+      <th>Tax Liability</th>
+      <th>Capital at Risk</th>
+      <th>Returns</th>
+      <th>Avg. Holding Period</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Symbol</td>
+    <td>Name</td>
+    <td>Revenues</td>
+    <td>Tax Liability</td>
+    <td>Capital at Risk</td>
+    <td>Returns</td>
+    <td>Avg. Holding Period</td>
+  </tr>
+  <tr>
+    <td>Symbol</td>
+    <td>Name</td>
+    <td>Revenues</td>
+    <td>Tax Liability</td>
+    <td>Capital at Risk</td>
+    <td>Returns</td>
+    <td>Avg. Holding Period</td>
+  </tr>
+  <tr>
+    <td>Symbol</td>
+    <td>Name</td>
+    <td>Revenues</td>
+    <td>Tax Liability</td>
+    <td>Capital at Risk</td>
+    <td>Returns</td>
+    <td>Avg. Holding Period</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="span6 offset6">
+    <table class="table">
+      <tbody>
+      <tr>
+        <td>SUMS </td>
+        <td>Number</td>
+        <td>Number</td>
+      </tr>
+      <tr>
+        <td>Net Income before Taxes</td>
+        <td></td>
+        <td>Number</td>
+      </tr>
+      <tr>
+        <td>Net Income after Taxes</td>
+        <td></td>
+        <td>Number</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span5">
+    <div class="pagination-centered">Profit and Loss Statement</div>
+    <div class="pagination-centered">Username</div>
+    <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
+    <div>Trading Activities</div>
+
+    <div class="span2 pagination-centered">Revenues</div>
+    <br>
+      <div class="offset1 span1">AAPL</div>
+      <div class="span1">374.62</div>
+      <br>
+      <div class="offset1 span1">AAPL</div>
+      <div class="span1">374.62</div>
+      <br>
+    <span style="padding-right:190px;">Net Revenues</span>
+    <span>$760.00</span>
+    <br>
+
+    <div class="span2 pagination-centered">Losses</div>
+    <br>
+    <div class="offset1 span1">AAPL</div>
+    <div class="span1">374.62</div>
+    <br>
+    <div class="offset1 span1">AAPL</div>
+    <div class="span1">374.62</div>
+    <br>
+    <span style="padding-right:190px;">Net Losses</span>
+    <span>$760.00</span>
+    <br>
+
+    <span style="padding-right:190px;">Gross Profit</span>
+    <span>$234.00</span>
+    <br>
+
+    <span style="padding-right:110px;">Incurred Tax Liability</span>
+    <span>$76540.00</span>
+    <br>
+
+    <span style="padding-right:190px;">Net Income</span>
+    <span>$444.00</span>
+    <br>
+
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="span6">
+    <div class="pagination-centered">Capital at Risk</div>
+    <div class="pagination-centered">Username</div>
+    <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
+    <div class="span2">Starting Capital</div>
+    <br>
+    <div class="span2">Additional Paid in Capital</div>
+    <br>
+    <br>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Capital at Risk</th>
+          <th>Capital Invested/Total Capital</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Symbol</td>
+          <td>Name</td>
+          <td>Revenues</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>'
+
+    kit = PDFKit.new(html, :page_size => 'Letter')
+    kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
+    kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'
+
+    output = kit.to_pdf
 
     respond_to do |format|
       format.pdf do
