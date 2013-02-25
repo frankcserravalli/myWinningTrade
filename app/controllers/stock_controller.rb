@@ -282,20 +282,20 @@ class StockController < ApplicationController
     <div class="offset1 span1">AAPL</div>
     <div class="span1">374.62</div>
     <br>
-    <span style="padding-right:190px;">Net Losses</span>
-    <span>$760.00</span>
+    <span class="span2">Net Losses</span>
+    <span class="span2">$760.00</span>
     <br>
 
-    <span style="padding-right:190px;">Gross Profit</span>
-    <span>$234.00</span>
+    <span class="span2">Gross Profit</span>
+    <span class="span2">$234.00</span>
     <br>
 
-    <span style="padding-right:110px;">Incurred Tax Liability</span>
-    <span>$76540.00</span>
+    <span class="span2">Incurred Tax Liability</span>
+    <span class="span2">$76540.00</span>
     <br>
 
-    <span style="padding-right:190px;">Net Income</span>
-    <span>$444.00</span>
+    <span class="span2">Net Income</span>
+    <span class="span2">$444.00</span>
     <br>
 
   </div>
@@ -333,36 +333,35 @@ class StockController < ApplicationController
 </div>
 
 <div class="row">
-  <div class="span6">
+  <div class="span6 row">
     <div class="pagination-centered">Risk </div>
     <div class="pagination-centered">Username</div>
     <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
     <br>
     <div class="row">
-      <span class="span2">Leverage</span>
+      <span class="span4">Leverage</span>
       <span class="span2">$760.00</span>
-    <div>
-      <br>
-    <div class="row">
-      <span class="span2">Average Holding Period</span>
-      <span class="span2">$760.00</span>
-    <div>
-      <br>
-    <div class="row">
-      <span class="span2">Benchmark B</span>
-      <span class="span2">$760.00</span>
-
-    <div>
-      <br>
-    <div class="row">
-      <span class="span2">Trader a</span>
-      <span class="span2">$760.00</span>
-    <div>
+    </div>
     <br>
     <div class="row">
-      <span class="span2">R-squared</span>
+      <span class="span4">Average Holding Period</span>
       <span class="span2">$760.00</span>
-    <div>
+    </div>
+    <br>
+    <div class="row">
+      <span class="span4">Benchmark B</span>
+      <span class="span2">$760.00</span>
+    </div>
+    <br>
+    <div class="row">
+      <span class="span4">Trader a</span>
+      <span class="span2">$760.00</span>
+    </div>
+    <br>
+    <div class="row">
+      <span class="span4">R-squared</span>
+      <span class="span2">$760.00</span>
+    </div>
   </div>
 </div>'
 
