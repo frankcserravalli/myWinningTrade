@@ -10,4 +10,5 @@
             = link_to logout_path do
               i.icon-signout
               = t('.log_out', default: 'Log out')
+              = number_to_percentage((Finance.grab_alpha_or_beta("alpha") * 100), precision: 2)
 

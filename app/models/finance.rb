@@ -26,7 +26,8 @@ class Finance
 
 		def stock_details_for_list(symbol_list)
 			symbol_list = symbol_list.collect { |symbol| sanitize_symbol(symbol) }
-			return [] if symbol_list.blank?
+
+      return [] if symbol_list.blank?
 
 			field_mappings = {
 				name: 'n',
@@ -54,11 +55,13 @@ class Finance
 			}
 
 			start_time = Time.now.to_f
-			csv = RestClient.get "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbol_list.join(',')}&f=#{field_mappings.values.join}"
+
+      csv = RestClient.get "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbol_list.join(',')}&f=#{field_mappings.values.join}"
 
 			all_details = CSV.parse(csv).collect do |row|
 				details = Hash[field_mappings.keys.zip(row.collect { |v| v.to_s.strip.gsub(/['"]/, '')} )]
-				quote = create_openstruct(details)
+
+        quote = create_openstruct(details)
 
 				unless quote.name == quote.symbol
 					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
@@ -88,8 +91,33 @@ class Finance
 			end
 
 			Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
-			return Hash[symbol_list.zip(all_details)]
+
+      return Hash[symbol_list.zip(all_details)]
 		end
+
+    def grab_alpha_or_beta(variable)
+      csv = RestClient.get "download.finance.yahoo.com/d/quotes.csv", {:params => {:s => "SPY", :f => 'w0'}}
+
+      returned_info = CSV.parse(csv).join()
+
+      returned_info = returned_info.split(" ") - ["-"]
+
+      price_from_year_ago = returned_info[0].to_f
+
+      price_now = returned_info[1].to_f
+
+      beta = price_now - price_from_year_ago
+
+      alpha = beta / price_from_year_ago
+
+      if variable.eql? "alpha"
+        alpha
+      elsif "beta"
+        beta
+      end
+
+      # For alpha use this     number_to_percentage((Finance.grab_alpha_or_beta("alpha") * 100), precision: 2)
+    end
 
 		def stock_price_history(symbol)
 			symbol = sanitize_symbol(symbol)
