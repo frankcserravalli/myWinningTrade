@@ -108,9 +108,9 @@ class Finance
 
       beta = price_now - price_from_year_ago
 
-      alpha = beta / price_from_year_ago
-
       if variable.eql? "alpha"
+        alpha = beta / price_from_year_ago
+
         alpha
       elsif "beta"
         beta

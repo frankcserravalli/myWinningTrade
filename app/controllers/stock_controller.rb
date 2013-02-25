@@ -330,6 +330,40 @@ class StockController < ApplicationController
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="row">
+  <div class="span6">
+    <div class="pagination-centered">Risk </div>
+    <div class="pagination-centered">Username</div>
+    <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
+    <br>
+    <div class="row">
+      <span class="span2">Leverage</span>
+      <span class="span2">$760.00</span>
+    <div>
+      <br>
+    <div class="row">
+      <span class="span2">Average Holding Period</span>
+      <span class="span2">$760.00</span>
+    <div>
+      <br>
+    <div class="row">
+      <span class="span2">Benchmark B</span>
+      <span class="span2">$760.00</span>
+
+    <div>
+      <br>
+    <div class="row">
+      <span class="span2">Trader a</span>
+      <span class="span2">$760.00</span>
+    <div>
+    <br>
+    <div class="row">
+      <span class="span2">R-squared</span>
+      <span class="span2">$760.00</span>
+    <div>
+  </div>
 </div>'
 
     kit = PDFKit.new(html, :page_size => 'Letter')
