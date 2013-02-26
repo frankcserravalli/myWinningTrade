@@ -186,7 +186,32 @@ class StockController < ApplicationController
 
 
   def trading_analysis_pdf
-    #output = Analysis.new.to_pdf(current_user.stock_summary)
+    stock_summary = current_user.stock_summary
+    # Summary Section
+    summary = ""
+
+    stock_summary[:stocks].each_key do |symbol|
+      summary += "<tr>"
+
+        summary += "<td>" + symbol + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:name].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:revenue].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:returns].to_s + "</td>"
+
+      summary += "</tr>"
+    end
+
+
+    # Capital at Risks
+    capital_at_risk_stocks = ""
+    stock_summary[:stocks].each_key do |symbol|
+      capital_at_risk_stocks += "<tr><td>#{symbol}</td>"
+      capital_at_risk_stocks += "<td>#{stock_summary[:stocks][symbol][:capital_at_risk].to_s}</td>"
+      capital_at_risk_stocks += "<td>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
+    end
+
     html = '<h2>Summary</h2>
 <table class="table table-striped">
   <thead>
@@ -200,35 +225,7 @@ class StockController < ApplicationController
       <th>Avg. Holding Period</th>
     </tr>
   </thead>
-  <tbody>
-  <tr>
-    <td>Symbol</td>
-    <td>Name</td>
-    <td>Revenues</td>
-    <td>Tax Liability</td>
-    <td>Capital at Risk</td>
-    <td>Returns</td>
-    <td>Avg. Holding Period</td>
-  </tr>
-  <tr>
-    <td>Symbol</td>
-    <td>Name</td>
-    <td>Revenues</td>
-    <td>Tax Liability</td>
-    <td>Capital at Risk</td>
-    <td>Returns</td>
-    <td>Avg. Holding Period</td>
-  </tr>
-  <tr>
-    <td>Symbol</td>
-    <td>Name</td>
-    <td>Revenues</td>
-    <td>Tax Liability</td>
-    <td>Capital at Risk</td>
-    <td>Returns</td>
-    <td>Avg. Holding Period</td>
-  </tr>
-  </tbody>
+  <tbody>' + summary + '</tbody>
 </table>
 
 <div class="row">
@@ -258,8 +255,8 @@ class StockController < ApplicationController
 <div class="row">
   <div class="span5">
     <div class="pagination-centered">Profit and Loss Statement</div>
-    <div class="pagination-centered">Username</div>
-    <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
+    <div class="pagination-centered">' + current_user.name + '</div>
+    <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
     <div>Trading Activities</div>
 
     <div class="span2 pagination-centered">Revenues</div>
@@ -306,11 +303,12 @@ class StockController < ApplicationController
 <div class="row">
   <div class="span6">
     <div class="pagination-centered">Capital at Risk</div>
-    <div class="pagination-centered">Username</div>
-    <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
+    <div class="pagination-centered">' + current_user.name + '</div>
+    <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
     <div class="span2">Starting Capital</div>
+    <div class="span2">$50,000</div>
     <br>
-    <div class="span2">Additional Paid in Capital</div>
+    <div class="span3">Additional Paid in Capital</div>
     <br>
     <br>
     <table class="table table-striped">
@@ -321,22 +319,16 @@ class StockController < ApplicationController
           <th>Capital Invested/Total Capital</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Symbol</td>
-          <td>Name</td>
-          <td>Revenues</td>
-        </tr>
-      </tbody>
+      <tbody>' + capital_at_risk_stocks  + '</tbody>
     </table>
   </div>
 </div>
 
 <div class="row">
   <div class="span6 row">
-    <div class="pagination-centered">Risk </div>
-    <div class="pagination-centered">Username</div>
-    <div class="pagination-centered">For the Period Ended: 15-Feb-13</div>
+    <div class="pagination-centered">Risk Statistics</div>
+    <div class="pagination-centered">' + current_user.name + '</div>
+    <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
     <br>
     <div class="row">
       <span class="span4">Leverage</span>
@@ -377,7 +369,5 @@ class StockController < ApplicationController
                   :type => "application/pdf"
       end
     end
-  end
-
-
+    end
 end

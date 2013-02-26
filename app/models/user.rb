@@ -89,10 +89,9 @@ class User < ActiveRecord::Base
         s[:stocks][stock_symbol] = {
             name: user_stock.stock.name,
             revenue: revenue.round(2),
-            capital_at_risk: capital_at_risk.round(2),
             tax_liability: tax_liability.round(2),
-            returns: returns.round(2),
-
+            capital_at_risk: capital_at_risk.round(2),
+            returns: returns.round(2)
         }
 
         net_income_before_taxes += returns
