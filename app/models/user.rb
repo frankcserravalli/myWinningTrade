@@ -66,6 +66,7 @@ class User < ActiveRecord::Base
     @stock_summary = {}.tap do |s|
       s[:stocks] = {}
       s[:summary] = {}
+      s[:orders] = {}
 
       # Is total_capital equal to the total amount of money invested?
       total_capital = 0
@@ -74,7 +75,10 @@ class User < ActiveRecord::Base
       net_losses = 0
       net_revenue = 0
 
+      # Looping through Each User Stock
       user_stocks.each do |user_stock|
+
+        # Establishing variables here
         stock_symbol = user_stock.stock.symbol
 
         revenue = 0
@@ -89,9 +93,10 @@ class User < ActiveRecord::Base
 
         order_types = []
 
+        # Looping through orders of of an user's stocks
         self.orders.of_users_stock(user_stock.id).each do |order|
 
-          # Grabbing the various info on order totals for each stock
+          # Inserting info from each order into variables for the PDF
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
 
           revenue += stock_revenue_calculation
@@ -104,6 +109,7 @@ class User < ActiveRecord::Base
 
           total_capital += capital_at_risk
 
+          # Finding the net loss and net revenue of each stock
           if stock_revenue_calculation < 0
             net_losses += stock_revenue_calculation
           else
@@ -113,29 +119,30 @@ class User < ActiveRecord::Base
           # This is a test for avg holding period, may or may not get rid of it
           order_types << order.type << order.created_at
 
-          # This is set up for the individual order section
-
+          # Finding the cost basis of each order
           if order.type.eql? "Short Sell Cover" or order.type.eql? "Sell"
             cost_basis = order.volume * order.price
           else
             cost_basis = 0
           end
 
+          # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary
           s[:orders][stock_symbol] = {
-            symbol: user_stock.stock.symbol,
-            name: user_stock.stock.name,
-            type: order.type,
-            time: order.created_at,
-            volume: order.volumne,
-            bid_ask_price: order.price,
-            net_asset_value: (order.volume * order.price),
-            cost_basis: cost_basis,
-            capital_gain_loss: order.capital_gain,
-            tax_liability: tax_liability,
-            holding_period: 1
+              symbol: user_stock.stock.symbol,
+              name: user_stock.stock.name,
+              type: order.type,
+              time: order.created_at,
+              volume: order.volume,
+              bid_ask_price: order.price,
+              net_asset_value: (order.volume * order.price),
+              cost_basis: cost_basis,
+              capital_gain_loss: order.capital_gain,
+              tax_liability: tax_liability,
+              holding_period: "1"
           }
-
         end
+
+
 
         capital_invested_percentage = (capital_at_risk / total_capital)
 
