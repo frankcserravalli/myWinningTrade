@@ -232,10 +232,35 @@ class StockController < ApplicationController
       order_types = stock_summary[:stocks][symbol][:order_types]
       if order_types.include? "Sell"
         #calculate time period from buy to sell
+
       else
         #calculate time period from buy to now
+
+        # This just grabs every other item of the array, i.e. the date a stock was bought
+        #order_types.select!.with_index{|_, i| i.even?}
+
+
       end
     end
+
+
+    # Risk Statistics
+    borrowed = 0
+
+    @short_sell_covers = ShortSellCover.where(user_id: current_user.id)
+
+    @short_sell_borrows = ShortSellBorrow.where(user_id: current_user.id)
+
+    @short_sell_covers.each do |order|
+      borrowed -= order.value
+    end
+
+    @short_sell_borrows.each do |order|
+      borrowed -= order.value
+    end
+
+    # Setting the borrowed money amount to two decimal places
+    borrowed = sprintf('%.2f', borrowed)
 
     html = '<h2>Summary</h2>
 <table class="table table-striped">
@@ -344,7 +369,7 @@ class StockController < ApplicationController
     <br>
     <div class="row">
       <span class="span4">Leverage</span>
-      <span class="span2">$760.00</span>
+      <span class="span2">$' + borrowed + '</span>
     </div>
     <br>
     <div class="row">
