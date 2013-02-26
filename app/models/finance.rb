@@ -95,7 +95,7 @@ class Finance
       return Hash[symbol_list.zip(all_details)]
 		end
 
-    def grab_alpha_or_beta(variable)
+    def grab_alpha_or_beta
       csv = RestClient.get "download.finance.yahoo.com/d/quotes.csv", {:params => {:s => "SPY", :f => 'w0'}}
 
       returned_info = CSV.parse(csv).join()
@@ -106,16 +106,7 @@ class Finance
 
       price_now = returned_info[1].to_f
 
-      beta = price_now - price_from_year_ago
-
-      if variable.eql? "alpha"
-        alpha = beta / price_from_year_ago
-
-        alpha
-      elsif "beta"
-        beta
-      end
-
+      beta = price_now / price_from_year_ago
       # For alpha use this     number_to_percentage((Finance.grab_alpha_or_beta("alpha") * 100), precision: 2)
     end
 
