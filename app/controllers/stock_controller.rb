@@ -196,7 +196,7 @@ class StockController < ApplicationController
       orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
@@ -222,8 +222,8 @@ class StockController < ApplicationController
     profit_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       if stock_summary[:stocks][symbol][:revenue] >= 0
-        profit_stocks += "<div class='span2 pagination-centered'>#{symbol}</div>"
-        profit_stocks += "<div class='span2'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div><br><br>"
+        profit_stocks += "<div>#{symbol}</div>"
+        profit_stocks += "<div class='span2'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div><br>"
       end
     end
 
