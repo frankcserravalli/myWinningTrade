@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
           end
 
           # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary
-          s[:orders][stock_symbol] = {
+          s[:orders][order.created_at] = {
               symbol: user_stock.stock.symbol,
               name: user_stock.stock.name,
               type: order.type,

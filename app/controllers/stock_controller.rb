@@ -188,10 +188,21 @@ class StockController < ApplicationController
   def trading_analysis_pdf
     stock_summary = current_user.stock_summary
 
-
     # Order Details Section
-
-
+    orders_summary = ""
+    stock_summary[:orders].each_key do |created_at|
+      orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td>"
+    end
 
     # Stock Details Section
     summary = ""
@@ -234,7 +245,7 @@ class StockController < ApplicationController
     # Risk Statistics Section
     borrowed = 0
 
-    #TODO move to model
+    # TODO move to model
     @short_sell_covers = ShortSellCover.where(user_id: current_user.id)
 
     @short_sell_borrows = ShortSellBorrow.where(user_id: current_user.id)
@@ -263,7 +274,27 @@ class StockController < ApplicationController
     end
 
     # html is variable that is used as what is rendered on the PDF
-    html = '<h2>Summary</h2>
+    html = '
+<h2>Orders Summary</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Time</th>
+      <th>Volume</th>
+      <th>Bid Asking Price</th>
+      <th>Net Asset Value</th>
+      <th>Cost Basis</th>
+      <th>Capital Gain/Loss</th>
+      <th>Tax Liability</th>
+      <th>Holding Period</th>
+    </tr>
+  </thead>
+  <tbody>' + orders_summary + '</tbody>
+</table>
+<h2>Stock Summary</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -386,7 +417,7 @@ class StockController < ApplicationController
     <br>
     <div class="row">
       <span class="span4">Trader a</span>
-      <span class="span2">' + (Finance.grab_alpha_or_beta * 100).to_s + '%</span>
+      <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
     </div>
     <br>
     <div class="row">
