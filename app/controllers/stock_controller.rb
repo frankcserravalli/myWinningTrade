@@ -186,6 +186,8 @@ class StockController < ApplicationController
 
 
   def trading_analysis_pdf
+    # TODO move all of this to model
+
     stock_summary = current_user.stock_summary
 
     # Order Details Section
@@ -201,7 +203,7 @@ class StockController < ApplicationController
       orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td></tr>"
     end
 
     # Stock Details Section
@@ -220,16 +222,16 @@ class StockController < ApplicationController
     profit_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       if stock_summary[:stocks][symbol][:revenue] >= 0
-      profit_stocks += "<div class='offset1 span1'>#{symbol}</div>"
-      profit_stocks += "<div class='span1'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div><br>"
+        profit_stocks += "<div class='span2 pagination-centered'>#{symbol}</div>"
+        profit_stocks += "<div class='span2'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div><br><br>"
       end
     end
 
     loss_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       if stock_summary[:stocks][symbol][:revenue] < 0
-        loss_stocks += "<div class='offset1 span1'>#{symbol}</div>"
-        loss_stocks += "<div class='span1'>(#{stock_summary[:stocks][symbol][:revenue].abs.to_s})</div><br>"
+        loss_stocks += "<div>#{symbol}</div>"
+        loss_stocks += "<div>(#{stock_summary[:stocks][symbol][:revenue].abs.to_s})</div><br>"
       end
     end
 
@@ -238,8 +240,8 @@ class StockController < ApplicationController
     capital_at_risk_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       capital_at_risk_stocks += "<tr><td>#{symbol}</td>"
-      capital_at_risk_stocks += "<td>#{stock_summary[:stocks][symbol][:capital_at_risk].to_s}</td>"
-      capital_at_risk_stocks += "<td>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
+      capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_at_risk].to_s}</td>"
+      capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
     end
 
     # Risk Statistics Section
@@ -275,25 +277,6 @@ class StockController < ApplicationController
 
     # html is variable that is used as what is rendered on the PDF
     html = '
-<h2>Orders Summary</h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Symbol</th>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Time</th>
-      <th>Volume</th>
-      <th>Bid Asking Price</th>
-      <th>Net Asset Value</th>
-      <th>Cost Basis</th>
-      <th>Capital Gain/Loss</th>
-      <th>Tax Liability</th>
-      <th>Holding Period</th>
-    </tr>
-  </thead>
-  <tbody>' + orders_summary + '</tbody>
-</table>
 <h2>Stock Summary</h2>
 <table class="table table-striped">
   <thead>
@@ -310,32 +293,8 @@ class StockController < ApplicationController
   <tbody>' + summary + '</tbody>
 </table>
 
-<div class="row">
-  <div class="span6 offset6">
-    <table class="table">
-      <tbody>
-      <tr>
-        <td>SUMS </td>
-        <td>' + stock_summary[:summary][:sums].to_s + '</td>
-        <td>(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).to_s + ')</td>
-      </tr>
-      <tr>
-        <td>Net Income before Taxes</td>
-        <td></td>
-        <td>' + stock_summary[:summary][:net_income_before_taxes].to_s + '</td>
-      </tr>
-      <tr>
-        <td>Net Income after Taxes</td>
-        <td></td>
-        <td>' + stock_summary[:summary][:net_income_after_taxes].to_s + '</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span5">
+<div class="row-fluid">
+  <div class="span6 row-fluid">
     <div class="pagination-centered">Profit and Loss Statement</div>
     <div class="pagination-centered">' + current_user.name + '</div>
     <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
@@ -344,7 +303,7 @@ class StockController < ApplicationController
     <div class="span2 pagination-centered">Revenues</div>
     <br>' + profit_stocks + '<br>
 
-<span class="span2">Net Revenues</span>
+    <span class="span2">Net Revenues</span>
     <span class="span2 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
     <br>
     <br>
@@ -352,25 +311,20 @@ class StockController < ApplicationController
     <div class="span2 pagination-centered">Losses</div>
 
     <br>' + loss_stocks +
-    '<span class="span2">Net Losses</span>
-    <span class="span2 pagination-centered">(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
+    '<span >Net Losses</span>
+    <span >(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
     <br>
-    <span class="span2">Gross Profit</span>
-    <span class="span2 pagination-centered">' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
+    <span >Gross Profit</span>
+    <span >' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
     <br>
-    <span class="span2">Incurred Tax Liability</span>
-    <span class="span2 pagination-centered">(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).to_s + ')</span>
+    <span >Incurred Tax Liability</span>
+    <span >(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).to_s + ')</span>
     <br>
-    <span class="span2">Net Income</span>
-    <span class="span2 pagination-centered">' + stock_summary[:summary][:net_income].to_s + '</span>
+    <span>Net Income</span>
+    <span >' + stock_summary[:summary][:net_income].to_s + '</span>
     <br>
-
   </div>
 
-</div>
-
-
-<div class="row">
   <div class="span6">
     <div class="pagination-centered">Capital at Risk</div>
     <div class="pagination-centered">' + current_user.name + '</div>
@@ -425,6 +379,28 @@ class StockController < ApplicationController
       <span class="span2">$760.00</span>
     </div>
   </div>
+</div>
+
+<h2>Orders Summary</h2>
+<div class="row">
+  <table class="table table-striped span12">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Time</th>
+        <th>Volume</th>
+        <th>Bid Asking Price</th>
+        <th>Net Asset Value</th>
+        <th>Cost Basis</th>
+        <th>Capital Gain/Loss</th>
+        <th>Tax Liability</th>
+        <th>Holding Period</th>
+      </tr>
+    </thead>
+    <tbody>' + orders_summary + '</tbody>
+  </table>
 </div>'
 
     kit = PDFKit.new(html, :page_size => 'Letter')

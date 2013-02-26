@@ -126,7 +126,14 @@ class User < ActiveRecord::Base
             cost_basis = 0
           end
 
-          # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary
+          # Finding the capital gain for each order, and if it doesn't exist assigning it $0.00
+          if order.capital_gain.nil?
+            capital_gain_loss = 0
+          else
+            capital_gain_loss = order.capital_gain
+          end
+
+          # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary in the PDF
           s[:orders][order.created_at] = {
               symbol: user_stock.stock.symbol,
               name: user_stock.stock.name,
@@ -136,13 +143,11 @@ class User < ActiveRecord::Base
               bid_ask_price: order.price,
               net_asset_value: (order.volume * order.price),
               cost_basis: cost_basis,
-              capital_gain_loss: order.capital_gain,
+              capital_gain_loss: capital_gain_loss,
               tax_liability: tax_liability,
               holding_period: "1"
           }
         end
-
-
 
         capital_invested_percentage = (capital_at_risk / total_capital)
 
