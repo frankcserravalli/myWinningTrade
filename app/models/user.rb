@@ -42,6 +42,24 @@ class User < ActiveRecord::Base
     end
   end
 
+  def orders_summary
+    user_stocks = self.user_stocks.includes(:stock)
+    @order_summary = {}.tap do |s|
+      s[:stocks] = {}
+
+      s[:summary] = {}
+
+      user_stocks.each do |user_stock|
+
+        self.orders.of_users_stock(user_stock.id).each do |order|
+
+        end
+
+      end
+
+    end
+  end
+
   def stock_summary
     user_stocks = self.user_stocks.includes(:stock)
 
@@ -64,6 +82,7 @@ class User < ActiveRecord::Base
         tax_liability = 0
         returns = 0
         avg_holding_period = 0
+        order_types = []
 
         self.orders.of_users_stock(user_stock.id).each do |order|
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
@@ -79,9 +98,7 @@ class User < ActiveRecord::Base
             net_revenue += stock_revenue_calculation
           end
 
-          # How do I find avg holding period?
-          avg_holding_period += 1
-
+          order_types << order.type << order.created_at
         end
 
         capital_invested_percentage = (capital_at_risk / total_capital)
@@ -91,12 +108,13 @@ class User < ActiveRecord::Base
             revenue: revenue.round(2),
             tax_liability: tax_liability.round(2),
             capital_at_risk: capital_at_risk.round(2),
-            returns: returns.round(2)
+            returns: returns.round(2),
+            order_types: order_types
         }
 
         net_income_before_taxes += returns
-        taxes += tax_liability
 
+        taxes += tax_liability
       end
 
       net_income_after_taxes = net_income_before_taxes - taxes

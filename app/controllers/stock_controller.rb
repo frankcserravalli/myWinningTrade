@@ -227,6 +227,16 @@ class StockController < ApplicationController
       capital_at_risk_stocks += "<td>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
     end
 
+    average_holding_period = ""
+    stock_summary[:stocks].each_key do |symbol|
+      order_types = stock_summary[:stocks][symbol][:order_types]
+      if order_types.include? "Sell"
+        #calculate time period from buy to sell
+      else
+        #calculate time period from buy to now
+      end
+    end
+
     html = '<h2>Summary</h2>
 <table class="table table-striped">
   <thead>
@@ -349,7 +359,7 @@ class StockController < ApplicationController
     <br>
     <div class="row">
       <span class="span4">Trader a</span>
-      <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
+      <span class="span2">' + (Finance.grab_alpha_or_beta * 100).to_s + '%</span>
     </div>
     <br>
     <div class="row">
