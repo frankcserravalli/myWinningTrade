@@ -188,7 +188,12 @@ class StockController < ApplicationController
   def trading_analysis_pdf
     stock_summary = current_user.stock_summary
 
-    # Summary Section
+
+    # Order Details Section
+
+
+
+    # Stock Details Section
     summary = ""
 
     stock_summary[:stocks].each_key do |symbol|
@@ -201,7 +206,6 @@ class StockController < ApplicationController
     end
 
     # Profit and Loss Section
-
     profit_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       if stock_summary[:stocks][symbol][:revenue] >= 0
@@ -227,26 +231,10 @@ class StockController < ApplicationController
       capital_at_risk_stocks += "<td>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
     end
 
-    average_holding_period = ""
-    stock_summary[:stocks].each_key do |symbol|
-      order_types = stock_summary[:stocks][symbol][:order_types]
-      if order_types.include? "Sell"
-        #calculate time period from buy to sell
-
-      else
-        #calculate time period from buy to now
-
-        # This just grabs every other item of the array, i.e. the date a stock was bought
-        #order_types.select!.with_index{|_, i| i.even?}
-
-
-      end
-    end
-
-
-    # Risk Statistics
+    # Risk Statistics Section
     borrowed = 0
 
+    #TODO move to model
     @short_sell_covers = ShortSellCover.where(user_id: current_user.id)
 
     @short_sell_borrows = ShortSellBorrow.where(user_id: current_user.id)
@@ -262,6 +250,19 @@ class StockController < ApplicationController
     # Setting the borrowed money amount to two decimal places
     borrowed = sprintf('%.2f', borrowed)
 
+    average_holding_period = ""
+    stock_summary[:stocks].each_key do |symbol|
+      order_types = stock_summary[:stocks][symbol][:order_types]
+      if order_types.include? "Sell"
+        # calculate time period from buy to sell
+      else
+        # calculate time period from buy to now
+        # This just grabs every other item of the array, i.e. the date a stock was bought
+        # order_types.select!.with_index{|_, i| i.even?}
+      end
+    end
+
+    # html is variable that is used as what is rendered on the PDF
     html = '<h2>Summary</h2>
 <table class="table table-striped">
   <thead>
@@ -310,24 +311,25 @@ class StockController < ApplicationController
     <div>Trading Activities</div>
 
     <div class="span2 pagination-centered">Revenues</div>
-    <br>
-    <br>' + profit_stocks + '<span style="padding-right:190px;">Net Revenues</span>
+    <br>' + profit_stocks + '<br>
+
+<span class="span2">Net Revenues</span>
     <span class="span2 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
     <br>
     <br>
+
     <div class="span2 pagination-centered">Losses</div>
-    <br>' + loss_stocks + '<span class="span2">Net Losses</span>
+
+    <br>' + loss_stocks +
+    '<span class="span2">Net Losses</span>
     <span class="span2 pagination-centered">(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
     <br>
-
     <span class="span2">Gross Profit</span>
     <span class="span2 pagination-centered">' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
     <br>
-
     <span class="span2">Incurred Tax Liability</span>
     <span class="span2 pagination-centered">(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).to_s + ')</span>
     <br>
-
     <span class="span2">Net Income</span>
     <span class="span2 pagination-centered">' + stock_summary[:summary][:net_income].to_s + '</span>
     <br>
