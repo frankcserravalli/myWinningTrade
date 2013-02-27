@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit
     @user = current_user
 
@@ -19,17 +18,11 @@ class UsersController < ApplicationController
 
   def subscription
     @user = current_user
-
-
   end
 
   def add_subscription
-
-    # Set your secret key: remember to change this to your live secret key in production
-    Stripe.api_key = "sk_test_dISm2Qm8RhouxmoU8I6tOEW2 "
-
     # Get the credit card details submitted by the form
-    token = params[:stripeToken]
+    token = params[:stripe_card_token]
 
     begin
       # Create the charge on Stripe's servers - this will charge the user's card
@@ -48,8 +41,6 @@ class UsersController < ApplicationController
 
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Your payment has been processed. Thank you.")
     end
-
-
   end
 
   def update
