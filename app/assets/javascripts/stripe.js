@@ -1,10 +1,12 @@
 $(function() {
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
 
-  $(".payment-form").submit(function() {
-    var form = this;
+  $(".submit-button").click(function() {
+  //$(".payment-form").submit(function() {
 
     $(".submit-button").attr("disabled", true);
+
+    var form = $(".payment-form");
 
     // Setting up card variable to be sent through form
     var card = {
@@ -26,7 +28,7 @@ $(function() {
         // Produce errors
 
         $("#stripe-error-message").text(response.error.message);
-        alert(response.error.message);
+
         $(".submit-button").attr("disabled", false);
       }
     });
