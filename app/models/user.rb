@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     uid 			       '1234', index: true, validates: :presence
     account_balance  :decimal, scale: 2, precision: 10, default: 0.0
     accepted_terms   :boolean, default: false
+    premium_subscription :boolean, default: false
   end
 
   attr_protected :account_balance
@@ -27,6 +28,12 @@ class User < ActiveRecord::Base
 
   def display_name
     (name.blank?)? email : name
+  end
+
+  def upgrade_subscription
+    self.premium_subscription = true
+
+    self.save
   end
 
   def export_orders_as_csv

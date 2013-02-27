@@ -40,17 +40,13 @@ class UsersController < ApplicationController
           :description => "payinguser@example.com"
       )
     rescue Stripe::CardError
-      flash[:notice] =  "There is an error. Please try again."
-
-      redirect_to users_subscription_path
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "There is an error. Please try again.")
     rescue Stripe::StripeError
-      flash[:notice] = "There is an error. Please try again."
-
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "There is an error. Please try again.")
     else
-      flash[:notice] = "Your payment has been processed. Thank you."
+      current_user.upgrade_subscription
 
-      redirect_to users_subscription_path
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Your payment has been processed. Thank you.")
     end
 
 
