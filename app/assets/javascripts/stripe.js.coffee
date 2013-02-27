@@ -1,5 +1,5 @@
 # This identifies your website in the createToken call below
-Stripe.setPublishableKey 'YOUR_PUBLISHABLE_KEY'
+Stripe.setPublishableKey 'pk_test_H6qjF4G8n0TONw3NkIL3wrQN '
 
 
 stripeResponseHandler = (status, response) ->

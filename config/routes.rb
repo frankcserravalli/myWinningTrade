@@ -1,3 +1,4 @@
+
 MyWinningTrade::Application.routes.draw do
   get '/dashboard', to: 'stock#dashboard'
   get '/user/trading_analysis', to: 'stock#trading_analysis'
@@ -15,6 +16,8 @@ MyWinningTrade::Application.routes.draw do
   get '/users/edit', to: 'users#edit'
   put '/users/update', to: 'users#update'
   get '/users/subscription', to: 'users#subscription'
+  post '/users/add_subscription', to: 'users#add_subscription'
+
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
