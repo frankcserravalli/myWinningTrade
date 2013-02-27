@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def add_subscription
-    # Get the credit card details submitted by the form
+   # Get the credit card details submitted by the form
     token = params[:stripe_card_token]
 
     begin
@@ -33,17 +33,26 @@ class UsersController < ApplicationController
           :description => "payinguser@example.com"
       )
     rescue Stripe::CardError => e
+      # Card error
+
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     rescue Stripe::StripeError => e
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
-    rescue Stripe::InvalidRequestError => e # Invalid parameters were supplied to Stripe's API
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
-    rescue Stripe::AuthenticationError => e # Authentication with Stripe's API failed # (maybe you changed API keys recently)
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      # General error with Stripe
 
-    rescue Stripe::APIConnectionError => e # Network communication with Stripe failed
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+    rescue Stripe::InvalidRequestError => e
+      # Invalid parameters were supplied to Stripe's API
 
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+    rescue Stripe::AuthenticationError => e
+      # Authentication with Stripe's API failed
+      # (maybe you changed API keys recently)
+
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+    rescue Stripe::APIConnectionError => e
+      # Network communication with Stripe failed
+
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     else
       current_user.upgrade_subscription
 

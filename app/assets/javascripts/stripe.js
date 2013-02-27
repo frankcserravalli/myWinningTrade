@@ -23,6 +23,8 @@ $(function() {
       if (status === 200) {
         $('#stripe_card_token').val(response.id)
 
+        $("#stripe-error-message").hide();
+
         form.submit();
       } else {
         // Produce errors
