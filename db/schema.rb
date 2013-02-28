@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226223036) do
+ActiveRecord::Schema.define(:version => 20130228162518) do
 
   create_table "date_time_transactions", :force => true do |t|
     t.integer  "user_stock_id"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(:version => 20130226223036) do
 
   add_index "stop_loss_transactions", ["user_id"], :name => "index_stop_loss_transactions_on_user_id"
   add_index "stop_loss_transactions", ["user_stock_id"], :name => "index_stop_loss_transactions_on_user_stock_id"
+
+  create_table "subscription_customers", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "payment_plan"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "subscription_customers", ["user_id"], :name => "index_subscription_customers_on_user_id"
 
   create_table "user_stocks", :force => true do |t|
     t.integer "user_id"
