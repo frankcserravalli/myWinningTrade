@@ -29,6 +29,14 @@ describe UsersController do
 
     end
 
+    context "when visiting the add subscription page" do
+      before do
+        delete :delete_subscription
+      end
+
+      it { should respond_with(:success) }
+    end
+
     context "when visiting the user subscription page" do
       before do
         get :subscription

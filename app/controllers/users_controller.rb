@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       )
 
       # Add Subscription Customer into DB
-      current_user.add_customer(customer.id, params[:payment_plan])
+      SubscriptionCustomer.add_customer(current_user.id, customer.id, params[:payment_plan])
     rescue Stripe::CardError => e
       # Card error
 
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    #@user = User.find(current_user)
+    #@user = User.find(current_user.id)
 
     respond_to do |format|
       if current_user.update_attributes(params[:user])

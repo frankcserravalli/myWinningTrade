@@ -37,18 +37,6 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def add_customer(customer_id, payment_plan)
-    new_customer = SubscriptionCustomer.new
-
-    new_customer.user_id = self.id
-
-    new_customer.customer_id = customer_id
-
-    new_customer.payment_option = payment_plan
-
-    new_customer.save
-  end
-
   def cancel_subscription
     self.premium_subscription = false
 

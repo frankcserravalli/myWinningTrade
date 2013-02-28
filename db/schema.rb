@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20130228162518) do
   create_table "subscription_customers", :force => true do |t|
     t.integer  "user_id"
     t.string   "payment_plan"
+    t.string   "customer_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -94,7 +95,6 @@ ActiveRecord::Schema.define(:version => 20130228162518) do
     t.string  "uid"
     t.decimal "account_balance",                    :precision => 10, :scale => 2, :default => 50000.0
     t.boolean "accepted_terms",                                                    :default => false
-    t.boolean "premium"
     t.boolean "premium_subscription",                                              :default => false
   end
 
