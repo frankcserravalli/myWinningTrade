@@ -60,8 +60,11 @@ class UsersController < ApplicationController
       current_user.upgrade_subscription
 
       # Add Subscription Customer here
+      customer = SubscriptionCustomer.new
 
+      customer.user_id = current_user.id
 
+      customer.payment_option = params[:payment_option]
 
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: customer.to_s)
     end
