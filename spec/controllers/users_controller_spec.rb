@@ -42,6 +42,12 @@ describe UsersController do
           should respond_with(:redirect)
         end
 
+        it "sets the flash" do
+          delete :delete_subscription, user_id: @user1.id
+
+          should set_the_flash.to "Subscription cancelled."
+        end
+
         it "redirect" do
           delete :delete_subscription, user_id: @user1.id
 
@@ -96,6 +102,12 @@ describe UsersController do
       delete :delete_subscription, user_id: 88888
 
       should respond_with(:redirect)
+    end
+
+    it "sets the flash" do
+      delete :delete_subscription, user_id: 88888
+
+      should set_the_flash.to "Subscription cannot be cancelled. Please contact the website."
     end
 
     it "redirect" do

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if customer and customer.delete
       current_user.cancel_subscription
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled")
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled.")
     else
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be cancelled. Please contact the website.")
     end
