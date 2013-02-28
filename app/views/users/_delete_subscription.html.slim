@@ -1,10 +1,8 @@
 div#delete-subscription-modal.modal.hide.fade
-  div.modal-header
-    h3 Modal header
-
   div.modal-body
-    p One fine body
+    p Are you sure you want to delete your subscription?
 
   div.modal-footer
-    a.btn href="#" data-dismiss="modal" aria-hidden="true" Close
-    a.btn.btn-primary href="#" Save changes
+    form method="POST" action="/users/add_subscription"
+      a.btn href="#" data-dismiss="modal" aria-hidden="true" Cancel
+      a.btn.btn-primary href="#" Delete Subscription
