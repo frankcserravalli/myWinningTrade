@@ -1,5 +1,9 @@
 form.payment-form method="POST" action="/users/add_subscription"
 
+  div#stripe-error-message
+
+  br
+
   span Card Number
 
   br
@@ -26,11 +30,21 @@ form.payment-form method="POST" action="/users/add_subscription"
 
   = hidden_field_tag 'stripe_card_token'
 
+  = hidden_field_tag 'payment_plan'
+
   = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
 
   br
 
-  div#stripe-error-message
+  br
+
+  .row
+
+    = button_tag 'Two-Month Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "two"
+
+    = button_tag 'Six-Month Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "six"
+
+    = button_tag 'Yearly Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "twelve"
 
   br
 

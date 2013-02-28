@@ -2,17 +2,16 @@
 = render partial: 'stock/suggest'
 
 #profile.container
-  .row
-    h1.span6 #{current_user.name}
-    .span6
-      a.pull-right.btn.btn-primary href="#{users_edit_path}" Edit Profile
-      a.pull-right.btn.btn-primary href="#{users_subscription_path}" Add Subscription
+  h1 #{current_user.name}
 
+  br
 
-  .row
-    .span12
-      div #{current_user.name}
-      div #{current_user.email}
+  a.pull-right.btn.btn-primary href="#{users_edit_path}" Edit Profile
+
+  a.pull-right.btn.btn-primary href="#{users_subscription_path}" Add Subscription
+
+  div #{current_user.name}
+
 
 
 

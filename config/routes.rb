@@ -17,6 +17,7 @@ MyWinningTrade::Application.routes.draw do
   put '/users/update', to: 'users#update'
   get '/users/subscription', to: 'users#subscription'
   post '/users/add_subscription', to: 'users#add_subscription'
+  delete '/users/delete_subscription', to: 'users#delete_subscription'
 
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do

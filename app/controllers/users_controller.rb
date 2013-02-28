@@ -20,17 +20,20 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def delete_subscription
+
+  end
+
   def add_subscription
    # Get the credit card details submitted by the form
     token = params[:stripe_card_token]
 
     begin
       # Create the charge on Stripe's servers - this will charge the user's card
-      charge = Stripe::Charge.create(
-          :amount => 1000, # amount in cents, again
-          :currency => "usd",
+      customer = Stripe::Customer.create(
           :card => token,
-          :description => "payinguser@example.com"
+          :description => "payinguser@example.com",
+          :plan => params[:payment_plan]
       )
     rescue Stripe::CardError => e
       # Card error
@@ -56,7 +59,11 @@ class UsersController < ApplicationController
     else
       current_user.upgrade_subscription
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Your payment has been processed. Thank you.")
+      # Add Subscription Customer here
+
+
+
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: customer.to_s)
     end
   end
 
