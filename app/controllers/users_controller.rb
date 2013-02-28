@@ -21,7 +21,8 @@ class UsersController < ApplicationController
   end
 
   def delete_subscription
-    customer = SubscriptionCustomer.find(params[:user_id])
+    customer = SubscriptionCustomer.where("user_id = ?", params[:user_id])
+
     if customer.delete
       current_user.cancel_subscription
 
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
       # Create the charge on Stripe's servers - this will charge the user's card
       customer = Stripe::Customer.create(
           :card => params[:stripe_card_token],
-          :description => "payinguser@example.com",
+          :description => current_user.email,
           :plan => params[:payment_plan]
       )
 
