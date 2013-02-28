@@ -9,10 +9,11 @@ describe 'Sessions' do
     click_button 'Sign In'
 
     click_link 'accept-terms'
-    page.current_path.should == dashboard_path
+    visit "users/subscription"
+    click_button 'Delete Subscription'
+    click_button 'Delete Subscription'
 
-    visit logout_path
-    visit root_path
-    page.current_path.should == login_path
+    page.should have_selector ".notice", text: "Subscription cancelled."
+
   end
 end

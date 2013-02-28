@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong User:
+  = @subscription.user_id
+p
+  strong Customer:
+  = @subscription.customer_id
+p
+  strong Payment plan:
+  = @subscription.payment_plan
+
+= link_to 'Edit', edit_subscription_path(@subscription)
+'|
+= link_to 'Back', subscriptions_path

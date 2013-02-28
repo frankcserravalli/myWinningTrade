@@ -10,20 +10,17 @@ MyWinningTrade::Application.routes.draw do
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
-
-
   get '/users/profile', to: 'users#profile', as: 'profile'
   get '/users/edit', to: 'users#edit'
   put '/users/update', to: 'users#update'
-  get '/users/subscription', to: 'users#subscription'
-  post '/users/add_subscription', to: 'users#add_subscription'
-  delete '/users/delete_subscription', to: 'users#delete_subscription'
 
+  resources :subscriptions
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
       get :price_history
     end
+
     collection do
       get :details
       get :search
