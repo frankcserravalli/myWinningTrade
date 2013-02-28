@@ -30,49 +30,28 @@ describe UsersController do
     end
 
     context "when visiting the delete subscription page" do
-
       context "a good user" do
         before :each do
-          @user = FactoryGirl.create(:subscription_customer)
-          @customer = FactoryGirl.create(:subscription_customer, user_id: @user.id)
+          @user1 = FactoryGirl.create(:user)
+          @customer = FactoryGirl.create(:subscription_customer, user_id: @user1.id)
         end
 
         it "respond with redirect" do
-          delete :delete_subscription, user_id: @user.id
+          delete :delete_subscription, user_id: @user1.id
 
           should respond_with(:redirect)
         end
 
         it "redirect" do
-          delete :delete_subscription, user_id: @user.id
+          delete :delete_subscription, user_id: @user1.id
 
           should redirect_to(users_subscription_path)
         end
 
         it "should not have an subscription deleted" do
           expect do
-            delete :delete_subscription, user_id: @user.id
-          end.to change{ SubscriptionCustomer.count }.by(1)
-        end
-      end
-
-      context "a bad user" do
-        it "should not have an subscription deleted" do
-          expect do
-            delete :delete_subscription
-          end.to change{ SubscriptionCustomer.count }.by(0)
-        end
-
-        it "respond with redirect" do
-          delete :delete_subscription
-
-          should respond_with(:redirect)
-        end
-
-        it "redirect" do
-          delete :delete_subscription
-
-          should redirect_to(users_subscription_path)
+            delete :delete_subscription, user_id: @user1.id
+          end.to change{ SubscriptionCustomer.count }.by(-1)
         end
       end
     end
@@ -103,6 +82,27 @@ describe UsersController do
       end
     end
 
+  end
+
+  context "a bad user" do
+    context "when deleting a subscription"
+    it "should not have an subscription deleted" do
+      expect do
+        delete :delete_subscription, user_id: 88888
+      end.to change{ SubscriptionCustomer.count }.by(0)
+    end
+
+    it "respond with redirect" do
+      delete :delete_subscription, user_id: 88888
+
+      should respond_with(:redirect)
+    end
+
+    it "redirect" do
+      delete :delete_subscription, user_id: 88888
+
+      should redirect_to(users_subscription_path)
+    end
   end
 
 end

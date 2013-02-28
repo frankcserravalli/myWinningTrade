@@ -21,14 +21,14 @@ class UsersController < ApplicationController
   end
 
   def delete_subscription
-    customer = SubscriptionCustomer.where("user_id = ?", params[:user_id])
+    customer = SubscriptionCustomer.find_by_user_id(params[:user_id])
 
-    if customer.delete
+    if customer and customer.delete
       current_user.cancel_subscription
 
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled")
     else
-
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be cancelled. Please contact the website.")
     end
   end
 
