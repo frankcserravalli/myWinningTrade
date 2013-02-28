@@ -9,6 +9,7 @@
 //= require bootstrap-tab
 //= require bootstrap-tooltip
 //= require bootstrap-popover
+//= require bootstrap-modal
 //= require bootstrap-button
 //= require bootstrap-collapse
 //= require chosen-jquery

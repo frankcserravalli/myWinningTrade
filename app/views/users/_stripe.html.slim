@@ -39,7 +39,6 @@ form.payment-form method="POST" action="/users/add_subscription"
   br
 
   .row
-
     = button_tag 'Two-Month Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "two"
 
     = button_tag 'Six-Month Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "six"
@@ -48,8 +47,11 @@ form.payment-form method="POST" action="/users/add_subscription"
 
   br
 
-  = button_tag "Submit Payment", class: "btn btn-success submit-button", type: "button"
+  .span10
+    = button_tag "Submit Payment", class: "btn btn-success submit-button", type: "button"
 
-  = link_to 'Back', profile_path, class: "btn btn-primary"
+    = link_to 'Back', profile_path, class: "btn btn-primary"
+
+
 
 
