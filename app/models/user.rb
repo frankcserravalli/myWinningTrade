@@ -37,6 +37,24 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def add_customer(customer_id, payment_plan)
+    new_customer = SubscriptionCustomer.new
+
+    new_customer.user_id = self.id
+
+    new_customer.customer_id = customer_id
+
+    new_customer.payment_option = payment_plan
+
+    new_customer.save
+  end
+
+  def cancel_subscription
+    self.premium_subscription = false
+
+    self.save
+  end
+
   def export_orders_as_csv
     CSV.generate do |csv|
       csv << ['Symbol', 'Name', 'Type', 'Time', 'Volume', 'Bid/Ask Price', 'Net Asset Value', 'Cost Basis', 'Capital Gain/Loss', 'Tax Liability']

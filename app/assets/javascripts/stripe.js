@@ -2,39 +2,48 @@ $(function() {
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
 
   $(".submit-button").click(function() {
-  //$(".payment-form").submit(function() {
 
-    $(".submit-button").attr("disabled", true);
+    payment_plan = $("#payment_plan").val();
 
-    var form = $(".payment-form");
+    if (payment_plan === "") {
 
-    // Setting up card variable to be sent through form
-    var card = {
-      number: $(".card-number").val(),
+      $("#stripe-error-message").text("Please select a plan.");
 
-      expMonth: $(".card-expiry-month").val(),
+    } else {
+      $(".submit-button").attr("disabled", true);
 
-      expYear: $(".card-expiry-year").val(),
+      var form = $(".payment-form");
 
-      cvc: $(".card-cvc").val()
-    };
+      // Setting up card variable to be sent through form
+      var card = {
+        number: $(".card-number").val(),
 
-    Stripe.createToken(card, function(status, response) {
-      if (status === 200) {
-        $('#stripe_card_token').val(response.id)
+        expMonth: $(".card-expiry-month").val(),
 
-        $("#stripe-error-message").hide();
+        expYear: $(".card-expiry-year").val(),
 
-        form.submit();
-      } else {
-        // Produce errors
+        cvc: $(".card-cvc").val()
+      };
 
-        $("#stripe-error-message").text(response.error.message);
+      Stripe.createToken(card, function(status, response) {
+        if (status === 200) {
+          $('#stripe_card_token').val(response.id)
 
-        $(".submit-button").attr("disabled", false);
-      }
-    });
+          $("#stripe-error-message").hide();
 
-    return false;
+          form.submit();
+        } else {
+          // Produce errors
+
+          $("#stripe-error-message").text(response.error.message);
+
+          $(".submit-button").attr("disabled", false);
+        }
+      });
+
+      return false;
+    }
+
+
   });
 });

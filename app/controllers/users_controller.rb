@@ -21,20 +21,27 @@ class UsersController < ApplicationController
   end
 
   def delete_subscription
+    customer = SubscriptionCustomer.find(params[:user_id])
+    if customer.delete
+      current_user.cancel_subscription
 
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled")
+    else
+
+    end
   end
 
   def add_subscription
-   # Get the credit card details submitted by the form
-    token = params[:stripe_card_token]
-
     begin
       # Create the charge on Stripe's servers - this will charge the user's card
       customer = Stripe::Customer.create(
-          :card => token,
+          :card => params[:stripe_card_token],
           :description => "payinguser@example.com",
           :plan => params[:payment_plan]
       )
+
+      # Add Subscription Customer into DB
+      current_user.add_customer(customer.id, params[:payment_plan])
     rescue Stripe::CardError => e
       # Card error
 
@@ -56,17 +63,14 @@ class UsersController < ApplicationController
       # Network communication with Stripe failed
 
       redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+    rescue Exception
+      # Rescue any exception
+
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Problem with subscribing.")
     else
       current_user.upgrade_subscription
 
-      # Add Subscription Customer here
-      customer = SubscriptionCustomer.new
-
-      customer.user_id = current_user.id
-
-      customer.payment_option = params[:payment_option]
-
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: customer.to_s)
+      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Thanks for subscribing!")
     end
   end
 
