@@ -2,6 +2,8 @@
 = render partial: 'stock/suggest'
 
 #user_subscription.container
+
+- if current_user.premium_subscription.eql? false
   .row
     .span12
       h1.span9 Manage Subscription
@@ -12,4 +14,8 @@
 
   .row-fluid
     .span12.row-fluid
-      == render 'form'
+        == render 'form'
+
+
+
+br
