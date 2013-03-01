@@ -196,9 +196,9 @@ class User < ActiveRecord::Base
     stock_summary[:orders].each_key do |created_at|
       orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
+      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
+      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
       orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
@@ -245,6 +245,11 @@ class User < ActiveRecord::Base
       capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
     end
 
+    capital_at_risk_data = []
+    stock_summary[:stocks].each_key do |symbol|
+      capital_at_risk_data << [symbol, stock_summary[:stocks][symbol][:capital_at_risk]]
+    end
+
     # Risk Statistics Section
     borrowed = 0
 
@@ -276,7 +281,23 @@ class User < ActiveRecord::Base
     end
 
     # Html is variable that is used as what is rendered on the PDF
-    html = '<h2>Stock Summary</h2>
+    html = '
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(' + capital_at_risk_data.to_s + ');
+        var options = {
+          title: "Capital at Risk"
+        };
+        var chart = new google.visualization.PieChart(document.getElementById("chart_div"));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+    <h2>Stock Summary</h2>
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -336,7 +357,6 @@ class User < ActiveRecord::Base
                   <div class="span7 offset1">Starting Capital</div>
                   <div class="span4">$50,000</div>
                 </div>
-                <br>
                 <div class="span4">Additional Paid in Capital</div>
                 <br>
                 <table class="table table-striped">
@@ -405,7 +425,14 @@ class User < ActiveRecord::Base
                 </thead>
                 <tbody>' + orders_summary + '</tbody>
               </table>
-            </div>'
+            </div>
+
+            <div class="row-fluid">
+              <div class="offset2" id="pieContainer">
+                   <div class="pieBackground"></div>
+              </div>
+            </div>
+            <div id="chart_div" style="width: 900px; height: 500px;"></div>'
 
     html
   end

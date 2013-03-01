@@ -1,1 +1,13 @@
-h1 { color:red; }
+.pieContainer {
+  height: 110px;
+}
+.pieBackground {
+  background-color: grey;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50px;
+}

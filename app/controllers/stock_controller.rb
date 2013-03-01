@@ -48,8 +48,6 @@ class StockController < ApplicationController
   end
 
   def trading_analysis_pdf
-    # TODO move all of this to model
-
     content = current_user.create_trading_analysis_pdf
 
     kit = PDFKit.new(content, :page_size => 'Letter')
