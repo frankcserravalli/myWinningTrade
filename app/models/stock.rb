@@ -7,5 +7,4 @@ class Stock < ActiveRecord::Base
   end
 
   attr_accessible :name, :symbol
-
 end

@@ -188,7 +188,222 @@ class User < ActiveRecord::Base
 
   end
 
+  def create_trading_analysis_pdf
+    stock_summary = self.stock_summary
 
+    # Order Details Section
+    orders_summary = ""
+    stock_summary[:orders].each_key do |created_at|
+      orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td></tr>"
+    end
+
+    # Stock Details Section
+    summary = ""
+
+    stock_summary[:stocks].each_key do |symbol|
+      summary += "<tr><td>" + symbol + "</td>"
+      summary += "<td>" + stock_summary[:stocks][symbol][:name].to_s + "</td>"
+      summary += "<td>" + stock_summary[:stocks][symbol][:revenue].to_s + "</td>"
+      summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].to_s + "</td>"
+      summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].to_s + "</td>"
+      summary += "<td>" + stock_summary[:stocks][symbol][:returns].to_s + "</td></tr>"
+    end
+
+    # Profit and Loss Section
+    profit_stocks = ""
+    stock_summary[:stocks].each_key do |symbol|
+      if stock_summary[:stocks][symbol][:revenue] >= 0
+        profit_stocks += "<div>#{symbol}</div>"
+        profit_stocks += "<div class='span2'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div><br>"
+      end
+    end
+
+    loss_stocks = ""
+    stock_summary[:stocks].each_key do |symbol|
+      if stock_summary[:stocks][symbol][:revenue] < 0
+        loss_stocks += "<div>#{symbol}</div>"
+        loss_stocks += "<div>(#{stock_summary[:stocks][symbol][:revenue].abs.to_s})</div><br>"
+      end
+    end
+
+
+    # Capital at Risks Section
+    capital_at_risk_stocks = ""
+    stock_summary[:stocks].each_key do |symbol|
+      capital_at_risk_stocks += "<tr><td>#{symbol}</td>"
+      capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_at_risk].to_s}</td>"
+      capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
+    end
+
+    # Risk Statistics Section
+    borrowed = 0
+
+    @short_sell_covers = ShortSellCover.where(user_id: self.id)
+
+    @short_sell_borrows = ShortSellBorrow.where(user_id: self.id)
+
+    @short_sell_covers.each do |order|
+      borrowed -= order.value
+    end
+
+    @short_sell_borrows.each do |order|
+      borrowed -= order.value
+    end
+
+    # Setting the borrowed money amount to two decimal places
+    borrowed = sprintf('%.2f', borrowed)
+
+    average_holding_period = ""
+    stock_summary[:stocks].each_key do |symbol|
+      order_types = stock_summary[:stocks][symbol][:order_types]
+      if order_types.include? "Sell"
+        # calculate time period from buy to sell
+      else
+        # calculate time period from buy to now
+        # This just grabs every other item of the array, i.e. the date a stock was bought
+        # order_types.select!.with_index{|_, i| i.even?}
+      end
+    end
+
+    # Html is variable that is used as what is rendered on the PDF
+    html = '<h2>Stock Summary</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Name</th>
+                  <th>Revenues</th>
+                  <th>Tax Liability</th>
+                  <th>Capital at Risk</th>
+                  <th>Returns</th>
+                  <th>Avg. Holding Period</th>
+                </tr>
+              </thead>
+              <tbody>' + summary + '</tbody>
+            </table>
+
+            <div class="row-fluid">
+              <div class="span6 row-fluid">
+                <div class="pagination-centered">Profit and Loss Statement</div>
+                <div class="pagination-centered">' + self.name + '</div>
+                <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
+                <div>Trading Activities</div>
+
+                <div class="span2 pagination-centered">Revenues</div>
+                <br>' + profit_stocks + '<br>
+
+                <span class="span2">Net Revenues</span>
+                <span class="span2 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
+                <br>
+                <br>
+
+                <div class="span2 pagination-centered">Losses</div>
+
+                <br>' + loss_stocks +
+        '<span >Net Losses</span>
+                <span >(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
+                <br>
+                <span >Gross Profit</span>
+                <span >' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
+                <br>
+                <span >Incurred Tax Liability</span>
+                <span >(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).to_s + ')</span>
+                <br>
+                <span>Net Income</span>
+                <span >' + stock_summary[:summary][:net_income].to_s + '</span>
+                <br>
+              </div>
+
+              <div class="span6">
+                <div class="pagination-centered">Capital at Risk</div>
+                <div class="pagination-centered">' + self.name + '</div>
+                <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
+                <div class="span2">Starting Capital</div>
+                <div class="span2">$50,000</div>
+                <br>
+                <div class="span3">Additional Paid in Capital</div>
+                <br>
+                <br>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Symbol</th>
+                      <th>Capital at Risk</th>
+                      <th>Capital Invested/Total Capital</th>
+                    </tr>
+                  </thead>
+                  <tbody>' + capital_at_risk_stocks  + '</tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="span6 row">
+                <div class="pagination-centered">Risk Statistics</div>
+                <div class="pagination-centered">' + self.name + '</div>
+                <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
+                <br>
+                <div class="row">
+                  <span class="span4">Leverage</span>
+                  <span class="span2">$' + borrowed + '</span>
+                </div>
+                <br>
+                <div class="row">
+                  <span class="span4">Average Holding Period</span>
+                  <span class="span2">$760.00</span>
+                </div>
+                <br>
+                <div class="row">
+                  <span class="span4">Benchmark B</span>
+                  <span class="span2">' + Finance.grab_alpha_or_beta.round(2).to_s + '</span>
+                </div>
+                <br>
+                <div class="row">
+                  <span class="span4">Trader a</span>
+                  <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
+                </div>
+                <br>
+                <div class="row">
+                  <span class="span4">R-squared</span>
+                  <span class="span2">$760.00</span>
+                </div>
+              </div>
+            </div>
+
+            <h2>Orders Summary</h2>
+            <div class="row">
+              <table class="table table-striped span12">
+                <thead>
+                  <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Volume</th>
+                    <th>Bid Asking Price</th>
+                    <th>Net Asset Value</th>
+                    <th>Cost Basis</th>
+                    <th>Capital Gain/Loss</th>
+                    <th>Tax Liability</th>
+                    <th>Holding Period</th>
+                  </tr>
+                </thead>
+                <tbody>' + orders_summary + '</tbody>
+              </table>
+            </div>'
+
+    html
+  end
 
   protected
   def create_initial_balance
