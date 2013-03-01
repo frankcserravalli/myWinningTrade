@@ -8,7 +8,8 @@ $(function() {
 
     payment_plan = $("#payment_plan").val();
 
-    if (payment_plan == "") {
+    if (payment_plan == 1) {
+
       $("#stripe-error-message").text("Please select a plan.");
     } else {
       $(".submit-button").attr("disabled", true);
@@ -48,13 +49,10 @@ $(function() {
 });
 
 $(document).ready(function() {
-  $("#payment_plan").val("two");
-
   $(".subscription-button").click(function() {
-    button_pressed = $(this);
 
-    value = button_pressed.attr("value");
+    value = $(this).attr("value");
 
-    $("#payment_plan").val(value);
+    $('input[name="payment_plan"]').val(value);
   });
 });

@@ -19,28 +19,28 @@ class SubscriptionsController < ApplicationController
     rescue Stripe::CardError => e
       # Card error
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:payment_plan].to_s)
     rescue Stripe::StripeError => e
       # General error with Stripe
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:payment_plan].to_s)
     rescue Stripe::InvalidRequestError => e
       # Invalid parameters were supplied to Stripe's API
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:payment_plan].to_s)
     rescue Stripe::AuthenticationError => e
       # Authentication with Stripe's API failed
       # (maybe you changed API keys recently)
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:payment_plan].to_s)
     rescue Stripe::APIConnectionError => e
       # Network communication with Stripe failed
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:payment_plan].to_s)
     rescue Exception
       # Rescue any exception
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Problem with subscribing.")
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:payment_plan].to_s)
     else
       current_user.upgrade_subscription
 
