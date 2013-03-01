@@ -223,16 +223,16 @@ class User < ActiveRecord::Base
     profit_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       if stock_summary[:stocks][symbol][:revenue] >= 0
-        profit_stocks += "<div>#{symbol}</div>"
-        profit_stocks += "<div class='span2'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div><br>"
+        profit_stocks += "<div class='row-fluid'><div class='span4'>#{symbol}</div>"
+        profit_stocks += "<div class='span4'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div></div>"
       end
     end
 
     loss_stocks = ""
     stock_summary[:stocks].each_key do |symbol|
       if stock_summary[:stocks][symbol][:revenue] < 0
-        loss_stocks += "<div>#{symbol}</div>"
-        loss_stocks += "<div>(#{stock_summary[:stocks][symbol][:revenue].abs.to_s})</div><br>"
+        loss_stocks += "<div class='row-fluid'><div class='span4'>#{symbol}</div>"
+        loss_stocks += "<div class='span4'>(#{stock_summary[:stocks][symbol][:revenue].abs.to_s})</div></div>"
       end
     end
 
@@ -297,42 +297,43 @@ class User < ActiveRecord::Base
                 <div class="pagination-centered">Profit and Loss Statement</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
-                <div>Trading Activities</div>
-
-                <div class="span2 pagination-centered">Revenues</div>
-                <br>' + profit_stocks + '<br>
-
-                <span class="span2">Net Revenues</span>
-                <span class="span2 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
-                <br>
-                <br>
-
-                <div class="span2 pagination-centered">Losses</div>
-
-                <br>' + loss_stocks +
-        '<span >Net Losses</span>
-                <span >(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
-                <br>
-                <span >Gross Profit</span>
-                <span >' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
-                <br>
-                <span >Incurred Tax Liability</span>
-                <span >(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).to_s + ')</span>
-                <br>
-                <span>Net Income</span>
-                <span >' + stock_summary[:summary][:net_income].to_s + '</span>
-                <br>
+                <div class="row">
+                  <div class="span7 offset1">Trading Activities</div>
+                </div>
+                <div class="span2 offset1 pagination-centered">Revenues</div><br>' + profit_stocks +
+                '<div class="row">
+                  <span class="span7 offset1">Net Revenues</span>
+                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
+                </div>
+                <div class="span2 offset1 pagination-centered">Losses</div><br>' + loss_stocks +
+                '<div class="row">
+                  <span class="span7 offset1">Net Losses</span>
+                  <span class="span4 pagination-centered">(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
+                </div>
+                <div class="row">
+                  <span class="span7 offset1">Gross Profit</span>
+                  <span class="span4 pagination-centered">' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
+                </div>
+                <div class="row">
+                  <span class="span7 offset1">Incurred Tax Liability</span>
+                  <span class="span4 pagination-centered">(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).round(2).to_s + ')</span>
+                </div>
+                <div class="row">
+                  <span class="span7 offset1">Net Income</span>
+                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_income].to_s + '</span>
+                </div>
               </div>
 
               <div class="span6">
                 <div class="pagination-centered">Capital at Risk</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
-                <div class="span2">Starting Capital</div>
-                <div class="span2">$50,000</div>
+                <div class="row"
+                  <div class="span7 offset1">Starting Capital</div>
+                  <div class="span4">$50,000</div>
+                </div>
                 <br>
-                <div class="span3">Additional Paid in Capital</div>
-                <br>
+                <div class="span4">Additional Paid in Capital</div>
                 <br>
                 <table class="table table-striped">
                   <thead>
