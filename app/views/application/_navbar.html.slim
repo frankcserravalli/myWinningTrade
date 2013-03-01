@@ -5,7 +5,9 @@
       - if current_user
         nav.nav.pull-right
           li
-            a href="#{profile_path}" = current_user.name
+            a = current_user.name
+          li
+            a href="#{subscriptions_path}" Subscribe
           li
             = link_to logout_path do
               i.icon-signout

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+=begin
   def profile
     @user = User.find(current_user)
 
@@ -32,5 +32,5 @@ class UsersController < ApplicationController
     end
 
   end
-
+=end
 end

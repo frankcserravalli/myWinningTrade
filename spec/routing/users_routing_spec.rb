@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "User Routing" do
-
+=begin
   it "should route to users#show" do
     expect(get: 'users/profile').to route_to({ controller: 'users', action: 'profile' })
   end
@@ -13,5 +13,5 @@ describe "User Routing" do
   it "should route to users#update" do
     expect(put: 'users/update').to route_to({ controller: 'users', action: 'update' })
   end
-
+=end
 end

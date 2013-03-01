@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+=begin
 describe UsersController do
   before do
     @user = authenticate
@@ -46,6 +46,6 @@ describe UsersController do
 
   end
 
-
+=end
 
 end
