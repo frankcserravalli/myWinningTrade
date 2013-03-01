@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
 
 
   def show
-    @user = current_user
+    @subscription = Subscription.find_by_user_id(current_user.id)
   end
 
   def create

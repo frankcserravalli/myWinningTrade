@@ -3,19 +3,26 @@
 
 #user_subscription.container
 
-- if current_user.premium_subscription.eql? false
-  .row
-    .span12
-      h1.span9 Manage Subscription
+  - if current_user.premium_subscription.eql? true
+    .row
+      .span12
+        h1.span9 Manage Subscription
 
-      a.btn.btn-primary.delete-subscription-button href="#delete-subscription-modal" data-target="#delete-subscription-modal" role="button" data-toggle="modal" Delete Subscription
+        a.btn.btn-primary.delete-subscription-button href="#delete-subscription-modal" data-target="#delete-subscription-modal" role="button" data-toggle="modal" Delete Subscription
 
-      = render partial: 'delete_subscription'
+        = render partial: 'delete_subscription'
 
-  .row-fluid
-    .span12.row-fluid
+    .row-fluid
+      .span12.row-fluid
+        div You are currently signed up for the #{@subscription.payment_plan} plan!
+
+  -else
+    .row
+      .span12
+        h1.span9 Add Subscription
+
+    .row-fluid
+      .span12.row-fluid
         == render 'form'
-
-
 
 br
