@@ -281,23 +281,22 @@ class User < ActiveRecord::Base
     end
 
     # Html is variable that is used as what is rendered on the PDF
-    html = '
-  <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(' + capital_at_risk_data.to_s + ');
-        var options = {
-          title: "Capital at Risk"
-        };
-        var chart = new google.visualization.PieChart(document.getElementById("chart_div"));
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-    <h2>Stock Summary</h2>
+    html = '<head>
+              <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+              <script type="text/javascript">
+                google.load("visualization", "1", {packages:["corechart"]});
+                google.setOnLoadCallback(drawChart);
+                function drawChart() {
+                  var data = google.visualization.arrayToDataTable(' + capital_at_risk_data.to_s + ');
+                  var options = {
+                    title: "Capital at Risk"
+                  };
+                  var chart = new google.visualization.PieChart(document.getElementById("chart_div"));
+                  chart.draw(data, options);
+                }
+              </script>
+            </head>
+            <h2>Stock Summary</h2>
             <table class="table table-striped">
               <thead>
                 <tr>
