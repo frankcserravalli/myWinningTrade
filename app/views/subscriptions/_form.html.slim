@@ -1,6 +1,6 @@
 
 
-form.payment-form method="POST" action="/subscriptions/create"
+form.payment-form.row-fluid method="POST" action="/subscriptions/create"
 
   div#stripe-error-message
 
@@ -40,13 +40,17 @@ form.payment-form method="POST" action="/subscriptions/create"
 
   br
 
-  .row
-    div.span4.subscription-button.pagination-centered
-      divTwo-Month Plan
+  .row-fluid.pagination-centered
+    div.span4.subscription-button value="two"
+      div Two-Month Plan
+      div.payment-plan-description Sign up and pay only $5 every two months
+    div.span4.subscription-button value="six"
+      div Six-Month Plan
+      div.payment-plan-description Sign up and pay only $15 every six months
+    div.span4.subscription-button value="twelve"
+      div Twelve-Month Plan
+      div.payment-plan-description Sign up and pay only $30 every year
 
-    = button_tag 'Six-Month Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "six"
-
-    = button_tag 'Yearly Plan', class: "btn btn-primary span4 subscription-button", type: "button", value: "twelve"
 
   br
 

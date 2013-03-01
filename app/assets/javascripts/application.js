@@ -18,6 +18,7 @@
 //= require flash
 //= require finance
 //= require stripe
+//= require subscription
 //= require_self
 //= require_tree .//stock
 //= require general
