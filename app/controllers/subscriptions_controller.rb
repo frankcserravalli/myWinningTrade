@@ -5,10 +5,6 @@ class SubscriptionsController < ApplicationController
     @user = current_user
   end
 
-  def edit
-    @subscription = Subscription.find(params[:id])
-  end
-
   def create
     begin
       # Create the charge on Stripe's servers - this will charge the user's card
@@ -19,36 +15,36 @@ class SubscriptionsController < ApplicationController
       )
 
       # Add Subscription Customer into DB
-      SubscriptionCustomer.add_customer(current_user.id, customer.id, params[:payment_plan])
+      Subscription.add_customer(current_user.id, customer.id, params[:payment_plan])
     rescue Stripe::CardError => e
       # Card error
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     rescue Stripe::StripeError => e
       # General error with Stripe
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     rescue Stripe::InvalidRequestError => e
       # Invalid parameters were supplied to Stripe's API
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     rescue Stripe::AuthenticationError => e
       # Authentication with Stripe's API failed
       # (maybe you changed API keys recently)
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     rescue Stripe::APIConnectionError => e
       # Network communication with Stripe failed
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     rescue Exception
       # Rescue any exception
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Problem with subscribing.")
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Problem with subscribing.")
     else
       current_user.upgrade_subscription
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Thanks for subscribing!")
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Thanks for subscribing!")
     end
   end
 
@@ -58,23 +54,12 @@ class SubscriptionsController < ApplicationController
     if customer and customer.delete
       current_user.cancel_subscription
 
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled.")
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled.")
     else
-      redirect_to users_subscription_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be cancelled. Please contact the website.")
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be cancelled. Please contact the website.")
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
 
 def update
   @subscription = Subscription.find(params[:id])

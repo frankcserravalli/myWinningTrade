@@ -1,14 +1,15 @@
 $(function() {
+
+
+  // Grabbing publishable key
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
 
   $(".submit-button").click(function() {
 
     payment_plan = $("#payment_plan").val();
 
-    if (payment_plan === "") {
-
+    if (payment_plan == "") {
       $("#stripe-error-message").text("Please select a plan.");
-
     } else {
       $(".submit-button").attr("disabled", true);
 
@@ -43,7 +44,17 @@ $(function() {
 
       return false;
     }
+  });
+});
 
+$(document).ready(function() {
+  $("#payment_plan").val("two");
 
+  $(".subscription-button").click(function() {
+    button_pressed = $(this);
+
+    value = button_pressed.attr("value");
+
+    $("#payment_plan").val(value);
   });
 });
