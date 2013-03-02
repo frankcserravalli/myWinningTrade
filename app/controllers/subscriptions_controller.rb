@@ -43,7 +43,7 @@ class SubscriptionsController < ApplicationController
     else
       current_user.upgrade_subscription
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: customer.id.to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Successfully Subscribed!")
     end
   end
 
@@ -60,22 +60,18 @@ class SubscriptionsController < ApplicationController
       redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be cancelled. Please contact the website.")
     end
   end
-end
 
-def update
-  @subscription = Subscription.find(params[:id])
 
-  respond_to do |format|
-    if @subscription.update_attributes(params[:subscription])
-      format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
-      format.json { head :no_content }
+  def update
+    customer = Subscription.find_by_user_id(params[:user_id])
+
+    the_customer = Stripe::Customer.retrieve(customer.customer_id)
+
+    if customer and the_customer.update_subscription(:plan => params[:payment_plan], :prorate => true)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription updated.")
     else
-      format.html { render action: "edit" }
-      format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be updated. Please contact the website.")
     end
+
   end
 end
-
-
-#<Stripe::Customer:0x3fc8aa23785c>
-#JSON: {"id":"cus_1NrFFUjI9tqSAc","object":"customer","created":1362191889,"livemode":false,"description":null,"active_card":{"object":"card","last4":"4242","type":"Visa","exp_month":1,"exp_year":2015,"fingerprint":"jFOEeG9Y0bMNWBnI","country":"US","name":null,"address_line1":null,"address_line2":null,"address_city":null,"address_state":null,"address_zip":null,"address_country":null,"cvc_check":"pass","address_line1_check":null,"address_zip_check":null},"email":null,"delinquent":false,"subscription":{"plan":{"id":"six","interval":"month","name":"six","amount":1500,"currency":"usd","object":"plan","livemode":false,"interval_count":6,

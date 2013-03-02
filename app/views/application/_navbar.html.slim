@@ -7,7 +7,11 @@
           li
             a = current_user.name
           li
-            a href="#{subscriptions_path}" Subscribe
+            - if current_user.premium_subscription.eql? false
+              a href="#{subscriptions_path}" Subscribe
+            - else
+              a href="#{subscriptions_path}" Subscription
+
           li
             = link_to logout_path do
               i.icon-signout

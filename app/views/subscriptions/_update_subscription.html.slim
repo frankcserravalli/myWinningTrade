@@ -1,0 +1,31 @@
+form.payment-form.row-fluid method="PUT" action="/subscriptions/update"
+
+  div#stripe-error-message
+
+  br
+
+  = hidden_field_tag 'user_id', current_user.id.to_s
+
+  = hidden_field_tag 'payment_plan', ""
+
+  = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
+
+  .row-fluid.pagination-centered
+    div.span4.subscription-button value="two"
+      div Two-Month Plan
+      div.payment-plan-description Sign up and pay only $5 every two months
+    div.span4.subscription-button value="six"
+      div Six-Month Plan
+      div.payment-plan-description Sign up and pay only $15 every six months
+    div.span4.subscription-button value="twelve"
+      div Twelve-Month Plan
+      div.payment-plan-description Sign up and pay only $30 every year
+
+  br
+
+  div.row-fluid
+    = button_tag "Upgrade", class: "btn btn-primary submit-update-subscription-button"
+
+    a.btn.pull-right.btn-danger href="#delete-subscription-modal" data-target="#delete-subscription-modal" role="button" data-toggle="modal" Delete Subscription
+
+= render partial: 'delete_subscription'

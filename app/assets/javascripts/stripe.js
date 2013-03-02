@@ -1,10 +1,10 @@
 $(function() {
 
-
   // Grabbing publishable key
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
 
-  $(".submit-button").click(function() {
+  // Submiting a new subscription
+  $(".submit-new-subscription-button").click(function() {
 
     payment_plan = $("#payment_plan").val();
 
@@ -12,7 +12,7 @@ $(function() {
 
       $("#stripe-error-message").text("Please select a plan.");
     } else {
-      $(".submit-button").attr("disabled", true);
+      $(".submit-new-subscription-button").attr("disabled", true);
 
       var form = $(".payment-form");
 
@@ -39,9 +39,21 @@ $(function() {
 
           $("#stripe-error-message").text(response.error.message);
 
-          $(".submit-button").attr("disabled", false);
+          $(".submit-new-subscription-button").attr("disabled", false);
         }
       });
+
+      return false;
+    }
+  });
+
+  // Submitting for an updated subscription
+  $(".submit-update-subscription-button").click(function() {
+
+    payment_plan = $("#payment_plan").val();
+
+    if (payment_plan == "") {
+      $("#stripe-error-message").text("Please select a plan.");
 
       return false;
     }
@@ -50,7 +62,6 @@ $(function() {
 
 $(document).ready(function() {
   $(".subscription-button").click(function() {
-
     value = $(this).attr("value");
 
     $('input[name="payment_plan"]').val(value);

@@ -6,20 +6,20 @@
   - if current_user.premium_subscription.eql? true
     .row
       .span12
-        h1.span9 Manage Subscription
+        h1.span9 Upgrade your Subscription
 
-        a.btn.btn-primary.delete-subscription-button href="#delete-subscription-modal" data-target="#delete-subscription-modal" role="button" data-toggle="modal" Delete Subscription
-
-        = render partial: 'delete_subscription'
+    .row
+      .span12
+        h3.pagination-centered Pick a New Plan and press Upgrade
 
     .row-fluid
       .span12.row-fluid
-        div You are currently signed up for the #{@subscription.payment_plan} plan!
+        == render "update_subscription"
 
   -else
     .row
       .span12
-        h1.span9 Add Subscription
+        h1.span9 Add a Subscription
 
     .row-fluid
       .span12.row-fluid
