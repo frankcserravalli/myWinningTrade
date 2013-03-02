@@ -8,7 +8,7 @@ $(function() {
 
     payment_plan = $("#payment_plan").val();
 
-    if (payment_plan == 1) {
+    if (payment_plan == "") {
 
       $("#stripe-error-message").text("Please select a plan.");
     } else {

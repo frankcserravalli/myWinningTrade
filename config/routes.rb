@@ -18,7 +18,7 @@ MyWinningTrade::Application.routes.draw do
 
   get '/subscriptions', to: 'subscriptions#show'
   post '/subscriptions/create', to: 'subscriptions#create'
-  delete '/subscriptions/destroy', to: 'subscriptions#destroy'
+  match '/subscriptions/destroy', to: 'subscriptions#destroy'
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do

@@ -3,13 +3,13 @@ div#delete-subscription-modal.modal.hide.fade
     p Are you sure you want to delete your subscription?
 
   div.modal-footer
-    form method="delete" action="/subscriptions/destroy"
+    form action="/subscriptions/destroy" method="delete"
 
-      = hidden_field_tag 'payment_plan', current_user.id.to_s
+      = hidden_field_tag 'user_id', current_user.id.to_s
 
       = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
 
-      a.btn href="#" data-dismiss="modal" aria-hidden="true" Cancel
+      a.btn data-dismiss="modal" aria-hidden="true" Cancel
 
       = button_tag "Delete Subscription", class: "btn btn-primary"
 

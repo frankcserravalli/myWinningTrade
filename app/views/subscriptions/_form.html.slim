@@ -32,7 +32,7 @@ form.payment-form.row-fluid method="POST" action="/subscriptions/create"
 
   = hidden_field_tag 'stripe_card_token'
 
-  = hidden_field_tag 'payment_plan', '0'
+  = hidden_field_tag 'payment_plan', ""
 
   = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
 

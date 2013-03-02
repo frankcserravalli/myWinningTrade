@@ -66,19 +66,9 @@ ActiveRecord::Schema.define(:version => 20130228225034) do
   add_index "stop_loss_transactions", ["user_id"], :name => "index_stop_loss_transactions_on_user_id"
   add_index "stop_loss_transactions", ["user_stock_id"], :name => "index_stop_loss_transactions_on_user_stock_id"
 
-  create_table "subscription_customers", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "payment_plan"
-    t.string   "customer_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "subscription_customers", ["user_id"], :name => "index_subscription_customers_on_user_id"
-
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "customer_id"
+    t.string   "customer_id"
     t.string   "payment_plan"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
