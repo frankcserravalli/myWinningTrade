@@ -245,9 +245,9 @@ class User < ActiveRecord::Base
       capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
     end
 
-    capital_at_risk_data = []
+    capital_at_risk_data = [["Symbol", "Percentage at Risk"]]
     stock_summary[:stocks].each_key do |symbol|
-      capital_at_risk_data << [symbol, stock_summary[:stocks][symbol][:capital_at_risk]]
+      capital_at_risk_data << [symbol, stock_summary[:stocks][symbol][:capital_invested_percentage]]
     end
 
     # Risk Statistics Section
@@ -297,52 +297,53 @@ class User < ActiveRecord::Base
               </script>
             </head>
             <h2>Stock Summary</h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Symbol</th>
-                  <th>Name</th>
-                  <th>Revenues</th>
-                  <th>Tax Liability</th>
-                  <th>Capital at Risk</th>
-                  <th>Returns</th>
-                  <th>Avg. Holding Period</th>
-                </tr>
-              </thead>
-              <tbody>' + summary + '</tbody>
-            </table>
-
+            <div class="row-fluid">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Revenues</th>
+                    <th>Tax Liability</th>
+                    <th>Capital at Risk</th>
+                    <th>Returns</th>
+                    <th>Avg. Holding Period</th>
+                  </tr>
+                </thead>
+                <tbody>' + summary + '</tbody>
+              </table>
+            </div>
             <div class="row-fluid">
               <div class="span6 row-fluid">
                 <div class="pagination-centered">Profit and Loss Statement</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
-                <div class="row">
+                <div class="row-fluid">
                   <div class="span7 offset1">Trading Activities</div>
                 </div>
-                <div class="row">
+                <div class="row-fluid">
                   <div class="span2 offset1 pagination-centered">Revenues</div>
                 </div>' + profit_stocks +
-                '<div class="row">
+                '<div class="row-fluid">
                   <span class="span7 offset1">Net Revenues</span>
                   <span class="span4 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
                 </div>
-                <div class="row">
+                <div class="row-fluid">
                   <div class="span2 offset1 pagination-centered">Losses</div>
                 </div>' + loss_stocks +
-                '<div class="row">
+                '<div class="row-fluid">
                   <span class="span7 offset1">Net Losses</span>
                   <span class="span4 pagination-centered">(' + stock_summary[:summary][:net_losses].abs.round(2).to_s + ')</span>
                 </div>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span7 offset1">Gross Profit</span>
                   <span class="span4 pagination-centered">' + (stock_summary[:summary][:net_revenue] + stock_summary[:summary][:net_losses]).round(2).to_s + '</span>
                 </div>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span7 offset1">Incurred Tax Liability</span>
                   <span class="span4 pagination-centered">(' + (stock_summary[:summary][:net_income_after_taxes] - stock_summary[:summary][:net_income_before_taxes]).round(2).to_s + ')</span>
                 </div>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span7 offset1">Net Income</span>
                   <span class="span4 pagination-centered">' + stock_summary[:summary][:net_income].to_s + '</span>
                 </div>
@@ -352,7 +353,7 @@ class User < ActiveRecord::Base
                 <div class="pagination-centered">Capital at Risk</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
-                <div class="row"
+                <div class="row-fluid"
                   <div class="span7 offset1">Starting Capital</div>
                   <div class="span4">$50,000</div>
                 </div>
@@ -371,41 +372,44 @@ class User < ActiveRecord::Base
               </div>
             </div>
 
-            <div class="row">
-              <div class="span6 row">
+            <div class="row-fluid">
+              <div class="span6 row-fluid">
                 <div class="pagination-centered">Risk Statistics</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
                 <br>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span4">Leverage</span>
                   <span class="span2">$' + borrowed + '</span>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span4">Average Holding Period</span>
                   <span class="span2">$760.00</span>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span4">Benchmark B</span>
                   <span class="span2">' + Finance.grab_alpha_or_beta.round(2).to_s + '</span>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span4">Trader a</span>
                   <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row-fluid">
                   <span class="span4">R-squared</span>
                   <span class="span2">$760.00</span>
                 </div>
               </div>
+              <div class="row-fluid span4">
+                <div id="chart_div" class="span12" style=" height: 500px;"></div>
+              </div>
             </div>
 
             <h2>Orders Summary</h2>
-            <div class="row">
+            <div class="row-fluid">
               <table class="table table-striped span12">
                 <thead>
                   <tr>
@@ -430,8 +434,7 @@ class User < ActiveRecord::Base
               <div class="offset2" id="pieContainer">
                    <div class="pieBackground"></div>
               </div>
-            </div>
-            <div id="chart_div" style="width: 900px; height: 500px;"></div>'
+            </div>'
 
     html
   end
