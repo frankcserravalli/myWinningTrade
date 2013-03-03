@@ -52,6 +52,7 @@ class StockController < ApplicationController
 
     kit = PDFKit.new(content, :page_size => 'Letter')
 
+    kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
     kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'
 
     output = kit.to_pdf

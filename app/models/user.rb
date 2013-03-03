@@ -191,22 +191,6 @@ class User < ActiveRecord::Base
   def create_trading_analysis_pdf
     stock_summary = self.stock_summary
 
-    # Order Details Section
-    orders_summary = ""
-    stock_summary[:orders].each_key do |created_at|
-      orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
-      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
-      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td></tr>"
-    end
-
     # Stock Details Section
     summary = ""
 
@@ -314,7 +298,7 @@ class User < ActiveRecord::Base
               </table>
             </div>
             <div class="row-fluid">
-              <div class="span6 row-fluid">
+              <div class="span6 row-fluid statement-border">
                 <div class="pagination-centered">Profit and Loss Statement</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
@@ -349,7 +333,7 @@ class User < ActiveRecord::Base
                 </div>
               </div>
 
-              <div class="span6">
+              <div class="span6 statement-border">
                 <div class="pagination-centered">Capital at Risk</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
@@ -373,7 +357,7 @@ class User < ActiveRecord::Base
             </div>
 
             <div class="row-fluid">
-              <div class="span6 row-fluid">
+              <div class="span6 row-fluid statement-border">
                 <div class="pagination-centered">Risk Statistics</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
@@ -404,9 +388,26 @@ class User < ActiveRecord::Base
                 </div>
               </div>
               <div class="row-fluid span4">
-                <div id="chart_div" class="span12" style=" height: 500px;"></div>
+                <div id="chart_div" class="span12" style=" height: 300px;"></div>
               </div>
-            </div>
+            </div>'
+
+    html
+  end
+
+  protected
+  def create_initial_balance
+    self.account_balance ||= OPENING_BALANCE
+  end
+end
+
+
+
+=begin
+# Orders Summary pdf
+
+
+
 
             <h2>Orders Summary</h2>
             <div class="row-fluid">
@@ -430,18 +431,21 @@ class User < ActiveRecord::Base
               </table>
             </div>
 
-            <div class="row-fluid">
-              <div class="offset2" id="pieContainer">
-                   <div class="pieBackground"></div>
-              </div>
-            </div>'
 
-    html
-  end
+    # Order Details Section
+    orders_summary = ""
+    stock_summary[:orders].each_key do |created_at|
+      orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
+      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
+      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
+      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td></tr>"
+    end
 
-  protected
-  def create_initial_balance
-    self.account_balance ||= OPENING_BALANCE
-  end
-end
-
+=end
