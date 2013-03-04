@@ -157,7 +157,7 @@ class User < ActiveRecord::Base
             tax_liability: tax_liability.round(2),
             capital_at_risk: capital_at_risk.round(2),
             returns: returns.round(2),
-            order_types: order_types
+            #order_types: order_types
         }
 
         net_income_before_taxes += returns
@@ -191,30 +191,59 @@ class User < ActiveRecord::Base
   def create_trading_analysis_pdf
     stock_summary = self.stock_summary
 
+    # Here I am sorting the arrays revenue from lowest to highest. This will help in producing the Profit and Losss/Capital at Risk statement
+    number_of_stocks = stock_summary[:stocks].length
+    stock_summary[:stocks]["GOOG"][:revenue] = -18
+    array = []
+    array2 = []
+    stock_summary[:stocks].sort_by do |symbol, info|
+      array << symbol
+      array2 << info
+      info[:revenue].to_i
+    end
+
     # Stock Details Section
     summary = ""
-
+    stock_number_at = 0
+    composite_revenue = 0
+    composite_tax_liability = 0
+    composite_capital_at_risk = 0
+    composite_returns = 0
     stock_summary[:stocks].each_key do |symbol|
-      summary += "<tr><td>" + symbol + "</td>"
-      summary += "<td>" + stock_summary[:stocks][symbol][:name].to_s + "</td>"
-      summary += "<td>" + stock_summary[:stocks][symbol][:revenue].to_s + "</td>"
-      summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].to_s + "</td>"
-      summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].to_s + "</td>"
-      summary += "<td>" + stock_summary[:stocks][symbol][:returns].to_s + "</td></tr>"
+      stock_number_at += 1
+      if stock_number_at > 2
+        composite_revenue += stock_summary[:stocks][symbol][:revenue]
+        composite_tax_liability += stock_summary[:stocks][symbol][:tax_liability]
+        composite_capital_at_risk += stock_summary[:stocks][symbol][:capital_at_risk]
+        composite_returns += stock_summary[:stocks][symbol][:returns]
+        if stock_number_at.eql? number_of_stocks
+          summary += "<tr><td>--</td>"
+          summary += "<td>Composite</td>"
+          summary += "<td>" + composite_revenue.to_s + "</td>"
+          summary += "<td>" + composite_tax_liability.to_s + "</td>"
+          summary += "<td>" + composite_capital_at_risk.to_s + "</td>"
+          summary += "<td>" + composite_returns.to_s + "</td></tr>"
+        end
+      else
+        summary += "<tr><td>" + symbol + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:name].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:revenue].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:returns].to_s + "</td></tr>"
+      end
     end
 
     # Profit and Loss Section
     profit_stocks = ""
+    loss_stocks = ""
+    stock_number_at = 0
     stock_summary[:stocks].each_key do |symbol|
+      stock_number_at += 1
       if stock_summary[:stocks][symbol][:revenue] >= 0
         profit_stocks += "<div class='row-fluid'><div class='span4 offset2'>#{symbol}</div>"
         profit_stocks += "<div class='span4'>#{stock_summary[:stocks][symbol][:revenue].to_s}</div></div>"
-      end
-    end
-
-    loss_stocks = ""
-    stock_summary[:stocks].each_key do |symbol|
-      if stock_summary[:stocks][symbol][:revenue] < 0
+      else
         loss_stocks += "<div class='row-fluid'><div class='span4 offset2'>#{symbol}</div>"
         loss_stocks += "<div class='span4'>(#{stock_summary[:stocks][symbol][:revenue].abs.to_s})</div></div>"
       end
@@ -252,7 +281,9 @@ class User < ActiveRecord::Base
     # Setting the borrowed money amount to two decimal places
     borrowed = sprintf('%.2f', borrowed)
 
+    # Average Holding Period
     average_holding_period = ""
+=begin
     stock_summary[:stocks].each_key do |symbol|
       order_types = stock_summary[:stocks][symbol][:order_types]
       if order_types.include? "Sell"
@@ -263,6 +294,7 @@ class User < ActiveRecord::Base
         # order_types.select!.with_index{|_, i| i.even?}
       end
     end
+=end
 
     # Html is variable that is used as what is rendered on the PDF
     html = '<head>
@@ -390,7 +422,7 @@ class User < ActiveRecord::Base
               <div class="row-fluid span4">
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>
               </div>
-            </div>'
+            </div>' + array.to_s + array2.to_s
 
     html
   end
