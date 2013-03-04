@@ -70,9 +70,13 @@ class User < ActiveRecord::Base
 
       # Is total_capital equal to the total amount of money invested?
       total_capital = 0
+
       net_income_before_taxes = 0
+
       taxes = 0
+
       net_losses = 0
+
       net_revenue = 0
 
       # Looping through Each User Stock
@@ -149,8 +153,6 @@ class User < ActiveRecord::Base
           }
         end
 
-        capital_invested_percentage = (capital_at_risk / total_capital)
-
         s[:stocks][stock_symbol] = {
             name: user_stock.stock.name,
             revenue: revenue.round(2),
@@ -183,20 +185,22 @@ class User < ActiveRecord::Base
       s[:stocks].each_key do |stock_symbol|
         s[:stocks][stock_symbol][:capital_invested_percentage] = (s[:stocks][stock_symbol][:capital_at_risk] / s[:summary][:total_capital]).round(2) * 100
       end
-
     end
-
   end
 
-  def create_trading_analysis_pdf
+  def create_trading_analysis_pdf(portfolio)
     stock_summary = self.stock_summary
 
-    # Here I am sorting the arrays revenue from lowest to highest. This will help in producing the Profit and Losss/Capital at Risk statement
     number_of_stocks = stock_summary[:stocks].length
-    stock_summary[:stocks]["GOOG"][:revenue] = -18.0
-    sorted_revenues = stock_summary[:stocks].sort_by do
-      |k,v|
+
+    # Here I am sorting the arrays revenue from lowest to highest.
+    # This will help in producing the Profit and Loss/Capital at Risk statement
+    sorted_revenues = stock_summary[:stocks].sort_by do |k,v|
       stock_summary[:stocks][k][:revenue]
+    end
+
+    sorted_capital = stock_summary[:stocks].sort_by do |k,v|
+      stock_summary[:stocks][k][:capital_at_risk]
     end
 
     # Stock Details Section
@@ -212,10 +216,10 @@ class User < ActiveRecord::Base
 
     composite_returns = 0
 
-    stock_summary[:stocks].each_key do |symbol|
-      stock_number_at += 1
+    more_than_one_stock_exists = false
 
-      if stock_number_at > 2
+    stock_summary[:stocks].each_key do |symbol|
+      if more_than_one_stock_exists.eql? true
         composite_revenue += stock_summary[:stocks][symbol][:revenue]
 
         composite_tax_liability += stock_summary[:stocks][symbol][:tax_liability]
@@ -223,41 +227,39 @@ class User < ActiveRecord::Base
         composite_capital_at_risk += stock_summary[:stocks][symbol][:capital_at_risk]
 
         composite_returns += stock_summary[:stocks][symbol][:returns]
-
-        if stock_number_at.eql? number_of_stocks
-          summary += "<tr><td>--</td>"
-
-          summary += "<td>Composite</td>"
-
-          summary += "<td>" + composite_revenue.to_s + "</td>"
-
-          summary += "<td>" + composite_tax_liability.to_s + "</td>"
-
-          summary += "<td>" + composite_capital_at_risk.to_s + "</td>"
-
-          summary += "<td>" + composite_returns.to_s + "</td></tr>"
-        end
       else
+        more_than_one_stock_exists = true
+
         summary += "<tr><td>" + symbol + "</td>"
 
         summary += "<td>" + stock_summary[:stocks][symbol][:name].to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:revenue].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:revenue].round(2).to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].round(2).to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].to_s + "</td>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].round(2).to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:returns].to_s + "</td></tr>"
+        summary += "<td>" + stock_summary[:stocks][symbol][:returns].round(2).to_s + "</td></tr>"
       end
     end
+
+    summary += "<tr><td>--</td>"
+
+    summary += "<td>Composite</td>"
+
+    summary += "<td>" + composite_revenue.round(2).to_s + "</td>"
+
+    summary += "<td>" + composite_tax_liability.round(2).to_s + "</td>"
+
+    summary += "<td>" + composite_capital_at_risk.round(2).to_s + "</td>"
+
+    summary += "<td>" + composite_returns.round(2).to_s + "</td></tr>"
 
     # Profit and Loss Section
     profit_stocks = ""
 
     loss_stocks = ""
-
-    array = []
 
     profit_stock_exists = false
 
@@ -325,14 +327,36 @@ class User < ActiveRecord::Base
     # Capital at Risks Section
     capital_at_risk_stocks = ""
 
-    stock_summary[:stocks].each_key do |symbol|
-      capital_at_risk_stocks += "<tr><td>#{symbol}</td>"
+    more_than_one_stock = false
 
-      capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_at_risk].to_s}</td>"
+    composite_capital_at_risk = 0.0
 
-      capital_at_risk_stocks += "<td class='pagination-centered'>#{stock_summary[:stocks][symbol][:capital_invested_percentage].to_s}</td></tr>"
+    composite_capital_percentage = 0.0
+
+    sorted_capital.each_with_index do |index, value|
+      unless more_than_one_stock.eql? true
+        capital_at_risk_stocks += "<tr><td>#{index[0]}</td>"
+
+        capital_at_risk_stocks += "<td class='pagination-centered'>#{index[1][:capital_at_risk]}</td>"
+
+        capital_at_risk_stocks += "<td class='pagination-centered'>#{index[1][:capital_invested_percentage]}</td></tr>"
+
+        more_than_one_stock = true
+      else
+        composite_capital_at_risk += index[1][:capital_at_risk]
+
+        composite_capital_percentage += index[1][:capital_invested_percentage]
+      end
     end
 
+    # Here I'm inserting the composite collection of stocks
+    capital_at_risk_stocks += "<tr><td>Composite</td>"
+
+    capital_at_risk_stocks += "<td class='pagination-centered'>#{composite_capital_at_risk.round(2).to_s}</td>"
+
+    capital_at_risk_stocks += "<td class='pagination-centered'>#{composite_capital_percentage.round(2).to_s}</td></tr>"
+
+    # Here we are setting up the data for the pie chart
     capital_at_risk_data = [["Symbol", "Percentage at Risk"]]
 
     stock_summary[:stocks].each_key do |symbol|
@@ -498,7 +522,7 @@ class User < ActiveRecord::Base
               <div class="row-fluid span4">
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>
               </div>
-            </div>'     + array.to_s
+            </div>'
 
 
     html
