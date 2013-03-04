@@ -263,6 +263,10 @@ class User < ActiveRecord::Base
 
     loss_stock_exists = false
 
+    two_profit_stocks_exists = false
+
+    two_loss_stocks_exists = false
+
     composite_profit_number = 0.0
 
     composite_losses_number = 0.0
@@ -278,7 +282,11 @@ class User < ActiveRecord::Base
 
           profit_stock_exists = true
         else
-          composite_profit_number -= sorted_revenues[value][1][:revenue]
+          if two_profit_stocks_exists.eql? false
+            two_profit_stocks_exists = true
+          end
+
+          composite_profit_number += sorted_revenues[value][1][:revenue]
         end
       else
 
@@ -290,19 +298,28 @@ class User < ActiveRecord::Base
 
           loss_stock_exists = true
         else
+          if two_loss_stocks_exists.eql? false
+            two_loss_stocks_exists = true
+          end
+
           composite_losses_number -= sorted_revenues[value][1][:revenue]
         end
       end
     end
 
     # Here we are inserting all the other stocks into a composite row
-    profit_stocks += "<div class='row-fluid'><div class='span4 offset2'>Composite</div>"
+    unless two_profit_stocks_exists.eql? false
+      profit_stocks += "<div class='row-fluid'><div class='span4 offset2'>Composite</div>"
 
-    profit_stocks += "<div class='span4'>#{composite_profit_number}</div></div>"
+      profit_stocks += "<div class='span4'>#{composite_profit_number}</div></div>"
+    end
 
-    loss_stocks += "<div class='row-fluid'><div class='span4 offset2'>Composite</div>"
 
-    loss_stocks += "<div class='span4'>(#{composite_losses_number})</div></div>"
+    unless two_loss_stocks_exists.eql? false
+      loss_stocks += "<div class='row-fluid'><div class='span4 offset2'>Composite</div>"
+
+      loss_stocks += "<div class='span4'>(#{composite_losses_number})</div></div>"
+    end
 
 
     # Capital at Risks Section
