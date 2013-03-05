@@ -204,8 +204,9 @@ class User < ActiveRecord::Base
       stock_summary[:stocks][k][:capital_at_risk]
     end
 
+    # This puts it in an ascending order
     sorted_open_positions = stock_summary[:stocks].sort_by do |k,v|
-      stock_summary[:stocks][k][:returns]
+      -stock_summary[:stocks][k][:returns]
     end
 
     # Stock Details Section
@@ -226,7 +227,7 @@ class User < ActiveRecord::Base
     more_than_one_stock_exists = false
 
 
-    sorted_open_position_length = sorted_open_positions.length
+    #sorted_open_position_length = sorted_open_positions.length
 
     sorted_open_positions.each_with_index do |index, value|
       unless sorted_open_positions[value][1][:capital_at_risk].eql? 0
@@ -575,7 +576,7 @@ class User < ActiveRecord::Base
               <div class="row-fluid span4">
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>
               </div>
-            </div>'
+            </div>' + sorted_open_positions.to_s
 
     html
   end
