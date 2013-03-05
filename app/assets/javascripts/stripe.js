@@ -8,9 +8,12 @@ $(function() {
 
     payment_plan = $("#payment_plan").val();
 
-    if (payment_plan == "") {
+    full_name = $(".full-name").val();
 
+    if (payment_plan == "") {
       $("#stripe-error-message").text("Please select a plan.");
+    } else if (full_name == ""){
+      $("#stripe-error-message").text("Please enter a full name.");
     } else {
       $(".submit-new-subscription-button").attr("disabled", true);
 
@@ -24,12 +27,14 @@ $(function() {
 
         expYear: $(".card-expiry-year").val(),
 
-        cvc: $(".card-cvc").val()
+        cvc: $(".card-cvc").val(),
+
+        name: $(".full-name").val()
       };
 
       Stripe.createToken(card, function(status, response) {
         if (status === 200) {
-          $('#stripe_card_token').val(response.id)
+          $('#stripe_card_token').val(response.id);
 
           $("#stripe-error-message").hide();
 

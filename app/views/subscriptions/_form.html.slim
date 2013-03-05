@@ -1,5 +1,9 @@
 form.payment-form.row-fluid method="POST" action="/subscriptions/create"
 
+  div#stripe-error-message
+
+  br
+
   .row-fluid.pagination-centered
     div.span4.subscription-button value="two"
       div Two-Month Plan
@@ -11,10 +15,13 @@ form.payment-form.row-fluid method="POST" action="/subscriptions/create"
       div Twelve-Month Plan
       div.payment-plan-description Sign up and pay only $30 every year
 
+  br
+
+  span Name on Card
 
   br
 
-  div#stripe-error-message
+  input.full-name type="text" size="70" autocomplete="off"
 
   br
 
