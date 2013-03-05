@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
 
         order_types = []
 
+        capital_at_risk = (user_stock.shares_owned * user_stock.cost_basis)
+
+        total_capital += capital_at_risk
+
         # Looping through orders of of an user's stocks
         self.orders.of_users_stock(user_stock.id).each do |order|
 
@@ -105,13 +109,10 @@ class User < ActiveRecord::Base
 
           revenue += stock_revenue_calculation
 
-          capital_at_risk += order.cost_basis.to_f
 
           tax_liability += (order.capital_gain.to_f * 0.3)
 
           returns += (order.capital_gain.to_f - tax_liability)
-
-          total_capital += capital_at_risk
 
           # Finding the net loss and net revenue of each stock
           if stock_revenue_calculation < 0
@@ -158,7 +159,7 @@ class User < ActiveRecord::Base
             revenue: revenue.round(2),
             tax_liability: tax_liability.round(2),
             capital_at_risk: capital_at_risk.round(2),
-            returns: returns.round(2),
+            returns: returns.round(2)
             #order_types: order_types
         }
 
@@ -203,8 +204,14 @@ class User < ActiveRecord::Base
       stock_summary[:stocks][k][:capital_at_risk]
     end
 
+    sorted_open_positions = stock_summary[:stocks].sort_by do |k,v|
+      stock_summary[:stocks][k][:returns]
+    end
+
     # Stock Details Section
     summary = ""
+
+    array = []
 
     stock_number_at = 0
 
@@ -218,29 +225,34 @@ class User < ActiveRecord::Base
 
     more_than_one_stock_exists = false
 
-    stock_summary[:stocks].each_key do |symbol|
-      if more_than_one_stock_exists.eql? true
-        composite_revenue += stock_summary[:stocks][symbol][:revenue]
 
-        composite_tax_liability += stock_summary[:stocks][symbol][:tax_liability]
+    sorted_open_position_length = sorted_open_positions.length
 
-        composite_capital_at_risk += stock_summary[:stocks][symbol][:capital_at_risk]
+    sorted_open_positions.each_with_index do |index, value|
+      unless sorted_open_positions[value][1][:capital_at_risk].eql? 0
+        if more_than_one_stock_exists.eql? true
+            composite_revenue += sorted_open_positions[value][1][:revenue]
 
-        composite_returns += stock_summary[:stocks][symbol][:returns]
-      else
-        more_than_one_stock_exists = true
+            composite_tax_liability += sorted_open_positions[value][1][:tax_liability]
 
-        summary += "<tr><td>" + symbol + "</td>"
+            composite_capital_at_risk += sorted_open_positions[value][1][:capital_at_risk]
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:name].to_s + "</td>"
+            composite_returns += sorted_open_positions[value][1][:returns]
+        else
+            more_than_one_stock_exists = true
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:revenue].round(2).to_s + "</td>"
+            summary += "<tr><td>" + sorted_open_positions[value][0].to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].round(2).to_s + "</td>"
+            summary += "<td>" + sorted_open_positions[value][1][:name].to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].round(2).to_s + "</td>"
+            summary += "<td>" + sorted_open_positions[value][1][:revenue].round(2).to_s + "</td>"
 
-        summary += "<td>" + stock_summary[:stocks][symbol][:returns].round(2).to_s + "</td></tr>"
+            summary += "<td>" + sorted_open_positions[value][1][:tax_liability].round(2).to_s + "</td>"
+
+            summary += "<td>" + sorted_open_positions[value][1][:capital_at_risk].round(2).to_s + "</td>"
+
+            summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td></tr>"
+        end
       end
     end
 
@@ -255,6 +267,38 @@ class User < ActiveRecord::Base
     summary += "<td>" + composite_capital_at_risk.round(2).to_s + "</td>"
 
     summary += "<td>" + composite_returns.round(2).to_s + "</td></tr>"
+
+=begin
+    stock_summary[:stocks].each_key do |symbol|
+      if more_than_one_stock_exists.eql? true
+        composite_revenue += stock_summary[:stocks][symbol][:revenue]
+
+        composite_tax_liability += stock_summary[:stocks][symbol][:tax_liability]
+
+        composite_capital_at_risk += stock_summary[:stocks][symbol][:capital_at_risk]
+
+        composite_returns += stock_summary[:stocks][symbol][:returns]
+      else
+        unless stock_summary[:stocks][symbol][:capital_at_risk].eql? 0
+          more_than_one_stock_exists = true
+
+          summary += "<tr><td>" + stock_summary[index][0] + "</td>"
+
+          summary += "<td>" + stock_summary[:stocks][value][:name].to_s + "</td>"
+
+          summary += "<td>" + stock_summary[:stocks][symbol][:revenue].round(2).to_s + "</td>"
+
+          summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].round(2).to_s + "</td>"
+
+          summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].round(2).to_s + "</td>"
+
+          summary += "<td>" + stock_summary[:stocks][symbol][:returns].round(2).to_s + "</td></tr>"
+        end
+      end
+    end
+=end
+
+
 
     # Profit and Loss Section
     profit_stocks = ""
@@ -273,7 +317,7 @@ class User < ActiveRecord::Base
 
     composite_losses_number = 0.0
 
-    sorted_revenues.each_with_index do |index, value|
+    sorted_revenues.reverse.each_with_index do |index, value|
       if sorted_revenues[value][1][:revenue] >= 0
 
         # Dealing with profits
@@ -333,7 +377,10 @@ class User < ActiveRecord::Base
 
     composite_capital_percentage = 0.0
 
-    sorted_capital.each_with_index do |index, value|
+    capital_at_risk_top_stock_percentage = 0.0
+
+    # Here I'm creating HTML for the Capital At Risks Section
+    sorted_capital.reverse.each_with_index do |index, value|
       unless more_than_one_stock.eql? true
         capital_at_risk_stocks += "<tr><td>#{index[0]}</td>"
 
@@ -359,8 +406,14 @@ class User < ActiveRecord::Base
     # Here we are setting up the data for the pie chart
     capital_at_risk_data = [["Symbol", "Percentage at Risk"]]
 
-    stock_summary[:stocks].each_key do |symbol|
-      capital_at_risk_data << [symbol, stock_summary[:stocks][symbol][:capital_invested_percentage]]
+    number_of_times_sorted_capital_looped = 0
+
+    sorted_capital.reverse.each_with_index do |index, value|
+      number_of_times_sorted_capital_looped += 1
+
+
+
+      capital_at_risk_data << [ index[0], index[1][:capital_invested_percentage].to_f ]
     end
 
     # Risk Statistics Section
@@ -412,7 +465,7 @@ class User < ActiveRecord::Base
                 }
               </script>
             </head>
-            <h2>Stock Summary</h2>
+            <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
                 <thead>
@@ -523,7 +576,6 @@ class User < ActiveRecord::Base
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>
               </div>
             </div>'
-
 
     html
   end
