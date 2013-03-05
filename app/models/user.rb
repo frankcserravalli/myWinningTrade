@@ -42,24 +42,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def orders_summary
-    user_stocks = self.user_stocks.includes(:stock)
-    @order_summary = {}.tap do |s|
-      s[:stocks] = {}
-
-      s[:summary] = {}
-
-      user_stocks.each do |user_stock|
-
-        self.orders.of_users_stock(user_stock.id).each do |order|
-
-        end
-
-      end
-
-    end
-  end
-
   def stock_summary
     user_stocks = self.user_stocks.includes(:stock)
 
@@ -87,24 +69,15 @@ class User < ActiveRecord::Base
 
         revenue = 0
 
-        capital_at_risk = 0
-
         tax_liability = 0
 
         returns = 0
-
-        avg_holding_period = 0
 
         order_types = []
 
         capital_at_risk = (user_stock.shares_owned * user_stock.cost_basis)
 
         total_capital += capital_at_risk
-
-        # Finding holding period
-        unless user_stock.shares_owned.eql? 0
-          holding_period = 0
-        end
 
         # Looping through orders of of an user's stocks
         self.orders.of_users_stock(user_stock.id).each do |order|
@@ -124,11 +97,6 @@ class User < ActiveRecord::Base
           else
             net_revenue += stock_revenue_calculation
           end
-
-          # This is a test for avg holding period, may or may not get rid of it
-
-
-          order_types << user_stock.stock.symbol << order.type << order.created_at << order.volume
 
           # Finding the cost basis of each order
           if order.type.eql? "Short Sell Cover" or order.type.eql? "Sell"
@@ -407,40 +375,14 @@ class User < ActiveRecord::Base
 
 
 
-
-
-
-
-
-
-
-
-    # Average Holding Period
-    average_holding_period = {}
-
-    stock_summary[:stocks].each_key do |symbol|
-      order_types = stock_summary[:stocks][symbol][:order_types]
-
-
-      array << order_types
-
-
-
-
-      #user_stock.stock.symbol << order.type << order.created_at << order.volume
-
+    list_of_stocks = []
+    # Finding the average holding period for every stock
+    the_summary = Order.where(user_id: self.id).order("created_at DESC").reverse
+    the_summary.each do |order|
+      list_of_stocks << Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
+      if order.type.eql?
 
     end
-=begin
-      if order_types.include? "Sell"
-        # calculate time period from buy to sell
-      else
-        # calculate time period from buy to now
-        # This just grabs every other item of the array, i.e. the date a stock was bought
-        # order_types.select!.with_index{|_, i| i.even?}
-      end
-=end
-
 
     # Html is variable that is used as what is rendered on the PDF
     html = '<head>
@@ -457,7 +399,7 @@ class User < ActiveRecord::Base
                   chart.draw(data, options);
                 }
               </script>
-            </head>
+            </head>' + list_of_stocks.inspect + '
             <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
