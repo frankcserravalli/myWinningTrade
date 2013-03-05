@@ -376,11 +376,20 @@ class User < ActiveRecord::Base
 
 
     list_of_stocks = []
+    start_date = []
+    symbol_sold_off = []
+
     # Finding the average holding period for every stock
     the_summary = Order.where(user_id: self.id).order("created_at DESC").reverse
     the_summary.each do |order|
-      list_of_stocks << Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
-      if order.type.eql?
+      symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
+      if order.volume_remaining.eql? 0
+        symbol_sold_off << symbol
+      end
+      if order.type.eql? "Buy"
+        start_date << [symbol, order.created_at.to_datetime, order.volume_remaining]
+
+      end
 
     end
 
@@ -399,7 +408,7 @@ class User < ActiveRecord::Base
                   chart.draw(data, options);
                 }
               </script>
-            </head>' + list_of_stocks.inspect + '
+            </head>' + start_date.inspect + '
             <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
