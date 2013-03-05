@@ -19,11 +19,11 @@ class BuysController < ApplicationController
         # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
         stock_name = @stock.name.gsub!(/\s/, "%20")
 
-        redirect_to("http://twitter.com/share?text=Successfully%20purchased%20" + @buy_order.volume.to_s + "%20" + stock_name + "%20stocks%20for%20$" + @buy_order.value.round(2).abs.to_s + "%20on%20My%20Winning%20Trade")
+        redirect_to("http://twitter.com/share?text=I%20just%20purchased%20" + @buy_order.volume.to_s + "%20shares%20of%20" + @stock.symbol + "%20at%20$" + @buy_order.price.to_s + "%20per%20share.%20Learn%20to%20beat%20the%20market%20and%20out-trade%20your%20friends%20at%20mywinningtrade.com.")
       else
         @stock_name = Stock.find(params[:stock_id])
 
-        flash[:notice] = "#{params[:soc_network]}Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+        flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
         redirect_to(stock_path(params[:stock_id]))
       end
@@ -41,9 +41,9 @@ class BuysController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)}."
+    response = "I just purchased #{@buy_order.volume} shares of #{@stock.symbol} at $#{@buy_order.price} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
 
-    flash[:notice] = response
+    flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock.symbol} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
     @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
 
@@ -65,9 +65,9 @@ class BuysController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} on My Winning Trade."
+    response = "I just purchased #{@buy_order.volume} shares of #{@stock.symbol} at $#{@buy_order.price} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
 
-    flash[:notice] = response
+    flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock.symbol} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
     if params.has_key? "oauth_problem" or !params[:oauth_problem].blank?
       redirect_to(stock_path(@stock.symbol))

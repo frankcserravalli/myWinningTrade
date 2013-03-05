@@ -46,24 +46,5 @@ class StockController < ApplicationController
   def trading_analysis
     @stock_summary = current_user.stock_summary
   end
-
-  # TODO We need to move this somewhere else
-  class Analysis < Prawn::Document
-    def to_pdf
-      text "Hello world"
-      render
-    end
-  end
-
-  def trading_analysis_pdf
-    output = Analysis.new.to_pdf
-
-    respond_to do |format|
-      format.pdf do
-        send_data output, :filename => "trading_analysis.pdf",
-                  :type => "application/pdf"
-      end
-    end
-  end
 end
 
