@@ -109,7 +109,6 @@ class User < ActiveRecord::Base
 
           revenue += stock_revenue_calculation
 
-
           tax_liability += (order.capital_gain.to_f * 0.3)
 
           returns += (order.capital_gain.to_f - tax_liability)
@@ -122,7 +121,7 @@ class User < ActiveRecord::Base
           end
 
           # This is a test for avg holding period, may or may not get rid of it
-          order_types << order.type << order.created_at
+          order_types << user_stock.stock.symbol << order.type << order.created_at << order.volume
 
           # Finding the cost basis of each order
           if order.type.eql? "Short Sell Cover" or order.type.eql? "Sell"
@@ -159,8 +158,8 @@ class User < ActiveRecord::Base
             revenue: revenue.round(2),
             tax_liability: tax_liability.round(2),
             capital_at_risk: capital_at_risk.round(2),
-            returns: returns.round(2)
-            #order_types: order_types
+            returns: returns.round(2),
+            order_types: order_types
         }
 
         net_income_before_taxes += returns
@@ -226,9 +225,6 @@ class User < ActiveRecord::Base
 
     more_than_one_stock_exists = false
 
-
-    #sorted_open_position_length = sorted_open_positions.length
-
     sorted_open_positions.each_with_index do |index, value|
       unless sorted_open_positions[value][1][:capital_at_risk].eql? 0
         if more_than_one_stock_exists.eql? true
@@ -268,38 +264,6 @@ class User < ActiveRecord::Base
     summary += "<td>" + composite_capital_at_risk.round(2).to_s + "</td>"
 
     summary += "<td>" + composite_returns.round(2).to_s + "</td></tr>"
-
-=begin
-    stock_summary[:stocks].each_key do |symbol|
-      if more_than_one_stock_exists.eql? true
-        composite_revenue += stock_summary[:stocks][symbol][:revenue]
-
-        composite_tax_liability += stock_summary[:stocks][symbol][:tax_liability]
-
-        composite_capital_at_risk += stock_summary[:stocks][symbol][:capital_at_risk]
-
-        composite_returns += stock_summary[:stocks][symbol][:returns]
-      else
-        unless stock_summary[:stocks][symbol][:capital_at_risk].eql? 0
-          more_than_one_stock_exists = true
-
-          summary += "<tr><td>" + stock_summary[index][0] + "</td>"
-
-          summary += "<td>" + stock_summary[:stocks][value][:name].to_s + "</td>"
-
-          summary += "<td>" + stock_summary[:stocks][symbol][:revenue].round(2).to_s + "</td>"
-
-          summary += "<td>" + stock_summary[:stocks][symbol][:tax_liability].round(2).to_s + "</td>"
-
-          summary += "<td>" + stock_summary[:stocks][symbol][:capital_at_risk].round(2).to_s + "</td>"
-
-          summary += "<td>" + stock_summary[:stocks][symbol][:returns].round(2).to_s + "</td></tr>"
-        end
-      end
-    end
-=end
-
-
 
     # Profit and Loss Section
     profit_stocks = ""
@@ -412,8 +376,6 @@ class User < ActiveRecord::Base
     sorted_capital.reverse.each_with_index do |index, value|
       number_of_times_sorted_capital_looped += 1
 
-
-
       capital_at_risk_data << [ index[0], index[1][:capital_invested_percentage].to_f ]
     end
 
@@ -435,11 +397,40 @@ class User < ActiveRecord::Base
     # Setting the borrowed money amount to two decimal places
     borrowed = sprintf('%.2f', borrowed)
 
+
+
+
+
+
+
+
+
+
+
+
+
     # Average Holding Period
-    average_holding_period = ""
-=begin
+    average_holding_period = {}
+
     stock_summary[:stocks].each_key do |symbol|
       order_types = stock_summary[:stocks][symbol][:order_types]
+
+      #average_holding_period[symbol][:volume] = 0
+
+      #average_holding_period[symbol][:volume] += order_types[3]
+
+
+
+      array << order_types
+
+
+
+
+      #user_stock.stock.symbol << order.type << order.created_at << order.volume
+
+
+    end
+=begin
       if order_types.include? "Sell"
         # calculate time period from buy to sell
       else
@@ -447,8 +438,8 @@ class User < ActiveRecord::Base
         # This just grabs every other item of the array, i.e. the date a stock was bought
         # order_types.select!.with_index{|_, i| i.even?}
       end
-    end
 =end
+
 
     # Html is variable that is used as what is rendered on the PDF
     html = '<head>
@@ -576,7 +567,7 @@ class User < ActiveRecord::Base
               <div class="row-fluid span4">
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>
               </div>
-            </div>' + sorted_open_positions.to_s
+            </div>'
 
     html
   end
