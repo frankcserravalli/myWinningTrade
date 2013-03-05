@@ -397,7 +397,7 @@ class User < ActiveRecord::Base
 
 
 
-    the_summary_that_has_all_the_orders_of_all_the_stocks.each do |order|
+    the_summary_that_has_all_the_orders_of_all_the_stocks.reverse.each do |order|
 
       symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
 
@@ -407,11 +407,38 @@ class User < ActiveRecord::Base
 
       if order.type.eql? "Sell"
         #hash[symbol][:sell] = {:sell => order.created_at}
-        hash << ["Sell", order.created_at]
+        hash << ["Sell", order.created_at, order.volume]
       else
         #hash[symbol][:buy] = {:buy => order.created_at}
-        hash << ["Buy", order.created_at]
+        hash << ["Buy", order.created_at, order.volume]
+      end
 
+    end
+
+    ahp = 0
+
+    number_of_stocks = 0
+
+    diffs = []
+
+    created_at = nil
+
+    hash.each do |stocker|
+
+      if stocker[0].eql? "Buy"
+        number_of_stocks += stocker[2]
+
+        created_at = stocker[1]
+      elsif stocker[0].eql? "Sell"
+        number_of_stocks -= stocker[2]
+
+        sold_at = stocker[1]
+
+        diff = (sold_at.to_datetime - created_at.to_datetime).round
+
+        diffs << diff
+
+        created_at = sold_at
       end
 
 
@@ -419,7 +446,8 @@ class User < ActiveRecord::Base
     end
 
 
-    [#<Sell id: 4, user_id: 1, price: #<BigDecimal:7fce6921b530,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921b350,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:40:08", updated_at: "2013-03-05 07:40:08", volume_remaining: nil, capital_gain: #<BigDecimal:7fce69219e10,'-0.67E0',9(18)>>,
+
+   # [#<Sell id: 4, user_id: 1, price: #<BigDecimal:7fce6921b530,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921b350,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:40:08", updated_at: "2013-03-05 07:40:08", volume_remaining: nil, capital_gain: #<BigDecimal:7fce69219e10,'-0.67E0',9(18)>>,
      ##<Sell id: 3, user_id: 1, price: #<BigDecimal:7fce69219a78,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce69219898,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:48", updated_at: "2013-03-05 07:38:48", volume_remaining: nil, capital_gain: #<BigDecimal:7fce692202d8,'-0.67E0',9(18)>>,
      ##<Sell id: 2, user_id: 1, price: #<BigDecimal:7fce6921fec8,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921fd10,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:03", updated_at: "2013-03-05 07:38:03", volume_remaining: nil, capital_gain: #<BigDecimal:7fce6921e780,'-0.67E0',9(18)>>,
      ##<Buy id: 1, user_id: 1, price: #<BigDecimal:7fce6921e3c0,'0.41875E3',18(18)>, volume: 9, type: "Buy", value: #<BigDecimal:7fce6921e208,'-0.377475E4',18(18)>, user_stock_id: 1, cost_basis: #<BigDecimal:7fce6921e000,'0.41942E3',18(18)>, created_at: "2013-03-05 07:35:50", updated_at: "2013-03-05 07:40:08", volume_remaining: 0, capital_gain: nil>]
@@ -440,7 +468,7 @@ class User < ActiveRecord::Base
                   chart.draw(data, options);
                 }
               </script>
-            </head>' + hash.inspect + '
+            </head>' + diffs.inspect + '
             <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
