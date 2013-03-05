@@ -182,7 +182,7 @@ class User < ActiveRecord::Base
       -stock_summary[:stocks][k][:returns]
     end
 
-    # Stock Details Section
+    # Open Positions Section
     summary = ""
 
     array = []
@@ -198,6 +198,72 @@ class User < ActiveRecord::Base
     composite_returns = 0
 
     more_than_one_stock_exists = false
+
+
+    # Finding the average holding period for every stock
+    data_from_orders = []
+
+    symbol_sold_off = []
+
+    holding_periods = []
+
+    created_at = nil
+
+    short_created_at = nil
+
+    average_holding_period = []
+
+    # Grabbing the stocks an user has or has had
+    user_stocks = UserStock.where(user_id: self.id)
+
+    user_stocks.each do |user_stock|
+
+      orders_of_all_the_stocks = Order.where(user_stock_id: user_stock.id).order("user_stock_id DESC, created_at DESC")
+
+      orders_of_all_the_stocks.reverse.each do |order|
+
+        symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
+
+        data_from_orders << [order.type, order.created_at, order.volume]
+
+      end
+
+      data_from_orders.each do |stock|
+
+        # Dealing with buys and sells
+        if stock[0].eql? "Buy"
+          created_at = stock[1]
+        elsif stock[0].eql? "Sell"
+          sold_at = stock[1]
+
+          holding_period = (sold_at.to_datetime - created_at.to_datetime).round
+
+          holding_periods << holding_period
+
+          created_at = sold_at
+        end
+
+        # Dealing with short sell borrow/ short sell cover
+        if stock[0].eql? "ShortSellBorrow"
+          short_created_at = stock[1]
+        elsif stock[0].eql? "ShortSellCover"
+          short_sold_at = stock[1]
+
+          holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
+
+          holding_periods << holding_period
+
+          short_created_at = short_sold_at
+        end
+
+      end
+
+      average = holding_periods.sum.to_f / holding_periods.size
+
+      average_holding_period << [user_stock.stock_id, average]
+
+    end
+
 
     sorted_open_positions.each_with_index do |index, value|
       unless sorted_open_positions[value][1][:capital_at_risk].eql? 0
@@ -371,65 +437,6 @@ class User < ActiveRecord::Base
     # Setting the borrowed money amount to two decimal places
     borrowed = sprintf('%.2f', borrowed)
 
-    # Finding the average holding period for every stock
-    data_from_orders = []
-
-    symbol_sold_off = []
-
-    stock_ids = []
-
-    number_of_stocks = 0
-
-    diffs = []
-
-    created_at = nil
-
-    # Grabbing the stocks an user has or has had
-    user_stocks = UserStock.where(user_id: self.id)
-
-    user_stocks.each do |user_stock|
-
-      stock_ids << user_stock.id
-
-    end
-
-    orders_of_all_the_stocks = Order.where(user_stock_id: stock_ids).order("user_stock_id DESC, created_at DESC")
-
-    orders_of_all_the_stocks.reverse.each do |order|
-
-      symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
-
-      data_from_orders << [order.type, order.created_at, order.volume]
-
-    end
-
-    data_from_orders.each do |stocker|
-
-      if stocker[0].eql? "Buy"
-        number_of_stocks += stocker[2]
-
-        created_at = stocker[1]
-      elsif stocker[0].eql? "Sell"
-        number_of_stocks -= stocker[2]
-
-        sold_at = stocker[1]
-
-        diff = (sold_at.to_datetime - created_at.to_datetime).round
-
-        diffs << diff
-
-        created_at = sold_at
-      end
-
-      if stocker[0].eql? "ShortSellBorrow"
-
-      elsif stocker[0].eql? "ShortSellCover"
-
-      end
-
-    end
-
-
 
    # [#<Sell id: 4, user_id: 1, price: #<BigDecimal:7fce6921b530,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921b350,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:40:08", updated_at: "2013-03-05 07:40:08", volume_remaining: nil, capital_gain: #<BigDecimal:7fce69219e10,'-0.67E0',9(18)>>,
      ##<Sell id: 3, user_id: 1, price: #<BigDecimal:7fce69219a78,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce69219898,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:48", updated_at: "2013-03-05 07:38:48", volume_remaining: nil, capital_gain: #<BigDecimal:7fce692202d8,'-0.67E0',9(18)>>,
@@ -452,7 +459,7 @@ class User < ActiveRecord::Base
                   chart.draw(data, options);
                 }
               </script>
-            </head>' + diffs.inspect + '
+            </head>' + average_holding_period.inspect + '
             <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
