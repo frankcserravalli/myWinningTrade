@@ -371,18 +371,20 @@ class User < ActiveRecord::Base
     # Setting the borrowed money amount to two decimal places
     borrowed = sprintf('%.2f', borrowed)
 
-
-
-
-
-
     # Finding the average holding period for every stock
-    hash = []
+    data_from_orders = []
 
     symbol_sold_off = []
 
     stock_ids = []
 
+    number_of_stocks = 0
+
+    diffs = []
+
+    created_at = nil
+
+    # Grabbing the stocks an user has or has had
     user_stocks = UserStock.where(user_id: self.id)
 
     user_stocks.each do |user_stock|
@@ -391,39 +393,17 @@ class User < ActiveRecord::Base
 
     end
 
-    the_summary_that_has_all_the_orders_of_all_the_stocks = Order.where(user_stock_id: stock_ids).order("user_stock_id DESC, created_at DESC")
+    orders_of_all_the_stocks = Order.where(user_stock_id: stock_ids).order("user_stock_id DESC, created_at DESC")
 
-
-
-
-
-    the_summary_that_has_all_the_orders_of_all_the_stocks.reverse.each do |order|
+    orders_of_all_the_stocks.reverse.each do |order|
 
       symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
 
-      #hash[symbol] = {:sell => {}}
-
-      #hash[symbol] = {:buy  => {}}
-
-      if order.type.eql? "Sell"
-        #hash[symbol][:sell] = {:sell => order.created_at}
-        hash << ["Sell", order.created_at, order.volume]
-      else
-        #hash[symbol][:buy] = {:buy => order.created_at}
-        hash << ["Buy", order.created_at, order.volume]
-      end
+      data_from_orders << [order.type, order.created_at, order.volume]
 
     end
 
-    ahp = 0
-
-    number_of_stocks = 0
-
-    diffs = []
-
-    created_at = nil
-
-    hash.each do |stocker|
+    data_from_orders.each do |stocker|
 
       if stocker[0].eql? "Buy"
         number_of_stocks += stocker[2]
@@ -441,7 +421,11 @@ class User < ActiveRecord::Base
         created_at = sold_at
       end
 
+      if stocker[0].eql? "ShortSellBorrow"
 
+      elsif stocker[0].eql? "ShortSellCover"
+
+      end
 
     end
 
