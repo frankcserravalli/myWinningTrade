@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
 
       holding_periods = []
 
+      num = 0
+
+      dat = []
+
       created_at = nil
 
       short_created_at = nil
@@ -139,35 +143,39 @@ class User < ActiveRecord::Base
           }
 
           # This section handles the Average Holding Period
-          data_from_orders << [ type: order.type, time: order.created_at ]
-
-          data_from_orders.each do |order|
-            # Dealing with buys and sells
-            if order[0].eql? "Buy"
-              created_at = order[1]
-            elsif order[0].eql? "Sell"
-              sold_at = order[1]
-
-              holding_period = (sold_at.to_datetime - created_at.to_datetime).round
-
-              holding_periods << holding_period
-
-              created_at = sold_at
-            elsif order[0].eql? "ShortSellBorrow"
-              short_created_at = stock[1]
-            elsif order[0].eql? "ShortSellCover"
-              short_sold_at = stock[1]
-
-              holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
-
-              holding_periods << holding_period
-
-              short_created_at = short_sold_at
-            end
-          end
-
-          average_holding_period = holding_periods.sum.to_f / holding_periods.size
+          data_from_orders << [ type: order.type, time: order.created_at, volume: order.volume, id: order.id ]
         end
+
+        data_from_orders.each do |order|
+
+          # Dealing with buys and sells
+          if order[0][:type].eql? "Buy"
+            created_at = order[0][:time]
+          elsif order[0][:type].eql? "Sell"
+            sold_at = order[0][:time]
+
+            holding_period = (sold_at.to_datetime - created_at.to_datetime).round
+
+            holding_periods << holding_period
+
+            holding_periods << order[0][:id]
+
+            created_at = sold_at
+          elsif order[0][:type].eql? "ShortSellBorrow"
+            short_created_at = order[0][:time]
+          elsif order[0][:type].eql? "ShortSellCover"
+            short_sold_at = order[0][:time]
+
+            holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
+
+            holding_periods << holding_period
+
+            short_created_at = short_sold_at
+          end
+        end
+
+        average_holding_period = holding_periods.sum.to_f / holding_periods.size
+
 
         s[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
@@ -175,7 +183,7 @@ class User < ActiveRecord::Base
           tax_liability: tax_liability.round(2),
           capital_at_risk: capital_at_risk.round(2),
           returns: returns.round(2),
-          average_holding_period: data_from_orders
+          average_holding_period: average_holding_period
         }
 
         net_income_before_taxes += returns
@@ -241,11 +249,11 @@ class User < ActiveRecord::Base
 
     composite_average_holding_period = 0
 
-    more_than_one_stock_exists = false
+    one_stock_exists = false
 
     sorted_open_positions.each_with_index do |index, value|
       unless sorted_open_positions[value][1][:capital_at_risk].eql? 0
-        if more_than_one_stock_exists.eql? true
+        if one_stock_exists.eql? true
           composite_revenue += sorted_open_positions[value][1][:revenue]
 
           composite_tax_liability += sorted_open_positions[value][1][:tax_liability]
@@ -256,7 +264,7 @@ class User < ActiveRecord::Base
 
           composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].to_s
         else
-            more_than_one_stock_exists = true
+            one_stock_exists = true
 
             summary += "<tr><td>" + sorted_open_positions[value][0].to_s + "</td>"
 
@@ -270,24 +278,26 @@ class User < ActiveRecord::Base
 
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
-            summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
+            summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round.to_s + " days</td></tr>"
         end
       end
     end
 
-    summary += "<tr><td>--</td>"
+    if sorted_open_positions.length > 1
+      summary += "<tr><td>--</td>"
 
-    summary += "<td>Composite</td>"
+      summary += "<td>Composite</td>"
 
-    summary += "<td>" + composite_revenue.round(2).to_s + "</td>"
+      summary += "<td>" + composite_revenue.round(2).to_s + "</td>"
 
-    summary += "<td>" + composite_tax_liability.round(2).to_s + "</td>"
+      summary += "<td>" + composite_tax_liability.round(2).to_s + "</td>"
 
-    summary += "<td>" + composite_capital_at_risk.round(2).to_s + "</td>"
+      summary += "<td>" + composite_capital_at_risk.round(2).to_s + "</td>"
 
-    summary += "<td>" + composite_returns.round(2).to_s + "</td>"
+      summary += "<td>" + composite_returns.round(2).to_s + "</td>"
 
-    summary += "<td>" + composite_average_holding_period.to_s + " days</td></tr>"
+      summary += "<td>" + composite_average_holding_period.round.to_s + " days</td></tr>"
+    end
 
     # Profit and Loss Section
     profit_stocks = ""
@@ -386,11 +396,14 @@ class User < ActiveRecord::Base
     end
 
     # Here I'm inserting the composite collection of stocks
-    capital_at_risk_stocks += "<tr><td>Composite</td>"
 
-    capital_at_risk_stocks += "<td class='pagination-centered'>#{composite_capital_at_risk.round(2).to_s}</td>"
+    if sorted_capital.length > 1
+      capital_at_risk_stocks += "<tr><td>Composite</td>"
 
-    capital_at_risk_stocks += "<td class='pagination-centered'>#{composite_capital_percentage.round(2).to_s}</td></tr>"
+      capital_at_risk_stocks += "<td class='pagination-centered'>#{composite_capital_at_risk.round(2).to_s}</td>"
+
+      capital_at_risk_stocks += "<td class='pagination-centered'>#{composite_capital_percentage.round(2).to_s}</td></tr>"
+    end
 
     # Here we are setting up the data for the pie chart
     capital_at_risk_data = [["Symbol", "Percentage at Risk"]]
@@ -420,13 +433,6 @@ class User < ActiveRecord::Base
 
     # Setting the borrowed money amount to two decimal places
     borrowed = sprintf('%.2f', borrowed)
-
-
-   # [#<Sell id: 4, user_id: 1, price: #<BigDecimal:7fce6921b530,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921b350,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:40:08", updated_at: "2013-03-05 07:40:08", volume_remaining: nil, capital_gain: #<BigDecimal:7fce69219e10,'-0.67E0',9(18)>>,
-     ##<Sell id: 3, user_id: 1, price: #<BigDecimal:7fce69219a78,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce69219898,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:48", updated_at: "2013-03-05 07:38:48", volume_remaining: nil, capital_gain: #<BigDecimal:7fce692202d8,'-0.67E0',9(18)>>,
-     ##<Sell id: 2, user_id: 1, price: #<BigDecimal:7fce6921fec8,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921fd10,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:03", updated_at: "2013-03-05 07:38:03", volume_remaining: nil, capital_gain: #<BigDecimal:7fce6921e780,'-0.67E0',9(18)>>,
-     ##<Buy id: 1, user_id: 1, price: #<BigDecimal:7fce6921e3c0,'0.41875E3',18(18)>, volume: 9, type: "Buy", value: #<BigDecimal:7fce6921e208,'-0.377475E4',18(18)>, user_stock_id: 1, cost_basis: #<BigDecimal:7fce6921e000,'0.41942E3',18(18)>, created_at: "2013-03-05 07:35:50", updated_at: "2013-03-05 07:40:08", volume_remaining: 0, capital_gain: nil>]
-
 
     # Html is variable that is used as what is rendered on the PDF
     html = '<head>
