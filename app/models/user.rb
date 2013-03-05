@@ -101,6 +101,11 @@ class User < ActiveRecord::Base
 
         total_capital += capital_at_risk
 
+        # Finding holding period
+        unless user_stock.shares_owned.eql? 0
+          holding_period = 0
+        end
+
         # Looping through orders of of an user's stocks
         self.orders.of_users_stock(user_stock.id).each do |order|
 
@@ -121,6 +126,8 @@ class User < ActiveRecord::Base
           end
 
           # This is a test for avg holding period, may or may not get rid of it
+
+
           order_types << user_stock.stock.symbol << order.type << order.created_at << order.volume
 
           # Finding the cost basis of each order
@@ -139,27 +146,26 @@ class User < ActiveRecord::Base
 
           # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary in the PDF
           s[:orders][order.created_at] = {
-              symbol: user_stock.stock.symbol,
-              name: user_stock.stock.name,
-              type: order.type,
-              time: order.created_at,
-              volume: order.volume,
-              bid_ask_price: order.price,
-              net_asset_value: (order.volume * order.price),
-              cost_basis: cost_basis,
-              capital_gain_loss: capital_gain_loss,
-              tax_liability: tax_liability,
-              holding_period: "1"
+            symbol: user_stock.stock.symbol,
+            name: user_stock.stock.name,
+            type: order.type,
+            time: order.created_at,
+            volume: order.volume,
+            bid_ask_price: order.price,
+            net_asset_value: (order.volume * order.price),
+            cost_basis: cost_basis,
+            capital_gain_loss: capital_gain_loss,
+            tax_liability: tax_liability
           }
         end
 
         s[:stocks][stock_symbol] = {
-            name: user_stock.stock.name,
-            revenue: revenue.round(2),
-            tax_liability: tax_liability.round(2),
-            capital_at_risk: capital_at_risk.round(2),
-            returns: returns.round(2),
-            order_types: order_types
+          name: user_stock.stock.name,
+          revenue: revenue.round(2),
+          tax_liability: tax_liability.round(2),
+          capital_at_risk: capital_at_risk.round(2),
+          returns: returns.round(2),
+          holding_period: 1
         }
 
         net_income_before_taxes += returns
@@ -170,15 +176,15 @@ class User < ActiveRecord::Base
       net_income_after_taxes = net_income_before_taxes - taxes
 
       s[:summary] = {
-          net_income_before_taxes: net_income_before_taxes.round(2),
-          net_income_after_taxes: net_income_after_taxes.round(2),
-          sums: net_income_before_taxes.round(2),
-          net_income: net_income_after_taxes.round(2),
-          gross_profit: net_income_before_taxes.round(2),
-          net_revenue: net_revenue,
-          net_losses: net_losses,
-          taxes: taxes.round(2),
-          total_capital: total_capital.round(2)
+        net_income_before_taxes: net_income_before_taxes.round(2),
+        net_income_after_taxes: net_income_after_taxes.round(2),
+        sums: net_income_before_taxes.round(2),
+        net_income: net_income_after_taxes.round(2),
+        gross_profit: net_income_before_taxes.round(2),
+        net_revenue: net_revenue,
+        net_losses: net_losses,
+        taxes: taxes.round(2),
+        total_capital: total_capital.round(2)
       }
 
       # Here I'm inserting the capital invested percentage into each stock
@@ -188,7 +194,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_trading_analysis_pdf(portfolio)
+  def create_trading_analysis_pdf
     stock_summary = self.stock_summary
 
     number_of_stocks = stock_summary[:stocks].length
@@ -414,11 +420,6 @@ class User < ActiveRecord::Base
 
     stock_summary[:stocks].each_key do |symbol|
       order_types = stock_summary[:stocks][symbol][:order_types]
-
-      #average_holding_period[symbol][:volume] = 0
-
-      #average_holding_period[symbol][:volume] += order_types[3]
-
 
 
       array << order_types

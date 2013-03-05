@@ -48,7 +48,7 @@ class StockController < ApplicationController
   end
 
   def trading_analysis_pdf
-    content = current_user.create_trading_analysis_pdf(@portfolio)
+    content = current_user.create_trading_analysis_pdf
 
     kit = PDFKit.new(content, :page_size => 'Letter')
 
@@ -60,7 +60,7 @@ class StockController < ApplicationController
     respond_to do |format|
       format.pdf do
         send_data output, :filename => "trading_analysis.pdf",
-                  :type => "application/pdf"
+                          :type => "application/pdf"
       end
     end
     end
