@@ -138,27 +138,24 @@ class User < ActiveRecord::Base
             tax_liability: tax_liability
           }
 
+          # This section handles the Average Holding Period
           data_from_orders << [order.type, order.created_at, order.volume]
 
-          data_from_orders.each do |stock|
-
+          data_from_orders.each do |order|
             # Dealing with buys and sells
-            if stock[0].eql? "Buy"
-              created_at = stock[1]
-            elsif stock[0].eql? "Sell"
-              sold_at = stock[1]
+            if order[0].eql? "Buy"
+              created_at = order[1]
+            elsif order[0].eql? "Sell"
+              sold_at = order[1]
 
               holding_period = (sold_at.to_datetime - created_at.to_datetime).round
 
               holding_periods << holding_period
 
               created_at = sold_at
-            end
-
-            # Dealing with short sell borrow/ short sell cover
-            if stock[0].eql? "ShortSellBorrow"
+            elsif order[0].eql? "ShortSellBorrow"
               short_created_at = stock[1]
-            elsif stock[0].eql? "ShortSellCover"
+            elsif order[0].eql? "ShortSellCover"
               short_sold_at = stock[1]
 
               holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
@@ -167,13 +164,9 @@ class User < ActiveRecord::Base
 
               short_created_at = short_sold_at
             end
-
           end
 
-          average = holding_periods.sum.to_f / holding_periods.size
-
-          average_holding_period << [user_stock.stock_id, average]
-
+          average_holding_period = holding_periods.sum.to_f / holding_periods.size
         end
 
         s[:stocks][stock_symbol] = {
@@ -182,7 +175,7 @@ class User < ActiveRecord::Base
           tax_liability: tax_liability.round(2),
           capital_at_risk: capital_at_risk.round(2),
           returns: returns.round(2),
-          average_holding_period: average_holding_period
+          average_holding_period: 1
         }
 
         net_income_before_taxes += returns
@@ -277,7 +270,7 @@ class User < ActiveRecord::Base
 
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
-            summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round.to_s + " days</td></tr>"
+            summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
         end
       end
     end
@@ -294,7 +287,7 @@ class User < ActiveRecord::Base
 
     summary += "<td>" + composite_returns.round(2).to_s + "</td>"
 
-    summary += "<td>" + composite_average_holding_period.round.to_s + " days</td></tr>"
+    summary += "<td>" + composite_average_holding_period.to_s + " days</td></tr>"
 
     # Profit and Loss Section
     profit_stocks = ""
