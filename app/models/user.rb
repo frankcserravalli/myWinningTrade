@@ -61,6 +61,18 @@ class User < ActiveRecord::Base
 
       net_revenue = 0
 
+      data_from_orders = []
+
+      symbol_sold_off = []
+
+      holding_periods = []
+
+      created_at = nil
+
+      short_created_at = nil
+
+      average_holding_period = []
+
       # Looping through Each User Stock
       user_stocks.each do |user_stock|
 
@@ -80,7 +92,7 @@ class User < ActiveRecord::Base
         total_capital += capital_at_risk
 
         # Looping through orders of of an user's stocks
-        self.orders.of_users_stock(user_stock.id).each do |order|
+        self.orders.of_users_stock(user_stock.id).order("user_stock_id DESC, created_at DESC").reverse.each do |order|
 
           # Inserting info from each order into variables for the PDF
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
@@ -125,6 +137,43 @@ class User < ActiveRecord::Base
             capital_gain_loss: capital_gain_loss,
             tax_liability: tax_liability
           }
+
+          data_from_orders << [order.type, order.created_at, order.volume]
+
+          data_from_orders.each do |stock|
+
+            # Dealing with buys and sells
+            if stock[0].eql? "Buy"
+              created_at = stock[1]
+            elsif stock[0].eql? "Sell"
+              sold_at = stock[1]
+
+              holding_period = (sold_at.to_datetime - created_at.to_datetime).round
+
+              holding_periods << holding_period
+
+              created_at = sold_at
+            end
+
+            # Dealing with short sell borrow/ short sell cover
+            if stock[0].eql? "ShortSellBorrow"
+              short_created_at = stock[1]
+            elsif stock[0].eql? "ShortSellCover"
+              short_sold_at = stock[1]
+
+              holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
+
+              holding_periods << holding_period
+
+              short_created_at = short_sold_at
+            end
+
+          end
+
+          average = holding_periods.sum.to_f / holding_periods.size
+
+          average_holding_period << [user_stock.stock_id, average]
+
         end
 
         s[:stocks][stock_symbol] = {
@@ -133,7 +182,7 @@ class User < ActiveRecord::Base
           tax_liability: tax_liability.round(2),
           capital_at_risk: capital_at_risk.round(2),
           returns: returns.round(2),
-          holding_period: 1
+          average_holding_period: average_holding_period
         }
 
         net_income_before_taxes += returns
@@ -197,84 +246,22 @@ class User < ActiveRecord::Base
 
     composite_returns = 0
 
+    composite_average_holding_period = 0
+
     more_than_one_stock_exists = false
-
-
-    # Finding the average holding period for every stock
-    data_from_orders = []
-
-    symbol_sold_off = []
-
-    holding_periods = []
-
-    created_at = nil
-
-    short_created_at = nil
-
-    average_holding_period = []
-
-    # Grabbing the stocks an user has or has had
-    user_stocks = UserStock.where(user_id: self.id)
-
-    user_stocks.each do |user_stock|
-
-      orders_of_all_the_stocks = Order.where(user_stock_id: user_stock.id).order("user_stock_id DESC, created_at DESC")
-
-      orders_of_all_the_stocks.reverse.each do |order|
-
-        symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
-
-        data_from_orders << [order.type, order.created_at, order.volume]
-
-      end
-
-      data_from_orders.each do |stock|
-
-        # Dealing with buys and sells
-        if stock[0].eql? "Buy"
-          created_at = stock[1]
-        elsif stock[0].eql? "Sell"
-          sold_at = stock[1]
-
-          holding_period = (sold_at.to_datetime - created_at.to_datetime).round
-
-          holding_periods << holding_period
-
-          created_at = sold_at
-        end
-
-        # Dealing with short sell borrow/ short sell cover
-        if stock[0].eql? "ShortSellBorrow"
-          short_created_at = stock[1]
-        elsif stock[0].eql? "ShortSellCover"
-          short_sold_at = stock[1]
-
-          holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
-
-          holding_periods << holding_period
-
-          short_created_at = short_sold_at
-        end
-
-      end
-
-      average = holding_periods.sum.to_f / holding_periods.size
-
-      average_holding_period << [user_stock.stock_id, average]
-
-    end
-
 
     sorted_open_positions.each_with_index do |index, value|
       unless sorted_open_positions[value][1][:capital_at_risk].eql? 0
         if more_than_one_stock_exists.eql? true
-            composite_revenue += sorted_open_positions[value][1][:revenue]
+          composite_revenue += sorted_open_positions[value][1][:revenue]
 
-            composite_tax_liability += sorted_open_positions[value][1][:tax_liability]
+          composite_tax_liability += sorted_open_positions[value][1][:tax_liability]
 
-            composite_capital_at_risk += sorted_open_positions[value][1][:capital_at_risk]
+          composite_capital_at_risk += sorted_open_positions[value][1][:capital_at_risk]
 
-            composite_returns += sorted_open_positions[value][1][:returns]
+          composite_returns += sorted_open_positions[value][1][:returns]
+
+          composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].round.to_s
         else
             more_than_one_stock_exists = true
 
@@ -288,7 +275,9 @@ class User < ActiveRecord::Base
 
             summary += "<td>" + sorted_open_positions[value][1][:capital_at_risk].round(2).to_s + "</td>"
 
-            summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td></tr>"
+            summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
+
+            summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round.to_s + " days</td></tr>"
         end
       end
     end
@@ -303,7 +292,9 @@ class User < ActiveRecord::Base
 
     summary += "<td>" + composite_capital_at_risk.round(2).to_s + "</td>"
 
-    summary += "<td>" + composite_returns.round(2).to_s + "</td></tr>"
+    summary += "<td>" + composite_returns.round(2).to_s + "</td>"
+
+    summary += "<td>" + composite_average_holding_period.round.to_s + " days</td></tr>"
 
     # Profit and Loss Section
     profit_stocks = ""
@@ -459,7 +450,7 @@ class User < ActiveRecord::Base
                   chart.draw(data, options);
                 }
               </script>
-            </head>' + average_holding_period.inspect + '
+            </head>
             <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
