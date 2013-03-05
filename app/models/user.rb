@@ -67,9 +67,7 @@ class User < ActiveRecord::Base
 
       holding_periods = []
 
-      num = 0
-
-      dat = []
+      overall_average_holding_period = []
 
       created_at = nil
 
@@ -96,7 +94,7 @@ class User < ActiveRecord::Base
         total_capital += capital_at_risk
 
         # Looping through orders of of an user's stocks
-        self.orders.of_users_stock(user_stock.id).order("user_stock_id DESC, created_at DESC").reverse.each do |order|
+        self.orders.of_users_stock(user_stock.id).order("created_at DESC, user_stock_id DESC").reverse.each do |order|
 
           # Inserting info from each order into variables for the PDF
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
@@ -146,24 +144,40 @@ class User < ActiveRecord::Base
           data_from_orders << [ type: order.type, time: order.created_at, volume: order.volume, id: order.id ]
         end
 
+        buy_volume_bought = 0
+
+        short_volume_borrowed = 0
+
         data_from_orders.each do |order|
 
           # Dealing with buys and sells
           if order[0][:type].eql? "Buy"
-            created_at = order[0][:time]
+
+            if buy_volume_bought.eql? 0
+              created_at = order[0][:time]
+            end
+
+            buy_volume_bought += order[0][:volume]
           elsif order[0][:type].eql? "Sell"
+            buy_volume_bought -= order[0][:volume]
+
             sold_at = order[0][:time]
 
             holding_period = (sold_at.to_datetime - created_at.to_datetime).round
 
             holding_periods << holding_period
 
-            holding_periods << order[0][:id]
-
             created_at = sold_at
           elsif order[0][:type].eql? "ShortSellBorrow"
-            short_created_at = order[0][:time]
+
+            if short_volume_borrowed.eql? 0
+              short_created_at = order[0][:time]
+            end
+
+            short_volume_borrowed += order[0][:volume]
           elsif order[0][:type].eql? "ShortSellCover"
+            short_volume_borrowed -= order[0][:volume]
+
             short_sold_at = order[0][:time]
 
             holding_period = (short_sold_at.to_datetime - short_created_at.to_datetime).round
@@ -176,6 +190,7 @@ class User < ActiveRecord::Base
 
         average_holding_period = holding_periods.sum.to_f / holding_periods.size
 
+        overall_average_holding_period << average_holding_period
 
         s[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
@@ -193,6 +208,8 @@ class User < ActiveRecord::Base
 
       net_income_after_taxes = net_income_before_taxes - taxes
 
+      overall_average_holding_period = overall_average_holding_period.sum.to_f / overall_average_holding_period.size
+
       s[:summary] = {
         net_income_before_taxes: net_income_before_taxes.round(2),
         net_income_after_taxes: net_income_after_taxes.round(2),
@@ -202,7 +219,8 @@ class User < ActiveRecord::Base
         net_revenue: net_revenue,
         net_losses: net_losses,
         taxes: taxes.round(2),
-        total_capital: total_capital.round(2)
+        total_capital: total_capital.round(2),
+        overall_average_holding_period: overall_average_holding_period
       }
 
       # Here I'm inserting the capital invested percentage into each stock
@@ -507,11 +525,14 @@ class User < ActiveRecord::Base
                 <div class="pagination-centered">Capital at Risk</div>
                 <div class="pagination-centered">' + self.name + '</div>
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
-                <div class="row-fluid"
+                <div class="row-fluid">
                   <div class="span7 offset1">Starting Capital</div>
                   <div class="span4">$50,000</div>
                 </div>
-                <div class="span4">Additional Paid in Capital</div>
+                <div class="row-fluid">
+                  <div class="span7">Additional Paid in Capital</div>
+                  <div class="span4 offset1">$0</div>
+                </div>
                 <br>
                 <table class="table table-striped">
                   <thead>
@@ -533,27 +554,27 @@ class User < ActiveRecord::Base
                 <div class="pagination-centered">For the Period Ended: ' + Date.today.to_s + '</div>
                 <br>
                 <div class="row-fluid">
-                  <span class="span4">Leverage</span>
+                  <span class="span6 offset1">Leverage</span>
                   <span class="span2">$' + borrowed + '</span>
                 </div>
                 <br>
                 <div class="row-fluid">
-                  <span class="span4">Average Holding Period</span>
-                  <span class="span2">$760.00</span>
+                  <span class="span6 offset1">Average Holding Period</span>
+                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].round.to_s + ' days</span>
                 </div>
                 <br>
                 <div class="row-fluid">
-                  <span class="span4">Benchmark B</span>
+                  <span class="span6 offset1">Benchmark B</span>
                   <span class="span2">' + Finance.grab_alpha_or_beta.round(2).to_s + '</span>
                 </div>
                 <br>
                 <div class="row-fluid">
-                  <span class="span4">Trader a</span>
+                  <span class="span6 offset1">Trader a</span>
                   <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
                 </div>
                 <br>
                 <div class="row-fluid">
-                  <span class="span4">R-squared</span>
+                  <span class="span6 offset1">R-squared</span>
                   <span class="span2">$760.00</span>
                 </div>
               </div>
@@ -575,10 +596,6 @@ end
 
 =begin
 # Orders Summary pdf
-
-
-
-
             <h2>Orders Summary</h2>
             <div class="row-fluid">
               <table class="table table-striped span12">
