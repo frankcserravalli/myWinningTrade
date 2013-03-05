@@ -375,23 +375,55 @@ class User < ActiveRecord::Base
 
 
 
-    list_of_stocks = []
-    start_date = []
-    symbol_sold_off = []
 
     # Finding the average holding period for every stock
-    the_summary = Order.where(user_id: self.id).order("created_at DESC").reverse
-    the_summary.each do |order|
-      symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
-      if order.volume_remaining.eql? 0
-        symbol_sold_off << symbol
-      end
-      if order.type.eql? "Buy"
-        start_date << [symbol, order.created_at.to_datetime, order.volume_remaining]
+    hash = []
 
-      end
+    symbol_sold_off = []
+
+    stock_ids = []
+
+    user_stocks = UserStock.where(user_id: self.id)
+
+    user_stocks.each do |user_stock|
+
+      stock_ids << user_stock.id
 
     end
+
+    the_summary_that_has_all_the_orders_of_all_the_stocks = Order.where(user_stock_id: stock_ids).order("user_stock_id DESC, created_at DESC")
+
+
+
+
+
+    the_summary_that_has_all_the_orders_of_all_the_stocks.each do |order|
+
+      symbol =  Stock.find(UserStock.find(order.user_stock_id).stock_id).symbol
+
+      #hash[symbol] = {:sell => {}}
+
+      #hash[symbol] = {:buy  => {}}
+
+      if order.type.eql? "Sell"
+        #hash[symbol][:sell] = {:sell => order.created_at}
+        hash << ["Sell", order.created_at]
+      else
+        #hash[symbol][:buy] = {:buy => order.created_at}
+        hash << ["Buy", order.created_at]
+
+      end
+
+
+
+    end
+
+
+    [#<Sell id: 4, user_id: 1, price: #<BigDecimal:7fce6921b530,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921b350,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:40:08", updated_at: "2013-03-05 07:40:08", volume_remaining: nil, capital_gain: #<BigDecimal:7fce69219e10,'-0.67E0',9(18)>>,
+     ##<Sell id: 3, user_id: 1, price: #<BigDecimal:7fce69219a78,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce69219898,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:48", updated_at: "2013-03-05 07:38:48", volume_remaining: nil, capital_gain: #<BigDecimal:7fce692202d8,'-0.67E0',9(18)>>,
+     ##<Sell id: 2, user_id: 1, price: #<BigDecimal:7fce6921fec8,'0.41875E3',18(18)>, volume: 3, type: "Sell", value: #<BigDecimal:7fce6921fd10,'0.125625E4',18(18)>, user_stock_id: 1, cost_basis: nil, created_at: "2013-03-05 07:38:03", updated_at: "2013-03-05 07:38:03", volume_remaining: nil, capital_gain: #<BigDecimal:7fce6921e780,'-0.67E0',9(18)>>,
+     ##<Buy id: 1, user_id: 1, price: #<BigDecimal:7fce6921e3c0,'0.41875E3',18(18)>, volume: 9, type: "Buy", value: #<BigDecimal:7fce6921e208,'-0.377475E4',18(18)>, user_stock_id: 1, cost_basis: #<BigDecimal:7fce6921e000,'0.41942E3',18(18)>, created_at: "2013-03-05 07:35:50", updated_at: "2013-03-05 07:40:08", volume_remaining: 0, capital_gain: nil>]
+
 
     # Html is variable that is used as what is rendered on the PDF
     html = '<head>
@@ -408,7 +440,7 @@ class User < ActiveRecord::Base
                   chart.draw(data, options);
                 }
               </script>
-            </head>' + start_date.inspect + '
+            </head>' + hash.inspect + '
             <h2>Open Positions</h2>
             <div class="row-fluid">
               <table class="table table-striped">
