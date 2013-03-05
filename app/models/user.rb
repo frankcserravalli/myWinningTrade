@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
 
       short_created_at = nil
 
-      average_holding_period = []
+      average_holding_period = nil
 
       # Looping through Each User Stock
       user_stocks.each do |user_stock|
@@ -139,7 +139,7 @@ class User < ActiveRecord::Base
           }
 
           # This section handles the Average Holding Period
-          data_from_orders << [order.type, order.created_at, order.volume]
+          data_from_orders << [ type: order.type, time: order.created_at ]
 
           data_from_orders.each do |order|
             # Dealing with buys and sells
@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
           tax_liability: tax_liability.round(2),
           capital_at_risk: capital_at_risk.round(2),
           returns: returns.round(2),
-          average_holding_period: 1
+          average_holding_period: data_from_orders
         }
 
         net_income_before_taxes += returns
@@ -254,7 +254,7 @@ class User < ActiveRecord::Base
 
           composite_returns += sorted_open_positions[value][1][:returns]
 
-          composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].round.to_s
+          composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].to_s
         else
             more_than_one_stock_exists = true
 
