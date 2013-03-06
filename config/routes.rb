@@ -1,6 +1,6 @@
 MyWinningTrade::Application.routes.draw do
   get '/dashboard', to: 'stock#dashboard'
-  #get '/user/trading_analysis', to: 'stock#trading_analysis'
+  get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/login', to: 'sessions#new'
   match '/auth/:provider/callback', to: 'sessions#create'
