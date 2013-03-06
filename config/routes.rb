@@ -21,6 +21,7 @@ MyWinningTrade::Application.routes.draw do
   #get '/users/edit', to: 'users#edit'
   #put '/users/update', to: 'users#update'
 
+  get '/trading_analysis_pdf', to: 'stock#trading_analysis_pdf'
 
   get '/subscriptions', to: 'subscriptions#show'
   post '/subscriptions/create', to: 'subscriptions#create'
