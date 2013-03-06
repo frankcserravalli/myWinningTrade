@@ -121,7 +121,7 @@ group :development do
   gem "guard-bundler", "~> 1.0.0"
 end
 
-gem "fb_graph", "~> 2.6.4"
+gem "fb_graph", "~> 2.6.5"
 
 gem "koala", :git => "git://github.com/arsduo/koala.git"
 
