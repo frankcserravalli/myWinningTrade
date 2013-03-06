@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
 
         order_types = []
 
-        capital_at_risk = (user_stock.shares_owned * user_stock.cost_basis)
+        capital_at_risk = (user_stock.shares_owned * user_stock.cost_basis.to_f)
 
         total_capital += capital_at_risk
 
