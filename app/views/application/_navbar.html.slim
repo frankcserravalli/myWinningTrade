@@ -5,7 +5,13 @@
       - if current_user
         nav.nav.pull-right
           li
-            span.navbar-text = current_user.name
+            a = current_user.name
+          li
+            - if current_user.premium_subscription.eql? false
+              a href="#{subscriptions_path}" Subscribe
+            - else
+              a href="#{subscriptions_path}" Subscription
+
           li
             = link_to logout_path do
               i.icon-signout

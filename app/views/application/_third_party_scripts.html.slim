@@ -1,6 +1,8 @@
 - if current_user
   = raw EnvolveChat::ChatRenderer.get_html '82002-RJboqLzaEcx8kCcIrihjxDvkJgyQAbqW', first_name: envolve_name_for(current_user,@portfolio)
 
+= javascript_include_tag "https://js.stripe.com/v1/", "application"
+
 javascript:
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27831363-1']);

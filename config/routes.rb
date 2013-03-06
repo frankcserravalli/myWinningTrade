@@ -1,3 +1,4 @@
+
 MyWinningTrade::Application.routes.draw do
   get '/dashboard', to: 'stock#dashboard'
   get '/user/trading_analysis', to: 'stock#trading_analysis'
@@ -16,10 +17,22 @@ MyWinningTrade::Application.routes.draw do
   get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
+  #get '/users/profile', to: 'users#profile', as: 'profile'
+  #get '/users/edit', to: 'users#edit'
+  #put '/users/update', to: 'users#update'
+
+
+  get '/subscriptions', to: 'subscriptions#show'
+  post '/subscriptions/create', to: 'subscriptions#create'
+  match '/subscriptions/destroy', to: 'subscriptions#destroy'
+  match '/subscriptions/update', to: 'subscriptions#update'
+
+
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
       get :price_history
     end
+
     collection do
       get :details
       get :search

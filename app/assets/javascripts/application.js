@@ -9,6 +9,7 @@
 //= require bootstrap-tab
 //= require bootstrap-tooltip
 //= require bootstrap-popover
+//= require bootstrap-modal
 //= require bootstrap-button
 //= require bootstrap-collapse
 //= require bootstrap-modal
@@ -19,6 +20,8 @@
 //= require flash
 //= require finance
 //= require submit_form_and_share
+//= require stripe
+//= require subscription
 //= require_self
 //= require_tree .//stock
 //= require general

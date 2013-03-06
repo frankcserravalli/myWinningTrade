@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130108191309) do
+=======
+ActiveRecord::Schema.define(:version => 20130228225034) do
+>>>>>>> stripe
 
   create_table "date_time_transactions", :force => true do |t|
     t.integer  "user_stock_id"
@@ -66,6 +70,19 @@ ActiveRecord::Schema.define(:version => 20130108191309) do
   add_index "stop_loss_transactions", ["user_id"], :name => "index_stop_loss_transactions_on_user_id"
   add_index "stop_loss_transactions", ["user_stock_id"], :name => "index_stop_loss_transactions_on_user_stock_id"
 
+<<<<<<< HEAD
+=======
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "customer_id"
+    t.string   "payment_plan"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
+
+>>>>>>> stripe
   create_table "user_stocks", :force => true do |t|
     t.integer "user_id"
     t.integer "stock_id"
@@ -81,10 +98,11 @@ ActiveRecord::Schema.define(:version => 20130108191309) do
   create_table "users", :force => true do |t|
     t.string  "email"
     t.string  "name"
-    t.string  "provider",        :limit => 16
+    t.string  "provider",             :limit => 16
     t.string  "uid"
-    t.decimal "account_balance",               :precision => 10, :scale => 2, :default => 50000.0
-    t.boolean "accepted_terms",                                               :default => false
+    t.decimal "account_balance",                    :precision => 10, :scale => 2, :default => 50000.0
+    t.boolean "accepted_terms",                                                    :default => false
+    t.boolean "premium_subscription",                                              :default => false
   end
 
   add_index "users", ["provider"], :name => "index_users_on_provider"

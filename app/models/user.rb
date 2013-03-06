@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :stocks, through: :user_stocks
   has_many :date_time_transactions
   has_many :stop_loss_transactions
+  has_one :subscription_customer
 
   structure do
   	email			       'developers@platform45.com'#, validates: :presence
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
     uid 			       '1234', index: true, validates: :presence
     account_balance  :decimal, scale: 2, precision: 10, default: 0.0
     accepted_terms   :boolean, default: false
+    premium_subscription :boolean, default: false
   end
 
   attr_protected :account_balance
@@ -27,6 +29,18 @@ class User < ActiveRecord::Base
 
   def display_name
     (name.blank?)? email : name
+  end
+
+  def upgrade_subscription
+    self.premium_subscription = true
+
+    self.save
+  end
+
+  def cancel_subscription
+    self.premium_subscription = false
+
+    self.save
   end
 
   def export_orders_as_csv
