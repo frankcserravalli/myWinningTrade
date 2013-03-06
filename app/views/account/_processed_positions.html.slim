@@ -1,0 +1,10 @@
+ul#portfolio
+  -if !@portfolio[:processed_stop_loss_transactions].empty?
+    table.table
+      - @portfolio[:processed_stop_loss_transactions].each do |trans|
+        - @sl_type = trans.order_type
+        - @sl_type = "Short" if @sl_type == "ShortSellBorrow"
+        tr
+          td #{@sl_type.to_past} #{trans.volume} #{trans.user_stock.stock.symbol} #{trans.measure.downcase} #{number_to_currency(trans.price_target)} at #{trans.executed_at.strftime("%b %e, %l:%M %p")}
+  -else
+    p You have no processed positions.

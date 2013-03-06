@@ -1,0 +1,17 @@
+= render partial: 'stock/search'
+= render partial: 'stock/suggest'
+
+#profile.container
+  h1 #{current_user.name}
+
+  br
+
+  a.pull-right.btn.btn-primary href="#{users_edit_path}" Edit Profile
+
+  a.pull-right.btn.btn-primary href="#{subscriptions__path}" Add Subscription
+
+  div #{current_user.name}
+
+
+
+

@@ -1,0 +1,15 @@
+ul#portfolio
+  -if !@portfolio[:pending_date_time_transactions].empty?
+    table.table
+      - @portfolio[:pending_date_time_transactions].each do |trans|
+        - @dt_type = trans.order_type
+        - @dt_type = "Short" if @dt_type == "ShortSellBorrow"
+        tr
+          td #{@dt_type} #{trans.volume} #{trans.user_stock.stock.symbol} in #{distance_of_time_in_words(Time.now, trans.execute_at)}
+          td 
+            span.pull-right 
+              = link_to("Cancel", stock_date_time_transaction_path(trans.id), :method => :delete, :class => "delete", :confirm => "Are you sure you want to cancel this order?")
+  - else
+    p You have no upcoming transactions.
+
+

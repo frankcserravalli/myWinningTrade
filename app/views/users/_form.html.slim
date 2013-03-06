@@ -1,0 +1,21 @@
+= form_tag('/update', method: "put") do
+
+  = label_tag(:name, "Your name")
+  = text_field(:user, :name)
+
+
+  = label_tag(:name, "Your Email")
+  = text_field(:user, :email)
+
+
+  = label_tag(:password, "Password")
+  = text_field(:user, :name)
+
+
+  = label_tag(:password_confirmation, "Password Again")
+  = text_field(:user, :email)
+
+  br
+
+  = submit_tag "Submit", class: "btn btn-success"
+  = link_to 'Back', profile_path, class: "btn btn-primary"

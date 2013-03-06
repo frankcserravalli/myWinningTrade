@@ -1,0 +1,81 @@
+// Place all the styles related to the subscriptions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#user_subscription
+  +boxify
+  padding: 15px
+  margin-top: 30px
+  width: 910px
+
+  .row
+    padding-bottom: 25px
+
+  .tab-content
+    background: #FFF
+    width: 890px
+    margin-left: 0px
+    border: 1px solid rgba(154, 171, 187, 0.6)
+
+  .tab-pane
+    margin-top: 20px
+    padding-bottom: 30px
+
+  .nav-tabs
+    border-bottom: none
+
+  li.active
+    border-bottom: 1px solid #FFF
+
+  #stripe-error-message
+    color: #b52d13
+
+  .subscription-button
+    height: 200px
+    font-size: 30px
+    padding: 5px
+    padding-top: 55px
+    border: 3px solid rgba(154, 171, 187, 0.6)
+    border-radius: 3px
+    background-color: #777
+
+
+    &:hover
+      color: #FFF
+      background-color: #3c5063
+
+  .clicked-subscription-button
+    color: #FFF
+    background-color: #3c5063
+
+  .neutral-subscription-button
+    color: #333333 !important
+    background-color: #777 !important
+
+  .payment-plan-description
+    font-size: 15px
+    margin:  5px
+
+  .back-button
+    margin-left: 10px
+
+  #delete-subscription-modal
+    margin-top: 15%
+
+  .submit-new-subscription-button
+    background-color: #59744c !important
+    background-repeat: repeat-x
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#59744c), to(#59744c))
+    background-image: -moz-linear-gradient(top, #59744c, #59744c)
+    background-image: -ms-linear-gradient(top, #59744c, #59744c)
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #59744c), color-stop(100%, #59744c))
+    background-image: -webkit-linear-gradient(top, #59744c, #59744c)
+    background-image: -o-linear-gradient(top, #59744c, #59744c)
+    background-image: linear-gradient(#59744c, #59744c)
+    border-color: #59744c
+    color: #fff !important
+    text-shadow: none !important
+
+
+

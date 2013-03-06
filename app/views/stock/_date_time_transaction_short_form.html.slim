@@ -1,0 +1,18 @@
+= simple_form_for @date_time_short_sell_borrow_transaction, url: stock_date_time_transaction_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'date_time_short_sell_borrow_transaction_form'} do |f|
+  .control-group.stock-trend data-stock-symbol=@stock.symbol
+    label.control-label Current price
+    .controls
+      .current-price#borrow_price = number_to_currency(@stock.current_price)
+
+  = f.input :volume, :label => "Volume to borrow", input_html: { value: 1, maxlength: 10 }
+  = f.input :execute_at, :label => "When to execute", :id => "date-time-short", :start_year => Time.now.year, :use_short_month => true, :ampm => true, :date_separator => '/', :datetime_separator => ''
+  = f.input :type, :as => :hidden, :input_html => { :value => "ShortSellBorrow" }
+
+  .control-group
+    label.control-label Borrow total
+    .controls
+      #borrow_price_calculation
+        span.amount = number_to_currency(@stock.current_price)
+        .notice style='font-weight: normal; font-size: 80%'
+
+  = f.submit 'Short Later', class: 'btn-primary btn btn-large'

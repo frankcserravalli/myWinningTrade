@@ -1,20 +1,32 @@
-#portfolio_holder.portfolio-list
-  = link_to('Export CSV', orders_path, class: "sml_btn pull-right")
-  h2 Portfolio
-  ul#portfolio
-    - @portfolio[:stocks].each do |stock_symbol, s|
-      li
-        = link_to stock_path(stock_symbol) do
-          .portfolio-cell.stock-symbol = stock_symbol
-          .portfolio-cell.stock-name = s[:name]
-          .portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])
-          .portfolio-cell.user_stock-shares_owned rel='tooltip' title='Shares you own' = "#{pluralize(s[:shares_owned],'share')}"
-          .portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(s[:cost_basis])
-          - stock_is_gaining = s[:percent_gain] >= 0
-          .portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'trending-up' : 'trending-down')
-            = '+' if stock_is_gaining
-            = s[:percent_gain]
-            ' %
-
-  - if @portfolio[:stocks].empty?
-    em Your portfolio is empty! Make some purchases to start trading stocks.
+#portfolio_holder.portfolio_list
+	= link_to('Export PDF', '/trading_analysis_pdf.pdf', class: "sml_btn pull-right")
+	= link_to('Export CSV', orders_path, class: "sml_btn pull-right")
+	h2 Portfolio
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+	      h2 Long Positions
+	  #collapseOne.accordion-body.collapse.in
+	    .accordion-inner
+	      = render partial: 'account/current_holdings'
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapsesix"
+	      h2 Shorted Positions
+	  #collapsesix.accordion-body.collapse
+	    .accordion-inner
+	      = render partial: 'account/shorting'
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseTwo"
+	      h2 Upcoming Future Transactions
+	  #collapseTwo.accordion-body.collapse
+	    .accordion-inner
+	      = render partial: 'account/upcoming_future_transactions'
+	.accordion-group
+	  .accordion-heading
+	    a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapsefour"
+	      h2 Stop-Loss Positions
+	  #collapsefour.accordion-body.collapse
+	    .accordion-inner
+	    	= render partial: 'account/pending_positions'

@@ -1,0 +1,68 @@
+#portfolio_holder.portfolio-list
+ 	= link_to('Export PDF', '/trading_analysis_pdf.pdf', class: "sml_btn pull-right")
+  = link_to('Export CSV', orders_path, class: "sml_btn pull-right")
+  .accordion-group
+    .accordion-heading
+      a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+        h2 Portfolio
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        - @portfolio[:stocks].each do |stock_symbol, s|
+            = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
+  .accordion-group
+    .accordion-heading
+      a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseTwo"
+        h2 Shorted Positions
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        - @portfolio[:shorts].each do |stock_symbol, s|
+          = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
+  .accordion-group
+    .accordion-heading
+      a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+        h2 Upcoming Future Transactions
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        - if !@portfolio[:pending_date_time_transactions].empty?
+            table.table
+              - @portfolio[:pending_date_time_transactions].each do |trans|
+                - @dt_type = trans.order_type
+                - @dt_type = "Short" if @dt_type == "ShortSellBorrow"
+                tr
+                  td #{@dt_type} #{trans.volume} #{trans.user_stock.stock.symbol} in #{distance_of_time_in_words(Time.now, trans.execute_at)}
+                  td 
+                    span.pull-right 
+                      = link_to("Cancel", stock_date_time_transaction_path(trans.id), :method => :delete, :class => "delete", :confirm => "Are you sure you want to cancel this order?")
+        - else
+          p You have no upcoming transactions.
+  .accordion-group
+    .accordion-heading
+      a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+        h2 Processed Future Transactions
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        - if !@portfolio[:processed_date_time_transactions].empty?
+          table.table
+            - @portfolio[:processed_date_time_transactions].each do |trans|
+              - @dt_type = trans.order_type
+              - @dt_type = "Short" if @dt_type == "ShortSellBorrow"
+              tr
+                td #{@dt_type.to_past} #{trans.volume} #{trans.user_stock.stock.symbol} at #{trans.execute_at.strftime("%b %e, %l:%M %p")}
+        - else
+          p You have no processed future transactions.
+  .accordion-group
+    .accordion-heading
+      a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+        h2 Stop-Loss Positions
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        - @portfolio[:shorts].each do |stock_symbol, s|
+          = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
+  .accordion-group
+    .accordion-heading
+      a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapseOne"
+        h2 Shorted Positions
+    #collapseOne.accordion-body.collapse.in
+      .accordion-inner
+        - @portfolio[:shorts].each do |stock_symbol, s|
+          = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}

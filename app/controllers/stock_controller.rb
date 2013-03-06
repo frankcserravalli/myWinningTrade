@@ -8,7 +8,14 @@ class StockController < ApplicationController
     @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
 
     @buy_order = Buy.new
+    @short_sell_borrow_order = ShortSellBorrow.new
     @sell_order = SellTransaction.new
+    @date_time_buy_transaction = DateTimeTransaction.new
+    @date_time_sell_transaction = DateTimeTransaction.new
+    @date_time_short_sell_borrow_transaction = DateTimeTransaction.new
+    @stop_loss_buy_transaction = StopLossTransaction.new
+    @stop_loss_sell_transaction = StopLossTransaction.new
+    @stop_loss_short_transaction = StopLossTransaction.new
 
     if @stock.nil?
       alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
@@ -34,4 +41,27 @@ class StockController < ApplicationController
   def portfolio
     render partial: 'account/portfolio'
   end
+
+  def trading_analysis
+    @stock_summary = current_user.stock_summary
+  end
+
+  def trading_analysis_pdf
+    content = current_user.create_trading_analysis_pdf
+
+    kit = PDFKit.new(content, :page_size => 'Letter')
+
+    kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
+    kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'
+
+    output = kit.to_pdf
+
+    respond_to do |format|
+      format.pdf do
+        send_data output, :filename => "trading_analysis.pdf",
+                          :type => "application/pdf"
+      end
+    end
+    end
 end
+

@@ -4,7 +4,7 @@ class SellTransaction
 
   def persisted?; false; end
 
-  ATTRIBUTES = [:price, :volume, :value, :user, :stock, :user_stock]
+  ATTRIBUTES = [:price, :volume, :execute_at, :measure, :price_target, :value, :user, :stock, :user_stock]
   attr_accessor *ATTRIBUTES
   def initialize(attributes = {})
     attributes.each { |name, value| send("#{name}=", value) if ATTRIBUTES.include?(name.to_sym) }

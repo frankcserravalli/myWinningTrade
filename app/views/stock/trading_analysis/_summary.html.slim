@@ -1,0 +1,30 @@
+h2 Summary
+
+ul#analysis
+
+  - @stock_summary[:stocks].each do |key, value|
+    li = key
+
+    - value.each do |key2, value2|
+      ul
+        li
+          = key2
+          | : '
+          = value2
+  li Summary
+  - @stock_summary[:summary].each do |key, value|
+    ul
+      li
+        = key
+        | : '
+        = value
+
+
+
+
+
+
+
+
+
+

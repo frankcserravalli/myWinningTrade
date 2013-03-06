@@ -1,0 +1,22 @@
+= simple_form_for @short_sell_borrow_order, url: stock_short_sell_borrow_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'short_sell_borrow_form'} do |f|
+  .control-group.stock-trend data-stock-symbol=@stock.symbol
+    label.control-label Current price
+    .controls
+      .current-price#borrow_price = number_to_currency(@stock.current_price)
+
+  = f.input :volume, :label => "Volume to borrow", input_html: { value: 1, maxlength: 10 }
+  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "short" }
+  #hidden-short-later
+    = render partial: 'stock/stock_later_field', locals: { f: f }
+  #hidden-short-stop-loss
+    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
+
+  .control-group
+    label.control-label Borrow total
+    .controls
+      #borrow_price_calculation
+        span.amount = number_to_currency(@stock.current_price)
+        .notice style='font-weight: normal; font-size: 80%'
+
+  .control-group
+    = f.submit 'Short', class: 'btn-primary btn btn-large'

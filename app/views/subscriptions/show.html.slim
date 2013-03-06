@@ -1,0 +1,28 @@
+= render partial: 'stock/search'
+= render partial: 'stock/suggest'
+
+#user_subscription.container
+
+  - if current_user.premium_subscription.eql? true
+    .row
+      .span12
+        h1.span9 Upgrade your Subscription
+
+    .row
+      .span12
+        h3.pagination-centered Pick a New Plan and press Upgrade
+
+    .row-fluid
+      .span12.row-fluid
+        == render "update_subscription"
+
+  -else
+    .row
+      .span12
+        h1.span9 Add a Subscription
+
+    .row-fluid
+      .span12.row-fluid
+        == render 'form'
+
+br

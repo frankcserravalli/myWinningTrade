@@ -1,14 +1,23 @@
 class Order < ActiveRecord::Base
   TRANSACTION_FEE = 6.0
 
+  default_scope order('created_at DESC')
+  scope :of_users_stock, lambda{ |user_stock_id| where('user_stock_id' => user_stock_id) }
+  scope :with_limit, lambda { |lim| limit(lim) }
+
   belongs_to :user_stock
   belongs_to :user
 
   has_one :stock, through: :user_stock
 
+  attr_accessor :when
+  attr_accessor :measure
+  attr_accessor :price_target
+  attr_accessor :execute_at
+
   structure do
     price  :decimal, precision: 10, scale: 2, validates: :numericality
-    volume 10**12, validates: { numericality: { greater_than: 0 } }
+    volume 10**12, validates: { numericality: { greater_than: 0, message: "Did not process a buy with zero volume." } }
     volume_remaining 10**12
     type   index: true, limit: 15
 
@@ -29,5 +38,13 @@ class Order < ActiveRecord::Base
     end
   end
 
-end
 
+
+  def self.summary_per_stock
+    self.includes(:stock).all.each do |order|
+      Rails.logger.info order.to_json
+    end
+  end
+
+
+end

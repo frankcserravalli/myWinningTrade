@@ -6,5 +6,6 @@ FactoryGirl.define do
     provider         'developer'
     uid              '1234'
     accepted_terms   true
+    premium_subscription false
   end
 end

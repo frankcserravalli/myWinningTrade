@@ -33,7 +33,7 @@
   position: relative
   z-index: 8
 
-.buybox, .sellbox
+.buybox, .sellbox, .shortbox
   +boxify
   float: left
   width: 438px
@@ -75,7 +75,7 @@
         margin-top: -5px
       .current-price
         color: #59744C
-      #buy_price_calculation, #current_cash, #cash_buy_calculation, #sell_price_calculation, #shares_remaining, #cash_sell_calculation
+      #buy_price_calculation, #current_cash, #cash_buy_calculation, #sell_price_calculation, #shares_remaining, #cash_sell_calculation, #borrow_price_calculation
         font-weight: bold
         line-height: 26px
 
@@ -86,14 +86,12 @@
       +background(linear-gradient(#7B946F, #59744c))
       border: 1px solid #4c6540
       border-color: #7B946F #4c6540 #4c6540 #7B946F
-      width: 108px
       font-family: 'Shanti', 'open sans'
       display: block
       text-transform: uppercase
       text-shadow: 1px 0  1px #222
-      font-weight:bold
+      font-weight: bold
       border-radius: 2px
-      float: right
       margin: 1px 0 0 0
       padding: 8px
       &:hover
@@ -106,11 +104,11 @@
     span
       font-weight: normal
   .order-form 
-    height: 301px
+    min-height: 301px
     .controls
       .current-price
         color: #A7743E
-    button.btn.btn-large, input[type="submit"].btn.btn-large
+    a.btn, button.btn, input[type="submit"].btn.btn-large
       +transition(background 0.4s)
       +background(linear-gradient(#b37a3e, #99632a))
       border: 1px solid #4c6540

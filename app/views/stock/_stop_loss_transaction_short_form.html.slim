@@ -1,0 +1,19 @@
+= simple_form_for @stop_loss_short_transaction, url: stock_stop_loss_transaction_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'stop_loss_short_transaction_form'} do |f|
+  .control-group.stock-trend data-stock-symbol=@stock.symbol
+    label.control-label Current price
+    .controls
+      .current-price#borrow_price = number_to_currency(@stock.current_price)
+
+  = f.input :volume, :label => "Volume to borrow", input_html: { value: 1, maxlength: 10 }
+  = f.input :measure, :collection => [:above, :below]
+  = f.input :price_target, :label => "Price target", input_html: { value: @stock.current_price, maxlength: 10 }
+  = f.input :type, :as => :hidden, :input_html => { :value => "ShortSellBorrow" }
+
+  .control-group
+    label.control-label Borrow total
+    .controls
+      #borrow_price_calculation
+        span.amount = number_to_currency(@stock.current_price)
+        .notice style='font-weight: normal; font-size: 80%'
+
+  = f.submit 'Set Short', class: 'btn-primary btn btn-large'

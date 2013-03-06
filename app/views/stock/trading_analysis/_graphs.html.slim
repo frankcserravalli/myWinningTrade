@@ -1,0 +1,7 @@
+h2 Graphs
+
+ul
+  - @stock_summary[:stocks].each_key do |stock_symbol|
+    li = stock_symbol
+    li = @stock_summary[:stocks][stock_symbol][:capital_invested_percentage]
+

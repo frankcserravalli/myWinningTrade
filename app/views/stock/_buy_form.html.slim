@@ -5,6 +5,11 @@
       .current-price#buy_price = number_to_currency(@stock.current_price)
 
   = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
+  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "buy" }
+  #hidden-buy-later
+    = render partial: 'stock/stock_later_field', locals: { f: f }
+  #hidden-buy-stop-loss
+    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
 
   .control-group
     label.control-label Total price to buy
@@ -23,4 +28,6 @@
     .controls
       #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
 
-  = f.submit 'Buy', class: 'btn-primary btn btn-large'
+  .control-group
+    a.btn-primary.btn.pull-right href="#share_buy_modal" role="button" data-toggle="modal" Buy Stocks and Share with Friends
+    button.btn-primary.btn.pull-left name="commit" type="submit" value="no-share" Buy Stocks

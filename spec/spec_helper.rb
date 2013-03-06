@@ -82,3 +82,14 @@ def new_buy(stock_price, stock_volume, user, user_stock)
   buy.save!
   buy
 end
+
+# probably should be using a factory here
+def new_short_sell_borrow(stock_price, stock_volume, user, user_stock)
+  transaction_total = (stock_price * stock_volume) + Order::TRANSACTION_FEE
+  transaction_total *= -1 # negative amount for buys
+  short_sell_borrow = ShortSellBorrow.new(user: user, user_stock: user_stock, volume: stock_volume)
+  short_sell_borrow.price = stock_price
+  short_sell_borrow.value = transaction_total
+  short_sell_borrow.save!
+  short_sell_borrow
+end

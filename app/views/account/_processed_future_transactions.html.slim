@@ -1,0 +1,13 @@
+ul#portfolio
+  - if !@portfolio[:processed_date_time_transactions].empty?
+    table.table
+      - @portfolio[:processed_date_time_transactions].each do |trans|
+        - @dt_type = trans.order_type
+        - @dt_type = "Short" if @dt_type == "ShortSellBorrow"
+        tr
+          td #{@dt_type.to_past} #{trans.volume} #{trans.user_stock.stock.symbol} at #{trans.execute_at.strftime("%b %e, %l:%M %p")}
+  - else
+    p You have no processed future transactions.
+
+
+

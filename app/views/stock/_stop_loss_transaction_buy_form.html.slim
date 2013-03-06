@@ -1,0 +1,29 @@
+= simple_form_for @stop_loss_buy_transaction, url: stock_stop_loss_transaction_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'stop_loss_buy_transaction_form'} do |f|
+  .control-group.stock-trend data-stock-symbol=@stock.symbol
+    label.control-label Current price
+    .controls
+      .current-price#buy_price = number_to_currency(@stock.current_price)
+
+  = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
+  = f.input :measure, :collection => [:above, :below]
+  = f.input :price_target, :label => "Price target", input_html: { value: @stock.current_price, maxlength: 10 }
+  = f.input :type, :as => :hidden, :input_html => { :value => "Buy" }
+
+  .control-group
+    label.control-label Total price to buy
+    .controls
+      #buy_price_calculation
+        span.amount = number_to_currency(@stock.buy_price)
+        span.fee_notice style='font-weight: normal; font-size: 80%' &nbsp;&nbsp;(incl. #{number_to_currency(Order::TRANSACTION_FEE, precision: 0)} transaction fee)
+
+  .control-group
+    label.control-label Your current cash
+    .controls
+      #current_cash = number_to_currency(current_user.account_balance)
+
+  .control-group
+    label.control-label Your cash after purchase:
+    .controls
+      #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
+
+  = f.submit 'Set Buy', class: 'btn-primary btn btn-large'
