@@ -1,7 +1,7 @@
 $(function() {
 
   // Grabbing publishable key
-  Stripe.setPublishableKey('pk_test_aT91zOBdU6ASLRE9xr3nFih2');
+  Stripe.setPublishableKey('pk_live_TmKg4iN7j3xcbZlFIvIbooPi');
 
   // Submiting a new subscription
   $(".submit-new-subscription-button").click(function() {
