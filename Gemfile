@@ -130,8 +130,6 @@ gem "high_voltage", "~> 1.2.1"
 
 gem "powder", "~> 0.1.8"
 
-gem "prawn", "~> 0.12.0"
-
 gem "stripe", "~> 1.7.11"
 
 gem "thin", "~> 1.5.0"
