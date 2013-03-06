@@ -313,7 +313,7 @@ class User < ActiveRecord::Base
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
             if sorted_open_positions[value][1][:average_holding_period].eql? "--"
-              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period] + "</td></tr>"
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + "</td></tr>"
             else
               summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
             end
@@ -336,7 +336,7 @@ class User < ActiveRecord::Base
       summary += "<td>" + composite_returns.round(2).to_s + "</td>"
 
       if composite_average_holding_period.eql? "--"
-        summary += "<td>" + composite_average_holding_period + "</td></tr>"
+        summary += "<td>" + composite_average_holding_period.to_s + "</td></tr>"
       else
         summary += "<td>" + composite_average_holding_period.to_s + " days</td></tr>"
       end
