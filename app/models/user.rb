@@ -507,7 +507,7 @@ class User < ActiveRecord::Base
                 }
               </script>
             </head>
-            <h2>Open Positions</h2>
+            <h2>Trading Summary</h2>
             <div class="row-fluid">
               <table class="table table-striped">
                 <thead>
