@@ -1,14 +1,17 @@
+GIT
+  remote: git://github.com/arsduo/koala.git
+  revision: 342611d56e9bbac509a7f58983053ab8ee42bab8
+  specs:
+    koala (1.7.0)
+      addressable
+      faraday
+      multi_json
+
 GEM
   remote: https://rubygems.org/
   specs:
-<<<<<<< HEAD
-    actionmailer (3.2.11)
-      actionpack (= 3.2.11)
-=======
-    Ascii85 (1.0.2)
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
->>>>>>> soc_network_share
       mail (~> 2.4.4)
     actionpack (3.2.12)
       activemodel (= 3.2.12)
@@ -35,15 +38,10 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.3)
-<<<<<<< HEAD
-    arel (3.0.2)
-    bourne (1.1.2)
-      mocha (= 0.10.5)
-=======
-    afm (0.2.0)
     arel (3.0.2)
     attr_required (0.0.5)
->>>>>>> soc_network_share
+    bourne (1.1.2)
+      mocha (= 0.10.5)
     builder (3.0.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -83,7 +81,7 @@ GEM
     country_select (1.1.3)
     daemons (1.1.9)
     database_cleaner (0.9.1)
-    diff-lcs (1.2.1)
+    diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.1)
     excon (0.16.10)
@@ -99,7 +97,7 @@ GEM
     fakeweb (1.3.0)
     faraday (0.8.6)
       multipart-post (~> 1.1)
-    fb_graph (2.6.4)
+    fb_graph (2.6.5)
       httpclient (>= 2.2.0.2)
       multi_json (>= 1.3)
       rack-oauth2 (>= 0.14.4)
@@ -132,12 +130,8 @@ GEM
     high_voltage (1.2.2)
     hike (1.2.1)
     httpauth (0.2.0)
-<<<<<<< HEAD
+    httpclient (2.3.3)
     i18n (0.6.4)
-=======
-    httpclient (2.3.2)
-    i18n (0.6.1)
->>>>>>> soc_network_share
     jasminerice (0.0.10)
       coffee-rails
       haml
@@ -256,21 +250,21 @@ GEM
       mime-types (>= 1.16)
     rickshaw_rails (0.0.4)
       railties (>= 3.1.0)
-    rspec (2.13.0)
-      rspec-core (~> 2.13.0)
-      rspec-expectations (~> 2.13.0)
-      rspec-mocks (~> 2.13.0)
-    rspec-core (2.13.0)
-    rspec-expectations (2.13.0)
-      diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.13.0)
-    rspec-rails (2.13.0)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.2)
+    rspec-rails (2.12.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 2.13.0)
-      rspec-expectations (~> 2.13.0)
-      rspec-mocks (~> 2.13.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     ruby-openid (2.2.3)
     rubyzip (0.9.9)
     sass (3.2.6)
@@ -278,11 +272,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-<<<<<<< HEAD
     selenium-webdriver (2.31.0)
-=======
-    selenium-webdriver (2.30.0)
->>>>>>> soc_network_share
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip
@@ -355,11 +345,11 @@ DEPENDENCIES
   compass-rails (~> 1.0.3)
   compass_twitter_bootstrap (~> 2.2.2.2)
   copycopter_client (~> 2.0.1)
-<<<<<<< HEAD
   country_select (~> 1.1.3)
   database_cleaner (~> 0.9.1)
   factory_girl_rails (~> 4.2.0)
   fakeweb (~> 1.3.0)
+  fb_graph (~> 2.6.4)
   guard (~> 1.6.2)
   guard-bundler (~> 1.0.0)
   guard-rspec (~> 2.4.0)
@@ -368,6 +358,7 @@ DEPENDENCIES
   jasminerice (~> 0.0.10)
   jquery-rails (~> 2.2.0)
   jquery-ui-rails (~> 3.0.1)
+  koala!
   letter_opener (~> 1.0.0)
   linkedin (~> 0.3.7)
   market_beat (~> 0.2.0)
@@ -381,7 +372,7 @@ DEPENDENCIES
   omniauth-twitter (~> 0.0.14)
   pg (~> 0.14.1)
   powder (~> 0.1.8)
-  rails (= 3.2.11)
+  rails (= 3.2.12)
   rest-client (~> 1.6.7)
   rickshaw_rails (~> 0.0.4)
   rspec-rails (~> 2.12.2)
@@ -395,47 +386,6 @@ DEPENDENCIES
   term-ansicolor (~> 1.0.7)
   therubyrhino (~> 2.0.2)
   thin (~> 1.5.0)
-=======
-  country_select
-  database_cleaner
-  factory_girl_rails
-  fakeweb
-  fb_graph (~> 2.6.4)
-  guard
-  guard-bundler
-  guard-rspec
-  heroku
-  high_voltage
-  jasminerice
-  jquery-rails
-  jquery-ui-rails
-  koala!
-  letter_opener
-  linkedin (~> 0.3.7)
-  market_beat
-  migrant
-  mocha
-  momentjs-rails
-  oauth
-  omniauth-facebook
-  omniauth-linkedin
-  omniauth-openid
-  omniauth-twitter
-  pg
-  powder
-  prawn
-  rails (= 3.2.12)
-  rest-client
-  rickshaw_rails
-  rspec-rails
-  sass-rails (~> 3.2.3)
-  simple_form
-  simplecov
-  slim-rails
-  squeel
-  therubyrhino
-  thin
->>>>>>> soc_network_share
   uglifier (>= 1.0.3)
   underscore-rails (~> 1.4.3)
   vcr (~> 2.4.0)
