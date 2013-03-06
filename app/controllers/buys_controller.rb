@@ -51,7 +51,7 @@ class BuysController < ApplicationController
     begin
       @graph.put_wall_post(response)
     rescue
-      flash[:notice] = response + " but your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
+      flash[:notice] = "Your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
     end
     redirect_to(stock_path(@stock.symbol))
   end

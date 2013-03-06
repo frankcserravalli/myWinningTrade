@@ -46,9 +46,9 @@ class SellsController < ApplicationController
 
     # Here we are preventing an error from Facebook when an user posts the same exact message twice
     begin
-      @graph.put_wall_post(response + " on My Winning Trade.")
+      @graph.put_wall_post(response)
     rescue
-      flash[:notice] = response + " but your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
+      flash[:notice] = "Your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
     end
     redirect_to(stock_path(@stock.symbol))
   end
