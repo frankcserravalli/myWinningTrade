@@ -21,7 +21,7 @@ class BuysController < ApplicationController
 
         redirect_to("http://twitter.com/share?text=I%20just%20purchased%20" + @buy_order.volume.to_s + "%20shares%20of%20" + @stock.symbol + "%20at%20$" + @buy_order.price.to_s + "%20per%20share.%20Learn%20to%20beat%20the%20market%20and%20out-trade%20your%20friends%20at%20mywinningtrade.com.")
       else
-        @stock_name = Stock.find_by_name(params[:stock_id])
+        @stock_name = Stock.find_by_symbol(params[:stock_id])
 
         flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
