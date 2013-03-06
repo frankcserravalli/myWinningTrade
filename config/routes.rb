@@ -4,8 +4,6 @@ MyWinningTrade::Application.routes.draw do
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/login', to: 'sessions#new'
-  match '/auth/facebook/callback', to: 'sessions#create'
-  match '/auth/linkedin/callback', to: 'sessions#create'
   match '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
@@ -13,10 +11,10 @@ MyWinningTrade::Application.routes.draw do
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
   get 'buys/callback_linkedin', to: 'buys#callback_linkedin'
-  match 'buys/callback_facebook', to: 'buys#callback_facebook'
+  get 'buys/callback_facebook', to: 'buys#callback_facebook'
   get 'buys/callback_twitter', to: 'buys#callback_twitter'
   get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
-  match 'sells/callback_facebook', to: 'sells#callback_facebook'
+  get 'sells/callback_facebook', to: 'sells#callback_facebook'
   get 'sells/callback_twitter', to: 'sells#callback_twitter'
 
   #get '/users/profile', to: 'users#profile', as: 'profile'
