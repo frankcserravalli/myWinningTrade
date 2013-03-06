@@ -10,12 +10,12 @@ MyWinningTrade::Application.routes.draw do
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
-  get '/trading_analysis_pdf', to: 'stock#trading_analysis_pdf'
-
   get 'buys/callback_linkedin', to: 'buys#callback_linkedin'
   get 'buys/callback_facebook', to: 'buys#callback_facebook'
+  get 'buys/callback_twitter', to: 'buys#callback_twitter'
   get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
+  get 'sells/callback_twitter', to: 'sells#callback_twitter'
 
   #get '/users/profile', to: 'users#profile', as: 'profile'
   #get '/users/edit', to: 'users#edit'

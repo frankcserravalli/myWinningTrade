@@ -1,37 +1,49 @@
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     actionmailer (3.2.11)
       actionpack (= 3.2.11)
+=======
+    Ascii85 (1.0.2)
+    actionmailer (3.2.12)
+      actionpack (= 3.2.12)
+>>>>>>> soc_network_share
       mail (~> 2.4.4)
-    actionpack (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    actionpack (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
-      rack (~> 1.4.0)
+      rack (~> 1.4.5)
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activemodel (3.2.11)
-      activesupport (= 3.2.11)
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
       builder (~> 3.0.0)
-    activerecord (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    activerecord (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
-    activesupport (3.2.11)
+    activeresource (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+    activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.3)
+<<<<<<< HEAD
     arel (3.0.2)
     bourne (1.1.2)
       mocha (= 0.10.5)
+=======
+    afm (0.2.0)
+    arel (3.0.2)
+    attr_required (0.0.5)
+>>>>>>> soc_network_share
     builder (3.0.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -71,7 +83,7 @@ GEM
     country_select (1.1.3)
     daemons (1.1.9)
     database_cleaner (0.9.1)
-    diff-lcs (1.1.3)
+    diff-lcs (1.2.1)
     erubis (2.7.0)
     eventmachine (1.0.1)
     excon (0.16.10)
@@ -87,6 +99,11 @@ GEM
     fakeweb (1.3.0)
     faraday (0.8.6)
       multipart-post (~> 1.1)
+    fb_graph (2.6.4)
+      httpclient (>= 2.2.0.2)
+      multi_json (>= 1.3)
+      rack-oauth2 (>= 0.14.4)
+      tzinfo
     ffi (1.4.0)
     fssm (0.2.10)
     guard (1.6.2)
@@ -115,7 +132,12 @@ GEM
     high_voltage (1.2.2)
     hike (1.2.1)
     httpauth (0.2.0)
+<<<<<<< HEAD
     i18n (0.6.4)
+=======
+    httpclient (2.3.2)
+    i18n (0.6.1)
+>>>>>>> soc_network_share
     jasminerice (0.0.10)
       coffee-rails
       haml
@@ -198,6 +220,13 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-oauth2 (1.0.3)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.2.0.2)
+      i18n
+      multi_json (>= 1.3.6)
+      rack (>= 1.1)
     rack-openid (1.3.1)
       rack (>= 1.1.0)
       ruby-openid (>= 2.1.8)
@@ -205,17 +234,17 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.11)
-      actionmailer (= 3.2.11)
-      actionpack (= 3.2.11)
-      activerecord (= 3.2.11)
-      activeresource (= 3.2.11)
-      activesupport (= 3.2.11)
+    rails (3.2.12)
+      actionmailer (= 3.2.12)
+      actionpack (= 3.2.12)
+      activerecord (= 3.2.12)
+      activeresource (= 3.2.12)
+      activesupport (= 3.2.12)
       bundler (~> 1.0)
-      railties (= 3.2.11)
-    railties (3.2.11)
-      actionpack (= 3.2.11)
-      activesupport (= 3.2.11)
+      railties (= 3.2.12)
+    railties (3.2.12)
+      actionpack (= 3.2.12)
+      activesupport (= 3.2.12)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -227,21 +256,21 @@ GEM
       mime-types (>= 1.16)
     rickshaw_rails (0.0.4)
       railties (>= 3.1.0)
-    rspec (2.12.0)
-      rspec-core (~> 2.12.0)
-      rspec-expectations (~> 2.12.0)
-      rspec-mocks (~> 2.12.0)
-    rspec-core (2.12.2)
-    rspec-expectations (2.12.1)
-      diff-lcs (~> 1.1.3)
-    rspec-mocks (2.12.2)
-    rspec-rails (2.12.2)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.0)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.0)
+    rspec-rails (2.13.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 2.12.0)
-      rspec-expectations (~> 2.12.0)
-      rspec-mocks (~> 2.12.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
     ruby-openid (2.2.3)
     rubyzip (0.9.9)
     sass (3.2.6)
@@ -249,7 +278,11 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+<<<<<<< HEAD
     selenium-webdriver (2.31.0)
+=======
+    selenium-webdriver (2.30.0)
+>>>>>>> soc_network_share
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip
@@ -322,6 +355,7 @@ DEPENDENCIES
   compass-rails (~> 1.0.3)
   compass_twitter_bootstrap (~> 2.2.2.2)
   copycopter_client (~> 2.0.1)
+<<<<<<< HEAD
   country_select (~> 1.1.3)
   database_cleaner (~> 0.9.1)
   factory_girl_rails (~> 4.2.0)
@@ -361,6 +395,47 @@ DEPENDENCIES
   term-ansicolor (~> 1.0.7)
   therubyrhino (~> 2.0.2)
   thin (~> 1.5.0)
+=======
+  country_select
+  database_cleaner
+  factory_girl_rails
+  fakeweb
+  fb_graph (~> 2.6.4)
+  guard
+  guard-bundler
+  guard-rspec
+  heroku
+  high_voltage
+  jasminerice
+  jquery-rails
+  jquery-ui-rails
+  koala!
+  letter_opener
+  linkedin (~> 0.3.7)
+  market_beat
+  migrant
+  mocha
+  momentjs-rails
+  oauth
+  omniauth-facebook
+  omniauth-linkedin
+  omniauth-openid
+  omniauth-twitter
+  pg
+  powder
+  prawn
+  rails (= 3.2.12)
+  rest-client
+  rickshaw_rails
+  rspec-rails
+  sass-rails (~> 3.2.3)
+  simple_form
+  simplecov
+  slim-rails
+  squeel
+  therubyrhino
+  thin
+>>>>>>> soc_network_share
   uglifier (>= 1.0.3)
   underscore-rails (~> 1.4.3)
   vcr (~> 2.4.0)

@@ -1,5 +1,6 @@
 ul#portfolio
-  - @portfolio[:shorts].each do |stock_symbol, s|
-    = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
-  - if @portfolio[:stocks].empty?
-    em You have no shorted stocks.
+  - if @portfolio[:shorts].empty?
+    span You have no shorted stocks.
+  - else
+     - @portfolio[:shorts].each do |stock_symbol, s|
+       = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}

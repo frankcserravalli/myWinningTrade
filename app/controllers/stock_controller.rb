@@ -22,7 +22,6 @@ class StockController < ApplicationController
       alert = I18n.t('flash.stock.invalid_symbol', symbol: symbol, default: 'No stock matches the symbol %{symbol}.')
       redirect_to dashboard_path, alert: alert
     end
-
   end
 
   def details
@@ -47,7 +46,5 @@ class StockController < ApplicationController
   def trading_analysis
     @stock_summary = current_user.stock_summary
   end
-
-
-
 end
+

@@ -11,12 +11,19 @@ class BuysController < ApplicationController
         linkedin_share_connect("buys")
       elsif params[:soc_network].eql? "facebook"
         facebook_share_connect("buys")
-      else
+      elsif params[:soc_network].eql? "twitter"
         @stock_id = UserStock.find(@buy_order.user_stock_id)
 
-        @stock_name = Stock.find(@stock_id.stock_id)
+        @stock = Stock.find(@stock_id.stock_id)
 
-        flash[:notice] = "#{params[:soc_network]}Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+        # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
+        stock_name = @stock.name.gsub!(/\s/, "%20")
+
+        redirect_to("http://twitter.com/share?text=I%20just%20purchased%20" + @buy_order.volume.to_s + "%20shares%20of%20" + @stock.symbol + "%20at%20$" + @buy_order.price.to_s + "%20per%20share.%20Learn%20to%20beat%20the%20market%20and%20out-trade%20your%20friends%20at%20mywinningtrade.com.")
+      else
+        @stock_name = Stock.find(params[:stock_id])
+
+        flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
         redirect_to(stock_path(params[:stock_id]))
       end
@@ -26,27 +33,43 @@ class BuysController < ApplicationController
   end
 
   def callback_facebook
-    @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
-    @graph.put_wall_post("Testing out something. It works!")
-    redirect_to dashboard_path
-  end
-
-  def callback_linkedin
-    #TODO redirect to stock if user denies request
-
     @current_user = current_user
 
-    @buy_order = Buy.where(id: @current_user.id).first
+    @buy_order = Buy.where(user_id: @current_user.id).first
 
     @stock_id = UserStock.find(@buy_order.user_stock_id)
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "Successfully purchased #{@buy_order.volume} #{@stock.name} stocks for $#{-@buy_order.value.round(2)} on My Winning Trade."
+    response = "I just purchased #{@buy_order.volume} shares of #{@stock.symbol} at $#{@buy_order.price} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
 
-    flash[:notice] = response
+    flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock.symbol} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
-    if params.has_key? "oauth_problem"
+    @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
+
+    # Here we are preventing an error from Facebook when an user posts the same exact message twice
+    begin
+      @graph.put_wall_post(response + "on My Winning Trade.")
+    rescue
+      flash[:notice] = response + " but your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
+    end
+    redirect_to(stock_path(@stock.symbol))
+  end
+
+  def callback_linkedin
+    @current_user = current_user
+
+    @buy_order = Buy.where(user_id: @current_user.id).first
+
+    @stock_id = UserStock.find(@buy_order.user_stock_id)
+
+    @stock = Stock.find(@stock_id.stock_id)
+
+    response = "I just purchased #{@buy_order.volume} shares of #{@stock.symbol} at $#{@buy_order.price} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
+
+    flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock.symbol} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
+
+    if params.has_key? "oauth_problem" or !params[:oauth_problem].blank?
       redirect_to(stock_path(@stock.symbol))
     else
       client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA')
@@ -64,7 +87,6 @@ class BuysController < ApplicationController
       end
 
       client.add_share(:comment => response)
-
 
       redirect_to(stock_path(@stock.symbol))
     end

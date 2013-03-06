@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 
-#gem 'rails', '3.2.6'
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 # Database
 # ========
@@ -121,6 +121,9 @@ group :development do
   gem "guard-bundler", "~> 1.0.0"
 end
 
+gem "fb_graph", "~> 2.6.4"
+
+gem "koala", :git => "git://github.com/arsduo/koala.git"
 
 gem "linkedin", "~> 0.3.7"
 

@@ -13,7 +13,6 @@ class StopLossTransactionsController < ApplicationController
     end
     
     redirect_to(stock_path(params[:stock_id]))
-
   end
 
   def destroy
