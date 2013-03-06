@@ -28,4 +28,6 @@ module ApplicationHelper
     suffix = suffixes[matched_range]
     "$#{rounded_value}#{suffix}"
   end
+
+
 end

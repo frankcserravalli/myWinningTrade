@@ -10,8 +10,13 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
+=======
+    actionmailer (3.2.11)
+      actionpack (= 3.2.11)
+>>>>>>> pdf
       mail (~> 2.4.4)
     actionpack (3.2.12)
       activemodel (= 3.2.12)
@@ -37,7 +42,11 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+<<<<<<< HEAD
     addressable (2.3.3)
+=======
+    addressable (2.2.8)
+>>>>>>> pdf
     arel (3.0.2)
     attr_required (0.0.5)
     bourne (1.1.2)
@@ -115,9 +124,13 @@ GEM
       guard (~> 1.1)
     guard-rspec (2.4.1)
       guard (>= 1.1)
+<<<<<<< HEAD
       rspec (~> 2.11)
     haml (4.0.0)
       tilt
+=======
+    haml (3.1.6)
+>>>>>>> pdf
     hashie (1.2.0)
     heroku (2.34.0)
       heroku-api (~> 0.3.7)
@@ -201,17 +214,26 @@ GEM
     omniauth-twitter (0.0.14)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+<<<<<<< HEAD
     pg (0.14.1)
+=======
+    pdfkit (0.5.3)
+    pg (0.14.0)
+>>>>>>> pdf
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
     powder (0.1.8)
       thor (>= 0.11.5)
+<<<<<<< HEAD
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.4.5)
+=======
+    rack (1.4.3)
+>>>>>>> pdf
     rack-cache (1.2)
       rack (>= 0.4)
     rack-oauth2 (1.0.3)
@@ -262,10 +284,15 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
+<<<<<<< HEAD
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
     ruby-openid (2.2.3)
+=======
+      rspec (~> 2.11.0)
+    ruby-openid (2.2.0)
+>>>>>>> pdf
     rubyzip (0.9.9)
     sass (3.2.6)
     sass-rails (3.2.6)
@@ -323,6 +350,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+<<<<<<< HEAD
     tzinfo (0.3.36)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
@@ -331,6 +359,16 @@ GEM
     vcr (2.4.0)
     websocket (1.0.7)
     xpath (1.0.0)
+=======
+    tzinfo (0.3.35)
+    uglifier (1.2.6)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.3)
+    underscore-rails (1.3.1)
+    vcr (2.2.3)
+    wkhtmltopdf-binary (0.9.9.1)
+    xpath (0.1.4)
+>>>>>>> pdf
       nokogiri (~> 1.3)
     yql (0.0.2)
 
@@ -345,6 +383,7 @@ DEPENDENCIES
   compass-rails (~> 1.0.3)
   compass_twitter_bootstrap (~> 2.2.2.2)
   copycopter_client (~> 2.0.1)
+<<<<<<< HEAD
   country_select (~> 1.1.3)
   database_cleaner (~> 0.9.1)
   factory_girl_rails (~> 4.2.0)
@@ -390,3 +429,46 @@ DEPENDENCIES
   underscore-rails (~> 1.4.3)
   vcr (~> 2.4.0)
   yql (~> 0.0.2)
+=======
+  country_select
+  database_cleaner
+  factory_girl_rails
+  fakeweb
+  guard
+  guard-bundler
+  guard-rspec
+  heroku
+  high_voltage
+  jasminerice
+  jquery-rails
+  jquery-ui-rails
+  letter_opener
+  market_beat
+  migrant
+  mocha
+  momentjs-rails
+  oauth
+  omniauth-facebook
+  omniauth-linkedin
+  omniauth-openid
+  omniauth-twitter
+  pdfkit (~> 0.5.3)
+  pg
+  powder
+  rails (= 3.2.11)
+  rest-client
+  rickshaw_rails
+  rspec-rails
+  sass-rails (~> 3.2.3)
+  simple_form
+  simplecov
+  slim-rails
+  squeel
+  therubyrhino
+  thin
+  uglifier (>= 1.0.3)
+  underscore-rails
+  vcr
+  wkhtmltopdf-binary (~> 0.9.9.1)
+  yql
+>>>>>>> pdf

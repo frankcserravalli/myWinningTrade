@@ -1,5 +1,4 @@
 class StockController < ApplicationController
-
   def dashboard
   end
 
@@ -46,5 +45,23 @@ class StockController < ApplicationController
   def trading_analysis
     @stock_summary = current_user.stock_summary
   end
+
+  def trading_analysis_pdf
+    content = current_user.create_trading_analysis_pdf
+
+    kit = PDFKit.new(content, :page_size => 'Letter')
+
+    kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
+    kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'
+
+    output = kit.to_pdf
+
+    respond_to do |format|
+      format.pdf do
+        send_data output, :filename => "trading_analysis.pdf",
+                          :type => "application/pdf"
+      end
+    end
+    end
 end
 

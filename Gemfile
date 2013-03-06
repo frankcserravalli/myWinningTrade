@@ -139,4 +139,6 @@ gem "thin", "~> 1.5.0"
 
 gem "term-ansicolor", "~> 1.0.7"
 
+gem "pdfkit", "~> 0.5.3"
 
+gem "wkhtmltopdf-binary", "~> 0.9.9.1"
