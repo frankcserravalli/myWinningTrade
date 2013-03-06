@@ -187,7 +187,7 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
-    omniauth-linkedin (0.0.8)
+    omniauth-linkedin (0.1.0)
       omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
@@ -369,7 +369,7 @@ DEPENDENCIES
   momentjs-rails (~> 1.7.2)
   oauth (~> 0.4.7)
   omniauth-facebook (~> 1.4.1)
-  omniauth-linkedin (~> 0.0.8)
+  omniauth-linkedin (~> 0.1.0)
   omniauth-openid (~> 1.0.1)
   omniauth-twitter (~> 0.0.14)
   pdfkit (~> 0.5.3)
