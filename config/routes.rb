@@ -4,7 +4,7 @@ MyWinningTrade::Application.routes.draw do
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/login', to: 'sessions#new'
-  match '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
   get '/terms', to: 'terms#show', as: :terms
@@ -54,6 +54,12 @@ MyWinningTrade::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      post 'users/authenticate' => 'users#authenticate'
+      post 'users/create' => 'users#create'
+      delete 'users/destroy' => 'users#destroy'
+      post '/auth/:provider/callback', to: 'social_networks#authenticate'
+
+
       resources :buys, only: :create
       resources :sells, only: :create
       resources :stocks do
@@ -69,6 +75,7 @@ MyWinningTrade::Application.routes.draw do
           get 'portfolio'
           get 'stock_info'
           get 'stock_order_history'
+
         end
       end
       resource :short_sell_borrows, only: :create
