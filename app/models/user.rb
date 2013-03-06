@@ -537,7 +537,7 @@ class User < ActiveRecord::Base
                 </div>' + profit_stocks +
                 '<div class="row-fluid">
                   <span class="span7 offset1">Net Revenues</span>
-                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
+                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_revenue].round(2).to_s + '</span>
                 </div>
                 <div class="row-fluid">
                   <div class="span2 offset1 pagination-centered">Losses</div>
@@ -556,7 +556,7 @@ class User < ActiveRecord::Base
                 </div>
                 <div class="row-fluid">
                   <span class="span7 offset1">Net Income</span>
-                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_income].to_s + '</span>
+                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_income].round(2).to_s + '</span>
                 </div>
               </div>
 

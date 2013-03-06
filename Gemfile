@@ -55,15 +55,6 @@ gem "market_beat", "~> 0.2.0"
 
 gem "migrant", "~> 1.4.0"
 
-gem "rickshaw_rails", "~> 0.0.4"
-
-gem "market_beat", "~> 0.2.0"
-
-# Model
-# =====
-
-gem "migrant", "~> 1.4.0"
-
 gem "squeel", "~> 1.0.15"
 
 group :development do
