@@ -65,8 +65,6 @@ class User < ActiveRecord::Base
 
       symbol_sold_off = []
 
-      holding_periods = []
-
       overall_average_holding_period = []
 
       created_at = nil
@@ -140,13 +138,19 @@ class User < ActiveRecord::Base
             tax_liability: tax_liability
           }
 
-          # This section handles the Average Holding Period
           data_from_orders << [ type: order.type, time: order.created_at, volume: order.volume, id: order.id ]
         end
 
+        # This section handles the Average Holding Period
         buy_volume_bought = 0
 
+        holding_periods = []
+
         short_volume_borrowed = 0
+
+        sold_at = 0
+
+        short_sold_at = 0
 
         data_from_orders.each do |order|
 
@@ -188,9 +192,15 @@ class User < ActiveRecord::Base
           end
         end
 
-        average_holding_period = holding_periods.sum.to_f / holding_periods.size
+        unless sold_at.eql? 0 and short_sold_at.eql? 0
+          average_holding_period = holding_periods.sum.to_f / holding_periods.size
 
-        overall_average_holding_period << average_holding_period
+          overall_average_holding_period << average_holding_period
+        else
+          average_holding_period = "--"
+
+          overall_average_holding_period = "--"
+        end
 
         s[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
@@ -208,7 +218,9 @@ class User < ActiveRecord::Base
 
       net_income_after_taxes = net_income_before_taxes - taxes
 
-      overall_average_holding_period = overall_average_holding_period.sum.to_f / overall_average_holding_period.size
+      unless overall_average_holding_period.eql? "--"
+        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s + " days"
+      end
 
       s[:summary] = {
         net_income_before_taxes: net_income_before_taxes.round(2),
@@ -280,7 +292,11 @@ class User < ActiveRecord::Base
 
           composite_returns += sorted_open_positions[value][1][:returns]
 
-          composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].to_s
+          if sorted_open_positions[value][1][:average_holding_period].eql? "--"
+            composite_average_holding_period = "--"
+          else
+            composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period]
+          end
         else
             one_stock_exists = true
 
@@ -296,7 +312,12 @@ class User < ActiveRecord::Base
 
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
-            summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round.to_s + " days</td></tr>"
+            if sorted_open_positions[value][1][:average_holding_period].eql? "--"
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period] + "</td></tr>"
+            else
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
+            end
+
         end
       end
     end
@@ -314,7 +335,11 @@ class User < ActiveRecord::Base
 
       summary += "<td>" + composite_returns.round(2).to_s + "</td>"
 
-      summary += "<td>" + composite_average_holding_period.round.to_s + " days</td></tr>"
+      if composite_average_holding_period.eql? "--"
+        summary += "<td>" + composite_average_holding_period + "</td></tr>"
+      else
+        summary += "<td>" + composite_average_holding_period.to_s + " days</td></tr>"
+      end
     end
 
     # Profit and Loss Section
@@ -560,7 +585,7 @@ class User < ActiveRecord::Base
                 <br>
                 <div class="row-fluid">
                   <span class="span6 offset1">Average Holding Period</span>
-                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].round.to_s + ' days</span>
+                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].to_s + '</span>
                 </div>
                 <br>
                 <div class="row-fluid">
@@ -636,3 +661,10 @@ end
     end
 
 =end
+
+
+#<Buy id: 5, user_id: 2, price: #<BigDecimal:333bd20,'0.2832E2',18(18)>, volume: 900, type: "Buy", value: #<BigDecimal:333ba50,'-0.25494E5',9(18)>, user_stock_id: 5, cost_basis: #<BigDecimal:333b910,'0.2833E2',18(18)>, created_at: "2013-03-05 22:12:57", updated_at: "2013-03-05 22:12:57", volume_remaining: 900, capital_gain: nil>,
+ ##<Buy id: 4, user_id: 2, price: #<BigDecimal:33377c0,'0.1424E2',18(18)>, volume: 400, type: "Buy", value: #<BigDecimal:3337590,'-0.5702E4',9(18)>, user_stock_id: 4, cost_basis: #<BigDecimal:3337428,'0.1426E2',18(18)>, created_at: "2013-03-05 22:12:43", updated_at: "2013-03-05 22:12:43", volume_remaining: 400, capital_gain: nil>,
+ ##<Buy id: 3, user_id: 2, price: #<BigDecimal:3335808,'0.2359E2',18(18)>, volume: 100, type: "Buy", value: #<BigDecimal:3335628,'-0.2365E4',9(18)>, user_stock_id: 3, cost_basis: #<BigDecimal:3335498,'0.2365E2',18(18)>, created_at: "2013-03-05 22:11:48", updated_at: "2013-03-05 22:11:48", volume_remaining: 100, capital_gain: nil>,
+ ##<Buy id: 2, user_id: 2, price: #<BigDecimal:3331578,'0.4949E2',18(18)>, volume: 100, type: "Buy", value: #<BigDecimal:3331370,'-0.4955E4',9(18)>, user_stock_id: 2, cost_basis: #<BigDecimal:33311e0,'0.4955E2',18(18)>, created_at: "2013-03-05 22:02:36", updated_at: "2013-03-05 22:02:36", volume_remaining: 100, capital_gain: nil>,
+ ##<Buy id: 1, user_id: 2, price: #<BigDecimal:332f200,'0.5014E2',18(18)>, volume: 15, type: "Buy", value: #<BigDecimal:332f048,'-0.7581E3',18(18)>, user_stock_id: 1, cost_basis: #<BigDecimal:332edf0,'0.5054E2',18(18)>, created_at: "2013-03-05 22:02:27", updated_at: "2013-03-05 22:02:27", volume_remaining: 15, capital_gain: nil>]
