@@ -4,6 +4,8 @@ MyWinningTrade::Application.routes.draw do
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/login', to: 'sessions#new'
+  post '/auth/facebook/callback', to: 'sessions#create'
+  post '/auth/linkedin/callback', to: 'sessions#create'
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
