@@ -38,7 +38,7 @@ class SellsController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "I just sold #{@order.volume.to_s} shares of #{@stock.symbol.to_s} at $#{@order.price.to_s} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
+    response = "I just sold #{@order.volume} shares of #{@stock.symbol} at $#{@order.price} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
 
     flash[:notice] = "Successfully sold #{@order.volume} shares from #{@stock.symbol}"
 
@@ -46,7 +46,7 @@ class SellsController < ApplicationController
 
     # Here we are preventing an error from Facebook when an user posts the same exact message twice
     begin
-      @graph.put_wall_post(response +  " on My Winning Trade.")
+      @graph.put_wall_post(response + " on My Winning Trade.")
     rescue
       flash[:notice] = response + " but your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
     end
