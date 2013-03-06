@@ -14,7 +14,7 @@ class BuysController < ApplicationController
       elsif params[:soc_network].eql? "twitter"
         @stock_id = UserStock.find(@buy_order.user_stock_id)
 
-        @stock = Stock.find(@stock_id.stock_id)
+        @stock = Stock.find(params[:stock_id])
 
         # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
         stock_name = @stock.name.gsub!(/\s/, "%20")

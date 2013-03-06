@@ -97,7 +97,7 @@ gem "omniauth-twitter", "~> 0.0.14"
 
 gem "omniauth-facebook", "~> 1.4.1"
 
-gem "omniauth-linkedin", "~> 0.0.8"
+gem "omniauth-linkedin", "~> 0.1.0"
 
 gem "omniauth-openid", "~> 1.0.1" # Google
 
