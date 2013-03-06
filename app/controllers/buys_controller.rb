@@ -41,9 +41,9 @@ class BuysController < ApplicationController
 
     @stock = Stock.find(@stock_id.stock_id)
 
-    response = "I just purchased #{@buy_order.volume} shares of #{@stock.symbol} at $#{@buy_order.price} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
+    response = "I just purchased #{@buy_order.volume.to_s} shares of #{@stock.symbol.to_s} at $#{@buy_order.price.to_s} per share. Learn to beat the market and out-trade your friends with My Winning Trade."
 
-    flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock.symbol} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
+    flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock.symbol.to_s} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
 
     @graph = Koala::Facebook::GraphAPI.new(session['oauth'].get_access_token(params[:code]))
 
