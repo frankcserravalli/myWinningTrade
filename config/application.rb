@@ -61,5 +61,13 @@ module MyWinningTrade
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
+
+    # Redirect to the www version of the domain in production
+    DOMAIN = 'www.mywinningtrade.com'
+    use Rack::Rewrite do
+      r301 %r{.*}, "http://#{DOMAIN}$&", :if => Proc.new {|rack_env|
+        rack_env['SERVER_NAME'] != DOMAIN && ENV['RACK_ENV'] == "production"
+      }
+    end
   end
 end

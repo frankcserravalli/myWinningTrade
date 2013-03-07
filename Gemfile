@@ -143,5 +143,5 @@ gem "pdfkit", "~> 0.5.3"
 
 gem "wkhtmltopdf-binary", "~> 0.9.9.1"
 
-#gem "rack-rewrite", "~> 1.3.3"
+gem "rack-rewrite", "~> 1.3.3"
 
