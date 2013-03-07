@@ -149,7 +149,7 @@ class ApplicationController < ActionController::Base
   end
 
   def linkedin_share_connect(controller)
-    client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA', LINKEDIN_CONFIGURATION)
+    client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4', LINKEDIN_CONFIGURATION)
     request_token = client.request_token(:oauth_callback =>
                                              "http://#{request.host_with_port}/#{controller}/callback_linkedin")
     session[:rtoken] = request_token.token
