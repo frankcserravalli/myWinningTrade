@@ -158,8 +158,8 @@ class ApplicationController < ActionController::Base
   end
 
   def facebook_share_connect(controller)
-    session['oauth'] = Koala::Facebook::OAuth.new("331752936918078", "6dee4f074f905e98957e9328bf4d91a3", "https://www.mywinningtrade.com/#{controller}/callback_facebook")
-    redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
+    #session['oauth'] = Koala::Facebook::OAuth.new("331752936918078", "6dee4f074f905e98957e9328bf4d91a3", "https://#{request.host_with_port}/#{controller}/callback_facebook")
+    #redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end
 
 end
