@@ -12,4 +12,5 @@ LINKEDIN_CONFIGURATION = { :site => 'https://api.linkedin.com',
                            :access_token_path => '/uas/oauth/accessToken' }
 
 
+# Used to log in oauth errors into the logs
 OmniAuth.config.logger = Rails.logger

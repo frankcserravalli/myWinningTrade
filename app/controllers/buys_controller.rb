@@ -72,7 +72,7 @@ class BuysController < ApplicationController
     if params.has_key? "oauth_problem" or !params[:oauth_problem].blank?
       redirect_to(stock_path(@stock.symbol))
     else
-      client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4', LINKEDIN_CONFIGURATION)
+      client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4')
 
       if session[:atoken].nil?
         pin = params[:oauth_verifier]
