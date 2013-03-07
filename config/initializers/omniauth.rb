@@ -12,4 +12,4 @@ LINKEDIN_CONFIGURATION = { :site => 'https://api.linkedin.com',
                            :access_token_path => '/uas/oauth/accessToken' }
 
 
-
+OmniAuth.config.logger = Rails.logger
