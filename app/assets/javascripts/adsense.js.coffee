@@ -16,7 +16,7 @@ class Adsense
     @ads = {}
 
   newAd: (container, options) ->
-    id = options.format + '_' + container.id
+    id = 'ads_' + container.id
     @ads[id] = new Ad @, id, container, options
 
 class Ad
