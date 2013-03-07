@@ -66,7 +66,7 @@ module MyWinningTrade
     # party can return back to mywinningtrade.com
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
       r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
-        rack_env['SERVER_NAME'] == 'mywinningtrade.com'
+        rack_env['SERVER_NAME'] == 'www.mywinningtrade.com'
       }
 
     end
