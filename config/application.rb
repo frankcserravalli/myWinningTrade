@@ -61,5 +61,13 @@ module MyWinningTrade
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
+
+    # This is used so that when we go through a third-party source such as posting on Facebook the third
+    # party can return back to mywinningtrade.com
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+      r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
+        rack_env['SERVER_NAME'] != 'mywinningtrade.com'
+      }
+    end
   end
 end

@@ -64,12 +64,4 @@ MyWinningTrade::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-
-  # This is used so that when we go through a third-party source such as posting on Facebook the third
-  # party can return back to mywinningtrade.com
-  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-    r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
-      rack_env['SERVER_NAME'] != 'www.mywinningtrade.com'
-    }
-  end
 end
