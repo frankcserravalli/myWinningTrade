@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/arsduo/koala.git
+  revision: 342611d56e9bbac509a7f58983053ab8ee42bab8
+  specs:
+    koala (1.7.0)
+      addressable
+      faraday
+      multi_json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -352,6 +361,7 @@ DEPENDENCIES
   jasminerice (~> 0.0.10)
   jquery-rails (~> 2.2.0)
   jquery-ui-rails (~> 3.0.1)
+  koala!
   letter_opener (~> 1.0.0)
   linkedin (~> 0.3.7)
   market_beat (~> 0.2.0)
