@@ -1,12 +1,13 @@
 
 MyWinningTrade::Application.routes.draw do
+  match '/auth/:provider/callback', to: 'sessions#create'
+
   get '/dashboard', to: 'stock#dashboard'
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
-  match '/auth/:provider/callback', to: 'sessions#create'
 
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
