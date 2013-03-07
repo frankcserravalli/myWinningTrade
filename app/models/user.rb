@@ -612,10 +612,6 @@ class User < ActiveRecord::Base
                   <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
                 </div>
                 <br>
-                <div class="row-fluid">
-                  <span class="span6 offset1">R-squared</span>
-                  <span class="span2">$760.00</span>
-                </div>
               </div>
               <div class="row-fluid span4">
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>
