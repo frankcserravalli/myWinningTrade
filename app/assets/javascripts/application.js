@@ -22,6 +22,7 @@
 //= require submit_form_and_share
 //= require stripe
 //= require subscription
+//= require adsense
 //= require_self
 //= require_tree .//stock
 //= require general
