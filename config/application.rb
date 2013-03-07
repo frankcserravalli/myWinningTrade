@@ -71,8 +71,8 @@ module MyWinningTrade
       r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
         rack_env['SERVER_NAME'] == 'mywinningtrade.com'
       }
-      #r301 /.*/,  Proc.new {|path, rack_env| "https://#{rack_env['SERVER_NAME'].gsub(/www\./i, '') }#{path}" },
-      #     :if => Proc.new {|rack_env| rack_env['SERVER_NAME'] =~ /www\./i}
+      r301 /.*/,  Proc.new {|path, rack_env| "https://www.#{rack_env['SERVER_NAME']}#{path}" },
+           :unless => Proc.new {|rack_env| rack_env['SERVER_NAME'] =~ /www\./i}
     end
 
   end
