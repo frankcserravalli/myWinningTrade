@@ -123,7 +123,8 @@ end
 
 gem "fb_graph", "~> 2.6.5"
 
-gem "koala", "~> 1.6.0"
+gem "koala", :git => "git://github.com/arsduo/koala.git"
+
 gem "linkedin", "~> 0.3.7"
 
 gem "clockwork", "~> 0.4.1"
