@@ -67,9 +67,9 @@ MyWinningTrade::Application.configure do
 
   # This is used so that when we go through a third-party source such as posting on Facebook the third
   # party can return back to mywinningtrade.com
-  #config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-  #  r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
-  #    rack_env['SERVER_NAME'] != 'www.mywinningtrade.com'
-  #  }
-  #end
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] != 'www.mywinningtrade.com'
+    }
+  end
 end
