@@ -8,12 +8,6 @@ html data-uuid=current_user.try(:id)
     .container
       = render partial: 'flash', locals: { flash: flash }
       div#my_ad
-      <script>
-      window.MyAdsense.newAd(document.getElementById('my_ad'), {
-        'ad_slot': "1977017438",
-        'ad_width': 300,
-        'ad_height': 250
-      });
-      </script>
+      <script>window.MyAdsense.newAd(document.getElementById('my_ad'), {'ad_slot': "1977017438",'ad_width': 232,'ad_height': 121}); </script>
       = yield
     = render 'third_party_scripts'
