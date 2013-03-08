@@ -67,7 +67,11 @@ module MyWinningTrade
     # Redirect to the www version of the domain in production
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
       r301 %r{.*}, "https://www.mywinningtrade.com$&", :if => Proc.new {|rack_env|
-        rack_env['SERVER_NAME'] == "mywinningtrade.com"
+        !rack_env['SERVER_NAME'].match(/www./)
+
+        #rack_env.each { |k,value| value == "mywinningtrade.com" }
+
+
       }
     end
   end
