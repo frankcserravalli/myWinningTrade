@@ -64,11 +64,6 @@ module MyWinningTrade
     config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
 
-    # Redirect to the www version of the domain in production
-    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-      r301 %r{.*}, 'http://mywinningtrade.com$&', :if => Proc.new {|rack_env|
-        rack_env['SERVER_NAME'] != 'www.mywinningtrade.com'
-      }
-    end
+
   end
 end
