@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'rack/rewrite'
+
 require 'rails/all'
 
 if defined?(Bundler)
@@ -63,10 +65,9 @@ module MyWinningTrade
     config.assets.initialize_on_precompile = false
 
     # Redirect to the www version of the domain in production
-    DOMAIN = 'www.mywinningtrade.com'
-    use Rack::Rewrite do
-      r301 %r{.*}, "https://#{DOMAIN}$&", :if => Proc.new {|rack_env|
-        rack_env['SERVER_NAME'] != DOMAIN && ENV['RACK_ENV'] == "production"
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+      r301 %r{.*}, "https://www.mywinningtrade.com$&", :if => Proc.new {|rack_env|
+        rack_env['SERVER_NAME'] == "mywinningtrade.com"
       }
     end
   end
