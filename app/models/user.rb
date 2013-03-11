@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_secure_password
+
   OPENING_BALANCE = 50000
   has_many :orders
   has_many :user_stocks
