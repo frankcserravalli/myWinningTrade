@@ -1,6 +1,12 @@
 class Subscription < ActiveRecord::Base
   attr_accessible #none
 
+  structure do
+    user_id 1
+    customer_id "1234"
+    payment_plan "twelve"
+  end
+
   belongs_to :user
 
   def self.add_customer(user_id, customer_id, payment_plan)

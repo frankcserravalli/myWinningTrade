@@ -13,13 +13,13 @@ describe Subscription do
     describe "add customer" do
       before :each do
         @user = FactoryGirl.create(:user)
-        SubscriptionCustomer.add_customer(@user.id, "asdf", "two")
+        Subscription.add_customer(@user.id, "asdf", "two")
       end
 
       it "should create an user" do
         expect do
-          SubscriptionCustomer.add_customer(@user.id, "asdf", "two")
-        end.to change{ SubscriptionCustomer.count }.by(1)
+          Subscription.add_customer(@user.id, "asdf", "two")
+        end.to change{ Subscription.count }.by(1)
       end
     end
   end

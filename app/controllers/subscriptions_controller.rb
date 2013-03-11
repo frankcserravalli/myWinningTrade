@@ -49,11 +49,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    customer = Subscription.find_by_user_id(params[:user_id])
+    subscription = Subscription.find_by_user_id(params[:user_id])
 
-    the_customer = Stripe::Customer.retrieve(customer.customer_id)
+    the_customer = Stripe::Customer.retrieve(subscription.customer_id)
 
-    if customer and customer.delete and the_customer.cancel_subscription
+    if subscription and subscription.delete and the_customer.cancel_subscription
       current_user.cancel_subscription
 
       redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cancelled.")
@@ -64,11 +64,11 @@ class SubscriptionsController < ApplicationController
 
 
   def update
-    customer = Subscription.find_by_user_id(params[:user_id])
+    subscription = Subscription.find_by_user_id(params[:user_id])
 
-    the_customer = Stripe::Customer.retrieve(customer.customer_id)
+    the_customer = Stripe::Customer.retrieve(subscription.customer_id)
 
-    if customer and the_customer.update_subscription(:plan => params[:payment_plan], :prorate => true)
+    if subscription and the_customer.update_subscription(:plan => params[:payment_plan], :prorate => true)
       redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription updated.")
     else
       redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription cannot be updated. Please contact the website.")
