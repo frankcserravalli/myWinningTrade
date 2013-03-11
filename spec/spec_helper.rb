@@ -16,6 +16,9 @@ VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join('spec', 'responses')
   c.hook_into :fakeweb
   c.ignore_localhost = true
+  c.ignore_request do |request|
+    URI(request.uri).host =~ /stripe/
+  end
 end
 
 module AuthenticationHelper

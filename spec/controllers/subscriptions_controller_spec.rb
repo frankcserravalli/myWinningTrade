@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe SubscriptionsController do
   before do
     @user = authenticate
@@ -52,30 +51,35 @@ describe SubscriptionsController do
   end
 
   context "a bad user" do
-    context "when deleting a subscription"
-    it "should not have an subscription deleted" do
-      expect do
-        delete :destroy, user_id: 88888
-      end.to change{ Subscription.count }.by(0)
-    end
+    context "when deleting a subscription" do
+      before :each do
+        @user1 = FactoryGirl.create(:user)
+        @customer = FactoryGirl.create(:subscription, user_id: @user1.id)
+      end
 
-    it "respond with redirect" do
-      delete :destroy, user_id: 88888
+      it "should not have an subscription deleted" do
+        expect do
+          delete :destroy
+        end.to change{ Subscription.count }.by(0)
+      end
 
-      should respond_with(:redirect)
-    end
+      it "respond with redirect" do
+        delete :destroy
 
-    it "sets the flash" do
-      delete :destroy, user_id: 88888
+        should respond_with(:redirect)
+      end
 
-      should set_the_flash.to "Subscription cannot be cancelled. Please contact the website."
-    end
+      it "sets the flash" do
+        delete :destroy
 
-    it "redirect" do
-      delete :destroy, user_id: 88888
+        should set_the_flash.to "Subscription cannot be cancelled. Please contact the website."
+      end
 
-      should redirect_to(subscriptions_path)
+      it "redirect" do
+        delete :destroy
+
+        should redirect_to(subscriptions_path)
+      end
     end
   end
-
 end

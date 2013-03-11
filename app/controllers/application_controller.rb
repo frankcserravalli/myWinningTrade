@@ -66,6 +66,8 @@ class ApplicationController < ActionController::Base
     if current_user
       @user = current_user
     else
+      #Stop the method here if no params were sent through
+      return if user_id.eql? 0
       @user = User.find(user_id)
     end
 

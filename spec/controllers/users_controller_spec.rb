@@ -165,7 +165,7 @@ describe Api::V1::UsersController do
       end
 
       it "returns with an ios token" do
-        post :authenticate, email: @user.email #, password: @user.password
+        post :authenticate, email: @user.email, password: @user.password
 
         parsed_body = JSON.parse(response.body)
 
@@ -173,15 +173,15 @@ describe Api::V1::UsersController do
       end
 
       it "returns with the signed in user" do
-        post :authenticate, email: @user.email #, password: @user.password
+        post :authenticate, email: @user.email, password: @user.password
 
         parsed_body = JSON.parse(response.body)
 
-        parsed_body["user_id"].should == User.last.id
+        parsed_body["user_id"].should == @user.id
       end
 
       it "returns http success" do
-        post :authenticate, email: @user.email #, password: @user.password
+        post :authenticate, email: @user.email, password: @user.password
         response.should be_success
       end
     end
@@ -244,16 +244,16 @@ describe Api::V1::UsersController do
       end
 
       it "returns http success" do
-        post :portfolio, ios_token: @token
+        post :portfolio, ios_token: @token, user_id: @user.id
         response.should be_success
       end
 
       it "returns with a portfolio" do
-        post :authenticate, user_id: @user.id #, password: @user.password
+        post :portfolio, ios_token: @token, user_id: @user.id #, password: @user.password
 
         parsed_body = JSON.parse(response.body)
 
-        parsed_body.should not_eql? ""
+        parsed_body["current_value"].should == 0
       end
 
     end

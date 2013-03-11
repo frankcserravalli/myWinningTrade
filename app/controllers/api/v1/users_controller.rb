@@ -51,7 +51,7 @@ module Api
             render :json => { :data => @data.to_json, :status => :unauthorized }
           end
         else
-          @user = User.find_by_email(params[:email])#.try(:authenticate, params[:password])
+          @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
           if @user
             render :json => { :user_id => @user.id, :ios_token => scrambled_token }
           else
