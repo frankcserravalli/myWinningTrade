@@ -58,6 +58,49 @@ describe Api::V1::UsersController do
     @token = scramble_token(Time.now, create_random_string)
   end
 
+  describe "post authenticate" do
+    context "with an user who does everything right" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+      end
+
+      it "returns with an ios token" do
+        post :authenticate, email: @user.email, password: @user.password
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body["ios_token"].should.is_a? String
+      end
+
+      it "returns with the signed in user" do
+        post :authenticate, email: @user.email, password: @user.password
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body["user_id"].should == @user.id
+      end
+
+      it "returns http success" do
+        post :authenticate, email: @user.email, password: @user.password
+        response.should be_success
+      end
+    end
+
+    context "with an user who does everything wrong" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+      end
+      it "returns with no ios token" do
+        post :authenticate, email: @user.email
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body.should == {}
+      end
+    end
+  end
+
+
   describe "post create" do
     context "with an user who does everything right" do
       it "returns http success" do
