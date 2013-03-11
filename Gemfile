@@ -57,6 +57,8 @@ gem "migrant", "~> 1.4.0"
 
 gem "squeel", "~> 1.0.15"
 
+gem "bcrypt-ruby", "~> 3.0.1"
+
 group :development do
   gem "letter_opener", "~> 1.0.0"
 
