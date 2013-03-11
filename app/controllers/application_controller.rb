@@ -66,7 +66,6 @@ class ApplicationController < ActionController::Base
     if current_user
       @user = current_user
     else
-      return false if user_id.eql? 0
       @user = User.find(user_id)
     end
 

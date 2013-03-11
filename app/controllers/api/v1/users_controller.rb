@@ -103,10 +103,10 @@ module Api
           if user_stock.any?
             respond_with user_stock
           else
-            respond_with "User does not own stock"
+            render :json => {}
           end
         else
-          respond_with "Stock not yet traded"
+          render :json => {}
         end
       end
 
@@ -117,10 +117,10 @@ module Api
           if user_stock
             respond_with @user.orders.of_users_stock(user_stock.id)
           else
-            respond_with "User has not traded stock"
+            render :json => {}
           end
         else
-          respond_with "Stock not yet traded"
+          render :json => {}
         end
       end
 
