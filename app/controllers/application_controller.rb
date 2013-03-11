@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     if current_user
       @user = current_user
     else
-      @user = User.find_by_id(user_id)
+      @user = User.find(user_id)
     end
 
     return false unless @user

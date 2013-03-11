@@ -74,7 +74,7 @@ module Api
         # load_portfolio takes in params[:user_id] to find the user_id
         load_portfolio(params[:user_id])
         if @portfolio
-          render :json => @portfolio.to_json
+          render :json => {:working => "it works"}
         else
           render :json => {}
         end
