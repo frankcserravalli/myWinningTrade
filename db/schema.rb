@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228225034) do
+ActiveRecord::Schema.define(:version => 20130311182720) do
 
   create_table "date_time_transactions", :force => true do |t|
     t.integer  "user_stock_id"
@@ -95,7 +95,9 @@ ActiveRecord::Schema.define(:version => 20130228225034) do
     t.string  "uid"
     t.decimal "account_balance",                    :precision => 10, :scale => 2, :default => 50000.0
     t.boolean "accepted_terms",                                                    :default => false
+    t.boolean "premium"
     t.boolean "premium_subscription",                                              :default => false
+    t.string  "password_digest"
   end
 
   add_index "users", ["provider"], :name => "index_users_on_provider"
