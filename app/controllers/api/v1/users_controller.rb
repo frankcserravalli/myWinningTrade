@@ -72,7 +72,7 @@ module Api
 
       def portfolio
         # load_portfolio takes in params[:user_id] to find the user_id
-        load_portfolio
+        load_portfolio(params[:user_id])
         if @portfolio
           respond_with @portfolio
         else
