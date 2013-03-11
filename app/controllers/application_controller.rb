@@ -69,6 +69,7 @@ class ApplicationController < ActionController::Base
       @user = User.find(user_id)
     end
 
+    # Stop the method here if we can't find the user
     return false unless @user
 
     @portfolio = {}.tap do |p|
