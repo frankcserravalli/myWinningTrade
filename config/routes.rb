@@ -58,24 +58,24 @@ MyWinningTrade::Application.routes.draw do
       post 'users/authenticate' => 'users#authenticate'
       post 'users/create' => 'users#create'
       delete 'users/destroy' => 'users#destroy'
-      post '/auth/:provider/callback', to: 'social_networks#authenticate'
+      match '/auth/:provider/callback', to: 'social_networks#authenticate'
 
 
       resources :buys, only: :create
       resources :sells, only: :create
       resources :stocks do
         collection do
-          get 'search'
-          get 'details'
+          post 'search'
+          post 'details'
         end
       end
       resources :users do
         collection do
-          get 'pending_date_time_transactions'
-          get 'pending_stop_loss_transactions'
-          get 'portfolio'
-          get 'stock_info'
-          get 'stock_order_history'
+          post 'pending_date_time_transactions'
+          post 'pending_stop_loss_transactions'
+          post 'portfolio'
+          post 'stock_info'
+          post 'stock_order_history'
 
         end
       end

@@ -21,7 +21,7 @@ describe User do
     @user.premium_subscription.should.eql? false
   end
 
-  it { should have_one(:subscription_customer) }
+  it { should have_one(:subscription) }
 
   it { should_not allow_mass_assignment_of(:account_balance) }
 end
