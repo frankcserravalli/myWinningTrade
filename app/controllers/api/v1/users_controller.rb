@@ -71,6 +71,7 @@ module Api
       end
 
       def portfolio
+        # load_portfolio takes in params[:user_id] to find the user_id
         load_portfolio
         if @portfolio
           respond_with @portfolio
