@@ -8,13 +8,15 @@ class User < ActiveRecord::Base
   has_one :subscription_customer
 
   structure do
-  	email			       'developers@platform45.com'#, validates: :presence
-  	name 			       'Joe Bloggs'
-    provider 	       'linkedin', limit: 16, index: true, validates: :presence
-    uid 			       '1234', index: true, validates: :presence
-    account_balance  :decimal, scale: 2, precision: 10, default: 0.0
-    accepted_terms   :boolean, default: false
-    premium_subscription :boolean, default: false
+  	email			            'developers@platform45.com'#, validates: :presence
+  	name 			            'Joe Bloggs'
+    password              'password'
+    password_confirmation 'password'
+    provider 	            'linkedin', limit: 16, index: true, validates: :presence
+    uid 			            '1234', index: true, validates: :presence
+    account_balance       :decimal, scale: 2, precision: 10, default: 0.0
+    accepted_terms        :boolean, default: false
+    premium_subscription  :boolean, default: false
   end
 
   attr_protected :account_balance
@@ -59,12 +61,12 @@ class User < ActiveRecord::Base
   def stock_summary
     user_stocks = self.user_stocks.includes(:stock)
 
+    # This is what is returned at the end of the method, aka @stock_summary
     @stock_summary = {}.tap do |s|
       s[:stocks] = {}
       s[:summary] = {}
       s[:orders] = {}
 
-      # Is total_capital equal to the total amount of money invested?
       total_capital = 0
 
       net_income_before_taxes = 0

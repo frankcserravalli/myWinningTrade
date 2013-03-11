@@ -59,7 +59,7 @@ describe Api::V1::UsersController do
   end
 
   describe "post authenticate" do
-    context "with an user who does everything right" do
+    context "with an user who does everything right and signs in w/o social network" do
       before :each do
         @user = FactoryGirl.create(:user)
       end
@@ -86,7 +86,47 @@ describe Api::V1::UsersController do
       end
     end
 
-    context "with an user who does everything wrong" do
+    context "with an user who does everything wrong and signs in w/o social network" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+      end
+      it "returns with no ios token" do
+        post :authenticate, email: @user.email
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body.should == {}
+      end
+    end
+
+    context "with an user who does everything right and signs in with social network" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+      end
+
+      it "returns with an ios token" do
+        post :authenticate, email: @user.email, uid: @user.uid
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body["ios_token"].should.is_a? String
+      end
+
+      it "returns with the signed in user" do
+        post :authenticate, email: @user.email, uid: @user.uid
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body["user_id"].should == @user.id
+      end
+
+      it "returns http success" do
+        post :authenticate, email: @user.email, uid: @user.uid
+        response.should be_success
+      end
+    end
+
+    context "with an user who does everything wrong and signs in with social network" do
       before :each do
         @user = FactoryGirl.create(:user)
       end

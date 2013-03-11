@@ -22,4 +22,6 @@ describe User do
   end
 
   it { should have_one(:subscription_customer) }
+
+
 end
