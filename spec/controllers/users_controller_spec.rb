@@ -236,5 +236,27 @@ describe Api::V1::UsersController do
       end
     end
   end
+
+  describe "post portfolio" do
+    context "with an user who does everything right" do
+      before :each do
+        @user = FactoryGirl.create(:user)
+      end
+
+      it "returns http success" do
+        post :portfolio, ios_token: @token
+        response.should be_success
+      end
+
+      it "returns with a portfolio" do
+        post :authenticate, user_id: @user.id #, password: @user.password
+
+        parsed_body = JSON.parse(response.body)
+
+        parsed_body.should not_eql? ""
+      end
+
+    end
+  end
 end
 

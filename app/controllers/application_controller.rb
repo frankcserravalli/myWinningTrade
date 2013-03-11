@@ -62,10 +62,11 @@ class ApplicationController < ActionController::Base
     return 
   end
 
-  def load_portfolio(user_id)
+  def load_portfolio(user_id = 0)
     if current_user
       @user = current_user
     else
+      return false if user_id.eql? 0
       @user = User.find(user_id)
     end
 
