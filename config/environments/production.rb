@@ -66,9 +66,11 @@ MyWinningTrade::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Redirect to the www version of the domain in production
+=begin
   config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
     r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
       rack_env['SERVER_NAME'] != 'www.mywinningtrade.com'
     }
   end
+=end
 end
