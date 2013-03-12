@@ -159,43 +159,88 @@ describe Api::V1::UsersController do
   end
 
   describe "post authenticate" do
-    context "with an user who does everything right" do
-      before :each do
-        @user = FactoryGirl.create(:user)
+    context "via a social network" do
+      context "with an user who does everything right" do
+        before :each do
+          @user = FactoryGirl.create(:user)
+        end
+
+        it "returns with an ios token" do
+          request.env['omniauth.auth'] = { :provider => @user.provider, :uid => @user.uid }
+
+          post :authenticate
+
+          parsed_body = JSON.parse(response.body)
+
+          parsed_body["ios_token"].should.is_a? String
+        end
+
+        it "returns with the signed in user" do
+          post :authenticate, email: @user.email, password: @user.password
+
+          parsed_body = JSON.parse(response.body)
+
+          parsed_body["user_id"].should == @user.id
+        end
+
+        it "returns http success" do
+          post :authenticate, email: @user.email, password: @user.password
+          response.should be_success
+        end
       end
 
-      it "returns with an ios token" do
-        post :authenticate, email: @user.email, password: @user.password
+      context "with an user who does everything wrong" do
+        before :each do
+          @user = FactoryGirl.create(:user)
+        end
+        it "returns with no ios token" do
+          post :authenticate, email: @user.email
 
-        parsed_body = JSON.parse(response.body)
+          parsed_body = JSON.parse(response.body)
 
-        parsed_body["ios_token"].should.is_a? String
-      end
-
-      it "returns with the signed in user" do
-        post :authenticate, email: @user.email, password: @user.password
-
-        parsed_body = JSON.parse(response.body)
-
-        parsed_body["user_id"].should == @user.id
-      end
-
-      it "returns http success" do
-        post :authenticate, email: @user.email, password: @user.password
-        response.should be_success
+          parsed_body["ios_token"].should.nil?
+        end
       end
     end
+    context "without a social network" do
+      context "with an user who does everything right" do
+        before :each do
+          @user = FactoryGirl.create(:user)
+        end
 
-    context "with an user who does everything wrong" do
-      before :each do
-        @user = FactoryGirl.create(:user)
+        it "returns with an ios token" do
+          post :authenticate, email: @user.email, password: @user.password
+
+          parsed_body = JSON.parse(response.body)
+
+          parsed_body["ios_token"].should.is_a? String
+        end
+
+        it "returns with the signed in user" do
+          post :authenticate, email: @user.email, password: @user.password
+
+          parsed_body = JSON.parse(response.body)
+
+          parsed_body["user_id"].should == @user.id
+        end
+
+        it "returns http success" do
+          post :authenticate, email: @user.email, password: @user.password
+          response.should be_success
+        end
       end
-      it "returns with no ios token" do
-        post :authenticate, email: @user.email
 
-        parsed_body = JSON.parse(response.body)
+      context "with an user who does everything wrong" do
+        before :each do
+          @user = FactoryGirl.create(:user)
+        end
+        it "returns with no ios token" do
+          post :authenticate, email: @user.email
 
-        parsed_body["ios_token"].should.nil?
+          parsed_body = JSON.parse(response.body)
+
+          parsed_body["ios_token"].should.nil?
+        end
       end
     end
   end

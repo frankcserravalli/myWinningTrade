@@ -45,10 +45,10 @@ module Api
                              :uid => @data_from_soc_network['uid'])
           if @user
             # Signed In, token is sent through because the user is signed in
-            render :json => { :data => @user.to_json, :ios_token => scrambled_token, :status => 200 }
+            render :json => { :data => @user.to_json, :ios_token => scrambled_token }
           else
             # User doesn't exist, redirect to sign up page with info grabbed from facebook oauth
-            render :json => { :data => @data.to_json, :status => :unauthorized }
+            render :json => @data.to_json
           end
         else
           @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
