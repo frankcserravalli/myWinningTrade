@@ -1,5 +1,6 @@
 class ShortSellBorrowsController < ApplicationController
   before_filter {|controller| controller.when_to_execute_order("short_sell_borrow") }
+
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 

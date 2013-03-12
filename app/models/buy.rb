@@ -9,7 +9,6 @@ class Buy < Order
   attr_accessor :flash_cover
 
   def place!(stock)
-
     if stock.current_price.to_f <= 0.0
       self.errors.add(:base, "Cannot purchase a stock that has zero value.")
       return false
