@@ -9,12 +9,12 @@ handler do |job|
 end
 
 every(60.seconds, 'evaluating stop loss orders...'){
-  Delayed::Job.enqueue
+  #Delayed::Job.enqueue
   StopLossTransaction.evaluate_pending_orders
-  #Rails.logger.add("cron_check date time working, Log Date: #{DateTime.now}")
+  Rails.logger.add("cron_check date time working, Log Date: #{DateTime.now}")
 }
 every(60.seconds, 'evaluating date time orders...'){
-  Delayed::Job.enqueue
+  #Delayed::Job.enqueue
   DateTimeTransaction.evaluate_pending_orders
-  #Rails.logger.add("cron_check date time working, Log Date: #{DateTime.now}")
+  Rails.logger.add("cron_check date time working, Log Date: #{DateTime.now}")
 }
