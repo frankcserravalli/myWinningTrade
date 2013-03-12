@@ -42,13 +42,13 @@ module Api
           @data_from_soc_network = request.env['omniauth.auth']
 
           @user = User.where(:provider => @data_from_soc_network['provider'],
-                             :uid => @data_from_soc_network['uid'])
+                             :uid => @data_from_soc_network['uid']).first
           if @user
             # Signed In, token is sent through because the user is signed in
-            render :json => { :data => @user.to_json, :ios_token => scrambled_token }
+            render :json => { :user_id => @user.id, :ios_token => scrambled_token }
           else
             # User doesn't exist, redirect to sign up page with info grabbed from facebook oauth
-            render :json => @data.to_json
+            render :json => @data_from_soc_network.to_json
           end
         else
           @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])

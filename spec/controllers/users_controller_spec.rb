@@ -163,28 +163,23 @@ describe Api::V1::UsersController do
       context "with an user who does everything right" do
         before :each do
           @user = FactoryGirl.create(:user)
+          request.env['omniauth.auth'] = { :provider => @user.provider, :uid => @user.uid }
+          post :authenticate, email: ""
         end
 
         it "returns with an ios token" do
-          request.env['omniauth.auth'] = { :provider => @user.provider, :uid => @user.uid }
-
-          post :authenticate
-
           parsed_body = JSON.parse(response.body)
 
-          parsed_body["ios_token"].should.is_a? String
+          parsed_body.should.is_a? String
         end
 
         it "returns with the signed in user" do
-          post :authenticate, email: @user.email, password: @user.password
-
           parsed_body = JSON.parse(response.body)
 
-          parsed_body["user_id"].should == @user.id
+          parsed_body.should == @user.id
         end
 
         it "returns http success" do
-          post :authenticate, email: @user.email, password: @user.password
           response.should be_success
         end
       end
@@ -192,9 +187,12 @@ describe Api::V1::UsersController do
       context "with an user who does everything wrong" do
         before :each do
           @user = FactoryGirl.create(:user)
+
+          request.env['omniauth.auth'] = { :provider => "not the real provider", :uid => @user.uid }
         end
         it "returns with no ios token" do
-          post :authenticate, email: @user.email
+
+          post :authenticate
 
           parsed_body = JSON.parse(response.body)
 
@@ -202,6 +200,7 @@ describe Api::V1::UsersController do
         end
       end
     end
+
     context "without a social network" do
       context "with an user who does everything right" do
         before :each do

@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :user do
-    # TODO: Migrant
     email            'developers@example.com'
     name             'Joe Bloggs'
     provider         'developer'
