@@ -127,7 +127,7 @@ gem "koala", :git => "git://github.com/arsduo/koala.git"
 
 gem "linkedin", "~> 0.3.7"
 
-gem "clockwork", "~> 0.4.1"
+gem "clockwork", "~> 0.5.0"
 
 gem "high_voltage", "~> 1.2.1"
 

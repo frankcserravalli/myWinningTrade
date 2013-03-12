@@ -57,8 +57,8 @@ GEM
       railties (>= 3.0)
       sass-rails (>= 3.2)
     chunky_png (1.2.7)
-    clockwork (0.4.1)
-      tzinfo
+    clockwork (0.5.0)
+      tzinfo (~> 0.3.35)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -343,7 +343,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 2.0.2)
   chosen-rails (~> 0.9.11.2)
-  clockwork (~> 0.4.1)
+  clockwork (~> 0.5.0)
   coffee-rails (~> 3.2.2)
   compass-rails (~> 1.0.3)
   compass_twitter_bootstrap (~> 2.2.2.2)
