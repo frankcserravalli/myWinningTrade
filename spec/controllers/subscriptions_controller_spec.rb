@@ -53,19 +53,20 @@ describe SubscriptionsController do
   context "a bad user" do
     context "when deleting a subscription" do
       before do
+        @user1 = FactoryGirl.create(:user)
+        @stripe_token = "tok_1RoU8AGFjdOeqU"
         customer = Stripe::Customer.create(
-            :card => params[:stripe_card_token],
-            :description => current_user.email,
-            :plan => params[:payment_plan],
-            :email => current_user.email
+            :card => @stripe_token,
+            :description => @user1.email,
+            :plan => "two",
+            :email => @user1.email
         )
 
         # Add Subscription Customer into DB
-        Subscription.add_customer(current_user.id, customer.id, params[:payment_plan])
+        Subscription.add_customer(@user1.id, customer.id, "two")
       end
 
       before :each do
-        @user1 = FactoryGirl.create(:user)
         @customer = FactoryGirl.create(:subscription, user_id: @user1.id)
       end
 

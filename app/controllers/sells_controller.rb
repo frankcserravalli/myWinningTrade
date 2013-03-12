@@ -1,6 +1,14 @@
 class SellsController < ApplicationController
-  before_filter(:except => [:callback_facebook, :callback_linkedin]) {|controller| controller.when_to_execute_order('sell') }
+
+  # We don't want any orders executed when an user is visiting the linkedin or fb page when sigining in,
+  # hence why we take it out
+  before_filter(:except => [:callback_facebook, :callback_linkedin]) {|controller| controller.when_to_execute_order('Sell') }
+  #before_filter :when_to_execute_order, only: :create
+
+
   def create
+    when_to_execute_order('sell')
+
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
     @order = SellTransaction.new(params[:sell].merge(user: current_user))
@@ -14,9 +22,6 @@ class SellsController < ApplicationController
         @stock_id = UserStock.find(@order.user_stock)
 
         @stock = Stock.find_by_symbol(params[:stock_id])
-
-        # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
-        stock_name = @stock.name.gsub!(/\s/, "%20")
 
         redirect_to("http://twitter.com/share?text=I%20just%20sold%20" + @order.volume.to_s + "%20shares%20of%20" + @stock.symbol + "%20at%20$" + @buy_order.price.to_s + "%20per%20share.%20Learn%20to%20beat%20the%20market%20and%20out-trade%20your%20friends%20at%20mywinningtrade.com.")
       else

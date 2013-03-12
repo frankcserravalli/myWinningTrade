@@ -26,18 +26,18 @@ class ApplicationController < ActionController::Base
     redirect_to terms_path and return unless current_user && current_user.accepted_terms?
   end
 
-  # api authentication
+  # Api authentication
   def valid_user_id
     @user = User.find_by_id(params[:user_id])
     return @user if @user
     respond_with "Invalid user"
   end
 
-  # inside buys, sells, shortsellborrows controllers
+  # Inside buys, sells, and shortsellborrows controllers
   def when_to_execute_order(type)
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
-    @order_type = type.capitalize
-    @order_type = "ShortSellBorrow" if @order_type == "Short_sell_borrow"
+
+    @order_type = type
 
     case params[type][:when]
     when "At Market"
