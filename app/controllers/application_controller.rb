@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     respond_with "Invalid user"
   end
 
-  # Inside buys, sells, and shortsellborrows controllers
+  # Inside buys, sells, and short_sell_borrows controllers
   def when_to_execute_order(type)
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
@@ -59,7 +59,6 @@ class ApplicationController < ActionController::Base
       flash[:alert] = @order.errors.values.join if !@order.errors.blank?
     end
     redirect_to(stock_path(params[:stock_id]))
-    return 
   end
 
   def load_portfolio(user_id = 0)

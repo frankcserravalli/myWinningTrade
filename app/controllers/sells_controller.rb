@@ -2,7 +2,7 @@ class SellsController < ApplicationController
 
   # We don't want any orders executed when an user is visiting the linkedin or fb page when sigining in,
   # hence why we take it out
-  before_filter(:except => [:callback_facebook, :callback_linkedin]) {|controller| controller.when_to_execute_order('Sell') }
+  before_filter(:except => [:callback_facebook, :callback_linkedin]) {|controller| controller.when_to_execute_order('sell') }
   #before_filter :when_to_execute_order, only: :create
 
 
