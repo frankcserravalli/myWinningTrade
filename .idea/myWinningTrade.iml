@@ -25,12 +25,12 @@
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.2.12, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.3.3, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v3.0.2, RVM: ruby-1.9.3-p385) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt-ruby (v3.0.1, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bourne (v1.1.2, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.4, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.2.4, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="capybara (v2.0.2, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="chunky_png (v1.2.7, RVM: ruby-1.9.3-p385) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="clockwork (v0.4.1, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v3.2.2, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, RVM: ruby-1.9.3-p385) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="compass (v0.12.2, RVM: ruby-1.9.3-p385) [gem]" level="application" />
