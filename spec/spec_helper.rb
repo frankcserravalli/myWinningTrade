@@ -17,7 +17,7 @@ VCR.configure do |c|
   c.hook_into :fakeweb
   c.ignore_localhost = true
   c.ignore_request do |request|
-    URI(request.uri).host =~ /stripe/
+    URI(request.uri).host.match(/yahoo/) or URI(request.uri).host.match(/stripe/)
   end
 end
 

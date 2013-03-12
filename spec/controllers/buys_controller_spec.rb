@@ -7,12 +7,11 @@ describe BuysController do
 
   it "should create a buy for a user" do
     VCR.use_cassette('quote') do
-      post :create, stock_id: 'AAPL', buy: {
-        volume: 2
-      }
+      post :create, stock_id: 'AAPL', buy: { volume: 2, when: "At Market" }
     end
 
     @user.user_stocks.collect { |s| s.stock.symbol }.should include('AAPL')
+
     response.should redirect_to(stock_path('AAPL'))
   end
 

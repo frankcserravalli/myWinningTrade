@@ -2,440 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://chartapi.finance.yahoo.com/instrument/1.0/aapl/chartdata;type=quote;range=1d/json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - ! '*/*; q=0.5, application/xml'
-      accept-encoding:
-      - gzip, deflate
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      date:
-      - Fri, 27 Jul 2012 14:34:33 GMT
-      p3p:
-      - policyref="http://info.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
-        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
-        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV"
-      cache-control:
-      - public
-      expires:
-      - Fri, 27 Jul 2012 14:35:33 GMT
-      last-modified:
-      - Fri, 27 Jul 2012 14:34:00 GMT
-      connection:
-      - close
-      transfer-encoding:
-      - chunked
-      content-type:
-      - text/javascript; charset=utf-8
-    body:
-      encoding: US-ASCII
-      string: !ruby/string
-        str: ! " { \"meta\" :\n {\n  \"uri\" :\"/instrument/1.0/aapl/chartdata;type=quote;range=1d/json\",\n
-          \ \"ticker\" : \"aapl\",\n  \"unit\" : \"MIN\",\n  \"timezone\" : \"EDT\",\n
-          \ \"currency\" : \"USD\",\n  \"gmtoffset\" : -14400,\n  \"previous_close\"
-          : 574.8800\n }\n ,\n \"Timestamp\" : {\"min\" :1343395800,\"max\" :1343419200
-          }\n ,\n \"labels\" : [1343397600,1343401200,1343404800,1343408400,1343412000,1343415600,1343419200
-          ]\n ,\n \"ranges\" : {\"close\" : {\"min\" :571.9300,\"max\" :575.1780 },\"high\"
-          : {\"min\" :572.2900,\"max\" :575.2500 },\"low\" : {\"min\" :571.6220,\"max\"
-          :574.7400 },\"open\" : {\"min\" :571.8800,\"max\" :575.2400 },\"volume\"
-          : {\"min\" :500,\"max\" :325200 } }\n ,\n \"series\" : [\n { \"Timestamp\"
-          :1343395858,\"close\" :573.6500,\"high\" :575.2500,\"low\" :573.6500,\"open\"
-          :575.2400,\"volume\" :325200 } \n, { \"Timestamp\" :1343395919,\"close\"
-          :573.7600,\"high\" :574.0600,\"low\" :573.6100,\"open\" :573.6200,\"volume\"
-          :75900 } \n, { \"Timestamp\" :1343395976,\"close\" :573.6600,\"high\" :573.8300,\"low\"
-          :573.5000,\"open\" :573.7100,\"volume\" :64800 } \n, { \"Timestamp\" :1343396038,\"close\"
-          :573.8810,\"high\" :574.4000,\"low\" :573.5000,\"open\" :573.7000,\"volume\"
-          :49500 } \n, { \"Timestamp\" :1343396098,\"close\" :574.1900,\"high\" :574.2200,\"low\"
-          :573.6000,\"open\" :573.9100,\"volume\" :40000 } \n, { \"Timestamp\" :1343396159,\"close\"
-          :574.8100,\"high\" :574.9900,\"low\" :573.9800,\"open\" :574.0375,\"volume\"
-          :48000 } \n, { \"Timestamp\" :1343396218,\"close\" :575.1780,\"high\" :575.2500,\"low\"
-          :574.7400,\"open\" :574.8399,\"volume\" :70000 } \n, { \"Timestamp\" :1343396279,\"close\"
-          :573.6000,\"high\" :575.1600,\"low\" :573.4100,\"open\" :575.1600,\"volume\"
-          :76500 } \n, { \"Timestamp\" :1343396339,\"close\" :573.2400,\"high\" :573.5500,\"low\"
-          :572.8600,\"open\" :573.5400,\"volume\" :102300 } \n, { \"Timestamp\" :1343396399,\"close\"
-          :573.1200,\"high\" :573.5680,\"low\" :573.1200,\"open\" :573.2500,\"volume\"
-          :72900 } \n, { \"Timestamp\" :1343396457,\"close\" :572.8200,\"high\" :573.1265,\"low\"
-          :572.5000,\"open\" :573.1000,\"volume\" :71800 } \n, { \"Timestamp\" :1343396519,\"close\"
-          :572.3400,\"high\" :572.8500,\"low\" :572.2300,\"open\" :572.7900,\"volume\"
-          :72200 } \n, { \"Timestamp\" :1343396575,\"close\" :572.6800,\"high\" :572.7100,\"low\"
-          :572.0000,\"open\" :572.2600,\"volume\" :85200 } \n, { \"Timestamp\" :1343396636,\"close\"
-          :572.5700,\"high\" :572.7200,\"low\" :572.2200,\"open\" :572.6800,\"volume\"
-          :49900 } \n, { \"Timestamp\" :1343396695,\"close\" :572.4000,\"high\" :572.6500,\"low\"
-          :572.2800,\"open\" :572.6500,\"volume\" :46200 } \n, { \"Timestamp\" :1343396757,\"close\"
-          :572.4700,\"high\" :572.9500,\"low\" :571.8200,\"open\" :572.3011,\"volume\"
-          :102600 } \n, { \"Timestamp\" :1343396819,\"close\" :572.6900,\"high\" :573.2400,\"low\"
-          :572.5600,\"open\" :572.5600,\"volume\" :70100 } \n, { \"Timestamp\" :1343396878,\"close\"
-          :571.9902,\"high\" :572.5800,\"low\" :571.8200,\"open\" :572.5800,\"volume\"
-          :65200 } \n, { \"Timestamp\" :1343396937,\"close\" :572.2475,\"high\" :572.4100,\"low\"
-          :571.6500,\"open\" :571.8800,\"volume\" :53900 } \n, { \"Timestamp\" :1343396997,\"close\"
-          :572.0600,\"high\" :572.3300,\"low\" :571.7500,\"open\" :572.3300,\"volume\"
-          :48800 } \n, { \"Timestamp\" :1343397058,\"close\" :571.9300,\"high\" :572.2900,\"low\"
-          :571.7700,\"open\" :572.2400,\"volume\" :36800 } \n, { \"Timestamp\" :1343397118,\"close\"
-          :572.1300,\"high\" :572.5000,\"low\" :571.6220,\"open\" :571.9600,\"volume\"
-          :46500 } \n, { \"Timestamp\" :1343397178,\"close\" :573.0000,\"high\" :573.1299,\"low\"
-          :572.2000,\"open\" :572.2285,\"volume\" :57000 } \n, { \"Timestamp\" :1343397229,\"close\"
-          :572.4100,\"high\" :572.9400,\"low\" :572.1600,\"open\" :572.8800,\"volume\"
-          :35700 } \n, { \"Timestamp\" :1343397298,\"close\" :572.7000,\"high\" :572.9100,\"low\"
-          :572.2700,\"open\" :572.4100,\"volume\" :20100 } \n, { \"Timestamp\" :1343397359,\"close\"
-          :572.8100,\"high\" :573.3600,\"low\" :572.7418,\"open\" :572.8100,\"volume\"
-          :46200 } \n, { \"Timestamp\" :1343397419,\"close\" :572.4600,\"high\" :572.7300,\"low\"
-          :572.2400,\"open\" :572.6600,\"volume\" :31200 } \n, { \"Timestamp\" :1343397475,\"close\"
-          :572.6800,\"high\" :572.8500,\"low\" :572.4500,\"open\" :572.5600,\"volume\"
-          :7900 } \n, { \"Timestamp\" :1343397538,\"close\" :574.0620,\"high\" :574.1700,\"low\"
-          :572.7600,\"open\" :572.7600,\"volume\" :81600 } \n, { \"Timestamp\" :1343397598,\"close\"
-          :573.2500,\"high\" :573.9000,\"low\" :573.2500,\"open\" :573.8100,\"volume\"
-          :45900 } \n, { \"Timestamp\" :1343397658,\"close\" :573.1400,\"high\" :573.5000,\"low\"
-          :573.0300,\"open\" :573.3500,\"volume\" :33400 } \n, { \"Timestamp\" :1343397719,\"close\"
-          :573.5500,\"high\" :573.5700,\"low\" :573.0000,\"open\" :573.0000,\"volume\"
-          :38400 } \n, { \"Timestamp\" :1343397776,\"close\" :573.7900,\"high\" :573.9900,\"low\"
-          :573.3800,\"open\" :573.4000,\"volume\" :30800 } \n, { \"Timestamp\" :1343397835,\"close\"
-          :573.4310,\"high\" :573.8989,\"low\" :573.4310,\"open\" :573.8000,\"volume\"
-          :27800 } \n, { \"Timestamp\" :1343397898,\"close\" :573.6100,\"high\" :573.7800,\"low\"
-          :573.4300,\"open\" :573.4500,\"volume\" :20500 } \n, { \"Timestamp\" :1343397959,\"close\"
-          :573.5600,\"high\" :574.2000,\"low\" :573.5600,\"open\" :573.7000,\"volume\"
-          :42800 } \n, { \"Timestamp\" :1343398018,\"close\" :573.5450,\"high\" :573.5600,\"low\"
-          :573.2500,\"open\" :573.5500,\"volume\" :24200 } \n, { \"Timestamp\" :1343398078,\"close\"
-          :573.8000,\"high\" :573.9600,\"low\" :573.5700,\"open\" :573.5700,\"volume\"
-          :29500 } \n, { \"Timestamp\" :1343398137,\"close\" :573.3800,\"high\" :573.8800,\"low\"
-          :573.3300,\"open\" :573.7700,\"volume\" :31100 } \n, { \"Timestamp\" :1343398198,\"close\"
-          :573.0000,\"high\" :573.5000,\"low\" :572.8700,\"open\" :573.5000,\"volume\"
-          :45900 } \n, { \"Timestamp\" :1343398255,\"close\" :573.5300,\"high\" :573.5300,\"low\"
-          :573.1300,\"open\" :573.1300,\"volume\" :28000 } \n, { \"Timestamp\" :1343398317,\"close\"
-          :573.2100,\"high\" :573.6500,\"low\" :573.0500,\"open\" :573.4200,\"volume\"
-          :38300 } \n, { \"Timestamp\" :1343398377,\"close\" :573.3500,\"high\" :573.5600,\"low\"
-          :573.2000,\"open\" :573.3800,\"volume\" :13600 } \n, { \"Timestamp\" :1343398431,\"close\"
-          :573.2300,\"high\" :573.3760,\"low\" :573.2300,\"open\" :573.3600,\"volume\"
-          :7700 } \n, { \"Timestamp\" :1343398498,\"close\" :573.1350,\"high\" :573.2900,\"low\"
-          :573.0100,\"open\" :573.2900,\"volume\" :34700 } \n, { \"Timestamp\" :1343398558,\"close\"
-          :573.1950,\"high\" :573.4390,\"low\" :573.1700,\"open\" :573.2200,\"volume\"
-          :20900 } \n, { \"Timestamp\" :1343398604,\"close\" :573.3400,\"high\" :573.3400,\"low\"
-          :573.2450,\"open\" :573.3000,\"volume\" :12600 } \n, { \"Timestamp\" :1343398677,\"close\"
-          :573.3700,\"high\" :573.4900,\"low\" :573.0300,\"open\" :573.2200,\"volume\"
-          :45400 } \n, { \"Timestamp\" :1343398734,\"close\" :573.2250,\"high\" :573.3600,\"low\"
-          :573.1700,\"open\" :573.2800,\"volume\" :15800 } \n, { \"Timestamp\" :1343398748,\"close\"
-          :573.1200,\"high\" :573.1200,\"low\" :573.1200,\"open\" :573.1200,\"volume\"
-          :1600 } \n, { \"Timestamp\" :1343398799,\"close\" :572.6200,\"high\" :573.1900,\"low\"
-          :572.5700,\"open\" :573.1800,\"volume\" :35600 } \n, { \"Timestamp\" :1343398858,\"close\"
-          :573.1300,\"high\" :573.4200,\"low\" :572.6100,\"open\" :572.6120,\"volume\"
-          :29200 } \n, { \"Timestamp\" :1343398919,\"close\" :573.3800,\"high\" :573.4400,\"low\"
-          :573.1100,\"open\" :573.1300,\"volume\" :37700 } \n, { \"Timestamp\" :1343398979,\"close\"
-          :573.3900,\"high\" :573.5800,\"low\" :573.3000,\"open\" :573.3900,\"volume\"
-          :37900 } \n, { \"Timestamp\" :1343399038,\"close\" :572.6020,\"high\" :573.4000,\"low\"
-          :572.5100,\"open\" :573.2900,\"volume\" :29200 } \n, { \"Timestamp\" :1343399098,\"close\"
-          :572.7200,\"high\" :572.8850,\"low\" :572.3700,\"open\" :572.6200,\"volume\"
-          :28600 } \n, { \"Timestamp\" :1343399159,\"close\" :573.0000,\"high\" :573.2500,\"low\"
-          :572.7200,\"open\" :572.7201,\"volume\" :38100 } \n, { \"Timestamp\" :1343399219,\"close\"
-          :572.9200,\"high\" :573.1500,\"low\" :572.8100,\"open\" :573.0000,\"volume\"
-          :14000 } \n, { \"Timestamp\" :1343399279,\"close\" :572.8700,\"high\" :573.1400,\"low\"
-          :572.8200,\"open\" :572.9300,\"volume\" :12800 } \n, { \"Timestamp\" :1343399339,\"close\"
-          :572.5300,\"high\" :573.1300,\"low\" :572.4200,\"open\" :572.8200,\"volume\"
-          :21200 } \n, { \"Timestamp\" :1343399399,\"close\" :572.3400,\"high\" :572.7500,\"low\"
-          :572.2700,\"open\" :572.6340,\"volume\" :21000 } \n, { \"Timestamp\" :1343399457,\"close\"
-          :572.5500,\"high\" :572.7900,\"low\" :572.3300,\"open\" :572.4000,\"volume\"
-          :18400 } \n, { \"Timestamp\" :1343399518,\"close\" :572.9880,\"high\" :572.9880,\"low\"
-          :572.5200,\"open\" :572.5200,\"volume\" :17400 } \n, { \"Timestamp\" :1343399579,\"close\"
-          :572.6700,\"high\" :573.1900,\"low\" :572.6500,\"open\" :573.0400,\"volume\"
-          :25000 } \n, { \"Timestamp\" :1343399639,\"close\" :572.6700,\"high\" :572.9200,\"low\"
-          :572.5100,\"open\" :572.7500,\"volume\" :15400 } \n, { \"Timestamp\" :1343399640,\"close\"
-          :572.5000,\"high\" :572.5000,\"low\" :572.5000,\"open\" :572.5000,\"volume\"
-          :500 } \n\n]\n} "
-        net_http_res: &70111956849940 !ruby/object:Net::HTTPOK
-          http_version: '1.0'
-          code: '200'
-          message: OK
-          header:
-            date:
-            - Fri, 27 Jul 2012 14:34:33 GMT
-            p3p:
-            - policyref="http://info.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM
-              DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
-              IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV"
-            cache-control:
-            - public
-            expires:
-            - Fri, 27 Jul 2012 14:35:33 GMT
-            last-modified:
-            - Fri, 27 Jul 2012 14:34:00 GMT
-            connection:
-            - close
-            transfer-encoding:
-            - chunked
-            content-type:
-            - text/javascript; charset=utf-8
-          body: !ruby/string
-            str: ! " { \"meta\" :\n {\n  \"uri\" :\"/instrument/1.0/aapl/chartdata;type=quote;range=1d/json\",\n
-              \ \"ticker\" : \"aapl\",\n  \"unit\" : \"MIN\",\n  \"timezone\" : \"EDT\",\n
-              \ \"currency\" : \"USD\",\n  \"gmtoffset\" : -14400,\n  \"previous_close\"
-              : 574.8800\n }\n ,\n \"Timestamp\" : {\"min\" :1343395800,\"max\" :1343419200
-              }\n ,\n \"labels\" : [1343397600,1343401200,1343404800,1343408400,1343412000,1343415600,1343419200
-              ]\n ,\n \"ranges\" : {\"close\" : {\"min\" :571.9300,\"max\" :575.1780
-              },\"high\" : {\"min\" :572.2900,\"max\" :575.2500 },\"low\" : {\"min\"
-              :571.6220,\"max\" :574.7400 },\"open\" : {\"min\" :571.8800,\"max\"
-              :575.2400 },\"volume\" : {\"min\" :500,\"max\" :325200 } }\n ,\n \"series\"
-              : [\n { \"Timestamp\" :1343395858,\"close\" :573.6500,\"high\" :575.2500,\"low\"
-              :573.6500,\"open\" :575.2400,\"volume\" :325200 } \n, { \"Timestamp\"
-              :1343395919,\"close\" :573.7600,\"high\" :574.0600,\"low\" :573.6100,\"open\"
-              :573.6200,\"volume\" :75900 } \n, { \"Timestamp\" :1343395976,\"close\"
-              :573.6600,\"high\" :573.8300,\"low\" :573.5000,\"open\" :573.7100,\"volume\"
-              :64800 } \n, { \"Timestamp\" :1343396038,\"close\" :573.8810,\"high\"
-              :574.4000,\"low\" :573.5000,\"open\" :573.7000,\"volume\" :49500 } \n,
-              { \"Timestamp\" :1343396098,\"close\" :574.1900,\"high\" :574.2200,\"low\"
-              :573.6000,\"open\" :573.9100,\"volume\" :40000 } \n, { \"Timestamp\"
-              :1343396159,\"close\" :574.8100,\"high\" :574.9900,\"low\" :573.9800,\"open\"
-              :574.0375,\"volume\" :48000 } \n, { \"Timestamp\" :1343396218,\"close\"
-              :575.1780,\"high\" :575.2500,\"low\" :574.7400,\"open\" :574.8399,\"volume\"
-              :70000 } \n, { \"Timestamp\" :1343396279,\"close\" :573.6000,\"high\"
-              :575.1600,\"low\" :573.4100,\"open\" :575.1600,\"volume\" :76500 } \n,
-              { \"Timestamp\" :1343396339,\"close\" :573.2400,\"high\" :573.5500,\"low\"
-              :572.8600,\"open\" :573.5400,\"volume\" :102300 } \n, { \"Timestamp\"
-              :1343396399,\"close\" :573.1200,\"high\" :573.5680,\"low\" :573.1200,\"open\"
-              :573.2500,\"volume\" :72900 } \n, { \"Timestamp\" :1343396457,\"close\"
-              :572.8200,\"high\" :573.1265,\"low\" :572.5000,\"open\" :573.1000,\"volume\"
-              :71800 } \n, { \"Timestamp\" :1343396519,\"close\" :572.3400,\"high\"
-              :572.8500,\"low\" :572.2300,\"open\" :572.7900,\"volume\" :72200 } \n,
-              { \"Timestamp\" :1343396575,\"close\" :572.6800,\"high\" :572.7100,\"low\"
-              :572.0000,\"open\" :572.2600,\"volume\" :85200 } \n, { \"Timestamp\"
-              :1343396636,\"close\" :572.5700,\"high\" :572.7200,\"low\" :572.2200,\"open\"
-              :572.6800,\"volume\" :49900 } \n, { \"Timestamp\" :1343396695,\"close\"
-              :572.4000,\"high\" :572.6500,\"low\" :572.2800,\"open\" :572.6500,\"volume\"
-              :46200 } \n, { \"Timestamp\" :1343396757,\"close\" :572.4700,\"high\"
-              :572.9500,\"low\" :571.8200,\"open\" :572.3011,\"volume\" :102600 }
-              \n, { \"Timestamp\" :1343396819,\"close\" :572.6900,\"high\" :573.2400,\"low\"
-              :572.5600,\"open\" :572.5600,\"volume\" :70100 } \n, { \"Timestamp\"
-              :1343396878,\"close\" :571.9902,\"high\" :572.5800,\"low\" :571.8200,\"open\"
-              :572.5800,\"volume\" :65200 } \n, { \"Timestamp\" :1343396937,\"close\"
-              :572.2475,\"high\" :572.4100,\"low\" :571.6500,\"open\" :571.8800,\"volume\"
-              :53900 } \n, { \"Timestamp\" :1343396997,\"close\" :572.0600,\"high\"
-              :572.3300,\"low\" :571.7500,\"open\" :572.3300,\"volume\" :48800 } \n,
-              { \"Timestamp\" :1343397058,\"close\" :571.9300,\"high\" :572.2900,\"low\"
-              :571.7700,\"open\" :572.2400,\"volume\" :36800 } \n, { \"Timestamp\"
-              :1343397118,\"close\" :572.1300,\"high\" :572.5000,\"low\" :571.6220,\"open\"
-              :571.9600,\"volume\" :46500 } \n, { \"Timestamp\" :1343397178,\"close\"
-              :573.0000,\"high\" :573.1299,\"low\" :572.2000,\"open\" :572.2285,\"volume\"
-              :57000 } \n, { \"Timestamp\" :1343397229,\"close\" :572.4100,\"high\"
-              :572.9400,\"low\" :572.1600,\"open\" :572.8800,\"volume\" :35700 } \n,
-              { \"Timestamp\" :1343397298,\"close\" :572.7000,\"high\" :572.9100,\"low\"
-              :572.2700,\"open\" :572.4100,\"volume\" :20100 } \n, { \"Timestamp\"
-              :1343397359,\"close\" :572.8100,\"high\" :573.3600,\"low\" :572.7418,\"open\"
-              :572.8100,\"volume\" :46200 } \n, { \"Timestamp\" :1343397419,\"close\"
-              :572.4600,\"high\" :572.7300,\"low\" :572.2400,\"open\" :572.6600,\"volume\"
-              :31200 } \n, { \"Timestamp\" :1343397475,\"close\" :572.6800,\"high\"
-              :572.8500,\"low\" :572.4500,\"open\" :572.5600,\"volume\" :7900 } \n,
-              { \"Timestamp\" :1343397538,\"close\" :574.0620,\"high\" :574.1700,\"low\"
-              :572.7600,\"open\" :572.7600,\"volume\" :81600 } \n, { \"Timestamp\"
-              :1343397598,\"close\" :573.2500,\"high\" :573.9000,\"low\" :573.2500,\"open\"
-              :573.8100,\"volume\" :45900 } \n, { \"Timestamp\" :1343397658,\"close\"
-              :573.1400,\"high\" :573.5000,\"low\" :573.0300,\"open\" :573.3500,\"volume\"
-              :33400 } \n, { \"Timestamp\" :1343397719,\"close\" :573.5500,\"high\"
-              :573.5700,\"low\" :573.0000,\"open\" :573.0000,\"volume\" :38400 } \n,
-              { \"Timestamp\" :1343397776,\"close\" :573.7900,\"high\" :573.9900,\"low\"
-              :573.3800,\"open\" :573.4000,\"volume\" :30800 } \n, { \"Timestamp\"
-              :1343397835,\"close\" :573.4310,\"high\" :573.8989,\"low\" :573.4310,\"open\"
-              :573.8000,\"volume\" :27800 } \n, { \"Timestamp\" :1343397898,\"close\"
-              :573.6100,\"high\" :573.7800,\"low\" :573.4300,\"open\" :573.4500,\"volume\"
-              :20500 } \n, { \"Timestamp\" :1343397959,\"close\" :573.5600,\"high\"
-              :574.2000,\"low\" :573.5600,\"open\" :573.7000,\"volume\" :42800 } \n,
-              { \"Timestamp\" :1343398018,\"close\" :573.5450,\"high\" :573.5600,\"low\"
-              :573.2500,\"open\" :573.5500,\"volume\" :24200 } \n, { \"Timestamp\"
-              :1343398078,\"close\" :573.8000,\"high\" :573.9600,\"low\" :573.5700,\"open\"
-              :573.5700,\"volume\" :29500 } \n, { \"Timestamp\" :1343398137,\"close\"
-              :573.3800,\"high\" :573.8800,\"low\" :573.3300,\"open\" :573.7700,\"volume\"
-              :31100 } \n, { \"Timestamp\" :1343398198,\"close\" :573.0000,\"high\"
-              :573.5000,\"low\" :572.8700,\"open\" :573.5000,\"volume\" :45900 } \n,
-              { \"Timestamp\" :1343398255,\"close\" :573.5300,\"high\" :573.5300,\"low\"
-              :573.1300,\"open\" :573.1300,\"volume\" :28000 } \n, { \"Timestamp\"
-              :1343398317,\"close\" :573.2100,\"high\" :573.6500,\"low\" :573.0500,\"open\"
-              :573.4200,\"volume\" :38300 } \n, { \"Timestamp\" :1343398377,\"close\"
-              :573.3500,\"high\" :573.5600,\"low\" :573.2000,\"open\" :573.3800,\"volume\"
-              :13600 } \n, { \"Timestamp\" :1343398431,\"close\" :573.2300,\"high\"
-              :573.3760,\"low\" :573.2300,\"open\" :573.3600,\"volume\" :7700 } \n,
-              { \"Timestamp\" :1343398498,\"close\" :573.1350,\"high\" :573.2900,\"low\"
-              :573.0100,\"open\" :573.2900,\"volume\" :34700 } \n, { \"Timestamp\"
-              :1343398558,\"close\" :573.1950,\"high\" :573.4390,\"low\" :573.1700,\"open\"
-              :573.2200,\"volume\" :20900 } \n, { \"Timestamp\" :1343398604,\"close\"
-              :573.3400,\"high\" :573.3400,\"low\" :573.2450,\"open\" :573.3000,\"volume\"
-              :12600 } \n, { \"Timestamp\" :1343398677,\"close\" :573.3700,\"high\"
-              :573.4900,\"low\" :573.0300,\"open\" :573.2200,\"volume\" :45400 } \n,
-              { \"Timestamp\" :1343398734,\"close\" :573.2250,\"high\" :573.3600,\"low\"
-              :573.1700,\"open\" :573.2800,\"volume\" :15800 } \n, { \"Timestamp\"
-              :1343398748,\"close\" :573.1200,\"high\" :573.1200,\"low\" :573.1200,\"open\"
-              :573.1200,\"volume\" :1600 } \n, { \"Timestamp\" :1343398799,\"close\"
-              :572.6200,\"high\" :573.1900,\"low\" :572.5700,\"open\" :573.1800,\"volume\"
-              :35600 } \n, { \"Timestamp\" :1343398858,\"close\" :573.1300,\"high\"
-              :573.4200,\"low\" :572.6100,\"open\" :572.6120,\"volume\" :29200 } \n,
-              { \"Timestamp\" :1343398919,\"close\" :573.3800,\"high\" :573.4400,\"low\"
-              :573.1100,\"open\" :573.1300,\"volume\" :37700 } \n, { \"Timestamp\"
-              :1343398979,\"close\" :573.3900,\"high\" :573.5800,\"low\" :573.3000,\"open\"
-              :573.3900,\"volume\" :37900 } \n, { \"Timestamp\" :1343399038,\"close\"
-              :572.6020,\"high\" :573.4000,\"low\" :572.5100,\"open\" :573.2900,\"volume\"
-              :29200 } \n, { \"Timestamp\" :1343399098,\"close\" :572.7200,\"high\"
-              :572.8850,\"low\" :572.3700,\"open\" :572.6200,\"volume\" :28600 } \n,
-              { \"Timestamp\" :1343399159,\"close\" :573.0000,\"high\" :573.2500,\"low\"
-              :572.7200,\"open\" :572.7201,\"volume\" :38100 } \n, { \"Timestamp\"
-              :1343399219,\"close\" :572.9200,\"high\" :573.1500,\"low\" :572.8100,\"open\"
-              :573.0000,\"volume\" :14000 } \n, { \"Timestamp\" :1343399279,\"close\"
-              :572.8700,\"high\" :573.1400,\"low\" :572.8200,\"open\" :572.9300,\"volume\"
-              :12800 } \n, { \"Timestamp\" :1343399339,\"close\" :572.5300,\"high\"
-              :573.1300,\"low\" :572.4200,\"open\" :572.8200,\"volume\" :21200 } \n,
-              { \"Timestamp\" :1343399399,\"close\" :572.3400,\"high\" :572.7500,\"low\"
-              :572.2700,\"open\" :572.6340,\"volume\" :21000 } \n, { \"Timestamp\"
-              :1343399457,\"close\" :572.5500,\"high\" :572.7900,\"low\" :572.3300,\"open\"
-              :572.4000,\"volume\" :18400 } \n, { \"Timestamp\" :1343399518,\"close\"
-              :572.9880,\"high\" :572.9880,\"low\" :572.5200,\"open\" :572.5200,\"volume\"
-              :17400 } \n, { \"Timestamp\" :1343399579,\"close\" :572.6700,\"high\"
-              :573.1900,\"low\" :572.6500,\"open\" :573.0400,\"volume\" :25000 } \n,
-              { \"Timestamp\" :1343399639,\"close\" :572.6700,\"high\" :572.9200,\"low\"
-              :572.5100,\"open\" :572.7500,\"volume\" :15400 } \n, { \"Timestamp\"
-              :1343399640,\"close\" :572.5000,\"high\" :572.5000,\"low\" :572.5000,\"open\"
-              :572.5000,\"volume\" :500 } \n\n]\n} "
-            net_http_res: *70111956849940
-            args: &70111957718500
-              :method: :get
-              :url: http://chartapi.finance.yahoo.com/instrument/1.0/aapl/chartdata;type=quote;range=1d/json
-              :headers: {}
-            code: 200
-          read: true
-          __read_body_previously_called: true
-        args: *70111957718500
-        code: 200
-    http_version: '1.1'
-  recorded_at: Fri, 27 Jul 2012 14:34:33 GMT
-- request:
-    method: get
-    uri: http://query.yahooapis.com/v1/yql?q=SELECT%20Close%2C%20Date%20FROM%20yahoo.finance.historicaldata%20WHERE%20symbol%20%3D%20%27AAPL%27%0A%09%09%09%09%09%09%09%20%09%20%09%09%09%09%09%20%20%20AND%20startDate%20%3D%20%272012-01-27%27%0A%09%09%09%09%09%09%09%09%09%20%09%09%09%09%09%20AND%20endDate%20%20%20%3D%20%272012-07-26%27&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - ! '*/*'
-      user-agent:
-      - OAuth gem v0.4.6
-      authorization:
-      - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
-        oauth_nonce="M9xJlXucKZaMNak10uwKD7q3pcijgqjMlAFjVArjt4", oauth_signature="iz%2FAt2zcX9RgGBEKf3zGS7lG6ww%3D",
-        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1343399673", oauth_version="1.0"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      x-yql-host:
-      - engine6.yql.ac4.yahoo.com
-      access-control-allow-origin:
-      - ! '*'
-      cache-control:
-      - no-cache
-      content-type:
-      - application/json;charset=utf-8
-      vary:
-      - Accept-Encoding
-      date:
-      - Fri, 27 Jul 2012 14:34:34 GMT
-      server:
-      - YTS/1.20.10
-      age:
-      - '2'
-      connection:
-      - close
-    body:
-      encoding: US-ASCII
-      string: ! '{"query":{"count":126,"created":"2012-07-27T14:34:35Z","lang":"en-US","results":{"quote":[{"Close":"574.88","Date":"2012-07-26"},{"Close":"574.97","Date":"2012-07-25"},{"Close":"600.92","Date":"2012-07-24"},{"Close":"603.83","Date":"2012-07-23"},{"Close":"604.30","Date":"2012-07-20"},{"Close":"614.32","Date":"2012-07-19"},{"Close":"606.26","Date":"2012-07-18"},{"Close":"606.94","Date":"2012-07-17"},{"Close":"606.91","Date":"2012-07-16"},{"Close":"604.97","Date":"2012-07-13"},{"Close":"598.90","Date":"2012-07-12"},{"Close":"604.43","Date":"2012-07-11"},{"Close":"608.21","Date":"2012-07-10"},{"Close":"613.89","Date":"2012-07-09"},{"Close":"605.88","Date":"2012-07-06"},{"Close":"609.94","Date":"2012-07-05"},{"Close":"599.41","Date":"2012-07-03"},{"Close":"592.52","Date":"2012-07-02"},{"Close":"584.00","Date":"2012-06-29"},{"Close":"569.05","Date":"2012-06-28"},{"Close":"574.50","Date":"2012-06-27"},{"Close":"572.03","Date":"2012-06-26"},{"Close":"570.77","Date":"2012-06-25"},{"Close":"582.10","Date":"2012-06-22"},{"Close":"577.67","Date":"2012-06-21"},{"Close":"585.74","Date":"2012-06-20"},{"Close":"587.41","Date":"2012-06-19"},{"Close":"585.78","Date":"2012-06-18"},{"Close":"574.13","Date":"2012-06-15"},{"Close":"571.53","Date":"2012-06-14"},{"Close":"572.16","Date":"2012-06-13"},{"Close":"576.16","Date":"2012-06-12"},{"Close":"571.17","Date":"2012-06-11"},{"Close":"580.32","Date":"2012-06-08"},{"Close":"571.72","Date":"2012-06-07"},{"Close":"571.46","Date":"2012-06-06"},{"Close":"562.83","Date":"2012-06-05"},{"Close":"564.29","Date":"2012-06-04"},{"Close":"560.99","Date":"2012-06-01"},{"Close":"577.73","Date":"2012-05-31"},{"Close":"579.17","Date":"2012-05-30"},{"Close":"572.27","Date":"2012-05-29"},{"Close":"562.29","Date":"2012-05-25"},{"Close":"565.32","Date":"2012-05-24"},{"Close":"570.56","Date":"2012-05-23"},{"Close":"556.97","Date":"2012-05-22"},{"Close":"561.28","Date":"2012-05-21"},{"Close":"530.38","Date":"2012-05-18"},{"Close":"530.12","Date":"2012-05-17"},{"Close":"546.08","Date":"2012-05-16"},{"Close":"553.17","Date":"2012-05-15"},{"Close":"558.22","Date":"2012-05-14"},{"Close":"566.71","Date":"2012-05-11"},{"Close":"570.52","Date":"2012-05-10"},{"Close":"569.18","Date":"2012-05-09"},{"Close":"568.18","Date":"2012-05-08"},{"Close":"569.48","Date":"2012-05-07"},{"Close":"565.25","Date":"2012-05-04"},{"Close":"581.82","Date":"2012-05-03"},{"Close":"585.98","Date":"2012-05-02"},{"Close":"582.13","Date":"2012-05-01"},{"Close":"583.98","Date":"2012-04-30"},{"Close":"603.00","Date":"2012-04-27"},{"Close":"607.70","Date":"2012-04-26"},{"Close":"610.00","Date":"2012-04-25"},{"Close":"560.28","Date":"2012-04-24"},{"Close":"571.70","Date":"2012-04-23"},{"Close":"572.98","Date":"2012-04-20"},{"Close":"587.44","Date":"2012-04-19"},{"Close":"608.34","Date":"2012-04-18"},{"Close":"609.70","Date":"2012-04-17"},{"Close":"580.13","Date":"2012-04-16"},{"Close":"605.23","Date":"2012-04-13"},{"Close":"622.77","Date":"2012-04-12"},{"Close":"626.20","Date":"2012-04-11"},{"Close":"628.44","Date":"2012-04-10"},{"Close":"636.23","Date":"2012-04-09"},{"Close":"633.68","Date":"2012-04-05"},{"Close":"624.31","Date":"2012-04-04"},{"Close":"629.32","Date":"2012-04-03"},{"Close":"618.63","Date":"2012-04-02"},{"Close":"599.55","Date":"2012-03-30"},{"Close":"609.86","Date":"2012-03-29"},{"Close":"617.62","Date":"2012-03-28"},{"Close":"614.48","Date":"2012-03-27"},{"Close":"606.98","Date":"2012-03-26"},{"Close":"596.05","Date":"2012-03-23"},{"Close":"599.34","Date":"2012-03-22"},{"Close":"602.50","Date":"2012-03-21"},{"Close":"605.96","Date":"2012-03-20"},{"Close":"601.10","Date":"2012-03-19"},{"Close":"585.57","Date":"2012-03-16"},{"Close":"585.56","Date":"2012-03-15"},{"Close":"589.58","Date":"2012-03-14"},{"Close":"568.10","Date":"2012-03-13"},{"Close":"552.00","Date":"2012-03-12"},{"Close":"545.17","Date":"2012-03-09"},{"Close":"541.99","Date":"2012-03-08"},{"Close":"530.69","Date":"2012-03-07"},{"Close":"530.26","Date":"2012-03-06"},{"Close":"533.16","Date":"2012-03-05"},{"Close":"545.18","Date":"2012-03-02"},{"Close":"544.47","Date":"2012-03-01"},{"Close":"542.44","Date":"2012-02-29"},{"Close":"535.41","Date":"2012-02-28"},{"Close":"525.76","Date":"2012-02-27"},{"Close":"522.41","Date":"2012-02-24"},{"Close":"516.39","Date":"2012-02-23"},{"Close":"513.04","Date":"2012-02-22"},{"Close":"514.85","Date":"2012-02-21"},{"Close":"502.12","Date":"2012-02-17"},{"Close":"502.21","Date":"2012-02-16"},{"Close":"497.67","Date":"2012-02-15"},{"Close":"509.46","Date":"2012-02-14"},{"Close":"502.60","Date":"2012-02-13"},{"Close":"493.42","Date":"2012-02-10"},{"Close":"493.17","Date":"2012-02-09"},{"Close":"476.68","Date":"2012-02-08"},{"Close":"468.83","Date":"2012-02-07"},{"Close":"463.97","Date":"2012-02-06"},{"Close":"459.68","Date":"2012-02-03"},{"Close":"455.12","Date":"2012-02-02"},{"Close":"456.19","Date":"2012-02-01"},{"Close":"456.48","Date":"2012-01-31"},{"Close":"453.01","Date":"2012-01-30"},{"Close":"447.28","Date":"2012-01-27"}]}}}'
-    http_version: '1.1'
-  recorded_at: Fri, 27 Jul 2012 14:34:35 GMT
-- request:
-    method: get
-    uri: http://query.yahooapis.com/v1/yql?q=SELECT%20Name%2C%20Symbol%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%3D%27AAPL%27&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json&diagnostics=false
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - ! '*/*'
-      user-agent:
-      - OAuth gem v0.4.6
-      authorization:
-      - OAuth oauth_consumer_key="dj0yJmk9a2lQQ2VGU1VhS3FGJmQ9WVdrOWMzaEdWMEl6TTJNbWNHbzlNVEk1TVRRMU5qRTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
-        oauth_nonce="eqGIYT9KxxE8Ng3g8XIocGUTEtS5ikRgBYeLSWmgk", oauth_signature="7N%2FW3vL75f3chYoiLwID7iiDv0E%3D",
-        oauth_signature_method="HMAC-SHA1", oauth_timestamp="1343399675", oauth_version="1.0"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      x-yql-host:
-      - engine7.yql.ac4.yahoo.com
-      access-control-allow-origin:
-      - ! '*'
-      cache-control:
-      - no-cache
-      content-type:
-      - application/json;charset=utf-8
-      vary:
-      - Accept-Encoding
-      date:
-      - Fri, 27 Jul 2012 14:34:36 GMT
-      server:
-      - YTS/1.20.10
-      age:
-      - '0'
-      connection:
-      - close
-    body:
-      encoding: US-ASCII
-      string: ! '{"query":{"count":1,"created":"2012-07-27T14:34:36Z","lang":"en-US","results":{"quote":{"Name":"Apple
-        Inc.","Symbol":"AAPL"}}}}'
-    http_version: '1.1'
-  recorded_at: Fri, 27 Jul 2012 14:34:36 GMT
-- request:
-    method: get
-    uri: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=nsab2mwopvyext1e7e8e9rm4m3d1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - ! '*/*; q=0.5, application/xml'
-      accept-encoding:
-      - gzip, deflate
-      user-agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      date:
-      - Mon, 30 Jul 2012 14:27:45 GMT
-      p3p:
-      - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
-        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
-        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
-      cache-control:
-      - private
-      connection:
-      - close
-      transfer-encoding:
-      - chunked
-      content-type:
-      - application/octet-stream
-    body:
-      encoding: US-ASCII
-      string: ! "\"Apple Inc.\",\"AAPL\",599.26,599.26,\"587.82 - 599.44\",\"353.02
-        - 644.00\",591.00,585.16,4556744,N/A,42.548,\"NasdaqNM\",\"10:12am\",44.26,52.50,15.26,13.75,554.203,589.525,\"7/30/2012\"\r\n"
-    http_version: '1.1'
-  recorded_at: Mon, 30 Jul 2012 14:27:40 GMT
-- request:
-    method: get
     uri: http://www.google.com/finance/historical?q=AAPL&startdate=2012-01-27&enddate=2012-07-27&output=csv
     body:
       encoding: US-ASCII
@@ -614,6 +180,781 @@ http_interactions:
   recorded_at: Thu, 02 Aug 2012 09:07:47 GMT
 - request:
     method: get
+    uri: http://www.google.com/finance/historical?q=AAPL&startdate=2012-09-12&enddate=2013-03-12&output=csv
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/vnd.ms-excel
+      set-cookie:
+      - SC=RV=:ED=us; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/finance; domain=.google.com
+      - PREF=ID=ac647b410a1f9ca7:TM=1363116768:LM=1363116769:S=4Ree3jFLx1z4293A; expires=Thu,
+        12-Mar-2015 19:32:49 GMT; path=/; domain=.google.com
+      - NID=67=X5qUzNXnIkOisaxEI2RQJmRCTrPFFQ8kBRmuTtIVXooSTn00hOqLmQdWLzvmqZToaT9pDdnRJP9eml2I9SzRDiSvUtWG8WIMNTJzTMNLnBAim9nC5QL1OveU9xCER_LF;Domain=.google.com;Path=/;Expires=Wed,
+        11-Sep-2013 19:32:49 GMT;HttpOnly
+      date:
+      - Tue, 12 Mar 2013 19:32:49 GMT
+      expires:
+      - Tue, 12 Mar 2013 19:32:49 GMT
+      cache-control:
+      - private, max-age=0
+      content-disposition:
+      - attachment; filename="aapl.csv"
+      x-content-type-options:
+      - nosniff
+      transfer-encoding:
+      - chunked
+      p3p:
+      - CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657
+        for more info."
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RGF0ZSxPcGVuLEhpZ2gsTG93LENsb3NlLFZvbHVtZQoxMS1NYXItMTMs
+        NDI5Ljc1LDQzOS4wMSw0MjUuMTQsNDM3Ljg3LDE2OTM2OTA4CjgtTWFyLTEz
+        LDQyOS44MCw0MzUuNDMsNDI4LjYxLDQzMS43MiwxMzk4NTU2OQo3LU1hci0x
+        Myw0MjQuNTAsNDMyLjAxLDQyMS4wNiw0MzAuNTgsMTY3MzExMTgKNi1NYXIt
+        MTMsNDM0LjUxLDQzNS4yNSw0MjQuNDMsNDI1LjY2LDE2NDM3NDY3CjUtTWFy
+        LTEzLDQyMS40OCw0MzUuMTksNDIwLjc1LDQzMS4xNCwyMjgwMTAwNgo0LU1h
+        ci0xMyw0MjcuODAsNDI4LjIwLDQxOS4wMCw0MjAuMDUsMjA4MTIwNTcKMS1N
+        YXItMTMsNDM4LjAwLDQzOC4xOCw0MjkuOTgsNDMwLjQ3LDE5NzMwMjU2CjI4
+        LUZlYi0xMyw0NDQuMDUsNDQ3Ljg3LDQ0MS40MCw0NDEuNDAsMTE1MTgzOTEK
+        MjctRmViLTEzLDQ0OC40Myw0NTIuNDQsNDQwLjY1LDQ0NC41NywyMDk3Njcw
+        NAoyNi1GZWItMTMsNDQzLjgyLDQ1MS41NCw0MzcuNjYsNDQ4Ljk3LDE3OTEw
+        NTgyCjI1LUZlYi0xMyw0NTMuODUsNDU1LjEyLDQ0Mi41Nyw0NDIuODAsMTMz
+        MDYzNTIKMjItRmViLTEzLDQ0OS4yNSw0NTEuNjAsNDQ2LjYwLDQ1MC44MSwx
+        MTgwOTA5MgoyMS1GZWItMTMsNDQ2LjAwLDQ0OS4xNyw0NDIuODIsNDQ2LjA2
+        LDE1OTcwNzQwCjIwLUZlYi0xMyw0NTcuNjksNDU3LjY5LDQ0OC44MCw0NDgu
+        ODUsMTcwMTA2OTgKMTktRmViLTEzLDQ2MS4xMCw0NjIuNzMsNDUzLjg1LDQ1
+        OS45OSwxNTU2MzQ1OQoxNS1GZWItMTMsNDY4Ljg1LDQ3MC4xNiw0NTkuOTIs
+        NDYwLjE2LDEzOTk3MzExCjE0LUZlYi0xMyw0NjQuNTIsNDcxLjY0LDQ2NC4w
+        Miw0NjYuNTksMTI2OTY2NDMKMTMtRmViLTEzLDQ2Ny4yMSw0NzMuNjQsNDYz
+        LjIyLDQ2Ny4wMSwxNjk3MTYwMwoxMi1GZWItMTMsNDc5LjUxLDQ4Mi4zOCw0
+        NjcuNzQsNDY3LjkwLDIxNzUxODE2CjExLUZlYi0xMyw0NzYuNTAsNDg0Ljk0
+        LDQ3My4yNSw0NzkuOTMsMTg0Nzk3ODgKOC1GZWItMTMsNDc0LjAwLDQ3OC44
+        MSw0NjguMjUsNDc0Ljk4LDIyNjEyNzEyCjctRmViLTEzLDQ2My4yNSw0NzAu
+        MDAsNDU0LjEyLDQ2OC4yMiwyNTE2MzU4Mgo2LUZlYi0xMyw0NTYuNDcsNDY2
+        LjUwLDQ1Mi41OCw0NTcuMzUsMjEyMDM3MTYKNS1GZWItMTMsNDQ0LjA1LDQ1
+        OS43NCw0NDIuMjIsNDU3Ljg0LDIwNDc2NjQ4CjQtRmViLTEzLDQ1My45MSw0
+        NTUuOTQsNDQyLjAwLDQ0Mi4zMiwxNzAzOTgyMgoxLUZlYi0xMyw0NTkuMTEs
+        NDU5LjQ4LDQ0OC4zNSw0NTMuNjIsMTkyNjY3MjcKMzEtSmFuLTEzLDQ1Ni45
+        OCw0NTkuMjgsNDU0Ljk4LDQ1NS40OSwxMTQwNDc0NQozMC1KYW4tMTMsNDU3
+        LjAwLDQ2Mi42MCw0NTQuNTAsNDU2LjgzLDE0ODk4MzMxCjI5LUphbi0xMyw0
+        NTguNTAsNDYwLjIwLDQ1Mi4xMiw0NTguMjcsMjAzOTU0MzEKMjgtSmFuLTEz
+        LDQzNy44Miw0NTMuMjEsNDM1Ljg2LDQ0OS44MywyODA1NDEzMwoyNS1KYW4t
+        MTMsNDUxLjY5LDQ1Ni4yMyw0MzUuMDAsNDM5Ljg4LDQzMTQxOTI5CjI0LUph
+        bi0xMyw0NjAuMDAsNDY1LjczLDQ1MC4yNSw0NTAuNTAsNTIxNzMyNzkKMjMt
+        SmFuLTEzLDUwOC44MSw1MTQuOTksNTA0Ljc3LDUxNC4wMCwzMDc2Nzk3OQoy
+        Mi1KYW4tMTMsNTA0LjU2LDUwNy44OCw0OTYuNjMsNTA0Ljc3LDE2NDgzNzM5
+        CjE4LUphbi0xMyw0OTguNTIsNTAyLjIyLDQ5Ni40MCw1MDAuMDAsMTY4OTgx
+        ODEKMTctSmFuLTEzLDUxMC4zMSw1MTAuNzUsNTAyLjAzLDUwMi42OCwxNjIw
+        MTc5NwoxNi1KYW4tMTMsNDk0LjY0LDUwOS40NCw0OTIuNTAsNTA2LjA5LDI0
+        NjcxNDM1CjE1LUphbi0xMyw0OTguMzAsNDk4Ljk5LDQ4My4zOCw0ODUuOTIs
+        MzEzMTMyNzYKMTQtSmFuLTEzLDUwMi42OCw1MDcuNTAsNDk4LjUxLDUwMS43
+        NSwyNjIyMDYyOAoxMS1KYW4tMTMsNTIxLjAwLDUyNS4zMiw1MTkuMDIsNTIw
+        LjMwLDEyNTI2OTYzCjEwLUphbi0xMyw1MjguNTUsNTI4LjcyLDUxNS41Miw1
+        MjMuNTEsMjE0NjkzMjgKOS1KYW4tMTMsNTIyLjUwLDUyNS4wMSw1MTUuOTks
+        NTE3LjEwLDE0NTU3MTM3CjgtSmFuLTEzLDUyOS4yMSw1MzEuODksNTIxLjI1
+        LDUyNS4zMSwxNjM4MjM5Mwo3LUphbi0xMyw1MjIuMDAsNTI5LjMwLDUxNS4y
+        MCw1MjMuOTAsMTcyOTExNjgKNC1KYW4tMTMsNTM2Ljk2LDUzOC42Myw1MjUu
+        ODMsNTI3LjAwLDIxMjI1OTgwCjMtSmFuLTEzLDU0Ny44OCw1NDkuNjcsNTQx
+        LjAwLDU0Mi4xMCwxMjYwNTg1MAoyLUphbi0xMyw1NTMuODIsNTU1LjAwLDU0
+        MS42Myw1NDkuMDMsMjAwMTc4MzgKMzEtRGVjLTEyLDUxMC41Myw1MzUuNDAs
+        NTA5LjAwLDUzMi4xNywyMzU1MzI1NQoyOC1EZWMtMTIsNTEwLjI5LDUxNC40
+        OCw1MDguMTIsNTA5LjU5LDEyNjUyNzQ5CjI3LURlYy0xMiw1MTMuNTQsNTE2
+        LjI1LDUwNC42Niw1MTUuMDYsMTYyNTQyNDAKMjYtRGVjLTEyLDUxOS4wMCw1
+        MTkuNDYsNTExLjEyLDUxMy4wMCwxMDgwMTI5MAoyNC1EZWMtMTIsNTIwLjM1
+        LDUyNC4yNSw1MTguNzEsNTIwLjE3LDYyNzY3MTEKMjEtRGVjLTEyLDUxMi40
+        Nyw1MTkuNjcsNTEwLjI0LDUxOS4zMywyMTMwNDIyMgoyMC1EZWMtMTIsNTMw
+        LjAwLDUzMC4yMCw1MTguODgsNTIxLjczLDE3MjAzMTE0CjE5LURlYy0xMiw1
+        MzEuNDcsNTMzLjcwLDUyNS41MCw1MjYuMzEsMTYwNDg2MzIKMTgtRGVjLTEy
+        LDUyNS4wMCw1MzQuOTAsNTIwLjI1LDUzMy45MCwyMjM0NTI4OQoxNy1EZWMt
+        MTIsNTA4LjkzLDUyMC4wMCw1MDEuMjMsNTE4LjgzLDI3MTA1MTQ2CjE0LURl
+        Yy0xMiw1MTQuNzUsNTE4LjEzLDUwNS41OCw1MDkuNzksMzYwNTYzNTcKMTMt
+        RGVjLTEyLDUzMS4xNSw1MzcuNjQsNTI1LjgwLDUyOS42OSwyMjMzMDY2MQox
+        Mi1EZWMtMTIsNTQ3Ljc3LDU0OC4wMCw1MzYuMjcsNTM5LjAwLDE3Mzk3NTkw
+        CjExLURlYy0xMiw1MzkuNzcsNTQ5LjU2LDUzNy4zNyw1NDEuMzksMjExNTUx
+        MjkKMTAtRGVjLTEyLDUyNS4wMCw1MzguNTEsNTIxLjU4LDUyOS44MiwyMjUx
+        NzIyNQo3LURlYy0xMiw1NTMuNDAsNTU1LjIwLDUzMC4wMCw1MzMuMjUsMjgx
+        MzQ1NDIKNi1EZWMtMTIsNTI4Ljk0LDU1My4zMSw1MTguNjMsNTQ3LjI0LDQy
+        MDQzMTEzCjUtRGVjLTEyLDU2OC45MSw1NjkuMjUsNTM4Ljc3LDUzOC43OSwz
+        NzMwODQ3OQo0LURlYy0xMiw1ODEuODAsNTgxLjgwLDU3Mi4xMyw1NzUuODUs
+        MTk5MjYwNTYKMy1EZWMtMTIsNTkzLjY1LDU5NC41OSw1ODUuNTAsNTg2LjE5
+        LDEzMDA5ODcxCjMwLU5vdi0xMiw1ODYuNzksNTg4LjQwLDU4Mi42OCw1ODUu
+        MjgsMTM5NzQ5OTgKMjktTm92LTEyLDU5MC4yMiw1OTQuMjUsNTg1LjI1LDU4
+        OS4zNiwxODM4MjA3NQoyOC1Ob3YtMTIsNTc3LjI3LDU4NS44MCw1NzIuMjYs
+        NTgyLjk0LDE4NjA5MjgzCjI3LU5vdi0xMiw1ODkuNTUsNTkwLjQyLDU4MC4x
+        MCw1ODQuNzgsMTkwNDY5MjIKMjYtTm92LTEyLDU3NS45MCw1OTAuMDAsNTcz
+        LjcxLDU4OS41MywyMjUyMDYzMwoyMy1Ob3YtMTIsNTY3LjE3LDU3Mi4wMCw1
+        NjIuNjAsNTcxLjUwLDk3NDM3OTcKMjEtTm92LTEyLDU2NC4yNSw1NjcuMzcs
+        NTU2LjYwLDU2MS43MCwxMzMyOTUzNwoyMC1Ob3YtMTIsNTcxLjkxLDU3MS45
+        NSw1NTQuNTgsNTYwLjkxLDIyOTU1NDA4CjE5LU5vdi0xMiw1NDAuNzEsNTY3
+        LjUwLDUzOS44OCw1NjUuNzMsMjkzOTg5OTUKMTYtTm92LTEyLDUyNS4yMCw1
+        MzAuMDAsNTA1Ljc1LDUyNy42OCw0NTI0NjEwOQoxNS1Ob3YtMTIsNTM3LjUz
+        LDUzOS41MCw1MjIuNjIsNTI1LjYyLDI4MjExMDU1CjE0LU5vdi0xMiw1NDUu
+        NTAsNTQ3LjQ1LDUzNi4xOCw1MzYuODgsMTcwNDE3MTEKMTMtTm92LTEyLDUz
+        OC45MSw1NTAuNDgsNTM2LjM2LDU0Mi45MCwxOTA0MzIzMAoxMi1Ob3YtMTIs
+        NTU0LjE1LDU1NC41MCw1MzguNjUsNTQyLjgzLDE4NDIxNDk3CjktTm92LTEy
+        LDU0MC40Miw1NTQuODgsNTMzLjcyLDU0Ny4wNiwzMzIxMDkyOAo4LU5vdi0x
+        Miw1NjAuNjMsNTYyLjIzLDUzNS4yOSw1MzcuNzUsMzc3MTk0NzcKNy1Ob3Yt
+        MTIsNTczLjg0LDU3NC41NCw1NTUuNzUsNTU4LjAwLDI4MzQ0NTk4CjYtTm92
+        LTEyLDU5MC4yMyw1OTAuNzQsNTgwLjA5LDU4Mi44NSwxMzM4OTg2Mwo1LU5v
+        di0xMiw1ODMuNTIsNTg3Ljc3LDU3Ny42MCw1ODQuNjIsMTg5MDMwMzIKMi1O
+        b3YtMTIsNTk1Ljg5LDU5Ni45NSw1NzQuNzUsNTc2LjgwLDIxNDA2MTUyCjEt
+        Tm92LTEyLDU5OC4yMiw2MDMuMDAsNTk0LjE3LDU5Ni41NCwxMjkwODg0Ngoz
+        MS1PY3QtMTIsNTk0Ljg4LDYwMS45Niw1ODcuNzAsNTk1LjMyLDE4MjE0MzUz
+        CjI2LU9jdC0xMiw2MDkuNDMsNjE0LjAwLDU5MS4wMCw2MDQuMDAsMzYzNzIy
+        NjIKMjUtT2N0LTEyLDYyMC4wMCw2MjIuMDAsNjA1LjU1LDYwOS41NCwyMzQ0
+        MDE5OQoyNC1PY3QtMTIsNjIxLjQ0LDYyNi41NSw2MTAuNjQsNjE2LjgzLDE5
+        OTQ3Mzk2CjIzLU9jdC0xMiw2MzEuMDAsNjMzLjkwLDYxMS43MCw2MTMuMzYs
+        MjUyNTUxNzEKMjItT2N0LTEyLDYxMi40Miw2MzUuMzgsNjEwLjc2LDYzNC4w
+        MywxOTUyNjA1NgoxOS1PY3QtMTIsNjMxLjA1LDYzMS43Nyw2MDkuNjIsNjA5
+        Ljg0LDI2NTc0NDMxCjE4LU9jdC0xMiw2MzkuNTksNjQyLjA2LDYzMC4wMCw2
+        MzIuNjQsMTcwMjIyMTYKMTctT2N0LTEyLDY0OC44Nyw2NTIuNzksNjQ0LjAw
+        LDY0NC42MSwxMzkwMzk0OQoxNi1PY3QtMTIsNjM1LjM3LDY1MC4zMCw2MzEu
+        MDAsNjQ5Ljc5LDE5NjM0Njg4CjE1LU9jdC0xMiw2MzIuMzUsNjM1LjEzLDYy
+        My44NSw2MzQuNzYsMTU0NDY0MjMKMTItT2N0LTEyLDYyOS41Niw2MzUuMzgs
+        NjI1LjMwLDYyOS43MSwxNjQyOTA5NQoxMS1PY3QtMTIsNjQ2LjUwLDY0Ny4y
+        MCw2MjguMTAsNjI4LjEwLDE5NTAyODcxCjEwLU9jdC0xMiw2MzkuNzQsNjQ0
+        Ljk4LDYzNy4wMCw2NDAuOTEsMTgyMjY5OTAKOS1PY3QtMTIsNjM4LjY1LDY0
+        MC40OSw2MjMuNTUsNjM1Ljg1LDI5OTQ5ODQxCjgtT2N0LTEyLDY0Ni44OCw2
+        NDcuNTYsNjM2LjExLDYzOC4xNywyMjc4NDk4MQo1LU9jdC0xMiw2NjUuMjAs
+        NjY2LjAwLDY1MS4yOCw2NTIuNTksMjEyMTQ0NDQKNC1PY3QtMTIsNjcxLjI1
+        LDY3NC4yNSw2NjUuNTUsNjY2LjgwLDEzMjQxMjU5CjMtT2N0LTEyLDY2NC44
+        Niw2NzEuODYsNjYyLjYzLDY3MS40NSwxNTE1MjgxNwoyLU9jdC0xMiw2NjEu
+        ODEsNjY2LjM1LDY1MC42NSw2NjEuMzEsMjI0MjgyMzQKMS1PY3QtMTIsNjcx
+        LjE2LDY3Ni43NSw2NTYuNTAsNjU5LjM5LDE5NDEzNzAzCjI4LVNlcC0xMiw2
+        NzguNzUsNjgxLjExLDY2Ni43NSw2NjcuMTAsMTkxMTEwMTEKMjctU2VwLTEy
+        LDY2NC4yOSw2ODIuMTcsNjYwLjM1LDY4MS4zMiwyMTIxNzQzMwoyNi1TZXAt
+        MTIsNjY4Ljc0LDY3Mi42OSw2NjEuMjAsNjY1LjE4LDIwNTk2NTU4CjI1LVNl
+        cC0xMiw2ODguMjYsNjkyLjc4LDY3My4wMCw2NzMuNTQsMTg1MjcyMDcKMjQt
+        U2VwLTEyLDY4Ni44Niw2OTUuMTIsNjgzLjAwLDY5MC43OSwyMjg0ODAyOAoy
+        MS1TZXAtMTIsNzAyLjQxLDcwNS4wNyw2OTkuMzYsNzAwLjEwLDIwNDEzODY4
+        CjIwLVNlcC0xMiw2OTkuMTYsNzAwLjA2LDY5My42Miw2OTguNzAsMTIwMjAy
+        NzYKMTktU2VwLTEyLDcwMC4yNiw3MDMuOTksNjk5LjU3LDcwMi4xMCwxMTY3
+        MzU3MgoxOC1TZXAtMTIsNjk5Ljg4LDcwMi4zMyw2OTYuNDIsNzAxLjkxLDEz
+        MzM5MzgxCjE3LVNlcC0xMiw2OTkuMzUsNjk5LjgwLDY5NC42MSw2OTkuNzgs
+        MTQyMTUzNTcKMTQtU2VwLTEyLDY4OS45Niw2OTYuOTgsNjg3Ljg5LDY5MS4y
+        OCwyMTQ0NTQ3MwoxMy1TZXAtMTIsNjc3LjM3LDY4NS41MCw2NzQuNzcsNjgy
+        Ljk4LDIxMzY5OTQ3CjEyLVNlcC0xMiw2NjYuODUsNjY5LjkwLDY1Ni4wMCw2
+        NjkuNzksMjU0MzYzNTYK
+    http_version: '1.1'
+  recorded_at: Tue, 12 Mar 2013 19:32:49 GMT
+- request:
+    method: get
+    uri: http://chartapi.finance.yahoo.com/instrument/1.0/aapl/chartdata;type=quote;range=1d/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*; q=0.5, application/xml'
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 12 Mar 2013 19:33:58 GMT
+      p3p:
+      - policyref="http://info.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
+        TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
+        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV"
+      cache-control:
+      - public
+      expires:
+      - Tue, 12 Mar 2013 19:34:58 GMT
+      last-modified:
+      - Tue, 12 Mar 2013 19:33:03 GMT
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+      content-type:
+      - text/javascript; charset=utf-8
+    body:
+      encoding: US-ASCII
+      string: ! "finance_charts_json_callback( { \"meta\" :\n {\n  \"uri\" :\"/instrument/1.0/aapl/chartdata;type=quote;range=1d/json\",\n
+        \ \"ticker\" : \"aapl\",\n  \"unit\" : \"MIN\",\n  \"timezone\" : \"EDT\",\n
+        \ \"currency\" : \"USD\",\n  \"gmtoffset\" : -14400,\n  \"previous_close\"
+        : 437.8700\"\n }\n ,\n \"Timestamp\" : {\"min\" :1363095000,\"max\" :1363118400
+        }\n ,\n \"labels\" : [1363096800,1363100400,1363104000,1363107600,1363111200,1363114800,1363118400
+        ]\n ,\n \"ranges\" : {\"close\" : {\"min\" :429.0900,\"max\" :438.6700 },\"high\"
+        : {\"min\" :429.4499,\"max\" :438.8700 },\"low\" : {\"min\" :428.8500,\"max\"
+        :438.1800 },\"open\" : {\"min\" :429.0001,\"max\" :438.5050 },\"volume\" :
+        {\"min\" :300,\"max\" :563600 } }\n ,\n \"series\" : [\n { \"Timestamp\" :1363095059,\"close\"
+        :435.1700,\"high\" :436.4000,\"low\" :434.7601,\"open\" :435.6900,\"volume\"
+        :563600 } \n, { \"Timestamp\" :1363095119,\"close\" :436.5700,\"high\" :436.5700,\"low\"
+        :434.7000,\"open\" :435.1100,\"volume\" :130200 } \n, { \"Timestamp\" :1363095177,\"close\"
+        :435.7801,\"high\" :437.0000,\"low\" :435.6800,\"open\" :436.6859,\"volume\"
+        :128900 } \n, { \"Timestamp\" :1363095239,\"close\" :433.5300,\"high\" :435.9300,\"low\"
+        :433.5300,\"open\" :435.8000,\"volume\" :129700 } \n, { \"Timestamp\" :1363095297,\"close\"
+        :434.1300,\"high\" :434.7375,\"low\" :433.5600,\"open\" :433.6091,\"volume\"
+        :100200 } \n, { \"Timestamp\" :1363095357,\"close\" :434.7000,\"high\" :435.1300,\"low\"
+        :434.1320,\"open\" :434.3900,\"volume\" :77900 } \n, { \"Timestamp\" :1363095419,\"close\"
+        :434.8700,\"high\" :435.2600,\"low\" :434.5100,\"open\" :434.5500,\"volume\"
+        :57800 } \n, { \"Timestamp\" :1363095479,\"close\" :437.0000,\"high\" :437.2500,\"low\"
+        :435.0420,\"open\" :435.0420,\"volume\" :185900 } \n, { \"Timestamp\" :1363095538,\"close\"
+        :436.3500,\"high\" :437.2400,\"low\" :436.0200,\"open\" :436.8600,\"volume\"
+        :126400 } \n, { \"Timestamp\" :1363095599,\"close\" :435.8600,\"high\" :436.8000,\"low\"
+        :435.8600,\"open\" :436.3240,\"volume\" :85500 } \n, { \"Timestamp\" :1363095654,\"close\"
+        :435.8400,\"high\" :436.0700,\"low\" :435.5400,\"open\" :435.8880,\"volume\"
+        :44900 } \n, { \"Timestamp\" :1363095715,\"close\" :435.6600,\"high\" :435.9100,\"low\"
+        :435.5000,\"open\" :435.8500,\"volume\" :49900 } \n, { \"Timestamp\" :1363095777,\"close\"
+        :436.8399,\"high\" :437.5500,\"low\" :435.6304,\"open\" :435.6304,\"volume\"
+        :150100 } \n, { \"Timestamp\" :1363095839,\"close\" :436.8700,\"high\" :437.2600,\"low\"
+        :436.0500,\"open\" :436.7800,\"volume\" :72900 } \n, { \"Timestamp\" :1363095898,\"close\"
+        :436.2300,\"high\" :437.1999,\"low\" :436.2300,\"open\" :436.7300,\"volume\"
+        :46000 } \n, { \"Timestamp\" :1363095952,\"close\" :436.3540,\"high\" :436.3900,\"low\"
+        :435.5600,\"open\" :436.2400,\"volume\" :61300 } \n, { \"Timestamp\" :1363096009,\"close\"
+        :436.3700,\"high\" :436.9300,\"low\" :436.2200,\"open\" :436.2200,\"volume\"
+        :45200 } \n, { \"Timestamp\" :1363096079,\"close\" :437.2200,\"high\" :437.5800,\"low\"
+        :436.2901,\"open\" :436.4290,\"volume\" :91700 } \n, { \"Timestamp\" :1363096139,\"close\"
+        :436.5300,\"high\" :437.1300,\"low\" :436.5300,\"open\" :437.0100,\"volume\"
+        :61000 } \n, { \"Timestamp\" :1363096199,\"close\" :438.0499,\"high\" :438.2100,\"low\"
+        :436.6800,\"open\" :436.6800,\"volume\" :125600 } \n, { \"Timestamp\" :1363096258,\"close\"
+        :438.0100,\"high\" :438.3600,\"low\" :437.5800,\"open\" :438.0400,\"volume\"
+        :141200 } \n, { \"Timestamp\" :1363096319,\"close\" :438.2400,\"high\" :438.3000,\"low\"
+        :437.3400,\"open\" :438.0680,\"volume\" :90600 } \n, { \"Timestamp\" :1363096379,\"close\"
+        :438.6700,\"high\" :438.8700,\"low\" :438.1800,\"open\" :438.1800,\"volume\"
+        :114300 } \n, { \"Timestamp\" :1363096437,\"close\" :437.5100,\"high\" :438.5050,\"low\"
+        :437.4900,\"open\" :438.5050,\"volume\" :90400 } \n, { \"Timestamp\" :1363096493,\"close\"
+        :437.6600,\"high\" :437.9800,\"low\" :437.3100,\"open\" :437.5100,\"volume\"
+        :53800 } \n, { \"Timestamp\" :1363096559,\"close\" :437.2100,\"high\" :437.7900,\"low\"
+        :436.7400,\"open\" :437.5062,\"volume\" :77800 } \n, { \"Timestamp\" :1363096619,\"close\"
+        :437.3000,\"high\" :437.4500,\"low\" :436.8100,\"open\" :436.9760,\"volume\"
+        :31600 } \n, { \"Timestamp\" :1363096677,\"close\" :436.8200,\"high\" :437.4000,\"low\"
+        :436.6400,\"open\" :437.4000,\"volume\" :54300 } \n, { \"Timestamp\" :1363096732,\"close\"
+        :436.8460,\"high\" :436.8460,\"low\" :436.3100,\"open\" :436.7550,\"volume\"
+        :64400 } \n, { \"Timestamp\" :1363096798,\"close\" :436.7300,\"high\" :437.0000,\"low\"
+        :436.4800,\"open\" :436.7320,\"volume\" :43500 } \n, { \"Timestamp\" :1363096854,\"close\"
+        :437.1100,\"high\" :437.4400,\"low\" :436.7800,\"open\" :436.7800,\"volume\"
+        :44400 } \n, { \"Timestamp\" :1363096916,\"close\" :437.2500,\"high\" :437.5800,\"low\"
+        :437.1000,\"open\" :437.1000,\"volume\" :30500 } \n, { \"Timestamp\" :1363096979,\"close\"
+        :435.8300,\"high\" :437.2000,\"low\" :435.6200,\"open\" :437.2000,\"volume\"
+        :92900 } \n, { \"Timestamp\" :1363097039,\"close\" :435.0100,\"high\" :436.0780,\"low\"
+        :435.0100,\"open\" :436.0000,\"volume\" :87300 } \n, { \"Timestamp\" :1363097099,\"close\"
+        :435.2800,\"high\" :435.4400,\"low\" :434.7400,\"open\" :435.0000,\"volume\"
+        :97500 } \n, { \"Timestamp\" :1363097155,\"close\" :434.8600,\"high\" :435.3800,\"low\"
+        :434.5000,\"open\" :435.3000,\"volume\" :54600 } \n, { \"Timestamp\" :1363097219,\"close\"
+        :435.0000,\"high\" :435.4495,\"low\" :434.4500,\"open\" :434.8100,\"volume\"
+        :69100 } \n, { \"Timestamp\" :1363097276,\"close\" :435.2400,\"high\" :435.5800,\"low\"
+        :435.0000,\"open\" :435.0000,\"volume\" :40100 } \n, { \"Timestamp\" :1363097338,\"close\"
+        :435.7000,\"high\" :435.7600,\"low\" :435.1300,\"open\" :435.3270,\"volume\"
+        :43500 } \n, { \"Timestamp\" :1363097398,\"close\" :435.1100,\"high\" :435.8200,\"low\"
+        :435.1100,\"open\" :435.6320,\"volume\" :54600 } \n, { \"Timestamp\" :1363097459,\"close\"
+        :435.5500,\"high\" :435.6200,\"low\" :435.0000,\"open\" :435.2000,\"volume\"
+        :41200 } \n, { \"Timestamp\" :1363097519,\"close\" :435.3100,\"high\" :435.4300,\"low\"
+        :435.0000,\"open\" :435.4300,\"volume\" :32800 } \n, { \"Timestamp\" :1363097579,\"close\"
+        :435.1500,\"high\" :435.4000,\"low\" :435.0000,\"open\" :435.2200,\"volume\"
+        :43200 } \n, { \"Timestamp\" :1363097639,\"close\" :435.5300,\"high\" :435.5300,\"low\"
+        :435.2000,\"open\" :435.2000,\"volume\" :23800 } \n, { \"Timestamp\" :1363097699,\"close\"
+        :435.9000,\"high\" :436.0500,\"low\" :435.3300,\"open\" :435.6300,\"volume\"
+        :41300 } \n, { \"Timestamp\" :1363097759,\"close\" :435.4400,\"high\" :436.0000,\"low\"
+        :435.3100,\"open\" :436.0000,\"volume\" :27400 } \n, { \"Timestamp\" :1363097811,\"close\"
+        :435.4300,\"high\" :435.6300,\"low\" :435.3400,\"open\" :435.3500,\"volume\"
+        :35100 } \n, { \"Timestamp\" :1363097879,\"close\" :434.9100,\"high\" :435.3750,\"low\"
+        :434.5400,\"open\" :435.3200,\"volume\" :85900 } \n, { \"Timestamp\" :1363097938,\"close\"
+        :434.0600,\"high\" :434.9200,\"low\" :433.6400,\"open\" :434.8400,\"volume\"
+        :100300 } \n, { \"Timestamp\" :1363097999,\"close\" :433.2500,\"high\" :434.1800,\"low\"
+        :432.6000,\"open\" :433.9400,\"volume\" :162900 } \n, { \"Timestamp\" :1363098058,\"close\"
+        :433.4100,\"high\" :433.8400,\"low\" :433.0200,\"open\" :433.3200,\"volume\"
+        :63700 } \n, { \"Timestamp\" :1363098113,\"close\" :433.3400,\"high\" :433.4122,\"low\"
+        :433.0500,\"open\" :433.4122,\"volume\" :44500 } \n, { \"Timestamp\" :1363098175,\"close\"
+        :433.5901,\"high\" :433.7300,\"low\" :432.9100,\"open\" :433.4000,\"volume\"
+        :50300 } \n, { \"Timestamp\" :1363098239,\"close\" :433.4700,\"high\" :433.6800,\"low\"
+        :433.1580,\"open\" :433.6800,\"volume\" :37000 } \n, { \"Timestamp\" :1363098299,\"close\"
+        :434.0181,\"high\" :434.2500,\"low\" :433.6120,\"open\" :433.6120,\"volume\"
+        :42600 } \n, { \"Timestamp\" :1363098358,\"close\" :434.0500,\"high\" :434.2900,\"low\"
+        :434.0200,\"open\" :434.1000,\"volume\" :26800 } \n, { \"Timestamp\" :1363098414,\"close\"
+        :433.8200,\"high\" :434.1000,\"low\" :433.8000,\"open\" :433.9401,\"volume\"
+        :19900 } \n, { \"Timestamp\" :1363098478,\"close\" :433.7100,\"high\" :434.0700,\"low\"
+        :433.6500,\"open\" :433.9000,\"volume\" :31700 } \n, { \"Timestamp\" :1363098534,\"close\"
+        :433.0650,\"high\" :433.5600,\"low\" :432.9100,\"open\" :433.5600,\"volume\"
+        :44400 } \n, { \"Timestamp\" :1363098599,\"close\" :433.5800,\"high\" :433.5800,\"low\"
+        :433.0400,\"open\" :433.1000,\"volume\" :28300 } \n, { \"Timestamp\" :1363098654,\"close\"
+        :433.5500,\"high\" :433.6000,\"low\" :433.3540,\"open\" :433.5800,\"volume\"
+        :53100 } \n, { \"Timestamp\" :1363098719,\"close\" :433.4100,\"high\" :433.5000,\"low\"
+        :433.1900,\"open\" :433.4300,\"volume\" :27100 } \n, { \"Timestamp\" :1363098777,\"close\"
+        :433.7400,\"high\" :433.7400,\"low\" :433.3200,\"open\" :433.3200,\"volume\"
+        :21400 } \n, { \"Timestamp\" :1363098837,\"close\" :433.8500,\"high\" :434.1500,\"low\"
+        :433.6100,\"open\" :433.7500,\"volume\" :43200 } \n, { \"Timestamp\" :1363098896,\"close\"
+        :433.7700,\"high\" :433.9000,\"low\" :433.7000,\"open\" :433.7320,\"volume\"
+        :20300 } \n, { \"Timestamp\" :1363098953,\"close\" :433.2600,\"high\" :433.9000,\"low\"
+        :433.2600,\"open\" :433.8500,\"volume\" :15300 } \n, { \"Timestamp\" :1363099017,\"close\"
+        :432.7100,\"high\" :433.3600,\"low\" :432.7000,\"open\" :433.3000,\"volume\"
+        :60100 } \n, { \"Timestamp\" :1363099078,\"close\" :432.4500,\"high\" :432.9100,\"low\"
+        :432.2100,\"open\" :432.7700,\"volume\" :93000 } \n, { \"Timestamp\" :1363099135,\"close\"
+        :432.3000,\"high\" :432.5000,\"low\" :432.1100,\"open\" :432.4400,\"volume\"
+        :49200 } \n, { \"Timestamp\" :1363099199,\"close\" :432.1200,\"high\" :432.4400,\"low\"
+        :431.6000,\"open\" :432.3101,\"volume\" :118600 } \n, { \"Timestamp\" :1363099259,\"close\"
+        :431.8090,\"high\" :432.0000,\"low\" :431.6401,\"open\" :431.9800,\"volume\"
+        :72100 } \n, { \"Timestamp\" :1363099318,\"close\" :431.9400,\"high\" :432.0401,\"low\"
+        :431.6800,\"open\" :431.7800,\"volume\" :56400 } \n, { \"Timestamp\" :1363099378,\"close\"
+        :431.9200,\"high\" :432.0400,\"low\" :431.7005,\"open\" :431.8600,\"volume\"
+        :33800 } \n, { \"Timestamp\" :1363099439,\"close\" :432.1000,\"high\" :432.1200,\"low\"
+        :431.7833,\"open\" :431.8600,\"volume\" :47600 } \n, { \"Timestamp\" :1363099499,\"close\"
+        :432.0300,\"high\" :432.0500,\"low\" :431.8800,\"open\" :431.9500,\"volume\"
+        :29000 } \n, { \"Timestamp\" :1363099552,\"close\" :431.7520,\"high\" :432.2900,\"low\"
+        :431.7400,\"open\" :432.0700,\"volume\" :58400 } \n, { \"Timestamp\" :1363099614,\"close\"
+        :431.6700,\"high\" :431.9700,\"low\" :431.6200,\"open\" :431.7700,\"volume\"
+        :33100 } \n, { \"Timestamp\" :1363099678,\"close\" :431.5899,\"high\" :431.7500,\"low\"
+        :431.4400,\"open\" :431.6200,\"volume\" :70000 } \n, { \"Timestamp\" :1363099739,\"close\"
+        :431.3900,\"high\" :431.6700,\"low\" :431.2000,\"open\" :431.4600,\"volume\"
+        :99000 } \n, { \"Timestamp\" :1363099798,\"close\" :431.2600,\"high\" :431.5000,\"low\"
+        :430.8510,\"open\" :431.3950,\"volume\" :88700 } \n, { \"Timestamp\" :1363099859,\"close\"
+        :431.7100,\"high\" :431.7100,\"low\" :431.1800,\"open\" :431.2800,\"volume\"
+        :66600 } \n, { \"Timestamp\" :1363099918,\"close\" :431.7900,\"high\" :432.0300,\"low\"
+        :431.6700,\"open\" :431.6700,\"volume\" :51600 } \n, { \"Timestamp\" :1363099978,\"close\"
+        :431.9000,\"high\" :431.9000,\"low\" :431.3700,\"open\" :431.7800,\"volume\"
+        :47800 } \n, { \"Timestamp\" :1363100036,\"close\" :431.8650,\"high\" :432.1061,\"low\"
+        :431.7400,\"open\" :431.9200,\"volume\" :48800 } \n, { \"Timestamp\" :1363100098,\"close\"
+        :431.6900,\"high\" :432.1500,\"low\" :431.6800,\"open\" :431.9400,\"volume\"
+        :24100 } \n, { \"Timestamp\" :1363100154,\"close\" :431.8700,\"high\" :432.0850,\"low\"
+        :431.6000,\"open\" :431.6900,\"volume\" :48500 } \n, { \"Timestamp\" :1363100210,\"close\"
+        :431.7400,\"high\" :431.8839,\"low\" :431.6380,\"open\" :431.8839,\"volume\"
+        :14500 } \n, { \"Timestamp\" :1363100278,\"close\" :431.9950,\"high\" :432.0000,\"low\"
+        :431.4700,\"open\" :431.7700,\"volume\" :81400 } \n, { \"Timestamp\" :1363100336,\"close\"
+        :432.2500,\"high\" :432.4400,\"low\" :431.8800,\"open\" :431.9750,\"volume\"
+        :47500 } \n, { \"Timestamp\" :1363100399,\"close\" :432.5000,\"high\" :432.5800,\"low\"
+        :432.0300,\"open\" :432.2000,\"volume\" :73800 } \n, { \"Timestamp\" :1363100459,\"close\"
+        :432.2000,\"high\" :432.6700,\"low\" :432.1900,\"open\" :432.6700,\"volume\"
+        :55900 } \n, { \"Timestamp\" :1363100517,\"close\" :431.6380,\"high\" :432.4500,\"low\"
+        :431.6380,\"open\" :432.2300,\"volume\" :30900 } \n, { \"Timestamp\" :1363100572,\"close\"
+        :431.8600,\"high\" :432.0400,\"low\" :431.6600,\"open\" :431.6600,\"volume\"
+        :15900 } \n, { \"Timestamp\" :1363100637,\"close\" :431.5750,\"high\" :431.9140,\"low\"
+        :431.5750,\"open\" :431.9140,\"volume\" :28300 } \n, { \"Timestamp\" :1363100699,\"close\"
+        :431.5000,\"high\" :431.8700,\"low\" :431.4000,\"open\" :431.5750,\"volume\"
+        :37200 } \n, { \"Timestamp\" :1363100756,\"close\" :430.6800,\"high\" :431.6000,\"low\"
+        :430.5500,\"open\" :431.6000,\"volume\" :99100 } \n, { \"Timestamp\" :1363100819,\"close\"
+        :430.7500,\"high\" :430.9200,\"low\" :430.6000,\"open\" :430.7599,\"volume\"
+        :64400 } \n, { \"Timestamp\" :1363100879,\"close\" :430.3460,\"high\" :430.7500,\"low\"
+        :430.1000,\"open\" :430.7500,\"volume\" :97600 } \n, { \"Timestamp\" :1363100938,\"close\"
+        :430.3000,\"high\" :430.3490,\"low\" :429.8300,\"open\" :430.1800,\"volume\"
+        :93000 } \n, { \"Timestamp\" :1363100999,\"close\" :430.3923,\"high\" :430.5540,\"low\"
+        :430.2500,\"open\" :430.3499,\"volume\" :38500 } \n, { \"Timestamp\" :1363101055,\"close\"
+        :430.3600,\"high\" :430.6090,\"low\" :430.3000,\"open\" :430.3400,\"volume\"
+        :34500 } \n, { \"Timestamp\" :1363101111,\"close\" :430.4120,\"high\" :430.4500,\"low\"
+        :430.1621,\"open\" :430.3500,\"volume\" :22200 } \n, { \"Timestamp\" :1363101175,\"close\"
+        :430.6900,\"high\" :430.8400,\"low\" :430.4000,\"open\" :430.4000,\"volume\"
+        :39900 } \n, { \"Timestamp\" :1363101237,\"close\" :430.6000,\"high\" :430.8200,\"low\"
+        :430.6000,\"open\" :430.7100,\"volume\" :29100 } \n, { \"Timestamp\" :1363101297,\"close\"
+        :431.0130,\"high\" :431.1200,\"low\" :430.5900,\"open\" :430.5900,\"volume\"
+        :33900 } \n, { \"Timestamp\" :1363101357,\"close\" :430.7100,\"high\" :431.0000,\"low\"
+        :430.6500,\"open\" :431.0000,\"volume\" :43500 } \n, { \"Timestamp\" :1363101416,\"close\"
+        :430.6880,\"high\" :430.7500,\"low\" :430.4710,\"open\" :430.7500,\"volume\"
+        :15400 } \n, { \"Timestamp\" :1363101476,\"close\" :430.8000,\"high\" :431.0400,\"low\"
+        :430.6800,\"open\" :430.6800,\"volume\" :27500 } \n, { \"Timestamp\" :1363101539,\"close\"
+        :431.0600,\"high\" :431.2400,\"low\" :430.6900,\"open\" :430.7400,\"volume\"
+        :70400 } \n, { \"Timestamp\" :1363101593,\"close\" :431.0300,\"high\" :431.0799,\"low\"
+        :430.8100,\"open\" :431.0700,\"volume\" :32200 } \n, { \"Timestamp\" :1363101656,\"close\"
+        :430.5000,\"high\" :431.0000,\"low\" :430.4500,\"open\" :431.0000,\"volume\"
+        :26500 } \n, { \"Timestamp\" :1363101715,\"close\" :430.4200,\"high\" :430.5962,\"low\"
+        :430.3400,\"open\" :430.5332,\"volume\" :32000 } \n, { \"Timestamp\" :1363101779,\"close\"
+        :430.5800,\"high\" :430.6800,\"low\" :430.3100,\"open\" :430.4400,\"volume\"
+        :32700 } \n, { \"Timestamp\" :1363101839,\"close\" :430.3800,\"high\" :430.5900,\"low\"
+        :430.2608,\"open\" :430.5600,\"volume\" :59000 } \n, { \"Timestamp\" :1363101899,\"close\"
+        :429.9600,\"high\" :430.3800,\"low\" :429.6300,\"open\" :430.3400,\"volume\"
+        :118000 } \n, { \"Timestamp\" :1363101957,\"close\" :430.1710,\"high\" :430.2860,\"low\"
+        :429.9000,\"open\" :430.1100,\"volume\" :40200 } \n, { \"Timestamp\" :1363102018,\"close\"
+        :430.3200,\"high\" :430.5700,\"low\" :430.2100,\"open\" :430.2400,\"volume\"
+        :24200 } \n, { \"Timestamp\" :1363102077,\"close\" :430.1090,\"high\" :430.5200,\"low\"
+        :430.1090,\"open\" :430.2300,\"volume\" :22300 } \n, { \"Timestamp\" :1363102139,\"close\"
+        :429.9610,\"high\" :430.1500,\"low\" :429.9500,\"open\" :430.1500,\"volume\"
+        :19500 } \n, { \"Timestamp\" :1363102198,\"close\" :429.9500,\"high\" :429.9500,\"low\"
+        :429.7700,\"open\" :429.9400,\"volume\" :29800 } \n, { \"Timestamp\" :1363102258,\"close\"
+        :429.8100,\"high\" :430.1900,\"low\" :429.7800,\"open\" :429.9280,\"volume\"
+        :33400 } \n, { \"Timestamp\" :1363102317,\"close\" :429.3700,\"high\" :429.8180,\"low\"
+        :429.2900,\"open\" :429.7500,\"volume\" :50100 } \n, { \"Timestamp\" :1363102377,\"close\"
+        :429.8001,\"high\" :429.9900,\"low\" :429.3300,\"open\" :429.3300,\"volume\"
+        :39900 } \n, { \"Timestamp\" :1363102436,\"close\" :430.0600,\"high\" :430.3200,\"low\"
+        :429.9100,\"open\" :429.9300,\"volume\" :41500 } \n, { \"Timestamp\" :1363102498,\"close\"
+        :430.2000,\"high\" :430.3300,\"low\" :430.1600,\"open\" :430.2300,\"volume\"
+        :27300 } \n, { \"Timestamp\" :1363102557,\"close\" :430.6099,\"high\" :430.7040,\"low\"
+        :430.1950,\"open\" :430.2100,\"volume\" :41000 } \n, { \"Timestamp\" :1363102612,\"close\"
+        :430.5720,\"high\" :430.7600,\"low\" :430.5540,\"open\" :430.6000,\"volume\"
+        :28900 } \n, { \"Timestamp\" :1363102677,\"close\" :430.4600,\"high\" :430.7200,\"low\"
+        :430.4100,\"open\" :430.6900,\"volume\" :17700 } \n, { \"Timestamp\" :1363102739,\"close\"
+        :430.8900,\"high\" :430.9000,\"low\" :430.5400,\"open\" :430.5400,\"volume\"
+        :28900 } \n, { \"Timestamp\" :1363102799,\"close\" :430.7499,\"high\" :430.9200,\"low\"
+        :430.6600,\"open\" :430.8100,\"volume\" :27700 } \n, { \"Timestamp\" :1363102858,\"close\"
+        :430.8700,\"high\" :430.9000,\"low\" :430.5000,\"open\" :430.5500,\"volume\"
+        :46100 } \n, { \"Timestamp\" :1363102919,\"close\" :431.0500,\"high\" :431.1600,\"low\"
+        :430.8400,\"open\" :430.9200,\"volume\" :48000 } \n, { \"Timestamp\" :1363102976,\"close\"
+        :430.7900,\"high\" :431.1200,\"low\" :430.7700,\"open\" :430.9900,\"volume\"
+        :22600 } \n, { \"Timestamp\" :1363103038,\"close\" :430.9400,\"high\" :431.0300,\"low\"
+        :430.7700,\"open\" :430.7700,\"volume\" :24500 } \n, { \"Timestamp\" :1363103098,\"close\"
+        :430.9425,\"high\" :431.0099,\"low\" :430.5100,\"open\" :431.0099,\"volume\"
+        :38300 } \n, { \"Timestamp\" :1363103158,\"close\" :430.7800,\"high\" :430.9590,\"low\"
+        :430.5800,\"open\" :430.9440,\"volume\" :57200 } \n, { \"Timestamp\" :1363103219,\"close\"
+        :430.5000,\"high\" :430.7800,\"low\" :430.4320,\"open\" :430.7800,\"volume\"
+        :51700 } \n, { \"Timestamp\" :1363103272,\"close\" :430.7000,\"high\" :430.8200,\"low\"
+        :430.4501,\"open\" :430.4560,\"volume\" :52300 } \n, { \"Timestamp\" :1363103339,\"close\"
+        :430.9600,\"high\" :431.0300,\"low\" :430.5900,\"open\" :430.5900,\"volume\"
+        :76100 } \n, { \"Timestamp\" :1363103399,\"close\" :431.4100,\"high\" :431.6000,\"low\"
+        :430.9201,\"open\" :430.9900,\"volume\" :49300 } \n, { \"Timestamp\" :1363103459,\"close\"
+        :432.2200,\"high\" :432.2900,\"low\" :431.2600,\"open\" :431.4400,\"volume\"
+        :72400 } \n, { \"Timestamp\" :1363103517,\"close\" :432.0900,\"high\" :432.5500,\"low\"
+        :432.0700,\"open\" :432.1986,\"volume\" :68000 } \n, { \"Timestamp\" :1363103576,\"close\"
+        :432.0000,\"high\" :432.1400,\"low\" :431.6700,\"open\" :432.0800,\"volume\"
+        :33400 } \n, { \"Timestamp\" :1363103639,\"close\" :431.6710,\"high\" :432.1300,\"low\"
+        :431.6600,\"open\" :432.0300,\"volume\" :30000 } \n, { \"Timestamp\" :1363103699,\"close\"
+        :432.2500,\"high\" :432.2500,\"low\" :431.6700,\"open\" :431.6700,\"volume\"
+        :41100 } \n, { \"Timestamp\" :1363103759,\"close\" :431.8700,\"high\" :432.1300,\"low\"
+        :431.8400,\"open\" :432.1100,\"volume\" :19100 } \n, { \"Timestamp\" :1363103819,\"close\"
+        :431.8735,\"high\" :431.9300,\"low\" :431.6700,\"open\" :431.8000,\"volume\"
+        :28300 } \n, { \"Timestamp\" :1363103879,\"close\" :431.8600,\"high\" :432.1200,\"low\"
+        :431.8500,\"open\" :432.0900,\"volume\" :40600 } \n, { \"Timestamp\" :1363103938,\"close\"
+        :431.4800,\"high\" :431.9000,\"low\" :431.3200,\"open\" :431.9000,\"volume\"
+        :52400 } \n, { \"Timestamp\" :1363103998,\"close\" :431.5720,\"high\" :431.9900,\"low\"
+        :431.4800,\"open\" :431.4800,\"volume\" :23400 } \n, { \"Timestamp\" :1363104054,\"close\"
+        :431.3300,\"high\" :431.7368,\"low\" :431.1800,\"open\" :431.6500,\"volume\"
+        :39300 } \n, { \"Timestamp\" :1363104118,\"close\" :430.9660,\"high\" :431.5000,\"low\"
+        :430.8400,\"open\" :431.2700,\"volume\" :34900 } \n, { \"Timestamp\" :1363104170,\"close\"
+        :430.9800,\"high\" :431.2400,\"low\" :430.9100,\"open\" :430.9500,\"volume\"
+        :32800 } \n, { \"Timestamp\" :1363104237,\"close\" :430.8400,\"high\" :431.0499,\"low\"
+        :430.8400,\"open\" :430.9700,\"volume\" :16800 } \n, { \"Timestamp\" :1363104296,\"close\"
+        :430.6800,\"high\" :430.9200,\"low\" :430.5300,\"open\" :430.8290,\"volume\"
+        :27000 } \n, { \"Timestamp\" :1363104347,\"close\" :430.6100,\"high\" :430.7900,\"low\"
+        :430.5100,\"open\" :430.6400,\"volume\" :19400 } \n, { \"Timestamp\" :1363104408,\"close\"
+        :430.8900,\"high\" :430.9200,\"low\" :430.7700,\"open\" :430.7700,\"volume\"
+        :13600 } \n, { \"Timestamp\" :1363104460,\"close\" :430.8500,\"high\" :430.9900,\"low\"
+        :430.8260,\"open\" :430.9000,\"volume\" :14200 } \n, { \"Timestamp\" :1363104534,\"close\"
+        :430.5700,\"high\" :430.8200,\"low\" :430.5000,\"open\" :430.8200,\"volume\"
+        :16800 } \n, { \"Timestamp\" :1363104598,\"close\" :430.7700,\"high\" :430.9400,\"low\"
+        :430.6000,\"open\" :430.6000,\"volume\" :24100 } \n, { \"Timestamp\" :1363104658,\"close\"
+        :430.9550,\"high\" :431.0500,\"low\" :430.7000,\"open\" :430.8000,\"volume\"
+        :25300 } \n, { \"Timestamp\" :1363104717,\"close\" :430.8500,\"high\" :431.0200,\"low\"
+        :430.7000,\"open\" :431.0200,\"volume\" :12500 } \n, { \"Timestamp\" :1363104778,\"close\"
+        :430.7500,\"high\" :430.9960,\"low\" :430.7500,\"open\" :430.8700,\"volume\"
+        :16200 } \n, { \"Timestamp\" :1363104835,\"close\" :430.9440,\"high\" :431.0500,\"low\"
+        :430.7100,\"open\" :430.7100,\"volume\" :38600 } \n, { \"Timestamp\" :1363104898,\"close\"
+        :430.7700,\"high\" :430.9591,\"low\" :430.7400,\"open\" :430.9591,\"volume\"
+        :11500 } \n, { \"Timestamp\" :1363104954,\"close\" :430.7320,\"high\" :430.8700,\"low\"
+        :430.7200,\"open\" :430.7450,\"volume\" :17100 } \n, { \"Timestamp\" :1363105010,\"close\"
+        :430.9100,\"high\" :430.9900,\"low\" :430.7100,\"open\" :430.7350,\"volume\"
+        :14400 } \n, { \"Timestamp\" :1363105074,\"close\" :430.7200,\"high\" :430.8699,\"low\"
+        :430.5300,\"open\" :430.8200,\"volume\" :17600 } \n, { \"Timestamp\" :1363105135,\"close\"
+        :430.9700,\"high\" :431.0200,\"low\" :430.7500,\"open\" :430.8700,\"volume\"
+        :20500 } \n, { \"Timestamp\" :1363105195,\"close\" :430.9900,\"high\" :431.4200,\"low\"
+        :430.9000,\"open\" :430.9030,\"volume\" :35300 } \n, { \"Timestamp\" :1363105259,\"close\"
+        :431.0000,\"high\" :431.1500,\"low\" :430.8200,\"open\" :430.9000,\"volume\"
+        :17300 } \n, { \"Timestamp\" :1363105319,\"close\" :430.6050,\"high\" :430.9800,\"low\"
+        :430.6000,\"open\" :430.9400,\"volume\" :14900 } \n, { \"Timestamp\" :1363105373,\"close\"
+        :430.6700,\"high\" :430.6850,\"low\" :430.5300,\"open\" :430.6000,\"volume\"
+        :18500 } \n, { \"Timestamp\" :1363105436,\"close\" :430.8600,\"high\" :430.8900,\"low\"
+        :430.5400,\"open\" :430.5600,\"volume\" :10700 } \n, { \"Timestamp\" :1363105492,\"close\"
+        :430.5000,\"high\" :430.7170,\"low\" :430.2700,\"open\" :430.7170,\"volume\"
+        :22700 } \n, { \"Timestamp\" :1363105557,\"close\" :430.4200,\"high\" :430.5750,\"low\"
+        :430.3600,\"open\" :430.5300,\"volume\" :7100 } \n, { \"Timestamp\" :1363105619,\"close\"
+        :430.1100,\"high\" :430.4800,\"low\" :430.0000,\"open\" :430.4800,\"volume\"
+        :31500 } \n, { \"Timestamp\" :1363105677,\"close\" :430.3200,\"high\" :430.3200,\"low\"
+        :430.1400,\"open\" :430.1700,\"volume\" :13300 } \n, { \"Timestamp\" :1363105734,\"close\"
+        :430.3666,\"high\" :430.5090,\"low\" :430.1000,\"open\" :430.3200,\"volume\"
+        :13800 } \n, { \"Timestamp\" :1363105799,\"close\" :430.2900,\"high\" :430.3500,\"low\"
+        :430.1500,\"open\" :430.3500,\"volume\" :22500 } \n, { \"Timestamp\" :1363105851,\"close\"
+        :430.2900,\"high\" :430.4300,\"low\" :430.2600,\"open\" :430.2600,\"volume\"
+        :20900 } \n, { \"Timestamp\" :1363105918,\"close\" :430.5900,\"high\" :430.9900,\"low\"
+        :430.2700,\"open\" :430.2700,\"volume\" :39000 } \n, { \"Timestamp\" :1363105978,\"close\"
+        :430.8600,\"high\" :431.0300,\"low\" :430.6300,\"open\" :430.6380,\"volume\"
+        :19500 } \n, { \"Timestamp\" :1363106038,\"close\" :430.8400,\"high\" :430.9100,\"low\"
+        :430.7500,\"open\" :430.9000,\"volume\" :14600 } \n, { \"Timestamp\" :1363106099,\"close\"
+        :431.4780,\"high\" :431.5790,\"low\" :430.8200,\"open\" :430.8500,\"volume\"
+        :28200 } \n, { \"Timestamp\" :1363106159,\"close\" :431.5900,\"high\" :431.8400,\"low\"
+        :431.3200,\"open\" :431.3900,\"volume\" :47800 } \n, { \"Timestamp\" :1363106214,\"close\"
+        :431.7200,\"high\" :431.9100,\"low\" :431.6100,\"open\" :431.6100,\"volume\"
+        :32800 } \n, { \"Timestamp\" :1363106278,\"close\" :431.7300,\"high\" :431.8000,\"low\"
+        :431.6600,\"open\" :431.7000,\"volume\" :16100 } \n, { \"Timestamp\" :1363106337,\"close\"
+        :432.1400,\"high\" :432.2500,\"low\" :431.7801,\"open\" :431.7900,\"volume\"
+        :53500 } \n, { \"Timestamp\" :1363106398,\"close\" :431.5100,\"high\" :432.1000,\"low\"
+        :431.4250,\"open\" :432.0700,\"volume\" :34000 } \n, { \"Timestamp\" :1363106457,\"close\"
+        :431.5400,\"high\" :431.6300,\"low\" :431.2000,\"open\" :431.5100,\"volume\"
+        :26300 } \n, { \"Timestamp\" :1363106508,\"close\" :431.5000,\"high\" :431.6350,\"low\"
+        :431.4200,\"open\" :431.4300,\"volume\" :7300 } \n, { \"Timestamp\" :1363106566,\"close\"
+        :431.1850,\"high\" :431.6300,\"low\" :431.1300,\"open\" :431.4900,\"volume\"
+        :13900 } \n, { \"Timestamp\" :1363106634,\"close\" :431.5350,\"high\" :431.5400,\"low\"
+        :431.1000,\"open\" :431.1000,\"volume\" :10600 } \n, { \"Timestamp\" :1363106696,\"close\"
+        :431.9000,\"high\" :432.0000,\"low\" :431.4280,\"open\" :431.4280,\"volume\"
+        :25100 } \n, { \"Timestamp\" :1363106759,\"close\" :431.6000,\"high\" :431.8900,\"low\"
+        :431.5500,\"open\" :431.8700,\"volume\" :13100 } \n, { \"Timestamp\" :1363106807,\"close\"
+        :431.7510,\"high\" :431.8640,\"low\" :431.6200,\"open\" :431.6400,\"volume\"
+        :10300 } \n, { \"Timestamp\" :1363106879,\"close\" :431.4600,\"high\" :431.7900,\"low\"
+        :431.3200,\"open\" :431.7900,\"volume\" :13700 } \n, { \"Timestamp\" :1363106919,\"close\"
+        :431.6400,\"high\" :431.7500,\"low\" :431.3700,\"open\" :431.4885,\"volume\"
+        :7200 } \n, { \"Timestamp\" :1363106999,\"close\" :431.9000,\"high\" :431.9100,\"low\"
+        :431.7210,\"open\" :431.7500,\"volume\" :6800 } \n, { \"Timestamp\" :1363107059,\"close\"
+        :432.0900,\"high\" :432.1499,\"low\" :431.8050,\"open\" :431.9000,\"volume\"
+        :16800 } \n, { \"Timestamp\" :1363107119,\"close\" :431.9200,\"high\" :432.1000,\"low\"
+        :431.8500,\"open\" :431.9900,\"volume\" :14900 } \n, { \"Timestamp\" :1363107174,\"close\"
+        :431.6600,\"high\" :431.9200,\"low\" :431.6300,\"open\" :431.8300,\"volume\"
+        :8500 } \n, { \"Timestamp\" :1363107237,\"close\" :431.4900,\"high\" :431.8200,\"low\"
+        :431.1300,\"open\" :431.7400,\"volume\" :41400 } \n, { \"Timestamp\" :1363107293,\"close\"
+        :431.5100,\"high\" :431.6900,\"low\" :431.4000,\"open\" :431.4200,\"volume\"
+        :10200 } \n, { \"Timestamp\" :1363107353,\"close\" :431.5903,\"high\" :431.7550,\"low\"
+        :431.5120,\"open\" :431.5120,\"volume\" :5900 } \n, { \"Timestamp\" :1363107418,\"close\"
+        :432.0000,\"high\" :432.1999,\"low\" :431.6750,\"open\" :431.7200,\"volume\"
+        :24000 } \n, { \"Timestamp\" :1363107476,\"close\" :431.8000,\"high\" :432.0700,\"low\"
+        :431.7000,\"open\" :432.0700,\"volume\" :10300 } \n, { \"Timestamp\" :1363107537,\"close\"
+        :431.6000,\"high\" :431.8900,\"low\" :431.6000,\"open\" :431.8900,\"volume\"
+        :16100 } \n, { \"Timestamp\" :1363107585,\"close\" :431.7800,\"high\" :431.7800,\"low\"
+        :431.6400,\"open\" :431.6400,\"volume\" :4900 } \n, { \"Timestamp\" :1363107658,\"close\"
+        :431.5301,\"high\" :431.8000,\"low\" :431.4300,\"open\" :431.7760,\"volume\"
+        :21600 } \n, { \"Timestamp\" :1363107719,\"close\" :431.8400,\"high\" :431.8500,\"low\"
+        :431.5000,\"open\" :431.5000,\"volume\" :8900 } \n, { \"Timestamp\" :1363107770,\"close\"
+        :431.8900,\"high\" :432.1300,\"low\" :431.8100,\"open\" :431.9200,\"volume\"
+        :9600 } \n, { \"Timestamp\" :1363107837,\"close\" :431.8099,\"high\" :431.9620,\"low\"
+        :431.7700,\"open\" :431.9620,\"volume\" :10600 } \n, { \"Timestamp\" :1363107898,\"close\"
+        :431.7401,\"high\" :431.8300,\"low\" :431.7401,\"open\" :431.7717,\"volume\"
+        :8100 } \n, { \"Timestamp\" :1363107957,\"close\" :431.6780,\"high\" :431.8500,\"low\"
+        :431.6780,\"open\" :431.7780,\"volume\" :7600 } \n, { \"Timestamp\" :1363108018,\"close\"
+        :431.8540,\"high\" :431.8900,\"low\" :431.7107,\"open\" :431.7700,\"volume\"
+        :5000 } \n, { \"Timestamp\" :1363108075,\"close\" :432.0900,\"high\" :432.2300,\"low\"
+        :431.8700,\"open\" :431.8700,\"volume\" :27600 } \n, { \"Timestamp\" :1363108138,\"close\"
+        :432.9120,\"high\" :433.1000,\"low\" :432.0700,\"open\" :432.1260,\"volume\"
+        :99900 } \n, { \"Timestamp\" :1363108199,\"close\" :432.1150,\"high\" :433.0000,\"low\"
+        :432.0000,\"open\" :432.9800,\"volume\" :80700 } \n, { \"Timestamp\" :1363108254,\"close\"
+        :432.1720,\"high\" :432.2700,\"low\" :432.0600,\"open\" :432.1200,\"volume\"
+        :20900 } \n, { \"Timestamp\" :1363108318,\"close\" :431.9100,\"high\" :432.2500,\"low\"
+        :431.7100,\"open\" :432.1799,\"volume\" :28000 } \n, { \"Timestamp\" :1363108371,\"close\"
+        :432.2500,\"high\" :432.2600,\"low\" :431.9100,\"open\" :432.0399,\"volume\"
+        :17100 } \n, { \"Timestamp\" :1363108438,\"close\" :432.4000,\"high\" :432.6800,\"low\"
+        :432.1350,\"open\" :432.1350,\"volume\" :19600 } \n, { \"Timestamp\" :1363108498,\"close\"
+        :432.7550,\"high\" :432.7550,\"low\" :432.4100,\"open\" :432.5000,\"volume\"
+        :22700 } \n, { \"Timestamp\" :1363108556,\"close\" :432.9500,\"high\" :433.0000,\"low\"
+        :432.5700,\"open\" :432.6310,\"volume\" :48900 } \n, { \"Timestamp\" :1363108616,\"close\"
+        :432.9500,\"high\" :433.1000,\"low\" :432.6400,\"open\" :432.9500,\"volume\"
+        :49600 } \n, { \"Timestamp\" :1363108679,\"close\" :432.8801,\"high\" :433.3100,\"low\"
+        :432.8400,\"open\" :432.8400,\"volume\" :52700 } \n, { \"Timestamp\" :1363108739,\"close\"
+        :433.2800,\"high\" :433.4000,\"low\" :432.9700,\"open\" :433.0000,\"volume\"
+        :52200 } \n, { \"Timestamp\" :1363108795,\"close\" :433.2700,\"high\" :433.3800,\"low\"
+        :433.1750,\"open\" :433.3800,\"volume\" :22200 } \n, { \"Timestamp\" :1363108859,\"close\"
+        :432.8700,\"high\" :433.3085,\"low\" :432.7400,\"open\" :433.2450,\"volume\"
+        :29900 } \n, { \"Timestamp\" :1363108915,\"close\" :432.8701,\"high\" :433.1064,\"low\"
+        :432.7500,\"open\" :432.8720,\"volume\" :27300 } \n, { \"Timestamp\" :1363108977,\"close\"
+        :432.5701,\"high\" :432.9678,\"low\" :432.5701,\"open\" :432.8702,\"volume\"
+        :19600 } \n, { \"Timestamp\" :1363109039,\"close\" :432.3550,\"high\" :432.6000,\"low\"
+        :432.3300,\"open\" :432.5500,\"volume\" :32700 } \n, { \"Timestamp\" :1363109099,\"close\"
+        :432.2840,\"high\" :432.5000,\"low\" :432.1910,\"open\" :432.3200,\"volume\"
+        :16500 } \n, { \"Timestamp\" :1363109159,\"close\" :432.2000,\"high\" :432.4200,\"low\"
+        :432.2000,\"open\" :432.3101,\"volume\" :13600 } \n, { \"Timestamp\" :1363109218,\"close\"
+        :432.3980,\"high\" :432.4200,\"low\" :432.1400,\"open\" :432.2000,\"volume\"
+        :19100 } \n, { \"Timestamp\" :1363109270,\"close\" :432.3700,\"high\" :432.4200,\"low\"
+        :432.2800,\"open\" :432.3200,\"volume\" :7500 } \n, { \"Timestamp\" :1363109339,\"close\"
+        :432.0971,\"high\" :432.3500,\"low\" :432.0600,\"open\" :432.2300,\"volume\"
+        :16300 } \n, { \"Timestamp\" :1363109399,\"close\" :432.1500,\"high\" :432.1500,\"low\"
+        :431.8500,\"open\" :432.0601,\"volume\" :26300 } \n, { \"Timestamp\" :1363109449,\"close\"
+        :432.0500,\"high\" :432.1200,\"low\" :431.9600,\"open\" :432.1001,\"volume\"
+        :15700 } \n, { \"Timestamp\" :1363109519,\"close\" :432.0500,\"high\" :432.1300,\"low\"
+        :432.0000,\"open\" :432.0400,\"volume\" :9600 } \n, { \"Timestamp\" :1363109577,\"close\"
+        :431.6150,\"high\" :432.0220,\"low\" :431.6000,\"open\" :432.0220,\"volume\"
+        :23300 } \n, { \"Timestamp\" :1363109639,\"close\" :431.8825,\"high\" :432.0000,\"low\"
+        :431.5000,\"open\" :431.6000,\"volume\" :19700 } \n, { \"Timestamp\" :1363109699,\"close\"
+        :432.2500,\"high\" :432.3500,\"low\" :431.8400,\"open\" :431.8900,\"volume\"
+        :27900 } \n, { \"Timestamp\" :1363109749,\"close\" :431.9800,\"high\" :432.1700,\"low\"
+        :431.8500,\"open\" :432.1700,\"volume\" :16700 } \n, { \"Timestamp\" :1363109811,\"close\"
+        :432.1700,\"high\" :432.3050,\"low\" :432.0000,\"open\" :432.0000,\"volume\"
+        :18600 } \n, { \"Timestamp\" :1363109876,\"close\" :432.0000,\"high\" :432.4250,\"low\"
+        :432.0000,\"open\" :432.1800,\"volume\" :14700 } \n, { \"Timestamp\" :1363109939,\"close\"
+        :431.8300,\"high\" :432.0400,\"low\" :431.8200,\"open\" :432.0100,\"volume\"
+        :8600 } \n, { \"Timestamp\" :1363109997,\"close\" :431.2500,\"high\" :431.8700,\"low\"
+        :431.1200,\"open\" :431.8300,\"volume\" :47400 } \n, { \"Timestamp\" :1363110052,\"close\"
+        :431.2800,\"high\" :431.4600,\"low\" :431.1100,\"open\" :431.1100,\"volume\"
+        :14200 } \n, { \"Timestamp\" :1363110115,\"close\" :431.2900,\"high\" :431.3200,\"low\"
+        :431.2500,\"open\" :431.3200,\"volume\" :6500 } \n, { \"Timestamp\" :1363110178,\"close\"
+        :431.3600,\"high\" :431.4390,\"low\" :431.2200,\"open\" :431.3200,\"volume\"
+        :12500 } \n, { \"Timestamp\" :1363110236,\"close\" :431.5700,\"high\" :431.8199,\"low\"
+        :431.4100,\"open\" :431.4100,\"volume\" :27100 } \n, { \"Timestamp\" :1363110295,\"close\"
+        :431.6399,\"high\" :431.7400,\"low\" :431.4500,\"open\" :431.6300,\"volume\"
+        :10900 } \n, { \"Timestamp\" :1363110357,\"close\" :431.8390,\"high\" :431.8390,\"low\"
+        :431.5620,\"open\" :431.6400,\"volume\" :17900 } \n, { \"Timestamp\" :1363110417,\"close\"
+        :431.5650,\"high\" :431.9800,\"low\" :431.3300,\"open\" :431.7700,\"volume\"
+        :19100 } \n, { \"Timestamp\" :1363110471,\"close\" :431.4499,\"high\" :431.4499,\"low\"
+        :431.3500,\"open\" :431.4100,\"volume\" :9300 } \n, { \"Timestamp\" :1363110534,\"close\"
+        :431.2320,\"high\" :431.4600,\"low\" :431.2240,\"open\" :431.4500,\"volume\"
+        :7700 } \n, { \"Timestamp\" :1363110595,\"close\" :430.9300,\"high\" :431.3100,\"low\"
+        :430.6800,\"open\" :431.3100,\"volume\" :59600 } \n, { \"Timestamp\" :1363110658,\"close\"
+        :430.8760,\"high\" :431.0400,\"low\" :430.8600,\"open\" :430.8600,\"volume\"
+        :18700 } \n, { \"Timestamp\" :1363110717,\"close\" :431.0200,\"high\" :431.1400,\"low\"
+        :430.8700,\"open\" :430.9900,\"volume\" :30600 } \n, { \"Timestamp\" :1363110779,\"close\"
+        :431.0400,\"high\" :431.0500,\"low\" :430.7700,\"open\" :431.0500,\"volume\"
+        :16000 } \n, { \"Timestamp\" :1363110839,\"close\" :430.5000,\"high\" :430.9550,\"low\"
+        :430.4830,\"open\" :430.9000,\"volume\" :28400 } \n, { \"Timestamp\" :1363110897,\"close\"
+        :430.4690,\"high\" :430.6099,\"low\" :430.2800,\"open\" :430.5000,\"volume\"
+        :33800 } \n, { \"Timestamp\" :1363110957,\"close\" :430.7900,\"high\" :430.8887,\"low\"
+        :430.3610,\"open\" :430.4700,\"volume\" :27600 } \n, { \"Timestamp\" :1363111013,\"close\"
+        :430.7360,\"high\" :430.7699,\"low\" :430.4600,\"open\" :430.5600,\"volume\"
+        :5200 } \n, { \"Timestamp\" :1363111079,\"close\" :430.5667,\"high\" :430.9600,\"low\"
+        :430.5667,\"open\" :430.8400,\"volume\" :13800 } \n, { \"Timestamp\" :1363111136,\"close\"
+        :430.7581,\"high\" :430.9560,\"low\" :430.6500,\"open\" :430.6500,\"volume\"
+        :14000 } \n, { \"Timestamp\" :1363111199,\"close\" :430.7910,\"high\" :430.9200,\"low\"
+        :430.7500,\"open\" :430.7700,\"volume\" :11900 } \n, { \"Timestamp\" :1363111251,\"close\"
+        :430.8200,\"high\" :431.0800,\"low\" :430.8100,\"open\" :430.9400,\"volume\"
+        :11700 } \n, { \"Timestamp\" :1363111314,\"close\" :430.9460,\"high\" :430.9700,\"low\"
+        :430.6700,\"open\" :430.8300,\"volume\" :13500 } \n, { \"Timestamp\" :1363111378,\"close\"
+        :430.8400,\"high\" :431.0700,\"low\" :430.8200,\"open\" :430.9800,\"volume\"
+        :13900 } \n, { \"Timestamp\" :1363111438,\"close\" :430.6700,\"high\" :430.9800,\"low\"
+        :430.4600,\"open\" :430.8200,\"volume\" :20700 } \n, { \"Timestamp\" :1363111497,\"close\"
+        :430.6100,\"high\" :430.7100,\"low\" :430.2100,\"open\" :430.6600,\"volume\"
+        :14500 } \n, { \"Timestamp\" :1363111557,\"close\" :430.2800,\"high\" :430.6600,\"low\"
+        :430.2800,\"open\" :430.6600,\"volume\" :13900 } \n, { \"Timestamp\" :1363111612,\"close\"
+        :430.0100,\"high\" :430.1900,\"low\" :430.0000,\"open\" :430.1600,\"volume\"
+        :48600 } \n, { \"Timestamp\" :1363111676,\"close\" :429.8300,\"high\" :430.1180,\"low\"
+        :429.6700,\"open\" :430.1000,\"volume\" :68000 } \n, { \"Timestamp\" :1363111738,\"close\"
+        :429.7510,\"high\" :430.0900,\"low\" :429.7200,\"open\" :429.7800,\"volume\"
+        :28200 } \n, { \"Timestamp\" :1363111799,\"close\" :429.8000,\"high\" :429.9200,\"low\"
+        :429.6600,\"open\" :429.8600,\"volume\" :31400 } \n, { \"Timestamp\" :1363111859,\"close\"
+        :429.6600,\"high\" :429.8100,\"low\" :429.5000,\"open\" :429.8100,\"volume\"
+        :58500 } \n, { \"Timestamp\" :1363111909,\"close\" :429.8400,\"high\" :429.9100,\"low\"
+        :429.6000,\"open\" :429.7500,\"volume\" :14900 } \n, { \"Timestamp\" :1363111979,\"close\"
+        :429.7600,\"high\" :429.9100,\"low\" :429.6800,\"open\" :429.8000,\"volume\"
+        :24700 } \n, { \"Timestamp\" :1363112036,\"close\" :429.9100,\"high\" :430.0200,\"low\"
+        :429.7200,\"open\" :429.7700,\"volume\" :24500 } \n, { \"Timestamp\" :1363112091,\"close\"
+        :429.8100,\"high\" :429.9500,\"low\" :429.8000,\"open\" :429.9000,\"volume\"
+        :18300 } \n, { \"Timestamp\" :1363112150,\"close\" :429.7102,\"high\" :429.8300,\"low\"
+        :429.5200,\"open\" :429.8000,\"volume\" :23500 } \n, { \"Timestamp\" :1363112211,\"close\"
+        :429.8500,\"high\" :429.9060,\"low\" :429.5800,\"open\" :429.6800,\"volume\"
+        :20900 } \n, { \"Timestamp\" :1363112278,\"close\" :430.4390,\"high\" :430.4900,\"low\"
+        :429.8750,\"open\" :429.8750,\"volume\" :58600 } \n, { \"Timestamp\" :1363112334,\"close\"
+        :430.3400,\"high\" :430.4200,\"low\" :430.1000,\"open\" :430.3000,\"volume\"
+        :21000 } \n, { \"Timestamp\" :1363112398,\"close\" :430.5099,\"high\" :430.5099,\"low\"
+        :430.0800,\"open\" :430.3660,\"volume\" :26000 } \n, { \"Timestamp\" :1363112457,\"close\"
+        :430.5000,\"high\" :430.6500,\"low\" :430.2000,\"open\" :430.4600,\"volume\"
+        :23300 } \n, { \"Timestamp\" :1363112519,\"close\" :430.4300,\"high\" :430.5899,\"low\"
+        :430.2410,\"open\" :430.5800,\"volume\" :14000 } \n, { \"Timestamp\" :1363112579,\"close\"
+        :430.1600,\"high\" :430.4300,\"low\" :430.1600,\"open\" :430.4100,\"volume\"
+        :11200 } \n, { \"Timestamp\" :1363112637,\"close\" :430.0000,\"high\" :430.3500,\"low\"
+        :429.8500,\"open\" :430.1200,\"volume\" :36400 } \n, { \"Timestamp\" :1363112698,\"close\"
+        :430.1800,\"high\" :430.2799,\"low\" :430.0000,\"open\" :430.0000,\"volume\"
+        :5000 } \n, { \"Timestamp\" :1363112757,\"close\" :430.1000,\"high\" :430.2900,\"low\"
+        :429.9200,\"open\" :430.2700,\"volume\" :15800 } \n, { \"Timestamp\" :1363112815,\"close\"
+        :429.7001,\"high\" :430.1700,\"low\" :429.6500,\"open\" :430.1000,\"volume\"
+        :19700 } \n, { \"Timestamp\" :1363112878,\"close\" :430.0850,\"high\" :430.2800,\"low\"
+        :429.7710,\"open\" :429.7710,\"volume\" :16300 } \n, { \"Timestamp\" :1363112938,\"close\"
+        :429.5000,\"high\" :430.1700,\"low\" :429.5000,\"open\" :430.1600,\"volume\"
+        :36900 } \n, { \"Timestamp\" :1363112993,\"close\" :429.6500,\"high\" :429.9700,\"low\"
+        :429.5200,\"open\" :429.6000,\"volume\" :27900 } \n, { \"Timestamp\" :1363113056,\"close\"
+        :429.8500,\"high\" :430.1899,\"low\" :429.7700,\"open\" :429.7700,\"volume\"
+        :27700 } \n, { \"Timestamp\" :1363113119,\"close\" :429.7299,\"high\" :430.0200,\"low\"
+        :429.6420,\"open\" :429.7800,\"volume\" :16500 } \n, { \"Timestamp\" :1363113179,\"close\"
+        :429.8100,\"high\" :429.9400,\"low\" :429.6700,\"open\" :429.6700,\"volume\"
+        :9700 } \n, { \"Timestamp\" :1363113233,\"close\" :429.6600,\"high\" :429.8240,\"low\"
+        :429.6500,\"open\" :429.7999,\"volume\" :6900 } \n, { \"Timestamp\" :1363113295,\"close\"
+        :429.7940,\"high\" :429.7940,\"low\" :429.6500,\"open\" :429.6690,\"volume\"
+        :20100 } \n, { \"Timestamp\" :1363113304,\"close\" :429.7600,\"high\" :429.8000,\"low\"
+        :429.4310,\"open\" :429.7050,\"volume\" :24000 } \n, { \"Timestamp\" :1363113416,\"close\"
+        :429.5200,\"high\" :429.7300,\"low\" :429.4510,\"open\" :429.7300,\"volume\"
+        :14500 } \n, { \"Timestamp\" :1363113479,\"close\" :429.2650,\"high\" :429.6000,\"low\"
+        :429.1100,\"open\" :429.4900,\"volume\" :46700 } \n, { \"Timestamp\" :1363113538,\"close\"
+        :429.3500,\"high\" :429.4499,\"low\" :429.2300,\"open\" :429.3700,\"volume\"
+        :15400 } \n, { \"Timestamp\" :1363113596,\"close\" :429.3700,\"high\" :429.8500,\"low\"
+        :429.2900,\"open\" :429.3020,\"volume\" :31300 } \n, { \"Timestamp\" :1363113650,\"close\"
+        :429.5500,\"high\" :429.7590,\"low\" :429.4500,\"open\" :429.4500,\"volume\"
+        :14800 } \n, { \"Timestamp\" :1363113714,\"close\" :429.5600,\"high\" :429.6900,\"low\"
+        :429.5200,\"open\" :429.5980,\"volume\" :9400 } \n, { \"Timestamp\" :1363113778,\"close\"
+        :429.7895,\"high\" :429.8400,\"low\" :429.6700,\"open\" :429.6700,\"volume\"
+        :12800 } \n, { \"Timestamp\" :1363113839,\"close\" :429.9199,\"high\" :430.0000,\"low\"
+        :429.6000,\"open\" :429.7000,\"volume\" :31500 } \n, { \"Timestamp\" :1363113897,\"close\"
+        :429.9300,\"high\" :430.0100,\"low\" :429.7700,\"open\" :429.9100,\"volume\"
+        :17800 } \n, { \"Timestamp\" :1363113952,\"close\" :429.8900,\"high\" :430.0999,\"low\"
+        :429.7700,\"open\" :429.8600,\"volume\" :21800 } \n, { \"Timestamp\" :1363114019,\"close\"
+        :429.7900,\"high\" :430.0000,\"low\" :429.6940,\"open\" :429.9100,\"volume\"
+        :16400 } \n, { \"Timestamp\" :1363114074,\"close\" :429.7880,\"high\" :430.0200,\"low\"
+        :429.6900,\"open\" :429.9000,\"volume\" :17000 } \n, { \"Timestamp\" :1363114139,\"close\"
+        :429.8500,\"high\" :430.0300,\"low\" :429.7600,\"open\" :429.7600,\"volume\"
+        :10500 } \n, { \"Timestamp\" :1363114199,\"close\" :429.9000,\"high\" :429.9400,\"low\"
+        :429.8200,\"open\" :429.9100,\"volume\" :11500 } \n, { \"Timestamp\" :1363114256,\"close\"
+        :429.9650,\"high\" :430.0440,\"low\" :429.8860,\"open\" :429.9100,\"volume\"
+        :14900 } \n, { \"Timestamp\" :1363114313,\"close\" :430.2199,\"high\" :430.4300,\"low\"
+        :429.9101,\"open\" :429.9101,\"volume\" :59300 } \n, { \"Timestamp\" :1363114378,\"close\"
+        :429.5500,\"high\" :430.1500,\"low\" :429.5500,\"open\" :430.1300,\"volume\"
+        :40400 } \n, { \"Timestamp\" :1363114438,\"close\" :429.8999,\"high\" :430.0600,\"low\"
+        :429.6200,\"open\" :429.6200,\"volume\" :17700 } \n, { \"Timestamp\" :1363114499,\"close\"
+        :429.7300,\"high\" :429.9500,\"low\" :429.7300,\"open\" :429.7900,\"volume\"
+        :7100 } \n, { \"Timestamp\" :1363114552,\"close\" :429.8100,\"high\" :429.8250,\"low\"
+        :429.6300,\"open\" :429.8000,\"volume\" :7900 } \n, { \"Timestamp\" :1363114619,\"close\"
+        :429.6700,\"high\" :429.8100,\"low\" :429.6700,\"open\" :429.8100,\"volume\"
+        :5000 } \n, { \"Timestamp\" :1363114679,\"close\" :429.4300,\"high\" :429.7500,\"low\"
+        :429.4100,\"open\" :429.7400,\"volume\" :18900 } \n, { \"Timestamp\" :1363114739,\"close\"
+        :429.4100,\"high\" :429.5600,\"low\" :429.3000,\"open\" :429.4300,\"volume\"
+        :26100 } \n, { \"Timestamp\" :1363114799,\"close\" :429.0900,\"high\" :429.5000,\"low\"
+        :428.8500,\"open\" :429.4900,\"volume\" :79900 } \n, { \"Timestamp\" :1363114858,\"close\"
+        :429.3500,\"high\" :429.5800,\"low\" :429.0001,\"open\" :429.0001,\"volume\"
+        :39300 } \n, { \"Timestamp\" :1363114919,\"close\" :430.1100,\"high\" :430.1900,\"low\"
+        :429.3800,\"open\" :429.4200,\"volume\" :53200 } \n, { \"Timestamp\" :1363114974,\"close\"
+        :429.8100,\"high\" :430.1400,\"low\" :429.8100,\"open\" :430.0801,\"volume\"
+        :31600 } \n, { \"Timestamp\" :1363115039,\"close\" :430.1318,\"high\" :430.1318,\"low\"
+        :429.7201,\"open\" :429.9040,\"volume\" :32000 } \n, { \"Timestamp\" :1363115093,\"close\"
+        :429.8700,\"high\" :430.1000,\"low\" :429.7900,\"open\" :430.1000,\"volume\"
+        :12600 } \n, { \"Timestamp\" :1363115156,\"close\" :429.8260,\"high\" :429.9400,\"low\"
+        :429.7300,\"open\" :429.9400,\"volume\" :13000 } \n, { \"Timestamp\" :1363115213,\"close\"
+        :429.6400,\"high\" :429.8460,\"low\" :429.6300,\"open\" :429.7800,\"volume\"
+        :14500 } \n, { \"Timestamp\" :1363115277,\"close\" :429.7300,\"high\" :429.8010,\"low\"
+        :429.5700,\"open\" :429.5800,\"volume\" :15900 } \n, { \"Timestamp\" :1363115334,\"close\"
+        :429.5500,\"high\" :429.7100,\"low\" :429.5500,\"open\" :429.7100,\"volume\"
+        :9600 } \n, { \"Timestamp\" :1363115399,\"close\" :429.4000,\"high\" :429.6000,\"low\"
+        :429.1300,\"open\" :429.6000,\"volume\" :41700 } \n, { \"Timestamp\" :1363115455,\"close\"
+        :429.6300,\"high\" :429.7000,\"low\" :429.2500,\"open\" :429.4580,\"volume\"
+        :17500 } \n, { \"Timestamp\" :1363115519,\"close\" :429.8500,\"high\" :429.9399,\"low\"
+        :429.7000,\"open\" :429.7690,\"volume\" :26400 } \n, { \"Timestamp\" :1363115579,\"close\"
+        :431.3800,\"high\" :431.3800,\"low\" :429.7767,\"open\" :429.8600,\"volume\"
+        :140500 } \n, { \"Timestamp\" :1363115638,\"close\" :430.8700,\"high\" :431.3760,\"low\"
+        :430.6950,\"open\" :431.2300,\"volume\" :53300 } \n, { \"Timestamp\" :1363115699,\"close\"
+        :430.2610,\"high\" :430.8990,\"low\" :430.1700,\"open\" :430.8900,\"volume\"
+        :88500 } \n, { \"Timestamp\" :1363115758,\"close\" :430.0000,\"high\" :430.3000,\"low\"
+        :430.0000,\"open\" :430.2600,\"volume\" :39600 } \n, { \"Timestamp\" :1363115819,\"close\"
+        :429.9600,\"high\" :430.2000,\"low\" :429.9100,\"open\" :429.9980,\"volume\"
+        :41000 } \n, { \"Timestamp\" :1363115874,\"close\" :429.8400,\"high\" :429.9813,\"low\"
+        :429.7233,\"open\" :429.9813,\"volume\" :30700 } \n, { \"Timestamp\" :1363115881,\"close\"
+        :429.8200,\"high\" :429.8200,\"low\" :429.8200,\"open\" :429.8200,\"volume\"
+        :800 } \n, { \"Timestamp\" :1363115938,\"close\" :429.8700,\"high\" :429.9799,\"low\"
+        :429.7600,\"open\" :429.8200,\"volume\" :25200 } \n, { \"Timestamp\" :1363115999,\"close\"
+        :430.4200,\"high\" :430.4200,\"low\" :429.9300,\"open\" :429.9300,\"volume\"
+        :38200 } \n, { \"Timestamp\" :1363116057,\"close\" :430.1000,\"high\" :430.4790,\"low\"
+        :430.0100,\"open\" :430.4200,\"volume\" :30900 } \n, { \"Timestamp\" :1363116112,\"close\"
+        :430.2420,\"high\" :430.4900,\"low\" :430.0801,\"open\" :430.0801,\"volume\"
+        :18800 } \n, { \"Timestamp\" :1363116179,\"close\" :430.0600,\"high\" :430.4900,\"low\"
+        :429.9210,\"open\" :430.3000,\"volume\" :38400 } \n, { \"Timestamp\" :1363116239,\"close\"
+        :430.5020,\"high\" :430.5290,\"low\" :430.0601,\"open\" :430.0601,\"volume\"
+        :30800 } \n, { \"Timestamp\" :1363116297,\"close\" :430.6300,\"high\" :431.2000,\"low\"
+        :430.4260,\"open\" :430.6000,\"volume\" :72400 } \n, { \"Timestamp\" :1363116359,\"close\"
+        :430.5750,\"high\" :430.9600,\"low\" :430.3100,\"open\" :430.7300,\"volume\"
+        :37500 } \n, { \"Timestamp\" :1363116419,\"close\" :430.5600,\"high\" :430.7293,\"low\"
+        :430.4000,\"open\" :430.5010,\"volume\" :22300 } \n, { \"Timestamp\" :1363116477,\"close\"
+        :430.5600,\"high\" :430.6399,\"low\" :430.3400,\"open\" :430.5500,\"volume\"
+        :18700 } \n, { \"Timestamp\" :1363116537,\"close\" :430.0900,\"high\" :430.5100,\"low\"
+        :430.0900,\"open\" :430.4960,\"volume\" :24600 } \n, { \"Timestamp\" :1363116590,\"close\"
+        :430.1870,\"high\" :430.3299,\"low\" :429.9600,\"open\" :430.0110,\"volume\"
+        :27000 } \n, { \"Timestamp\" :1363116652,\"close\" :429.9000,\"high\" :430.1000,\"low\"
+        :429.6600,\"open\" :430.0970,\"volume\" :37900 } \n, { \"Timestamp\" :1363116719,\"close\"
+        :429.7300,\"high\" :430.0299,\"low\" :429.5840,\"open\" :429.9700,\"volume\"
+        :27500 } \n, { \"Timestamp\" :1363116778,\"close\" :429.7501,\"high\" :430.3596,\"low\"
+        :429.6300,\"open\" :429.6700,\"volume\" :18900 } \n, { \"Timestamp\" :1363116783,\"close\"
+        :429.7300,\"high\" :429.7300,\"low\" :429.7300,\"open\" :429.7300,\"volume\"
+        :300 } \n\n]\n} )"
+    http_version: '1.1'
+  recorded_at: Tue, 12 Mar 2013 19:33:58 GMT
+- request:
+    method: get
     uri: http://download.finance.yahoo.com/d/quotes.csv?s=AAPL&f=nsab2bb3mwopvyext1e7e8e9rm4m3d1
     body:
       encoding: US-ASCII
@@ -631,13 +972,13 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Mon, 06 Aug 2012 13:58:02 GMT
+      - Tue, 12 Mar 2013 19:33:59 GMT
       p3p:
-      - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
+      - policyref="http://info.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV
         TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY
-        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+        ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV"
       cache-control:
-      - private
+      - private, no-cache, no-store
       connection:
       - close
       transfer-encoding:
@@ -646,8 +987,8 @@ http_interactions:
       - application/octet-stream
     body:
       encoding: US-ASCII
-      string: ! "\"Apple Inc.\",\"AAPL\",617.95,617.95,617.86,617.86,\"615.26 - 618.58\",\"353.02
-        - 644.00\",617.15,615.70,1161664,N/A,42.548,\"NasdaqNM\",\"9:43am\",44.16,52.53,15.27,14.47,560.827,594.096,\"8/6/2012\"\r\n"
+      string: ! "\"Apple Inc.\",\"AAPL\",429.93,429.93,429.81,429.81,\"428.85 - 438.88\",\"419.00
+        - 705.07\",435.81,437.87,13582739,1.82,44.107,\"NasdaqNM\",\"3:18pm\",44.47,50.16,9.63,9.93,559.168,453.425,\"3/12/2013\"\r\n"
     http_version: '1.1'
-  recorded_at: Mon, 06 Aug 2012 13:57:55 GMT
-recorded_with: VCR 2.2.3
+  recorded_at: Tue, 12 Mar 2013 19:33:59 GMT
+recorded_with: VCR 2.4.0

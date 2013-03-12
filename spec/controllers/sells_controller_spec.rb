@@ -15,10 +15,10 @@ describe SellsController do
     @buy.place!(@stock_details)
 
     VCR.use_cassette('quote') do
-      post :create, stock_id: 'AAPL', sell: { volume: 5 }
+      post :create, stock_id: 'AAPL', sell: { volume: 5, when: "At Market" }
     end
 
-    @user.user_stocks.last.shares_owned.to_i.should == 15
+    @user.user_stocks.first.shares_owned.to_i.should == 15
     response.should redirect_to(stock_path('AAPL'))
   end
 

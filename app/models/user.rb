@@ -634,7 +634,7 @@ class User < ActiveRecord::Base
 end
 
 
-
+# This is the orders summary that will be used later
 =begin
 # Orders Summary pdf
             <h2>Orders Summary</h2>
