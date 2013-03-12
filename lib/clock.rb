@@ -10,7 +10,9 @@ end
 
 every(60.seconds, 'evaluating stop loss orders...'){
   StopLossTransaction.evaluate_pending_orders
+  Rails.logger.info "cron_check date time working"
 }
 every(60.seconds, 'evaluating date time orders...'){
   DateTimeTransaction.evaluate_pending_orders
+  Rails.logger.info "cron_check date time working"
 }
