@@ -15,9 +15,7 @@ describe SellsController do
     @buy.place!(@stock_details)
 
     VCR.use_cassette('quote') do
-      post :create, stock_id: 'AAPL', sell: {
-        volume: 5
-      }
+      post :create, stock_id: 'AAPL', sell: { volume: 5 }
     end
 
     @user.user_stocks.last.shares_owned.to_i.should == 15

@@ -7,8 +7,6 @@ class SellsController < ApplicationController
 
 
   def create
-    when_to_execute_order('sell')
-
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
     @order = SellTransaction.new(params[:sell].merge(user: current_user))

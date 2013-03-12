@@ -53,10 +53,12 @@ class ApplicationController < ActionController::Base
       @order = StopLossTransaction.new(params[type].merge(user: current_user))
     end
     
-    if @order.place!(@stock_details)
-      flash[:notice] = "Order successfully placed"
-    else
-      flash[:alert] = @order.errors.values.join if !@order.errors.blank?
+    if @order
+      if@order.place!(@stock_details)
+        flash[:notice] = "Order successfully placed"
+      else
+        flash[:alert] = @order.errors.values.join if !@order.errors.blank?
+      end
     end
     redirect_to(stock_path(params[:stock_id]))
   end

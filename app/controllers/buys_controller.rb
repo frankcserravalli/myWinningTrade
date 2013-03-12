@@ -1,10 +1,13 @@
 class BuysController < ApplicationController
   after_filter :flash_cover, :only => :create
+
   after_filter :flash_alert, :only => :create
+
   before_filter(:except => [:callback_facebook, :callback_linkedin]) { |controller| controller.when_to_execute_order('buy') }
 
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+
     @buy_order = Buy.new(params[:buy].merge(user: current_user))
     if @buy_order.place!(@stock_details)
       if params[:soc_network].eql? "linkedin"
