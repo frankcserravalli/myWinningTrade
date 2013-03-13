@@ -5,13 +5,6 @@ describe "Stocks Routing" do
     expect(get: '/stock/show').to route_to({ controller: 'stock', action: 'show', id: 'show' })
   end
 
-
-
-
-
-
-
-
   it "should route to stocks#details" do
     expect(get: '/stock/details').to route_to({ controller: 'stock', action: 'details' })
   end
