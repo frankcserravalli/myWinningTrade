@@ -4,17 +4,28 @@ class StockController < ApplicationController
 
   def show
   	symbol = params[:id].upcase
+
     @stock = Finance.current_stock_details(symbol)
+
     @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
 
+    # Setting up the new records in anticipation of an user creating an order
     @buy_order = Buy.new
+
     @short_sell_borrow_order = ShortSellBorrow.new
+
     @sell_order = SellTransaction.new
+
     @date_time_buy_transaction = DateTimeTransaction.new
+
     @date_time_sell_transaction = DateTimeTransaction.new
+
     @date_time_short_sell_borrow_transaction = DateTimeTransaction.new
+
     @stop_loss_buy_transaction = StopLossTransaction.new
+
     @stop_loss_sell_transaction = StopLossTransaction.new
+
     @stop_loss_short_transaction = StopLossTransaction.new
 
     if @stock.nil?
@@ -52,6 +63,7 @@ class StockController < ApplicationController
     kit = PDFKit.new(content, :page_size => 'Letter')
 
     kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
+
     kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'
 
     output = kit.to_pdf
