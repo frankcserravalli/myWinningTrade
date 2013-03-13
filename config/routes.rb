@@ -29,7 +29,7 @@ MyWinningTrade::Application.routes.draw do
   match '/subscriptions/destroy', to: 'subscriptions#destroy'
   match '/subscriptions/update', to: 'subscriptions#update'
 
-  get '/joestest, to: users#test
+  get '/joestest', to: 'users#test'
 
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
