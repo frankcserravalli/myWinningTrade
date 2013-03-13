@@ -63,12 +63,14 @@ class ApplicationController < ActionController::Base
     redirect_to(stock_path(params[:stock_id]))
   end
 
+  # I've set the user_id default as zero in case user_id is not sent through
   def load_portfolio(user_id = 0)
     if current_user
       @user = current_user
     else
-      #Stop the method here if no params were sent through
+      #Stop the method here if no user_id params were sent through
       return if user_id.eql? 0
+
       @user = User.find(user_id)
     end
 
