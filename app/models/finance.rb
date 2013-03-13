@@ -1,5 +1,7 @@
 require 'oauth'
+
 require 'ostruct'
+
 require 'rest_client'
 
 class Array
@@ -7,7 +9,9 @@ class Array
     transforms = []
     self.select do |el|
       should_keep = !transforms.include?(t=blk[el])
+
       transforms << t
+
       should_keep
     end
   end
@@ -65,7 +69,8 @@ class Finance
 
 				unless quote.name == quote.symbol
 					quote.currently_trading = (Date.strptime(quote.last_trade_date, '%m/%d/%Y') == Date.today)
-					quote.current_price = [quote.ask_realtime, quote.ask, quote.previous_close].detect do |value|
+
+          quote.current_price = [quote.ask_realtime, quote.ask, quote.previous_close].detect do |value|
 						value.to_f > 0.0
 					end
 					quote.current_bid = quote.bid_realtime || quote.bid
@@ -76,13 +81,16 @@ class Finance
 
           # calculate stock trend
           close = quote.previous_close.to_f
+
           current = quote.current_price.to_f
+
           point_change = (current - close)
 
           quote.point_change = (point_change >= 0 ? '+' : '') + point_change.round(2).to_s
 
 					quote.percent_change = ((point_change / close)*100).round(2)
-					quote.trend_direction = quote.percent_change >= 0 ? 'up' : 'down'
+
+          quote.trend_direction = quote.percent_change >= 0 ? 'up' : 'down'
 
 					quote
 				else
@@ -118,8 +126,10 @@ class Finance
 
 				# Fix up Yahoo's messy JSON
 				intraday_body.gsub!(/[\(\)]/, '')
-				intraday_body.gsub!(/(\d+\.\d{4})"/, '\1')
-				intraday_body.sub!('finance_charts_json_callback', '')
+
+        intraday_body.gsub!(/(\d+\.\d{4})"/, '\1')
+
+        intraday_body.sub!('finance_charts_json_callback', '')
 
 				return nil if intraday_body.include?('errorid')
 
@@ -129,13 +139,16 @@ class Finance
 			end
 
 			stock_time_offset = intraday_details['meta']['gmtoffset'].to_i
-			last_trading_day = Time.at(intraday_details['Timestamp']['max']+stock_time_offset-Time.now.gmt_offset)
+
+      last_trading_day = Time.at(intraday_details['Timestamp']['max']+stock_time_offset-Time.now.gmt_offset)
 
 			end_date = last_trading_day
-			start_date = end_date - 6.months
+
+      start_date = end_date - 6.months
 
 			history = MarketBeat.quotes(symbol, ansi_date(start_date), ansi_date(end_date))
-			stock_quote = current_stock_details(symbol)
+
+      stock_quote = current_stock_details(symbol)
 
 			OpenStruct.new(
 				symbol:
@@ -163,11 +176,14 @@ class Finance
 			search_text.gsub!(/[^\w \.]/, '')
 
 			response = RestClient.get "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=#{CGI::escape(search_text)}&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
-			response.gsub!(/[\(\)]/, '')
-		  response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
+
+      response.gsub!(/[\(\)]/, '')
+
+      response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 		  suggestions = MultiJson.load(response)
-		  suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
+
+      suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 		end
 
 		def sanitize_symbol(symbol)
@@ -182,7 +198,8 @@ class Finance
 			self.reload_credentials unless self.credentials
 
 			consumer = OAuth::Consumer.new(self.credentials['consumer_key'], self.credentials['consumer_secret'], site: 'http://query.yahooapis.com')
-			access_token = OAuth::AccessToken.new(consumer)
+
+      access_token = OAuth::AccessToken.new(consumer)
 
 			params = {
 			  q: yql_query,
@@ -195,12 +212,15 @@ class Finance
 			query_string = params.map{ |k,v| "#{k}=#{OAuth::Helper.escape(v)}" }.join('&')
 
 	 	  start_time = Time.now.to_f
-	    response = access_token.request(:get, '/v1/yql?' + query_string)
+
+      response = access_token.request(:get, '/v1/yql?' + query_string)
 
 	    begin
 	    	results = MultiJson.load(response.body)['query']['results']
-	    	Rails.logger.debug "  YQL (#{((Time.now.to_f-start_time)*1000.0).round} ms / #{(response.body.length / 1024.0).round} KB): #{yql_query}" unless Rails.env.production?
-	    	raise
+
+        Rails.logger.debug "  YQL (#{((Time.now.to_f-start_time)*1000.0).round} ms / #{(response.body.length / 1024.0).round} KB): #{yql_query}" unless Rails.env.production?
+
+        raise
 	    rescue Exception => e
 	    	raise QueryFailed.new("'#{yql_query}' (#{e}), response: #{response.body}")
 	    end
@@ -210,7 +230,8 @@ class Finance
 
 		def reload_credentials
 			self.credentials = YAML::load_file(Rails.root.join('config', 'finance.yml'))[Rails.env.to_s]
-			raise "No finance API credentials specified for environment #{Rails.env}" unless self.credentials
+
+      raise "No finance API credentials specified for environment #{Rails.env}" unless self.credentials
 		end
 
 		def create_openstruct(value)
