@@ -17,6 +17,11 @@ describe "User Routing" do
   it "should route social_networks#authenticate" do
     expect(post: '/api/v1/auth/:provider/callback').to route_to({ controller: 'api/v1/users', action: 'authenticate',  format: 'json', provider: ':provider' })
   end
+
+  it "should route users#trading_analysis_pdf" do
+    expect(get: '/trading_analysis_pdf').to route_to({ controller: 'users', action: 'trading_analysis_pdf' })
+  end
+end
 =begin
   it "should route to users#show" do
     expect(get: 'users/profile').to route_to({ controller: 'users', action: 'profile' })
@@ -30,4 +35,3 @@ describe "User Routing" do
     expect(put: 'users/update').to route_to({ controller: 'users', action: 'update' })
   end
 =end
-end

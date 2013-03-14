@@ -20,4 +20,12 @@ describe "Stocks Routing" do
   it "should route to stocks#price_history" do
     expect(get: '/stock/GOOG/price_history').to route_to({ controller: 'stock', action: 'price_history', id: 'GOOG' })
   end
+
+  it "should route to stocks#dashboard" do
+    expect(get: '/dashboard').to route_to({ controller: 'stock', action: 'dashboard' })
+  end
+
+  it "should route to stocks#trading_analysis" do
+    expect(get: '/user/trading_analysis').to route_to({ controller: 'stock', action: 'trading_analysis' })
+  end
 end
