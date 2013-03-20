@@ -67,11 +67,5 @@ javascript:
   tradingview_widget_options.allow_symbol_change = true;
   tradingview_widget_options.container_id = 'chartview';
   tradingview_widget_options.hide_side_toolbar = false;
-  widget1 = new TradingView.widget(tradingview_widget_options);
-  widget1.getSymbolInfo(function(info) {
-    console.log(info);
-  });
-  widget1.image(function(link) {
-    console.log("it works");
-    console.log(link);
-  });
+  new TradingView.widget(tradingview_widget_options);
+

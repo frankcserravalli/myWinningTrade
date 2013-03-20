@@ -55,16 +55,15 @@ end
 
 describe Api::V1::UsersController do
   before do
-    @token = scramble_token(Time.now, create_random_string)
+    @user = FactoryGirl.create(:user)
+
+
+    @token = scramble_token(Time.now, @user.id)
   end
 
   describe "post authenticate" do
     context "w/o social network" do
       context "with an user who does everything right and signs in" do
-        before :each do
-          @user = FactoryGirl.create(:user)
-        end
-
         it "returns with an ios token" do
           post :authenticate, email: @user.email, password: @user.password
 
@@ -88,9 +87,6 @@ describe Api::V1::UsersController do
       end
 
       context "with an user who does everything wrong and signs in" do
-        before :each do
-          @user = FactoryGirl.create(:user)
-        end
         it "returns with no ios token" do
           post :authenticate, email: @user.email
 
@@ -104,9 +100,9 @@ describe Api::V1::UsersController do
     context "via a social network" do
       context "with an user who does everything right" do
         before :each do
-          @user = FactoryGirl.create(:user)
           request.env['omniauth.auth'] = { :provider => @user.provider, :uid => @user.uid }
-          post :authenticate, email: ""
+
+          post :authenticate, email: @user.email, password: @user.password
         end
 
         it "returns with an ios token" do
@@ -118,7 +114,9 @@ describe Api::V1::UsersController do
         it "returns with the signed in user" do
           parsed_body = JSON.parse(response.body)
 
-          parsed_body.should == @user.id
+          user_id = parsed_body["user_id"]
+
+          user_id.should == @user.id
         end
 
         it "returns http success" do
@@ -128,8 +126,6 @@ describe Api::V1::UsersController do
 
       context "with an user who does everything wrong" do
         before :each do
-          @user = FactoryGirl.create(:user)
-
           request.env['omniauth.auth'] = { :provider => "not the real provider", :uid => @user.uid }
         end
         it "returns with no ios token" do

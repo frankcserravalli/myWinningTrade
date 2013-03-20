@@ -19,9 +19,10 @@ module Api
       # { "user": { "name": "", "email": "", etc etc } }
       #
       def create
-        scrambled_token = scramble_token(Time.now, create_random_string)
+
         @user = User.new(params[:user])
         if @user.save
+          scrambled_token = scramble_token(Time.now, @user.id)
           render :json => { :user_id => @user.id, :ios_token => scrambled_token}
         else
           render :json => {}
@@ -36,7 +37,6 @@ module Api
       # password
       #
       def authenticate
-        scrambled_token = scramble_token(Time.now, create_random_string)
 
         if params[:email].blank?
           @data_from_soc_network = request.env['omniauth.auth']
@@ -44,6 +44,8 @@ module Api
           @user = User.where(:provider => @data_from_soc_network['provider'],
                              :uid => @data_from_soc_network['uid']).first
           if @user
+            scrambled_token = scramble_token(Time.now, @user.id)
+
             # Signed In, token is sent through because the user is signed in
             render :json => { :user_id => @user.id, :ios_token => scrambled_token }
           else
@@ -53,6 +55,8 @@ module Api
         else
           @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
           if @user
+            scrambled_token = scramble_token(Time.now, @user.id)
+
             render :json => { :user_id => @user.id, :ios_token => scrambled_token }
           else
             render :json => {}
