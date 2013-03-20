@@ -26,10 +26,17 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_from_auth_hash(auth_hash)
     where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_initialize.tap do |user|
-  	  user.name = auth_hash[:info][:name] if auth_hash[:info]
+  	  if auth_hash[:info]
+        user.name = auth_hash[:info][:name]
+
+        user.email = auth_hash[:info][:email]
+      end
+
   	  # TODO please change before move to mwt
       user.password =  "password"
-  	  user.password_confirmation =  "password"
+
+      user.password_confirmation =  "password"
+
       user.save
   	end
   end
