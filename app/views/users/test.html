@@ -1,16 +1,9 @@
+<script type="text/javascript" src="https://s3.amazonaws.com/tradingview/tv.js"></script>
+
 <script>
   var widget1 = new TradingView.widget({
    	symbol: 'GOOG',
     save_image: true
-  });
-
-  link = "https://www.tradingview.com/x/3xjnWrCO/";
-
-  console.log("asdf");
-  widget1.getSymbolInfo(function(info) {
-      // prints something like {"name":"GOOG","exchange":"NASDAQ","description":"Google Inc.","type":"stock","interval":"D"}
-
-    console.log(info);
   });
 
   widget1.image(function(link) {
@@ -18,5 +11,5 @@
 
     console.log(link);
   });
-
 </script>
+
