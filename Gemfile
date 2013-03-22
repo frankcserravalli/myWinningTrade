@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.12'
 
 # Database
 # ========
@@ -56,8 +56,6 @@ gem "market_beat", "~> 0.2.0"
 gem "migrant", "~> 1.4.0"
 
 gem "squeel", "~> 1.0.15"
-
-gem "bcrypt-ruby", "~> 3.0.1"
 
 group :development do
   gem "letter_opener", "~> 1.0.0"
