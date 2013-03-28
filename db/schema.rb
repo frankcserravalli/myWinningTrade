@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(:version => 20130328170338) do
 
   create_table "user_account_summaries", :force => true do |t|
     t.integer  "user_id"
-    t.float    "capital_gain_percentage"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.float    "capital_gain_percentage", :default => 0.0
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   add_index "user_account_summaries", ["user_id"], :name => "index_user_account_summaries_on_user_id"
@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20130328170338) do
     t.string  "uid"
     t.decimal "account_balance",                    :precision => 10, :scale => 2, :default => 50000.0
     t.boolean "accepted_terms",                                                    :default => false
-    t.boolean "premium"
     t.boolean "premium_subscription",                                              :default => false
     t.string  "password_digest"
   end

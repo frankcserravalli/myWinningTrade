@@ -2,7 +2,7 @@ class CreateUserAccountSummaries < ActiveRecord::Migration
   def change
     create_table :user_account_summaries do |t|
       t.integer :user_id
-      t.float :capital_gain_percentage
+      t.float :capital_gain_percentage, :default => 0.0
 
       t.timestamps
     end
