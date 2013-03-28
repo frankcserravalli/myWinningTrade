@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311182720) do
+ActiveRecord::Schema.define(:version => 20130328170338) do
 
   create_table "date_time_transactions", :force => true do |t|
     t.integer  "user_stock_id"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(:version => 20130311182720) do
   end
 
   add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
+
+  create_table "user_account_summaries", :force => true do |t|
+    t.integer  "user_id"
+    t.float    "capital_gain_percentage"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "user_account_summaries", ["user_id"], :name => "index_user_account_summaries_on_user_id"
 
   create_table "user_stocks", :force => true do |t|
     t.integer "user_id"

@@ -6,7 +6,7 @@ div.tabbable
 
   .tab-content
     .tab-pane.active#portfolio-section
-      .dashboard-holder.portfolio_list
+      .dashboard-tab-box.portfolio_list
         = link_to('Export PDF', '/trading_analysis_pdf.pdf', class: "sml_btn pull-right")
         = link_to('Export CSV', orders_path, class: "sml_btn pull-right")
         h2 Portfolio
@@ -39,8 +39,31 @@ div.tabbable
             .accordion-inner
               = render partial: 'account/pending_positions'
     .tab-pane#world-leadboard-section
-      .dashboard-holder
-        h2 hello
+      .dashboard-tab-box
+        h2 World Leaderboard
+        table.table.table-striped.table-bordered
+          thead
+            tr
+              th Ranking
+              th Name
+              th Capital Gain/Loss Percentage
+          tbody
+            tr
+              td 1
+              td Jason
+              td 5.0%
+
     .tab-pane#class-leadboard-section
-      .dashboard-holder
-        h2 there
+      .dashboard-tab-box
+        h2 Class Leaderboard
+        table.table.table-striped.table-bordered
+          thead
+            tr
+              th Ranking
+              th Name
+              th Capital Gain/Loss Percentage
+          tbody
+            tr
+              td 1
+              td Jason
+              td 5.0%
