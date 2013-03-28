@@ -50,6 +50,8 @@ class StockController < ApplicationController
   end
 
   def portfolio
+    @world_leaderboard = UserAccountSummary.order("capital_gain_percentage ASC").limit(20)
+
     render partial: 'account/portfolio'
   end
 
