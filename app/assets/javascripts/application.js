@@ -23,6 +23,7 @@
 //= require stripe
 //= require subscription
 //= require adsense
+//= require tutorialize
 //= require_self
 //= require_tree .//stock
 //= require general
