@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: my_winning_trade_development
+  user: jason
+  password: password
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: my_winning_trade_test
+  user: jason
+  password: password
+  host: localhost
+  template: template0
+

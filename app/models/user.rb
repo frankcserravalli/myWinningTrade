@@ -507,7 +507,7 @@ class User < ActiveRecord::Base
                 }
               </script>
             </head>
-            <h2>Open Positions</h2>
+            <h2>Trading Summary</h2>
             <div class="row-fluid">
               <table class="table table-striped">
                 <thead>
@@ -537,7 +537,7 @@ class User < ActiveRecord::Base
                 </div>' + profit_stocks +
                 '<div class="row-fluid">
                   <span class="span7 offset1">Net Revenues</span>
-                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_revenue].to_s + '</span>
+                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_revenue].round(2).to_s + '</span>
                 </div>
                 <div class="row-fluid">
                   <div class="span2 offset1 pagination-centered">Losses</div>
@@ -556,7 +556,7 @@ class User < ActiveRecord::Base
                 </div>
                 <div class="row-fluid">
                   <span class="span7 offset1">Net Income</span>
-                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_income].to_s + '</span>
+                  <span class="span4 pagination-centered">' + stock_summary[:summary][:net_income].round(2).to_s + '</span>
                 </div>
               </div>
 
@@ -612,10 +612,6 @@ class User < ActiveRecord::Base
                   <span class="span2">' + (Finance.grab_alpha_or_beta * 100).round(2).to_s + '%</span>
                 </div>
                 <br>
-                <div class="row-fluid">
-                  <span class="span6 offset1">R-squared</span>
-                  <span class="span2">$760.00</span>
-                </div>
               </div>
               <div class="row-fluid span4">
                 <div id="chart_div" class="span12" style=" height: 300px;"></div>

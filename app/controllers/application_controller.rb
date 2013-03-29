@@ -1,7 +1,9 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include UsersHelper
   before_filter :require_login
+  before_filter :require_iphone_login
   before_filter :require_acceptance_of_terms, if: :current_user
   before_filter :load_portfolio, if: :current_user
 
@@ -147,16 +149,16 @@ class ApplicationController < ActionController::Base
   end
 
   def linkedin_share_connect(controller)
-    client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA', LINKEDIN_CONFIGURATION)
+    client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4', LINKEDIN_CONFIGURATION)
     request_token = client.request_token(:oauth_callback =>
-                                             "http://#{request.host_with_port}/#{controller}/callback_linkedin")
+                                             "https://#{request.host_with_port}/#{controller}/callback_linkedin")
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     redirect_to client.request_token.authorize_url
   end
 
   def facebook_share_connect(controller)
-    session['oauth'] = Koala::Facebook::OAuth.new("349566425142206", "37279cb9a30d14949d011cadc12fd1ae", "https://#{request.host_with_port}/#{controller}/callback_facebook")
+    session['oauth'] = Koala::Facebook::OAuth.new("331752936918078", "6dee4f074f905e98957e9328bf4d91a3", "https://#{request.host_with_port}/#{controller}/callback_facebook")
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end
 end

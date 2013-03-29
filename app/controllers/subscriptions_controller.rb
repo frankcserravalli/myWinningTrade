@@ -10,7 +10,8 @@ class SubscriptionsController < ApplicationController
       customer = Stripe::Customer.create(
           :card => params[:stripe_card_token],
           :description => current_user.email,
-          :plan => params[:payment_plan]
+          :plan => params[:payment_plan],
+          :email => current_user.email
       )
 
       # Add Subscription Customer into DB

@@ -1,5 +1,5 @@
 ul#portfolio
-  -if !@portfolio[:pending_stop_loss_transactions].empty?
+  -unless @portfolio[:pending_stop_loss_transactions].empty?
     table.table
       - @portfolio[:pending_stop_loss_transactions].each do |trans|
         - @sl_type = trans.order_type

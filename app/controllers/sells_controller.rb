@@ -13,7 +13,7 @@ class SellsController < ApplicationController
       elsif params[:soc_network].eql? "twitter"
         @stock_id = UserStock.find(@order.user_stock)
 
-        @stock = Stock.find(@stock_id.stock_id)
+        @stock = Stock.find_by_symbol(params[:stock_id])
 
         # This replaces spaces with the %20 symbol so that we can allow the URL to pass correctly to Twitter
         stock_name = @stock.name.gsub!(/\s/, "%20")
@@ -46,9 +46,9 @@ class SellsController < ApplicationController
 
     # Here we are preventing an error from Facebook when an user posts the same exact message twice
     begin
-      @graph.put_wall_post(response +  " on My Winning Trade.")
+      @graph.put_wall_post(response)
     rescue
-      flash[:notice] = response + " but your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
+      flash[:notice] = "Your Facebook post wasn't posted because Facebook doesn't allow duplicate posts."
     end
     redirect_to(stock_path(@stock.symbol))
   end
@@ -69,7 +69,7 @@ class SellsController < ApplicationController
     if params.has_key? "oauth_problem"
       redirect_to(stock_path(@stock.symbol))
     else
-      client = LinkedIn::Client.new('7imqhpb5d9cm', 'dUtYyIdxvrqpbdXA')
+      client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4')
 
       if session[:atoken].nil?
         pin = params[:oauth_verifier]

@@ -6,6 +6,8 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'vcr'
 require 'factory_girl'
+include UsersHelper
+
 
 require 'database_cleaner'
 DatabaseCleaner.strategy = :transaction
