@@ -2,6 +2,8 @@ $(document).ready(function() {
 
   $(".dashboard-tutorial").click(function() {
 
+    alert("Button pressed");
+
     _t.push({start: 'Dashboard', config:{force:true}});
 
   });
