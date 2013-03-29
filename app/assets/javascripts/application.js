@@ -23,9 +23,6 @@
 //= require stripe
 //= require subscription
 //= require adsense
-//= require ChunkFive_400.font
-//= require jquery.easing1.3
-//= require cufon-yui
 //= require_self
 //= require_tree .//stock
 //= require general
