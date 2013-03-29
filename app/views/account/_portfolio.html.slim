@@ -1,3 +1,6 @@
+javascript:
+  _t.push({start: "MyWinningTrade", config:{force:true}});
+
 #portfolio_holder.portfolio_list
 	= link_to('Export PDF', '/trading_analysis_pdf.pdf', class: "sml_btn pull-right")
 	= link_to('Export CSV', orders_path, class: "sml_btn pull-right")
@@ -30,3 +33,5 @@
 	  #collapsefour.accordion-body.collapse
 	    .accordion-inner
 	    	= render partial: 'account/pending_positions'
+
+
