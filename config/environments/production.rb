@@ -31,7 +31,8 @@ MyWinningTrade::Application.configure do
   config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get((ENV["LOG_LEVEL"] || "INFO").upcase)
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -64,4 +65,13 @@ MyWinningTrade::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Redirect to the www version of the domain in production
+=begin
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r{.*}, 'https://www.mywinningtrade.com$&', :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] != 'www.mywinningtrade.com'
+    }
+  end
+=end
 end

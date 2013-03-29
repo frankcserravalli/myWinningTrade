@@ -97,7 +97,7 @@ gem "omniauth-twitter", "~> 0.0.14"
 
 gem "omniauth-facebook", "~> 1.4.1"
 
-gem "omniauth-linkedin", "~> 0.0.8"
+gem "omniauth-linkedin", "~> 0.1.0"
 
 gem "omniauth-openid", "~> 1.0.1" # Google
 
@@ -121,13 +121,13 @@ group :development do
   gem "guard-bundler", "~> 1.0.0"
 end
 
-gem "fb_graph", "~> 2.6.4"
+gem "fb_graph", "~> 2.6.5"
 
 gem "koala", :git => "git://github.com/arsduo/koala.git"
 
 gem "linkedin", "~> 0.3.7"
 
-gem "clockwork", "~> 0.4.1"
+gem "clockwork", "~> 0.5.0"
 
 gem "high_voltage", "~> 1.2.1"
 
@@ -142,3 +142,6 @@ gem "term-ansicolor", "~> 1.0.7"
 gem "pdfkit", "~> 0.5.3"
 
 gem "wkhtmltopdf-binary", "~> 0.9.9.1"
+
+gem "rack-rewrite", "~> 1.3.3"
+
