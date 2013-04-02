@@ -1,5 +1,7 @@
 class StockController < ApplicationController
   def dashboard
+    @world_leaderboard = User.order("account_balance DESC").limit(20)
+
   end
 
   def show
@@ -50,8 +52,6 @@ class StockController < ApplicationController
   end
 
   def portfolio
-    #@world_leaderboard = UserAccountSummary.order("capital_gain_percentage ASC").limit(20)
-
     render partial: 'account/portfolio'
   end
 
