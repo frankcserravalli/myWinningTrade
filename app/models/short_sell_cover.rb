@@ -15,13 +15,6 @@ class ShortSellCover < Order
       self.price = stock.current_price
       self.capital_gain = -(stock.current_price.to_f - short_sell_borrow.cost_basis)
 
-      # Here we add the capital gain to the overall capital gain to the user account summary
-      @user_account_summary = UserAccountSummary.find_or_create_by_user_id(user.id)
-
-      @user_account_summary.capital_gain_percentage += self.capital_gain
-
-      @user_account_summary.save
-
       # Finish off rest of the transaction with updating the database
       short_sell_borrow.update_attribute :volume_remaining, (short_sell_borrow.volume_remaining - volume)
       user.update_attribute(:account_balance, user.account_balance + account_balance_change)
