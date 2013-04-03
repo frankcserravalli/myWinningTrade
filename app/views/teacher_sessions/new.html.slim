@@ -1,5 +1,12 @@
-h1 Teacher Sign In Page
-  = form_tag('/create', :method => :post)
-  = text_field_tag 'email', 'email'
-  = text_field_tag 'password', 'password'
-  = submit_tag 'Sign In'
+h1 Teacher Sign In
+= form_tag('/teacher_sessions', :method => :post)
+= text_field_tag 'email', 'email'
+br
+br
+
+= text_field_tag 'password', 'password'
+
+br
+br
+
+= submit_tag 'Sign In'
