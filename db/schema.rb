@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328170338) do
+ActiveRecord::Schema.define(:version => 20130403174737) do
 
   create_table "date_time_transactions", :force => true do |t|
     t.integer  "user_stock_id"
@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(:version => 20130328170338) do
 
   add_index "date_time_transactions", ["user_id"], :name => "index_date_time_transactions_on_user_id"
   add_index "date_time_transactions", ["user_stock_id"], :name => "index_date_time_transactions_on_user_stock_id"
+
+  create_table "group_users", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -78,9 +92,9 @@ ActiveRecord::Schema.define(:version => 20130328170338) do
 
   create_table "user_account_summaries", :force => true do |t|
     t.integer  "user_id"
-    t.float    "capital_gain_percentage", :default => 0.0
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.float    "capital_total", :default => 0.0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "user_account_summaries", ["user_id"], :name => "index_user_account_summaries_on_user_id"
@@ -106,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20130328170338) do
     t.boolean "accepted_terms",                                                    :default => false
     t.boolean "premium_subscription",                                              :default => false
     t.string  "password_digest"
+    t.string  "group",                                                             :default => "student"
   end
 
   add_index "users", ["provider"], :name => "index_users_on_provider"

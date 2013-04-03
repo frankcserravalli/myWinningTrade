@@ -1,4 +1,5 @@
 MyWinningTrade::Application.routes.draw do
+
   match '/auth/:provider/callback', to: 'sessions#create'
 
   get '/dashboard', to: 'stock#dashboard'
@@ -6,6 +7,7 @@ MyWinningTrade::Application.routes.draw do
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
+
 
 
   get '/terms', to: 'terms#show', as: :terms
@@ -28,7 +30,13 @@ MyWinningTrade::Application.routes.draw do
   match '/subscriptions/destroy', to: 'subscriptions#destroy'
   match '/subscriptions/update', to: 'subscriptions#update'
 
+  resource :teacher_sessions, only: [:create, :destroy]
+  get 'teacher/sign_in' => 'teacher_sessions#new'
+
+  resource :groups
+
   get '/joestest', to: 'users#test'
+
 
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do

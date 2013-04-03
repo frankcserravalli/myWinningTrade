@@ -1,6 +1,6 @@
 class StockController < ApplicationController
   def dashboard
-    @world_leaderboard = User.order("account_balance DESC").limit(20)
+    @world_leaderboard = UserAccountSummary.order("capital_total DESC").limit(20)
 
   end
 

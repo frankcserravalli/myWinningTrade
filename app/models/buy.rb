@@ -21,8 +21,6 @@ class Buy < Order
       return false
     end
 
-
-
     super
 
     @shares_to_short = 0
