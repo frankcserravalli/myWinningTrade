@@ -1,26 +1,26 @@
 module TeacherSessionsHelper
-  def sign_in(user)
-    session[:id] = user.id
+  def teacher_sign_in(user)
+    session[:teacher_id] = user.id
     self.current_user = user
   end
 
-  def signed_in?
+  def teacher_signed_in?
     !current_user.nil?
   end
 
-  def current_user=(user)
+  def teacher_current_user=(user)
     @current_user = user
   end
 
-  def current_user
-    @current_user ||= User.find_by_id(session[:id])
+  def teacher_current_user
+    @current_user ||= User.find_by_id(session[:teacher_id])
   end
 
-  def current_user?(user)
+  def teacher_current_user?(user)
     user == current_user
   end
 
-  def sign_out
+  def teacher_sign_out
     self.current_user = nil
     reset_session
   end
