@@ -11,7 +11,7 @@
             -elsif params[:controller].eql? "stock" and params[:action].eql? "show"
               a.trading-tutorial Tutorial
           li
-            a = current_user.name
+            a.users-name = current_user.name
           li
             - if current_user.premium_subscription.eql? false
               a href="#{subscriptions_path}" Subscribe
