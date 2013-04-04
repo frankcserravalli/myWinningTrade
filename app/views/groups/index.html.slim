@@ -1,0 +1,12 @@
+h1 List of Classes
+
+.span8
+  table.table.table-striped.table-bordered
+    thead
+      tr
+        th Class Name
+    tbody
+      - @groups.each do |group|
+        tr
+          a href="#{groups_path(group.id)}"
+            td = group.name

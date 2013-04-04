@@ -33,6 +33,8 @@ MyWinningTrade::Application.routes.draw do
 
   resource :groups
 
+  get 'group', to: 'groups#index'
+
   get '/joestest', to: 'users#test'
 
 

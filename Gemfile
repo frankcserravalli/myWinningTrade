@@ -43,6 +43,8 @@ gem "country_select", "~> 1.1.3"
 
 gem 'copycopter_client', '~> 2.0.1'
 
+gem "nested_form", "~> 0.3.1"
+
 # Graphing
 # ========
 
