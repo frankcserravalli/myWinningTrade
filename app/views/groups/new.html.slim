@@ -1,0 +1,7 @@
+h2 Create
+
+form_tag("/create", :method => "post") do
+  label_tag(:name, "Name")
+  text_field_tag(:name)
+  hidden_field_tag(:user_id, current_user.id)
+  submit_tag("Create Class")
