@@ -25,6 +25,7 @@
 //= require adsense
 //= require test
 //= require jquery_nested_form
+//= require user_search
 //= require_self
 //= require_tree .//stock
 //= require general

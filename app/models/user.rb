@@ -24,6 +24,16 @@ class User < ActiveRecord::Base
   attr_protected :account_balance
   after_initialize :create_initial_balance
 
+  # MODEL METHODS
+  # =============
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+
   def self.find_or_create_from_auth_hash(auth_hash)
     where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_initialize.tap do |user|
   	  if auth_hash[:info]

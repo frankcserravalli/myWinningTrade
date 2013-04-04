@@ -32,8 +32,8 @@ MyWinningTrade::Application.routes.draw do
   get 'teacher/sign_in' => 'teacher_sessions#new'
 
   resource :groups
-
-  get 'group', to: 'groups#index'
+  get '/group', to: 'groups#index'
+  get '/search_students', to: 'groups#search_students'
 
   get '/joestest', to: 'users#test'
 

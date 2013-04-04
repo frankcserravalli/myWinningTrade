@@ -45,6 +45,8 @@ gem 'copycopter_client', '~> 2.0.1'
 
 gem "nested_form", "~> 0.3.1"
 
+gem "will_paginate", "~> 3.0.4"
+
 # Graphing
 # ========
 

@@ -6,18 +6,23 @@ h2 Create
   = hidden_field_tag(:user_id, current_user.id)
 
   = group.fields_for :group_users do |group_users_form|
-    = group_users_form.text_field :user_id, placeholder: "Student Name"
+    = form_tag('/search_students', :remote => true, :method => 'get', :authenticity_token => false, :class => "student-search-form") do
+      = group_users_form.text_field :user_id, placeholder: "Student Name", class: "student-name"
 
     br
+
+    div.student-search-results
 
     = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger"
 
   br
+
 
   = group.link_to_add "Add a student", :group_users, class: "btn btn-primary"
 
   br
 
   = submit_tag("Create Class")
+
 
 
