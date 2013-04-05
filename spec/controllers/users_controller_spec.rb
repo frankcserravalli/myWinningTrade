@@ -178,7 +178,7 @@ describe Api::V1::UsersController do
       it "should get returned an error message" do
         post :create, user: FactoryGirl.attributes_for(:user, provider: "")
 
-        response.body.should == "{}"
+        response.body.should == {}
       end
 
       it "returns with no ios token" do

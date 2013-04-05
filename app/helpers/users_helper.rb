@@ -93,7 +93,6 @@ module UsersHelper
   def require_iphone_login
     # Runs all iphone controllers
     if params[:controller].match(/v1/)
-      # TODO Yes, there is an easier way to do this. I'll work on it later.
       if params.has_key? :ios_token
         eight_hours_ago = Time.now - 8.hours
 
