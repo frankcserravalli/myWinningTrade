@@ -1,1 +1,8 @@
-$('.student-search-results').html("<div><%= escape_javascript(@user.name) %></div>");
+$('.student-search-results').html("").html(
+    "<div>" +
+      "<% if @group_users %>" +
+        "<% @group_users.each do |group_user| %>" +
+          "<h1><%= group_user.name %></h1>" +
+        "<% end %>" +
+      "<% end %>" +
+    "</div>");
