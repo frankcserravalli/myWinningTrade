@@ -21,9 +21,7 @@ class TeacherSessionsController < ApplicationController
     else
       #flash.now[:error] = "Invalid email/password combination"
 
-      render 'new', notice: I18n.t('flash.sessions.create.notice', default: "Invalid email/password combination")
-
-
+      redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Invalid email/password combination")
     end
   end
 

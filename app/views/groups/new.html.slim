@@ -1,4 +1,6 @@
-h2 Create
+h2.span6 Create
+
+= link_to "Return to list", groups_path, :class => "btn btn-primary"
 
 = nested_form_for @group do |group|
   = group.text_field :name, placeholder: "Name of Class"
@@ -6,7 +8,7 @@ h2 Create
   = hidden_field_tag(:user_id, current_user.id)
 
   = group.fields_for :group_users do |group_users_form|
-    = form_tag('/search_students', :remote => true, :method => 'get', :authenticity_token => false, :class => "student-search-form") do
+    = form_tag('/search_students', :remote => true, :method => 'get', :class => "student-search-form") do
       = group_users_form.text_field :user_id, placeholder: "Student Name", class: "student-name"
 
     br

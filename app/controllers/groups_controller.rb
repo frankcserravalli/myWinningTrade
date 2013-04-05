@@ -17,9 +17,13 @@ class GroupsController < ApplicationController
   end
 
   def search_students
-    @user = User.first
+    #@user = User.first
 
-    #@group_users ||= User.search(params[:search]).paginate(:per_page => 5, :page => params[:page])
+    @group_users ||= User.search(params[:search]).paginate(:per_page => 5, :page => params[:page])
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
