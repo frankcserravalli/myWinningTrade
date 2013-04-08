@@ -36,8 +36,6 @@ MyWinningTrade::Application.routes.draw do
 
   get '/joestest', to: 'users#test'
 
-
-
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
       get :price_history

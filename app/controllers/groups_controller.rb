@@ -7,6 +7,10 @@ class GroupsController < ApplicationController
 
   skip_before_filter :load_portfolio, if: :current_user
 
+  def new
+    @group = Group.new
+  end
+
   def index
     @groups = Group.where(user_id: teacher_current_user.id)
   end
@@ -17,10 +21,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-  end
-
-  def new
-    @group = Group.new
   end
 
   def destroy

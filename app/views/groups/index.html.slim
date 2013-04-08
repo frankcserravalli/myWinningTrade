@@ -1,19 +1,25 @@
-h1.span6 List of Classes
+- if @groups.blank?
+  h1 No classes created yet.
 
-a.btn.btn-primary href="/groups/new" Create a class
+  a.btn.btn-primary href="/groups/new" Create a class
 
-.span8
-  table.table.table-striped.table-bordered
-    thead
-      tr
-        th Class Name
-        th Options
-    tbody
-      - @groups.each do |group|
+-else
+  h1.span6 List of Classes
+
+  a.btn.btn-primary href="/groups/new" Create a class
+
+  .span8
+    table.table.table-striped.table-bordered
+      thead
         tr
-          td = group.name
-          td
-            a.btn.btn-primary href="#{group_path(group.id)}" Show
-            = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"
+          th Class Name
+          th Options
+      tbody
+        - @groups.each do |group|
+          tr
+            td = group.name
+            td
+              a.btn.btn-primary href="#{group_path(group.id)}" Show
+              = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"
 
 

@@ -35,7 +35,7 @@ class TeacherSessionsController < ApplicationController
 
   def redirect_signed_in_user
     if teacher_signed_in?
-      redirect_to '/group'
+      redirect_to groups_path
     end
   end
 end
