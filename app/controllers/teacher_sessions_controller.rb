@@ -17,7 +17,7 @@ class TeacherSessionsController < ApplicationController
     if user && user.authenticate(params[:password]) && user.group.eql?("teacher")
       teacher_sign_in user
 
-      redirect_to '/groups'
+      redirect_to '/group'
     else
       #flash.now[:error] = "Invalid email/password combination"
 
@@ -35,7 +35,7 @@ class TeacherSessionsController < ApplicationController
 
   def redirect_signed_in_user
     if teacher_signed_in?
-      redirect_to '/groups'
+      redirect_to '/group'
     end
   end
 end

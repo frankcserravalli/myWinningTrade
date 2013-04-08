@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   OPENING_BALANCE = 50000
   has_many :orders
   has_many :user_stocks
+  has_many :group_users
   has_many :stocks, through: :user_stocks
   has_many :date_time_transactions
   has_many :stop_loss_transactions
