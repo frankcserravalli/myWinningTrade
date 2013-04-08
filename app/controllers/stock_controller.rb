@@ -4,9 +4,7 @@ class StockController < ApplicationController
 
     @class = GroupUser.find_by_user_id(current_user.id)
 
-    @classmates = GroupUser.find_by_group_id(@class.group_id)
-
-    @class_leaderboard = nil
+    @class_leaderboard = GroupUser.where(group_id: @class.group_id).includes(:users)
   end
 
   def show

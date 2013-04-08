@@ -1,6 +1,6 @@
 class CreateGroups < ActiveRecord::Migration
   def change
-    create_table :group do |t|
+    create_table :groups do |t|
       t.integer :user_id
       t.string :name
 
