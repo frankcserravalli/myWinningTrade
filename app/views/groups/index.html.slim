@@ -1,15 +1,21 @@
 h1.span6 List of Classes
 
 .btn.btn-primary
-  a href="/groups/new" Create a class
+  a href="#{new_group_path}" Create a class
 
 .span8
   table.table.table-striped.table-bordered
     thead
       tr
         th Class Name
+        th Options
     tbody
       - @groups.each do |group|
         tr
-          a href="#{groups_path(group.id)}"
-            td = group.name
+          td = group.name
+          td
+            a.btn.btn-primary href="#{group_path(group.id)}" Show
+            = form_tag("/destroy", :method => "delete") do
+              = submit_tag("Delete", class: "btn btn-danger")
+
+

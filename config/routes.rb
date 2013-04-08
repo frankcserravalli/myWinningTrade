@@ -28,11 +28,10 @@ MyWinningTrade::Application.routes.draw do
   match '/subscriptions/destroy', to: 'subscriptions#destroy'
   match '/subscriptions/update', to: 'subscriptions#update'
 
-  resource :teacher_sessions, only: [:create, :destroy]
+  resources :teacher_sessions, only: [:create, :destroy]
   get 'teacher/sign_in' => 'teacher_sessions#new'
 
-  resource :groups, except: [:show]
-  get '/group', to: 'groups#index'
+  resources :groups
   get '/search_students', to: 'groups#search_students'
 
   get '/joestest', to: 'users#test'
