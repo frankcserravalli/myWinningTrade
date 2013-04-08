@@ -23,6 +23,23 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+
+    if @group.delete
+      flash[:notice] = "Class deleted!"
+
+    else
+      flash[:notice] = "Unable to delete class!"
+
+    end
+    redirect_to groups_path
+  end
+
+  def create
+    #Group.create()
+  end
+
   # This action is used for our ajax call to return a list of users matching a name
   def search_students
       unless params[:search].blank?
@@ -40,10 +57,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-
-  def create
-    #Group.create()
   end
 
   private
