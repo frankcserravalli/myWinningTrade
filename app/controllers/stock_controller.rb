@@ -1,13 +1,10 @@
 class StockController < ApplicationController
   def dashboard
-    # TODO move to model
-    @world_leaderboard = UserAccountSummary.order("capital_total DESC").limit(20)
+    leader_board_results = UserAccountSummary.find_top_results(current_user.id)
 
-    @class = GroupUser.find_by_user_id(current_user.id)
+    @world_leader_board = leader_board_results[0]
 
-    unless @class.blank?
-      @class_leaderboard = GroupUser.where(group_id: @class.group_id).includes(:user)
-    end
+    @class_leader_board = leader_board_results[1]
   end
 
   def show

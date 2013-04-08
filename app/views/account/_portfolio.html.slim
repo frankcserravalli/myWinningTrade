@@ -41,7 +41,7 @@ div.tabbable
     .tab-pane#world-leadboard-section
       .dashboard-tab-box
         h2 World Leaderboard
-        - unless @world_leaderboard.blank?
+        - unless @world_leader_board.blank?
           table.table.table-striped.table-bordered
             thead
               tr
@@ -49,7 +49,7 @@ div.tabbable
                 th Name
                 th Capital Gain/Loss Percentage
             tbody
-              - @world_leaderboard.each_with_index do |user, index|
+              - @world_leader_board.each_with_index do |user, index|
                 tr
                   td = index + 1
                   td = user.name
@@ -57,7 +57,7 @@ div.tabbable
 
     .tab-pane#class-leadboard-section
       .dashboard-tab-box
-        - if @class_leaderboard.blank?
+        - if @class_leader_board.blank?
          h4.centered-text Your classmates haven't started trading yet so get to it!
         -else
           h2 Class Leaderboard
@@ -68,7 +68,7 @@ div.tabbable
                 th Name
                 th Capital Gain/Loss Percentage
             tbody
-              - @class_leaderboard.each_with_index do |classmate, index|
+              - @class_leader_board.each_with_index do |classmate, index|
                 tr
                   td = index + 1
                   td = classmate.user.name
