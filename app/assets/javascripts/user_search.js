@@ -1,5 +1,5 @@
 $(function() {
-  $(".new_group").on("keypress", ".student-name", function(){
+  $(".new_group").on("keyup", "#search", function(){
 
     $(this).parents(".student-search-form").submit();
   });

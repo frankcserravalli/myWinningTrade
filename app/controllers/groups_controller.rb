@@ -16,9 +16,11 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  # This action is used for our ajax call to return a list of users matching a name
   def search_students
-
-    @group_users = User.where('name LIKE ?', "%#{params[:search]}%")#.paginate(:per_page => 5, :page => params[:page])
+    unless params[:search].blank?
+      @group_users = User.where('name LIKE ?', "%#{params[:search]}%")#.paginate(:per_page => 5, :page => params[:page])
+    end
 
     respond_to do |format|
       format.js

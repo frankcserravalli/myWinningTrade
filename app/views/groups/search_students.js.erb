@@ -1,4 +1,4 @@
-$('.student-search-results').html("").html(
+$('.student-search-results').empty().html(
     "<div>" +
       "<% if @group_users %>" +
         "<% @group_users.each do |group_user| %>" +
@@ -6,3 +6,5 @@ $('.student-search-results').html("").html(
         "<% end %>" +
       "<% end %>" +
     "</div>");
+
+//alert("asdf");
