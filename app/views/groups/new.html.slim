@@ -5,7 +5,7 @@ h2.span6 Create
 = nested_form_for @group do |group|
   = group.text_field :name, placeholder: "Name of Class"
 
-  = hidden_field_tag(:user_id, current_user.id)
+  = hidden_field_tag(:user_id, teacher_current_user.id)
 
   = group.fields_for :group_users do |group_users_form|
     = form_tag('/search_students', :remote => true, :method => 'get', :class => "student-search-form") do
