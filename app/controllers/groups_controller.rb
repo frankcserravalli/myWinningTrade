@@ -11,9 +11,6 @@ class GroupsController < ApplicationController
     @groups = Group.where(user_id: teacher_current_user.id)
   end
 
-  def show
-  end
-
   def edit
 
   end

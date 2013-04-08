@@ -31,7 +31,7 @@ MyWinningTrade::Application.routes.draw do
   resource :teacher_sessions, only: [:create, :destroy]
   get 'teacher/sign_in' => 'teacher_sessions#new'
 
-  resource :groups
+  resource :groups, except: [:show]
   get '/group', to: 'groups#index'
   get '/search_students', to: 'groups#search_students'
 
