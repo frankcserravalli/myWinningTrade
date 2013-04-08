@@ -23,13 +23,29 @@ namespace :db do
 
       user.password_confirmation = "1234"
 
-      user.save
-
       user.accepted_terms = true
 
       user.account_balance = rand(1..150_000)
 
       user.save
+    end
+
+    10.times do
+      group = Group.new
+
+      group.name = %w(econ101 pol101 art101 econ404).sample
+
+      group.user_id = rand(1..30)
+    end
+
+    10.times do
+      group_user = GroupUser.new
+
+      group_user.user_id = rand(1..30)
+
+      group_user.group_id = rand(1..5)
+
+      group_user.save
     end
   end
 end
