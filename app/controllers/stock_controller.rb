@@ -1,10 +1,11 @@
 class StockController < ApplicationController
   def dashboard
+    # TODO move to model
     @world_leaderboard = UserAccountSummary.order("capital_total DESC").limit(20)
 
     @class = GroupUser.find_by_user_id(current_user.id)
 
-    if @class.blank?
+    unless @class.blank?
       @class_leaderboard = GroupUser.where(group_id: @class.group_id).includes(:user)
     end
   end

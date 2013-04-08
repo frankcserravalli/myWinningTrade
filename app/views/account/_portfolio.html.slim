@@ -41,31 +41,35 @@ div.tabbable
     .tab-pane#world-leadboard-section
       .dashboard-tab-box
         h2 World Leaderboard
-
-        table.table.table-striped.table-bordered
-          thead
-            tr
-              th Ranking
-              th Name
-              th Capital Gain/Loss Percentage
-          tbody
-            - @world_leaderboard.each_with_index do |user, index|
+        - unless @world_leaderboard.blank?
+          table.table.table-striped.table-bordered
+            thead
               tr
-                td = index + 1
-                td = user.name
-                td = (user.account_balance / 50000).to_f.round(2).to_s + "%"
+                th Ranking
+                th Name
+                th Capital Gain/Loss Percentage
+            tbody
+              - @world_leaderboard.each_with_index do |user, index|
+                tr
+                  td = index + 1
+                  td = user.name
+                  td = (user.account_balance / 50000).to_f.round(2).to_s + "%"
 
     .tab-pane#class-leadboard-section
       .dashboard-tab-box
-        h2 Class Leaderboard
-        table.table.table-striped.table-bordered
-          thead
-            tr
-              th Ranking
-              th Name
-              th Capital Gain/Loss Percentage
-          tbody
-            tr
-              td 1
-              td Jason
-              td 5.0%
+        - if @class_leaderboard.blank?
+         h4.centered-text Your classmates haven't started trading yet so get to it!
+        -else
+          h2 Class Leaderboard
+          table.table.table-striped.table-bordered
+            thead
+              tr
+                th Ranking
+                th Name
+                th Capital Gain/Loss Percentage
+            tbody
+              - @class_leaderboard.each_with_index do |classmate, index|
+                tr
+                  td = index + 1
+                  td = classmate.user.name
+                  td = (classmate.user.account_balance / 50000).to_f.round(2).to_s + "%"
