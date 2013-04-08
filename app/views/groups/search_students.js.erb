@@ -1,10 +1,9 @@
-$('.student-search-results').empty().html(
-    "<div>" +
-      "<% if @group_users %>" +
-        "<% @group_users.each do |group_user| %>" +
-          "<h1><%= group_user.name %></h1>" +
-        "<% end %>" +
-      "<% end %>" +
-    "</div>");
+var names = "<%= @group_users.to_json %>";
 
-//alert("asdf");
+$( "#search" ).autocomplete({
+  source : names,
+  width: 300,
+  max: 10,
+  delay: 100
+});
+
