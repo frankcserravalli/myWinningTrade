@@ -36,6 +36,7 @@ class SellTransaction
     end
 
     user_stock.reload.recalculate_cost_basis!
+
     return true
   end
 

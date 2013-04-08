@@ -16,6 +16,7 @@ class ShortSellCover < Order
       self.capital_gain = -(stock.current_price.to_f - short_sell_borrow.cost_basis)
 
       # Here we add the capital gain to the overall capital gain to the user account summary
+      # for the leaderboard
       @user_account_summary = UserAccountSummary.find_or_create_by_user_id(user.id)
 
       @user_account_summary.capital_total += self.capital_gain
