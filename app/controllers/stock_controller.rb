@@ -4,7 +4,9 @@ class StockController < ApplicationController
 
     @class = GroupUser.find_by_user_id(current_user.id)
 
-    @class_leaderboard = GroupUser.where(group_id: @class.group_id).includes(:user)
+    if @class.blank?
+      @class_leaderboard = GroupUser.where(group_id: @class.group_id).includes(:user)
+    end
   end
 
   def show
