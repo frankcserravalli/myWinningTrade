@@ -1,6 +1,12 @@
 class StockController < ApplicationController
   def dashboard
     @world_leaderboard = UserAccountSummary.order("capital_total DESC").limit(20)
+
+    @class = GroupUser.find_by_user_id(current_user.id)
+
+    @classmates = GroupUser.find_by_group_id(@class.group_id)
+
+    @class_leaderboard = nil
   end
 
   def show

@@ -1,6 +1,12 @@
 class GroupsController < ApplicationController
   before_filter :redirect_not_signed_in_user
 
+  skip_before_filter :require_login, :require_iphone_login
+
+  skip_before_filter :require_acceptance_of_terms, if: :current_user
+
+  skip_before_filter :load_portfolio, if: :current_user
+
   def index
     @groups = Group.where(user_id: teacher_current_user.id)
   end
