@@ -16,6 +16,8 @@
             = link_to logout_path do
               i.icon-signout
               = t('.log_out', default: 'Log out')
-
-
+      -elsif teacher_current_user
+        nav.nav.pull-right
+          li
+            = link_to "Log Out", teacher_log_out_path
 

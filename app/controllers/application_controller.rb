@@ -156,16 +156,27 @@ class ApplicationController < ActionController::Base
   end
 
   def linkedin_share_connect(controller)
+    # Here we create a client connection to LinkedIn
     client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4', LINKEDIN_CONFIGURATION)
+
+    # We then tell LinkedIn where we want them to send the client to after they are done logging in
     request_token = client.request_token(:oauth_callback =>
                                              "https://#{request.host_with_port}/#{controller}/callback_linkedin")
+
+    # Setting up some sessions for future reference for the user
     session[:rtoken] = request_token.token
+
     session[:rsecret] = request_token.secret
+
+    # Here we redirect the user to LinkedIn login page
     redirect_to client.request_token.authorize_url
   end
 
   def facebook_share_connect(controller)
+    # Create a new session with Facebook given our api credentials
     session['oauth'] = Koala::Facebook::OAuth.new("331752936918078", "6dee4f074f905e98957e9328bf4d91a3", "https://#{request.host_with_port}/#{controller}/callback_facebook")
+
+    # Redirect to Facebook login page
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end
 end

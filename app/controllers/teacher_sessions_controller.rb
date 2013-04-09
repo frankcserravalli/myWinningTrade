@@ -14,6 +14,7 @@ class TeacherSessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email].downcase)
 
+    # Login user if they are a teacher
     if user && user.authenticate(params[:password]) && user.group.eql?("teacher")
       teacher_sign_in user
 
