@@ -1,9 +1,12 @@
-var names = "<%= @group_users.to_json %>";
+//names = "<%=raw @group_users.to_s.html_safe %>";
 
+ names = ["Jason"];
+// Here I'm setting up the auto-complete function for student searches
 $( "#search" ).autocomplete({
-  source : names,
-  width: 300,
-  max: 10,
-  delay: 100
+  source : names
 });
+
+console.log("<%= @group_users.to_json %>");
+
+
 

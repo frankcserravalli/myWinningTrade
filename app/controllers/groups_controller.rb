@@ -56,6 +56,9 @@ class GroupsController < ApplicationController
           @group_users.push user.name
         end
 
+
+
+        return @group_users.to_json
       end
 
     respond_to do |format|
