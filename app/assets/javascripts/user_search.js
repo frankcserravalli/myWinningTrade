@@ -5,4 +5,16 @@ $(function() {
     // into the student name input field.
     $(this).parents(".student-search-form").submit();
   });
+
+  names = [];
+
+  // Here I'm setting up the autocomplete function for student searches
+  $( "#search" ).autocomplete({
+    source : names,
+    width: 300,
+    max: 10,
+    delay: 100
+  });
 });
+
+
