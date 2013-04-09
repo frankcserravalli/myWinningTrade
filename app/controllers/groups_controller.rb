@@ -23,6 +23,10 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def update
+
+  end
+
   def destroy
     @group = Group.find(params[:id])
 

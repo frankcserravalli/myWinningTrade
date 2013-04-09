@@ -1,5 +1,7 @@
 MyWinningTrade::Application.routes.draw do
 
+
+
   match '/auth/:provider/callback', to: 'sessions#create'
 
   get '/dashboard', to: 'stock#dashboard'
@@ -34,6 +36,8 @@ MyWinningTrade::Application.routes.draw do
 
   resources :groups
   get '/search_students', to: 'groups#search_students'
+
+  #get 'new_group', to: 'groups#new'
 
   get '/joestest', to: 'users#test'
 
