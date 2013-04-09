@@ -1,6 +1,6 @@
 h2.span6 Create
 
-= link_to "Return to list", group_path, :class => "btn btn-primary"
+= link_to "Return to list", groups_path, :class => "btn btn-primary"
 
 = nested_form_for @group do |group|
   = group.text_field :name, placeholder: "Name of Class"
