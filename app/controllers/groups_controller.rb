@@ -46,20 +46,20 @@ class GroupsController < ApplicationController
 
   # This action is used for our ajax call to return a list of users matching a name
   def search_students
-      unless params[:search].blank?
-        @group_users = []
+    unless params[:term].blank?
+      @group_users = Array.new
 
-        # TODO remember to add where clause only selecting students
-        group_users = User.where('name LIKE ?', "%#{params[:search].capitalize}%")#.paginate(:per_page => 5, :page => params[:page])
+      # TODO remember to add where clause only selecting students
+      group_users = User.where('name LIKE ?', "%#{params[:term].capitalize}%")#.paginate(:per_page => 5, :page => params[:page])
 
-        group_users.each do |user|
-          @group_users.push user.name
-        end
-
-
-
-        return @group_users.to_json
+      group_users.each do |user|
+        @group_users.push user.name
       end
+
+      logger.debug @group_users.to_yaml
+
+      @group_users = @group_users.to_json
+    end
 
     respond_to do |format|
       format.js
