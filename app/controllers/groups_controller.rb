@@ -49,14 +49,19 @@ class GroupsController < ApplicationController
     unless params[:term].blank?
       @group_users = Array.new
 
+      @group_users_hash = Hash.new
+
       # TODO remember to add where clause only selecting students
-      group_users = User.where('name LIKE ?', "%#{params[:term].capitalize}%")#.paginate(:per_page => 5, :page => params[:page])
+      group_users = User.where('name LIKE ?', "%#{params[:term]}%").limit(10)#.paginate(:per_page => 5, :page => params[:page])
 
       group_users.each do |user|
         @group_users.push user.name
+
+        @group_users_hash[user.id] = user.name
       end
 
-      logger.debug @group_users.to_yaml
+
+      @group_users_hash = @group_users_hash.to_json
 
       @group_users = @group_users.to_json
     end

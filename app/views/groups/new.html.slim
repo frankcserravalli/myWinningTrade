@@ -26,7 +26,7 @@ br
     tbody
       tr = group.fields_for :group_users do |group_users_form|
             td help
-            = group_users_form.text_field :user_id, type: "hidden", placeholder: "Student Name", class: "student-id"
+            = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
 
             td = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger"
 
