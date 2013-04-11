@@ -47,7 +47,7 @@ div.tabbable
               tr
                 th Ranking
                 th Name
-                th Capital Gain/Loss Percentage
+                th Capital Gain/Loss Total (Needs to be percentage)
             tbody
               - @world_leader_board.each_with_index do |user, index|
                 tr
@@ -64,7 +64,7 @@ div.tabbable
               tr
                 th Ranking
                 th Name
-                th Capital Gain/Loss Percentage
+                th Capital Gain/Loss Total
             tbody
               - @class_leader_board.each_with_index do |classmate, index|
                 tr
