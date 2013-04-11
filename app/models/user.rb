@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :date_time_transactions
   has_many :stop_loss_transactions
   has_one :subscription
+  has_one :user_account_summary
 
   structure do
   	email			            'developers@platform45.com'#, validates: :presence

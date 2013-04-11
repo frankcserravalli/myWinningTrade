@@ -1,8 +1,10 @@
 class UserAccountSummary < ActiveRecord::Base
   attr_accessible :capital_gain_percentage, :user_id
 
+  belongs_to :user
+
   def self.find_top_results(user_id)
-    @world_leader_board = UserAccountSummary.order("capital_total DESC").limit(20)
+    @world_leader_board = UserAccountSummary.order("capital_total DESC").includes(:users).limit(20)
 
     @class = GroupUser.find_by_user_id(user_id)
 
