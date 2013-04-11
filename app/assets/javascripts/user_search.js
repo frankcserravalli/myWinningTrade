@@ -1,5 +1,6 @@
 $(function() {
 
+  // Here we are creating some variables for the autocomplete portion of the user search
   var MWT = window.MWT || {};
 
   MWT.names = [];
@@ -12,20 +13,21 @@ $(function() {
   $(".container").on("keyup", "#term", function(){
     // Here we are submitting the form if the user has inserted more than 3 characters
     // into the student name input field.
-    //alert(123);
     $(this).parents(".student-search-form").submit();
   });
 
   $(".container").on("click", ".add_nested_fields", function() {
+    // Grab the text the user submitted in the input box
     var term = $("#term").val();
 
+    // Loop through our associative array of all the names
     for (var name in MWT.names_hash) {
-      //console.log(term);
+
       if (MWT.names_hash[name] === term)
       {
         //Start here, it's not selecting the input field for some reason.
-        $(".student-id:last").addClass('boomboom');
-
+        $(".student-id").addClass("term");
+        //console.log($(".student-id").val());
       }
     }
   });
