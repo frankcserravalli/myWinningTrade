@@ -39,7 +39,12 @@ class GroupsController < ApplicationController
     end
     redirect_to groups_path
   end
-
+  {"utf8"=>"✓", "authenticity_token"=>"5FXHB1ASD3gUosXZHiwNbzr+3GI5i/FpLiBtILq8nFY=",
+   "group"=>{"name"=>"First CLASS",
+             "group_users_attributes"=>
+                 {"1365701412894"=>{"user_id"=>"1", "_destroy"=>"false"},
+                  "1365701573805"=>{"user_id"=>"2", "_destroy"=>"false"}}},
+   "user_id"=>"1", "commit"=>"Create Class"}
   def create
     #Group.create()
   end

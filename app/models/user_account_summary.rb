@@ -6,11 +6,11 @@ class UserAccountSummary < ActiveRecord::Base
 
     @class = GroupUser.find_by_user_id(user_id)
 
-    unless @class.blank?
+    if @class
       @class_leader_board = GroupUser.where(group_id: @class.group_id).includes(:user)
+    else
+      @class_leader_board = nil
     end
-
-    @class_leader_board = nil
 
     return [@world_leader_board, @class_leader_board]
   end

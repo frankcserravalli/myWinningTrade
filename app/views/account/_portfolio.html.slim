@@ -41,7 +41,7 @@ div.tabbable
     .tab-pane#world-leadboard-section
       .dashboard-tab-box
         h2 World Leaderboard
-        - unless @world_leader_board.blank?
+        - unless @world_leader_board
           table.table.table-striped.table-bordered
             thead
               tr
@@ -57,9 +57,7 @@ div.tabbable
 
     .tab-pane#class-leadboard-section
       .dashboard-tab-box
-        - if @class_leader_board.blank?
-         h4.centered-text Your classmates haven't started trading yet so get to it!
-        -else
+        - if @class_leader_board
           h2 Class Leaderboard
           table.table.table-striped.table-bordered
             thead
@@ -73,3 +71,7 @@ div.tabbable
                   td = index + 1
                   td = classmate.user.name
                   td = (classmate.user.account_balance / 50000).to_f.round(2).to_s + "%"
+        -else
+          h4.centered-text Your classmates haven't started trading yet so get to it!
+
+
