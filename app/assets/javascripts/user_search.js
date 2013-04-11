@@ -16,20 +16,39 @@ $(function() {
     $(this).parents(".student-search-form").submit();
   });
 
-  $(".container").on("click", ".add_nested_fields", function() {
-    // Grab the text the user submitted in the input box
+  $(document).on('nested:fieldRemoved', function(event){
+
+    var field = event.field;
+
+    var inputField = field.find('input:first');
+
+    inputField.val("");
+
+    console.log(inputField.val());
+
+  });
+
+  $(document).on('nested:fieldAdded', function(event){
+
     var term = $("#term").val();
 
-    // Loop through our associative array of all the names
     for (var name in MWT.names_hash) {
 
-      if (MWT.names_hash[name] === term)
-      {
+      if (MWT.names_hash[name] === term) {
         //Start here, it's not selecting the input field for some reason.
-        $(".student-id").addClass("term");
-        //console.log($(".student-id").val());
+        //alert(name);
+
+        var field = event.field;
+
+        var inputField = field.find('input:first');
+
+        inputField.val(name);
+
+        break
       }
     }
+
+    $("#term").val("");
   });
 });
 
