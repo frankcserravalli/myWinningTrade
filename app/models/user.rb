@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
     account_balance       :decimal, scale: 2, precision: 10, default: 0.0
     accepted_terms        :boolean, default: false
     premium_subscription  :boolean, default: false
+    group                 'student'
   end
 
   attr_protected :account_balance

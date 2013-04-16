@@ -3,5 +3,7 @@ class Group < ActiveRecord::Base
 
   has_many :group_users
 
+  belongs_to :user
+
   accepts_nested_attributes_for :group_users
 end

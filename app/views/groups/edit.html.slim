@@ -1,5 +1,6 @@
 h1 Edit Your Class
 
+= @group_users.inspect
 
 = form_tag('/search_students', :remote => true, :method => 'get', :class => "student-search-form") do
   = text_field_tag :term, nil, placeholder: "Search for a Student"
@@ -30,7 +31,10 @@ h1 Edit Your Class
       = group.fields_for :group_users, :wrapper => false do |group_users_form|
         tr.fields
             = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
-            
+            - @group_users.each do |group_user|
+              - if group_user.id.eql?(group_user.user_id)
+                td = group_user.user.name
+                - break
             td = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger"
   br
 
