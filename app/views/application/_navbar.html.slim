@@ -4,8 +4,14 @@
       = link_to t('.brand', default: 'My Winning Trade'), root_path, class: 'brand'
       - if current_user
         nav.nav.pull-right
+
           li
-            a = current_user.name
+            -if params[:controller].eql? "stock" and params[:action].eql? "dashboard"
+              a.dashboard-tutorial Tutorial
+            -elsif params[:controller].eql? "stock" and params[:action].eql? "show"
+              a.trading-tutorial Tutorial
+          li
+            a.users-name = current_user.name
           li
             - if current_user.premium_subscription.eql? false
               a href="#{subscriptions_path}" Subscribe

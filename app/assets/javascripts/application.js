@@ -26,6 +26,7 @@
 //= require test
 //= require jquery_nested_form
 //= require user_search
+//= require tutorialize
 //= require_self
 
 Number.prototype.formatMoney = function(c, d, t){
