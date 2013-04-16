@@ -44,7 +44,7 @@ $(function() {
 
         inputField.val(name);
 
-        inputField.after("<td>" + term + "</td>");
+        inputField.before("<td>" + term + "</td>");
 
         break
       }
