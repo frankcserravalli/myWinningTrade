@@ -20,7 +20,7 @@ br
 
   = group.text_field :name, placeholder: "Name of Class"
 
-  = hidden_field_tag(:user_id, teacher_current_user.id)
+  = hidden_field_tag("group[user_id]", teacher_current_user.id)
 
   table.table.table-striped.table-bordered
     thead

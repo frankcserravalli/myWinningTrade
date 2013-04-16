@@ -10,14 +10,13 @@
           th Class Name
           th Options
       tbody
-        = @groups.inspect
         - @groups.each do |group|
           tr
             td = group.name
             td
               a.btn.btn-primary href="#{group_path(group.id)}" Show
+              a.btn.btn-primary href="#{edit_group_path(group.id)}" Edit
               = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"
-
 
 -else
 
