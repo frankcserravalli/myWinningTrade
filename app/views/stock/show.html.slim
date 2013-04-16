@@ -57,12 +57,56 @@ javascript:
   MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}
 
   var tradingview_widget_options = {};
+  tradingview_widget_options.autosize  = false;
   tradingview_widget_options.width  = 920;
   tradingview_widget_options.height = 450;
   tradingview_widget_options.symbol = '#{@stock.symbol}';
   tradingview_widget_options.interval = 'D';
-  tradingview_widget_options.toolbar_bg = '#E4E8EB';
+  tradingview_widget_options.toolbar_bg = '#3c5063';
   tradingview_widget_options.allow_symbol_change = true;
   tradingview_widget_options.container_id = 'chartview';
   tradingview_widget_options.hide_side_toolbar = false;
+  tradingview_widget_options.save_image = false;
+  tradingview_widget_options.watchlist = [
+                                             "INDEX:DJUS",
+                                             "INDEX:SPX",
+                                             "BATS:AAPL",
+                                             "AET",
+                                             "ALL",
+                                             "AMZN",
+                                             "AXP",
+                                             "BATS:BBY",
+                                             "BCS",
+                                             "BERK",
+                                             "CAT",
+                                             "CMS",
+                                             "COP",
+                                             "DELL",
+                                             "DIS",
+                                             "DNKN",
+                                             "EA",
+                                             "F",
+                                             "FCS",
+                                             "FDX",
+                                             "GE",
+                                             "GOOG",
+                                             "GS",
+                                             "JNJ",
+                                             "JPM",
+                                             "K",
+                                             "MHP",
+                                             "MMM",
+                                             "NFLX",
+                                             "NVDA",
+                                             "PBI",
+                                             "SBUX",
+                                             "T",
+                                             "UNH",
+                                             "USB",
+                                             "V",
+                                             "BATS:VZ"
+                                           ];
+  tradingview_widget_options.details = true;
+  tradingview_widget_options.news = true;
+
   new TradingView.widget(tradingview_widget_options);
