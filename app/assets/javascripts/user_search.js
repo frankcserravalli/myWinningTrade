@@ -11,13 +11,16 @@ $(function() {
 
   // When an user types in a letter in the student name input field
   $(".container").on("keyup", "#term", function(){
+    var term = $("#term").val();
+
     // Here we are submitting the form if the user has inserted more than 3 characters
     // into the student name input field.
-    $(this).parents(".student-search-form").submit();
+    if (term !== "") {
+      $(this).parents(".student-search-form").submit();
+    }
   });
 
   $(document).on('nested:fieldRemoved', function(event){
-
     var field = event.field;
 
     var inputField = field.find('input:first');
@@ -25,15 +28,12 @@ $(function() {
     inputField.val("");
 
     console.log(inputField.val());
-
   });
 
   $(document).on('nested:fieldAdded', function(event){
-
     var term = $("#term").val();
 
     for (var name in MWT.names_hash) {
-
       if (MWT.names_hash[name] === term) {
         //Start here, it's not selecting the input field for some reason.
         //alert(name);
