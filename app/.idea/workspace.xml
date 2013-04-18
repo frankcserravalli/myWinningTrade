@@ -49,7 +49,16 @@
       <file leaf-file-name="new.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="0.04221636">
+            <state line="4" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.08443272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="22" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -70,6 +79,7 @@
         <option value="$PROJECT_DIR$/views/application/_navbar.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.sass" />
+        <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
       </list>
     </option>
@@ -189,6 +199,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -408,13 +432,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="18" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="12" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
@@ -500,6 +517,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="22" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="33" selection-start="74" selection-end="74" vertical-scroll-proportion="-0.9411765">
@@ -509,7 +533,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="0.04221636">
+        <state line="4" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.08443272">
           <folding />
         </state>
       </provider>
