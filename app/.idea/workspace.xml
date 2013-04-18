@@ -31,16 +31,28 @@
       <file leaf-file-name="groups.css.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="134" selection-end="161" vertical-scroll-proportion="0.0">
+            <state line="47" column="12" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_search.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="edit.html.slim" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="108" selection-start="230" selection-end="230" vertical-scroll-proportion="0.06521739">
+              <folding>
+                <marker date="1366315036000" expanded="true" signature="20:1379" placeholder="= form_tag('/search_students', :remote =&gt; true, :method =&gt; 'get', :class =&gt; &quot;student-search-form&quot;) do" />
+                <marker date="1366315036000" expanded="true" signature="232:239" placeholder="div.row" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_search.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/javascripts/user_search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="50" selection-start="318" selection-end="318" vertical-scroll-proportion="0.24806201">
+            <state line="33" column="4" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -58,7 +70,7 @@
       <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="1131" selection-end="1131" vertical-scroll-proportion="-20.48">
+            <state line="3" column="76" selection-start="197" selection-end="223" vertical-scroll-proportion="-1.92">
               <folding />
             </state>
           </provider>
@@ -87,10 +99,11 @@
         <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.scss" />
         <option value="$PROJECT_DIR$/views/application/_navbar.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
-        <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.sass" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
-        <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
         <option value="$PROJECT_DIR$/assets/javascripts/user_search.js" />
+        <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
+        <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.sass" />
+        <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
       </list>
     </option>
   </component>
@@ -460,13 +473,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/general.css.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="156" column="9" selection-start="3443" selection-end="3458" vertical-scroll-proportion="0.0">
@@ -545,24 +551,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascripts/user_search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="4" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1131" selection-end="1131" vertical-scroll-proportion="-20.48">
+        <state line="3" column="76" selection-start="197" selection-end="223" vertical-scroll-proportion="-1.92">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="134" selection-end="161" vertical-scroll-proportion="0.0">
+        <state line="47" column="12" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascripts/user_search.js">
+    <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="50" selection-start="318" selection-end="318" vertical-scroll-proportion="0.24806201">
-          <folding />
+        <state line="3" column="108" selection-start="230" selection-end="230" vertical-scroll-proportion="0.06521739">
+          <folding>
+            <marker date="1366315036000" expanded="true" signature="20:1379" placeholder="= form_tag('/search_students', :remote =&gt; true, :method =&gt; 'get', :class =&gt; &quot;student-search-form&quot;) do" />
+            <marker date="1366315036000" expanded="true" signature="232:239" placeholder="div.row" />
+          </folding>
         </state>
       </provider>
     </entry>

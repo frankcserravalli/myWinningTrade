@@ -1,44 +1,36 @@
 h1 Edit Your Class
 
-= @group_users.inspect
-
 = form_tag('/search_students', :remote => true, :method => 'get', :class => "student-search-form") do
-  = text_field_tag :term, nil, placeholder: "Search for a Student"
+  = text_field_tag :term, nil, placeholder: "Search for a Student", class: "edit-student-search-input-field"
 
-= nested_form_for @group do |group|
-  = group.text_field :name, placeholder: "Name of Class"
+div.row
+  = nested_form_for @group do |group|
+    .span9
+    = group.text_field :name, placeholder: "Name of Class", class:"edit-class-name-input-field"
 
-  br
+    br
 
-  br
+    = group.link_to_add "Add a student", :group_users, class: "btn btn-primary edit-add-student-btn", :data => { :target => ".table-row" }
 
-  = group.link_to_add "Add a student", :group_users, class: "btn btn-primary", :data => { :target => ".table-row" }
+    br
 
-  = hidden_field_tag(:user_id, teacher_current_user.id)
+    = hidden_field_tag(:user_id, teacher_current_user.id)
+    = submit_tag "Edit Class", class: "btn btn-primary edit-class-submit-btn"
 
+    .span4
+      table.table.table-striped.table-bordered
+        thead.list-of-classes-table-head
+          tr
+            th Name
+            th Options
+        tbody.table-row.list-of-classes-table-head
+          = group.fields_for :group_users, :wrapper => false do |group_users_form|
+            tr.fields
+              = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
+              - @group_users.each do |group_user|
+                - if group_user.id.eql?(group_user.user_id)
+                  td = group_user.user.name
+                  - break
+              td = group_users_form.link_to_remove "Remove student", class: "btn btn-danger edit-delete-student-btn"
 
-  br
-
-  br
-
-
-  table.table.table-striped.table-bordered
-    thead
-      tr
-        th Name
-        th Options
-    tbody.table-row
-      = group.fields_for :group_users, :wrapper => false do |group_users_form|
-        tr.fields
-            = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
-            - @group_users.each do |group_user|
-              - if group_user.id.eql?(group_user.user_id)
-                td = group_user.user.name
-                - break
-            td = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger"
-  br
-
-  br
-
-  = submit_tag("Create Class")
 

@@ -1,33 +1,31 @@
-h2 Create A Class
+h1 Create A Class
 
 = form_tag('/search_students', :remote => true, :method => 'get', :class => "student-search-form") do
   = text_field_tag :term, nil, placeholder: "Search for a Student", class: "student-search-input-field"
 
-
-
 = nested_form_for @group do |group|
-  = submit_tag "Create Class", class: "create-class-btn btn btn-primary"
 
-  = group.link_to_add "Add a student", :group_users, class: "btn btn-primary add-student-btn", :data => { :target => ".table-row" }
+  = group.link_to_add "Add student", :group_users, class: "btn btn-primary add-student-btn", :data => { :target => ".table-row" }
   div.row
-    .span7
+    .span9
       = group.text_field :name, placeholder: "Name of Class", class: "class-name-input-field"
 
       = hidden_field_tag("group[user_id]", teacher_current_user.id)
 
-    .span6
+    .span4
       table.table.table-striped.table-bordered
         thead.list-of-classes-table-head
           tr
             th Name
             th Options
-        tbody.table-row
+        tbody.table-row.list-of-classes-table-head
           = group.fields_for :group_users, :wrapper => false do |group_users_form|
             tr.fields
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
 
-              td = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger"
+              td = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger remove-student-btn"
 
+  = submit_tag "Create Class", class: "create-class-btn btn btn-primary"
 
 
 
