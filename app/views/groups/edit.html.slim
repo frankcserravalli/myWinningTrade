@@ -10,27 +10,29 @@ div.row
 
     br
 
-    = group.link_to_add "Add a student", :group_users, class: "btn btn-primary edit-add-student-btn", :data => { :target => ".table-row" }
+    = group.link_to_add "Add student", :group_users, class: "btn btn-primary edit-add-student-btn", :data => { :target => ".table-row" }
+
+    br
 
     br
 
     = hidden_field_tag(:user_id, teacher_current_user.id)
     = submit_tag "Edit Class", class: "btn btn-primary edit-class-submit-btn"
 
-    .span4
+    .span5
       table.table.table-striped.table-bordered
         thead.list-of-classes-table-head
           tr
             th Name
             th Options
-        tbody.table-row.list-of-classes-table-head
+        tbody.table-row
           = group.fields_for :group_users, :wrapper => false do |group_users_form|
-            tr.fields
+            tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
               - @group_users.each do |group_user|
                 - if group_user.id.eql?(group_user.user_id)
                   td = group_user.user.name
                   - break
-              td = group_users_form.link_to_remove "Remove student", class: "btn btn-danger edit-delete-student-btn"
+              td = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"
 
 
