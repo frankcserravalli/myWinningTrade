@@ -31,25 +31,25 @@
       <file leaf-file-name="groups.css.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
+            <state line="58" column="12" selection-start="847" selection-end="847" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="edit.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="13" selection-start="756" selection-end="783" vertical-scroll-proportion="-14.72">
+            <state line="29" column="35" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.6304348">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="71" selection-start="198" selection-end="198" vertical-scroll-proportion="0.1281709">
+            <state line="6" column="71" selection-start="198" selection-end="198" vertical-scroll-proportion="-3.84">
               <folding />
             </state>
           </provider>
@@ -98,10 +98,10 @@
         <option value="$PROJECT_DIR$/assets/javascripts/user_search.js" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
-        <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
-        <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.sass" />
         <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
+        <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.sass" />
+        <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
       </list>
     </option>
   </component>
@@ -542,23 +542,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="756" selection-end="783" vertical-scroll-proportion="-14.72">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="23" selection-start="937" selection-end="937" vertical-scroll-proportion="-14.08">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -572,7 +558,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="71" selection-start="198" selection-end="198" vertical-scroll-proportion="0.1281709">
+        <state line="6" column="71" selection-start="198" selection-end="198" vertical-scroll-proportion="-3.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="12" selection-start="847" selection-end="847" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="35" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.6304348">
           <folding />
         </state>
       </provider>
