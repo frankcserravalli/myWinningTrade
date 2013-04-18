@@ -1,11 +1,11 @@
 - if @groups
   h1.span6 List of Classes
 
-  a.btn.btn-primary href="/groups/new" Create a class
+  a.btn.btn-primary.create-class-link-btn href="/groups/new" Create a class
 
   .span8
     table.table.table-striped.table-bordered
-      thead
+      thead.list-of-classes-table-head
         tr
           th Class Name
           th Options
@@ -13,7 +13,7 @@
         - @groups.each do |group|
           tr
             td = group.name
-            td
+            td.class-options-box
               a.btn.btn-primary href="#{group_path(group.id)}" Show
               a.btn.btn-primary href="#{edit_group_path(group.id)}" Edit
               = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"

@@ -58,24 +58,24 @@ class GroupsController < ApplicationController
   # This action is used for our ajax call to return a list of students matching the params[:term]
   def search_students
     unless params[:term].blank?
-      @group_users = Array.new
+      group_users = Array.new
 
-      @group_users_hash = Hash.new
+      group_users_hash = Hash.new
 
       # Find the group users that match the term AND are students
-      group_users = User.where("'name LIKE ?', '%#{params[:term]}%'").where(group: "student").limit(10)
+      @group_users = User.where("'name LIKE ?', '%#{params[:term]}%'").where(group: "student").limit(10)
 
       # Loop through each user and push them into the instance variables that will be used for the view
-      group_users.each do |user|
-        @group_users.push user.name
+      @group_users.each do |user|
+        group_users.push user.name
 
-        @group_users_hash[user.id] = user.name
+        group_users_hash[user.id] = user.name
       end
 
       # Convert to JSON for JS
-      @group_users_hash = @group_users_hash.to_json
+      group_users_hash = @group_users_hash.to_json
 
-      @group_users = @group_users.to_json
+      group_users = group_users.to_json
     end
 
     # Respond via javacript
