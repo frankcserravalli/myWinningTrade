@@ -31,7 +31,7 @@
       <file leaf-file-name="index.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="5" selection-start="54" selection-end="54" vertical-scroll-proportion="0.042723633">
+            <state line="22" column="0" selection-start="671" selection-end="671" vertical-scroll-proportion="0.46995994">
               <folding />
             </state>
           </provider>
@@ -76,7 +76,7 @@
       <file leaf-file-name="show.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+            <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -496,13 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="17" selection-start="0" selection-end="58" vertical-scroll-proportion="-0.0">
@@ -531,9 +524,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="5" selection-start="54" selection-end="54" vertical-scroll-proportion="0.042723633">
+        <state line="22" column="0" selection-start="671" selection-end="671" vertical-scroll-proportion="0.46995994">
           <folding />
         </state>
       </provider>
