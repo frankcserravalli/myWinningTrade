@@ -3,12 +3,13 @@ h1 Show page
 h3 = @group.name
 
 div.row
-  .span4
+  .span6
     table.table.table-striped.table-bordered.list-of-classes-table-head
       thead
         tr
           th Name
           th Account Balance
+          th Capital Gains or Losses with Incurred Tax Liability
       tbody
         - @group.group_users.each do |group_user|
           tr
@@ -16,5 +17,6 @@ div.row
             - if group_user.user_id.eql?(user.user.id)
               td = user.user.name
               td = "$" +user.user.account_balance.round(2).to_s
+              td =
 
 

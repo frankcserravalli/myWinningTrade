@@ -26,6 +26,8 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     @group_users = @group.group_users.includes(:user)
+
+    @account_summaries = @group.group_users.includes(:user_account_summary)
   end
 
   def update

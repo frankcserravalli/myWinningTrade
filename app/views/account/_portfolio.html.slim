@@ -54,6 +54,7 @@ div.tabbable
                   td = index + 1
                   td = user.user.name
                   td = user.capital_total
+                  td = user.account_balance
 
     .tab-pane#class-leadboard-section
       .dashboard-tab-box
@@ -71,5 +72,6 @@ div.tabbable
                   td = index + 1
                   td = classmate.user.user.name
                   td = classmate.capital_total
+                  td = classmate.inspect
         -else
           h4.centered-text Your classmates haven't started trading yet so get to it!
