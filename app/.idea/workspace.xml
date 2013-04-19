@@ -31,7 +31,7 @@
       <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="35" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0">
+            <state line="0" column="17" selection-start="0" selection-end="58" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -40,7 +40,16 @@
       <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="58" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
+            <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.slim" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/stock/show.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,16 +94,16 @@
       <file leaf-file-name="show.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="204" selection-end="255" vertical-scroll-proportion="-7.04">
+            <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_portfolio.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_portfolio.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="70" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.3164219">
+            <state line="49" column="70" selection-start="2220" selection-end="2220" vertical-scroll-proportion="-31.36">
               <folding />
             </state>
           </provider>
@@ -116,12 +125,12 @@
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/general.css.sass" />
         <option value="$PROJECT_DIR$/assets/stylesheets/groups.css.sass" />
-        <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
         <option value="$PROJECT_DIR$/assets/javascripts/user_search.js" />
-        <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
-        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
         <option value="$PROJECT_DIR$/views/account/_portfolio.html.slim" />
+        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
+        <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
+        <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
       </list>
     </option>
   </component>
@@ -156,7 +165,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -193,6 +201,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="stock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="account" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -209,14 +235,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.editor" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
@@ -323,7 +350,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27147487" sideWeight="0.6707169" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27633712" sideWeight="0.6707169" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -391,11 +418,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/stylesheets/teacher_sessions.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/class.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -418,9 +440,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="71" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="6" column="71" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
@@ -433,20 +453,6 @@
     <entry file="file://$PROJECT_DIR$/assets/javascripts/user_search.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="58" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="58" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="35" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -477,16 +483,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
+    <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="204" selection-end="255" vertical-scroll-proportion="-7.04">
+        <state line="49" column="70" selection-start="2220" selection-end="2220" vertical-scroll-proportion="-31.36">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
+    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="70" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.3164219">
+        <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="0" selection-end="58" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/stock/show.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
