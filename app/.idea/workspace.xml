@@ -67,7 +67,7 @@
       <file leaf-file-name="user_search.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/javascripts/user_search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="9" selection-start="2004" selection-end="2004" vertical-scroll-proportion="0.70284235">
+            <state line="71" column="43" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.74418604">
               <folding />
             </state>
           </provider>
@@ -552,13 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="58" selection-start="1099" selection-end="1099" vertical-scroll-proportion="-16.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="0" selection-start="470" selection-end="486" vertical-scroll-proportion="0.0">
@@ -580,9 +573,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="58" selection-start="1099" selection-end="1099" vertical-scroll-proportion="-16.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascripts/user_search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="9" selection-start="2004" selection-end="2004" vertical-scroll-proportion="0.70284235">
+        <state line="71" column="43" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.74418604">
           <folding />
         </state>
       </provider>

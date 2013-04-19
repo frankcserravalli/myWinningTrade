@@ -65,7 +65,11 @@ $(function() {
 
         inputField.val(name);
 
+        console.log("somethings up")
+
+
         if (MWT.edit_student_search_field_pressed === true) {
+          console.log("somethings up inside")
           inputField.before("<td>" + term + "</td>");
         }
 
