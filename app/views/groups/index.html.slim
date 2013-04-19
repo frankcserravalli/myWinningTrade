@@ -1,4 +1,6 @@
-- if @groups
+- if @groups.blank?
+  h1 No classes created yet.
+-else
   h1.span6 List of Classes
 
   a.btn.btn-primary.create-class-link-btn href="/groups/new" Create a class
@@ -17,9 +19,5 @@
               a.btn.btn-primary href="#{group_path(group.id)}" Show
               a.btn.btn-primary href="#{edit_group_path(group.id)}" Edit
               = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"
-
--else
-
-  h1 No classes created yet.
 
   a.btn.btn-primary href="#{new_group_path}" Create a class
