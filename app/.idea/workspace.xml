@@ -82,19 +82,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="49" selection-start="574" selection-end="574" vertical-scroll-proportion="-12.16">
+            <state line="20" column="23" selection-start="598" selection-end="598" vertical-scroll-proportion="0.4347826">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_portfolio.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_portfolio.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="32" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.53004">
+            <state line="72" column="25" selection-start="3020" selection-end="3020" vertical-scroll-proportion="-24.2">
               <folding />
             </state>
           </provider>
@@ -120,8 +120,8 @@
         <option value="$PROJECT_DIR$/assets/javascripts/user_search.js" />
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
-        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
         <option value="$PROJECT_DIR$/views/account/_portfolio.html.slim" />
+        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
       </list>
     </option>
   </component>
@@ -477,16 +477,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
+    <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="49" selection-start="574" selection-end="574" vertical-scroll-proportion="-12.16">
+        <state line="72" column="25" selection-start="3020" selection-end="3020" vertical-scroll-proportion="-24.2">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
+    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="32" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.53004">
+        <state line="20" column="23" selection-start="598" selection-end="598" vertical-scroll-proportion="0.4347826">
           <folding />
         </state>
       </provider>

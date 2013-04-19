@@ -18,7 +18,7 @@ div.row
               td = user.user.name
               td = "$" + user.user.account_balance.round(2).to_s
               - if user.user.user_account_summary
-                td = ( user.user.user_account_summary.capital_total / user.user.account_balance).round(2).to_s + "%"
+                td = ((user.user.user_account_summary.capital_total / user.user.account_balance) * 100).round(2).to_s + "%"
               - else
                 td Hasn't started trading yet!
 
