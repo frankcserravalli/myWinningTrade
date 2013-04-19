@@ -94,7 +94,7 @@
       <file leaf-file-name="_portfolio.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="70" selection-start="2830" selection-end="2830" vertical-scroll-proportion="0.67957276">
+            <state line="49" column="70" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.3164219">
               <folding />
             </state>
           </provider>
@@ -486,7 +486,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/account/_portfolio.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="70" selection-start="2830" selection-end="2830" vertical-scroll-proportion="0.67957276">
+        <state line="49" column="70" selection-start="2220" selection-end="2220" vertical-scroll-proportion="0.3164219">
           <folding />
         </state>
       </provider>
