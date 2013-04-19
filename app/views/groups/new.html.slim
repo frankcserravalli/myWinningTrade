@@ -23,7 +23,7 @@ h1 Create A Class
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
 
-              td = group_users_form.link_to_remove "Remove this student", class: "btn btn-danger remove-student-btn"
+              td = group_users_form.link_to_remove "Remove student", class: "btn btn-danger remove-student-btn"
 
   = submit_tag "Create Class", class: "create-class-btn btn btn-primary"
 

@@ -7,7 +7,17 @@ $(function() {
 
   MWT.names_hash = {};
 
+  MWT.edit_student_search_field_pressed = false;
+
   window.MWT = MWT;
+
+  // Document ready
+  $(document).ready(function() {
+    // This disables the add student button from the start, we can't do it via HTML because that would
+    // make things complicated
+    $(".add-student-btn").removeClass("add_nested_fields");
+  });
+
 
   // When an user types in a letter in the student name input field
   $(".container").on("keyup", "#term", function(){
@@ -16,21 +26,32 @@ $(function() {
     // Here we are submitting the form if the user has inserted more than 3 characters
     // into the student name input field.
     if (term !== "") {
+      // Since the term has some text in it, then we allow the add student button to work by
+      // adding the class
+      $(".add-student-btn").addClass("add_nested_fields");
+
       $(this).parents(".student-search-form").submit();
+    } else {
+      // This prevents adding an empty student
+      $(".add-student-btn").removeClass("add_nested_fields");
     }
   });
 
-  $(document).on('nested:fieldRemoved', function(event){
+  $(".container").on('nested:fieldRemoved', function(event){
     var field = event.field;
 
     var inputField = field.find('input:first');
 
     inputField.val("");
-
-    console.log(inputField.val());
   });
 
-  $(document).on('nested:fieldAdded', function(event){
+  $(".container").on("keyup", "edit-student-search-input-field", function() {
+
+    MWT.edit_student_search_field_pressed = true;
+
+  });
+
+  $(".container").on('nested:fieldAdded', function(event){
     var term = $("#term").val();
 
     for (var name in MWT.names_hash) {
@@ -44,13 +65,17 @@ $(function() {
 
         inputField.val(name);
 
-        inputField.before("<td>" + term + "</td>");
+        if (MWT.edit_student_search_field_pressed === true) {
+          inputField.before("<td>" + term + "</td>");
+        }
 
         break
       }
     }
 
     $("#term").val("");
+
+    $(".add-student-btn").removeClass("add_nested_fields");
   });
 });
 
