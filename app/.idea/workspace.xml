@@ -67,7 +67,7 @@
       <file leaf-file-name="stripe.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/javascripts/stripe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="20" selection-start="1754" selection-end="1778" vertical-scroll-proportion="0.83547556">
+            <state line="71" column="0" selection-start="1755" selection-end="1755" vertical-scroll-proportion="0.85604113">
               <folding />
             </state>
           </provider>
@@ -625,7 +625,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascripts/stripe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="20" selection-start="1754" selection-end="1778" vertical-scroll-proportion="0.83547556">
+        <state line="71" column="0" selection-start="1755" selection-end="1755" vertical-scroll-proportion="0.85604113">
           <folding />
         </state>
       </provider>
