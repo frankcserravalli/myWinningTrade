@@ -68,7 +68,7 @@ $(function() {
 $(document).ready(function() {
   $(".subscription-button").click(function() {
     value = $(this).attr("value");
-
+    console.log(value);
     $('input[name="payment_plan"]').val(value);
   });
 });
