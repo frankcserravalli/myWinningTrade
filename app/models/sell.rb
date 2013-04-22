@@ -21,10 +21,9 @@ class Sell < Order
 
       # Check to see if account summary exists
       if @user_account_summary
-        # User account summary exists, so we just add capital gain - tax liability
+        # User account summary exists, so we just add capital gain - tax liability and save
         @user_account_summary.capital_total += transaction_capital_less_tax
 
-        # Then save user account summary
         @user_account_summary.save
       else
         # Here we create the variables used to calculate totals from all the orders
