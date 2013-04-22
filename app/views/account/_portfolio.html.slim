@@ -53,7 +53,7 @@ div.tabbable
                 tr
                   td = index + 1
                   td = user.user.name
-                  td = ((user.capital_total / user.user.account_balance) * 100).round(2).to_s + "%"
+                  td = ((user.capital_total / 50000) * 100).round(2).to_s + "%"
 
     .tab-pane#class-leadboard-section
       .dashboard-tab-box
@@ -70,6 +70,6 @@ div.tabbable
                 tr
                   td = index + 1
                   td = classmate.user.user.name
-                  td = ((classmate.capital_total / classmate.user.user.account_balance) * 100).round(2).to_s + "%"
+                  td = ((classmate.capital_total / 50000) * 100).round(2).to_s + "%"
         -else
           h4.centered-text Your classmates haven't started trading yet so get to it!
