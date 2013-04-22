@@ -28,64 +28,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sell.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/sell.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="9" selection-start="415" selection-end="1797" vertical-scroll-proportion="0.0">
+            <state line="29" column="42" selection-start="962" selection-end="1046" vertical-scroll-proportion="0.3065134">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="short_sell_cover.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="short_sell_cover.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="9" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.890933">
+            <state line="0" column="20" selection-start="6" selection-end="20" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="short_sell_borrow.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
+      <file leaf-file-name="short_sell_covers_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/short_sell_covers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="4" column="21" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell_transaction.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/sell_transaction.rb">
+      <file leaf-file-name="order.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/order.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/users_helper.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subscriptions.css.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/stylesheets/subscriptions.css.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="30" selection-start="929" selection-end="956" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subscription.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/javascripts/subscription.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+            <state line="36" column="31" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +74,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/assets/javascripts/user_search.js" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
@@ -115,6 +87,7 @@
         <option value="$PROJECT_DIR$/assets/stylesheets/stock/search.css.sass" />
         <option value="$PROJECT_DIR$/assets/javascripts/subscription.js" />
         <option value="$PROJECT_DIR$/assets/javascripts/stripe.js" />
+        <option value="$PROJECT_DIR$/models/order.rb" />
         <option value="$PROJECT_DIR$/models/sell.rb" />
         <option value="$PROJECT_DIR$/models/short_sell_cover.rb" />
       </list>
@@ -383,7 +356,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3365735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3006483" sideWeight="0.66342646" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31118315" sideWeight="0.66342646" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -450,46 +423,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/stylesheets/general.css.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="0" selection-start="3612" selection-end="3612" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascripts/subscription.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascripts/stripe.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="1755" selection-end="1755" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/stock/trading_analysis/_profit_loss.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="20" selection-start="887" selection-end="901" vertical-scroll-proportion="0.78638184">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/stock/trading_analysis/_summary.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="213" selection-end="213" vertical-scroll-proportion="0.2990654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="9" selection-start="1755" selection-end="1755" vertical-scroll-proportion="1.0854272">
-          <folding />
-        </state>
+        <state line="54" column="9" selection-start="1755" selection-end="1755" vertical-scroll-proportion="1.0854272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/users_helper.rb">
@@ -501,16 +437,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="4" selection-start="1659" selection-end="1659" vertical-scroll-proportion="1.2464879">
-          <folding />
-        </state>
+        <state line="61" column="4" selection-start="1659" selection-end="1659" vertical-scroll-proportion="1.2464879" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/subscriptions.css.sass">
@@ -529,6 +461,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/user_account_summary.rb">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/sells_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascripts/subscription.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
@@ -541,23 +490,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
+    <entry file="file://$PROJECT_DIR$/models/short_transaction.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/sell.rb">
+    <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="9" selection-start="415" selection-end="1797" vertical-scroll-proportion="0.0">
+        <state line="0" column="20" selection-start="6" selection-end="20" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/short_sell_covers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="9" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.890933">
+        <state line="4" column="21" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/order.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="31" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/sell.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="42" selection-start="962" selection-end="1046" vertical-scroll-proportion="0.3065134">
           <folding />
         </state>
       </provider>

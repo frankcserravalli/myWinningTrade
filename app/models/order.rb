@@ -20,6 +20,7 @@ class Order < ActiveRecord::Base
     volume 10**12, validates: { numericality: { greater_than: 0, message: "Did not process a buy with zero volume." } }
     volume_remaining 10**12
     type   index: true, limit: 15
+    # For type, we can have various options. "Buy", "ShortSellCover", "Sell"
 
     # Value is the total effect on the account balance (i.e. negative for buys)
     value  :decimal, precision: 10, scale: 2, validates: :numericality
