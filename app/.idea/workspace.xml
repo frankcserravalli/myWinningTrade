@@ -28,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sell.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/sell.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="21" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.0">
+            <state line="36" column="43" selection-start="1316" selection-end="1316" vertical-scroll-proportion="0.3521682">
               <folding />
             </state>
           </provider>
@@ -46,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="short_sell_cover.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="short_sell_cover.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="45" selection-start="1628" selection-end="1628" vertical-scroll-proportion="0.28515112">
+            <state line="38" column="43" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -106,8 +106,8 @@
         <option value="$PROJECT_DIR$/assets/javascripts/stripe.js" />
         <option value="$PROJECT_DIR$/models/order.rb" />
         <option value="$PROJECT_DIR$/views/account/_current_holdings.html.slim" />
-        <option value="$PROJECT_DIR$/models/sell.rb" />
         <option value="$PROJECT_DIR$/models/short_sell_cover.rb" />
+        <option value="$PROJECT_DIR$/models/sell.rb" />
       </list>
     </option>
   </component>
@@ -451,16 +451,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/sell.rb">
+    <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="21" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.0">
+        <state line="38" column="43" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
+    <entry file="file://$PROJECT_DIR$/models/sell.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="45" selection-start="1628" selection-end="1628" vertical-scroll-proportion="0.28515112">
+        <state line="36" column="43" selection-start="1316" selection-end="1316" vertical-scroll-proportion="0.3521682">
           <folding />
         </state>
       </provider>
