@@ -34,7 +34,7 @@ class Sell < Order
 
         # Since user account summary does not exist, we go through all transactions,
         # then sum up the capital gain(loss) less the tax incurred liability
-        Order.where(user_id: user.id).where(type: ["Sell", "ShortSellCover"]).includes(:stock).all.each do |order|
+        Order.where(user_id: user.id).where.(type: ["Sell", "ShortSellCover"]).includes(:stock).all.each do |order|
           total_capital_gain += (order.capital_gain.to_f * order.volume.to_f).round(2)
 
           total_tax_liability += (order.capital_gain.to_f * 0.3).round(2)
@@ -49,11 +49,6 @@ class Sell < Order
 
         @user_account_summary.save
       end
-
-
-# Before new order buy
-#-0.0500000000000007
-
 
       # Finish off rest of the transaction with updating the database
       buy.update_attribute :volume_remaining, (buy.volume_remaining - volume)
