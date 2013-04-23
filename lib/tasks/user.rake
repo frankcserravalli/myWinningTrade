@@ -1,6 +1,6 @@
 namespace :user do
-  task :destroy, [:uuid] => [:environment] do |t,args|
-    user = User.find(args[:uuid])
+  task :destroy, [:uid] => [:environment] do |t,args|
+    user = User.find(args[:uid])
     puts 'No such user.' and return if user.nil?
     
     puts 'Destroyed user.' if user.destroy

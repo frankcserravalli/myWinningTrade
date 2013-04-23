@@ -31,12 +31,12 @@ To get the unique id of the currently logged in user, paste the following in the
 
 1. Destroy account
 
-    `heroku run rake user:destroy[uuid]`
+    `heroku run rake user:destroy[uid]`
     `heroku run rake user:destroy[12345]`
 
 2. Set account balaance
 
-    `heroku run rake user:set_account_balance[uuid,new_account_balance]`
+    `heroku run rake user:set_account_balance[uid,new_account_balance]`
     `heroku run rake user:set_account_balance[12345,50000]`
 
 Conclave Labs
