@@ -19,7 +19,7 @@ MyWinningTrade::Application.routes.draw do
   get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
-  #get '/users/profile', to: 'users#profile', as: 'profile'
+  get '/users/profile', to: 'users#profile', as: 'profile'
   #get '/users/edit', to: 'users#edit'
   #put '/users/update', to: 'users#update'
 

@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
-=begin
   def profile
     @user = User.find(current_user)
-
-    respond_to do |format|
-      format.html # profile.html.erb
-    end
   end
+=begin
 
   def edit
     @user = current_user
