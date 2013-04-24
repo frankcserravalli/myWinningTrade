@@ -1,7 +1,5 @@
 MyWinningTrade::Application.routes.draw do
 
-
-
   match '/auth/:provider/callback', to: 'sessions#create'
 
   get '/dashboard', to: 'stock#dashboard'
@@ -31,8 +29,11 @@ MyWinningTrade::Application.routes.draw do
   match '/subscriptions/update', to: 'subscriptions#update'
 
   resources :teacher_sessions, only: [:create]
-  get 'teacher/sign_in' => 'teacher_sessions#new'
-  get 'teacher/log_out' => 'teacher_sessions#destroy'
+  get 'teacher/sign_in', to: 'teacher_sessions#new'
+  get 'teacher/log_out', to: 'teacher_sessions#destroy'
+
+  get "account_bonuses", to: "account_bonuses#show"
+  post "account_bonuses/create"
 
   resources :groups
   get '/search_students', to: 'groups#search_students'
