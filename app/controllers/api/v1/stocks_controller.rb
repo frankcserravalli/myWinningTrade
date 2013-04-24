@@ -7,12 +7,12 @@ module Api
 
       def search
         @suggestions = Finance.search_for_stock(params[:term].to_s)
-        render json: @suggestions
+        render json: @suggestions.to_json
       end
 
       def details
         @details = Finance.current_stock_details(params[:symbol].upcase)
-        render json: @details
+        render json: @details.to_json
       end
 
     end

@@ -7,9 +7,6 @@ module Api
       skip_before_filter :verify_authenticity_token
       respond_to :json
 
-
-
-
       # call this to sign up a user
       #
       # Params Needed
@@ -19,7 +16,6 @@ module Api
       # { "user": { "name": "", "email": "", etc etc } }
       #
       def create
-
         @user = User.new(params[:user])
         if @user.save
           scrambled_token = scramble_token(Time.now, @user.id)
