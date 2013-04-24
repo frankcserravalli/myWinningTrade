@@ -12,6 +12,8 @@ $(function() {
 
     full_name = $(".full-name").val();
 
+    // Here we check for empty fields of the user, and
+    // if everything looks good we add details to card then process order
     if (payment_plan == "") {
       $("#stripe-error-message").text("Please select a plan.");
     } else if (full_name == ""){
@@ -21,7 +23,7 @@ $(function() {
 
       var form = $(".payment-form");
 
-      // Setting up card variable to be sent through form
+      // Setting up card details to be sent to Stripe
       var card = {
         number: $(".card-number").val(),
 
@@ -34,6 +36,7 @@ $(function() {
         name: $(".full-name").val()
       };
 
+      // Here we create the stripe token and then submit the form
       Stripe.createToken(card, function(status, response) {
         if (status === 200) {
           $('#stripe_card_token').val(response.id);
@@ -68,23 +71,24 @@ $(function() {
 
 /* ACCOUNT BONUS PAYMENTS */
 /* ====================== */
-  // Submit a Account Bonuse
-  $(".submit-new-subscription-button").click(function() {
+  // Submit a Account Bonus
+  $(".submit-account-bonus-button").click(function() {
 
-    payment_plan = $("#payment_plan").val();
+    payment_plan = $("#bonus-option").val();
 
     full_name = $(".full-name").val();
 
+    // Here we check for empty fields and if everything is fine we submit the form
     if (payment_plan == "") {
       $("#stripe-error-message").text("Please select a plan.");
     } else if (full_name == ""){
       $("#stripe-error-message").text("Please enter a full name.");
     } else {
-      $(".submit-new-subscription-button").attr("disabled", true);
+      $(".submit-account-bonus-button").attr("disabled", true);
 
       var form = $(".payment-form");
 
-      // Setting up card variable to be sent through form
+      // Setting up card details for Stripe
       var card = {
         number: $(".card-number").val(),
 
@@ -97,6 +101,7 @@ $(function() {
         name: $(".full-name").val()
       };
 
+      // Here we create a stripe token and then submit the form with the stripe token
       Stripe.createToken(card, function(status, response) {
         if (status === 200) {
           $('#stripe_card_token').val(response.id);
@@ -109,32 +114,40 @@ $(function() {
 
           $("#stripe-error-message").text(response.error.message);
 
-          $(".submit-new-subscription-button").attr("disabled", false);
+          $(".submit-account-bonus-button").attr("disabled", false);
         }
       });
 
       return false;
     }
   });
-
-  // Submitting for an updated subscription
-  $(".submit-update-subscription-button").click(function() {
-
-    payment_plan = $("#payment_plan").val();
-
-    if (payment_plan == "") {
-      $("#stripe-error-message").text("Please select a plan.");
-
-      return false;
-    }
-  });
-
 });
+
+/* SUBSCRIPTION PAYMENTS */
+/* ===================== */
 
 $(document).ready(function() {
   $(".subscription-button").click(function() {
+    // Here we grab then assign the user's choice in payment option
     value = $(this).attr("value");
 
     $('input[name="payment_plan"]').val(value);
+  });
+});
+
+/* ACCOUNT BONUS PAYMENTS */
+/* ====================== */
+
+$(document).ready(function() {
+  $(".select-account-bonus-button").click(function() {
+    // Here we grab then assign the user's choice in bonus option
+    value = $(this).attr("value");
+
+    $('input[name="bonus_option"]').val(value);
+
+    // Here we deselect all buttons then attach an active button class to the button the user selected
+    $(".select-account-bonus-button").removeClass("select-account-bonus-button-highlighted");
+
+    $(this).addClass("select-account-bonus-button-highlighted");
   });
 });
