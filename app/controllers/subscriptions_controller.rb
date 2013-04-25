@@ -44,7 +44,7 @@ class SubscriptionsController < ApplicationController
     else
       current_user.upgrade_subscription
 
-      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: params[:stripe_card_token].to_s)
+      redirect_to subscriptions_path, notice: I18n.t('flash.users.update.notice', default: "Subscription Added!")
     end
   end
 

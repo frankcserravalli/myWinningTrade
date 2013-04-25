@@ -29,6 +29,28 @@ class User < ActiveRecord::Base
 
   # MODEL METHODS
   # =============
+  def add_additional_capital_to_account(bonus_option)
+    case bonus_option
+      when "option-1-bonus"
+        self.account_balance += 25_000
+      when "option-2-bonus"
+        self.account_balance += 50_000
+      when "option-3-bonus"
+        self.account_balance += 100_000
+      when "option-4-bonus"
+        self.account_balance += 250_000
+      when "option-5-bonus"
+        self.account_balance += 500_000
+      when "option-6-bonus"
+        self.account_balance += 1_000_000
+      else
+      # Do nothing, RubyMine has a weird error when case doesn't have an else statment
+    end
+
+    self.save
+  end
+
+
   def self.search(search)
     if search
       where('name LIKE ?', "%#{search}%")
@@ -653,55 +675,3 @@ class User < ActiveRecord::Base
     self.account_balance ||= OPENING_BALANCE
   end
 end
-
-
-# This is the orders summary that will be used later
-=begin
-# Orders Summary pdf
-            <h2>Orders Summary</h2>
-            <div class="row-fluid">
-              <table class="table table-striped span12">
-                <thead>
-                  <tr>
-                    <th>Symbol</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Time</th>
-                    <th>Volume</th>
-                    <th>Bid Asking Price</th>
-                    <th>Net Asset Value</th>
-                    <th>Cost Basis</th>
-                    <th>Capital Gain/Loss</th>
-                    <th>Tax Liability</th>
-                    <th>Holding Period</th>
-                  </tr>
-                </thead>
-                <tbody>' + orders_summary + '</tbody>
-              </table>
-            </div>
-
-
-    # Order Details Section
-    orders_summary = ""
-    stock_summary[:orders].each_key do |created_at|
-      orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
-      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
-      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td></tr>"
-    end
-
-=end
-
-
-#<Buy id: 5, user_id: 2, price: #<BigDecimal:333bd20,'0.2832E2',18(18)>, volume: 900, type: "Buy", value: #<BigDecimal:333ba50,'-0.25494E5',9(18)>, user_stock_id: 5, cost_basis: #<BigDecimal:333b910,'0.2833E2',18(18)>, created_at: "2013-03-05 22:12:57", updated_at: "2013-03-05 22:12:57", volume_remaining: 900, capital_gain: nil>,
- ##<Buy id: 4, user_id: 2, price: #<BigDecimal:33377c0,'0.1424E2',18(18)>, volume: 400, type: "Buy", value: #<BigDecimal:3337590,'-0.5702E4',9(18)>, user_stock_id: 4, cost_basis: #<BigDecimal:3337428,'0.1426E2',18(18)>, created_at: "2013-03-05 22:12:43", updated_at: "2013-03-05 22:12:43", volume_remaining: 400, capital_gain: nil>,
- ##<Buy id: 3, user_id: 2, price: #<BigDecimal:3335808,'0.2359E2',18(18)>, volume: 100, type: "Buy", value: #<BigDecimal:3335628,'-0.2365E4',9(18)>, user_stock_id: 3, cost_basis: #<BigDecimal:3335498,'0.2365E2',18(18)>, created_at: "2013-03-05 22:11:48", updated_at: "2013-03-05 22:11:48", volume_remaining: 100, capital_gain: nil>,
- ##<Buy id: 2, user_id: 2, price: #<BigDecimal:3331578,'0.4949E2',18(18)>, volume: 100, type: "Buy", value: #<BigDecimal:3331370,'-0.4955E4',9(18)>, user_stock_id: 2, cost_basis: #<BigDecimal:33311e0,'0.4955E2',18(18)>, created_at: "2013-03-05 22:02:36", updated_at: "2013-03-05 22:02:36", volume_remaining: 100, capital_gain: nil>,
- ##<Buy id: 1, user_id: 2, price: #<BigDecimal:332f200,'0.5014E2',18(18)>, volume: 15, type: "Buy", value: #<BigDecimal:332f048,'-0.7581E3',18(18)>, user_stock_id: 1, cost_basis: #<BigDecimal:332edf0,'0.5054E2',18(18)>, created_at: "2013-03-05 22:02:27", updated_at: "2013-03-05 22:02:27", volume_remaining: 15, capital_gain: nil>]
