@@ -147,8 +147,10 @@ $(document).ready(function() {
     $('input[name="bonus_option"]').val(value);
 
     // Here we deselect all buttons then attach an active button class to the button the user selected
-    $(".select-account-bonus-button").removeClass("select-account-bonus-button-highlighted");
+    $(".select-account-bonus-button").removeClass("selected-bonus-button").addClass("non-selected-bonus-button");
 
-    $(this).addClass("select-account-bonus-button-highlighted");
+    $(this).removeClass("non-selected-bonus-button");
+
+    $(this).addClass("selected-bonus-button");
   });
 });

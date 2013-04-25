@@ -22,52 +22,25 @@
       <file leaf-file-name="stripe.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/javascripts/stripe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="61" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="account_bonuses_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/account_bonuses_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="30" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subscriptions.css.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/stylesheets/subscriptions.css.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
+            <state line="149" column="111" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/subscriptions/_form.html.slim">
+        <entry file="file://$PROJECT_DIR$/views/account_bonuses/_form.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="26" selection-start="589" selection-end="589" vertical-scroll-proportion="-10.88">
+            <state line="18" column="45" selection-start="754" selection-end="780" vertical-scroll-proportion="-11.52">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.slim" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/subscriptions/show.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="account_bonuses.css.sass" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="account_bonuses.css.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/stylesheets/account_bonuses.css.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="2" selection-start="1812" selection-end="1827" vertical-scroll-proportion="0.0">
+            <state line="27" column="43" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.54892">
               <folding />
             </state>
           </provider>
@@ -86,15 +59,6 @@
         <entry file="file://$PROJECT_DIR$/views/account_bonuses/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/account_bonuses/_form.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="5" selection-start="678" selection-end="699" vertical-scroll-proportion="-11.52">
               <folding />
             </state>
           </provider>
@@ -120,12 +84,12 @@
         <option value="$PROJECT_DIR$/../spec/controllers/users_controller_spec.rb" />
         <option value="$PROJECT_DIR$/helpers/account_bonus_helper.rb" />
         <option value="$PROJECT_DIR$/../config/initializers/stripe.rb" />
-        <option value="$PROJECT_DIR$/assets/javascripts/stripe.js" />
-        <option value="$PROJECT_DIR$/views/account_bonuses/_form.html.slim" />
         <option value="$PROJECT_DIR$/controllers/account_bonuses_controller.rb" />
-        <option value="$PROJECT_DIR$/assets/stylesheets/account_bonuses.css.sass" />
         <option value="$PROJECT_DIR$/assets/stylesheets/subscriptions.css.sass" />
         <option value="$PROJECT_DIR$/views/subscriptions/_form.html.slim" />
+        <option value="$PROJECT_DIR$/views/account_bonuses/_form.html.slim" />
+        <option value="$PROJECT_DIR$/assets/javascripts/stripe.js" />
+        <option value="$PROJECT_DIR$/assets/stylesheets/account_bonuses.css.sass" />
       </list>
     </option>
   </component>
@@ -568,16 +532,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../config/initializers/stripe.rb">
+    <entry file="file://$PROJECT_DIR$/assets/stylesheets/subscriptions.css.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="61" selection-start="468" selection-end="502" vertical-scroll-proportion="0.0">
+        <state line="35" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascripts/stripe.js">
+    <entry file="file://$PROJECT_DIR$/views/subscriptions/show.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="61" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/subscriptions/_form.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="26" selection-start="589" selection-end="589" vertical-scroll-proportion="0.36756757">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/account_bonuses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="30" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.7943445">
           <folding />
         </state>
       </provider>
@@ -589,44 +567,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/account_bonuses/_form.html.slim">
+    <entry file="file://$PROJECT_DIR$/../config/initializers/stripe.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="5" selection-start="678" selection-end="699" vertical-scroll-proportion="-11.52">
+        <state line="11" column="61" selection-start="468" selection-end="502" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/account_bonuses_controller.rb">
+    <entry file="file://$PROJECT_DIR$/views/account_bonuses/_form.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="30" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0">
+        <state line="18" column="45" selection-start="754" selection-end="780" vertical-scroll-proportion="-11.52">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascripts/stripe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="149" column="111" selection-start="4206" selection-end="4206" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/account_bonuses.css.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="2" selection-start="1812" selection-end="1827" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/stylesheets/subscriptions.css.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/subscriptions/_form.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="26" selection-start="589" selection-end="589" vertical-scroll-proportion="-10.88">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/subscriptions/show.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="27" column="43" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.54892">
           <folding />
         </state>
       </provider>
