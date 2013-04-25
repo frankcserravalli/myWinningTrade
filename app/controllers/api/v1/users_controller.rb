@@ -21,7 +21,7 @@ module Api
           scrambled_token = scramble_token(Time.now, @user.id)
           render :json => { :user_id => @user.id, :ios_token => scrambled_token}
         else
-          render :json => {}
+          render :json => { }
         end
       end
 
@@ -49,8 +49,10 @@ module Api
             render :json => @data_from_soc_network.to_json
           end
         else
+          # We validate the user's password
           @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
           if @user
+            # Since everything is a goal, we create a scramble token then render it apart of the json
             scrambled_token = scramble_token(Time.now, @user.id)
 
             render :json => { :user_id => @user.id, :ios_token => scrambled_token }

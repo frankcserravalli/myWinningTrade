@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
   # MODEL METHODS
   # =============
-  def add_additional_capital_to_account(bonus_option)
+  def add_capital_to_account(bonus_option)
     case bonus_option
       when "option-1-bonus"
         self.account_balance += 25_000

@@ -24,4 +24,20 @@ describe User do
   it { should have_one(:subscription) }
 
   it { should_not allow_mass_assignment_of(:account_balance) }
+
+  it "add appropriate account bonus of an extra $25,000" do
+    @user = FactoryGirl.create(:user, premium_subscription: true)
+
+    @user.add_capital_to_account("option-1-bonus")
+
+    @user.account_balance.should eq 75_000
+  end
+
+  it "add appropriate account bonus of an extra $500,000" do
+    @user = FactoryGirl.create(:user, premium_subscription: true)
+
+    @user.add_capital_to_account("option-5-bonus")
+
+    @user.account_balance.should eq 550_000
+  end
 end

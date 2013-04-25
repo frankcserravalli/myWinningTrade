@@ -10,6 +10,6 @@ describe "Teacher Sessions Routing" do
   end
 
   it "should route to teacher_sessions#destroy" do
-    expect(delete: '/teacher_sessions').to route_to({ controller: 'teacher_sessions', action: 'destroy' })
+    expect(delete: '/teacher/log_out').to route_to({ controller: 'teacher_sessions', action: 'destroy' })
   end
 end

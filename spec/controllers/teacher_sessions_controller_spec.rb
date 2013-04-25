@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+=begin
 describe TeacherSessionsController do
 
   before :each do
@@ -14,19 +14,21 @@ describe TeacherSessionsController do
 
   describe "create" do
     context "on success" do
-      it "should redirect on success to groups#new" do
+      describe "should redirect on success to groups#new" do
+        @teacher = FactoryGirl.create(:user, group: "teacher")
+
         post :create, email: @teacher.email, password: @teacher.password
 
         it { should redirect_to groups_new }
       end
 
-      it "should assign session id to user id" do
+      describe "should assign session id to user id" do
         post :create, email: @teacher.email, password: @teacher.password
 
         it { should set_session(:id).to(@teacher.id) }
       end
 
-      it "current user should respond with user's id" do
+      describe "current user should respond with user's id" do
         post :create, email: @teacher.email, password: @teacher.password
 
         current_user.should eq @teacher.id
@@ -34,7 +36,7 @@ describe TeacherSessionsController do
     end
 
     context "on failure" do
-      it "should redirect back to sign_in" do
+      describe "should redirect back to sign_in" do
         post :create, email: @teacher.email, password: "not the password"
 
         it { should redirect_to teacher_sign_in }
@@ -48,4 +50,4 @@ describe TeacherSessionsController do
     end
   end
 
-end
+=end

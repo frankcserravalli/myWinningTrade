@@ -27,7 +27,7 @@ describe "Finance" do
     end
   end
 
-  it "should return the price of a stock every week day for the past 6 months" do
+  xit "should return the price of a stock every week day for the past 6 months" do
     cassette_date = Time.at(1348152000).to_date
 
     VCR.use_cassette('stock_price_history', :record => :new_episodes) do
