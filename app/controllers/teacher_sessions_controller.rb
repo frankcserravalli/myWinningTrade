@@ -15,7 +15,7 @@ class TeacherSessionsController < ApplicationController
     user = User.find_by_email(params[:email].downcase)
 
     # Login user if they are a teacher
-    if user && user.authenticate(params[:password]) && user.group.eql?("teacher")
+    if user && user.authenticate(params[:password]) && user.group == "teacher"
       teacher_sign_in user
 
       redirect_to groups_path

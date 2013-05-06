@@ -10,11 +10,11 @@ class SellsController < ApplicationController
     @order = SellTransaction.new(params[:sell].merge(user: current_user))
 
     if @order.place!(@stock_details)
-      if params[:soc_network].eql? "linkedin"
+      if params[:soc_network] == "linkedin"
         linkedin_share_connect("sells")
-      elsif params[:soc_network].eql? "facebook"
+      elsif params[:soc_network] == "facebook"
         facebook_share_connect("sells")
-      elsif params[:soc_network].eql? "twitter"
+      elsif params[:soc_network] == "twitter"
         @stock_id = UserStock.find(@order.user_stock)
 
         @stock = Stock.find_by_symbol(params[:stock_id])

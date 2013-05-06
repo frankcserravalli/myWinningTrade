@@ -14,11 +14,11 @@ class BuysController < ApplicationController
 
     # Here we check if the user decided to post on any of his social networks info about his latest trade
     if @buy_order.place!(@stock_details)
-      if params[:soc_network].eql? "linkedin"
+      if params[:soc_network] == "linkedin"
         linkedin_share_connect("buys")
-      elsif params[:soc_network].eql? "facebook"
+      elsif params[:soc_network] == "facebook"
         facebook_share_connect("buys")
-      elsif params[:soc_network].eql? "twitter"
+      elsif params[:soc_network] == "twitter"
         @stock_id = UserStock.find(@buy_order.user_stock_id)
 
         @stock = Stock.find_by_symbol(params[:stock_id])

@@ -174,7 +174,7 @@ class User < ActiveRecord::Base
           end
 
           # Finding the cost basis of each order
-          if order.type.eql? "Short Sell Cover" or order.type.eql? "Sell"
+          if order.type == "Short Sell Cover" or order.type == "Sell"
             cost_basis = order.volume * order.price
           else
             cost_basis = 0
@@ -218,14 +218,14 @@ class User < ActiveRecord::Base
         data_from_orders.each do |order|
 
           # Dealing with buys and sells
-          if order[0][:type].eql? "Buy"
+          if order[0][:type] == "Buy"
 
-            if buy_volume_bought.eql? 0
+            if buy_volume_bought == 0
               created_at = order[0][:time]
             end
 
             buy_volume_bought += order[0][:volume]
-          elsif order[0][:type].eql? "Sell"
+          elsif order[0][:type] == "Sell"
             buy_volume_bought -= order[0][:volume]
 
             sold_at = order[0][:time]
@@ -235,14 +235,14 @@ class User < ActiveRecord::Base
             holding_periods << holding_period
 
             created_at = sold_at
-          elsif order[0][:type].eql? "ShortSellBorrow"
+          elsif order[0][:type] == "ShortSellBorrow"
 
-            if short_volume_borrowed.eql? 0
+            if short_volume_borrowed == 0
               short_created_at = order[0][:time]
             end
 
             short_volume_borrowed += order[0][:volume]
-          elsif order[0][:type].eql? "ShortSellCover"
+          elsif order[0][:type] == "ShortSellCover"
             short_volume_borrowed -= order[0][:volume]
 
             short_sold_at = order[0][:time]
@@ -281,7 +281,7 @@ class User < ActiveRecord::Base
 
       net_income_after_taxes = net_income_before_taxes - taxes
 
-      unless overall_average_holding_period.eql? "--"
+      unless overall_average_holding_period == "--"
         overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s + " days"
       end
 
@@ -355,7 +355,7 @@ class User < ActiveRecord::Base
 
           composite_returns += sorted_open_positions[value][1][:returns]
 
-          if sorted_open_positions[value][1][:average_holding_period].eql? "--"
+          if sorted_open_positions[value][1][:average_holding_period] == "--"
             composite_average_holding_period = "--"
           else
             composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period]
@@ -375,7 +375,7 @@ class User < ActiveRecord::Base
 
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
-            if sorted_open_positions[value][1][:average_holding_period].eql? "--"
+            if sorted_open_positions[value][1][:average_holding_period] == "--"
               summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + "</td></tr>"
             else
               summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
