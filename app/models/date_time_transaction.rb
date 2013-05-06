@@ -106,3 +106,4 @@ class DateTimeTransaction < ActiveRecord::Base
   end
 
 end
+

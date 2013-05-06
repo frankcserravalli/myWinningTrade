@@ -108,8 +108,8 @@ class User < ActiveRecord::Base
   def stock_summary
     user_stocks = self.user_stocks.includes(:stock)
 
-    # This is what is returned at the end of the method, aka @stock_summary
-    @stock_summary = {}.tap do |s|
+    # This is what is returned at the end of the method, aka stock_summary
+    stock_summary = {}.tap do |s|
       s[:stocks] = {}
       s[:summary] = {}
       s[:orders] = {}
@@ -525,15 +525,15 @@ class User < ActiveRecord::Base
     # Risk Statistics Section
     borrowed = 0
 
-    @short_sell_covers = ShortSellCover.where(user_id: self.id)
+    short_sell_covers = ShortSellCover.where(user_id: self.id)
 
-    @short_sell_borrows = ShortSellBorrow.where(user_id: self.id)
+    short_sell_borrows = ShortSellBorrow.where(user_id: self.id)
 
-    @short_sell_covers.each do |order|
+    short_sell_covers.each do |order|
       borrowed -= order.value
     end
 
-    @short_sell_borrows.each do |order|
+    short_sell_borrows.each do |order|
       borrowed -= order.value
     end
 
