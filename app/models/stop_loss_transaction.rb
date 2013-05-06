@@ -47,6 +47,13 @@ class StopLossTransaction < ActiveRecord::Base
       order_model = order.order_type
       order_model = "SellTransaction" if order_model == "Sell"
       puts order_model.inspect
+
+      if order_model == "SellTransaction"
+        order_model = order_model.constantize
+      else
+        order_model = order_model.capitalize.constantize
+      end
+
       order_model = order_model.capitalize.constantize
       puts order_model
       puts order_model.new 
