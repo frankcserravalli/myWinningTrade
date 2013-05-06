@@ -50,7 +50,7 @@ class DateTimeTransaction < ActiveRecord::Base
   def self.evaluate_pending_orders
     puts "evaluating pending date time orders"
     orders = DateTimeTransaction.pending.upcoming
-    puts "{@orders.size}"
+    puts "#{orders.size}"
     orders.each do |order|
       order_model = order.order_type
       order_model = "SellTransaction" if order_model == "Sell"
