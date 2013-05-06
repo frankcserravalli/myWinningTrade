@@ -127,6 +127,10 @@ group :development do
   gem "guard-bundler", "~> 1.0.0"
 end
 
+# Web Server
+# ==========
+gem "unicorn", "~> 4.6.2"
+
 # ETC
 # ===
 
