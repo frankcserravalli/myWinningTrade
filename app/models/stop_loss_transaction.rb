@@ -54,7 +54,6 @@ class StopLossTransaction < ActiveRecord::Base
         order_model = order_model.capitalize.constantize
       end
 
-      order_model = order_model.capitalize.constantize
       puts order_model
       puts order_model.new 
       symbol = order.user_stock.stock.symbol
