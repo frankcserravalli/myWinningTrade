@@ -40,10 +40,10 @@ class StopLossTransaction < ActiveRecord::Base
   end
 
   def self.evaluate_pending_orders
-    puts "begining evaluating  pending stop loss orders..."
-    @orders = StopLossTransaction.pending
-    puts "#{@orders.size} orders"
-    @orders.each do |order|
+    puts "begin evaluating  pending stop loss orders..."
+    orders = StopLossTransaction.pending
+    puts "#{orders.size} orders"
+    orders.each do |order|
       order_model = order.order_type
       order_model = "SellTransaction" if order_model == "Sell"
       order_model = order_model.constantize
@@ -61,7 +61,7 @@ class StopLossTransaction < ActiveRecord::Base
       new_order = {}
       new_order[:volume] = order.volume
 
-      @order_to_execute = order_model.new(new_order.merge(user: order.user))
+      order_to_execute = order_model.new(new_order.merge(user: order.user))
 
       if order.measure == "Above"
         if current_price > order.price_target
@@ -79,9 +79,9 @@ class StopLossTransaction < ActiveRecord::Base
 
       if place_the_order
         puts "placing the order..."
-        puts @order_to_execute.to_json
+        puts order_to_execute.to_json
         transaction do
-          if @order_to_execute.place!(details)
+          if order_to_execute.place!(details)
             order.status = "processed"
             order.executed_at = Time.now
             puts "ORDER PLACED"
