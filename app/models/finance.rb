@@ -148,6 +148,11 @@ class Finance
 
       start_date = end_date - 6.months
 
+
+      puts "######################"
+      puts MarketBeat.quotes(symbol, ansi_date(start_date), ansi_date(end_date))
+      puts "######################"
+
 			history = MarketBeat.quotes(symbol, ansi_date(start_date), ansi_date(end_date))
 
       stock_quote = current_stock_details(symbol)
