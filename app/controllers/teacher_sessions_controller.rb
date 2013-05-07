@@ -28,7 +28,7 @@ class TeacherSessionsController < ApplicationController
 
   def sign_up
     if current_user
-      teacher = PendingTeacher.find(current_user.id)
+      teacher = PendingTeacher.find_by_user_id(current_user.id)
 
       # Has request been made? If so just tell the user the status is pending
       if teacher
