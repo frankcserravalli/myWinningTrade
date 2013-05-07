@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   attr_protected :account_balance
   after_initialize :create_initial_balance
 
+  # VALIDATIONS
+  # ===========
+  validates :email, uniqueness: true
+
   # MODEL METHODS
   # =============
   def add_capital_to_account(bonus_option)
