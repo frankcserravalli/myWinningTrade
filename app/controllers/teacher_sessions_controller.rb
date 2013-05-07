@@ -51,9 +51,9 @@ class TeacherSessionsController < ApplicationController
 
   def pending
     # Frank's account number is 29
-    unless current_user.id.eql? 29
+    #unless current_user.id.eql? 29
     #  redirect_to groups_path, notice: I18n.t('flash.sessions.create.notice', default: "You don't have permission to view this page.")
-    end
+    #end
 
     @teachers_pending = PendingTeacher.includes(:user).all
   end
