@@ -402,7 +402,7 @@ DEPENDENCIES
   therubyrhino (~> 2.0.2)
   thin (~> 1.5.0)
   uglifier (>= 1.0.3)
-  underscore-rails (~> 1.4.3)
+  underscore-rails (~> 1.4.4)
   unicorn (~> 4.6.2)
   vcr (~> 2.4.0)
   will_paginate (~> 3.0.4)

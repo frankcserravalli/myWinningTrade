@@ -31,7 +31,7 @@ end
 # ===
 gem "chosen-rails", "~> 0.9.11.2"
 
-gem "underscore-rails", "~> 1.4.3"
+gem "underscore-rails", "~> 1.4.4"
 
 # Views
 # =====
