@@ -85,7 +85,7 @@
       <file leaf-file-name="pending.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="423" selection-end="423" vertical-scroll-proportion="0.29946524">
+            <state line="2" column="52" selection-start="73" selection-end="73" vertical-scroll-proportion="0.04278075">
               <folding />
             </state>
           </provider>
@@ -636,7 +636,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="423" selection-end="423" vertical-scroll-proportion="0.29946524">
+        <state line="2" column="52" selection-start="73" selection-end="73" vertical-scroll-proportion="0.04278075">
           <folding />
         </state>
       </provider>
