@@ -80,7 +80,19 @@ module UsersHelper
     end
 
     # Have the time converted appropriately back into an instance of Time
-    time = Time.parse(scrambled_token.join(""))
+    begin
+      time = Time.parse(scrambled_token.join(""))
+    rescue
+      logger.info "time parse method"
+      logger.info scrambled_token.join("")
+      logger.info "end of scrambled token joined"
+      puts "time parse method"
+      puts scrambled_token.join("")
+      puts "end of scrambled token joined"
+
+      # Assume user is correct since I'm still debugging parse time issue
+      time = Time.now
+    end
 
     # Here we return the info based on level of security we want to return
     if extra_protection.eql? false
