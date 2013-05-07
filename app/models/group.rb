@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   attr_accessible :name, :user_id, :group_users_attributes
 
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
 
   belongs_to :user
 
