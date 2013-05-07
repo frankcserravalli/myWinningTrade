@@ -22,7 +22,7 @@
       <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="46" selection-start="872" selection-end="872" vertical-scroll-proportion="0.36842105">
+            <state line="54" column="5" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.36842105">
               <folding />
             </state>
           </provider>
@@ -94,7 +94,7 @@
       <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="41" selection-start="266" selection-end="266" vertical-scroll-proportion="-10.24">
+            <state line="11" column="47" selection-start="241" selection-end="241" vertical-scroll-proportion="-7.04">
               <folding />
             </state>
           </provider>
@@ -132,8 +132,8 @@
         <option value="$PROJECT_DIR$/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/../Gemfile" />
         <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
-        <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
+        <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
       </list>
     </option>
@@ -571,13 +571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -613,16 +606,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.rb">
+    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="26" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
+        <state line="11" column="47" selection-start="241" selection-end="241" vertical-scroll-proportion="-7.04">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
+    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="41" selection-start="266" selection-end="266" vertical-scroll-proportion="-10.24">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="26" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -636,7 +636,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="46" selection-start="872" selection-end="872" vertical-scroll-proportion="0.36842105">
+        <state line="54" column="5" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.36842105">
           <folding />
         </state>
       </provider>
