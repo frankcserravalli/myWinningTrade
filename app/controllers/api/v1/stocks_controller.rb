@@ -11,10 +11,14 @@ module Api
       end
 
       def details
-        @details = Finance.current_stock_details(params[:symbol].upcase)
-        render json: @details.to_json
-      end
+        details = Finance.current_stock_details(params[:symbol].upcase)
 
+        if details
+          render :json => details.to_json
+        else
+          render :json => { }
+        end
+      end
     end
   end
 end

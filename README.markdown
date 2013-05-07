@@ -1,3 +1,24 @@
+API
+===
+|    CONTROLLER            |      ACTION       |   WHAT DOES IT DO                                         |          URL                                  |                       PARAMS TO GIVE                                                                            |  JSON/Text Responses                                |
+| ------------------------ | ----------------- | --------------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+|  api/v1/stocks           |  details          |  Returns the stock details                                |  api/v1/stocks/details                        |   symbol, ios_token                                                                                             |      Returns stock details See (1)                  |
+|  api/v1/users            |  portfolio        |  Returns the stock details                                |  api/v1/stocks/details                        |   symbol, ios_token                                                                                             |      Returns stock details See (1)                  |
+
+
+
+(1) "{"table":{"name":"Apple Inc.","symbol":"AAPL","ask":"456.87","ask_realtime":"456.87","bid":"456.77",
+"bid_realtime":"456.77","days_range":"453.70 - 465.75","year_range":"385.10 - 705.07","open":"465.24",
+"previous_close":"460.71","volume":"11274406","dividend_yield":"1.73","earnings_share":"41.896",
+"stock_exchange":"NasdaqNM","last_trade_time":"12:12pm","eps_estimate_current_year":"39.76",
+"eps_estimate_next_year":"44.09","eps_estimate_next_quarter":"8.25","pe_ratio":"11.00",
+"two_hundred_day_moving_average":"505.657","fifty_day_moving_average":"431.59",
+"last_trade_date":"5/7/2013","currently_trading":true,"current_price":"456.87",
+"current_bid":"456.77","buy_price":462.87,
+"statements_url":"http://investing.money.msn.com/investments/sec-filings/?symbol=AAPL",
+"point_change":"-3.84","percent_change":-0.83,"trend_direction":"down"},"modifiable":true}"
+
+
 Deploying
 ===
 
