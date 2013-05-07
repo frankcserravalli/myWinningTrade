@@ -15,7 +15,8 @@
 //= require bootstrap-modal
 //= require bootstrap-transition
 //= require chosen-jquery
-//= require underscore//= require moment
+//= require underscore
+//= require moment
 //= require flash
 //= require finance
 //= require submit_form_and_share
