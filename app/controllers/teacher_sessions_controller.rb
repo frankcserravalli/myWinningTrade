@@ -26,6 +26,61 @@ class TeacherSessionsController < ApplicationController
     end
   end
 
+  def sign_up
+    if current_user
+      teacher = PendingTeacher.find(current_user.id)
+
+      # Has request been made? If so just tell the user the status is pending
+      if teacher
+        redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Your status is pending!")
+      else
+        # Create a teacher request
+        teacher = PendingTeacher.new
+
+        teacher.user_id = current_user.id
+        if teacher.save
+          redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
+        else
+          redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Oops. Something went wrong!")
+        end
+      end
+    else
+      redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
+    end
+  end
+
+  def pending
+    # Frank's account number is 29
+    unless current_user.id.eql? 29
+      redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: "You don't have permission to view this page.")
+    end
+
+    @teachers_pending = PendingTeacher.includes(:user).all
+  end
+
+  def verify
+    teacher = PendingTeacher.find(params[:user_id])
+
+    user = User.find(params[:user_id])
+
+    user.group = 'teacher'
+
+    user.save
+
+    teacher.destroy
+
+    redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Teacher added.")
+  end
+
+  def remove_pending
+    teacher = PendingTeacher.find(params[:user_id])
+
+    teacher.destroy
+
+    redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Teacher added.")
+
+  end
+
   def destroy
     teacher_sign_out
 

@@ -19,64 +19,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.markdown" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../README.markdown">
+      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="9" selection-start="2648" selection-end="2648" vertical-scroll-proportion="0.0">
+            <state line="75" column="51" selection-start="2352" selection-end="2352" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/javascripts/application.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="22" selection-start="516" selection-end="516" vertical-scroll-proportion="0.35789475">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="82" column="42" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pending_teacher.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/pending_teacher.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="18" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="26" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
+        <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="13" selection-start="3406" selection-end="3406" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
+      <file leaf-file-name="pending_teachers.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending_teachers.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="7" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
+            <state line="11" column="55" selection-start="306" selection-end="306" vertical-scroll-proportion="-7.04">
+              <folding>
+                <marker date="1367957909000" expanded="true" signature="130:338" placeholder="do ... end" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="14" selection-start="225" selection-end="277" vertical-scroll-proportion="-10.24">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="69" selection-start="1359" selection-end="1359" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="group.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/group.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.08279431">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sell.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/sell.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="0" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stop_loss_transaction.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stock.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/stock.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="4" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -92,22 +121,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/models/stop_loss_transaction.rb" />
-        <option value="$PROJECT_DIR$/controllers/buys_controller.rb" />
-        <option value="$PROJECT_DIR$/controllers/sells_controller.rb" />
-        <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
-        <option value="$PROJECT_DIR$/views/application/_navbar.html.slim" />
-        <option value="$PROJECT_DIR$/models/short_sell_cover.rb" />
         <option value="$PROJECT_DIR$/models/buy.rb" />
         <option value="$PROJECT_DIR$/models/date_time_transaction.rb" />
-        <option value="$PROJECT_DIR$/../Gemfile" />
         <option value="$PROJECT_DIR$/models/sell.rb" />
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
-        <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
         <option value="$PROJECT_DIR$/../README.markdown" />
         <option value="$PROJECT_DIR$/models/group.rb" />
+        <option value="$PROJECT_DIR$/../Gemfile" />
+        <option value="$PROJECT_DIR$/models/pending_teacher.rb" />
+        <option value="$PROJECT_DIR$/models/user.rb" />
+        <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
+        <option value="$PROJECT_DIR$/../config/routes.rb" />
+        <option value="$PROJECT_DIR$/views/teacher_sessions/pending_teachers.html.slim" />
+        <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/assets/javascripts/application.js" />
       </list>
     </option>
   </component>
@@ -160,6 +189,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teacher_sessions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -184,10 +235,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -200,14 +247,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -225,6 +264,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -233,7 +290,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../README.markdown" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Gemfile" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -452,65 +509,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/short_sell_cover.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="89" selection-start="1155" selection-end="1169" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/short_transaction.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="25" selection-start="1957" selection-end="1957" vertical-scroll-proportion="0.30789134" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="20" selection-start="2300" selection-end="2314" vertical-scroll-proportion="0.33242506">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="610" selection-end="610" vertical-scroll-proportion="0.49676585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="20" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.021052632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/users_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="7" selection-start="2593" selection-end="2593" vertical-scroll-proportion="0.31694695">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/subscription.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/sell.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="0" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0">
@@ -539,23 +537,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/group.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="13" selection-start="3406" selection-end="3406" vertical-scroll-proportion="0.0">
+        <state line="108" column="13" selection-start="3406" selection-end="3406" vertical-scroll-proportion="0.8344114">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/pending_teacher.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="18" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="26" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="14" selection-start="225" selection-end="277" vertical-scroll-proportion="-10.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="69" selection-start="1359" selection-end="1359" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending_teachers.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="55" selection-start="306" selection-end="306" vertical-scroll-proportion="-7.04">
+          <folding>
+            <marker date="1367957909000" expanded="true" signature="130:338" placeholder="do ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="7" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
+        <state line="75" column="51" selection-start="2352" selection-end="2352" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/group.rb">
+    <entry file="file://$PROJECT_DIR$/../Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.08279431">
+        <state line="82" column="42" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="22" selection-start="516" selection-end="516" vertical-scroll-proportion="0.35789475">
           <folding />
         </state>
       </provider>

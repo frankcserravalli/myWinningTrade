@@ -70,7 +70,7 @@ group :development do
 end
 
 group :test do
-  gem 'mocha', '~> 0.10.5', require: false
+  gem 'mocha', '~> 0.10.5', :require => false
 
   gem "capybara", "~> 2.0.2"
 
@@ -80,7 +80,7 @@ group :test do
 
   gem "rspec-rails", "~> 2.12.2"
 
-  gem "simplecov", "~> 0.7.1", require: false
+  gem "simplecov", "~> 0.7.1", :require => false
 
   gem "vcr", "~> 2.4.0"
 
