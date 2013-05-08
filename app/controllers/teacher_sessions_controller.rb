@@ -38,6 +38,7 @@ class TeacherSessionsController < ApplicationController
         teacher = PendingTeacher.new
 
         teacher.user_id = current_user.id
+
         if teacher.save
           redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
         else
@@ -77,7 +78,7 @@ class TeacherSessionsController < ApplicationController
 
     teacher.destroy
 
-    redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Teacher added.")
+    redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Non-teacher removed.")
   end
 
   def destroy
