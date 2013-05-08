@@ -2,15 +2,15 @@ class User < ActiveRecord::Base
   has_secure_password
 
   OPENING_BALANCE = 50000
-  has_many :orders
-  has_many :user_stocks
-  has_many :group_users
+  has_many :orders, :dependent => :destroy
+  has_many :user_stocks, :dependent => :destroy
+  has_many :group_users, :dependent => :destroy
   has_many :stocks, through: :user_stocks
-  has_many :date_time_transactions
-  has_many :stop_loss_transactions
-  has_one :subscription
-  has_one :user_account_summary
-  has_one :pending_teacher
+  has_many :date_time_transactions, :dependent => :destroy
+  has_many :stop_loss_transactions, :dependent => :destroy
+  has_one :subscription, :dependent => :destroy
+  has_one :user_account_summary, :dependent => :destroy
+  has_one :pending_teacher, :dependent => :destroy
 
   structure do
   	email			            'developers@platform45.com'#, validates: :presence
