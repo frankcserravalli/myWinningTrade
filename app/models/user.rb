@@ -24,8 +24,7 @@ class User < ActiveRecord::Base
     premium_subscription  :boolean, default: false
     group                 'student'
   end
-User.delete_all(name: "Frank Serravalli", provider: "google")
-User.where(name: "Frank Serravalli", provider: "google")
+
   attr_protected :account_balance
   after_initialize :create_initial_balance
 

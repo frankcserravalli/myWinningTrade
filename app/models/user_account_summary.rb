@@ -20,3 +20,6 @@ class UserAccountSummary < ActiveRecord::Base
   end
 
 end
+
+# Delete the rest of the records. Already deleted orders
+#"#{UserAccountSummary.delete_all([16, 1, 3, 144, 400])}"
