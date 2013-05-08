@@ -39,37 +39,7 @@ div.tabbable
             .accordion-inner
               = render partial: 'account/pending_positions'
     .tab-pane#world-leadboard-section
-      .dashboard-tab-box
-        h2 World Leaderboard
-        - if @world_leader_board
-          table.table.table-striped.table-bordered
-            thead
-              tr
-                th Ranking
-                th Name
-                th Capital Gain (Loss) less Incurred Tax Liability
-            tbody
-              - @world_leader_board.each_with_index do |user, index|
-                tr
-                  td = index + 1
-                  td = user.user.name
-                  td = ((user.capital_total / 50000) * 100).round(2).to_s + "%"
+      = render partial: 'account/world_leaderboard'
 
     .tab-pane#class-leadboard-section
-      .dashboard-tab-box
-        - if @class_leader_board
-          h2 Class Leaderboard
-          table.table.table-striped.table-bordered
-            thead
-              tr
-                th Ranking
-                th Name
-                th Capital Gain (Loss) less Incurred Tax Liability
-            tbody
-              - @class_leader_board.each_with_index do |classmate, index|
-                tr
-                  td = index + 1
-                  td = classmate.user.name
-                  td = ((classmate.capital_total / 50000) * 100).round(2).to_s + "%"
-        -else
-          h4.centered-text Your classmates haven't started trading yet so get to it!
+      = render partial: 'account/class_leaderboard'

@@ -1,0 +1,15 @@
+.dashboard-tab-box
+  h2 World Leaderboard
+  - if @world_leader_board
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th Ranking
+          th Name
+          th Capital Gain (Loss) less Incurred Tax Liability
+      tbody
+        - @world_leader_board.each_with_index do |user, index|
+          tr
+            td = index + 1
+            td = user.user.name
+            td = ((user.capital_total / 50000) * 100).round(2).to_s + "%"
