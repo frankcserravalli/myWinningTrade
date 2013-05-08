@@ -49,7 +49,7 @@
       <file leaf-file-name="pending.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="87" selection-start="527" selection-end="527" vertical-scroll-proportion="0.65708417">
+            <state line="12" column="50" selection-start="200" selection-end="200" vertical-scroll-proportion="0.3942505">
               <folding />
             </state>
           </provider>
@@ -502,11 +502,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/group.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -589,13 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/stylesheets/teacher_sessions.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="1" selection-start="189" selection-end="210" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/groups.css.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="213" selection-end="240" vertical-scroll-proportion="0.0">
@@ -603,9 +591,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/stylesheets/teacher_sessions.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="1" selection-start="189" selection-end="210" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="87" selection-start="527" selection-end="527" vertical-scroll-proportion="0.65708417">
+        <state line="12" column="50" selection-start="200" selection-end="200" vertical-scroll-proportion="0.3942505">
           <folding />
         </state>
       </provider>
