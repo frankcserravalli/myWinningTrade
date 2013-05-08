@@ -14,8 +14,6 @@ module Api
           # and save the iOS side from sending params with hashes within hashes
           params[:buy][:volume] = params[:volume]
 
-          puts params
-
           @buy_order = Buy.new(params[:buy].merge(user: @user))
 
           if @buy_order.place!(@stock_details)

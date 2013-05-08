@@ -91,6 +91,10 @@ module Api
       def portfolio
         # load_portfolio takes in params[:user_id] to find the user_id
         portfolio = load_portfolio(params[:user_id])
+
+        puts "#####################"
+        puts portfolio
+
         if portfolio
           render :json => portfolio.to_json
         else
