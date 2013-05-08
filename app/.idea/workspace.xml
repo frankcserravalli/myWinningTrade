@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="buys_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="buys_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/buys_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="79" selection-start="567" selection-end="567" vertical-scroll-proportion="0.26598465">
+            <state line="16" column="14" selection-start="619" selection-end="641" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sells_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sells_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/sells_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="435" selection-end="568" vertical-scroll-proportion="0.0">
+            <state line="17" column="0" selection-start="643" selection-end="643" vertical-scroll-proportion="0.3478261">
               <folding />
             </state>
           </provider>
@@ -70,8 +70,8 @@
         <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/models/user_account_summary.rb" />
         <option value="$PROJECT_DIR$/../README.markdown" />
-        <option value="$PROJECT_DIR$/controllers/api/v1/sells_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/buys_controller.rb" />
+        <option value="$PROJECT_DIR$/controllers/api/v1/sells_controller.rb" />
       </list>
     </option>
   </component>
@@ -584,16 +584,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/sells_controller.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/buys_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="435" selection-end="568" vertical-scroll-proportion="0.0">
+        <state line="16" column="14" selection-start="619" selection-end="641" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/buys_controller.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/sells_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="79" selection-start="567" selection-end="567" vertical-scroll-proportion="0.26598465">
+        <state line="17" column="0" selection-start="643" selection-end="643" vertical-scroll-proportion="0.3478261">
           <folding />
         </state>
       </provider>
