@@ -9,14 +9,20 @@ module Api
         @user = User.find_by_id(params[:user_id])
         if @user
           @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+
+          # This is used to set the params up on here
+          # and save the iOS side from sending params with hashes within hashes
+          params[:buy][:volume] = params[:volume]
+
           @buy_order = Buy.new(params[:buy].merge(user: @user))
+
           if @buy_order.place!(@stock_details)
-            respond_with "Successfully purchased #{@buy_order.volume} #{params[:stock_id]} for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)"
+            render :json => @buy_order.to_json
           else
-            respond_with "Buy could not be processed"
+            render :json => { }
           end
         else
-          respond_with "Invalid user"
+          render :json => { }
         end
       end
     

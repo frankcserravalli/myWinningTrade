@@ -10,15 +10,19 @@ module Api
         if @user
           @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
+          # This is used to set the params up on here
+          # and save the iOS side from sending params with hashes within hashes
+          params[:sell][:volume] = params[:volume]
+
           @order = SellTransaction.new(params[:sell].merge(user: @user))
 
           if @order.place!(@stock_details)
-            respond_with "Successfully sold #{@order.volume} shares from #{params[:stock_id]}"
+            render :json => @order.to_json
           else
-            respond_with "Could not process order"
+            render :json => { }
           end
         else
-          respond_with "Invalid user"
+          render :json => { }
         end
       end
 

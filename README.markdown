@@ -4,6 +4,8 @@ API
 | ------------------------ | ----------------- | --------------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 |  api/v1/stocks           |  details          |  Returns the stock details                                |  api/v1/stocks/details                        |   symbol, ios_token                                                                                             |      Returns stock details See (1)                  |
 |  api/v1/users            |  portfolio        |  Returns the users portfolio                              |  api/v1/users/portfolio                       |   user_id, ios_token                                                                                            |      Returns user's portfolio See (2)               |
+|  api/v1/buys            |  create            |  Creates a buy order                                      |  api/v1/buys/create                           |   user_id, stock_id, volume, ios_token                                                                             |      Returns the buy order                          |
+|  api/v1/sells            |  create            |  Creates a sell order                                    |  api/v1/sells/create                          |   user_id, stock_id, volume, ios_token                                                                            |      Returns the sell order                          |
 
 
 
