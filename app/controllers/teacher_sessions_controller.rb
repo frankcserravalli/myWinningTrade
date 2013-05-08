@@ -55,7 +55,7 @@ class TeacherSessionsController < ApplicationController
     #  redirect_to groups_path, notice: I18n.t('flash.sessions.create.notice', default: "You don't have permission to view this page.")
     #end
 
-    @teachers_pending = PendingTeacher.includes(:user).all
+    @teachers_pending = PendingTeacher.all
   end
 
   def verify
@@ -78,7 +78,6 @@ class TeacherSessionsController < ApplicationController
     teacher.destroy
 
     redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Teacher added.")
-
   end
 
   def destroy
