@@ -23,11 +23,3 @@ end
 
 # Delete the rest of the records. Already deleted orders
 #"#{GroupUsers.where(user_id: [16, 1, 3, 144, 400])}"
-
-has_many :user_stocks, :dependent => :destroy
-has_many :group_users, :dependent => :destroy
-has_many :stocks, through: :user_stocks
-has_many :stop_loss_transactions, :dependent => :destroy
-has_one :subscription, :dependent => :destroy
-has_one :user_account_summary, :dependent => :destroy
-has_one :pending_teacher, :dependent => :destroy
