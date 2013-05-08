@@ -17,6 +17,6 @@ table.table.table-bordered.teacher-pending-class
     - @teachers_pending.each do |teacher|
       td = teacher.user.name
       td = teacher.user.email
-      td = link_to "Verify", { :action => 'verify' }, :class => "btn btn-primary", :user_id => teacher.user_id
-      td = link_to "Remove", { :action => 'remove_pending' },  :class => "btn btn-primary", :user_id => teacher.user_id
+      td = link_to "Verify", { :action => 'verify', :user_id => teacher.user_id }, :class => "btn btn-primary"
+      td = link_to "Remove", { :action => 'remove_pending', :user_id => teacher.user_id },  :class => "btn btn-primary"
 
