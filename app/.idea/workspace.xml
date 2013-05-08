@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="20" selection-start="1816" selection-end="1816" vertical-scroll-proportion="0.0">
+            <state line="75" column="44" selection-start="2356" selection-end="2356" vertical-scroll-proportion="0.5203252">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pending.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pending.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="102" selection-start="515" selection-end="515" vertical-scroll-proportion="0.49368864">
+            <state line="22" column="102" selection-start="515" selection-end="515" vertical-scroll-proportion="-14.08">
               <folding />
             </state>
           </provider>
@@ -117,7 +117,6 @@
         <option value="$PROJECT_DIR$/../Gemfile" />
         <option value="$PROJECT_DIR$/assets/stylesheets/teacher_sessions.css.scss" />
         <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
-        <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
@@ -126,6 +125,7 @@
         <option value="$PROJECT_DIR$/views/account/_portfolio.html.slim" />
         <option value="$PROJECT_DIR$/models/user_account_summary.rb" />
         <option value="$PROJECT_DIR$/views/teacher_sessions/pending.html.slim" />
+        <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
       </list>
     </option>
   </component>
@@ -652,16 +652,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
+    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="20" selection-start="1816" selection-end="1816" vertical-scroll-proportion="0.0">
+        <state line="22" column="102" selection-start="515" selection-end="515" vertical-scroll-proportion="-14.08">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/pending.html.slim">
+    <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="102" selection-start="515" selection-end="515" vertical-scroll-proportion="0.49368864">
+        <state line="75" column="44" selection-start="2356" selection-end="2356" vertical-scroll-proportion="0.5203252">
           <folding />
         </state>
       </provider>

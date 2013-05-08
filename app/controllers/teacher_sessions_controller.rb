@@ -59,7 +59,7 @@ class TeacherSessionsController < ApplicationController
   end
 
   def verify
-    teacher = PendingTeacher.find(params[:user_id])
+    teacher = PendingTeacher.find_by_user_id(params[:user_id])
 
     user = User.find(params[:user_id])
 
@@ -73,7 +73,7 @@ class TeacherSessionsController < ApplicationController
   end
 
   def remove_pending
-    teacher = PendingTeacher.find(params[:user_id])
+    teacher = PendingTeacher.find_by_user_id(params[:user_id])
 
     teacher.destroy
 
