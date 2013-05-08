@@ -31,7 +31,7 @@ MyWinningTrade::Application.routes.draw do
   resources :teacher_sessions, only: [:create]
   get 'teacher/sign_in', to: 'teacher_sessions#new'
   get 'teacher/sign_up', to: 'teacher_sessions#sign_up'
-  get 'teacher/verify', to: 'teacher_sessions#verify'
+  post 'teacher/verify', to: 'teacher_sessions#verify'
   post 'teacher/remove_pending', to: 'teacher_sessions#remove_pending'
   get 'teacher/pending', to: 'teacher_sessions#pending'
   delete 'teacher/log_out', to: 'teacher_sessions#destroy'
