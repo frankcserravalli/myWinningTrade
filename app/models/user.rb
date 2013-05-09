@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   OPENING_BALANCE = 50000
   has_many :orders, :dependent => :destroy
-  has_many :user_stocks, :dependent => :destroy
+  has_many :user_stocks
   has_many :group_users, :dependent => :destroy
   has_many :stocks, through: :user_stocks
   has_many :date_time_transactions, :dependent => :destroy
