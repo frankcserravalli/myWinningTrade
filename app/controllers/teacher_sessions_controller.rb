@@ -46,6 +46,11 @@ class TeacherSessionsController < ApplicationController
         end
       end
     else
+
+      # Create an user with the email and password provided in the form
+
+
+
       redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
     end
   end
