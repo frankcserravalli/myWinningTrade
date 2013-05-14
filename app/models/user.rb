@@ -72,10 +72,11 @@ class User < ActiveRecord::Base
         user.email = auth_hash[:info][:email]
       end
 
-  	  # TODO please change before move to mwt
-      user.password =  ""
-
-      user.password_confirmation =  ""
+  	  # I set this unique password and check it on  the view when an user signs in.
+      # if it's still this password below we give them a warning telling them to change it
+      user.password =  "a_password_that1_can_never_be_found"
+      "a_password_that1_can_never_be_found"
+      user.password_confirmation =  "a_password_that1_can_never_be_found"
 
       user.save
   	end
