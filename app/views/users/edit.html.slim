@@ -10,6 +10,7 @@
     .span12
       = form_tag('/user/update', method: "put") do
         == render 'form'
+        = link_to 'Back', profile_path, class: "btn btn-primary"
 
 
 

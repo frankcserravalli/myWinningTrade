@@ -19,19 +19,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sign_up.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sign_up.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="24" selection-start="228" selection-end="228" vertical-scroll-proportion="-7.04">
+            <state line="6" column="28" selection-start="139" selection-end="139" vertical-scroll-proportion="0.12834224">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="0" selection-start="352" selection-end="352" vertical-scroll-proportion="-13.44">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.29473683">
+            <state line="27" column="7" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -58,7 +67,7 @@
       <file leaf-file-name="sign_in.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="-0.0">
+            <state line="0" column="11" selection-start="11" selection-end="11" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -67,7 +76,16 @@
       <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="153" selection-end="228" vertical-scroll-proportion="-6.4">
+            <state line="12" column="38" selection-start="267" selection-end="267" vertical-scroll-proportion="-7.68">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/users/profile.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="0" selection-start="398" selection-end="398" vertical-scroll-proportion="-15.36">
               <folding />
             </state>
           </provider>
@@ -90,15 +108,15 @@
         <option value="$PROJECT_DIR$/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/buys_controller.rb" />
         <option value="$PROJECT_DIR$/models/user.rb" />
-        <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
-        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
-        <option value="$PROJECT_DIR$/views/users/edit.html.slim" />
-        <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
-        <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
         <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/edit.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
       </list>
     </option>
   </component>
@@ -600,27 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/profile.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="46" selection-start="362" selection-end="362" vertical-scroll-proportion="0.3966942">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="30" selection-start="195" selection-end="195" vertical-scroll-proportion="0.23529412">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/edit.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="153" selection-end="228" vertical-scroll-proportion="-6.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/orders_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -649,13 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="24" selection-start="228" selection-end="228" vertical-scroll-proportion="-7.04">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -670,13 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="34" selection-start="714" selection-end="714" vertical-scroll-proportion="0.2755498">
@@ -686,7 +669,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.29473683">
+        <state line="27" column="7" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="352" selection-end="352" vertical-scroll-proportion="-13.44">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/edit.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="38" selection-start="267" selection-end="267" vertical-scroll-proportion="-7.68">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/profile.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="398" selection-end="398" vertical-scroll-proportion="-15.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="11" selection-start="11" selection-end="11" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="28" selection-start="139" selection-end="139" vertical-scroll-proportion="0.12834224">
           <folding />
         </state>
       </provider>

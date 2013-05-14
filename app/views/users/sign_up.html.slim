@@ -4,9 +4,10 @@
 #edit_profile.container
   .row
     .span12
-      h1 Create User
+      h1 Create Your Account
 
   .row
     .span12
       = form_tag('/user/create', method: "post") do
         == render 'form'
+        = link_to 'Back', signin_path, class: "btn btn-primary"

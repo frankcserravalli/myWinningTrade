@@ -26,8 +26,6 @@ class UsersController < ApplicationController
         redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Unable to create your account. Please try again.')
       end
     end
-
-
   end
 
 
