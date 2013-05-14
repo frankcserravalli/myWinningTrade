@@ -1,0 +1,6 @@
+= form_tag("/login", method: "post") do
+  = text_field_tag(:email)
+
+  = text_field_tag(:password)
+
+  = submit_tag("Log In")

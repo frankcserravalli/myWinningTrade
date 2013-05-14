@@ -53,11 +53,10 @@ class UsersController < ApplicationController
   end
 
   def sign_up
-
+    @user = User.new
   end
 
   def sign_in
-
   end
 
 end

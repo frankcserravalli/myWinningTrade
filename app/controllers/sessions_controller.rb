@@ -7,29 +7,29 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # If user is coming from sign in page for MWT
-    if params[:user]
-      @user = User.find_by_email(params[:user][:email])
+
+    if params[:email]
+      # If user is coming from sign in page for MWT
+      @user = User.find_by_email(params[:email]).authenticate(params[:password])
 
       if @user
         # User exists so we assign them to current user
         self.current_user = @user
 
         redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: 'You have been logged in.')
-
       else
-
-        redirect_to login_url, alert: I18n.t('flash.sessions.create.alert', default: 'Could not authenticate :(')
-
+        redirect_to signin_url, alert: I18n.t('flash.sessions.create.alert', default: 'Your email/password did not match.')
       end
 
     else
+      # We are assuming the user has come from the authentication system from an social network
       self.current_user = User.find_or_create_from_auth_hash(auth_hash)
       if current_user.valid?
         redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: 'You have been logged in.')
       else
         redirect_to login_url, alert: I18n.t('flash.sessions.create.alert', default: 'Could not authenticate :(')
       end
+
     end
 
   end
