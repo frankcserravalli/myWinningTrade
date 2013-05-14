@@ -7,33 +7,27 @@ module Api
       skip_before_filter :verify_authenticity_token
       respond_to :json
 
-      # call this to sign up a user
-      #
-      # Params Needed
-      # =============
-      # user (more details to come)
-      # So you will send the json for user like this..
-      # { "user": { "name": "", "email": "", etc etc } }
-      #
       def create
+        # Set params within user hash
+        params[:user][:name] = params[:name]
+        params[:user][:email] = params[:email]
+        params[:user][:password] = params[:password]
+        params[:user][:password_confirmation] = params[:password_confirmation]
+
+        # Set params to a new user
         @user = User.new(params[:user])
+
         if @user.save
+          # we create a scrambled token
           scrambled_token = scramble_token(Time.now, @user.id)
+
           render :json => { :user_id => @user.id, :ios_token => scrambled_token}
         else
           render :json => { }
         end
       end
 
-      # Authenticate User and provide them an ios token
-      #
-      # Params Needed
-      # =============
-      # email
-      # password
-      #
       def authenticate
-
         if params[:email].blank?
           @data_from_soc_network = request.env['omniauth.auth']
 

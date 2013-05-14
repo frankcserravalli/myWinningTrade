@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
       when "option-6-bonus"
         self.account_balance += 1_000_000
       else
-      # Do nothing, RubyMine has a weird error when case doesn't have an else statment
+      # Do nothing, RubyMine has a weird error when case doesn't have an else statement
     end
 
     self.save
