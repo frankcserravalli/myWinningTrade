@@ -15,8 +15,8 @@ module Api
         params[:user][:email] = params[:email]
         params[:user][:password] = params[:password]
         params[:user][:password_confirmation] = params[:password_confirmation]
-
-        puts params[:user]
+        params[:user][:provider] = "mwt"
+        params[:user][:uid] = "none"
 
         # Set params to a new user
         @user = User.new(params[:user])
@@ -27,7 +27,7 @@ module Api
 
           render :json => { :user_id => @user.id, :ios_token => scrambled_token}
         else
-          render :json => { :status => "doesn't work" }
+          render :json => { :status => @u }
         end
       end
 
