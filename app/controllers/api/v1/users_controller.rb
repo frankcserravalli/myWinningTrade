@@ -3,7 +3,7 @@ module Api
     class UsersController < ApplicationController
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
       skip_before_filter :valid_user_id
-      skip_before_filter :require_iphone_login, :except => [:create, :authenticate]
+      skip_before_filter :require_iphone_login, :only => [:create, :authenticate]
 
       respond_to :json
 
