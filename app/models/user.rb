@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   	  # I set this unique password and check it on  the view when an user signs in.
       # if it's still this password below we give them a warning telling them to change it
       user.password =  "a_password_that1_can_never_be_found"
-      "a_password_that1_can_never_be_found"
+
       user.password_confirmation =  "a_password_that1_can_never_be_found"
 
       user.save

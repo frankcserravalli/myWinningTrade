@@ -7,6 +7,26 @@ class UsersController < ApplicationController
   end
 
 
+
+  def create
+    if params[:user][:email].blank? or params[:user][:password] != params[:user][:password_confirmation]
+      redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
+    else
+
+      # Set the params to a new user
+      user = User.new(params[:user])
+
+      if user.save
+        redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
+      else
+        redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Unable to create your account. Please try again.')
+      end
+    end
+
+
+  end
+
+
   def edit
     @user = current_user
   end

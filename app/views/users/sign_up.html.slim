@@ -1,10 +1,10 @@
-= form_for(@user) do |f|
-  = f.text_field :name
+= form_tag('/user/create', method: "post") do
+  = f.text_field_tag "user[:name]"
 
-  = f.text_field :email
+  = f.text_field_tag :email
 
-  = f.text_field :password
+  = f.text_field_tag :password
 
-  = f.text_field :password_confirmation
+  = f.text_field_tag :password_confirmation
 
   = f.submit class: "btn btn-success"
