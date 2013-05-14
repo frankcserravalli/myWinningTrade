@@ -1,6 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
+
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
       skip_before_filter :valid_user_id
       skip_before_filter :require_iphone_login, :only => [:create, :authenticate]
@@ -25,7 +26,7 @@ module Api
 
           render :json => { :user_id => @user.id, :ios_token => scrambled_token}
         else
-          render :json => { }
+          render :json => { :status => "doesn't work" }
         end
       end
 
