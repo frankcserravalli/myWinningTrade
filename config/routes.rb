@@ -2,6 +2,8 @@ MyWinningTrade::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
+  post 'sessions/create', to: 'sessions#create'
+
   get '/auth/failure', to: 'sessions#new'
 
   get '/dashboard', to: 'stock#dashboard'
