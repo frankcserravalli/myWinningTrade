@@ -73,9 +73,9 @@ class User < ActiveRecord::Base
       end
 
   	  # TODO please change before move to mwt
-      user.password =  "password"
+      user.password =  ""
 
-      user.password_confirmation =  "password"
+      user.password_confirmation =  ""
 
       user.save
   	end
