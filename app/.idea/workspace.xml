@@ -28,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="95" selection-start="863" selection-end="863" vertical-scroll-proportion="0.50526315">
+            <state line="24" column="95" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -73,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="new.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/sessions/new.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="19" selection-start="490" selection-end="490" vertical-scroll-proportion="-9.6">
+            <state line="15" column="16" selection-start="487" selection-end="487" vertical-scroll-proportion="0.32085562">
               <folding />
             </state>
           </provider>
@@ -129,12 +129,12 @@
         <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
         <option value="$PROJECT_DIR$/../Gemfile" />
-        <option value="$PROJECT_DIR$/views/sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/sessions.css.sass" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
         <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
         <option value="$PROJECT_DIR$/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/views/sessions/new.html.slim" />
       </list>
     </option>
   </component>
@@ -606,13 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/sessions/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="19" selection-start="490" selection-end="490" vertical-scroll-proportion="-9.6">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="20" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
@@ -627,6 +620,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="95" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="22" selection-start="121" selection-end="121" vertical-scroll-proportion="-3.2">
@@ -634,9 +634,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
+    <entry file="file://$PROJECT_DIR$/views/sessions/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="95" selection-start="863" selection-end="863" vertical-scroll-proportion="0.50526315">
+        <state line="15" column="16" selection-start="487" selection-end="487" vertical-scroll-proportion="0.32085562">
           <folding />
         </state>
       </provider>
