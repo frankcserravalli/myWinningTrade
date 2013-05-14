@@ -111,10 +111,10 @@ module UsersHelper
         auth_token_time = unscramble_token(params[:ios_token])
 
         if auth_token_time < eight_hours_ago
-          render :json => {}
+          render :json => { status: "something went wrong with require iphone login. the time is outdated" }
         end
       else
-        render :json => {}
+        render :json => {status: "something went wrong with require iphone login. no key was provided" }
       end
     end
   end
