@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_filter :require_login, only: [:sign_up, :sign_in]
+  skip_before_filter :require_login, only: [:sign_up, :sign_in, :create]
 
   def profile
     @user = User.find(current_user)
