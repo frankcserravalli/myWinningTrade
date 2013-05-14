@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     else
 
       # Set the params to a new user
+      params[:user][:provider] = "mwt"
+
+      params[:user][:uid] = "nil"
+
       user = User.new(params[:user])
 
       if user.save

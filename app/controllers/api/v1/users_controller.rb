@@ -16,7 +16,7 @@ module Api
         params[:user][:password] = params[:password]
         params[:user][:password_confirmation] = params[:password_confirmation]
         params[:user][:provider] = "mwt"
-        params[:user][:uid] = "none"
+        params[:user][:uid] = "nil"
 
         # Set params to a new user
         @user = User.new(params[:user])
