@@ -21,6 +21,9 @@ MyWinningTrade::Application.routes.draw do
 
   get '/users/profile', to: 'users#profile', as: 'profile'
   get '/signin', to: 'users#sign_in'
+  get '/signup', to: 'users#sign_up'
+  get '/user/edit', to: 'users#edit'
+  put '/user/update', to: 'users#update'
   #get '/users/edit', to: 'users#edit'
   #put '/users/update', to: 'users#update'
 
