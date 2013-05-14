@@ -8,7 +8,8 @@
 
   .row
     .span12
-      == render 'form'
+      = form_tag('/user/update', method: "put") do
+        == render 'form'
 
 
 

@@ -8,4 +8,5 @@
 
   .row
     .span12
-      == render 'form'
+      = form_tag('/user/create', method: "post") do
+        == render 'form'

@@ -19,15 +19,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="36" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="stop_loss_transactions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stop_loss_transactions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -85,7 +76,7 @@
       <file leaf-file-name="sign_up.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="20" selection-start="131" selection-end="131" vertical-scroll-proportion="0.1322314">
+            <state line="10" column="46" selection-start="198" selection-end="198" vertical-scroll-proportion="0.21390374">
               <folding />
             </state>
           </provider>
@@ -94,16 +85,7 @@
       <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="175" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="44" selection-start="350" selection-end="350" vertical-scroll-proportion="-9.6">
+            <state line="10" column="0" selection-start="153" selection-end="228" vertical-scroll-proportion="-6.4">
               <folding />
             </state>
           </provider>
@@ -119,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/views/application/_navbar.html.slim" />
         <option value="$PROJECT_DIR$/views/sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/sessions.css.sass" />
@@ -134,6 +115,7 @@
         <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
         <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/edit.html.slim" />
         <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
       </list>
     </option>
@@ -615,20 +597,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/profile.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="46" selection-start="362" selection-end="362" vertical-scroll-proportion="-11.52">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
@@ -706,23 +674,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/profile.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="46" selection-start="362" selection-end="362" vertical-scroll-proportion="0.3966942">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="44" selection-start="350" selection-end="350" vertical-scroll-proportion="-9.6">
+        <state line="11" column="30" selection-start="195" selection-end="195" vertical-scroll-proportion="0.23529412">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/users/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="175" vertical-scroll-proportion="-0.0">
+        <state line="10" column="0" selection-start="153" selection-end="228" vertical-scroll-proportion="-6.4">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="20" selection-start="131" selection-end="131" vertical-scroll-proportion="0.1322314">
+        <state line="10" column="46" selection-start="198" selection-end="198" vertical-scroll-proportion="0.21390374">
           <folding />
         </state>
       </provider>
