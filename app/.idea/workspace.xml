@@ -73,10 +73,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign_up.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sign_up.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="46" selection-start="198" selection-end="198" vertical-scroll-proportion="0.21390374">
+            <state line="11" column="24" selection-start="228" selection-end="228" vertical-scroll-proportion="-7.04">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="52" selection-start="3052" selection-end="3052" vertical-scroll-proportion="1.8628719">
               <folding />
             </state>
           </provider>
@@ -108,7 +117,6 @@
         <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
         <option value="$PROJECT_DIR$/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/buys_controller.rb" />
-        <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
         <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
@@ -117,6 +125,7 @@
         <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
         <option value="$PROJECT_DIR$/views/users/edit.html.slim" />
         <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
+        <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -618,13 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="36" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/stop_loss_transactions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -704,7 +706,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="46" selection-start="198" selection-end="198" vertical-scroll-proportion="0.21390374">
+        <state line="11" column="24" selection-start="228" selection-end="228" vertical-scroll-proportion="-7.04">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="52" selection-start="3052" selection-end="3052" vertical-scroll-proportion="1.8628719">
           <folding />
         </state>
       </provider>
