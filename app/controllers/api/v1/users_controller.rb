@@ -3,8 +3,8 @@ module Api
     class UsersController < ApplicationController
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
       skip_before_filter :valid_user_id
-      skip_before_filter :require_iphone_login, :only => [:create, :authenticate]
-      skip_before_filter :verify_authenticity_token
+      skip_before_filter :require_iphone_login, :except => [:create, :authenticate]
+
       respond_to :json
 
       def create
@@ -13,6 +13,8 @@ module Api
         params[:user][:email] = params[:email]
         params[:user][:password] = params[:password]
         params[:user][:password_confirmation] = params[:password_confirmation]
+
+        puts params[:user]
 
         # Set params to a new user
         @user = User.new(params[:user])
