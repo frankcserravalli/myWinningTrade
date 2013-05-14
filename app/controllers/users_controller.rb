@@ -13,11 +13,11 @@ class UsersController < ApplicationController
       redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
     else
 
-      # Set the params to a new user
+      # Set the provider and uid to mwt, will change when user connects account to social network
       params[:user][:provider] = "mwt"
-
       params[:user][:uid] = "nil"
 
+      # Set the params to a new user
       user = User.new(params[:user])
 
       if user.save

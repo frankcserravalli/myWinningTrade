@@ -28,19 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="32" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="34" selection-start="714" selection-end="714" vertical-scroll-proportion="0.2755498">
+            <state line="14" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.29473683">
               <folding />
             </state>
           </provider>
@@ -106,8 +97,8 @@
         <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
         <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
-        <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
+        <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -686,16 +677,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="32" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+        <state line="18" column="34" selection-start="714" selection-end="714" vertical-scroll-proportion="0.2755498">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="34" selection-start="714" selection-end="714" vertical-scroll-proportion="0.2755498">
+        <state line="14" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.29473683">
           <folding />
         </state>
       </provider>
