@@ -31,16 +31,16 @@
       <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="95" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
+            <state line="1" column="2" selection-start="51" selection-end="102" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="20" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
+            <state line="25" column="10" selection-start="592" selection-end="592" vertical-scroll-proportion="0.20698577">
               <folding />
             </state>
           </provider>
@@ -64,19 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_navbar.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/application/_navbar.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="34" selection-start="225" selection-end="225" vertical-scroll-proportion="-3.84">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="sign_up.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="28" selection-start="171" selection-end="171" vertical-scroll-proportion="-5.76">
+            <state line="9" column="24" selection-start="167" selection-end="167" vertical-scroll-proportion="-5.76">
               <folding />
             </state>
           </provider>
@@ -100,10 +91,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions.css.sass" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sessions.css.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/stylesheets/sessions.css.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="24" selection-start="64" selection-end="64" vertical-scroll-proportion="0.042105265">
+            <state line="2" column="24" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="36" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -126,7 +126,6 @@
         <option value="$PROJECT_DIR$/../README.markdown" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
         <option value="$PROJECT_DIR$/../Gemfile" />
-        <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
         <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
         <option value="$PROJECT_DIR$/controllers/sessions_controller.rb" />
@@ -135,6 +134,7 @@
         <option value="$PROJECT_DIR$/views/sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/views/application/_flash.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/sessions.css.sass" />
+        <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -332,7 +332,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Gemfile" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../config/routes.rb" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -579,30 +579,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="36" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="20" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/application/_navbar.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="34" selection-start="225" selection-end="225" vertical-scroll-proportion="-3.84">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="95" selection-start="863" selection-end="863" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -635,6 +614,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/sessions/new.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="2" selection-start="199" selection-end="215" vertical-scroll-proportion="-3.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="36" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="22" selection-start="121" selection-end="121" vertical-scroll-proportion="-3.2">
@@ -644,21 +637,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="28" selection-start="171" selection-end="171" vertical-scroll-proportion="-5.76">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/sessions/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="2" selection-start="199" selection-end="215" vertical-scroll-proportion="-3.84">
+        <state line="9" column="24" selection-start="167" selection-end="167" vertical-scroll-proportion="-5.76">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/sessions.css.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="24" selection-start="64" selection-end="64" vertical-scroll-proportion="0.042105265">
+        <state line="2" column="24" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="2" selection-start="51" selection-end="102" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="10" selection-start="592" selection-end="592" vertical-scroll-proportion="0.20698577">
           <folding />
         </state>
       </provider>
