@@ -5,6 +5,7 @@ module Api
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
       skip_before_filter :valid_user_id
       skip_before_filter :require_iphone_login, :only => [:create, :authenticate]
+      skip_before_filter :verify_authenticity_token
 
       respond_to :json
 
