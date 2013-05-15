@@ -1,10 +1,11 @@
 h1 Sign In
 
 = form_tag('/sessions/create', method: "post") do
+  = label_tag(:email, "Email")
   = text_field_tag(:email)
 
   br
-
+  = label_tag(:password, "Password")
   = text_field_tag(:password)
 
   br
@@ -14,5 +15,6 @@ h1 Sign In
 = link_to "Sign Up", signup_path, class: "btn btn-primary"
 
 br
+br
 
-= link_to "Teacher Sign In", teacher_sign_in_path, class:"btn btn-primary"
+= link_to "Teacher Sign In", teacher_sign_in_url, class:"btn btn-primary"
