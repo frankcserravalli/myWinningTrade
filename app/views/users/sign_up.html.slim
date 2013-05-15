@@ -1,6 +1,3 @@
-= render partial: 'stock/search'
-= render partial: 'stock/suggest'
-
 #edit_profile.container
   .row
     .span12
@@ -10,4 +7,7 @@
     .span12
       = form_tag('/user/create', method: "post") do
         == render 'form'
+
+        br
+
         = link_to 'Back', signin_path, class: "btn btn-primary"
