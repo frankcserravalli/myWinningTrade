@@ -8,9 +8,7 @@ class TeacherSessionsController < ApplicationController
   skip_before_filter :load_portfolio, if: :current_user
 
   def new
-    if current_user
-      redirect_to groups_path
-    end
+    redirect_to groups_path if current_user
   end
 
   def create
@@ -22,8 +20,6 @@ class TeacherSessionsController < ApplicationController
 
       redirect_to groups_path
     else
-      #flash.now[:error] = "Invalid email/password combination"
-
       redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Invalid email/password combination")
     end
   end
