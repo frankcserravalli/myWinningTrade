@@ -15,7 +15,7 @@ class TeacherSessionsController < ApplicationController
     user = User.find_by_email(params[:email].downcase)
 
     # Login user if they are a teacher
-    if user && user.authenticate(params[:password]) && user.group == "teacher"
+    if user && user.authenticate(params[:password])
       self.current_user = user
 
       redirect_to groups_path
@@ -24,7 +24,7 @@ class TeacherSessionsController < ApplicationController
     end
   end
 
-  def sign_up
+  def request_upgrade
     if current_user
       teacher = PendingTeacher.find_by_user_id(current_user.id)
 
@@ -44,7 +44,7 @@ class TeacherSessionsController < ApplicationController
         end
       end
     else
-      redirect_to signin_path, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
+      redirect_to teacher_sign_in_path, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
     end
   end
 
