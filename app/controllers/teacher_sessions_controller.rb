@@ -5,8 +5,6 @@ class TeacherSessionsController < ApplicationController
 
   skip_before_filter :require_acceptance_of_terms, if: :current_user
 
-  #skip_before_filter :load_portfolio, if: :current_user
-
   def new
     redirect_to groups_path if current_user
   end

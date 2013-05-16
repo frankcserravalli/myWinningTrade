@@ -6,10 +6,8 @@ class UsersController < ApplicationController
     @user = User.find(current_user)
   end
 
-
-
   def create
-    if params[:user][:email].blank? or params[:user][:password] != params[:user][:password_confirmation]
+    if params[:user][:email].blank?
       redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
     else
 
@@ -21,6 +19,7 @@ class UsersController < ApplicationController
       user = User.new(params[:user])
 
       if user.save
+
         # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
         # and if so request a pending teacher record
         if params[:user][:teacher_request] == "yes"
@@ -38,19 +37,16 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit
     @user = current_user
   end
 
   def update
-    #@user = User.find(current_user.id)
-
-      if current_user.update_attributes(params[:user])
-        redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
-      else
-        redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile did not update!')
-     end
+    if current_user.update_attributes(params[:user])
+      redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
+    else
+      redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile did not update!')
+    end
   end
 
   def trading_analysis_pdf
