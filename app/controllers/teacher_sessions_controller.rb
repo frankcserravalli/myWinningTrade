@@ -5,7 +5,7 @@ class TeacherSessionsController < ApplicationController
 
   skip_before_filter :require_acceptance_of_terms, if: :current_user
 
-  skip_before_filter :load_portfolio, if: :current_user
+  #skip_before_filter :load_portfolio, if: :current_user
 
   def new
     redirect_to groups_path if current_user
@@ -58,23 +58,13 @@ class TeacherSessionsController < ApplicationController
   end
 
   def verify
-    teacher = PendingTeacher.find_by_user_id(params[:user_id])
-
-    user = User.find(params[:user_id])
-
-    user.group = 'teacher'
-
-    user.save
-
-    teacher.destroy
+    PendingTeacher.upgrade_user_to_teacher(params[:user_id])
 
     redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Teacher added.")
   end
 
   def remove_pending
-    teacher = PendingTeacher.find_by_user_id(params[:user_id])
-
-    teacher.destroy
+    teacher = PendingTeacher.find_by_user_id(params[:user_id]).destroy
 
     redirect_to teacher_pending_path, notice: I18n.t('flash.sessions.create.notice', default: "Non-teacher removed.")
   end
