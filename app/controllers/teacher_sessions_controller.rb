@@ -8,7 +8,9 @@ class TeacherSessionsController < ApplicationController
   skip_before_filter :load_portfolio, if: :current_user
 
   def new
-
+    if current_user
+      redirect_to groups_path
+    end
   end
 
   def create
@@ -16,7 +18,7 @@ class TeacherSessionsController < ApplicationController
 
     # Login user if they are a teacher
     if user && user.authenticate(params[:password]) && user.group == "teacher"
-      teacher_sign_in user
+      self.current_user = user
 
       redirect_to groups_path
     else
@@ -32,7 +34,7 @@ class TeacherSessionsController < ApplicationController
 
       # Has request been made? If so just tell the user the status is pending
       if teacher
-        redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Your status is pending!")
+        redirect_to groups_path, notice: I18n.t('flash.sessions.create.notice', default: "Your status is pending!")
       else
         # Create a teacher request
         teacher = PendingTeacher.new
@@ -40,18 +42,13 @@ class TeacherSessionsController < ApplicationController
         teacher.user_id = current_user.id
 
         if teacher.save
-          redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
+          redirect_to groups_path, notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
         else
-          redirect_to '/teacher/sign_in', notice: I18n.t('flash.sessions.create.notice', default: "Oops. Something went wrong!")
+          redirect_to groups_path, notice: I18n.t('flash.sessions.create.notice', default: "Oops. Something went wrong!")
         end
       end
     else
-
-      # Create an user with the email and password provided in the form
-
-
-
-      redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
+      redirect_to signin_path, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
     end
   end
 
@@ -87,7 +84,7 @@ class TeacherSessionsController < ApplicationController
   end
 
   def destroy
-    teacher_sign_out
+    self.current_user = nil
 
     redirect_to root_url
   end
@@ -95,7 +92,7 @@ class TeacherSessionsController < ApplicationController
   private
 
   def redirect_signed_in_user
-    if teacher_signed_in?
+    if current_user
       redirect_to groups_path
     end
   end

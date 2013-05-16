@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   skip_before_filter :require_acceptance_of_terms, if: :current_user
 
-  skip_before_filter :load_portfolio, if: :current_user
+  #skip_before_filter :load_portfolio, if: :current_user
 
   def new
     @group = Group.new
@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
 
   def index
     # Finding the groups that relate only to the ones the teacher created
-    @groups = Group.where(user_id: teacher_current_user.id)
+    @groups = Group.where(user_id: current_user.id)
   end
 
   def edit
@@ -90,7 +90,7 @@ class GroupsController < ApplicationController
 
   # This method is used to redirect users who are not signed in
   def redirect_not_signed_in_user
-    unless teacher_signed_in?
+    unless current_user
       redirect_to teacher_sign_in_path
     end
   end

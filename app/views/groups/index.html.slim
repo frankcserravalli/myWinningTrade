@@ -1,24 +1,29 @@
-- if @groups.blank?
-  h1 No classes created yet.
+- if current_user.role == "teacher"
 
-  a.btn.btn-primary href="#{new_group_path}" Create a class
--else
-  h1.span6 List of Classes
+  - if @groups.blank?
+    h1 No classes created yet.
 
-  a.btn.btn-primary.create-class-link-btn href="/groups/new" Create a class
+    a.btn.btn-primary href="#{new_group_path}" Create a class
+  -else
+    h1.span6 List of Classes
 
-  .span8
-    table.table.table-striped.table-bordered.list-of-classes-table-head
-      thead
-        tr
-          th Class Name
-          th Options
-      tbody
-        - @groups.each do |group|
+    a.btn.btn-primary.create-class-link-btn href="/groups/new" Create a class
+
+    .span8
+      table.table.table-striped.table-bordered.list-of-classes-table-head
+        thead
           tr
-            td = group.name
-            td.class-options-box
-              a.btn.btn-primary href="#{group_path(group.id)}" Show
-              a.btn.btn-primary href="#{edit_group_path(group.id)}" Edit
-              = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"
-
+            th Class Name
+            th Options
+        tbody
+          - @groups.each do |group|
+            tr
+              td = group.name
+              td.class-options-box
+                a.btn.btn-primary href="#{group_path(group.id)}" Show
+                a.btn.btn-primary href="#{edit_group_path(group.id)}" Edit
+                = link_to 'Delete', group_path(group.id), :method => :delete, class: "btn btn-danger"
+-else
+  div You have not signed up yet as a teacher. Please do so by clicking the button below.
+  br
+  a.btn.btn-primary href="#{teacher_sign_up_path}" Sign up as teacher
