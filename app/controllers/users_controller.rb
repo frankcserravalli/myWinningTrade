@@ -21,6 +21,16 @@ class UsersController < ApplicationController
       user = User.new(params[:user])
 
       if user.save
+        # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
+        # and if so request a pending teacher record
+        if params[:user][:teacher_request] == "yes"
+          teacher_pending = TeacherPending.new
+
+          teacher_pending.user_id = user.id
+
+          teacher_pending.save
+        end
+
         redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
       else
         redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Unable to create your account. Please try again.')
