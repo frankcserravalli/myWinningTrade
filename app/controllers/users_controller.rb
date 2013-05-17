@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         # and if so request a pending teacher record
         #puts params[:teacher_request]
 
-        if params[:teacher_request] == "1"
+        if params[:teacher_request] and params[:teacher_request] == "true"
           teacher_pending = TeacherPending.new
 
           teacher_pending.user_id = user.id
