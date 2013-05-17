@@ -18,10 +18,11 @@ br
 
 br
 
-span "Request Teacher Status"
-= check_box_tag 'teacher_request', "true", true
+-if current_user.group != "teacher"
+  span "Request Teacher Status"
+  = check_box_tag 'teacher_request', "true", true
 
-br
-br
+  br
+  br
 
 = submit_tag "Submit", class: "btn btn-success sign-up-user-submit-btn"
