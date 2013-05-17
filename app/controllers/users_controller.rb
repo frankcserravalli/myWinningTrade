@@ -33,13 +33,13 @@ class UsersController < ApplicationController
         #puts params[:teacher_request]
 
         if params[:teacher_request] and params[:teacher_request] == "0"
-          teacher_pending = TeacherPending.new
+          pending_teacher = PendingTeacher.new
 
-          teacher_pending.user_id = user.id
+          pending_teacher.user_id = user.id
 
           puts "somethings broken"
 
-          teacher_pending.save
+          pending_teacher.save
         end
 
         redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
