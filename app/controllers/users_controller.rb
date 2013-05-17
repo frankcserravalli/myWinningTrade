@@ -22,8 +22,8 @@ class UsersController < ApplicationController
 
         # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
         # and if so request a pending teacher record
-        puts params[:teacher_request]
-        
+        #puts params[:teacher_request]
+
         if params[:teacher_request] == 1
           teacher_pending = TeacherPending.new
 
