@@ -1,12 +1,12 @@
 class TeacherSessionsController < ApplicationController
-  before_filter :redirect_signed_in_user, only: [:new, :create]
+  before_filter :redirect_signed_in_teacher, only: [:new, :create]
 
   skip_before_filter :require_login, :require_iphone_login
 
   skip_before_filter :require_acceptance_of_terms, if: :current_user
 
   def new
-    redirect_to groups_path if current_user
+    
   end
 
   def create
@@ -75,7 +75,7 @@ class TeacherSessionsController < ApplicationController
 
   private
 
-  def redirect_signed_in_user
+  def redirect_signed_in_teacher
     if current_user and current_user.group == "teacher"
       redirect_to groups_path
     end

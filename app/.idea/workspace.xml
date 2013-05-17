@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="54" selection-start="2469" selection-end="2469" vertical-scroll-proportion="-48.0">
+            <state line="8" column="4" selection-start="268" selection-end="268" vertical-scroll-proportion="0.16842106">
               <folding />
             </state>
           </provider>
@@ -82,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.47606727">
+            <state line="23" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -133,8 +133,8 @@
         <option value="$PROJECT_DIR$/models/pending_teacher.rb" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
-        <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
+        <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
       </list>
     </option>
   </component>
@@ -725,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/pending_teacher.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/application.css.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="16" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0">
@@ -746,6 +739,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/pending_teacher.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="22" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
@@ -755,14 +762,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="54" selection-start="2469" selection-end="2469" vertical-scroll-proportion="-48.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.47606727">
+        <state line="8" column="4" selection-start="268" selection-end="268" vertical-scroll-proportion="0.16842106">
           <folding />
         </state>
       </provider>
