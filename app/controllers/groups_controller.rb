@@ -14,10 +14,12 @@ class GroupsController < ApplicationController
     if current_user.group != "teacher"
       pending_teacher = PendingTeacher.find_by_user_id(current_user.id)
       if pending_teacher
-        redirect_to teacher_sign_in_path, flash[:notice] = "Your request is pending."
+        flash[:notice] = "Your request is pending."
       else
-        redirect_to teacher_sign_in_path, flash[:notice] = "Please request teacher status."
+        flash[:notice] = "Please request teacher status."
       end
+
+      redirect_to teacher_sign_in_path
     end
 
     @groups = Group.where(user_id: current_user.id)

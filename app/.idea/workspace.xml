@@ -49,7 +49,7 @@
       <file leaf-file-name="groups_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="24" selection-start="484" selection-end="484" vertical-scroll-proportion="0.16558862">
+            <state line="21" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.31047866">
               <folding />
             </state>
           </provider>
@@ -762,7 +762,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="24" selection-start="484" selection-end="484" vertical-scroll-proportion="0.16558862">
+        <state line="21" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.31047866">
           <folding />
         </state>
       </provider>
