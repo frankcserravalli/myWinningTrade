@@ -28,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="17" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0">
+            <state line="24" column="40" selection-start="833" selection-end="833" vertical-scroll-proportion="0.50526315">
               <folding />
             </state>
           </provider>
@@ -40,16 +40,16 @@
       <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="70" selection-start="442" selection-end="465" vertical-scroll-proportion="0.0">
+            <state line="21" column="39" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.css.sass" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users.css.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/stylesheets/users.css.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="17" selection-start="42" selection-end="42" vertical-scroll-proportion="0.020698577">
+            <state line="1" column="17" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -129,12 +129,12 @@
         <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
-        <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
         <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
-        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/application.css.sass" />
         <option value="$PROJECT_DIR$/assets/stylesheets/users.css.sass" />
+        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
+        <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -683,13 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="17" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="22" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
@@ -746,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="70" selection-start="442" selection-end="465" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/application.css.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="16" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0">
@@ -762,7 +748,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/stylesheets/users.css.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="17" selection-start="42" selection-end="42" vertical-scroll-proportion="0.020698577">
+        <state line="1" column="17" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="39" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="40" selection-start="833" selection-end="833" vertical-scroll-proportion="0.50526315">
           <folding />
         </state>
       </provider>

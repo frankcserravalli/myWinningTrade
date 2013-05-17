@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
         # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
         # and if so request a pending teacher record
-        if params[:teacher_request] == "yes"
+        if params[:teacher_request] == 1
           teacher_pending = TeacherPending.new
 
           teacher_pending.user_id = user.id
@@ -77,6 +77,7 @@ class UsersController < ApplicationController
   end
 
   def sign_in
+
   end
 
 
