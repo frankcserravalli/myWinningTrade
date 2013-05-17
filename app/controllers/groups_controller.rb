@@ -13,13 +13,17 @@ class GroupsController < ApplicationController
     # Finding the groups that relate only to the ones the teacher created
     if current_user.group != "teacher"
       pending_teacher = PendingTeacher.find_by_user_id(current_user.id)
+
       if pending_teacher
         flash[:notice] = "Your request is pending."
+
+        redirect_to dashboard_path
       else
         flash[:notice] = "Please request teacher status."
+
+        redirect_to profile_path
       end
 
-      redirect_to teacher_sign_in_path
     end
 
     @groups = Group.where(user_id: current_user.id)
