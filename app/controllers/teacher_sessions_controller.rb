@@ -76,7 +76,7 @@ class TeacherSessionsController < ApplicationController
   private
 
   def redirect_signed_in_user
-    if current_user
+    if current_user and current_user.group == "teacher"
       redirect_to groups_path
     end
   end
