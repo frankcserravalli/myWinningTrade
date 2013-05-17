@@ -41,6 +41,10 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update_attributes(params[:user])
+      # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
+      # and if so request a pending teacher record
+      PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"
+
       redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
     else
       redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile did not update!')
