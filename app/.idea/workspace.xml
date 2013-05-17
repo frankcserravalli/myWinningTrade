@@ -22,16 +22,43 @@
       <file leaf-file-name="_flash.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="67" selection-start="276" selection-end="276" vertical-scroll-proportion="-3.84">
+            <state line="6" column="67" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="17" selection-start="810" selection-end="810" vertical-scroll-proportion="0.42966753">
+            <state line="24" column="17" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.slim" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="23" selection-start="335" selection-end="335" vertical-scroll-proportion="0.41397154">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sign_up.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="24" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sign_in.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="22" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -76,11 +103,8 @@
       <list>
         <option value="$PROJECT_DIR$/views/users/edit.html.slim" />
         <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
-        <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
         <option value="$PROJECT_DIR$/assets/stylesheets/general.css.sass" />
         <option value="$PROJECT_DIR$/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
-        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
         <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
@@ -90,6 +114,9 @@
         <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/sign_up.html.slim" />
+        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
       </list>
     </option>
   </component>
@@ -124,7 +151,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -359,16 +385,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../config/routes.rb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Gemfile" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -514,10 +541,9 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47688565" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2471637" sideWeight="0.5231144" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25121555" sideWeight="0.5231144" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -526,6 +552,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47688565" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -584,86 +611,44 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="142" selection-end="142" vertical-scroll-proportion="0.11173184">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="4" selection-start="1249" selection-end="1272" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="37" column="4" selection-start="1249" selection-end="1272" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/teacher_sessions_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="26" selection-start="279" selection-end="299" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="14" column="26" selection-start="279" selection-end="299" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="22" selection-start="341" selection-end="341" vertical-scroll-proportion="-12.16">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="49" selection-start="488" selection-end="488" vertical-scroll-proportion="-9.12">
-          <folding />
-        </state>
+        <state line="26" column="49" selection-start="488" selection-end="488" vertical-scroll-proportion="-9.12" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="72" selection-start="981" selection-end="981" vertical-scroll-proportion="-9.76">
-          <folding />
-        </state>
+        <state line="28" column="72" selection-start="981" selection-end="981" vertical-scroll-proportion="-9.76" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/pending_teacher.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="43" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="2" selection-start="306" selection-end="306" vertical-scroll-proportion="0.41558442">
-          <folding />
-        </state>
+        <state line="5" column="43" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="30" selection-start="1412" selection-end="1412" vertical-scroll-proportion="0.20125785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="39" column="30" selection-start="1412" selection-end="1412" vertical-scroll-proportion="0.20125785" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="67" selection-start="276" selection-end="276" vertical-scroll-proportion="-3.84">
+        <state line="6" column="67" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -691,7 +676,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="17" selection-start="810" selection-end="810" vertical-scroll-proportion="0.42966753">
+        <state line="24" column="17" selection-start="810" selection-end="810" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/sign_in.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="22" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="23" selection-start="335" selection-end="335" vertical-scroll-proportion="0.41397154">
           <folding />
         </state>
       </provider>
