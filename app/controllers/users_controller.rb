@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts params
+    
     if params[:user][:email].blank?
       redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
     else
