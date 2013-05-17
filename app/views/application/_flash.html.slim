@@ -3,5 +3,4 @@ ul#flash
   /li.payment-errors
   - flash.each do |key,value|
     li class=key = value
-  - if current_user && current_user.password == "a_password_that1_can_never_be_found"
-    li.notice You have not set password. Please set it now.
+

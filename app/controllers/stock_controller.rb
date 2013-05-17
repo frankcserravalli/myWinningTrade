@@ -1,5 +1,9 @@
 class StockController < ApplicationController
   def dashboard
+    if current_user && current_user.password_digest("a_password_that1_can_never_be_found") == user.encrypted_password
+      flash[:notice] = "You have not set password. Please set it now."
+    end
+
     leader_board_results = UserAccountSummary.find_top_results(current_user.id)
 
     @world_leader_board = leader_board_results[0]
