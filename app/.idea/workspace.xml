@@ -22,7 +22,7 @@
       <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="4" selection-start="211" selection-end="211" vertical-scroll-proportion="0.21052632">
+            <state line="4" column="72" selection-start="193" selection-end="193" vertical-scroll-proportion="0.08421053">
               <folding />
             </state>
           </provider>
@@ -646,13 +646,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1909" selection-end="1909" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0">
@@ -751,9 +744,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/stop_loss_transactions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="40" selection-start="140" selection-end="227" vertical-scroll-proportion="0.087791495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="211" selection-end="211" vertical-scroll-proportion="0.21052632">
+        <state line="4" column="72" selection-start="193" selection-end="193" vertical-scroll-proportion="0.08421053">
           <folding />
         </state>
       </provider>

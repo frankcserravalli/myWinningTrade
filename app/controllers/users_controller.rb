@@ -2,13 +2,16 @@ class UsersController < ApplicationController
 
   skip_before_filter :require_login, only: [:sign_up, :sign_in, :create]
 
+  skip_before_filter :load_portfolio, only: [:create, :sign_up, :sign_in]
+
+
   def profile
     @user = User.find(current_user)
   end
 
   def create
     puts params
-    
+
     if params[:user][:email].blank?
       redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
     else
