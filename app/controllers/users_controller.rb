@@ -10,11 +10,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts "################"
-    puts params
-    puts "################"
-
-
     if params[:user][:email].blank?
       redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
     else
@@ -30,14 +25,10 @@ class UsersController < ApplicationController
 
         # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
         # and if so request a pending teacher record
-        #puts params[:teacher_request]
-
         if params[:teacher_request] and params[:teacher_request] == "0"
           pending_teacher = PendingTeacher.new
 
           pending_teacher.user_id = user.id
-
-          puts "somethings broken"
 
           pending_teacher.save
         end
