@@ -32,12 +32,12 @@ class UsersController < ApplicationController
         # and if so request a pending teacher record
         #puts params[:teacher_request]
 
-        if params[:teacher_request] and params[:teacher_request] == "true"
+        if params[:teacher_request] and params[:teacher_request] == "0"
           teacher_pending = TeacherPending.new
 
           teacher_pending.user_id = user.id
 
-          teacher_pending.save
+          puts "somethings broken" unless teacher_pending.save
         end
 
         redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
