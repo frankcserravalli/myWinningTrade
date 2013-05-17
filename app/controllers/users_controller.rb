@@ -37,7 +37,9 @@ class UsersController < ApplicationController
 
           teacher_pending.user_id = user.id
 
-          puts "somethings broken" unless teacher_pending.save
+          puts "somethings broken"
+
+          teacher_pending.save
         end
 
         redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
