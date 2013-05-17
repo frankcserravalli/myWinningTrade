@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_login, except: :destroy
   skip_before_filter :require_acceptance_of_terms
+  skip_before_filter :load_portfolio
+
 
   def new
     redirect_to root_url and return if current_user
