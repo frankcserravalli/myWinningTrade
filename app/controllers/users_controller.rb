@@ -10,28 +10,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:user][:email].blank?
-      redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill a valid email and/or password.')
+    put params
+    if params[:user][:email].blank? or
+      redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill in all fields.')
     else
 
       # Set the provider and uid to mwt, will change when user connects account to social network
       params[:user][:provider] = "mwt"
+
       params[:user][:uid] = "nil"
 
       # Set the params to a new user
       user = User.new(params[:user])
 
       if user.save
-
         # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
         # and if so request a pending teacher record
-        if params[:teacher_request] and params[:teacher_request] == "0"
-          pending_teacher = PendingTeacher.new
-
-          pending_teacher.user_id = user.id
-
-          pending_teacher.save
-        end
+        PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"
 
         redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
       else
