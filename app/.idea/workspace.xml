@@ -64,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_flash.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_flash.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="6" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.12419146">
               <folding />
             </state>
           </provider>
@@ -100,10 +100,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="0" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.5263158">
+            <state line="76" column="75" selection-start="2614" selection-end="2614" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,7 +124,6 @@
         <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
         <option value="$PROJECT_DIR$/models/pending_teacher.rb" />
-        <option value="$PROJECT_DIR$/views/application/_flash.html.slim" />
         <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/sign_in.html.slim" />
@@ -135,6 +134,7 @@
         <option value="$PROJECT_DIR$/assets/stylesheets/users.css.sass" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/models/user.rb" />
+        <option value="$PROJECT_DIR$/views/application/_flash.html.slim" />
       </list>
     </option>
   </component>
@@ -739,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="14" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0">
@@ -762,7 +755,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.5263158">
+        <state line="76" column="75" selection-start="2614" selection-end="2614" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.12419146">
           <folding />
         </state>
       </provider>
