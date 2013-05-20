@@ -15,7 +15,7 @@ class TeacherSessionsController < ApplicationController
 
         redirect_to dashboard_url
       else
-        flash[:notice] = "Please request teacher status."
+        flash[:notice] = "Please request a teacher status."
 
         redirect_to profile_url
       end
@@ -25,11 +25,15 @@ class TeacherSessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email].downcase)
 
-    # Login user if they are a teacher
+    # Login user
     if user && user.authenticate(params[:password])
       self.current_user = user
 
-      redirect_to groups_url
+      if user.group == "teacher"
+        redirect_to groups_url
+      else
+        redirect_to profile_url
+      end
     else
       redirect_to teacher_sign_in_url, notice: I18n.t('flash.sessions.create.notice', default: "Invalid email/password combination")
     end
