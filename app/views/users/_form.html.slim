@@ -18,7 +18,7 @@ br
 
 br
 
--if current_user.group != "teacher"
+-if current_user and current_user.group != "teacher"
   span "Request Teacher Status"
   = check_box_tag 'teacher_request', "true", true
 

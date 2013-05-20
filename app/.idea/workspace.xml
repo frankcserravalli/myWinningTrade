@@ -19,10 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="662" selection-end="662" vertical-scroll-proportion="0.48421052">
+            <state line="25" column="36" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -64,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20130520172143_add_password_reset_to_users.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../db/migrate/20130520172143_add_password_reset_to_users.rb">
+      <file leaf-file-name="sign_up.html.slim" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="49" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+            <state line="8" column="24" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_form.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
+            <state line="20" column="21" selection-start="333" selection-end="333" vertical-scroll-proportion="0.41397154">
               <folding />
             </state>
           </provider>
@@ -117,7 +117,6 @@
         <option value="$PROJECT_DIR$/views/application/_flash.html.slim" />
         <option value="$PROJECT_DIR$/models/pending_teacher.rb" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
-        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
         <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
@@ -126,6 +125,7 @@
         <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
         <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
       </list>
     </option>
   </component>
@@ -178,6 +178,14 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -189,7 +197,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,11 +475,6 @@
         <state line="8" column="22" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="38" selection-start="349" selection-end="430" vertical-scroll-proportion="0.29473683" />
@@ -514,30 +527,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="10" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../db/migrate/20130520172143_add_password_reset_to_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="49" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="49" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -551,7 +543,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="662" selection-end="662" vertical-scroll-proportion="0.48421052">
+        <state line="25" column="36" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../db/migrate/20130520172143_add_password_reset_to_users.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="49" selection-start="118" selection-end="118" vertical-scroll-proportion="0.041397154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="49" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/_form.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="21" selection-start="333" selection-end="333" vertical-scroll-proportion="0.41397154">
           <folding />
         </state>
       </provider>
