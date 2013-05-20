@@ -40,7 +40,7 @@
       <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="42" selection-start="632" selection-end="632" vertical-scroll-proportion="0.35789475">
+            <state line="14" column="10" selection-start="621" selection-end="621" vertical-scroll-proportion="0.29473683">
               <folding />
             </state>
           </provider>
@@ -723,7 +723,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="42" selection-start="632" selection-end="632" vertical-scroll-proportion="0.35789475">
+        <state line="14" column="10" selection-start="621" selection-end="621" vertical-scroll-proportion="0.29473683">
           <folding />
         </state>
       </provider>

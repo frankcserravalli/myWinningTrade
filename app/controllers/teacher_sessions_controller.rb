@@ -11,13 +11,9 @@ class TeacherSessionsController < ApplicationController
       pending_teacher = PendingTeacher.find_by_user_id(current_user.id)
 
       if pending_teacher
-        flash[:notice] = "Your request is pending."
-
-        redirect_to dashboard_url
+        redirect_to dashboard_url, notice: I18n.t('flash.sessions.create.notice', default: "Your request is pending.")
       else
-        flash[:notice] = "Please request a teacher status."
-
-        redirect_to profile_url
+        redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Please request a teacher status.")
       end
     end
   end
@@ -32,7 +28,7 @@ class TeacherSessionsController < ApplicationController
       if user.group == "teacher"
         redirect_to groups_url
       else
-        redirect_to profile_url
+        redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Please request a teacher status.")
       end
     else
       redirect_to teacher_sign_in_url, notice: I18n.t('flash.sessions.create.notice', default: "Invalid email/password combination")
