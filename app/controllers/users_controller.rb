@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:user][:email].blank? or
-      redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill in all fields.')
+    if params[:user][:email].blank?
+      redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please make sure all fields are correct and filled in.')
     else
 
       # Set the provider and uid to mwt, will change when user connects account to social network
