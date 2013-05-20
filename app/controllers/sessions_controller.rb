@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
 
   def new
+    puts params
     redirect_to root_url and return if current_user
   end
 
