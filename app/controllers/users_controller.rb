@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       if user.save
         # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
         # and if so request a pending teacher record
-        PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"
+        PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "true"
 
         redirect_to signin_url, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
       else
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       current_user.update_attributes(password_reset: true) unless params[:password].blank? and params[:password] != params[:password_confirmation]
       # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
       # and if so request a pending teacher record
-      PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"
+      PendingTeacher.create(user_id: current_user.id) if params[:teacher_request] and params[:teacher_request] == "true"
 
       redirect_to profile_url, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
     else
