@@ -17,11 +17,11 @@ class GroupsController < ApplicationController
       if pending_teacher
         flash[:notice] = "Your request is pending."
 
-        redirect_to dashboard_path
+        redirect_to dashboard_url
       else
         flash[:notice] = "Please request teacher status."
 
-        redirect_to profile_path
+        redirect_to profile_url
       end
 
     end
@@ -55,7 +55,7 @@ class GroupsController < ApplicationController
       flash[:notice] = "Unable to delete class!"
 
     end
-    redirect_to groups_path
+    redirect_to groups_url
   end
 
   def create
@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
       flash[:notice] = 'Class was unable to be created!'
     end
 
-    redirect_to groups_path
+    redirect_to groups_url
   end
 
   # This action is used for our ajax call to return a list of students matching the params[:term]
@@ -104,7 +104,7 @@ class GroupsController < ApplicationController
   # This method is used to redirect users who are not signed in
   def redirect_not_signed_in_user
     unless current_user
-      redirect_to teacher_sign_in_path
+      redirect_to teacher_sign_in_url
     end
   end
 end

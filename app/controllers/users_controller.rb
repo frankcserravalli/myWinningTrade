@@ -28,9 +28,9 @@ class UsersController < ApplicationController
         # and if so request a pending teacher record
         PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"
 
-        redirect_to signin_path, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
+        redirect_to signin_url, notice: I18n.t('flash.users.update.notice', default: 'Your account is created. Please Sign In Now.')
       else
-        redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Unable to create your account. Please try again.')
+        redirect_to signup_url, notice: I18n.t('flash.users.update.notice', default: 'Unable to create your account. Please try again.')
       end
     end
   end
@@ -45,9 +45,9 @@ class UsersController < ApplicationController
       # and if so request a pending teacher record
       PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"
 
-      redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
+      redirect_to profile_url, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
     else
-      redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: 'Profile did not update!')
+      redirect_to profile_url, notice: I18n.t('flash.users.update.notice', default: 'Profile did not update!')
     end
   end
 
