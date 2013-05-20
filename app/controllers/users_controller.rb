@@ -20,6 +20,8 @@ class UsersController < ApplicationController
 
       params[:user][:uid] = "nil"
 
+      params[:user][:password_reset] = true
+
       # Set the params to a new user
       user = User.new(params[:user])
 
@@ -41,6 +43,9 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update_attributes(params[:user])
+
+      # If the user changed their password, set the password_reset field to true
+      current_user.update_attributes(password_reset: true) unless params[:password].blank? and params[:password] != params[:password_confirmation]
       # Since the user was saved, we can now go ahead and check if they requested for a teacher status,
       # and if so request a pending teacher record
       PendingTeacher.create(user_id: user.id) if params[:teacher_request] and params[:teacher_request] == "0"

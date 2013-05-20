@@ -1,10 +1,12 @@
 class StockController < ApplicationController
   def dashboard
     # Check if user never set a new password
-    user = current_user.authenticate("a_password_that1_can_never_be_found")
+    #user = current_user.authenticate("a_password_that1_can_never_be_found")
 
     # If so we set a flash notification telling them to change it
-    flash[:error] = "You have not set password. Please set it now in your profile section." if user
+    #flash[:error] = "You have not set password. Please set it now in your profile section." if user
+
+    flash[:error] = "You have not set your password. Please set it now in your edit profile section." if current_user.password_reset.eql? false
 
     # This gives us the results of the leaders in the leader board
     leader_board_results = UserAccountSummary.find_top_results(current_user.id)
