@@ -19,10 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="138" selection-start="441" selection-end="441" vertical-scroll-proportion="0.2736842">
+            <state line="13" column="138" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stock_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="49" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0">
+            <state line="6" column="34" selection-start="285" selection-end="285" vertical-scroll-proportion="0.12631579">
               <folding />
             </state>
           </provider>
@@ -122,10 +122,10 @@
         <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
         <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/../db/migrate/20130520172143_add_password_reset_to_users.rb" />
-        <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
         <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
       </list>
     </option>
   </component>
@@ -548,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="49" selection-start="746" selection-end="746" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/users/sign_up.html.slim">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="24" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0" />
@@ -569,7 +562,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="138" selection-start="441" selection-end="441" vertical-scroll-proportion="0.2736842">
+        <state line="13" column="138" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="34" selection-start="285" selection-end="285" vertical-scroll-proportion="0.12631579">
           <folding />
         </state>
       </provider>
