@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    put params
     if params[:user][:email].blank? or
       redirect_to signup_path, notice: I18n.t('flash.users.update.notice', default: 'Please fill in all fields.')
     else
