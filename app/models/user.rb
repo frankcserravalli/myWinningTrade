@@ -72,9 +72,11 @@ class User < ActiveRecord::Base
 
         # I set this unique password and check it on the view when an user signs in.
         # if it's still this password below we give them a warning telling them to change it
-        user.password =  "a_password_that1_can_never_be_found123123"
+        password = SecureRandom.hex
 
-        user.password_confirmation =  "a_password_that1_can_never_be_found123123"
+        user.password = password
+
+        user.password_confirmation = password
       end
 
       user.save

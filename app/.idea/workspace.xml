@@ -28,19 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="80" selection-start="2624" selection-end="2624" vertical-scroll-proportion="0.0">
+            <state line="78" column="45" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.7157895">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="10" selection-start="141" selection-end="141" vertical-scroll-proportion="0.1862872">
+            <state line="9" column="10" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -133,8 +133,8 @@
         <option value="$PROJECT_DIR$/views/users/_form.html.slim" />
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
-        <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/views/teacher_sessions/new.html.slim" />
+        <option value="$PROJECT_DIR$/models/user.rb" />
       </list>
     </option>
   </component>
@@ -573,6 +573,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="10" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="34" selection-start="285" selection-end="285" vertical-scroll-proportion="0.0">
@@ -589,14 +596,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="80" selection-start="2624" selection-end="2624" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/teacher_sessions/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="10" selection-start="141" selection-end="141" vertical-scroll-proportion="0.1862872">
+        <state line="78" column="45" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.7157895">
           <folding />
         </state>
       </provider>
