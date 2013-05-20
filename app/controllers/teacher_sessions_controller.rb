@@ -41,7 +41,7 @@ class TeacherSessionsController < ApplicationController
 
       # Has request been made? If so just tell the user the status is pending
       if teacher
-        redirect_to groups_url, notice: I18n.t('flash.sessions.create.notice', default: "Your status is pending!")
+        redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Your status is pending!")
       else
         # Create a teacher request
         teacher = PendingTeacher.new
@@ -49,9 +49,9 @@ class TeacherSessionsController < ApplicationController
         teacher.user_id = current_user.id
 
         if teacher.save
-          redirect_to groups_url, notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
+          redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
         else
-          redirect_to groups_url, notice: I18n.t('flash.sessions.create.notice', default: "Oops. Something went wrong!")
+          redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Oops. Something went wrong!")
         end
       end
     else

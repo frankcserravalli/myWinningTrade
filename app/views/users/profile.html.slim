@@ -14,11 +14,12 @@
 
       br
 
-      a.btn.btn-primary href="#{teacher_request_upgrade_path}" Request Teacher Status
+      - if current_user.group != "teacher"
+        a.btn.btn-primary href="#{teacher_request_upgrade_path}" Request Teacher Status
 
-      br
+        br
 
-      br
+        br
 
       a.btn.btn-primary href="#{subscriptions_path}" Add Subscription
 
