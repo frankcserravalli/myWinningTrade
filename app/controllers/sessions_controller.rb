@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
 
   def new
-    puts params
+    flash[:notice] = "Please try again" if params[:message]
+
     redirect_to root_url and return if current_user
   end
 
