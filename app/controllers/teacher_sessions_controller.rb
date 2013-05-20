@@ -7,7 +7,7 @@ class TeacherSessionsController < ApplicationController
 
   def new
     # Finding the groups that relate only to the ones the teacher created
-    if current_user.group != "teacher"
+    if current_user and current_user.group != "teacher"
       pending_teacher = PendingTeacher.find_by_user_id(current_user.id)
 
       if pending_teacher
@@ -19,7 +19,6 @@ class TeacherSessionsController < ApplicationController
 
         redirect_to profile_path
       end
-
     end
   end
 
