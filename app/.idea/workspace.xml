@@ -73,19 +73,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_flash.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_flash.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="51" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
+            <state line="7" column="32" selection-start="221" selection-end="221" vertical-scroll-proportion="0.14489004">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="stock_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="25" selection-start="378" selection-end="378" vertical-scroll-proportion="0.16842106">
+            <state line="8" column="25" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -612,13 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="51" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascripts/flash.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="25" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0">
@@ -628,7 +621,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="378" selection-end="378" vertical-scroll-proportion="0.16842106">
+        <state line="8" column="25" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="32" selection-start="221" selection-end="221" vertical-scroll-proportion="0.14489004">
           <folding />
         </state>
       </provider>
