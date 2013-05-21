@@ -6,7 +6,7 @@ class StockController < ApplicationController
     # If so we set a flash notification telling them to change it
     #flash[:error] = "You have not set password. Please set it now in your profile section." if user
 
-    flash[:notice] = { id: :persistent, body: "You have not set your password. Please set it now in your edit profile section." } if current_user.password_reset.eql? false
+    flash[:notice] = { class: :persistent, body: "You have not set your password. Please set it now in your edit profile section." } if current_user.password_reset.eql? false
 
     # This gives us the results of the leaders in the leader board
     leader_board_results = UserAccountSummary.find_top_results(current_user.id)
