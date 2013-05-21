@@ -64,19 +64,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flash.js.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="flash.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/javascripts/flash.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="25" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0">
+            <state line="2" column="25" selection-start="48" selection-end="48" vertical-scroll-proportion="0.041397154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_flash.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_flash.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="32" selection-start="221" selection-end="221" vertical-scroll-proportion="0.14489004">
+            <state line="7" column="32" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -133,8 +133,8 @@
         <option value="$PROJECT_DIR$/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
-        <option value="$PROJECT_DIR$/assets/javascripts/flash.js.coffee" />
         <option value="$PROJECT_DIR$/views/application/_flash.html.slim" />
+        <option value="$PROJECT_DIR$/assets/javascripts/flash.js.coffee" />
       </list>
     </option>
   </component>
@@ -612,13 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascripts/flash.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="25" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="25" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
@@ -628,7 +621,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="32" selection-start="221" selection-end="221" vertical-scroll-proportion="0.14489004">
+        <state line="7" column="32" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascripts/flash.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="25" selection-start="48" selection-end="48" vertical-scroll-proportion="0.041397154">
           <folding />
         </state>
       </provider>
