@@ -4,8 +4,6 @@
       = link_to t('.brand', default: 'My Winning Trade'), root_path, class: 'brand'
       - if current_user
         nav.nav.pull-right
-          li current_user.password
-
           li
             -if params[:controller] == "stock" and params[:action] == "dashboard"
               a.dashboard-tutorial Tutorial
