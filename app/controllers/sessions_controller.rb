@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
 
     if params[:email]
       # If user is coming from sign in page for MWT
-      @user = User.find_by_email(params[:email]).authenticate(params[:password])
+      user = User.find_by_email(params[:email]).authenticate(params[:password])
 
-      if @user
+      if user
         # User exists so we assign them to current user
-        self.current_user = @user
+        self.current_user = user
 
         redirect_to root_url, notice: I18n.t('flash.sessions.create.notice', default: 'You have been logged in.')
       else
