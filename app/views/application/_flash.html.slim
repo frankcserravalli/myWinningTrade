@@ -5,5 +5,5 @@ ul#flash
     - if value.is_a?(Hash) and value[:class] == :persistent
       li class="#{key} #{value[:class]}" = value[:body]
     - else
-      li class=key = value.class
+      li class=key = value
 
