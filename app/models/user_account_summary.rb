@@ -9,7 +9,7 @@ class UserAccountSummary < ActiveRecord::Base
     the_class = GroupUser.find_by_user_id(user_id)
 
     if the_class
-      the_class_mates = GroupUser.where(group_id: @class.group_id).select("user_id")
+      the_class_mates = GroupUser.where(group_id: the_class.group_id).select("user_id")
 
       class_leader_board = UserAccountSummary.where(user_id: the_class_mates).includes(:user).order("capital_total DESC").limit(10)
     else

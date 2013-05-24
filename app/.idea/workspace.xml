@@ -37,10 +37,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="27" selection-start="972" selection-end="974" vertical-scroll-proportion="0.63492066">
+            <state line="30" column="26" selection-start="973" selection-end="973" vertical-scroll-proportion="-18.461538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="short_sell_borrow.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stock_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="0" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_account_summary.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/user_account_summary.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="648" selection-end="648" vertical-scroll-proportion="0.4631579">
               <folding />
             </state>
           </provider>
@@ -74,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/users/profile.html.slim" />
         <option value="$PROJECT_DIR$/controllers/teacher_sessions_controller.rb" />
         <option value="$PROJECT_DIR$/../db/migrate/20130520172143_add_password_reset_to_users.rb" />
@@ -90,6 +116,7 @@
         <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
         <option value="$PROJECT_DIR$/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
+        <option value="$PROJECT_DIR$/models/user_account_summary.rb" />
       </list>
     </option>
   </component>
@@ -530,44 +557,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/buys_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="29" selection-start="72" selection-end="124" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/application/_navbar.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="26" selection-start="190" selection-end="190" vertical-scroll-proportion="0.103492886">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/application/_flash.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="26" selection-start="124" selection-end="124" vertical-scroll-proportion="0.08050314">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascripts/flash.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="25" selection-start="48" selection-end="48" vertical-scroll-proportion="0.04025157">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="384" selection-end="394" vertical-scroll-proportion="0.020460358">
           <folding />
         </state>
       </provider>
@@ -635,9 +627,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/stop_loss_transactions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/sell_transaction.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="27" selection-start="972" selection-end="974" vertical-scroll-proportion="0.63492066">
+        <state line="30" column="26" selection-start="973" selection-end="973" vertical-scroll-proportion="-18.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user_account_summary.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="648" selection-end="648" vertical-scroll-proportion="0.4631579">
           <folding />
         </state>
       </provider>
