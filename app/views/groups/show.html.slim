@@ -13,7 +13,6 @@ div.row
       tbody
         - @group.group_users.each do |group_user|
           tr
-          - @group_users.each do |user|
             td = user.user.name
             td = "$" + user.user.account_balance.round(2).to_s
             - if user.user.user_account_summary

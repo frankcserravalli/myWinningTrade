@@ -28,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.slim" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1123" selection-end="1188" vertical-scroll-proportion="0.71934605">
+            <state line="33" column="0" selection-start="1123" selection-end="1188" vertical-scroll-proportion="-20.23077">
               <folding />
             </state>
           </provider>
@@ -64,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.slim" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+            <state line="14" column="12" selection-start="371" selection-end="371" vertical-scroll-proportion="0.29473683">
               <folding />
             </state>
           </provider>
@@ -115,8 +115,8 @@
         <option value="$PROJECT_DIR$/views/groups/new.html.slim" />
         <option value="$PROJECT_DIR$/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/models/user_account_summary.rb" />
-        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
+        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
       </list>
     </option>
   </component>
@@ -674,13 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.86720866">
@@ -704,7 +697,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1123" selection-end="1188" vertical-scroll-proportion="0.71934605">
+        <state line="33" column="0" selection-start="1123" selection-end="1188" vertical-scroll-proportion="-20.23077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="12" selection-start="371" selection-end="371" vertical-scroll-proportion="0.29473683">
           <folding />
         </state>
       </provider>
