@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     if params[:email]
       # If user is coming from sign in page for MWT
       user = User.find_by_email(params[:email]).authenticate(params[:password])

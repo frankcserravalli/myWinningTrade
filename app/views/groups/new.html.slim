@@ -12,7 +12,7 @@ h1 Create A Class
     .span9
       = group.text_field :name, placeholder: "Name of Class", class: "class-name-input-field"
 
-      = hidden_field_tag("group[user_id]", teacher_current_user.id)
+      = hidden_field_tag("group[user_id]", current_user.id)
 
     .span4
       table.table.table-striped.table-bordered.student-class-table
