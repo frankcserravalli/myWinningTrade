@@ -31,8 +31,6 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
-
-    @group_users = @group.group_users
   end
 
   def show
