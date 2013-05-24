@@ -30,10 +30,11 @@ div.row
           = group.fields_for :group_users, :wrapper => false do |group_users_form|
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
-              = @group.group_users.first.inspect
-              - @group.group_users.first.each do |user|
-                td = user.user.name
-                - break
+              - @group.group_users.each do |group_user|
+                = group_users_form.inspect
+                - if group_user.user_id.eql?(group_user.user_id)
+                  td = group_user.user.name
+                  - break
               td.centered-text = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"
 
     .span10

@@ -19,55 +19,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="new.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="25" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="edit.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="41" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.71934605">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="groups_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="short_sell_borrow.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/short_sell_borrow.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stock_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_account_summary.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/user_account_summary.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0">
+            <state line="33" column="16" selection-start="1145" selection-end="1171" vertical-scroll-proportion="0.6984127">
               <folding />
             </state>
           </provider>
@@ -77,24 +32,6 @@
         <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
             <state line="2" column="11" selection-start="64" selection-end="70" vertical-scroll-proportion="-1.2307693">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="teacher_sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/teacher_sessions_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -648,13 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user_account_summary.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/group_user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -676,23 +606,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="25" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="11" selection-start="64" selection-end="70" vertical-scroll-proportion="-1.2307693">
           <folding />
         </state>
       </provider>
@@ -711,9 +627,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/user_account_summary.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/new.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="25" selection-start="990" selection-end="990" vertical-scroll-proportion="0.4910486">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="11" selection-start="64" selection-end="70" vertical-scroll-proportion="-1.2307693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="41" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.71934605">
+        <state line="33" column="16" selection-start="1145" selection-end="1171" vertical-scroll-proportion="0.6984127">
           <folding />
         </state>
       </provider>
