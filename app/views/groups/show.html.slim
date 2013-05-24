@@ -11,7 +11,7 @@ div.row
           th Account Balance
           th Capital Gain (Loss) less Incurred Tax Liability
       tbody
-        - @group.group_users.each do |group_user|
+        - @group.group_users.each do |user|
           tr
             td = user.user.name
             td = "$" + user.user.account_balance.round(2).to_s

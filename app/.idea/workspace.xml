@@ -31,7 +31,16 @@
       <file leaf-file-name="edit.html.slim" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1123" selection-end="1188" vertical-scroll-proportion="-20.23077">
+            <state line="32" column="36" selection-start="1109" selection-end="1109" vertical-scroll-proportion="-19.615385">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -67,7 +76,7 @@
       <file leaf-file-name="show.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="12" selection-start="371" selection-end="371" vertical-scroll-proportion="0.29473683">
+            <state line="13" column="38" selection-start="347" selection-end="347" vertical-scroll-proportion="0.2736842">
               <folding />
             </state>
           </provider>
@@ -625,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/stop_loss_transactions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -697,14 +699,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1123" selection-end="1188" vertical-scroll-proportion="-20.23077">
+        <state line="32" column="36" selection-start="1109" selection-end="1109" vertical-scroll-proportion="-19.615385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/groups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/show.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="12" selection-start="371" selection-end="371" vertical-scroll-proportion="0.29473683">
+        <state line="13" column="38" selection-start="347" selection-end="347" vertical-scroll-proportion="0.2736842">
           <folding />
         </state>
       </provider>

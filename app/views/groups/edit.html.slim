@@ -30,6 +30,7 @@ div.row
           = group.fields_for :group_users, :wrapper => false do |group_users_form|
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
+              = @group_users.inspect
               - @group_users.each do |group_user|
                 td = group_user.user.name
                 - break
