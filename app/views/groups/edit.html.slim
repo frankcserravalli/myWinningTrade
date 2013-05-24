@@ -31,7 +31,7 @@ div.row
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
               - @group.group_users.each do |user|
-                td = user.user.name
+                td = user.user.id
                 - break
               td.centered-text = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"
 
