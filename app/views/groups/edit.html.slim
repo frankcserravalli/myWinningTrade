@@ -34,7 +34,7 @@ div.row
               - @group.group_users.each_with_index do |group_user, index|
                 - if number.eql(index)
                   td = group_user.user.name
-                  - number++
+                  - number += 1
                   - break
               td.centered-text = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"
 
