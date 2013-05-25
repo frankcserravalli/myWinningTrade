@@ -385,9 +385,9 @@ class User < ActiveRecord::Base
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
             if sorted_open_positions[value][1][:average_holding_period] == "--"
-              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + "</td></tr>"
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + "</td></tr>"
             else
-              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + " days</td></tr>"
             end
 
         end
