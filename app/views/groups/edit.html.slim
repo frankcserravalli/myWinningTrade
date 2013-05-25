@@ -31,7 +31,7 @@ div.row
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
               - @group.group_users.each do |group_user|
-                = group_users_form.inspect
+                = group_users_form.text_field(:user_id).inspect
                 - if group_user.user_id.eql?(group_user.user_id)
                   td = group_user.user.name
                   - break
