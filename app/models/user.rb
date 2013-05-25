@@ -161,7 +161,7 @@ class User < ActiveRecord::Base
 
         total_capital += capital_at_risk
 
-        # Looping through orders of of an user's stocks
+        # Looping through orders of an individual user's stock
         self.orders.of_users_stock(user_stock.id).order("created_at DESC, user_stock_id DESC").reverse.each do |order|
 
           # Inserting info from each order into variables for the PDF
@@ -169,7 +169,14 @@ class User < ActiveRecord::Base
 
           revenue += stock_revenue_calculation
 
-          tax_liability += (order.capital_gain.to_f * 0.3)
+          # Finding the capital gain for each order, and if it doesn't exist assigning it $0.00
+          if order.capital_gain.nil?
+            capital_gain_for_stock = 0
+          else
+            capital_gain_for_stock = order.capital_gain
+          end
+
+          tax_liability += (capital_gain_for_stock.to_f * 0.3).round(2)
 
           returns += (order.capital_gain.to_f - tax_liability)
 
@@ -187,12 +194,7 @@ class User < ActiveRecord::Base
             cost_basis = 0
           end
 
-          # Finding the capital gain for each order, and if it doesn't exist assigning it $0.00
-          if order.capital_gain.nil?
-            capital_gain_loss = 0
-          else
-            capital_gain_loss = order.capital_gain
-          end
+
 
           # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary in the PDF
           s[:orders][order.created_at] = {
@@ -204,7 +206,7 @@ class User < ActiveRecord::Base
             bid_ask_price: order.price,
             net_asset_value: (order.volume * order.price),
             cost_basis: cost_basis,
-            capital_gain_loss: capital_gain_loss,
+            capital_gain_loss: capital_gain_for_stock,
             tax_liability: tax_liability
           }
 
@@ -655,7 +657,7 @@ class User < ActiveRecord::Base
                 <br>
                 <div class="row-fluid">
                   <span class="span6 offset1">Average Holding Period</span>
-                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].to_s + '</span>
+                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].round(2).to_s + '</span>
                 </div>
                 <br>
                 <div class="row-fluid">
