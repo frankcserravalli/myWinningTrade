@@ -32,7 +32,7 @@ div.row
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
               - @group.group_users.each_with_index do |group_user, index|
-                - if number.eql(index)
+                - if number == index
                   td = group_user.user.name
                   - number += 1
                   - break
