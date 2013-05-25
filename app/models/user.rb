@@ -657,7 +657,7 @@ class User < ActiveRecord::Base
                 <br>
                 <div class="row-fluid">
                   <span class="span6 offset1">Average Holding Period</span>
-                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].round(2).to_s + '</span>
+                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period][1..4] + '</span>
                 </div>
                 <br>
                 <div class="row-fluid">
