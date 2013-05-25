@@ -33,7 +33,7 @@ div.row
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
               - @group.group_users.each_with_index do |group_user, index|
                 - if number == index
-                  td = group_user.user.id
+                  td = group_user.user.id.to_s + group_user.user.name
                   - number += 1
                   - break
               td.centered-text = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"

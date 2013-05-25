@@ -22,7 +22,7 @@
       <file leaf-file-name="edit.html.slim" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="73" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.71934605">
+            <state line="35" column="69" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.7629428">
               <folding />
             </state>
           </provider>
@@ -688,7 +688,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/groups/edit.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="73" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.71934605">
+        <state line="35" column="69" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.7629428">
           <folding />
         </state>
       </provider>
