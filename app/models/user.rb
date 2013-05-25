@@ -408,9 +408,9 @@ class User < ActiveRecord::Base
       summary += "<td>" + composite_returns.round(2).to_s + "</td>"
 
       if composite_average_holding_period.eql? "--"
-        summary += "<td>" + composite_average_holding_period.to_s + "</td></tr>"
+        summary += "<td>" + composite_average_holding_period.round(2).to_s + "</td></tr>"
       else
-        summary += "<td>" + composite_average_holding_period.to_s + " days</td></tr>"
+        summary += "<td>" + composite_average_holding_period.round(2).to_s + " days</td></tr>"
       end
     end
 
@@ -478,7 +478,7 @@ class User < ActiveRecord::Base
     unless two_loss_stocks_exists.eql? false
       loss_stocks += "<div class='row-fluid'><div class='span4 offset2'>Composite</div>"
 
-      loss_stocks += "<div class='span4'>(#{composite_losses_number})</div></div>"
+      loss_stocks += "<div class='span4'>(#{composite_losses_number.round(2)})</div></div>"
     end
 
 
