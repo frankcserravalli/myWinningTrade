@@ -27,13 +27,14 @@ div.row
             th Name
             th Options
         tbody.table-row.list-of-classes-table-head
+          - number = 0
           = group.fields_for :group_users, :wrapper => false do |group_users_form|
             tr.fields.centered-text
               = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
-              - @group.group_users.each do |group_user|
-                = group_users_form.text_field(:user_id).to_s
-                - if group_user.user_id.eql?(group_user.user_id)
+              - @group.group_users.each_with_index do |group_user, index|
+                - if number.eql(index)
                   td = group_user.user.name
+                  - number++
                   - break
               td.centered-text = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"
 
