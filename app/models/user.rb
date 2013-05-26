@@ -176,6 +176,8 @@ class User < ActiveRecord::Base
             capital_gain_for_stock = order.capital_gain
           end
 
+          puts "tax_liability added here!!!!!!!!!!!"
+
           tax_liability += (capital_gain_for_stock.to_f * 0.3).round(2)
 
           returns += (order.capital_gain.to_f - tax_liability)

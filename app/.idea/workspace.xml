@@ -28,19 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="389" column="99" selection-start="12319" selection-end="12319" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="date_time_transaction.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/date_time_transaction.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="24" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.35">
+            <state line="178" column="51" selection-start="5214" selection-end="5214" vertical-scroll-proportion="0.46321526">
               <folding />
             </state>
           </provider>
@@ -115,8 +106,8 @@
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
-        <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/models/date_time_transaction.rb" />
+        <option value="$PROJECT_DIR$/models/user.rb" />
       </list>
     </option>
   </component>
@@ -679,16 +670,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.rb">
+    <entry file="file://$PROJECT_DIR$/models/date_time_transaction.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="389" column="99" selection-start="12319" selection-end="12319" vertical-scroll-proportion="0.0">
+        <state line="62" column="24" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.35">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/date_time_transaction.rb">
+    <entry file="file://$PROJECT_DIR$/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="24" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.35">
+        <state line="178" column="51" selection-start="5214" selection-end="5214" vertical-scroll-proportion="0.46321526">
           <folding />
         </state>
       </provider>
