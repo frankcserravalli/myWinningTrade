@@ -268,11 +268,11 @@ class User < ActiveRecord::Base
 
         unless sold_at.eql? 0 and short_sold_at.eql? 0
           average_holding_period = holding_periods.sum.to_f / holding_periods.size
-
-          overall_average_holding_period << average_holding_period
         else
           average_holding_period = "--"
         end
+
+        overall_average_holding_period << average_holding_period
 
         s[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
@@ -290,11 +290,13 @@ class User < ActiveRecord::Base
 
       net_income_after_taxes = net_income_before_taxes - taxes
 
-      if overall_average_holding_period.is_a?(Numeric)
-        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s[1..4] + " days"
-      else
-        overall_average_holding_period = "--"
-      end
+
+      # Here we remove all instances of average holding days that don't exit
+      overall_average_holding_period.delete("--")
+
+      # Here we calculate the total average holding period for all stocks
+      overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size) + " days"
+
 
       s[:summary] = {
         net_income_before_taxes: net_income_before_taxes.round(2),
