@@ -272,8 +272,6 @@ class User < ActiveRecord::Base
           overall_average_holding_period << average_holding_period
         else
           average_holding_period = "--"
-
-          overall_average_holding_period = "--"
         end
 
         s[:stocks][stock_symbol] = {
@@ -292,8 +290,10 @@ class User < ActiveRecord::Base
 
       net_income_after_taxes = net_income_before_taxes - taxes
 
-      unless overall_average_holding_period == "--"
-        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).round(2).to_s + " days"
+      if overall_average_holding_period.is_a?(Numeric)
+        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s[1..4] + " days"
+      else
+        overall_average_holding_period = "--"
       end
 
       s[:summary] = {
