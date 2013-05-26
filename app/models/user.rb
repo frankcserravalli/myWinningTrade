@@ -267,7 +267,7 @@ class User < ActiveRecord::Base
         end
 
         unless sold_at.eql? 0 and short_sold_at.eql? 0
-          average_holding_period = (holding_periods.sum.to_f / holding_periods.size).round(2)
+          average_holding_period = holding_periods.sum.to_f / holding_periods.size
 
           overall_average_holding_period << average_holding_period
         else
@@ -293,7 +293,7 @@ class User < ActiveRecord::Base
       net_income_after_taxes = net_income_before_taxes - taxes
 
       unless overall_average_holding_period == "--"
-        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s + " days"
+        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).round(2).to_s + " days"
       end
 
       s[:summary] = {
@@ -659,7 +659,7 @@ class User < ActiveRecord::Base
                 <br>
                 <div class="row-fluid">
                   <span class="span6 offset1">Average Holding Period</span>
-                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period] + '</span>
+                  <span class="span2">' + stock_summary[:summary][:overall_average_holding_period].to_s + '</span>
                 </div>
                 <br>
                 <div class="row-fluid">
