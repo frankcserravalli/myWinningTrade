@@ -295,7 +295,7 @@ class User < ActiveRecord::Base
       overall_average_holding_period.delete("--")
 
       # Here we calculate the total average holding period for all stocks
-      overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size) + " days"
+      overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s + " days"
 
 
       s[:summary] = {
