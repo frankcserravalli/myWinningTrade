@@ -369,7 +369,7 @@ class User < ActiveRecord::Base
           if sorted_open_positions[value][1][:average_holding_period] == "--"
             composite_average_holding_period = "--"
           else
-            composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period]
+            composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].to_f
           end
         else
             one_stock_exists = true
