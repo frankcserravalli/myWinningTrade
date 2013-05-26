@@ -60,6 +60,7 @@ class DateTimeTransaction < ActiveRecord::Base
       place_the_order = false
 
       puts "user #{order.user_id} would like to #{order.order_type} #{symbol} when date is #{order.execute_at}"
+      puts order.inspect
       puts "checking price for #{symbol}..." 
       details = Finance.current_stock_details(symbol)
       current_price = details.current_price.to_f
