@@ -49,9 +49,3 @@ class Order < ActiveRecord::Base
 
 
 end
-
-if number.is_a? Number
-
-else
-  number = gets.chomp.to_i
-end
