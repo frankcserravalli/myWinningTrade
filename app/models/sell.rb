@@ -22,9 +22,6 @@ class Sell < Order
         # User account summary exists, so we just add capital gain - tax liability and save
         user_account_summary.capital_total += (transaction_capital_less_tax  * self.volume)
 
-        puts "##############"
-        puts self.volume
-
         user_account_summary.save
       else
         # Here we create the variables used to calculate totals from all the orders
