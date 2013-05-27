@@ -162,7 +162,7 @@ class User < ActiveRecord::Base
         total_capital += capital_at_risk
 
         # Looping through orders of an individual user's stock
-        self.orders.of_users_stock(user_stock.id).where("type = 'ShortSellCover' OR type = 'Sell'").order("created_at DESC, user_stock_id DESC").reverse.each do |order|
+        self.orders.of_users_stock(user_stock.id).order("created_at DESC, user_stock_id DESC").reverse.each do |order|
 
           # Inserting info from each order into variables for the PDF
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
@@ -176,11 +176,14 @@ class User < ActiveRecord::Base
             capital_gain_for_stock = order.capital_gain
           end
 
-          puts "tax_liability added here!!!!!!!!!!!"
+          if order.type == "Sell" or order.type == "ShortSellCover"
+            tax_liability += (capital_gain_for_stock.to_f * 0.3).round(2)
 
-          tax_liability += (capital_gain_for_stock.to_f * 0.3).round(2)
+            returns += (order.capital_gain.to_f - tax_liability)
+          else
+            tax_liability = 0
+          end
 
-          returns += (order.capital_gain.to_f - tax_liability)
 
           # Finding the net loss and net revenue of each stock
           if stock_revenue_calculation < 0
