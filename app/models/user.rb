@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     group                 'student'
   end
 
-  attr_protected :account_balance
+  attr_protected :account_balance, :premium_subscription
   after_initialize :create_initial_balance
 
   # VALIDATIONS

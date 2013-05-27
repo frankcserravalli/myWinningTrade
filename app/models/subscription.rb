@@ -18,14 +18,12 @@ class Subscription < ActiveRecord::Base
 
     case payment_plan
     when "two"
-      payment_plan = "two month"
+      new_customer.payment_plan = "two month"
     when "six"
-      payment_plan = "six month"
+      new_customer.payment_plan = "six month"
     when "twelve"
-      payment_plan = "one year"
+      new_customer.payment_plan = "one year"
     end
-
-    new_customer.payment_plan = payment_plan
 
     new_customer.save
   end
