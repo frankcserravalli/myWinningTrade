@@ -94,7 +94,7 @@
       <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="93" selection-start="4675" selection-end="4675" vertical-scroll-proportion="1.7929156">
+            <state line="164" column="49" selection-start="4631" selection-end="4631" vertical-scroll-proportion="0.506812">
               <folding />
             </state>
           </provider>
@@ -762,7 +762,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="93" selection-start="4675" selection-end="4675" vertical-scroll-proportion="1.7929156">
+        <state line="164" column="49" selection-start="4631" selection-end="4631" vertical-scroll-proportion="0.506812">
           <folding />
         </state>
       </provider>
