@@ -94,7 +94,7 @@
       <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="166" column="66" selection-start="4814" selection-end="4814" vertical-scroll-proportion="0.5504087">
+            <state line="164" column="144" selection-start="4590" selection-end="4726" vertical-scroll-proportion="0.506812">
               <folding />
             </state>
           </provider>
@@ -133,8 +133,8 @@
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
         <option value="$PROJECT_DIR$/models/date_time_transaction.rb" />
         <option value="$PROJECT_DIR$/models/sell.rb" />
-        <option value="$PROJECT_DIR$/models/user.rb" />
         <option value="$PROJECT_DIR$/models/order.rb" />
+        <option value="$PROJECT_DIR$/models/user.rb" />
       </list>
     </option>
   </component>
@@ -764,7 +764,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="66" selection-start="4814" selection-end="4814" vertical-scroll-proportion="0.5504087">
+        <state line="164" column="144" selection-start="4590" selection-end="4726" vertical-scroll-proportion="0.506812">
           <folding />
         </state>
       </provider>

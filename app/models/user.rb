@@ -162,7 +162,7 @@ class User < ActiveRecord::Base
         total_capital += capital_at_risk
 
         # Looping through orders of an individual user's stock
-        self.orders.of_users_stock(user_stock.id).where("type = ShortSellCover OR type = Sell").order("created_at DESC, user_stock_id DESC").reverse.each do |order|
+        self.orders.of_users_stock(user_stock.id).where("type = 'ShortSellCover' OR type = 'Sell'").order("created_at DESC, user_stock_id DESC").reverse.each do |order|
 
           # Inserting info from each order into variables for the PDF
           stock_revenue_calculation = (order.capital_gain.to_f * order.volume.to_f)
