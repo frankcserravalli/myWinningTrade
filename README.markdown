@@ -7,7 +7,7 @@ API
 |  api/v1/users            |  create           |  Creates an user                                          |  api/v1/users/create                          |   name, email, password, password_confirmation                                                                  |      Returns user's id and ios token                |
 |  api/v1/buys            |  create            |  Creates a buy order                                      |  api/v1/buys/create                           |   user_id, stock_id, volume, ios_token                                                                             |      Returns the buy order                       |
 |  api/v1/sells            |  create            |  Creates a sell order                                    |  api/v1/sells/create                          |   user_id, stock_id, volume, ios_token                                                                            |      Returns the sell order                       |
-| api/v1/short_sell_borrows|  create            |  Creates a short sell borrow order                       |  api/v1/short_sell_borrows                    |   user_id, stock_id, volume, ios_token, when, execute_at(1i), execute_at(2i), execute_at(3i), execute_at(4i), execute_at(5i), measure, price_target           |      status: "Order placed."                       |
+| api/v1/short_sell_borrows|  create            |  Creates a short sell borrow order                       |  api/v1/short_sell_borrows                    |   user_id, stock_id, volume, ios_token, when, measure, price_target           |      status: "Order placed."                       |
 
 
 
