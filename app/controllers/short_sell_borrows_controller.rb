@@ -3,7 +3,8 @@ class ShortSellBorrowsController < ApplicationController
 
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
-
+    puts "########## SHORT SELL BORROW ###############"
+    puts params[:short_sell_borrow]
     @order = ShortSellBorrow.new(params[:short_sell_borrow].merge(user: current_user))
 
     if @order.place!(@stock_details)

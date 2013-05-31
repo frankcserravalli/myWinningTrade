@@ -6,8 +6,8 @@ module Api
       respond_to :json
 
       def search
-        @suggestions = Finance.search_for_stock(params[:term].to_s)
-        render json: @suggestions.to_json
+        suggestions = Finance.search_for_stock(params[:term].to_s)
+        render json: suggestions.to_json
       end
 
       def details

@@ -86,6 +86,10 @@ MyWinningTrade::Application.routes.draw do
 
       resources :buys, only: :create
       resources :sells, only: :create
+      resources :short_sell_borrows, only: :create
+      resources :short_sell_covers, only: :create
+
+
       resources :stocks do
         collection do
           post 'search'
