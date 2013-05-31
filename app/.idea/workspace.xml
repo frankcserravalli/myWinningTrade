@@ -28,10 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="README.markdown" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../README.markdown">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="201" selection-start="2484" selection-end="2484" vertical-scroll-proportion="0.18414322">
+            <state line="9" column="201" selection-start="2484" selection-end="2484" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="66" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.64402515">
               <folding />
             </state>
           </provider>
@@ -56,7 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/groups/show.html.slim" />
         <option value="$PROJECT_DIR$/views/groups/index.html.slim" />
         <option value="$PROJECT_DIR$/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/views/groups/edit.html.slim" />
@@ -72,6 +80,7 @@
         <option value="$PROJECT_DIR$/controllers/short_sell_borrows_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/short_sell_borrows_controller.rb" />
         <option value="$PROJECT_DIR$/../README.markdown" />
+        <option value="$PROJECT_DIR$/controllers/api/v1/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -583,13 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="21" selection-start="342" selection-end="342" vertical-scroll-proportion="0.18113208">
@@ -648,7 +650,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../README.markdown">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="201" selection-start="2484" selection-end="2484" vertical-scroll-proportion="0.18414322">
+        <state line="9" column="201" selection-start="2484" selection-end="2484" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="66" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.64402515">
           <folding />
         </state>
       </provider>
