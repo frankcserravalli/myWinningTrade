@@ -6,8 +6,6 @@ module Api
 
       respond_to :json
 
-      before_filter {|controller| controller.when_to_execute_order("short_sell_borrow") }
-
       def create
         user = User.find(params[:user_id])
 
