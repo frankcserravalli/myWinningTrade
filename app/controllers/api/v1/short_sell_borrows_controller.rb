@@ -13,6 +13,18 @@ module Api
         if user
           stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
+          params[:short_sell_borrow] = {}
+
+          params[:short_sell_borrow][:volume] = params[:volume]
+          params[:short_sell_borrow][:when] = params[:when]
+          params[:short_sell_borrow]["execute_at(1i)"] = params["execute_at(1i)"]
+          params[:short_sell_borrow]["execute_at(2i)"] = params["execute_at(2i)"]
+          params[:short_sell_borrow]["execute_at(3i)"] = params["execute_at(3i)"]
+          params[:short_sell_borrow]["execute_at(4i)"] = params["execute_at(4i)"]
+          params[:short_sell_borrow]["execute_at(5i)"] = params["execute_at(5i)"]
+          params[:short_sell_borrow][:measure] = params[:measure]
+          params[:short_sell_borrow][:price_target] = params[:price_target]
+
           order = ShortSellBorrow.new(params[:short_sell_borrow].merge(user: user))
 
           if order.place!(stock_details)
