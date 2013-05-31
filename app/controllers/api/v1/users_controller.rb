@@ -52,9 +52,9 @@ module Api
           if user
             if user.try(:authenticate, params[:password].downcase)
               # Since everything is a goal, we create a scramble token then render it apart of the json
-              scrambled_token = scramble_token(Time.now, @user.id)
+              scrambled_token = scramble_token(Time.now, user.id)
 
-              render :json => { :user_id => @user.id, :ios_token => scrambled_token }
+              render :json => { :user_id => user.id, :ios_token => scrambled_token }
             else
               render :json => { status: "Password incorrect." }
             end
