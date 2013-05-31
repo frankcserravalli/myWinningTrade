@@ -3,6 +3,7 @@ module Api
     class ShortSellBorrowsController < ApplicationController
       skip_before_filter :verify_authenticity_token
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
+
       respond_to :json
 
       before_filter {|controller| controller.when_to_execute_order("short_sell_borrow") }
