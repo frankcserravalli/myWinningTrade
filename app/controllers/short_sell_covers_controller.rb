@@ -2,7 +2,7 @@ class ShortSellCoversController < ApplicationController
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
-    puts "########## SHORT SELL BORROW ###############"
+    puts "########## SHORT SELL COVER ###############"
 
     puts params[:short_sell_cover]
 
