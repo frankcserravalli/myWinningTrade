@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="short_sell_borrows_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="short_sell_borrows_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/short_sell_borrows_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="10" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.54339623">
+            <state line="27" column="10" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.markdown" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../README.markdown">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="231" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.0">
+            <state line="9" column="195" selection-start="2478" selection-end="2478" vertical-scroll-proportion="0.18414322">
               <folding />
             </state>
           </provider>
@@ -68,10 +68,10 @@
         <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/short_sell_covers_controller.rb" />
         <option value="$PROJECT_DIR$/../config/routes.rb" />
-        <option value="$PROJECT_DIR$/../README.markdown" />
         <option value="$PROJECT_DIR$/controllers/short_sell_covers_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/short_sell_borrows_controller.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/short_sell_borrows_controller.rb" />
+        <option value="$PROJECT_DIR$/../README.markdown" />
       </list>
     </option>
   </component>
@@ -611,13 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../README.markdown">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="231" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="0" selection-start="2793" selection-end="2793" vertical-scroll-proportion="0.2955975">
@@ -648,7 +641,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/short_sell_borrows_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="10" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.54339623">
+        <state line="27" column="10" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../README.markdown">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="195" selection-start="2478" selection-end="2478" vertical-scroll-proportion="0.18414322">
           <folding />
         </state>
       </provider>
