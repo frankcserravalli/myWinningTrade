@@ -182,24 +182,25 @@ class Finance
       response.gsub!(/[\(\)]/, '')
 
 
-      puts  response.gsub!(/[\(\)]/, '')
+      #puts response.gsub!(/[\(\)]/, '')
 
-      puts  response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
+      #puts response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 
       response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 		  suggestions = MultiJson.load(response)
 
-      if company_name_request and company_name_request == true
+
+      #if company_name_request and company_name_request == true
 
         suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 
-      else
+      #else
 
-        suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
+       # suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 
-      end
+      #end
 		end
 
 		def sanitize_symbol(symbol)
