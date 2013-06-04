@@ -114,7 +114,7 @@ module UsersHelper
           render :json => { status: "something went wrong with require iphone login. the time is outdated" }
         end
       else
-        render :json => {status: "something went wrong with require iphone login. no key was provided" }
+        render :json => {status: "something went wrong with require iphone login. no ios token was provided" }
       end
     end
   end
