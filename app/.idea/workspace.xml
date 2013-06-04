@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="finance.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="45" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.46321526">
+            <state line="105" column="45" selection-start="2862" selection-end="2862" vertical-scroll-proportion="-13.076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stocks_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="28" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+            <state line="17" column="55" selection-start="555" selection-end="555" vertical-scroll-proportion="0.3518758">
               <folding />
             </state>
           </provider>
@@ -97,8 +97,8 @@
         <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
         <option value="$PROJECT_DIR$/../README.markdown" />
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
-        <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
         <option value="$PROJECT_DIR$/models/finance.rb" />
+        <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
       </list>
     </option>
   </component>
@@ -552,16 +552,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
+    <entry file="file://$PROJECT_DIR$/models/finance.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="28" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+        <state line="105" column="45" selection-start="2862" selection-end="2862" vertical-scroll-proportion="-13.076923">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/finance.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="45" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.46321526">
+        <state line="17" column="55" selection-start="555" selection-end="555" vertical-scroll-proportion="0.3518758">
           <folding />
         </state>
       </provider>
