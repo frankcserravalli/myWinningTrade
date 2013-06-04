@@ -16,8 +16,6 @@ module Api
       def details
         details = Finance.current_stock_details(params[:symbol].upcase)
 
-        puts "details details ######### #{details}"
-
         if details
           puts "details full"
           puts details.to_json
