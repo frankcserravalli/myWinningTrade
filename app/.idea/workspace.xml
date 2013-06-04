@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="finance.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="12" selection-start="2821" selection-end="2821" vertical-scroll-proportion="2.026455">
+            <state line="27" column="48" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stocks_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="71" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
+            <state line="18" column="18" selection-start="519" selection-end="519" vertical-scroll-proportion="0.36226416">
               <folding />
             </state>
           </provider>
@@ -61,8 +61,8 @@
         <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
         <option value="$PROJECT_DIR$/../README.markdown" />
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
-        <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
         <option value="$PROJECT_DIR$/models/finance.rb" />
+        <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
       </list>
     </option>
   </component>
@@ -98,6 +98,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,18 +183,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../README.markdown" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -368,7 +368,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2707137" sideWeight="0.6435523" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27563578" sideWeight="0.6435523" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -483,49 +483,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/users_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="0" selection-start="3352" selection-end="3352" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="123" column="0" selection-start="3352" selection-end="3352" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="4" selection-start="2071" selection-end="2071" vertical-scroll-proportion="1.3263158">
-          <folding />
-        </state>
+        <state line="63" column="4" selection-start="2071" selection-end="2071" vertical-scroll-proportion="1.3263158" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascripts/stock/search.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.73657286">
-          <folding />
-        </state>
+        <state line="36" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.73657286" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/stock/_search.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="9" selection-start="42" selection-end="53" vertical-scroll-proportion="0.040920716">
-          <folding />
-        </state>
+        <state line="2" column="9" selection-start="42" selection-end="53" vertical-scroll-proportion="0.040920716" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../README.markdown">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="305" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.020460358">
+        <state line="5" column="305" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.020460358" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/finance.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="48" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="71" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/finance.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="12" selection-start="2821" selection-end="2821" vertical-scroll-proportion="2.026455">
+        <state line="18" column="18" selection-start="519" selection-end="519" vertical-scroll-proportion="0.36226416">
           <folding />
         </state>
       </provider>

@@ -17,10 +17,7 @@ module Api
         details = Finance.current_stock_details(params[:symbol].upcase)
 
         if details
-          puts "details full"
-          puts details.to_json
-
-          render :json => details.to_json
+          render :json => details.first.last.to_json
         else
           puts "details empty"
 
