@@ -25,7 +25,7 @@ class Finance
 
 	class << self
 		def current_stock_details(symbol)
-			details = stock_details_for_list([symbol])[symbol]
+			details = stock_details_for_list([symbol])
 		end
 
 		# Here we are asking Yahoo to return us information on multiple stocks, where symbol_list
@@ -103,11 +103,8 @@ class Finance
 
 			#Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
 
-      hashing = Hash[symbol_list.zip(all_details)]
+      return Hash[symbol_list.zip(all_details)]
 
-      puts "hashing #{hashing.class}"
-
-      hashing
 		end
 
     def grab_alpha_or_beta

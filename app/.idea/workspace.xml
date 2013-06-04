@@ -22,7 +22,7 @@
       <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="6" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.73544973">
+            <state line="105" column="12" selection-start="2821" selection-end="2821" vertical-scroll-proportion="2.026455">
               <folding />
             </state>
           </provider>
@@ -525,7 +525,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/finance.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="6" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.73544973">
+        <state line="105" column="12" selection-start="2821" selection-end="2821" vertical-scroll-proportion="2.026455">
           <folding />
         </state>
       </provider>
