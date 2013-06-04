@@ -103,11 +103,6 @@ class Finance
 
 			#Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
 
-      puts "##### RETURN #{all_details}"
-
-      puts "###### SOME SYMBOL LIST #########"
-      puts Hash[symbol_list.zip(all_details)]
-
       return Hash[symbol_list.zip(all_details)]
 		end
 

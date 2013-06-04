@@ -19,55 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="finance.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="40" selection-start="2857" selection-end="2857" vertical-scroll-proportion="0.63760215">
+            <state line="104" column="0" selection-start="2816" selection-end="2816" vertical-scroll-proportion="-14.307693">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stocks_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="55" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.markdown" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../README.markdown">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="305" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_search.html.slim" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/stock/_search.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="9" selection-start="42" selection-end="53" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/javascripts/stock/search.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stock_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="4" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.0">
+            <state line="22" column="30" selection-start="633" selection-end="633" vertical-scroll-proportion="0.4427673">
               <folding />
             </state>
           </provider>
@@ -97,8 +61,8 @@
         <option value="$PROJECT_DIR$/controllers/stock_controller.rb" />
         <option value="$PROJECT_DIR$/../README.markdown" />
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
-        <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
         <option value="$PROJECT_DIR$/models/finance.rb" />
+        <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
       </list>
     </option>
   </component>
@@ -517,34 +481,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="4" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/javascripts/stock/search.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../README.markdown">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="305" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/stock/_search.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="9" selection-start="42" selection-end="53" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/users_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="0" selection-start="3352" selection-end="3352" vertical-scroll-proportion="0.0">
@@ -552,16 +488,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
+    <entry file="file://$PROJECT_DIR$/controllers/stock_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="55" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
+        <state line="63" column="4" selection-start="2071" selection-end="2071" vertical-scroll-proportion="1.3263158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/javascripts/stock/search.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.73657286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/stock/_search.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="9" selection-start="42" selection-end="53" vertical-scroll-proportion="0.040920716">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../README.markdown">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="305" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.020460358">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/finance.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="40" selection-start="2857" selection-end="2857" vertical-scroll-proportion="0.63760215">
+        <state line="104" column="0" selection-start="2816" selection-end="2816" vertical-scroll-proportion="-14.307693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="30" selection-start="633" selection-end="633" vertical-scroll-proportion="0.4427673">
           <folding />
         </state>
       </provider>
