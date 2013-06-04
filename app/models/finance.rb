@@ -95,20 +95,16 @@ class Finance
 
           quote.trend_direction = quote.percent_change >= 0 ? 'up' : 'down'
 
-          puts "##### QUOTE ######"
-
-          puts quote
-
 					quote
-
-
 				else
 					nil
-          puts "looks like quote name and quote symbol are the same"
 				end
 			end
 
-			Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
+      puts "###### ALL DETAILS #######"
+      puts all_details
+
+			#Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
 
       return Hash[symbol_list.zip(all_details)]
 		end
