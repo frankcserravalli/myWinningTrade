@@ -8,19 +8,17 @@ module Api
       def search
         suggestions = Finance.search_for_stock(params[:term].to_s)
 
-        puts params[:term].to_s
-
         render :json => suggestions.to_json
       end
 
       def details
-        details = Finance.current_stock_details(params[:symbol].upcase)
+        for_iphone = true
+
+        details = Finance.current_stock_details(params[:symbol].upcase, for_iphone)
 
         if details
           render :json => details.first.last.to_json
         else
-          puts "details empty"
-
           render :json => { }
         end
       end

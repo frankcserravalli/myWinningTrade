@@ -24,9 +24,13 @@ class Finance
 	cattr_accessor :credentials
 
 	class << self
-		def current_stock_details(symbol)
-			details = stock_details_for_list([symbol])
-		end
+		def current_stock_details(symbol, for_iphone = nil)
+      if for_iphone
+			  details = stock_details_for_list([symbol])
+			else
+        details = stock_details_for_list([symbol])[symbol]
+		  end
+    end
 
 		# Here we are asking Yahoo to return us information on multiple stocks, where symbol_list
     # represents those multiple stocks
