@@ -22,7 +22,7 @@
       <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="75" selection-start="2634" selection-end="2634" vertical-scroll-proportion="0.3760218">
+            <state line="109" column="20" selection-start="2925" selection-end="2925" vertical-scroll-proportion="0.61580384">
               <folding />
             </state>
           </provider>
@@ -40,7 +40,7 @@
       <file leaf-file-name="stocks_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="31" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0">
+            <state line="17" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -563,14 +563,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="31" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0">
+        <state line="17" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/finance.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="75" selection-start="2634" selection-end="2634" vertical-scroll-proportion="0.3760218">
+        <state line="109" column="20" selection-start="2925" selection-end="2925" vertical-scroll-proportion="0.61580384">
           <folding />
         </state>
       </provider>

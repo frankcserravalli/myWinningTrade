@@ -102,11 +102,14 @@ class Finance
 			end
 
       puts "###### ALL DETAILS #######"
-      puts all_details
 
 			#Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
 
-      return Hash[symbol_list.zip(all_details)]
+      something = Hash[symbol_list.zip(all_details)]
+
+      puts something
+
+      return something
 		end
 
     def grab_alpha_or_beta
