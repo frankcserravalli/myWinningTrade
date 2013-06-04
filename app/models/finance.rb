@@ -64,9 +64,6 @@ class Finance
 
       csv = RestClient.get "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbol_list.join(',')}&f=#{field_mappings.values.join}"
 
-      puts "####### CSV ###########"
-      puts CSV.parse(csv)
-
 			all_details = CSV.parse(csv).collect do |row|
 				details = Hash[field_mappings.keys.zip(row.collect { |v| v.to_s.strip.gsub(/['"]/, '')} )]
 
@@ -77,7 +74,8 @@ class Finance
 
           quote.current_price = [quote.ask_realtime, quote.ask, quote.previous_close].detect do |value|
 						value.to_f > 0.0
-					end
+          end
+
 					quote.current_bid = quote.bid_realtime || quote.bid
 
 					quote.buy_price = quote.current_price.to_f + Order::TRANSACTION_FEE
@@ -97,9 +95,16 @@ class Finance
 
           quote.trend_direction = quote.percent_change >= 0 ? 'up' : 'down'
 
+          puts "##### QUOTE ######"
+
+          puts quote
+
 					quote
+
+
 				else
 					nil
+          puts "looks like quote name and quote symbol are the same"
 				end
 			end
 
