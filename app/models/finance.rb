@@ -26,9 +26,6 @@ class Finance
 	class << self
 		def current_stock_details(symbol)
 			details = stock_details_for_list([symbol])[symbol]
-
-      puts "######## DETAILS of #{symbol} ##############"
-      puts details
 		end
 
 		# Here we are asking Yahoo to return us information on multiple stocks, where symbol_list
@@ -66,6 +63,9 @@ class Finance
 			start_time = Time.now.to_f
 
       csv = RestClient.get "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbol_list.join(',')}&f=#{field_mappings.values.join}"
+
+      puts "####### CSV ###########"
+      puts CSV.parse(csv)
 
 			all_details = CSV.parse(csv).collect do |row|
 				details = Hash[field_mappings.keys.zip(row.collect { |v| v.to_s.strip.gsub(/['"]/, '')} )]
