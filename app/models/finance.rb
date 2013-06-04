@@ -97,11 +97,14 @@ class Finance
 
 					quote
 				else
-					nil
+					return nil
 				end
 			end
 
 			#Rails.logger.debug "  Yahoo (#{((Time.now.to_f-start_time)*1000.0).round} ms): #{symbol_list}" unless Rails.env.production?
+
+      puts "###### SOME SYMBOL LIST #########"
+      puts Hash[symbol_list.zip(all_details)]
 
       return Hash[symbol_list.zip(all_details)]
 		end

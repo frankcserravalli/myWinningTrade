@@ -17,7 +17,7 @@ module Api
         details = Finance.current_stock_details(params[:symbol].upcase)
         puts "#### details ####"
 
-        puts details
+        puts details.to_json
         if details
           render :json => details.to_json
         else

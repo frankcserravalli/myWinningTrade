@@ -22,16 +22,7 @@
       <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.39782017">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/users_helper.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="0" selection-start="3352" selection-end="3352" vertical-scroll-proportion="0.0">
+            <state line="105" column="45" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.46321526">
               <folding />
             </state>
           </provider>
@@ -40,7 +31,7 @@
       <file leaf-file-name="stocks_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="20" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+            <state line="19" column="28" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -563,14 +554,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="20" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+        <state line="19" column="28" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/finance.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="0.39782017">
+        <state line="105" column="45" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.46321526">
           <folding />
         </state>
       </provider>
