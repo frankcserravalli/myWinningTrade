@@ -26,6 +26,9 @@ class Finance
 	class << self
 		def current_stock_details(symbol)
 			details = stock_details_for_list([symbol])[symbol]
+
+      puts "######## DETAILS of #{symbol} ##############"
+      puts details
 		end
 
 		# Here we are asking Yahoo to return us information on multiple stocks, where symbol_list
@@ -179,20 +182,11 @@ class Finance
 
 			response = RestClient.get "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=#{CGI::escape(search_text)}&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
 
-      puts "###########   RESPONSE    ################"
-
-      puts response
-
       response.gsub!(/[\(\)]/, '')
 
       response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 		  suggestions = MultiJson.load(response)
-
-
-      puts "############    SUGGESTIONS    #################"
-
-      puts suggestions
 
       suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 		end
