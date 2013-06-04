@@ -174,33 +174,18 @@ class Finance
 			)
 		end
 
-		def search_for_stock(search_text, company_name_request = nil)
+		def search_for_stock(search_text)
 			search_text.gsub!(/[^\w \.]/, '')
 
 			response = RestClient.get "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=#{CGI::escape(search_text)}&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
 
       response.gsub!(/[\(\)]/, '')
 
-
-      #puts response.gsub!(/[\(\)]/, '')
-
-      #puts response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
-
-
       response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 		  suggestions = MultiJson.load(response)
 
-
-      #if company_name_request and company_name_request == true
-
-        suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
-
-      #else
-
-       # suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
-
-      #end
+      suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 		end
 
 		def sanitize_symbol(symbol)
