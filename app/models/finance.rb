@@ -179,11 +179,20 @@ class Finance
 
 			response = RestClient.get "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=#{CGI::escape(search_text)}&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
 
+      puts "###########   RESPONSE    ################"
+
+      puts response
+
       response.gsub!(/[\(\)]/, '')
 
       response.sub!('YAHOO.Finance.SymbolSuggest.ssCallback', '')
 
 		  suggestions = MultiJson.load(response)
+
+
+      puts "############    SUGGESTIONS    #################"
+
+      puts suggestions
 
       suggestions['ResultSet']['Result'].select { |result| result['type'].to_s == 'S' }
 		end
