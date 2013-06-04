@@ -105,8 +105,8 @@ class Finance
 
       hashing = Hash[symbol_list.zip(all_details)]
 
-      puts "hashing #{hashing}"
-      
+      puts "hashing #{hashing.class}"
+
       return hashing
 		end
 
