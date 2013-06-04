@@ -107,7 +107,7 @@ class Finance
 
       puts "hashing #{hashing.class}"
 
-      return hashing
+      hashing
 		end
 
     def grab_alpha_or_beta

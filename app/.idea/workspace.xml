@@ -22,7 +22,7 @@
       <file leaf-file-name="finance.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/finance.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="2868" selection-end="2868" vertical-scroll-proportion="0.5343915">
+            <state line="109" column="6" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.73544973">
               <folding />
             </state>
           </provider>
@@ -31,7 +31,7 @@
       <file leaf-file-name="stocks_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
+            <state line="16" column="71" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -518,14 +518,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
+        <state line="16" column="71" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/finance.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="2868" selection-end="2868" vertical-scroll-proportion="0.5343915">
+        <state line="109" column="6" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.73544973">
           <folding />
         </state>
       </provider>
