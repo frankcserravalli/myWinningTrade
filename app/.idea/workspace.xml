@@ -31,7 +31,7 @@
       <file leaf-file-name="stop_loss_transaction.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="23" selection-start="3232" selection-end="3232" vertical-scroll-proportion="0.38964579">
+            <state line="90" column="13" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.38964579">
               <folding />
             </state>
           </provider>
@@ -575,7 +575,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="23" selection-start="3232" selection-end="3232" vertical-scroll-proportion="0.38964579">
+        <state line="90" column="13" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.38964579">
           <folding />
         </state>
       </provider>

@@ -88,7 +88,7 @@ class StopLossTransaction < ActiveRecord::Base
 
       if place_the_order
         puts "placing the order..."
-        puts "CLASS::: " + order_to_execute.class
+        puts order_to_execute.class
         puts order_to_execute.to_json
 
         transaction do
