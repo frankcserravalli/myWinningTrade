@@ -55,7 +55,7 @@ class StopLossTransaction < ActiveRecord::Base
       end
 
       puts order_model
-      puts order_model.new 
+      puts order_model.inspect
       symbol = order.user_stock.stock.symbol
       place_the_order = false
 
@@ -89,24 +89,23 @@ class StopLossTransaction < ActiveRecord::Base
         puts "placing the order..."
         puts order_to_execute.to_json
 
-        unless order_to_execute["cost_basis"].nil? or order_to_execute["price"].nil?
-          transaction do
-            if order_to_execute.place!(details)
-              order.status = "processed"
-              order.executed_at = Time.now
-              puts "ORDER PLACED"
-            else
-              puts "ORDER NOT PLACED"
-              order.status = "failed"
-            end
-            if order.save
-              puts "order saved"
-            else
-              puts "order not saved"
-              raise ActiveRecord::Rollback
-            end
+        transaction do
+          if order_to_execute.place!(details)
+            order.status = "processed"
+            order.executed_at = Time.now
+            puts "ORDER PLACED"
+          else
+            puts "ORDER NOT PLACED"
+            order.status = "failed"
+          end
+          if order.save
+            puts "order saved"
+          else
+            puts "order not saved"
+            raise ActiveRecord::Rollback
           end
         end
+        
       end
       puts "done evaluating pending orders"
     end
