@@ -10,14 +10,12 @@ class Sell < Order
       self.value = order_price
       self.price = stock.current_price
 
-      puts params
-
       if params
-        puts buy = Buy.where(user_id: params[1], stock_id: stock.id).first
+        buy = Buy.where(user_id: params[1], stock_id: stock.id).first
 
         cost_basis = (buy.value / volume).abs
 
-        puts cost_basis
+        puts "cost_basis #{cost_basis}"
 
         cost_basis = nil
       else
