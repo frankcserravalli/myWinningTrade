@@ -2,7 +2,7 @@ class Sell < Order
   attr_accessor :buy
   attr_accessible :buy
 
-  def place!(stock)
+  def place!(stock, pending_order = nil)
     order_price = volume.to_f * stock.current_price.to_f
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
 
@@ -10,7 +10,19 @@ class Sell < Order
       self.value = order_price
       self.price = stock.current_price
 
-      self.capital_gain = stock.current_price.to_f - buy.cost_basis
+      if pending_order
+        puts buy = Buy.where(user_id: current_user.id, stock_id: stock.id).first
+
+        cost_basis = (buy.value / volume).abs
+
+        puts cost_basis
+
+        cost_basis = nil
+      else
+        cost_basis = buy.cost_basis
+      end
+
+      self.capital_gain = stock.current_price.to_f - cost_basis
 
       # Here we calculate the transaction capital minus taxes
       transaction_capital_less_tax = (self.capital_gain -= (self.capital_gain.to_f * 0.3).round(2))

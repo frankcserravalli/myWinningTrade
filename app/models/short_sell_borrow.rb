@@ -6,7 +6,7 @@ class ShortSellBorrow < Order
   before_create :set_volume_remaining
   after_create :recalculate_user_stock_cost_basis
 
-  def place!(stock)
+  def place!(stock, pending_order = nil)
 
     if stock.current_price.to_f <= 0.0
       self.errors.add(:base, "Cannot purchase a stock that has zero value.")

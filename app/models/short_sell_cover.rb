@@ -2,7 +2,7 @@ class ShortSellCover < Order
   attr_accessor :short_sell_borrow
   attr_accessible :short_sell_borrow
 
-  def place!(stock)
+  def place!(stock, pending_order = nil)
     order_price = volume.to_f * stock.current_price.to_f
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
 

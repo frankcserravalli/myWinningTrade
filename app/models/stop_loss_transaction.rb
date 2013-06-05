@@ -22,7 +22,7 @@ class StopLossTransaction < ActiveRecord::Base
 
   attr_accessible :user, :user_stock, :volume, :order_type, :measure, :price_target, :status, :execute_at
 
-  def place!(stock)
+  def place!(stock, pending_order = nil)
     # This method will place a stop_loss_transaction order
     # that will be executed at the specific date time
     # by a cron job.
@@ -96,7 +96,9 @@ class StopLossTransaction < ActiveRecord::Base
         puts order_to_execute.to_json
 
         transaction do
-          if order_to_execute.place!(details)
+          pending_order = true
+
+          if order_to_execute.place!(details, pending_order)
             order.status = "processed"
             order.executed_at = Time.now
             puts "ORDER PLACED"
