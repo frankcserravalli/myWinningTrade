@@ -55,7 +55,8 @@ class StopLossTransaction < ActiveRecord::Base
       else
         puts "SOMETHING ELSE #### #{order_model}"
 
-        order_model = order_model.capitalize.constantize
+        # This deals with having underscores, then it breaks the words into an array then capitalize each word
+        order_model = order_model.gsub("_", " ").split(" ").each{|word| word.capitalize!}.join(" ")
       end
 
       symbol = order.user_stock.stock.symbol
