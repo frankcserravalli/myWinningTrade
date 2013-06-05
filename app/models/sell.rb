@@ -20,6 +20,8 @@ class Sell < Order
 
         puts "cost_basis #{cost_basis}"
 
+        puts stock.current_price.to_s
+
         cost_basis = nil
       else
         cost_basis = buy.cost_basis
