@@ -40,7 +40,7 @@
       <file leaf-file-name="sell.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/sell.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="37" selection-start="602" selection-end="602" vertical-scroll-proportion="0.4631579">
+            <state line="24" column="17" selection-start="617" selection-end="617" vertical-scroll-proportion="0.50526315">
               <folding />
             </state>
           </provider>
@@ -596,7 +596,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/sell.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="37" selection-start="602" selection-end="602" vertical-scroll-proportion="0.4631579">
+        <state line="24" column="17" selection-start="617" selection-end="617" vertical-scroll-proportion="0.50526315">
           <folding />
         </state>
       </provider>
