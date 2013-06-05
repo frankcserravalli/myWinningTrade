@@ -10,6 +10,9 @@ class Sell < Order
       self.value = order_price
       self.price = stock.current_price
 
+      params "stock"
+      params stock
+
       if params
         buy = Buy.where(user_id: params[1], stock_id: stock.id).first
 
