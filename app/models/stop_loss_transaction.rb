@@ -45,6 +45,7 @@ class StopLossTransaction < ActiveRecord::Base
     puts "#{orders.size} orders"
     orders.each do |order|
       order_model = order.order_type
+      puts "###LLL#### #{order_model}"
       order_model = "SellTransaction" if order_model == "Sell"
       puts order_model.inspect
 
@@ -87,6 +88,7 @@ class StopLossTransaction < ActiveRecord::Base
 
 
       puts "####    ORDER    ######"
+
       puts order.inspect
 
 

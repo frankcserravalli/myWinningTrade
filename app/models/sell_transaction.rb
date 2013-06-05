@@ -25,8 +25,6 @@ class SellTransaction
     buys = user_stock.buys.with_volume_remaining.order(:created_at)
     volume_remaining_to_sell = volume.to_i
 
-    puts "something happening"
-
     Sell.transaction do
       buys.each do |buy|
       	this_sale_volume = [buy.volume.to_i, volume_remaining_to_sell].min
