@@ -98,7 +98,7 @@ class StopLossTransaction < ActiveRecord::Base
         transaction do
           pending_order = true
 
-          if order_to_execute.place!(details, pending_order)
+          if order_to_execute.place!(details, pending_order, order.user_id)
             order.status = "processed"
             order.executed_at = Time.now
             puts "ORDER PLACED"

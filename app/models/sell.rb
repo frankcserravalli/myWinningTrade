@@ -13,7 +13,7 @@ class Sell < Order
       puts params
 
       if params
-        puts buy = Buy.where(user_id: current_user.id, stock_id: stock.id).first
+        puts buy = Buy.where(user_id: params[1], stock_id: stock.id).first
 
         cost_basis = (buy.value / volume).abs
 
