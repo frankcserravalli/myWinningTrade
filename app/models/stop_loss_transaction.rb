@@ -96,9 +96,7 @@ class StopLossTransaction < ActiveRecord::Base
         puts order_to_execute.to_json
 
         transaction do
-          pending_order = true
-
-          if order_to_execute.place!(details, pending_order, order.user_id)
+          if order_to_execute.place!(details)
             order.status = "processed"
             order.executed_at = Time.now
             puts "ORDER PLACED"
