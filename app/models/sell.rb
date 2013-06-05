@@ -2,7 +2,7 @@ class Sell < Order
   attr_accessor :buy
   attr_accessible :buy
 
-  def place!(stock, pending_order = nil)
+  def place!(stock, *params)
     order_price = volume.to_f * stock.current_price.to_f
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
 
@@ -10,7 +10,9 @@ class Sell < Order
       self.value = order_price
       self.price = stock.current_price
 
-      if pending_order
+      puts params
+
+      if params
         puts buy = Buy.where(user_id: current_user.id, stock_id: stock.id).first
 
         cost_basis = (buy.value / volume).abs
