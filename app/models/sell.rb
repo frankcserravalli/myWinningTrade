@@ -11,8 +11,8 @@ class Sell < Order
       self.price = stock.current_price
 
       puts "#### BUY #####"
-      puts buy
-      puts buy.cost_basis
+      puts " details of buy object #{buy.inspect}"
+      puts  "cost basis is #{buy.cost_basis.to_s}"
       self.capital_gain = stock.current_price.to_f - buy.cost_basis
 
       # Here we calculate the transaction capital minus taxes
