@@ -13,11 +13,10 @@ class Sell < Order
       unless params.blank?
         #buy = Buy.where(user_id: params[1], stock_id: stock.id).first
 
+        puts "##### STOCK ######"
+        puts stock
+
         cost_basis = (self.value / volume).abs
-
-        puts "cost_basis #{cost_basis}"
-
-        puts stock.current_price.to_s
 
         cost_basis = nil
       else
