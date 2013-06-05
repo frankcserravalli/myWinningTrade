@@ -46,17 +46,18 @@ class StopLossTransaction < ActiveRecord::Base
     orders.each do |order|
       order_model = order.order_type
       puts "###LLL#### #{order_model}"
-      order_model = "SellTransaction" if order_model == "Sell"
-      puts order_model.inspect
+      order_model = "SellTransaction" if order_model == "Sell" or order_model == "sell"
 
       if order_model == "SellTransaction"
         order_model = order_model.constantize
+
+        puts "SELL TRANCASTION #### #{order_model}"
       else
         order_model = order_model.capitalize.constantize
+
+        puts "SOMETHING ELSE #### #{order_model}"
       end
 
-      puts order_model
-      puts order_model.inspect
       symbol = order.user_stock.stock.symbol
       place_the_order = false
 
@@ -86,15 +87,8 @@ class StopLossTransaction < ActiveRecord::Base
         end
       end
 
-
-      puts "####    ORDER    ######"
-
-      puts order.inspect
-
-
       if place_the_order
         puts "placing the order..."
-        puts order_to_execute.class
         puts order_to_execute.to_json
 
         transaction do
