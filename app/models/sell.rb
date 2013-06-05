@@ -6,13 +6,16 @@ class Sell < Order
     order_price = volume.to_f * stock.current_price.to_f
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
 
+    puts "self user stocks"
+    puts self.user_stock
+
+    puts "stock"
+    puts stock
+
     transaction do
       self.value = order_price
       self.price = stock.current_price
 
-      puts "#### BUY #####"
-      puts " details of buy object #{buy.inspect}"
-      puts  "cost basis is #{buy.cost_basis.to_s}"
       self.capital_gain = stock.current_price.to_f - buy.cost_basis
 
       # Here we calculate the transaction capital minus taxes
