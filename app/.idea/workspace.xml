@@ -19,19 +19,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="stop_loss_transaction.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stop_loss_transaction.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="86" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
+            <state line="56" column="0" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.6240409">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sell.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/sell.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.36828643">
+            <state line="18" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -544,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="86" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/sell_transaction.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="0" selection-start="1045" selection-end="1045" vertical-scroll-proportion="-16.0">
@@ -560,7 +553,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/sell.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.36828643">
+        <state line="18" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="2039" selection-end="2039" vertical-scroll-proportion="0.6240409">
           <folding />
         </state>
       </provider>

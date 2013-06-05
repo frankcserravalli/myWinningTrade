@@ -49,13 +49,13 @@ class StopLossTransaction < ActiveRecord::Base
       order_model = "SellTransaction" if order_model == "Sell" or order_model == "sell"
 
       if order_model == "SellTransaction"
-        order_model = order_model.constantize
-
         puts "SELL TRANCASTION #### #{order_model}"
-      else
-        order_model = order_model.capitalize.constantize
 
+        order_model = order_model.constantize
+      else
         puts "SOMETHING ELSE #### #{order_model}"
+
+        order_model = order_model.capitalize.constantize
       end
 
       symbol = order.user_stock.stock.symbol
