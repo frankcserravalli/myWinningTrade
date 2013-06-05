@@ -28,19 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stop_loss_transaction.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="stop_loss_transaction.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="22" selection-start="3329" selection-end="3329" vertical-scroll-proportion="-57.846153">
+            <state line="88" column="27" selection-start="3131" selection-end="3131" vertical-scroll-proportion="0.54223436">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sell.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/sell.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="14" selection-start="333" selection-end="333" vertical-scroll-proportion="0.25263157">
+            <state line="13" column="0" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -106,8 +106,8 @@
         <option value="$PROJECT_DIR$/helpers/users_helper.rb" />
         <option value="$PROJECT_DIR$/models/finance.rb" />
         <option value="$PROJECT_DIR$/controllers/api/v1/stocks_controller.rb" />
-        <option value="$PROJECT_DIR$/models/stop_loss_transaction.rb" />
         <option value="$PROJECT_DIR$/models/sell.rb" />
+        <option value="$PROJECT_DIR$/models/stop_loss_transaction.rb" />
       </list>
     </option>
   </component>
@@ -577,16 +577,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
+    <entry file="file://$PROJECT_DIR$/models/sell.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="22" selection-start="3329" selection-end="3329" vertical-scroll-proportion="-57.846153">
+        <state line="13" column="0" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/sell.rb">
+    <entry file="file://$PROJECT_DIR$/models/stop_loss_transaction.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="14" selection-start="333" selection-end="333" vertical-scroll-proportion="0.25263157">
+        <state line="88" column="27" selection-start="3131" selection-end="3131" vertical-scroll-proportion="0.54223436">
           <folding />
         </state>
       </provider>

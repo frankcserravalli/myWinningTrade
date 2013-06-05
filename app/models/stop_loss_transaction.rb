@@ -62,7 +62,6 @@ class StopLossTransaction < ActiveRecord::Base
       puts "user #{order.user_id} would like to #{order.order_type} #{symbol} when price is #{order.measure} #{order.price_target}"
       puts "checking price for #{symbol}..." 
       details = Finance.current_stock_details(symbol)
-      puts "details:::   #{details.inspect}"
       current_price = details.current_price.to_f
       puts "current price for #{symbol} is #{current_price}"
       puts "comparing prices..."
@@ -85,6 +84,11 @@ class StopLossTransaction < ActiveRecord::Base
           puts "executing a #{order.order_type} because current price #{current_price} < #{order.price_target}"
         end
       end
+
+
+      puts "####    ORDER    ######"
+      puts order.inspect
+
 
       if place_the_order
         puts "placing the order..."
