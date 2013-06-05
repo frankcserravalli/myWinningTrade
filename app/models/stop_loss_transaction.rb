@@ -100,6 +100,7 @@ class StopLossTransaction < ActiveRecord::Base
             puts "ORDER NOT PLACED"
             order.status = "failed"
           end
+
           if order.save
             puts "order saved"
           else

@@ -9,6 +9,10 @@ class Sell < Order
     transaction do
       self.value = order_price
       self.price = stock.current_price
+
+      puts "#### BUY #####"
+      puts buy
+      puts buy.cost_basis
       self.capital_gain = stock.current_price.to_f - buy.cost_basis
 
       # Here we calculate the transaction capital minus taxes
