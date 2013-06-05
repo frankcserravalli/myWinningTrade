@@ -14,9 +14,9 @@ class Sell < Order
       params stock
 
       if params
-        buy = Buy.where(user_id: params[1], stock_id: stock.id).first
+        #buy = Buy.where(user_id: params[1], stock_id: stock.id).first
 
-        cost_basis = (buy.value / volume).abs
+        cost_basis = (self.value / volume).abs
 
         puts "cost_basis #{cost_basis}"
 
