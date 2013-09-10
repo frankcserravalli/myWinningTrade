@@ -48,9 +48,9 @@ module Api
           end
         else
           # We validate the user's password
-          user = User.find_by_email(params[:email].downcase)
+          user = User.find_by_email(params[:email])
           if user
-            if user.try(:authenticate, params[:password].downcase)
+            if user.try(:authenticate, params[:password])
               # Since everything is a goal, we create a scramble token then render it apart of the json
               scrambled_token = scramble_token(Time.now, user.id)
 
