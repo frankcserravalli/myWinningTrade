@@ -37,3 +37,25 @@ coverage/
 *.swn
 
 .idea/tasks.xml
+
+.idea/.generators
+
+.idea/.rakeTasks
+
+.idea/codeStyleSettings.xml
+
+.idea/dataSources.ids
+
+.idea/dataSources.xml
+
+.idea/encodings.xml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/myWinningTrade.iml
+
+.idea/scopes/scope_settings.xml
+
+.idea/vcs.xml
