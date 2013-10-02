@@ -14,45 +14,45 @@
 ActiveRecord::Schema.define(:version => 20130520172143) do
 
   create_table "date_time_transactions", :force => true do |t|
-    t.integer  "user_stock_id"
-    t.integer  "user_id"
-    t.integer  "volume",        :limit => 8
-    t.string   "order_type"
-    t.string   "status",                     :default => "pending"
-    t.datetime "execute_at"
-    t.datetime "updated_at"
-    t.datetime "created_at"
+    t.integer   "user_stock_id"
+    t.integer   "user_id"
+    t.integer   "volume",        :limit => 8
+    t.string    "order_type"
+    t.string    "status",                     :default => "pending"
+    t.timestamp "execute_at",    :limit => 6
+    t.timestamp "updated_at",    :limit => 6
+    t.timestamp "created_at",    :limit => 6
   end
 
   add_index "date_time_transactions", ["user_id"], :name => "index_date_time_transactions_on_user_id"
   add_index "date_time_transactions", ["user_stock_id"], :name => "index_date_time_transactions_on_user_stock_id"
 
   create_table "group_users", :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "group_id"
+    t.integer   "user_id"
+    t.timestamp "created_at", :limit => 6, :null => false
+    t.timestamp "updated_at", :limit => 6, :null => false
   end
 
   create_table "groups", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.string    "name"
+    t.timestamp "created_at", :limit => 6, :null => false
+    t.timestamp "updated_at", :limit => 6, :null => false
   end
 
   create_table "orders", :force => true do |t|
-    t.integer  "user_id"
-    t.decimal  "price",                          :precision => 10, :scale => 2
-    t.integer  "volume",           :limit => 8
-    t.string   "type",             :limit => 15
-    t.decimal  "value",                          :precision => 10, :scale => 2
-    t.integer  "user_stock_id"
-    t.decimal  "cost_basis",                     :precision => 10, :scale => 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "volume_remaining", :limit => 8
-    t.decimal  "capital_gain",                   :precision => 10, :scale => 2
+    t.integer   "user_id"
+    t.decimal   "price",                          :precision => 10, :scale => 2
+    t.integer   "volume",           :limit => 8
+    t.string    "type",             :limit => 15
+    t.decimal   "value",                          :precision => 10, :scale => 2
+    t.integer   "user_stock_id"
+    t.timestamp "created_at",       :limit => 6
+    t.timestamp "updated_at",       :limit => 6
+    t.decimal   "cost_basis",                     :precision => 10, :scale => 2
+    t.integer   "volume_remaining", :limit => 8
+    t.decimal   "capital_gain",                   :precision => 10, :scale => 2
   end
 
   add_index "orders", ["type"], :name => "index_orders_on_type"
@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(:version => 20130520172143) do
   add_index "orders", ["user_stock_id"], :name => "index_orders_on_user_stock_id"
 
   create_table "pending_teachers", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.timestamp "created_at", :limit => 6, :null => false
+    t.timestamp "updated_at", :limit => 6, :null => false
   end
 
   create_table "stocks", :force => true do |t|
@@ -71,36 +71,36 @@ ActiveRecord::Schema.define(:version => 20130520172143) do
   end
 
   create_table "stop_loss_transactions", :force => true do |t|
-    t.integer  "user_stock_id"
-    t.integer  "user_id"
-    t.integer  "volume",        :limit => 8
-    t.string   "order_type"
-    t.string   "status",                     :default => "pending"
-    t.string   "measure"
-    t.decimal  "price_target"
-    t.datetime "executed_at"
-    t.datetime "updated_at"
-    t.datetime "created_at"
+    t.integer   "user_stock_id"
+    t.integer   "user_id"
+    t.integer   "volume",        :limit => 8
+    t.string    "order_type"
+    t.string    "status",                     :default => "pending"
+    t.string    "measure"
+    t.decimal   "price_target"
+    t.timestamp "executed_at",   :limit => 6
+    t.timestamp "updated_at",    :limit => 6
+    t.timestamp "created_at",    :limit => 6
   end
 
   add_index "stop_loss_transactions", ["user_id"], :name => "index_stop_loss_transactions_on_user_id"
   add_index "stop_loss_transactions", ["user_stock_id"], :name => "index_stop_loss_transactions_on_user_stock_id"
 
   create_table "subscriptions", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "customer_id"
-    t.string   "payment_plan"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer   "user_id"
+    t.string    "customer_id"
+    t.string    "payment_plan"
+    t.timestamp "created_at",   :limit => 6, :null => false
+    t.timestamp "updated_at",   :limit => 6, :null => false
   end
 
   add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "user_account_summaries", :force => true do |t|
-    t.integer  "user_id"
-    t.float    "capital_total", :default => 0.0
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.integer   "user_id"
+    t.float     "capital_total",              :default => 0.0
+    t.timestamp "created_at",    :limit => 6,                  :null => false
+    t.timestamp "updated_at",    :limit => 6,                  :null => false
   end
 
   add_index "user_account_summaries", ["user_id"], :name => "index_user_account_summaries_on_user_id"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130520172143) do
     t.string  "uid"
     t.decimal "account_balance",                    :precision => 10, :scale => 2, :default => 50000.0
     t.boolean "accepted_terms",                                                    :default => false
+    t.boolean "premium"
     t.boolean "premium_subscription",                                              :default => false
     t.string  "password_digest"
     t.string  "group",                                                             :default => "student"
