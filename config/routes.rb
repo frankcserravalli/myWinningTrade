@@ -1,5 +1,7 @@
 MyWinningTrade::Application.routes.draw do
 
+  root to: redirect('/login')
+
   match '/auth/:provider/callback', to: 'sessions#create'
 
   post 'sessions/create', to: 'sessions#create'
@@ -12,7 +14,7 @@ MyWinningTrade::Application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
-  get '/AboutUs', to: 'sessions#AboutUs'
+  get '/AboutUs', to: 'sessions#aboutus'
   get '/Education', to: 'sessions#education'
   get '/Press', to: 'sessions#press'
   get '/Portal', to: 'sessions#loginportal'

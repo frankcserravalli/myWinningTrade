@@ -13,3 +13,9 @@ test:
   host: localhost
   template: template0
 
+production:
+  adapter: postgresql
+  database: my_winning_trade_development
+  user: frank
+  password: rockie123
+  host: localhost

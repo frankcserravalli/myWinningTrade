@@ -28,7 +28,6 @@
 //= require user_search
 //= require tutorialize
 //= require bootstrap.min
-//= require holder
 //= require_tree .//stock
 //= require_self
 

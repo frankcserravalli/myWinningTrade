@@ -26,7 +26,7 @@ group :assets do
 
   gem "momentjs-rails", "~> 1.7.2"
 
-  gem "twitter-bootstrap-rails", "2.1.7"
+##  gem "twitter-bootstrap-rails", "2.1.7"
 
 end
 
