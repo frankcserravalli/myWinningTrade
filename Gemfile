@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '3.2.12'
@@ -25,8 +25,6 @@ group :assets do
   gem "compass_twitter_bootstrap", "~> 2.2.2.2"
 
   gem "momentjs-rails", "~> 1.7.2"
-
-##  gem "twitter-bootstrap-rails", "2.1.7"
 
 end
 
