@@ -570,7 +570,7 @@ class User < ActiveRecord::Base
                 }
               </script>
             </head>
-            <h2>Trading Summary</h2>
+            <h2>Summary</h2>
             <div class="row-fluid">
               <table class="table table-striped">
                 <thead>

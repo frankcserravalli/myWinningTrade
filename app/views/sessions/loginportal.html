@@ -1,0 +1,59 @@
+<body>
+
+<div class="container">
+
+    <div class="masthead">
+        <ul class="nav nav-justified">
+            <li><a href="/login">Home</a></li>
+            <li class="active"><a href="/Portal">Platform Login</a></li>
+            <li><a href="/Education">Education Center</a></li>
+            <li><a href="/AboutUs">About the Company</a></li>
+            <li><a href="/Press">Awards & Press</a></li>
+        </ul>
+    </div>
+
+
+    <div class="col-lg-6">
+
+        <form class="form-signin" method ="post" action ="/sessions/create" accept-charset="UTF-8">
+            <h2 class="form-signin-heading">Sign in with MWT</h2>
+            <input id="email" type="text" name="email" placeholder="Email address" class="form-control" autofocus>
+            <input id="password" type="password" name="password" placeholder="Password" class="form-control">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log In" name="commit">Sign in</button>
+            <h2 class="form-signin-heading">Social Media Logins</h2>
+            <a class="btn btn-block btn-primary" href="/auth/facebook">Sign in With Facebook</a>
+            <a class="btn btn-block btn-info" href="/auth/linkedin">Sign in With LinkedIn</a>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <form class="form-signin" method="post" action="/user/create" accept-charset="UTF-8">
+            <h2 class="form-signin-heading">Sign up for MWT</h2>
+            <input id="user_name" type="text" size="30" name="user[name]" placeholder="Your Name" class="form-control" autofocus>
+            <input id="user_email" type="text" size="30" name="user[email]" placeholder="Your E-Mail" class="form-control" autofocus>
+            <input id="user_password" type="password" size="30" name="user[password]" placeholder="Password" class="form-control">
+            <input id="user_password_confirmation" type="password" size="30" name="user[password_confirmation]" placeholder="Confirm Password" class="form-control">
+            <input class="btn btn-large btn-primary btn-block" type="submit" value="Sign Up" name="commit"></input>
+        </form>
+    </div>
+
+     </div>
+
+    <!-- Site footer -->
+    <div class="footer">
+        <p>&copy; The Winning Trade LLC 2013</p>
+    </div>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
+
+
+
+
+
+

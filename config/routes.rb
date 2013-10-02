@@ -12,6 +12,11 @@ MyWinningTrade::Application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
+  get '/AboutUs', to: 'sessions#AboutUs'
+  get '/Education', to: 'sessions#education'
+  get '/Press', to: 'sessions#press'
+  get '/Portal', to: 'sessions#loginportal'
+
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
@@ -22,8 +27,8 @@ MyWinningTrade::Application.routes.draw do
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
   get '/users/profile', to: 'users#profile', as: 'profile'
-  get '/signin', to: 'users#sign_in'
-  get '/signup', to: 'users#sign_up'
+  get '/signin', to: 'sessions#loginportal'
+  get '/signup', to: 'sessions#loginportal'
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
   post '/user/create', to: 'users#create'
