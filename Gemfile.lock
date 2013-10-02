@@ -273,6 +273,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+<<<<<<< HEAD
     raindrops (0.12.0)
     rake (10.1.0)
     rb-fsevent (0.9.3)
@@ -280,6 +281,10 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
+=======
+    raindrops (0.11.0)
+    rake (10.0.4)
+>>>>>>> Revert 6a2c3be..bbb293f
     rdoc (3.12.2)
       json (~> 1.4)
     responders (1.1.2)

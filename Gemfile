@@ -15,8 +15,9 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'therubyrhino', '~> 2.0.2'
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass_twitter_bootstrap', '~> 2.2.2.2'
-  gem 'momentjs-rails', '~> 1.7.2'
+
+  gem 'bootstrap-sass', '~> 3.3.4'
+  gem "momentjs-rails", "~> 1.7.2"
 end
 
 # UI

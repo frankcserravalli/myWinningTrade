@@ -1,6 +1,6 @@
 #stock-suggest
   label = t('.trending_label', default: 'Popular Stocks')
   ul
-    - %w(AAPL GE GOOG JPM FB TSLA).each do |suggestion|
+    - %w(AAPL GE GOOG JPM).each do |suggestion|
       li
         = link_to suggestion, stock_path(suggestion)

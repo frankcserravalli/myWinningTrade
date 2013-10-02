@@ -23,6 +23,7 @@ MyWinningTrade::Application.routes.draw do
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
   get '/users/profile', to: 'users#profile', as: 'profile'
+
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
 
