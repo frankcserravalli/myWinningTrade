@@ -30,15 +30,14 @@ html
 body
   margin: 0
 
-a
-  &:focus
-    outline: thin dotted
-  &:active, &:hover
-    outline: 0
+a,  a:hover, a:active, a:focus
+  outline: 0
 
-h1
-  margin: 0.67em 0
-  font-size: 2em
+h1, h2, h3
+  font-family: 'Shanti', 'open sans'
+  color: #3c5063
+h3
+  color: #525252
 
 abbr[title]
   border-bottom: 1px dotted
@@ -339,54 +338,17 @@ cite
 .text-center
   text-align: center
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-  font-weight: 500
-  line-height: 1.1
-  color: #475b77
-
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small
-  font-weight: normal
-  line-height: 1
-  color: #475b77
+h1, h2, h3
+  font-family: 'Shanti', 'open sans'
+  color: #3c5063
+h3
+  color: #525252
 
 h1, h2, h3
-  margin-top: 20px
-  margin-bottom: 10px
-  color: #475b77
-
-h4, h5, h6
-  margin-top: 10px
-  margin-bottom: 10px
-
-h1, .h1
-  font-size: 36px
-  color: #475b77
-
-h2, .h2
-  font-size: 30px
-  color: #475b77
-
-h3, .h3
-  font-size: 24px
-
-h4, .h4
-  font-size: 18px
-
-h5, .h5
-  font-size: 14px
-
-h6, .h6
-  font-size: 12px
-
-h1 small, .h1 small
-  font-size: 24px
-
-h2 small, .h2 small
-  font-size: 18px
-
-h3 small, .h3 small, h4 small, .h4 small
-  font-size: 14px
+  font-family: 'Shanti', 'open sans'
+  color: #3c5063
+h3
+  color: #525252
 
 .page-header
   padding-bottom: 9px
@@ -3055,27 +3017,6 @@ textarea.input-group-sm >
   border-top-right-radius: 0
   border-top-left-radius: 0
 
-.navbar
-  position: relative
-  z-index: 1000
-  min-height: 50px
-  margin-bottom: 20px
-  border: 1px solid transparent
-  &:before
-    display: table
-    content: " "
-  &:after
-    display: table
-    content: " "
-    clear: both
-  &:before
-    display: table
-    content: " "
-  &:after
-    display: table
-    content: " "
-    clear: both
-
 @media (min-width: 768px)
   .navbar
     border-radius: 4px
@@ -3726,7 +3667,7 @@ a.list-group-item.active > .badge
   li > a > .badge
     margin-left: 3px
 
-.jumbotron
+//.jumbotron
   padding: 30px
   margin-bottom: 30px
   font-size: 21px
@@ -3743,7 +3684,7 @@ a.list-group-item.active > .badge
 .container .jumbotron
   border-radius: 6px
 
-@media screen and (min-width: 768px)
+//@media screen and (min-width: 768px)
   .jumbotron
     padding-top: 48px
     padding-bottom: 48px
@@ -4967,3 +4908,150 @@ th.hidden-lg, td.hidden-lg
     display: table-cell !important
   .hidden-print, tr.hidden-print, th.hidden-print, td.hidden-print
     display: none !important
+
+.navbar .nav > li > a
+  padding: 16px 10px 16px
+
+.boxify
+  +boxify
+  padding: 10px
+  margin: 0 0 15px
+  table
+    margin-bottom: 0
+    color: #484b4f
+    td, th
+      font-size: 12px
+      padding: 6px 8px
+    td
+      border-right: 1px solid #dfdcdc
+      width: 132px
+    th
+      border-right: 1px solid #efefef
+      width: 142px
+      font-wieght: normal
+      color: #3c5063
+
+table.boxify
+  a
+    text-decoration: underline
+
+.infobar
+  top: $navbarHeight
+  color: #3c5063
+  box-shadow: 0 1px 1px #4e6377
+  background: #fff
+  .navbar-inner
+    background: #3c5063
+    border-top: 1px solid #4e6377
+    border-bottom: 1px solid #272D37
+    color: #fff
+    text-shadow: 0 1px 1px #000
+    .navbar-text
+      margin-right: 10px
+      color: #fff
+      em
+        margin-right: 1em
+    .myportfolio
+      width: 208px
+      height: 22px
+      font-size: 12px
+      display: block
+      float: right
+      margin: 1px 0 0 0
+      padding: 15px 10px 10px 10px
+      color: white
+      span
+        font-size: 11px
+      &.portfolio-trending-up
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7B946F', endColorstr='#59744c')
+        +background(linear-gradient(#7B946F, #59744c))
+        border: 1px solid #7B946F
+
+      &.portfolio-trending-down
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa432f', endColorstr='#953320')
+        +background(linear-gradient(#aa432f, #953320))
+        border: 1px solid #b52d13
+
+#footer
+  border-top: 1px solid #aaa
+  padding: 10px
+  float: none
+  clear: both
+  margin: 20px 0 0 205px
+  display: inline-block
+  width: 510px
+  text-align: center
+  a
+    margin: 0 10px
+
+ins:not(#aswift_0_anchor)
+  float: right !important
+  margin-bottom: -21px !important
+  margin-top: 20px !important
+
+h1.jumbo
+  font-size: 64px
+  color: #3f5a73
+  text-align: center
+  font-family: 'Shanti', 'open sans'
+  margin: 30px 0 40px
+  text-shadow: 0 1px 1px #fff
+
+p.intro
+  width: 533px
+  color: #555
+  font-size: 14px
+  line-height: 24px
+  margin: 40px  0 20px 206px
+  text-align: center
+
+.sml_btn
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9aabbb', endColorstr='#7d91a3')
+  +background(linear-gradient(#9aabbb, #7d91a3))
+  border: #74889b 1px solid
+  padding: 5px 12px
+  display: inline-block
+  font-weight: bold
+  +border-radius(2px)
+  margin-right: 6px
+  font-size: 10px
+  color: #535050
+  text-shadow: 0 0 1px #fff
+  +transition((background 0.4s), (color 0.4s), (border 0.4s))
+  &:hover
+    cursor: pointer
+    +background(linear-gradient(#3c5063, #445d74))
+    text-shadow: 0 0 1px #5c6f81
+    border: #2d4359 1px solid
+    text-decoration: none
+    color: #a3b5c6
+
+.btn-large.btn-primary
+  +transition((background 0.4s))
+  +background(linear-gradient(#3C5063, #3C4663))
+  &:hover
+    +background(linear-gradient(#2a334c, #1d2336))
+
+.centered-text
+  text-align: center
+
+/* Navbar */
+/* ====== */
+.dashboard-tutorial
+  cursor: pointer
+
+.trading-tutorial
+  cursor: pointer
+
+.users-name
+  cursor: pointer
+
+
+/* MISC */
+/* ==== */
+.gray
+  color: gray !important
+
+button::-moz-focus-inner
+  border: 0
+  outline-style: none
