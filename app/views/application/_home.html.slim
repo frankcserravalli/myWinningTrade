@@ -1,10 +1,12 @@
 head
   title = t('.title', default: 'My Winning Trade')
-  = stylesheet_link_tag 'home', media: 'all'
-  = stylesheet_link_tag 'justified-nav', media: 'all'
-  = javascript_include_tag 'jquery'
+  = stylesheet_link_tag 'application', media: 'all'
+  = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Shanti|Open+Sans:400,700,800'
+  = javascript_include_tag 'application'
+  = javascript_include_tag "#{request.protocol}s3.amazonaws.com/tradingview/tv.js"
+  = javascript_include_tag "https://js.stripe.com/v1/"
   = csrf_meta_tags
-
+  = tag :meta, :name => "stripe-key", :content => STRIPE_PUBLISHABLE_KEY
 
   coffee:
     window.uuid = ->
