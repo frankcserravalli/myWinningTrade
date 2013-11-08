@@ -26,6 +26,8 @@ group :assets do
 
   gem "momentjs-rails", "~> 1.7.2"
 
+  gem 'rack-canonical-host'
+
 end
 
 # UI
