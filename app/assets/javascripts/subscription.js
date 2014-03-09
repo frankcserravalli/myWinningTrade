@@ -1,18 +1,11 @@
-$(".subscription-button").click(function() {
+$(document).ready(function () {
 
-  $(".subscription-button").removeClass("clicked-subscription-button");
+  $(".subscription-button").click(function() {
 
-  $(this).addClass("clicked-subscription-button");
+    $(".subscription-button").removeClass("clicked-subscription-button");
 
-});
-/*
-$(".subscription-button").hover(function() {
+    $(this).addClass("clicked-subscription-button");
 
-    $(".subscription-button").not(this).addClass("neutral-subscription-button");
-
-  }, function() {
-
-    $(".subscription-button").removeClass("neutral-subscription-button");
+  });
 
 });
- */

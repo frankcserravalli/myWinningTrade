@@ -22,7 +22,7 @@ class StopLossTransaction < ActiveRecord::Base
 
   attr_accessible :user, :user_stock, :volume, :order_type, :measure, :price_target, :status, :execute_at
 
-  def place!(stock)
+  def place!(stock, *params)
     # This method will place a stop_loss_transaction order
     # that will be executed at the specific date time
     # by a cron job.
@@ -40,14 +40,25 @@ class StopLossTransaction < ActiveRecord::Base
   end
 
   def self.evaluate_pending_orders
-    puts "begining evaluating  pending stop loss orders..."
-    @orders = StopLossTransaction.pending
-    puts "#{@orders.size} orders"
-    @orders.each do |order|
+    puts "begin evaluating  pending stop loss orders..."
+    orders = StopLossTransaction.pending
+    puts "#{orders.size} orders"
+    orders.each do |order|
       order_model = order.order_type
-      order_model = "SellTransaction" if order_model == "Sell"
-      order_model = order_model.constantize
-      puts order_model.new 
+      puts "###LLL#### #{order_model}"
+      order_model = "SellTransaction" if order_model == "Sell" or order_model == "sell"
+
+      if order_model == "SellTransaction"
+        puts "SELL TRANCASTION #### #{order_model}"
+
+        order_model = order_model.constantize
+      else
+        puts "SOMETHING ELSE #### #{order_model}"
+
+        # This deals with having underscores, then it breaks the words into an array then capitalize each word
+        order_model = order_model.gsub("_", " ").split(" ").each{|word| word.capitalize!}.join("").constantize
+      end
+
       symbol = order.user_stock.stock.symbol
       place_the_order = false
 
@@ -61,7 +72,7 @@ class StopLossTransaction < ActiveRecord::Base
       new_order = {}
       new_order[:volume] = order.volume
 
-      @order_to_execute = order_model.new(new_order.merge(user: order.user))
+      order_to_execute = order_model.new(new_order.merge(user: order.user))
 
       if order.measure == "Above"
         if current_price > order.price_target
@@ -79,9 +90,10 @@ class StopLossTransaction < ActiveRecord::Base
 
       if place_the_order
         puts "placing the order..."
-        puts @order_to_execute.to_json
+        puts order_to_execute.to_json
+
         transaction do
-          if @order_to_execute.place!(details)
+          if order_to_execute.place!(details)
             order.status = "processed"
             order.executed_at = Time.now
             puts "ORDER PLACED"
@@ -89,6 +101,7 @@ class StopLossTransaction < ActiveRecord::Base
             puts "ORDER NOT PLACED"
             order.status = "failed"
           end
+
           if order.save
             puts "order saved"
           else
@@ -96,6 +109,7 @@ class StopLossTransaction < ActiveRecord::Base
             raise ActiveRecord::Rollback
           end
         end
+
       end
       puts "done evaluating pending orders"
     end

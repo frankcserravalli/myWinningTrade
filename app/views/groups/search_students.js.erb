@@ -1,0 +1,14 @@
+MWT.names = <%= @group_users.html_safe %>;
+
+MWT.names_hash = <%= @group_users_hash.html_safe %>;
+
+console.log(MWT.names_hash);
+// Here I'm setting up the auto-complete function for student searches
+$( "#term" ).autocomplete({
+  source : MWT.names,
+  minLength: 3
+});
+
+
+
+

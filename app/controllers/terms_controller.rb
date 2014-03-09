@@ -2,6 +2,7 @@ class TermsController < ApplicationController
   skip_before_filter :require_login
   skip_before_filter :require_acceptance_of_terms
 
+
   def show
   end
 

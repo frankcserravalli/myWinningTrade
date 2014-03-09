@@ -1,0 +1,22 @@
+a.btn.btn-primary href="#{groups_path}" Return to Classes
+
+h3 = @group.name
+
+div.row
+  .span6
+    table.table.table-striped.table-bordered.list-of-classes-table-head
+      thead
+        tr
+          th Name
+          th Account Balance
+          th Capital Gain (Loss) less Incurred Tax Liability
+      tbody
+        - @group.group_users.each do |user|
+          tr
+            td = user.user.name
+            td = "$" + user.user.account_balance.round(2).to_s
+            - if user.user.user_account_summary
+              td = ((user.user.user_account_summary.capital_total / user.user.account_balance) * 100).round(2).to_s + "%"
+            - else
+              td Hasn't started trading yet!
+

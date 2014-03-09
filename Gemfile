@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-ruby '1.9.3'
+source 'http://rubygems.org'
+ruby '2.1.0'
 
 gem 'rails', '3.2.12'
 
@@ -25,13 +25,14 @@ group :assets do
   gem "compass_twitter_bootstrap", "~> 2.2.2.2"
 
   gem "momentjs-rails", "~> 1.7.2"
+
 end
 
 # UI
 # ===
 gem "chosen-rails", "~> 0.9.11.2"
 
-gem "underscore-rails", "~> 1.4.3"
+gem "underscore-rails", "~> 1.4.4"
 
 # Views
 # =====
@@ -42,6 +43,10 @@ gem "simple_form", "~> 2.0.4"
 gem "country_select", "~> 1.1.3"
 
 gem 'copycopter_client', '~> 2.0.1'
+
+gem "nested_form", "~> 0.3.1"
+
+gem "will_paginate", "~> 3.0.4"
 
 # Graphing
 # ========
@@ -57,6 +62,8 @@ gem "migrant", "~> 1.4.0"
 
 gem "squeel", "~> 1.0.15"
 
+gem "bcrypt-ruby", "~> 3.0.1"
+
 group :development do
   gem "letter_opener", "~> 1.0.0"
 
@@ -64,7 +71,7 @@ group :development do
 end
 
 group :test do
-  gem 'mocha', '~> 0.10.5', require: false
+  gem 'mocha', '~> 0.10.5', :require => false
 
   gem "capybara", "~> 2.0.2"
 
@@ -74,7 +81,7 @@ group :test do
 
   gem "rspec-rails", "~> 2.12.2"
 
-  gem "simplecov", "~> 0.7.1", require: false
+  gem "simplecov", "~> 0.7.1", :require => false
 
   gem "vcr", "~> 2.4.0"
 
@@ -120,6 +127,13 @@ group :development do
 
   gem "guard-bundler", "~> 1.0.0"
 end
+
+# Web Server
+# ==========
+gem "unicorn", "~> 4.6.2"
+
+# ETC
+# ===
 
 gem "fb_graph", "~> 2.6.5"
 

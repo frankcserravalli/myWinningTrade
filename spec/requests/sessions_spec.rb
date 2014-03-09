@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Sessions' do
-  it "should provide methods to create and destroy user sessions" do
+  xit "should provide methods to create and destroy user sessions" do
     visit "/auth/developer"
 
     fill_in 'name', with: 'Joe'

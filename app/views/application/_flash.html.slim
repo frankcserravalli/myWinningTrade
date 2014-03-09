@@ -2,4 +2,8 @@ ul#flash
   /Find a way to work this into flash
   /li.payment-errors
   - flash.each do |key,value|
-    li class=key = value
+    - if value.is_a?(Hash)
+      li class="#{key} #{value[:class]}" = value[:body]
+    - else
+      li class=key = value
+

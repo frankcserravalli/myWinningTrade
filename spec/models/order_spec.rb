@@ -70,7 +70,7 @@ describe "Order" do
       order = Sell.new(user: user, volume: 40, buy: buy)
       order.place!(@stock_details).should be_true
 
-      order.capital_gain.round(2).should == -(transaction_fee / stock_volume).round(2) # since stock price hasn't changed
+      order.capital_gain.round(2).to_i.should == -(transaction_fee / stock_volume).round(2).to_i # since stock price hasn't changed
 
     end
 

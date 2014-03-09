@@ -1,23 +1,21 @@
-h2 Summary
+h2 Trade Blotter Summary
+table.table-striped.table-bordered.table-condensed.table-hover#analysis
+  tbody
+    thead
+      tr
+        th Name
+        th Revenue (Loss)
+        th Tax Liability
+        th Capital at Risk
+        th Returns
+        th Average Holding Period
+        th Capital Invested %
+    tbody
+      - @stock_summary[:stocks].each do |stock, stock_details|
+        tr
+          - stock_details.each do |attribute, value|
+            td = value
 
-ul#analysis
-
-  - @stock_summary[:stocks].each do |key, value|
-    li = key
-
-    - value.each do |key2, value2|
-      ul
-        li
-          = key2
-          | : '
-          = value2
-  li Summary
-  - @stock_summary[:summary].each do |key, value|
-    ul
-      li
-        = key
-        | : '
-        = value
 
 
 

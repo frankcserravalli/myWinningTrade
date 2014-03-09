@@ -8,8 +8,7 @@ class Buy < Order
 
   attr_accessor :flash_cover
 
-  def place!(stock)
-
+  def place!(stock, *params)
     if stock.current_price.to_f <= 0.0
       self.errors.add(:base, "Cannot purchase a stock that has zero value.")
       return false
@@ -22,27 +21,25 @@ class Buy < Order
       return false
     end
 
-
-
     super
 
-    @shares_to_short = 0
+    shares_to_short = 0
 
     if self.volume <= self.user_stock.shares_borrowed
-      @shares_to_short = self.volume
+      shares_to_short = self.volume
       self.volume = 0
     end
     if self.volume > self.user_stock.shares_borrowed && self.user_stock.shares_borrowed > 0
-      @shares_to_short = self.user_stock.shares_borrowed
+      shares_to_short = self.user_stock.shares_borrowed
       self.volume = self.volume - self.user_stock.shares_borrowed
     end
 
-    if @shares_to_short.to_i > 0
-      @short_params = {}
-      @short_params[:volume] = @shares_to_short
-      @short_order = ShortTransaction.new(@short_params.merge(user: user))
-      if @short_order.place!(stock)
-        self.flash_cover = "Successfully covered #{@short_order.volume} #{stock.symbol} for $#{@short_order.value.round(2)}"
+    if shares_to_short.to_i > 0
+      short_params = {}
+      short_params[:volume] = shares_to_short
+      short_order = ShortTransaction.new(short_params.merge(user: user))
+      if short_order.place!(stock)
+        self.flash_cover = "Successfully covered #{short_order.volume} #{stock.symbol} for $#{short_order.value.round(2)}"
       end
       if self.volume == 0
         return false

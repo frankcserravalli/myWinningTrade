@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "Users" do
-  describe "Delete Subscriptions" do
 
-    it "should delete user and show flash message" do
+  describe "Delete Subscriptions" do
+    xit "should delete user and show flash message" do
       visit "/auth/developer"
 
       fill_in 'name', with: 'Joe'

@@ -1,46 +1,66 @@
 module Api
   module V1
     class UsersController < ApplicationController
+
       skip_before_filter :require_login, :require_acceptance_of_terms, :load_portfolio
       skip_before_filter :valid_user_id
       skip_before_filter :require_iphone_login, :only => [:create, :authenticate]
+      skip_before_filter :verify_authenticity_token
+
       respond_to :json
 
-
-
-
-      # call this to sign up a user
-      #
-      # Params Needed
-      # =============
-      # user (more details to come)
-      # So you will send the json for user like this..
-      # { "user": { "name": "", "email": "", etc etc } }
-      #
       def create
-        scrambled_token = scramble_token(Time.now, create_random_string)
+        # Set params within user hash
+        params[:user][:name] = params[:name]
+        params[:user][:email] = params[:email]
+        params[:user][:password] = params[:password]
+        params[:user][:password_confirmation] = params[:password_confirmation]
+        params[:user][:provider] = "mwt"
+        params[:user][:uid] = "nil"
+
+        # Set params to a new user
         @user = User.new(params[:user])
+
         if @user.save
+          # we create a scrambled token
+          scrambled_token = scramble_token(Time.now, @user.id)
+
           render :json => { :user_id => @user.id, :ios_token => scrambled_token}
         else
-          render :json => {}
+          render :json => { :status => @u }
         end
       end
 
-      # Authenticate User and provide them an ios token
-      #
-      # Params Needed
-      # =============
-      # email
-      # password
-      #
       def authenticate
-        scrambled_token = scramble_token(Time.now, create_random_string)
-        @user = User.find_by_email(params[:email])#.try(:authenticate, params[:password])
-        if @user
-          render :json => { :user_id => @user.id, :ios_token => scrambled_token }
+        if params[:email].blank?
+          @data_from_soc_network = request.env['omniauth.auth']
+
+          @user = User.where(:provider => @data_from_soc_network['provider'],
+                             :uid => @data_from_soc_network['uid']).first
+          if @user
+            scrambled_token = scramble_token(Time.now, @user.id)
+
+            # Signed In, token is sent through because the user is signed in
+            render :json => { :user_id => @user.id, :ios_token => scrambled_token }
+          else
+            # User doesn't exist, redirect to sign up page with info grabbed from facebook oauth
+            render :json => @data_from_soc_network.to_json
+          end
         else
-          render :json => {}
+          # We validate the user's password
+          user = User.find_by_email(params[:email])
+          if user
+            if user.try(:authenticate, params[:password])
+              # Since everything is a goal, we create a scramble token then render it apart of the json
+              scrambled_token = scramble_token(Time.now, user.id)
+
+              render :json => { :user_id => user.id, :ios_token => scrambled_token }
+            else
+              render :json => { status: "Password incorrect." }
+            end
+          else
+            render :json => { status: "Account doesn't exist."}
+          end
         end
       end
 
@@ -62,50 +82,52 @@ module Api
         end
       end
 
-        def pending_date_time_transactions
-          respond_with @user.date_time_transactions.pending
-        end
+      def pending_date_time_transactions
+        respond_with @user.date_time_transactions.pending
+      end
 
-        def pending_stop_loss_transactions
-          respond_with @user.stop_loss_transactions.pending
-        end
+      def pending_stop_loss_transactions
+        respond_with @user.stop_loss_transactions.pending
+      end
 
-        def portfolio
-          load_portfolio
-          if @portfolio
-            respond_with @portfolio
+      def portfolio
+        # load_portfolio takes in params[:user_id] to find the user_id
+        portfolio = load_portfolio(params[:user_id])
+
+        if portfolio
+          render :json => portfolio.to_json
+        else
+          render :json => {}
+        end
+      end
+
+      def stock_info
+        stock = Stock.find_by_symbol(params[:symbol])
+        if stock
+          user_stock = @user.user_stocks.where(stock_id: stock.id)
+          if user_stock.any?
+            respond_with user_stock
           else
-            respond_with "invalid"
+            render :json => {}
           end
+        else
+          render :json => {}
         end
+      end
 
-        def stock_info
-          stock = Stock.find_by_symbol(params[:symbol])
-          if stock
-            user_stock = @user.user_stocks.where(stock_id: stock.id)
-            if user_stock.any?
-              respond_with user_stock
-            else
-              respond_with "User does not own stock"
-            end
+      def stock_order_history
+        stock = Stock.find_by_symbol(params[:symbol])
+        if stock
+          user_stock = @user.user_stocks.where(stock_id: stock.id).first
+          if user_stock
+            respond_with @user.orders.of_users_stock(user_stock.id)
           else
-            respond_with "Stock not yet traded"
+            render :json => {}
           end
+        else
+          render :json => {}
         end
-
-        def stock_order_history
-          stock = Stock.find_by_symbol(params[:symbol])
-          if stock
-            user_stock = @user.user_stocks.where(stock_id: stock.id).first
-            if user_stock
-              respond_with @user.orders.of_users_stock(user_stock.id) 
-            else
-              respond_with "User has not traded stock"
-            end
-          else
-            respond_with "Stock not yet traded"
-          end
-        end
+      end
 
     end
   end

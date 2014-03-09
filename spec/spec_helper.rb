@@ -16,6 +16,10 @@ VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join('spec', 'responses')
   c.hook_into :fakeweb
   c.ignore_localhost = true
+  # This ignores some urls MWT goes, VCR does not like it when there is an external url involved
+  c.ignore_request do |request|
+    URI(request.uri).host.match(/yahoo/) or URI(request.uri).host.match(/stripe/)
+  end
 end
 
 module AuthenticationHelper

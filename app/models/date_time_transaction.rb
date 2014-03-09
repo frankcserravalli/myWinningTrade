@@ -49,9 +49,9 @@ class DateTimeTransaction < ActiveRecord::Base
 
   def self.evaluate_pending_orders
     puts "evaluating pending date time orders"
-    @orders = DateTimeTransaction.pending.upcoming
-    puts "{@orders.size}"
-    @orders.each do |order|
+    orders = DateTimeTransaction.pending.upcoming
+    puts "#{orders.size}"
+    orders.each do |order|
       order_model = order.order_type
       order_model = "SellTransaction" if order_model == "Sell"
       order_model = order_model.constantize
@@ -60,6 +60,7 @@ class DateTimeTransaction < ActiveRecord::Base
       place_the_order = false
 
       puts "user #{order.user_id} would like to #{order.order_type} #{symbol} when date is #{order.execute_at}"
+      puts order.inspect
       puts "checking price for #{symbol}..." 
       details = Finance.current_stock_details(symbol)
       current_price = details.current_price.to_f
@@ -69,13 +70,13 @@ class DateTimeTransaction < ActiveRecord::Base
       new_order = {}
       new_order[:volume] = order.volume
 
-      @order_to_execute = order_model.new(new_order.merge(user: order.user))
+      order_to_execute = order_model.new(new_order.merge(user: order.user))
 
-      @now = Time.now
+      now = Time.now
 
-      puts "current time is #{@now}"
+      puts "current time is #{now}"
 
-      if @now > order.execute_at
+      if now > order.execute_at
         puts "Ready to execute"
         place_the_order = true
       else
@@ -84,9 +85,9 @@ class DateTimeTransaction < ActiveRecord::Base
 
       if place_the_order
         puts "placing the order..."
-        puts @order_to_execute.to_json
+        puts order_to_execute.to_json
         transaction do
-          if @order_to_execute.place!(details)
+          if order_to_execute.place!(details)
             order.status = "processed"
             puts "ORDER PLACED"
           else
@@ -106,3 +107,4 @@ class DateTimeTransaction < ActiveRecord::Base
   end
 
 end
+

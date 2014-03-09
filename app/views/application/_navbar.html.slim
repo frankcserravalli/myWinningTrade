@@ -5,7 +5,12 @@
       - if current_user
         nav.nav.pull-right
           li
-            a = current_user.name
+            -if params[:controller] == "stock" and params[:action] == "dashboard"
+              a.dashboard-tutorial Tutorial
+            -elsif params[:controller] == "stock" and params[:action] == "show"
+              a.trading-tutorial Tutorial
+          li
+            a.users-name href="#{profile_path}" = current_user.name
           li
             - if current_user.premium_subscription.eql? false
               a href="#{subscriptions_path}" Subscribe
@@ -16,6 +21,11 @@
             = link_to logout_path do
               i.icon-signout
               = t('.log_out', default: 'Log out')
+      -elsif teacher_current_user
+        nav.nav.pull-right
+          li
+            = link_to "Classes", groups_path
 
-
+          li
+            = link_to "Log Out", teacher_log_out_path
 

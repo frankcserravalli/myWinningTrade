@@ -1,0 +1,43 @@
+a.btn.btn-primary href="#{groups_path}" Return to Classes
+
+h1 Edit Your Class
+
+= form_tag('/search_students', :remote => true, :method => 'get', :class => "student-search-form") do
+  = text_field_tag :term, nil, placeholder: "Search for a Student", class: "edit-student-search-input-field"
+
+div.row
+  = nested_form_for @group do |group|
+    .span9
+    = group.text_field :name, placeholder: "Name of Class", class:"edit-class-name-input-field"
+
+    br
+
+    = group.link_to_add "Add student", :group_users, class: "btn btn-primary edit-add-student-btn", :data => { :target => ".table-row" }
+
+    br
+
+    br
+
+    = hidden_field_tag(:user_id, current_user.id)
+
+    .span5
+      table.table.table-striped.table-bordered
+        thead.list-of-classes-table-head
+          tr
+            th Name
+            th Options
+        tbody.table-row.list-of-classes-table-head
+          - number = 0
+          = group.fields_for :group_users, :wrapper => false do |group_users_form|
+            tr.fields.centered-text
+              = group_users_form.text_field :user_id, type: "hidden", class: "student-id"
+              - @group.group_users.each_with_index do |group_user, index|
+                - if number == index
+                  td = group_user.user.name
+                  - number += 1
+                  - break
+              td.centered-text = group_users_form.link_to_remove "Remove student", class: "btn btn-danger"
+
+    .span10
+      = submit_tag "Edit Class", class: "btn btn-primary edit-class-submit-btn"
+

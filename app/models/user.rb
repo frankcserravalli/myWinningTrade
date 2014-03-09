@@ -1,29 +1,85 @@
 class User < ActiveRecord::Base
+  has_secure_password
+
   OPENING_BALANCE = 50000
-  has_many :orders
+  has_many :orders, :dependent => :destroy
   has_many :user_stocks
+  has_many :group_users, :dependent => :destroy
   has_many :stocks, through: :user_stocks
-  has_many :date_time_transactions
-  has_many :stop_loss_transactions
-  has_one :subscription_customer
+  has_many :date_time_transactions, :dependent => :destroy
+  has_many :stop_loss_transactions, :dependent => :destroy
+  has_one :subscription, :dependent => :destroy
+  has_one :user_account_summary, :dependent => :destroy
+  has_one :pending_teacher, :dependent => :destroy
 
   structure do
-  	email			       'developers@platform45.com'#, validates: :presence
-  	name 			       'Joe Bloggs'
-    provider 	       'linkedin', limit: 16, index: true, validates: :presence
-    uid 			       '1234', index: true, validates: :presence
-    account_balance  :decimal, scale: 2, precision: 10, default: 0.0
-    accepted_terms   :boolean, default: false
-    premium_subscription :boolean, default: false
+  	email			            'developers@platform45.com'#, validates: :presence
+  	name 			            'Joe Bloggs'
+    password              'password'#, validates: :presence
+    password_confirmation 'password'#, validates: :presence
+    provider 	            'linkedin', limit: 16, index: true, validates: :presence
+    uid 			            '1234', index: true, validates: :presence
+    account_balance       :decimal, scale: 2, precision: 10, default: 0.0
+    accepted_terms        :boolean, default: false
+    premium_subscription  :boolean, default: false
+    group                 'student'
   end
 
-  attr_protected :account_balance
+  attr_protected :account_balance, :premium_subscription
   after_initialize :create_initial_balance
+
+  # VALIDATIONS
+  # ===========
+  validates :email, uniqueness: true
+
+  # MODEL METHODS
+  # =============
+  def add_capital_to_account(bonus_option)
+    case bonus_option
+      when "option-1-bonus"
+        self.account_balance += 25_000
+      when "option-2-bonus"
+        self.account_balance += 50_000
+      when "option-3-bonus"
+        self.account_balance += 100_000
+      when "option-4-bonus"
+        self.account_balance += 250_000
+      when "option-5-bonus"
+        self.account_balance += 500_000
+      when "option-6-bonus"
+        self.account_balance += 1_000_000
+      else
+      # Do nothing, RubyMine has a weird error when case doesn't have an else statement
+    end
+
+    self.save
+  end
+
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
 
   def self.find_or_create_from_auth_hash(auth_hash)
     where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_initialize.tap do |user|
-  	  user.name = auth_hash[:info][:name] if auth_hash[:info]
-  	  user.save
+  	  if auth_hash[:info]
+        user.name = auth_hash[:info][:name]
+
+        user.email = auth_hash[:info][:email]
+
+        # I set this unique password and check it on the view when an user signs in.
+        # if it's still this password below we give them a warning telling them to change it
+        password = SecureRandom.hex
+
+        user.password = password
+
+        user.password_confirmation = password
+      end
+
+      user.save
   	end
   end
 
@@ -59,12 +115,12 @@ class User < ActiveRecord::Base
   def stock_summary
     user_stocks = self.user_stocks.includes(:stock)
 
-    @stock_summary = {}.tap do |s|
+    # This is what is returned at the end of the method, aka stock_summary
+    stock_summary = {}.tap do |s|
       s[:stocks] = {}
       s[:summary] = {}
       s[:orders] = {}
 
-      # Is total_capital equal to the total amount of money invested?
       total_capital = 0
 
       net_income_before_taxes = 0
@@ -105,7 +161,7 @@ class User < ActiveRecord::Base
 
         total_capital += capital_at_risk
 
-        # Looping through orders of of an user's stocks
+        # Looping through orders of an individual user's stock
         self.orders.of_users_stock(user_stock.id).order("created_at DESC, user_stock_id DESC").reverse.each do |order|
 
           # Inserting info from each order into variables for the PDF
@@ -113,9 +169,21 @@ class User < ActiveRecord::Base
 
           revenue += stock_revenue_calculation
 
-          tax_liability += (order.capital_gain.to_f * 0.3)
+          # Finding the capital gain for each order, and if it doesn't exist assigning it $0.00
+          if order.capital_gain.nil?
+            capital_gain_for_stock = 0
+          else
+            capital_gain_for_stock = order.capital_gain
+          end
 
-          returns += (order.capital_gain.to_f - tax_liability)
+          if order.type == "Sell" or order.type == "ShortSellCover"
+            tax_liability += (capital_gain_for_stock.to_f * 0.3).round(2)
+
+            returns += (order.capital_gain.to_f - tax_liability)
+          else
+            tax_liability = 0
+          end
+
 
           # Finding the net loss and net revenue of each stock
           if stock_revenue_calculation < 0
@@ -125,18 +193,13 @@ class User < ActiveRecord::Base
           end
 
           # Finding the cost basis of each order
-          if order.type.eql? "Short Sell Cover" or order.type.eql? "Sell"
+          if order.type == "Short Sell Cover" or order.type == "Sell"
             cost_basis = order.volume * order.price
           else
             cost_basis = 0
           end
 
-          # Finding the capital gain for each order, and if it doesn't exist assigning it $0.00
-          if order.capital_gain.nil?
-            capital_gain_loss = 0
-          else
-            capital_gain_loss = order.capital_gain
-          end
+
 
           # Here I am grabbing each order and injecting it into the hash, used for the Orders Details summary in the PDF
           s[:orders][order.created_at] = {
@@ -148,7 +211,7 @@ class User < ActiveRecord::Base
             bid_ask_price: order.price,
             net_asset_value: (order.volume * order.price),
             cost_basis: cost_basis,
-            capital_gain_loss: capital_gain_loss,
+            capital_gain_loss: capital_gain_for_stock,
             tax_liability: tax_liability
           }
 
@@ -169,14 +232,14 @@ class User < ActiveRecord::Base
         data_from_orders.each do |order|
 
           # Dealing with buys and sells
-          if order[0][:type].eql? "Buy"
+          if order[0][:type] == "Buy"
 
-            if buy_volume_bought.eql? 0
+            if buy_volume_bought == 0
               created_at = order[0][:time]
             end
 
             buy_volume_bought += order[0][:volume]
-          elsif order[0][:type].eql? "Sell"
+          elsif order[0][:type] == "Sell"
             buy_volume_bought -= order[0][:volume]
 
             sold_at = order[0][:time]
@@ -186,14 +249,14 @@ class User < ActiveRecord::Base
             holding_periods << holding_period
 
             created_at = sold_at
-          elsif order[0][:type].eql? "ShortSellBorrow"
+          elsif order[0][:type] == "ShortSellBorrow"
 
-            if short_volume_borrowed.eql? 0
+            if short_volume_borrowed == 0
               short_created_at = order[0][:time]
             end
 
             short_volume_borrowed += order[0][:volume]
-          elsif order[0][:type].eql? "ShortSellCover"
+          elsif order[0][:type] == "ShortSellCover"
             short_volume_borrowed -= order[0][:volume]
 
             short_sold_at = order[0][:time]
@@ -208,13 +271,11 @@ class User < ActiveRecord::Base
 
         unless sold_at.eql? 0 and short_sold_at.eql? 0
           average_holding_period = holding_periods.sum.to_f / holding_periods.size
-
-          overall_average_holding_period << average_holding_period
         else
           average_holding_period = "--"
-
-          overall_average_holding_period = "--"
         end
+
+        overall_average_holding_period << average_holding_period
 
         s[:stocks][stock_symbol] = {
           name: user_stock.stock.name,
@@ -232,9 +293,13 @@ class User < ActiveRecord::Base
 
       net_income_after_taxes = net_income_before_taxes - taxes
 
-      unless overall_average_holding_period.eql? "--"
-        overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).to_s + " days"
-      end
+
+      # Here we remove all instances of average holding days that don't exit
+      overall_average_holding_period.delete("--")
+
+      # Here we calculate the total average holding period for all stocks
+      overall_average_holding_period = (overall_average_holding_period.sum.to_f / overall_average_holding_period.size).round(2).to_s + " days"
+
 
       s[:summary] = {
         net_income_before_taxes: net_income_before_taxes.round(2),
@@ -306,10 +371,8 @@ class User < ActiveRecord::Base
 
           composite_returns += sorted_open_positions[value][1][:returns]
 
-          if sorted_open_positions[value][1][:average_holding_period].eql? "--"
-            composite_average_holding_period = "--"
-          else
-            composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period]
+          unless sorted_open_positions[value][1][:average_holding_period] == "--" and composite_average_holding_period == "--"
+            composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].to_f
           end
         else
             one_stock_exists = true
@@ -326,10 +389,10 @@ class User < ActiveRecord::Base
 
             summary += "<td>" + sorted_open_positions[value][1][:returns].round(2).to_s + "</td>"
 
-            if sorted_open_positions[value][1][:average_holding_period].eql? "--"
-              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + "</td></tr>"
+            if sorted_open_positions[value][1][:average_holding_period] == "--"
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + "</td></tr>"
             else
-              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].to_s + " days</td></tr>"
+              summary += "<td>" + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + " days</td></tr>"
             end
 
         end
@@ -349,10 +412,10 @@ class User < ActiveRecord::Base
 
       summary += "<td>" + composite_returns.round(2).to_s + "</td>"
 
-      if composite_average_holding_period.eql? "--"
-        summary += "<td>" + composite_average_holding_period.to_s + "</td></tr>"
+      if composite_average_holding_period.eql?("--") or composite_average_holding_period.eql? 0
+        summary += "<td>--</td></tr>"
       else
-        summary += "<td>" + composite_average_holding_period.to_s + " days</td></tr>"
+        summary += "<td>" + composite_average_holding_period.round(2).to_s + " days</td></tr>"
       end
     end
 
@@ -420,7 +483,7 @@ class User < ActiveRecord::Base
     unless two_loss_stocks_exists.eql? false
       loss_stocks += "<div class='row-fluid'><div class='span4 offset2'>Composite</div>"
 
-      loss_stocks += "<div class='span4'>(#{composite_losses_number})</div></div>"
+      loss_stocks += "<div class='span4'>(#{composite_losses_number.round(2)})</div></div>"
     end
 
 
@@ -476,15 +539,15 @@ class User < ActiveRecord::Base
     # Risk Statistics Section
     borrowed = 0
 
-    @short_sell_covers = ShortSellCover.where(user_id: self.id)
+    short_sell_covers = ShortSellCover.where(user_id: self.id)
 
-    @short_sell_borrows = ShortSellBorrow.where(user_id: self.id)
+    short_sell_borrows = ShortSellBorrow.where(user_id: self.id)
 
-    @short_sell_covers.each do |order|
+    short_sell_covers.each do |order|
       borrowed -= order.value
     end
 
-    @short_sell_borrows.each do |order|
+    short_sell_borrows.each do |order|
       borrowed -= order.value
     end
 
@@ -507,7 +570,7 @@ class User < ActiveRecord::Base
                 }
               </script>
             </head>
-            <h2>Trading Summary</h2>
+            <h2>Summary</h2>
             <div class="row-fluid">
               <table class="table table-striped">
                 <thead>
@@ -626,55 +689,3 @@ class User < ActiveRecord::Base
     self.account_balance ||= OPENING_BALANCE
   end
 end
-
-
-
-=begin
-# Orders Summary pdf
-            <h2>Orders Summary</h2>
-            <div class="row-fluid">
-              <table class="table table-striped span12">
-                <thead>
-                  <tr>
-                    <th>Symbol</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Time</th>
-                    <th>Volume</th>
-                    <th>Bid Asking Price</th>
-                    <th>Net Asset Value</th>
-                    <th>Cost Basis</th>
-                    <th>Capital Gain/Loss</th>
-                    <th>Tax Liability</th>
-                    <th>Holding Period</th>
-                  </tr>
-                </thead>
-                <tbody>' + orders_summary + '</tbody>
-              </table>
-            </div>
-
-
-    # Order Details Section
-    orders_summary = ""
-    stock_summary[:orders].each_key do |created_at|
-      orders_summary += "<tr><td>" + stock_summary[:orders][created_at][:symbol].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:name].to_s + "</td>"
-      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:type].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:time].to_date.to_s + "</td>"
-      orders_summary += "<td class='pagination-centered'>" + stock_summary[:orders][created_at][:volume].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:bid_ask_price].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:net_asset_value].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:cost_basis].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:capital_gain_loss].to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:tax_liability].round(2).to_s + "</td>"
-      orders_summary += "<td>" + stock_summary[:orders][created_at][:holding_period].to_s + "</td></tr>"
-    end
-
-=end
-
-
-#<Buy id: 5, user_id: 2, price: #<BigDecimal:333bd20,'0.2832E2',18(18)>, volume: 900, type: "Buy", value: #<BigDecimal:333ba50,'-0.25494E5',9(18)>, user_stock_id: 5, cost_basis: #<BigDecimal:333b910,'0.2833E2',18(18)>, created_at: "2013-03-05 22:12:57", updated_at: "2013-03-05 22:12:57", volume_remaining: 900, capital_gain: nil>,
- ##<Buy id: 4, user_id: 2, price: #<BigDecimal:33377c0,'0.1424E2',18(18)>, volume: 400, type: "Buy", value: #<BigDecimal:3337590,'-0.5702E4',9(18)>, user_stock_id: 4, cost_basis: #<BigDecimal:3337428,'0.1426E2',18(18)>, created_at: "2013-03-05 22:12:43", updated_at: "2013-03-05 22:12:43", volume_remaining: 400, capital_gain: nil>,
- ##<Buy id: 3, user_id: 2, price: #<BigDecimal:3335808,'0.2359E2',18(18)>, volume: 100, type: "Buy", value: #<BigDecimal:3335628,'-0.2365E4',9(18)>, user_stock_id: 3, cost_basis: #<BigDecimal:3335498,'0.2365E2',18(18)>, created_at: "2013-03-05 22:11:48", updated_at: "2013-03-05 22:11:48", volume_remaining: 100, capital_gain: nil>,
- ##<Buy id: 2, user_id: 2, price: #<BigDecimal:3331578,'0.4949E2',18(18)>, volume: 100, type: "Buy", value: #<BigDecimal:3331370,'-0.4955E4',9(18)>, user_stock_id: 2, cost_basis: #<BigDecimal:33311e0,'0.4955E2',18(18)>, created_at: "2013-03-05 22:02:36", updated_at: "2013-03-05 22:02:36", volume_remaining: 100, capital_gain: nil>,
- ##<Buy id: 1, user_id: 2, price: #<BigDecimal:332f200,'0.5014E2',18(18)>, volume: 15, type: "Buy", value: #<BigDecimal:332f048,'-0.7581E3',18(18)>, user_stock_id: 1, cost_basis: #<BigDecimal:332edf0,'0.5054E2',18(18)>, created_at: "2013-03-05 22:02:27", updated_at: "2013-03-05 22:02:27", volume_remaining: 15, capital_gain: nil>]

@@ -1,7 +1,9 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
   include UsersHelper
+
   before_filter :require_login
   before_filter :require_iphone_login
   before_filter :require_acceptance_of_terms, if: :current_user
@@ -26,18 +28,18 @@ class ApplicationController < ActionController::Base
     redirect_to terms_path and return unless current_user && current_user.accepted_terms?
   end
 
-  # api authentication
+  # Api authentication
   def valid_user_id
     @user = User.find_by_id(params[:user_id])
     return @user if @user
     respond_with "Invalid user"
   end
 
-  # inside buys, sells, shortsellborrows controllers
+  # Inside buys, sells, and short_sell_borrows controllers
   def when_to_execute_order(type)
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
-    @order_type = type.capitalize
-    @order_type = "ShortSellBorrow" if @order_type == "Short_sell_borrow"
+
+    @order_type = type
 
     case params[type][:when]
     when "At Market"
@@ -53,22 +55,28 @@ class ApplicationController < ActionController::Base
       @order = StopLossTransaction.new(params[type].merge(user: current_user))
     end
     
-    if @order.place!(@stock_details)
-      flash[:notice] = "Order successfully placed"
-    else
-      flash[:alert] = @order.errors.values.join if !@order.errors.blank?
+    if @order
+      if@order.place!(@stock_details)
+        flash[:notice] = "Order successfully placed"
+      else
+        flash[:alert] = @order.errors.values.join if !@order.errors.blank?
+      end
     end
     redirect_to(stock_path(params[:stock_id]))
-    return 
   end
 
-  def load_portfolio
+  # I've set the user_id default as zero in case user_id is not sent through
+  def load_portfolio(user_id = 0)
     if current_user
       @user = current_user
     else
-      @user = User.find_by_id(params[:user_id])
+      #Stop the method here if no user_id params were sent through
+      return if user_id.eql? 0
+
+      @user = User.find(user_id)
     end
 
+    # Stop the method here if we can't find the user
     return false unless @user
 
     @portfolio = {}.tap do |p|
@@ -149,16 +157,27 @@ class ApplicationController < ActionController::Base
   end
 
   def linkedin_share_connect(controller)
+    # Here we create a client connection to LinkedIn
     client = LinkedIn::Client.new('xoc3a06gsosd', '41060V6v5K38dnV4', LINKEDIN_CONFIGURATION)
+
+    # We then tell LinkedIn where we want them to send the client to after they are done logging in
     request_token = client.request_token(:oauth_callback =>
                                              "https://#{request.host_with_port}/#{controller}/callback_linkedin")
+
+    # Setting up some sessions for future reference for the user
     session[:rtoken] = request_token.token
+
     session[:rsecret] = request_token.secret
+
+    # Here we redirect the user to LinkedIn login page
     redirect_to client.request_token.authorize_url
   end
 
   def facebook_share_connect(controller)
+    # Create a new session with Facebook given our api credentials
     session['oauth'] = Koala::Facebook::OAuth.new("331752936918078", "6dee4f074f905e98957e9328bf4d91a3", "https://#{request.host_with_port}/#{controller}/callback_facebook")
+
+    # Redirect to Facebook login page
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
   end
 end

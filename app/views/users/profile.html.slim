@@ -2,15 +2,35 @@
 = render partial: 'stock/suggest'
 
 #profile.container
-  h1 #{current_user.name}
+  .row
+    .span8
+      h1 #{current_user.name}
 
-  br
+      br
 
-  a.pull-right.btn.btn-primary href="#{users_edit_path}" Edit Profile
+      a.btn.btn-primary href="#{user_edit_path}" Edit Profile
 
-  a.pull-right.btn.btn-primary href="#{subscriptions__path}" Add Subscription
+      br
 
-  div #{current_user.name}
+      br
+
+      - if current_user.group != "teacher"
+        a.btn.btn-primary href="#{teacher_request_upgrade_path}" Request Teacher Status
+
+        br
+
+        br
+
+      a.btn.btn-primary href="#{subscriptions_path}" Add Subscription
+
+      br
+
+      br
+
+      a.btn.btn-primary href="#{account_bonuses_path}" Buy Additional Capital
+
+
+
 
 
 

@@ -1,20 +1,45 @@
 class StockController < ApplicationController
   def dashboard
+    # Check if user never set a new password
+    #user = current_user.authenticate("a_password_that1_can_never_be_found")
+
+    # If so we set a flash notification telling them to change it
+    #flash[:error] = "You have not set password. Please set it now in your profile section." if user
+
+    flash[:notice] = { class: :persistent, body: "You have not set your password. Please set it now in your edit profile section." } if current_user.password_reset.eql? false
+
+    # This gives us the results of the leaders in the leader board
+    leader_board_results = UserAccountSummary.find_top_results(current_user.id)
+
+    @world_leader_board = leader_board_results[0]
+
+    @class_leader_board = leader_board_results[1]
   end
 
   def show
   	symbol = params[:id].upcase
+
     @stock = Finance.current_stock_details(symbol)
+
     @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
 
+    # Setting up the new records in anticipation of an user creating an order
     @buy_order = Buy.new
+
     @short_sell_borrow_order = ShortSellBorrow.new
+
     @sell_order = SellTransaction.new
+
     @date_time_buy_transaction = DateTimeTransaction.new
+
     @date_time_sell_transaction = DateTimeTransaction.new
+
     @date_time_short_sell_borrow_transaction = DateTimeTransaction.new
+
     @stop_loss_buy_transaction = StopLossTransaction.new
+
     @stop_loss_sell_transaction = StopLossTransaction.new
+
     @stop_loss_short_transaction = StopLossTransaction.new
 
     if @stock.nil?
@@ -35,6 +60,7 @@ class StockController < ApplicationController
 
   def search
     @suggestions = Finance.search_for_stock(params[:term].to_s)
+
     render json: @suggestions
   end
 
@@ -45,23 +71,5 @@ class StockController < ApplicationController
   def trading_analysis
     @stock_summary = current_user.stock_summary
   end
-
-  def trading_analysis_pdf
-    content = current_user.create_trading_analysis_pdf
-
-    kit = PDFKit.new(content, :page_size => 'Letter')
-
-    kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
-    kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'
-
-    output = kit.to_pdf
-
-    respond_to do |format|
-      format.pdf do
-        send_data output, :filename => "trading_analysis.pdf",
-                          :type => "application/pdf"
-      end
-    end
-    end
 end
 

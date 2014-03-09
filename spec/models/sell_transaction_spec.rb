@@ -36,8 +36,8 @@ describe 'SellTransaction' do
 
     sells = user_stock.sells
     sells.count.should == 2
-    sells.first.volume.should == 25
-    sells.last.volume.should == 15
+    sells.first.volume.should == 15
+    sells.last.volume.should == 25
   end
 
 end
