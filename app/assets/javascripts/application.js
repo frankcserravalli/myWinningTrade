@@ -5,15 +5,7 @@
 //= require jquery.ui.slider
 //= require jquery.ui.tabs
 //= require jquery.html5-placeholder-shim
-//= require bootstrap-dropdown
-//= require bootstrap-tab
-//= require bootstrap-tooltip
-//= require bootstrap-popover
-//= require bootstrap-modal
-//= require bootstrap-button
-//= require bootstrap-collapse
-//= require bootstrap-modal
-//= require bootstrap-transition
+//= require bootstrap
 //= require chosen-jquery
 //= require underscore
 //= require moment
