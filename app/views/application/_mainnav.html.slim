@@ -1,0 +1,37 @@
+.col-xs-6.col-md-3.mainnav
+  - if current_user
+    nav.navbar
+      li.brand
+        = image_tag 'logo.png'
+      li
+        .input-group
+          input.form-control placeholder=("Search stock") type="text"
+      li.active
+        = image_tag 'portfolio-icon-active.png'
+        = link_to 'Portfolio', '#portfolio-section'
+      li
+        = image_tag 'market-icon.png'
+        | Market
+      li
+        = image_tag 'tutorial-icon.png'
+        | Tutorials
+      li
+        = image_tag 'leaderboard-icon.png'
+        | Leaderboard
+      li
+        br
+        br
+      li.uppercase.navbar-secondary-text
+        | Allocation
+      li.uppercase.navbar-secondary-text
+        | MONTHLY GAIN / LOSS
+        p.green.bold.font-size-16
+          | $640.15 / 5.3%
+      li.uppercase.navbar-secondary-text
+        | PORTFOLIO MARKET VALUE
+        p.bold.font-size-16
+          | $25,640.15
+      li.navbar-secondary-text.last
+        a.users-name href="#{profile_path}" = current_user.name
+        p.bold.font-size-16
+          | $ 39.580, 39
