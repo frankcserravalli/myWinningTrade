@@ -1,0 +1,17 @@
+db:
+  image: postgres
+  ports:
+    - "5432:5432"
+  volumes:
+    - /var/lib/postgresql/data
+
+web:
+  build: .
+  command: bundle exec unicorn -p 3000 -c ./config/unicorn.rb
+  stdin_open: true
+  volumes:
+    - .:/myapp 
+  ports:
+    - "80:3000"
+  links:
+    - db
