@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  name       :string(255)
+#  created_at :timestamp(6)     not null
+#  updated_at :timestamp(6)     not null
+#
+
 class Group < ActiveRecord::Base
   attr_accessible :name, :user_id, :group_users_attributes
 

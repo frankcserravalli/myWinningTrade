@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: pending_teachers
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  created_at :timestamp(6)     not null
+#  updated_at :timestamp(6)     not null
+#
+
 class PendingTeacher < ActiveRecord::Base
   attr_accessible :user_id
 

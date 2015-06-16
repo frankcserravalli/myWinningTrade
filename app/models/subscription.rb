@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: subscriptions
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  customer_id  :string(255)
+#  payment_plan :string(255)
+#  created_at   :timestamp(6)     not null
+#  updated_at   :timestamp(6)     not null
+#
+
 class Subscription < ActiveRecord::Base
   attr_accessible #none
 

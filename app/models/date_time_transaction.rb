@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: date_time_transactions
+#
+#  id            :integer          not null, primary key
+#  user_stock_id :integer
+#  user_id       :integer
+#  volume        :integer
+#  order_type    :string(255)
+#  status        :string(255)      default("pending")
+#  execute_at    :timestamp(6)
+#  updated_at    :timestamp(6)
+#  created_at    :timestamp(6)
+#
+
 class DateTimeTransaction < ActiveRecord::Base
   validate :execute_at_is_in_future
   validate :check_for_valid_volume
