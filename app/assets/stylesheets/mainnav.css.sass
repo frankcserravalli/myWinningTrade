@@ -2,10 +2,20 @@
   background-color: $darkGray
   padding-left: 0
   padding-right: 0
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
 
   .navbar
     padding: 0
     margin: 0
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
 
     li
       padding-top: 1em
@@ -13,6 +23,7 @@
       font-size: 18px
       color: $lightGray
       padding-left: 10px
+      background-color: $darkGray
       border-top: 2px solid $separatorGray
       border-bottom: 2px solid $separatorGray
 
@@ -20,6 +31,33 @@
         border-left: 4px solid $green
         background-color: $black
         color: $white
+
+      &:hover
+        border-left: 4px solid $green
+        background-color: $black
+        color: $white
+
+      &.no-hover
+        border-left: none
+        background-color: $darkGray
+        color: $lightGray
+        border-bottom: 2px solid $separatorGray
+
+      &.list-item-wrapper
+        margin: 0
+        padding: 0
+
+        ul.scroll-inner-list
+          margin: 0
+          padding: 0
+          position: absolute
+          right: 0
+          left: 0
+          bottom: 12%
+          top: 22%
+          @-moz-document url-prefix()
+            top: 23.4%
+          overflow-y: scroll
 
       &.navbar-secondary-text
         font-size: 14px
@@ -31,6 +69,12 @@
 
       &.last
         border-bottom: 0
+
+      &.user
+        position: absolute
+        right: 0
+        left: 0
+        bottom: 0
 
       .input-group
         width: 97%

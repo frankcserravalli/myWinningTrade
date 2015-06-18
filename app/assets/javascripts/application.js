@@ -10,6 +10,10 @@
 //= require underscore
 //= require moment
 //= require flash
+
+//= require view
+//= require portfolio-view
+
 //= require finance
 //= require submit_form_and_share
 //= require stripe

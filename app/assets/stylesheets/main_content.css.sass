@@ -1,0 +1,40 @@
+.main-content
+  float: right
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  .secondary-nav
+    padding: 0
+    padding-left: 10px
+    padding-right: 10px
+    padding-top: 20px
+    li
+      display: block
+      float: left
+      padding: 1.5em
+      font-size: 16px
+      color: $secondary-navbar-links-gray
+      &.secondary-active
+        background-color: $lighterGray
+        border-bottom: 4px solid $gray
+        color: $black
+      &:hover
+        background-color: $lighterGray
+        border-bottom: 4px solid $gray
+        color: $black
+
+  .content
+    width: 94.7%
+    border-top: 2px solid $gray
+    background-color: $lighterGray
+    margin-right: auto
+    margin-left: auto
+    margin-top: 5.3em
+
+    position: absolute
+    top: 20px
+    bottom: 15.6%
+    right: 0
+    left: 0
+    overflow-y: scroll
