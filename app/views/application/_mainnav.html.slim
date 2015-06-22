@@ -13,17 +13,17 @@
           input.form-control placeholder=t('.symbol_placeholder', default: 'Start typing a stock name'.html_safe) type="text"
       li.list-item-wrapper.no-hover
         ul.scroll-inner-list
-          li.active.portfolio
-            = image_tag 'portfolio-icon-active.png'
+          li.portfolio class=(controller.class == StockController and controller.action_name == 'dashboard' ? 'active' : '')
+            = image_tag (controller.class == StockController and controller.action_name == 'dashboard' ? 'portfolio-icon-active.png' : 'portfolio-icon.png')
             = link_to("Portfolio", '/')
-          li
-            = image_tag 'market-icon.png'
+          li.markets class=(controller.class == StockController and controller.action_name == 'markets' ? 'active' : '')
+            = image_tag (controller.class == StockController and controller.action_name == 'markets' ? 'market-icon-active.png' : 'market-icon.png')
             = link_to("Markets", '/markets')
-          li
-            = image_tag 'tutorial-icon.png'
+          li.tutorial class=(controller.class == StockController and controller.action_name == '' ? 'active' : '')
+            = image_tag (controller.class == StockController and controller.action_name == '' ? 'tutorial-icon-active.png' : 'tutorial-icon.png')
             | Tutorials
-          li
-            = image_tag 'leaderboard-icon.png'
+          li.leaderboard class=(controller.class == StockController and controller.action_name == '' ? 'active' : '')
+            = image_tag (controller.class == StockController and controller.action_name == '' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
             | Leaderboard
           li.no-hover
             br
@@ -42,7 +42,7 @@
             | PORTFOLIO MARKET VALUE
             p.bold.font-size-16.color-lightGray
               = number_to_currency(account_value)
-      li.navbar-secondary-text.last.user
+      li.navbar-secondary-text.last.user class=(controller.class == UsersController and controller.action_name == 'profile' ? 'active' : '')
         a.users-name href="#{profile_path}" = current_user.name
         p.bold.font-size-16.color-lightGray
           = number_to_currency(cash)

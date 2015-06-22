@@ -13,6 +13,7 @@
 
 //= require view
 //= require portfolio-view
+//= require main_nav
 
 //= require finance
 //= require submit_form_and_share
