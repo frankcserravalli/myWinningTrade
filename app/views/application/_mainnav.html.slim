@@ -8,8 +8,8 @@
     nav.navbar
       li.brand.no-hover
         = image_tag 'logo.png'
-      li.no-hover.search
-        .input-group
+      li.no-hover.search#stock-search
+        form.input-group
           input.form-control placeholder=t('.symbol_placeholder', default: 'Start typing a stock name'.html_safe) type="text"
       li.list-item-wrapper.no-hover
         ul.scroll-inner-list
@@ -22,9 +22,9 @@
           li.tutorial class=(controller.class == StockController and controller.action_name == '' ? 'active' : '')
             = image_tag (controller.class == StockController and controller.action_name == '' ? 'tutorial-icon-active.png' : 'tutorial-icon.png')
             | Tutorials
-          li.leaderboard class=(controller.class == StockController and controller.action_name == '' ? 'active' : '')
-            = image_tag (controller.class == StockController and controller.action_name == '' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
-            | Leaderboard
+          li.leaderboard class=(controller.class == StockController and controller.action_name == 'leaderboards' ? 'active' : '')
+            = image_tag (controller.class == StockController and controller.action_name == 'leaderboards' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
+            = link_to("Leaderboards", '/leaderboards')
           li.no-hover
             br
           li.uppercase.navbar-secondary-text

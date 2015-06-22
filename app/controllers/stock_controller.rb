@@ -52,6 +52,10 @@ class StockController < ApplicationController
     render 'account/markets'
   end
 
+  def leaderboards
+    render 'account/leaderboards'
+  end
+
   def trading_analysis
     @stock_summary = current_user.stock_summary
   end

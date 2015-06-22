@@ -1,5 +1,4 @@
-table.values-table onclick="show_tradingview_widget('#{stock_symbol}')"
-  tr
+tr.values-table onclick="show_tradingview_widget('#{stock_symbol}')"
     td.portfolio-cell.stock-symbol = stock_symbol
     td.portfolio-cell.stock-name = s[:name]
     td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])
@@ -13,3 +12,12 @@ table.values-table onclick="show_tradingview_widget('#{stock_symbol}')"
     td.portfolio-cell.stock-history-rating
       = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png')
       // = image_tag 'history-rating-open-icon.png'
+
+tr.divider-small
+  td
+  td
+  td
+  td
+  td
+  td
+  td

@@ -18,9 +18,14 @@
             | Gain/Loss
           th
             | History Rating  
-    table.portfolio
-      tbody
-        tr
+      tbody.portfolio
+        tr.divider-big
           td
-            - @portfolio[:shorts].each do |stock_symbol, s|
-              = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
+          td
+          td
+          td
+          td
+          td
+          td
+        - @portfolio[:shorts].each do |stock_symbol, s|
+          = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}

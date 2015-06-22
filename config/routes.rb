@@ -15,6 +15,8 @@ MyWinningTrade::Application.routes.draw do
 
   get '/markets', to: 'stock#markets'
 
+  get '/leaderboards', to: 'stock#leaderboards'
+
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 

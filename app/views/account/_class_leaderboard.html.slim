@@ -1,17 +1,27 @@
 .dashboard-tab-box
   - if @class_leader_board
-    h2 Class Leaderboard
-    table.table.table-striped.table-bordered
+    table.headers-table
       thead
         tr
-          th Ranking
-          th Name
-          th Capital Gain (Loss) less Incurred Tax Liability
-      tbody
+          th
+            | Ranking
+          th
+            | Name
+          th
+            | Capital Gain (Loss) less Incurred Tax Liability
+      tbody.portfolio
+        tr.divider-big
+          td
+          td
+          td
         - @class_leader_board.each_with_index do |classmate, index|
           tr
-            td = index + 1
-            td = classmate.user.name
-            td = ((classmate.capital_total / 50000) * 100).round(2).to_s + "%"
+            td.portfolio-cell = index + 1
+            td.portfolio-cell = classmate.user.name
+            td.portfolio-cell = ((classmate.capital_total / 50000) * 100).round(2).to_s + "%"
+        tr.divider-small
+          td
+          td
+          td
   -else
     h4.centered-text Your classmates haven't started trading yet so get to it!
