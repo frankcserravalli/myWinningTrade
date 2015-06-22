@@ -1,19 +1,19 @@
 ul.secondary-nav
-  li.current_holdings-tab
+  li.first-tab
     | Popular Stocks
-  li.shorting-tab
-    | Shorted Positions
-  li.upcoming-future-transactions-tab
-    | Upcoming Future Transactions
-  li.pending-positions-tab
-    | Stop Loss
+  li.second-tab
+    | NYSE
+  li.third-tab
+    | NASDAQ
+  li.fourth-tab
+    | TOP 50
 
 div.content
-  div.current_holdings
+  div.first
     = render partial: 'stock/suggest'
-  div.shorting
+  div.second
     = render partial: 'account/shorting'
-  div.upcoming-future-transactions
+  div.third
     = render partial: 'account/upcoming_future_transactions'
-  div.pending-positions
+  div.fourth
     = render partial: 'account/pending_positions'

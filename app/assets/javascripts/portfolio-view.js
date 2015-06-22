@@ -1,47 +1,81 @@
 $( document ).ready(function() {
-  $('.current_holdings-tab').addClass('secondary-active');
-  $('.shorting').hide();
-  $('.upcoming-future-transactions').hide();
-  $('.pending-positions').hide();
+  $('.first-tab').addClass('secondary-active');
+  $('.second').hide();
+  $('.third').hide();
+  $('.fourth').hide();
+  $('.fifth').hide();
+  $('.sixth').hide();
 
-    $('.current_holdings-tab').click(function (){
+    $('.first-tab').click(function (){
       remove_widget();
       $('.secondary-active').removeClass('secondary-active');
-      $('.current_holdings-tab').addClass('secondary-active');
-      $('.shorting').hide();
-      $('.upcoming-future-transactions').hide();
-      $('.pending-positions').hide();
-      $('.current_holdings').show();
+      $('.first-tab').addClass('secondary-active');
+      $('.second').hide();
+      $('.third').hide();
+      $('.fourth').hide();
+      $('.fifth').hide();
+      $('.sixth').hide();
+      $('.first').show();
     });
 
-    $('.shorting-tab').click(function (){
+    $('.second-tab').click(function (){
       remove_widget();
       $('.secondary-active').removeClass('secondary-active');
-      $('.shorting-tab').addClass('secondary-active');
-      $('.current_holdings').hide();
-      $('.upcoming-future-transactions').hide();
-      $('.pending-positions').hide();
-      $('.shorting').show();
+      $('.second-tab').addClass('secondary-active');
+      $('.first').hide();
+      $('.third').hide();
+      $('.fourth').hide();
+      $('.fifth').hide();
+      $('.sixth').hide();
+      $('.second').show();
     });
 
-    $('.upcoming-future-transactions-tab').click(function (){
+    $('.third-tab').click(function (){
       remove_widget();
       $('.secondary-active').removeClass('secondary-active');
-      $('.upcoming-future-transactions-tab').addClass('secondary-active');
-      $('.current_holdings').hide();
-      $('.shorting').hide();
-      $('.pending-positions').hide();
-      $('.upcoming-future-transactions').show();
+      $('.third-tab').addClass('secondary-active');
+      $('.first').hide();
+      $('.second').hide();
+      $('.fourth').hide();
+      $('.fifth').hide();
+      $('.sixth').hide();
+      $('.third').show();
     });
 
-    $('.pending-positions-tab').click(function (){
+    $('.fourth-tab').click(function (){
       remove_widget();
       $('.secondary-active').removeClass('secondary-active');
-      $('.pending-positions-tab').addClass('secondary-active');
-      $('.current_holdings').hide();
-      $('.shorting').hide();
-      $('.upcoming-future-transactions').hide();
-      $('.pending-positions').show();
+      $('.fourth-tab').addClass('secondary-active');
+      $('.first').hide();
+      $('.second').hide();
+      $('.third').hide();
+      $('.fifth').hide();
+      $('.sixth').hide();
+      $('.fourth').show();
+    });
+
+    $('.fifth-tab').click(function (){
+      remove_widget();
+      $('.secondary-active').removeClass('secondary-active');
+      $('.fifth-tab').addClass('secondary-active');
+      $('.first').hide();
+      $('.second').hide();
+      $('.third').hide();
+      $('.fourth').hide();
+      $('.sixth').hide();
+      $('.fifth').show();
+    });
+
+    $('.sixth-tab').click(function (){
+      remove_widget();
+      $('.secondary-active').removeClass('secondary-active');
+      $('.sixth-tab').addClass('secondary-active');
+      $('.first').hide();
+      $('.second').hide();
+      $('.third').hide();
+      $('.fourth').hide();
+      $('.fifth').hide();
+      $('.sixth').show();
     });
 });
 

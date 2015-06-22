@@ -1,20 +1,20 @@
 ul.secondary-nav
-  li.current_holdings-tab
+  li.first-tab
     | Long Positions
-  li.shorting-tab
+  li.second-tab
     | Shorted Positions
-  li.upcoming-future-transactions-tab
+  li.third-tab
     | Upcoming Future Transactions
-  li.pending-positions-tab
+  li.fourth-tab
     | Stop Loss
 
 div.content
   div.widget-container
-  div.current_holdings
+  div.first
     = render partial: 'account/current_holdings'
-  div.shorting
+  div.second
     = render partial: 'account/shorting'
-  div.upcoming-future-transactions
+  div.third
     = render partial: 'account/upcoming_future_transactions'
-  div.pending-positions
+  div.fourth
     = render partial: 'account/pending_positions'
