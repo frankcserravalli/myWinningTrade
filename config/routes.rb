@@ -13,6 +13,8 @@ MyWinningTrade::Application.routes.draw do
   get '/dashboard', to: 'stock#dashboard'
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
+  get '/markets', to: 'stock#markets'
+
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 

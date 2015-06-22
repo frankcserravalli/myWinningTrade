@@ -15,10 +15,10 @@
         ul.scroll-inner-list
           li.active.portfolio
             = image_tag 'portfolio-icon-active.png'
-            | Portfolio
+            = link_to("Portfolio", '/')
           li
             = image_tag 'market-icon.png'
-            | Market
+            = link_to("Markets", '/markets')
           li
             = image_tag 'tutorial-icon.png'
             | Tutorials

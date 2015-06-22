@@ -48,6 +48,10 @@ class StockController < ApplicationController
     render partial: 'account/portfolio'
   end
 
+  def markets
+    render 'account/markets'
+  end
+
   def trading_analysis
     @stock_summary = current_user.stock_summary
   end

@@ -1,6 +1,6 @@
 ul.secondary-nav
   li.current_holdings-tab
-    | Long Positions
+    | Popular Stocks
   li.shorting-tab
     | Shorted Positions
   li.upcoming-future-transactions-tab
@@ -9,9 +9,8 @@ ul.secondary-nav
     | Stop Loss
 
 div.content
-  div.widget-container
   div.current_holdings
-    = render partial: 'account/current_holdings'
+    = render partial: 'stock/suggest'
   div.shorting
     = render partial: 'account/shorting'
   div.upcoming-future-transactions
