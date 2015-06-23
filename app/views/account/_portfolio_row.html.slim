@@ -1,4 +1,4 @@
-tr.values-table onclick="show_tradingview_widget('#{stock_symbol}')"
+tr.values-table onclick="show_tradingview_widget('#{stock_symbol}', '#{s[:name]}', '#{s[:shares_owned]}', '#{s[:cost_basis]}', '#{s[:percent_gain]}')"
     td.portfolio-cell.stock-symbol = stock_symbol
     td.portfolio-cell.stock-name = s[:name]
     td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])

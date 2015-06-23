@@ -5,6 +5,7 @@ $( document ).ready(function() {
   $('.fourth').hide();
   $('.fifth').hide();
   $('.sixth').hide();
+  $('.stock-info').hide();
 
     $('.first-tab').click(function (){
       remove_widget();
@@ -80,6 +81,7 @@ $( document ).ready(function() {
 });
 
 function remove_widget(){
+  $('.stock-info').hide();
   $('.widget-container').removeAttr('id');
   $('.widget-container').removeAttr('id');
   var iframes = document.getElementsByTagName('iframe');
