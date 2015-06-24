@@ -15,15 +15,33 @@ function show_stock_info (stock_symbol, name, shares, cost, percent){
                     <li><span class="header">'.concat(stock_symbol).concat('</span><br /><span class="subheader black">'.concat(name).concat('</span></li>\
                     <li><span class="header">STOCK IN PORTFOLIO</span><br /><span class="subheader green">'.concat(shares).concat('/ 8,167.34 $</span></li>\
                     <li><span class="header">MONTHLY GAIN / LOSS</span><br /><span class="subheader red">'.concat(cost).concat('/').concat(percent).concat('</span></li>\
-                    <li class="button">BUY</li>\
+                    <li type="button" data-toggle="modal" data-target="#myModal" class="button">BUY</li>\
                     <li class="button"><span>SELL</span></li>\
                   </ul>'))));
 
   var content = document.getElementById('content');
-  content.insertBefore(div, content.firstChild);
+
+  if (content.firstChild === null){
+    content.appendChild(div);
+  }
+  else{
+    content.insertBefore(div, content.firstChild);
+  }
 }
 
-function show_tradingview_widget (stock_symbol, name, shares, cost, percent){
+function modal_inner_content (stock_symbol, name, shares, cost, percent){
+  var div = document.createElement('div');
+
+  $('.modal-body').innerHTML = '<ul>\
+                    <li><span class="header">'.concat(stock_symbol).concat('</span><br /><span class="subheader black">'.concat(name).concat('</span></li>\
+                    <li><span class="header">STOCK IN PORTFOLIO</span><br /><span class="subheader green">'.concat(shares).concat('/ 8,167.34 $</span></li>\
+                    <li><span class="header">MONTHLY GAIN / LOSS</span><br /><span class="subheader red">'.concat(cost).concat('/').concat(percent).concat('</span></li>\
+                    <li type="button" data-toggle="modal" data-target="#myModal" class="button">BUY</li>\
+                    <li class="button"><span>SELL</span></li>\
+                  </ul>'))));
+}
+
+function show_tradingview_widget (stock_symbol){
   $('.first').hide();
   $('.second').hide();
   $('.third').hide();
@@ -31,13 +49,17 @@ function show_tradingview_widget (stock_symbol, name, shares, cost, percent){
   $('.fifth').hide();
   $('.sixth').hide();
 
-  show_stock_info(stock_symbol, name, shares, cost, percent);
+  //window.location.hash = stock_symbol;
+
+  //show_stock_info(stock_symbol, name, shares, cost, percent);
+
+  //modal_inner_content (stock_symbol, name, shares, cost, percent);
+
+  stock_symbol = stock_symbol.toLowerCase();
 
   $('.widget-container').attr('id', 'chartview');
   var height = $('.content').height() - 20
   var width = $('.content').width() - 20
-
-  stock_symbol = stock_symbol.toLowerCase();
 
   var MyWinningTrade = new Object();
 

@@ -1,65 +1,37 @@
-= render partial: 'search'
-= render partial: 'suggest'
+div.stock-info
+  ul
+    li
+      span.header  = @stock.symbol
+      br
+      span.subheader.black = @stock.name
+    li
+      span.header STOCK IN PORTFOLIO
+      br
+      span.subheader.green 
+        #{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
+    li
+      span.header MONTHLY GAIN / LOSS
+      br
+      span.subheader.red
+        #{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
+    li.button data-target="#myModal" data-toggle="modal" type="button"  BUY
+    li.button
+      span SELL
 
-.row
-  .span12
-    #chartview
+div.content#content
+  div.widget-container#chartview
 
-.container
-  .row
-    .span6
-      .boxify
-        = render partial: 'table'
-
-    .span6
-      ul.nav.nav-tabs
-        li.active.buy = link_to 'Buy Stocks', '#buy', 'data-toggle' => 'tab'
-        li.sell = link_to 'Sell Stocks', '#sell', 'data-toggle' => 'tab'
-        li.sell = link_to 'Short Stocks', '#short', 'data-toggle' => 'tab'
-
-      - can_sell_stock = @user_stock && @user_stock.shares_owned.to_i > 0
-      - can_cover_stock = @user_stock && @user_stock.shares_borrowed.to_i > 0
-      .tab-content
-        .tab-pane.active.buybox.order_form.span6#buy
-          h2
-            ' Buy
-            span #{@stock.name}
-          p Prices may be delayed slightly from the current exchange prices
-          - if can_cover_stock
-            p#current_shares You're currently borrowing #{pluralize @user_stock.shares_borrowed, 'share'} in #{@stock.name} at $#{@user_stock.short_cost_basis}/share. Shares you purchase will be applied to cover your short position.
-      
-          = render partial: 'buy_form'
-          
-        .tab-pane.sellbox.order_form.span6#sell class=('disabled' unless can_sell_stock)
-          h2
-            ' Sell
-            span #{@stock.name}
-          - if can_sell_stock
-            p#current_shares You currently own #{pluralize @user_stock.shares_owned, 'share'} in #{@stock.name}
-            = render partial: 'sell_form'
-
-          - else
-            p You do not have any shares to sell in #{@stock.name}
-
-        .tab-pane.shortbox.order_form.span6#short
-          h2
-            ' Short
-            span #{@stock.name}
-          p Prices may be delayed slightly from the current exchange prices
-          = render partial: 'short_sell_borrow_form'
-
-= render partial: 'share_buy_modal'
-
-= render partial: 'share_sell_modal'
 
 javascript:
+  var height = $('.content').height();
+  var width = $('.content').width() - 20;
+
   var MyWinningTrade = new Object();
-  MyWinningTrade.transaction_fee = #{Order::TRANSACTION_FEE}
 
   var tradingview_widget_options = {};
   tradingview_widget_options.autosize  = false;
-  tradingview_widget_options.width  = 920;
-  tradingview_widget_options.height = 450;
+  tradingview_widget_options.width  = width;
+  tradingview_widget_options.height = height;
   tradingview_widget_options.symbol = '#{@stock.symbol}';
   tradingview_widget_options.interval = 'D';
   tradingview_widget_options.toolbar_bg = '#3c5063';
@@ -69,4 +41,3 @@ javascript:
   tradingview_widget_options.news = true;
 
   new TradingView.widget(tradingview_widget_options);
-
