@@ -60,22 +60,22 @@ group :test do
   gem 'vcr', '~> 2.4.0'
   gem 'fakeweb', '~> 1.3.0'
   gem 'shoulda-matchers', '~> 1.4.2'
-  gem 'pry-rails'
   gem 'pry-byebug'
 end
 
 group :development, :test do
   gem 'jasminerice', '~> 0.0.10'
+  gem 'pry-rails'
 end
 
 # OmniAuth
 # ========
 gem 'devise' # Normal Auth
-gem 'oauth', '~> 0.4.7'
+gem 'omniauth'
 gem 'omniauth-twitter', '~> 0.0.14'
 gem 'omniauth-facebook', '~> 1.4.1'
-gem 'omniauth-linkedin', '~> 0.1.0'
-gem 'omniauth-openid', '~> 1.0.1' # Google
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-google-oauth2'
 
 # Monitoring
 # ==========

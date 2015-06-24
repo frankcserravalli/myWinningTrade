@@ -1,19 +1,17 @@
 MyWinningTrade::Application.routes.draw do
-  devise_for :users
-
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
+  devise_scope :user do
+    resources :teacher_sessions, only: [:create]
+    get 'teacher/sign_in' => 'teacher_sessions#new'
+    get 'teacher/request_upgrade' => 'teacher_sessions#request_upgrade'
+    post 'teacher/verify' => 'teacher_sessions#verify'
+    post 'teacher/remove_pending' => 'teacher_sessions#remove_pending'
+    get 'teacher/pending' => 'teacher_sessions#pending'
+  end
   root to: redirect('/dashboard')
-
-  # match '/auth/:provider/callback', to: 'sessions#create'
-
-  # # post 'sessions/create', to: 'sessions#create'
-
-  # # get '/auth/failure', to: 'sessions#new'
 
   get '/dashboard', to: 'stock#dashboard'
   # get '/user/trading_analysis', to: 'stock#trading_analysis'
-
-  # # get '/login', to: 'sessions#new'
-  # # get '/logout', to: 'sessions#destroy'
 
   # get '/AboutUs', to: 'sessiobsns#aboutus'
   # get '/Education', to: 'sessions#education'
@@ -30,11 +28,8 @@ MyWinningTrade::Application.routes.draw do
   # get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
   get '/users/profile', to: 'users#profile', as: 'profile'
-  # # get '/signin', to: 'users#sign_in'
-  # # get '/signup', to: 'users#sign_up'
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
-  # # post '/user/create', to: 'users#create'
 
   # get '/trading_analysis_pdf', to: 'users#trading_analysis_pdf'
 
@@ -44,8 +39,8 @@ MyWinningTrade::Application.routes.draw do
   match '/subscriptions/update', to: 'subscriptions#update'
 
   # resources :teacher_sessions, only: [:create]
-  get 'teacher/sign_in', to: 'teacher_sessions#new'
-  get 'teacher/request_upgrade', to: 'teacher_sessions#request_upgrade'
+  # get 'teacher/sign_in', to: 'teacher_sessions#new'
+  # get 'teacher/request_upgrade', to: 'teacher_sessions#request_upgrade'
   # post 'teacher/verify', to: 'teacher_sessions#verify'
   # post 'teacher/remove_pending', to: 'teacher_sessions#remove_pending'
   # get 'teacher/pending', to: 'teacher_sessions#pending'
@@ -81,8 +76,6 @@ MyWinningTrade::Application.routes.draw do
   end
 
   resources :orders, only: [:index]
-
-  root to: redirect('/dashboard')
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do

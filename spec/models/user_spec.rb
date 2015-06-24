@@ -1,6 +1,51 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                   :integer          not null, primary key
+#  email                :string(255)
+#  name                 :string(255)
+#  provider             :string(16)
+#  uid                  :string(255)
+#  account_balance      :decimal(10, 2)   default(50000.0)
+#  accepted_terms       :boolean          default(FALSE)
+#  premium              :boolean
+#  premium_subscription :boolean          default(FALSE)
+#  password_digest      :string(255)
+#  group                :string(255)      default("student")
+#  password_reset       :boolean          default(FALSE)
+#
+
 require 'spec_helper'
+require 'ostruct'
 
 describe User do
+  let(:facebook) do
+    OpenStruct.new(
+      provider: 'facebook', uid: '121322342341',
+      info: OpenStruct.new(
+        first_name: 'Eric', last_name: 'Santos',
+        email: 'test@test.com'))
+  end
+  let(:google) do
+    OpenStruct.new(
+      provider: 'google', uid: '121322342341',
+      info: OpenStruct.new(
+        first_name: 'Eric', last_name: 'Santos',
+        email: 'test@test.com'))
+  end
+  let(:basic_facebook) do
+    OpenStruct.new(
+      provider: 'facebook', uid: '08797675646542',
+      info: OpenStruct.new(username: 'eruco'))
+  end
+  let(:linkedin) do
+    OpenStruct.new(
+      provider: 'linkedin', uid: 'udygfwjh',
+      info: OpenStruct.new(
+        first_name: 'Eric', last_name: 'Santos',
+        email: 'test@test.com'))
+  end
   it "should receive an initial account balance when being created" do
     User.new.account_balance.should == User::OPENING_BALANCE
   end
@@ -39,5 +84,191 @@ describe User do
     @user.add_capital_to_account("option-5-bonus")
 
     @user.account_balance.should eq 550_000
+  end
+
+  describe 'Omniauth' do
+    describe 'facebook login' do
+      context 'when user doesnt exist' do
+        before(:each) do
+          User.all.each do |user|
+            user.destroy
+          end
+        end
+        it 'creates a user' do
+          expect do
+            User.from_omniauth(facebook)
+          end.to change(User, :count).by(1)
+        end
+        it 'returns a user' do
+          user = User.from_omniauth(facebook)
+          expect(user).to be_a(User)
+        end
+        it 'has facebook as provider' do
+          user = User.from_omniauth(facebook)
+          expect(user.provider).to eq('facebook')
+        end
+        it 'has a facebook id' do
+          user = User.from_omniauth(facebook)
+          expect(user.uid).not_to eq(nil)
+        end
+      end
+      context 'when user exist' do
+        before(:each) do
+          User.from_omniauth(facebook)
+        end
+        it 'finds a user' do
+          expect do
+            User.from_omniauth(facebook)
+          end.to change(User, :count).by(0)
+        end
+        it 'returns a user' do
+          user = User.from_omniauth(facebook)
+          expect(user).to be_a(User)
+        end
+        it 'has facebook as provider' do
+          user = User.from_omniauth(facebook)
+          expect(user.provider).to eq('facebook')
+        end
+        it 'has a facebook id' do
+          user = User.from_omniauth(facebook)
+          expect(user.uid).not_to eq(nil)
+        end
+      end
+    end
+
+    describe 'linkedin login' do
+      context 'when user doesnt exist' do
+        before(:each) do
+          User.all.each do |user|
+            user.destroy
+          end
+        end
+        it 'creates a user' do
+          expect do
+            User.from_omniauth(linkedin)
+          end.to change(User, :count).by(1)
+        end
+        it 'returns a user' do
+          user = User.from_omniauth(linkedin)
+          expect(user).to be_a(User)
+        end
+        it 'has facebook as provider' do
+          user = User.from_omniauth(linkedin)
+          expect(user.provider).to eq('linkedin')
+        end
+        it 'has a facebook id' do
+          user = User.from_omniauth(linkedin)
+          expect(user.uid).not_to eq(nil)
+        end
+      end
+      context 'when user exist' do
+        before(:each) do
+          User.from_omniauth(linkedin)
+        end
+        it 'finds a user' do
+          expect do
+            User.from_omniauth(linkedin)
+          end.to change(User, :count).by(0)
+        end
+        it 'returns a user' do
+          user = User.from_omniauth(linkedin)
+          expect(user).to be_a(User)
+        end
+        it 'has facebook as provider' do
+          user = User.from_omniauth(linkedin)
+          expect(user.provider).to eq('linkedin')
+        end
+        it 'has a facebook id' do
+          user = User.from_omniauth(linkedin)
+          expect(user.uid).not_to eq(nil)
+        end
+      end
+    end
+
+    describe 'google login' do
+      context 'when user doesnt exist' do
+        before(:each) do
+          User.all.each do |user|
+            user.destroy
+          end
+        end
+        it 'creates a user' do
+          expect do
+            User.from_omniauth(google)
+          end.to change(User, :count).by(1)
+        end
+        it 'returns a user' do
+          user = User.from_omniauth(google)
+          expect(user).to be_a(User)
+        end
+        it 'has google as provider' do
+          user = User.from_omniauth(google)
+          expect(user.provider).to eq('google')
+        end
+        it 'has a google id' do
+          user = User.from_omniauth(google)
+          expect(user.uid).not_to eq(nil)
+        end
+      end
+      context 'when user exist' do
+        before(:each) do
+          User.from_omniauth(google)
+        end
+        it 'finds a user' do
+          expect do
+            User.from_omniauth(google)
+          end.to change(User, :count).by(0)
+        end
+        it 'returns a user' do
+          user = User.from_omniauth(google)
+          expect(user).to be_a(User)
+        end
+        it 'has google as provider' do
+          user = User.from_omniauth(google)
+          expect(user.provider).to eq('google')
+        end
+        it 'has a google id' do
+          user = User.from_omniauth(google)
+          expect(user.uid).not_to eq(nil)
+        end
+      end
+    end
+
+    describe 'facebook login and linkedin login collision' do
+      context 'when logs with facebook and then with linkedin' do
+        before(:each) do
+          User.all.each do |user|
+            user.destroy
+          end
+        end
+        it 'has linkedin as provider' do
+          user = User.from_omniauth(facebook)
+          user = User.from_omniauth(linkedin)
+          expect(user.provider).to eq('linkedin')
+        end
+        it 'doesnt add a new user' do
+          User.from_omniauth(facebook)
+          User.from_omniauth(linkedin)
+          expect { User.from_omniauth(linkedin) }.to change(User, :count).by(0)
+        end
+      end
+      context 'when logs with linkedin and then with facebook' do
+        before(:each) do
+          User.all.each do |user|
+            user.destroy
+          end
+        end
+        it 'has facebook as provider' do
+          User.from_omniauth(linkedin)
+          user = User.from_omniauth(facebook)
+          expect(user.provider).to eq('facebook')
+        end
+        it 'doesnt add a new user' do
+          User.from_omniauth(linkedin)
+          User.from_omniauth(facebook)
+          expect { User.from_omniauth(linkedin) }.to change(User, :count).by(0)
+        end
+      end
+    end
   end
 end

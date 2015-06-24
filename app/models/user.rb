@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook, :linkedin, :google_oauth2]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :encrypted_password
@@ -579,7 +580,30 @@ class User < ActiveRecord::Base
     html
   end
 
+  def self.from_omniauth(auth)
+    if user = where(email: auth.info.email).first
+      user.provider = auth.provider
+      user.uid = auth.uid
+      name = "#{auth.info.first_name} #{auth.info.last_name}" if auth.info.first_name
+      user.name = name unless user.name
+      user.email = auth.info.email unless user.email
+      user.save
+    else
+      password = Devise.friendly_token[0, 20]
+      user = create(
+        uid: auth.uid,
+        email: auth.info.email,
+        name: "#{auth.info.first_name} #{auth.info.last_name}",
+        provider: auth.provider,
+        password: password,
+        password_confirmation: password,
+        accepted_terms: false)
+    end
+    user
+  end
+
   protected
+
   def create_initial_balance
     self.account_balance ||= OPENING_BALANCE
   end
