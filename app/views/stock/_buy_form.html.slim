@@ -1,10 +1,20 @@
 = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'buy_form'} do |f|
-  .control-group.stock-trend data-stock-symbol=@stock.symbol
-    label.control-label Current price
-    .controls
-      .current-price#buy_price = number_to_currency(@stock.current_price)
+  table
+    tr
+      td
+        | alert
+    tr
+      td
+        table.control-group.stock-trend data-stock-symbol=@stock.symbol
+          tr
+            td
+              label.control-label Current price
+            td
+              .controls
+                .current-price#buy_price = number_to_currency(@stock.current_price)
 
-  = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
+    tr
+      td= f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
   = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "buy" }
   #hidden-buy-later
     = render partial: 'stock/stock_later_field', locals: { f: f }

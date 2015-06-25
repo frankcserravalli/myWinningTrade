@@ -1,4 +1,5 @@
 = render partial: 'stock/buy_modal'
+= render partial: 'stock/sell_modal'
 
 div.stock-info
   ul
@@ -16,9 +17,8 @@ div.stock-info
       br
       span.subheader.red
         #{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
-    li.button data-target="#myModal" data-toggle="modal" type="button"  BUY
-    li.button
-      span SELL
+    li.button data-target="#buyModal" data-toggle="modal" type="button"  BUY
+    li.button data-target="#sellModal" data-toggle="modal" type="button" SELL
 
 div.content#content
   div.widget-container#chartview
