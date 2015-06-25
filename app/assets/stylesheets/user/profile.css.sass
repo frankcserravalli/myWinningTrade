@@ -7,7 +7,7 @@
         background-color: $darkGray
         color: white
         font-weight: bold
-        font-size: 16
+        font-size: 16px
         padding-left: 1.5em
       .main
         background-color: white
@@ -15,6 +15,7 @@
 
         #teacher_request
           margin-right: .5em
+          width: auto
 
         img
           margin-right: 1em
@@ -32,31 +33,88 @@
             background-color: $green
             color: white
 
+.third
+  table
+    width: 100%
+    td
+      width: 33.3333%
 
-#profile
-  +boxify
-  padding: 15px
-  margin-top: 30px
-  width: 910px
+      .info-box
+        margin-top: 2em
+        width: 100%
 
-  .row
-    padding-bottom: 25px
+        header
+          padding: 1em
+          background-color: $darkGray
+          color: white
+          font-weight: bold
+          font-size: 16px
+          text-align: center
+          transition: all 0.5s
 
-  .tab-content
-    background: #FFF
-    width: 890px
-    margin-left: 0px
-    border: 1px solid rgba(154, 171, 187, 0.6)
+        .fee
+          padding: 1em
+          background-color: $gray
+          color: white
+          font-weight: 600
+          font-size: 16px
+          text-align: center
+          transition: all 0.5s
 
-  .tab-pane
-    margin-top: 20px
-    padding-bottom: 30px
+        .main
+          background-color: white
+          padding: 1.5em
+          font-size: 17px
+          margin-right: auto
+          margin-left: auto
+          text-align: center
+          color: $separatorGray
 
-  .nav-tabs
-    border-bottom: none
+          img
+            margin-right: 1em
 
-  li.active
-    border-bottom: 1px solid #FFF
+          input
+            border: 0px
+            border-bottom: 1px solid $input-border-gray
+            font-size: 16px
+            color: $separatorGray
+            width: 92%
 
-  .btn-primary
-    margin-left: 10px
+            &.sign-up-user-submit-btn
+              width: 100%
+              border-radius: 0
+              background-color: $green
+              color: white
+
+        &.green-selected
+          header
+            background-color: $green
+            padding-top: 1.5em
+            padding-bottom: 1.5em
+          .fee
+            padding-top: 1.5em
+            padding-bottom: 1.5em
+
+*, 
+*:before, 
+*:after
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+.css-shapes-preview
+  position: relative
+  width: 100%
+  background-color: $button-disabled-gray
+  -webkit-transform: skew(-20deg)
+  transform: skew(-20deg)
+
+  height: 60px
+  margin: 2em
+  width: 30%
+  float: right
+
+  transition: all 0.5s
+
+  span
+    padding: 2em

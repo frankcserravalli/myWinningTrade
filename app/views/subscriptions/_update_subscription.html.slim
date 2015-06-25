@@ -1,31 +1,51 @@
-form.payment-form.row-fluid method="PUT" action="/subscriptions/update"
+table width="100%"
+  tr
+    td width="33.3333%"
+      article.info-box.col-md-4#two-month onclick="select('#two-month')" 
+        header.center.uppercase
+          | Two Month Plan
+        .main
+          | 25K Ubi $
+          br
+          br
+          | 4 hr call teacher
+          br
+          br
+          | Weekly Premium Newsletter
+        .fee.center
+          | $5 every two months
 
-  div#stripe-error-message
+    td width="33.3333%"
+      article.info-box.col-md-4#six-month onclick="select('#six-month')"
+        header.center.uppercase
+          | SIX MONTH PLAN
+        .main
+          | 200K Ubi $
+          br
+          br
+          | 16 hr call teacher
+          br
+          br
+          | Weekly Premium Newsletter
+        .fee.center
+          | $15 every six months
 
-  br
+    td width="33.3333%"
+      article.info-box.col-md-4#one-year onclick="select('#one-year')"
+        header.center.uppercase
+          | ONE YEAR PLAN
+        .main
+          | 500K Ubi $
+          br
+          br
+          | 36 hr call teacher
+          br
+          br
+          | Daily Premium Newsletter
+        .fee.center
+          | $30 every year
 
-  = hidden_field_tag 'user_id', current_user.id.to_s
+.css-shapes-preview
+  span
+    | CHECKOUT
 
-  = hidden_field_tag 'payment_plan', ""
-
-  = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
-
-  .row-fluid.pagination-centered
-    div.span4.subscription-button value="two"
-      div Two-Month Plan
-      div.payment-plan-description Sign up and pay only $5 every two months
-    div.span4.subscription-button value="six"
-      div Six-Month Plan
-      div.payment-plan-description Sign up and pay only $15 every six months
-    div.span4.subscription-button value="twelve"
-      div Twelve-Month Plan
-      div.payment-plan-description Sign up and pay only $30 every year
-
-  br
-
-  div.row-fluid
-    = button_tag "Upgrade", class: "btn btn-primary submit-update-subscription-button"
-
-    a.btn.pull-right.btn-danger href="#delete-subscription-modal" data-target="#delete-subscription-modal" role="button" data-toggle="modal" Delete Subscription
-
-//= render partial: 'delete_subscription'

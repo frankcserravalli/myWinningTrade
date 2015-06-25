@@ -77,3 +77,13 @@ function show_tradingview_widget (stock_symbol){
 
   new TradingView.widget(tradingview_widget_options);
 }
+
+function select(id){
+  $('.green-selected').removeClass('green-selected');
+  $('.selected').removeClass('selected');
+
+  $(id).addClass('green-selected');
+  $(id).addClass('selected');
+
+  $('.css-shapes-preview').addClass('green-background');
+}
