@@ -2,22 +2,29 @@
 #
 # Table name: users
 #
-#  id                   :integer          not null, primary key
-#  email                :string(255)
-#  name                 :string(255)
-#  provider             :string(16)
-#  uid                  :string(255)
-#  account_balance      :decimal(10, 2)   default(50000.0)
-#  accepted_terms       :boolean          default(FALSE)
-#  premium              :boolean
-#  premium_subscription :boolean          default(FALSE)
-#  password_digest      :string(255)
-#  group                :string(255)      default("student")
-#  password_reset       :boolean          default(FALSE)
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  name                   :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  account_balance        :decimal(, )      default(50000.0)
+#  accepted_terms         :boolean
+#  premium                :boolean
+#  premium_subscription   :boolean          default(FALSE)
+#  group                  :string(255)      default("student")
+#  pending_teacher_id     :integer
 #
 
 class User < ActiveRecord::Base
-
   OPENING_BALANCE = 50000
   has_many :orders, dependent: :destroy
   has_many :user_stocks
@@ -36,7 +43,8 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:facebook, :linkedin, :google_oauth2]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :encrypted_password
+  attr_accessible :email, :password, :password_confirmation,
+                  :remember_me, :encrypted_password, :group
   attr_protected :account_balance, :premium_subscription
   after_initialize :create_initial_balance
 
@@ -45,7 +53,6 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :name, presence: true
   validates :email, presence: true
-  validates :password, presence: true
 
   # MODEL METHODS
   # =============
@@ -323,18 +330,18 @@ class User < ActiveRecord::Base
             composite_average_holding_period += sorted_open_positions[value][1][:average_holding_period].to_f
           end
         else
-            one_stock_exists = true
-            summary += '<tr><td>' + sorted_open_positions[value][0].to_s + '</td>'
-            summary += '<td>' + sorted_open_positions[value][1][:name].to_s + '</td>'
-            summary += '<td>' + sorted_open_positions[value][1][:revenue].round(2).to_s + '</td>'
-            summary += '<td>' + sorted_open_positions[value][1][:tax_liability].round(2).to_s + '</td>'
-            summary += '<td>' + sorted_open_positions[value][1][:capital_at_risk].round(2).to_s + '</td>'
-            summary += '<td>' + sorted_open_positions[value][1][:returns].round(2).to_s + '</td>'
-            if sorted_open_positions[value][1][:average_holding_period] == '--'
-              summary += '<td>' + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + '</td></tr>'
-            else
-              summary += '<td>' + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + ' days</td></tr>'
-            end
+          one_stock_exists = true
+          summary += '<tr><td>' + sorted_open_positions[value][0].to_s + '</td>'
+          summary += '<td>' + sorted_open_positions[value][1][:name].to_s + '</td>'
+          summary += '<td>' + sorted_open_positions[value][1][:revenue].round(2).to_s + '</td>'
+          summary += '<td>' + sorted_open_positions[value][1][:tax_liability].round(2).to_s + '</td>'
+          summary += '<td>' + sorted_open_positions[value][1][:capital_at_risk].round(2).to_s + '</td>'
+          summary += '<td>' + sorted_open_positions[value][1][:returns].round(2).to_s + '</td>'
+          if sorted_open_positions[value][1][:average_holding_period] == '--'
+            summary += '<td>' + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + '</td></tr>'
+          else
+            summary += '<td>' + sorted_open_positions[value][1][:average_holding_period].round(2).to_s + ' days</td></tr>'
+          end
         end
       end
     end

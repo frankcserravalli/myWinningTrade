@@ -11,50 +11,33 @@ MyWinningTrade::Application.routes.draw do
   root to: redirect('/dashboard')
 
   get '/dashboard', to: 'stock#dashboard'
-  # get '/user/trading_analysis', to: 'stock#trading_analysis'
-
-  # get '/AboutUs', to: 'sessiobsns#aboutus'
-  # get '/Education', to: 'sessions#education'
-  # get '/Press', to: 'sessions#press'
-  # # get '/Portal', to: 'sessions#loginportal'
+  get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
-  # get 'buys/callback_linkedin', to: 'buys#callback_linkedin'
-  # get 'buys/callback_facebook', to: 'buys#callback_facebook'
+  get 'buys/callback_linkedin', to: 'buys#callback_linkedin'
+  get 'buys/callback_facebook', to: 'buys#callback_facebook'
 
-  # get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
-  # get 'sells/callback_facebook', to: 'sells#callback_facebook'
+  get 'sells/callback_linkedin', to: 'sells#callback_linkedin'
+  get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
   get '/users/profile', to: 'users#profile', as: 'profile'
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
 
-  # get '/trading_analysis_pdf', to: 'users#trading_analysis_pdf'
+  get '/trading_analysis_pdf', to: 'users#trading_analysis_pdf'
 
   get '/subscriptions', to: 'subscriptions#show'
   post '/subscriptions/create', to: 'subscriptions#create'
   match '/subscriptions/destroy', to: 'subscriptions#destroy'
   match '/subscriptions/update', to: 'subscriptions#update'
 
-  # resources :teacher_sessions, only: [:create]
-  # get 'teacher/sign_in', to: 'teacher_sessions#new'
-  # get 'teacher/request_upgrade', to: 'teacher_sessions#request_upgrade'
-  # post 'teacher/verify', to: 'teacher_sessions#verify'
-  # post 'teacher/remove_pending', to: 'teacher_sessions#remove_pending'
-  # get 'teacher/pending', to: 'teacher_sessions#pending'
-  # delete 'teacher/log_out', to: 'teacher_sessions#destroy'
-
   get 'account_bonuses', to: 'account_bonuses#show'
-  # post 'account_bonuses/create'
+  post 'account_bonuses/create'
 
-  # resources :groups
-  # get '/search_students', to: 'groups#search_students'
-
-  # #get 'new_group', to: 'groups#new'
-
-  # get '/joestest', to: 'users#test'
+  resources :groups
+  get '/search_students', to: 'groups#search_students'
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do

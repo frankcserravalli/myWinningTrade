@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  before_filter :authenticate_user!
 
   def show
     @subscription = Subscription.find_by_user_id(current_user.id)

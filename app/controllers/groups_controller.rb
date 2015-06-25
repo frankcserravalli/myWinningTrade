@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :redirect_not_signed_in_user
+  before_filter :authenticate_user!
 
   skip_before_filter :require_login, :require_iphone_login
 

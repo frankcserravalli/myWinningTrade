@@ -1,4 +1,5 @@
 class StopLossTransactionsController < ApplicationController
+  before_filter :authenticate_user!
   after_filter :flash_alert, :only => :create
   
   def create

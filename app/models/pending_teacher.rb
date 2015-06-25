@@ -15,15 +15,9 @@ class PendingTeacher < ActiveRecord::Base
 
   validates :user_id, uniqueness: true
 
-  def self.upgrade_user_to_teacher(user_id)
-    teacher = PendingTeacher.find_by_user_id(user_id)
-
-    user = User.find(user_id)
-
+  def upgrade_user_to_teacher
     user.group = 'teacher'
-
     user.save
-
-    teacher.destroy
+    destroy
   end
 end

@@ -18,7 +18,7 @@
               a href="#{subscriptions_path}" Subscription
 
           li
-            = link_to logout_path do
+            = link_to destroy_user_session_path, method: :delete do
               i.icon-signout
               = t('.log_out', default: 'Log out')
       -elsif teacher_current_user

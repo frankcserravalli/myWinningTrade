@@ -97,6 +97,7 @@ end
 # Web Server
 # ==========
 gem 'unicorn', '~> 4.6.2'
+gem 'figaro'
 
 # ETC
 # ===
