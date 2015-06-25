@@ -1,28 +1,37 @@
-= label_tag(:name, "Your name")
-= text_field(:user, :name)
+article.info-box.col-md-6
+  header
+    | PERSONAL DATA
+  .main
+    = image_tag 'name-icon.png'
+    = text_field(:user, :name)
 
-br
+    br
+    br
 
-= label_tag(:name, "Your Email")
-= text_field(:user, :email)
+    = image_tag 'email-icon.png'
+    = text_field(:user, :email)
 
-br
+    br
+    br
 
-= label_tag(:password, "Password")
-= password_field(:user, :password)
+    = image_tag 'password-icon.png'
+    = password_field(:user, :password)
 
-br
+    br
+    br
 
-= label_tag(:password_confirmation, "Password Again")
-= password_field(:user, :password_confirmation)
+    = image_tag 'password-confirm-icon.png'
+    = password_field(:user, :password_confirmation)
 
-br
+    br
+    br
 
--if current_user and current_user.group != "teacher"
-  span "Request Teacher Status"
-  = check_box_tag 'teacher_request', "true", true
+    -if current_user and current_user.group != "teacher"
+      = image_tag 'teacher-status-icon.png'
+      = check_box_tag 'teacher_request', "true", true
+      span Request Teacher Status
 
-  br
-  br
+      br
+      br
 
-= submit_tag "Submit", class: "btn btn-success sign-up-user-submit-btn"
+    = submit_tag "UPDATE", class: "btn btn-success sign-up-user-submit-btn"

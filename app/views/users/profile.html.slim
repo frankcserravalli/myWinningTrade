@@ -1,33 +1,27 @@
-= render partial: 'stock/search'
-= render partial: 'stock/suggest'
+ul.secondary-nav
+  li.first-tab
+    | Account Summary
+  li.second-tab
+    | My Info
+  li.third-tab
+    | Subscriptions
+  li.fourth-tab
+    | Buy Credits
+  li.fifth-tab
+    | Teacher Status
+  li.sixth-tab
+    | Other
 
-#profile.container
-  .row
-    .span8
-      h1 #{current_user.name}
-
-      br
-
-      a.btn.btn-primary href="#{user_edit_path}" Edit Profile
-
-      br
-
-      br
-
-      - if current_user.group != "teacher"
-        a.btn.btn-primary href="#{teacher_request_upgrade_path}" Request Teacher Status
-
-        br
-
-        br
-
-      a.btn.btn-primary href="#{subscriptions_path}" Add Subscription
-
-      br
-
-      br
-
-      a.btn.btn-primary href="#{account_bonuses_path}" Buy Additional Capital
+div.content#content
+  div.first
+    = render partial: 'account/current_holdings'
+  div.second
+    = form_tag('/user/update', method: "put") do
+      = render partial: 'users/form'
+  div.third
+    = render partial: "subscriptions/update_subscription"
+  div.fourth
+    = render partial: "account_bonuses/form"
 
 
 
