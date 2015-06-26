@@ -45,7 +45,8 @@ table width="100%"
         .fee.center
           | $30 every year
 
-.css-shapes-preview
+.css-shapes-preview type="button" data-toggle="modal" data-target=".bs-example-modal-sm"
   span
     | CHECKOUT
 
+= render partial: 'subscriptions/pay_modal'
