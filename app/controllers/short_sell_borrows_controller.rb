@@ -1,4 +1,5 @@
 class ShortSellBorrowsController < ApplicationController
+  before_filter :authenticate_user!
   before_filter {|controller| controller.when_to_execute_order("short_sell_borrow") }
 
   def create

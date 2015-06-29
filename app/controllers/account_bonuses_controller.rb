@@ -1,4 +1,5 @@
 class AccountBonusesController < ApplicationController
+  before_filter :authenticate_user!
   include AccountBonusHelper
 
   def show

@@ -1,4 +1,5 @@
 class SellsController < ApplicationController
+  before_filter :authenticate_user!
 
   # We don't want any orders executed when an user is visiting the linkedin or fb page when sigining in,
   # hence why we take it out

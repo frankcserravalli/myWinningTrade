@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: user_account_summaries
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  capital_total :float            default(0.0)
+#  created_at    :timestamp(6)     not null
+#  updated_at    :timestamp(6)     not null
+#
+
 class UserAccountSummary < ActiveRecord::Base
   attr_accessible :capital_total, :user_id
 

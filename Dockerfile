@@ -12,7 +12,7 @@ RUN apt-get update && \
     postgresql-client-9.4 \
     postgresql-client-common \
     nodejs
-
+    
 # Setup the enviroment and working directory
 ENV APP_HOME /myapp
 RUN mkdir $APP_HOME

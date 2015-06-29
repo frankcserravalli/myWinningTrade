@@ -8,8 +8,4 @@ describe "Teacher Sessions Routing" do
   it "should route to teacher_sessions#create" do
     expect(post: '/teacher_sessions').to route_to({ controller: 'teacher_sessions', action: 'create' })
   end
-
-  it "should route to teacher_sessions#destroy" do
-    expect(delete: '/teacher/log_out').to route_to({ controller: 'teacher_sessions', action: 'destroy' })
-  end
 end

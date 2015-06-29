@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: user_stocks
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  stock_id         :integer
+#  shares_owned     :integer          default(0)
+#  cost_basis       :decimal(10, 2)
+#  shares_borrowed  :integer          default(0)
+#  short_cost_basis :decimal(10, 2)
+#
+
 class UserStock < ActiveRecord::Base
   belongs_to :user
   belongs_to :stock

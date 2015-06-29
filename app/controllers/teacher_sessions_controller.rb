@@ -1,96 +1,46 @@
-class TeacherSessionsController < ApplicationController
-  before_filter :redirect_signed_in_teacher, only: [:new, :create]
-
-  skip_before_filter :require_login, :require_iphone_login
-
-  skip_before_filter :require_acceptance_of_terms, if: :current_user
-
-  def new
-    # Finding the groups that relate only to the ones the teacher created
-    if current_user and current_user.group != "teacher"
-      pending_teacher = PendingTeacher.find_by_user_id(current_user.id)
-
-      if pending_teacher
-        redirect_to dashboard_url, notice: I18n.t('flash.sessions.create.notice', default: "Your request is pending.")
-      else
-        redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Please request a teacher status.")
-      end
-    end
-  end
+class TeacherSessionsController < Devise::SessionsController
+  before_filter :authenticate_user!, except: [:new, :create]
 
   def create
-    user = User.find_by_email(params[:email].downcase)
-
-    # Login user
-    if user && user.authenticate(params[:password])
-      self.current_user = user
-
-      if user.group == "teacher"
-        redirect_to groups_url
-      else
-        redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Please request a teacher status.")
-      end
-    else
-      redirect_to teacher_sign_in_url, notice: I18n.t('flash.sessions.create.notice', default: "Invalid email/password combination")
-    end
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message(:notice, :signed_in) if is_flashing_format?
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    respond_with resource, location: after_sign_in_path_for(resource), notice: I18n.t(
+          'flash.sessions.create.notice',
+          default: 'Please request a teacher status.')
   end
 
   def request_upgrade
-    if current_user
-      teacher = PendingTeacher.find_by_user_id(current_user.id)
-
-      # Has request been made? If so just tell the user the status is pending
-      if teacher
-        redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Your status is pending!")
-      else
-        # Create a teacher request
-        teacher = PendingTeacher.new
-
-        teacher.user_id = current_user.id
-
-        if teacher.save
-          redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Request Sent!")
-        else
-          redirect_to profile_url, notice: I18n.t('flash.sessions.create.notice', default: "Oops. Something went wrong!")
-        end
-      end
-    else
-      redirect_to teacher_sign_in_url, notice: I18n.t('flash.sessions.create.notice', default: "Please sign in first before you assign yourself as a teacher.")
-    end
+    notice = if PendingTeacher.find_by_user_id(current_user.id)
+               I18n.t('flash.sessions.create.notice', default: 'Request Pending!')
+             else
+               current_user.create_pending_teacher
+               I18n.t('flash.sessions.create.notice', default: 'Request Sent!')
+             end
+    redirect_to profile_url, notice: notice
   end
 
   def pending
-    # Frank's account number is 29
-    unless current_user.id.eql? 29
-      redirect_to groups_url, notice: I18n.t('flash.sessions.create.notice', default: "You don't have permission to view this page.")
-    end
-
+    redirect_to groups_url unless current_user.email == Figaro.env.admin
     @teachers_pending = PendingTeacher.all
   end
 
   def verify
-    PendingTeacher.upgrade_user_to_teacher(params[:user_id])
-
-    redirect_to teacher_pending_url, notice: I18n.t('flash.sessions.create.notice', default: "Teacher added.")
+    User.find(user_id).pending_teacher.upgrade_user_to_teacher
+    redirect_to teacher_pending_url, notice: I18n.t(
+      'flash.sessions.create.notice', default: 'Teacher added.')
   end
 
   def remove_pending
-    teacher = PendingTeacher.find_by_user_id(params[:user_id]).destroy
-
-    redirect_to teacher_pending_url, notice: I18n.t('flash.sessions.create.notice', default: "Non-teacher removed.")
-  end
-
-  def destroy
-    self.current_user = nil
-
-    redirect_to root_url
+    PendingTeacher.find_by_user_id(user_id).destroy
+    redirect_to teacher_pending_url, notice: I18n.t(
+      'flash.sessions.create.notice', default: 'Non-teacher removed.')
   end
 
   private
 
-  def redirect_signed_in_teacher
-    if current_user and current_user.group == "teacher"
-      redirect_to groups_url
-    end
+  def user_id
+    params.require(:user_id)
   end
 end

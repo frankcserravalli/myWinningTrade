@@ -1,5 +1,5 @@
 class TermsController < ApplicationController
-  skip_before_filter :require_login
+  before_filter :authenticate_user!
   skip_before_filter :require_acceptance_of_terms
 
 

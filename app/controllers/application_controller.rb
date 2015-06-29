@@ -1,28 +1,9 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
-  protect_from_forgery
 
   include UsersHelper
-
-  before_filter :require_login
-  before_filter :require_iphone_login
   before_filter :require_acceptance_of_terms, if: :current_user
   before_filter :load_portfolio, if: :current_user
-
-  # authentication
-  helper_method :current_user
-  def current_user
-    @current_user ||= User.find_by_id(session[:current_user_id])
-  end
-
-  def current_user=(user)
-    @current_user = nil
-    session[:current_user_id] = user.try(:id)
-  end
-
-  def require_login
-    redirect_to login_url, error: I18n.t('flash.sessions.required.error', default: 'Please log in.') unless current_user
-  end
 
   def require_acceptance_of_terms
     redirect_to terms_path and return unless current_user && current_user.accepted_terms?
@@ -179,5 +160,13 @@ class ApplicationController < ActionController::Base
 
     # Redirect to Facebook login page
     redirect_to session['oauth'].url_for_oauth_code(:permissions => "publish_stream")
+  end
+
+  def after_sign_in_path_for(_resource)
+    if current_user.group == 'teacher'
+      groups_url
+    else
+      profile_url
+    end
   end
 end

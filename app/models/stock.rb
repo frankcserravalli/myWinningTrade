@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: stocks
+#
+#  id     :integer          not null, primary key
+#  name   :string(255)
+#  symbol :string(7)
+#
+
 class Stock < ActiveRecord::Base
   has_many :orders
 

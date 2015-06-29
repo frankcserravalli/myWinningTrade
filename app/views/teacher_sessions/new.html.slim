@@ -1,18 +1,28 @@
 h1 Teacher Sign In
 
-= form_tag('/teacher_sessions', :method => :post)
+/ = form_tag('/teacher_sessions', :method => :post)
 
-= text_field_tag 'email', nil, placeholder: 'Email'
+/ = text_field_tag 'email', nil, placeholder: 'Email'
 
-br
-br
+/ br
+/ br
 
-= password_field_tag 'password', nil, placeholder: 'Password'
+/ = password_field_tag 'password', nil, placeholder: 'Password'
 
-br
-br
+/ br
+/ br
 
-= submit_tag 'Sign In', id: "teacher-sign-in-button", class: "btn btn-primary"
+/ = submit_tag 'Sign In', id: "teacher-sign-in-button", class: "btn btn-primary"
 
-a.btn.btn-primary href="#{signup_path}" Sign Up and Register as a Teacher
+= simple_form_for(resource, as: resource_name, url: teacher_sessions_path) do |f|
+  
+  = f.input :email, required: false, autofocus: true
+  br
 
+  = f.input :password, required: false
+
+  br
+
+  = f.button :submit, "Sign in", id: "teacher-sign-in-button", class: "btn btn-primary"
+
+a.btn.btn-primary href="#{new_user_registration_path}" Sign Up and Register as a Teacher

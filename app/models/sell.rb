@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  price            :decimal(10, 2)
+#  volume           :integer
+#  type             :string(15)
+#  value            :decimal(10, 2)
+#  user_stock_id    :integer
+#  created_at       :timestamp(6)
+#  updated_at       :timestamp(6)
+#  cost_basis       :decimal(10, 2)
+#  volume_remaining :integer
+#  capital_gain     :decimal(10, 2)
+#
+
 class Sell < Order
   attr_accessor :buy
   attr_accessible :buy

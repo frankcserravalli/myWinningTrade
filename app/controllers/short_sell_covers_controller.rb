@@ -1,4 +1,5 @@
 class ShortSellCoversController < ApplicationController
+  before_filter :authenticate_user!
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
