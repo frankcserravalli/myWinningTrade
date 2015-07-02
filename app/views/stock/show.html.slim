@@ -11,12 +11,12 @@ div.stock-info
       span.header STOCK IN PORTFOLIO
       br
       span.subheader.green 
-        #{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
+        //#{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
     li
       span.header MONTHLY GAIN / LOSS
       br
       span.subheader.red
-        #{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
+        //#{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
     li.button data-target="#buyModal" data-toggle="modal" type="button"  BUY
     li.button data-target="#sellModal" data-toggle="modal" type="button" SELL
 

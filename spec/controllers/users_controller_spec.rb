@@ -250,7 +250,7 @@ describe Api::V1::UsersController do
   describe 'delete destroy' do
     context 'with an user who does everything right' do
       before :each do
-        @user = FactoryGirl.create(:sign_in_user)
+        @user = FactoryGirl.create()
       end
 
       it 'returns http success' do
@@ -267,7 +267,7 @@ describe Api::V1::UsersController do
 
     context 'with an user who does everything wrong' do
       before :each do
-        @user = FactoryGirl.create(:sign_in_user)
+        @user = FactoryGirl.create(:user, :sign_in)
       end
 
       it 'does not delete the user when there is no ios token' do
@@ -287,7 +287,7 @@ describe Api::V1::UsersController do
   describe 'post portfolio' do
     context 'with an user who does everything right' do
       before :each do
-        @user = FactoryGirl.create(:sign_in_user)
+        @user = FactoryGirl.create(:user, :sign_in)
       end
 
       it 'returns http success' do

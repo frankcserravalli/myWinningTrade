@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
@@ -186,7 +186,7 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
@@ -364,7 +364,7 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
@@ -542,7 +542,7 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
@@ -720,65 +720,43 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Y29udGVudC10eXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLm1zLWV4Y2Vs
-      !binary "c2V0LWNvb2tpZQ==":
-      - !binary |-
-        U0M9UlY9OkVEPXVzOyBleHBpcmVzPVN1biwgMTctSmFuLTIwMzggMTk6MTQ6
-        MDcgR01UOyBwYXRoPS9maW5hbmNlOyBkb21haW49Lmdvb2dsZS5jb20=
-      - !binary |-
-        UFJFRj1JRD1iYmRjNjM3OGIwMGU4NWQ5OlRNPTEzNjM4MjA5MTE6TE09MTM2
-        MzgyMDkxMTpTPXU0N3BjSFJLMG0zSUYtWkY7IGV4cGlyZXM9RnJpLCAyMC1N
-        YXItMjAxNSAyMzowODozMSBHTVQ7IHBhdGg9LzsgZG9tYWluPS5nb29nbGUu
-        Y29t
-      - !binary |-
-        TklEPTY3PUJXSHE4R0Z5cEpXRG15NXhQWjlCSXNJbTVWRThwWWJNa2FzWXpi
-        ekF1bUtPdGhVZmhNTlFLb3duYXJZTVJuaks2VDQ0VmVXaXd5SDgtVzhfWG51
-        RWp5TXh4Yk1rSDFJZHhlR2xVOG53ZGNXUjllTUFBY19VM0VyZVBzdUVsamRH
-        O0RvbWFpbj0uZ29vZ2xlLmNvbTtQYXRoPS87RXhwaXJlcz1UaHUsIDE5LVNl
-        cC0yMDEzIDIzOjA4OjMxIEdNVDtIdHRwT25seQ==
-      !binary "ZGF0ZQ==":
-      - !binary |-
-        V2VkLCAyMCBNYXIgMjAxMyAyMzowODozMSBHTVQ=
-      !binary "ZXhwaXJlcw==":
-      - !binary |-
-        V2VkLCAyMCBNYXIgMjAxMyAyMzowODozMSBHTVQ=
-      !binary "Y2FjaGUtY29udHJvbA==":
-      - !binary |-
-        cHJpdmF0ZSwgbWF4LWFnZT0w
-      !binary "Y29udGVudC1kaXNwb3NpdGlvbg==":
-      - !binary |-
-        YXR0YWNobWVudDsgZmlsZW5hbWU9ImFhcGwuY3N2Ig==
-      !binary "eC1jb250ZW50LXR5cGUtb3B0aW9ucw==":
-      - !binary |-
-        bm9zbmlmZg==
-      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "cDNw":
-      - !binary |-
-        Q1A9IlRoaXMgaXMgbm90IGEgUDNQIHBvbGljeSEgU2VlIGh0dHA6Ly93d3cu
-        Z29vZ2xlLmNvbS9zdXBwb3J0L2FjY291bnRzL2Jpbi9hbnN3ZXIucHk/aGw9
-        ZW4mYW5zd2VyPTE1MTY1NyBmb3IgbW9yZSBpbmZvLiI=
-      !binary "eC1mcmFtZS1vcHRpb25z":
-      - !binary |-
-        U0FNRU9SSUdJTg==
-      !binary "eC14c3MtcHJvdGVjdGlvbg==":
-      - !binary |-
-        MTsgbW9kZT1ibG9jaw==
-      !binary "c2VydmVy":
-      - !binary |-
-        R1NF
+      content-type:
+      - application/vnd.ms-excel
+      set-cookie:
+      - SC=RV=:ED=us; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/finance; domain=.google.com
+      - PREF=ID=bbdc6378b00e85d9:TM=1363820911:LM=1363820911:S=u47pcHRK0m3IF-ZF; expires=Fri,
+        20-Mar-2015 23:08:31 GMT; path=/; domain=.google.com
+      - NID=67=BWHq8GFypJWDmy5xPZ9BIsIm5VE8pYbMkasYzbzAumKOthUfhMNQKownarYMRnjK6T44VeWiwyH8-W8_XnuEjyMxxbMkH1IdxeGlU8nwdcWR9eMAAc_U3ErePsuEljdG;Domain=.google.com;Path=/;Expires=Thu,
+        19-Sep-2013 23:08:31 GMT;HttpOnly
+      date:
+      - Wed, 20 Mar 2013 23:08:31 GMT
+      expires:
+      - Wed, 20 Mar 2013 23:08:31 GMT
+      cache-control:
+      - private, max-age=0
+      content-disposition:
+      - attachment; filename="aapl.csv"
+      x-content-type-options:
+      - nosniff
+      transfer-encoding:
+      - chunked
+      p3p:
+      - CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657
+        for more info."
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -911,8 +889,7 @@ http_interactions:
         Ljc5LDIyODQ4MDI4CjIxLVNlcC0xMiw3MDIuNDEsNzA1LjA3LDY5OS4zNiw3
         MDAuMTAsMjA0MTM4NjgKMjAtU2VwLTEyLDY5OS4xNiw3MDAuMDYsNjkzLjYy
         LDY5OC43MCwxMjAyMDI3Ngo=
-    http_version: !binary |-
-      MS4x
+    http_version: '1.1'
   recorded_at: Wed, 20 Mar 2013 23:08:31 GMT
 - request:
     method: get
@@ -922,65 +899,43 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Y29udGVudC10eXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLm1zLWV4Y2Vs
-      !binary "c2V0LWNvb2tpZQ==":
-      - !binary |-
-        U0M9UlY9OkVEPXVzOyBleHBpcmVzPVN1biwgMTctSmFuLTIwMzggMTk6MTQ6
-        MDcgR01UOyBwYXRoPS9maW5hbmNlOyBkb21haW49Lmdvb2dsZS5jb20=
-      - !binary |-
-        UFJFRj1JRD1mMjMzNjA4ZDZiNDQ3Yzc4OlRNPTEzNjQ0OTEwMzA6TE09MTM2
-        NDQ5MTAzMDpTPXg4M2lzN0xyY2Zjdmp3VHU7IGV4cGlyZXM9U2F0LCAyOC1N
-        YXItMjAxNSAxNzoxNzoxMCBHTVQ7IHBhdGg9LzsgZG9tYWluPS5nb29nbGUu
-        Y29t
-      - !binary |-
-        TklEPTY3PUZ3WWNIX0Nmc09TSmZRMzhtUmJoTGFNS21TMUZBTGdZRkxYWFZp
-        TmFObmlMWUFmV29YcDQxUFgwdUY3dllVVjVTX3E0NUZjaUpoSGk2YUxGMFh4
-        M0p1d1JDYWNlajVGb2pDVFcwc25xU0RQNzljVG92ZjFjcXphYUJSUFdWUHNV
-        O0RvbWFpbj0uZ29vZ2xlLmNvbTtQYXRoPS87RXhwaXJlcz1GcmksIDI3LVNl
-        cC0yMDEzIDE3OjE3OjEwIEdNVDtIdHRwT25seQ==
-      !binary "ZGF0ZQ==":
-      - !binary |-
-        VGh1LCAyOCBNYXIgMjAxMyAxNzoxNzoxMCBHTVQ=
-      !binary "ZXhwaXJlcw==":
-      - !binary |-
-        VGh1LCAyOCBNYXIgMjAxMyAxNzoxNzoxMCBHTVQ=
-      !binary "Y2FjaGUtY29udHJvbA==":
-      - !binary |-
-        cHJpdmF0ZSwgbWF4LWFnZT0w
-      !binary "Y29udGVudC1kaXNwb3NpdGlvbg==":
-      - !binary |-
-        YXR0YWNobWVudDsgZmlsZW5hbWU9ImFhcGwuY3N2Ig==
-      !binary "eC1jb250ZW50LXR5cGUtb3B0aW9ucw==":
-      - !binary |-
-        bm9zbmlmZg==
-      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "cDNw":
-      - !binary |-
-        Q1A9IlRoaXMgaXMgbm90IGEgUDNQIHBvbGljeSEgU2VlIGh0dHA6Ly93d3cu
-        Z29vZ2xlLmNvbS9zdXBwb3J0L2FjY291bnRzL2Jpbi9hbnN3ZXIucHk/aGw9
-        ZW4mYW5zd2VyPTE1MTY1NyBmb3IgbW9yZSBpbmZvLiI=
-      !binary "eC1mcmFtZS1vcHRpb25z":
-      - !binary |-
-        U0FNRU9SSUdJTg==
-      !binary "eC14c3MtcHJvdGVjdGlvbg==":
-      - !binary |-
-        MTsgbW9kZT1ibG9jaw==
-      !binary "c2VydmVy":
-      - !binary |-
-        R1NF
+      content-type:
+      - application/vnd.ms-excel
+      set-cookie:
+      - SC=RV=:ED=us; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/finance; domain=.google.com
+      - PREF=ID=f233608d6b447c78:TM=1364491030:LM=1364491030:S=x83is7LrcfcvjwTu; expires=Sat,
+        28-Mar-2015 17:17:10 GMT; path=/; domain=.google.com
+      - NID=67=FwYcH_CfsOSJfQ38mRbhLaMKmS1FALgYFLXXViNaNniLYAfWoXp41PX0uF7vYUV5S_q45FciJhHi6aLF0Xx3JuwRCacej5FojCTW0snqSDP79cTovf1cqzaaBRPWVPsU;Domain=.google.com;Path=/;Expires=Fri,
+        27-Sep-2013 17:17:10 GMT;HttpOnly
+      date:
+      - Thu, 28 Mar 2013 17:17:10 GMT
+      expires:
+      - Thu, 28 Mar 2013 17:17:10 GMT
+      cache-control:
+      - private, max-age=0
+      content-disposition:
+      - attachment; filename="aapl.csv"
+      x-content-type-options:
+      - nosniff
+      transfer-encoding:
+      - chunked
+      p3p:
+      - CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657
+        for more info."
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1112,8 +1067,7 @@ http_interactions:
         MzEsMjI0MjgyMzQKMS1PY3QtMTIsNjcxLjE2LDY3Ni43NSw2NTYuNTAsNjU5
         LjM5LDE5NDEzNzAzCjI4LVNlcC0xMiw2NzguNzUsNjgxLjExLDY2Ni43NSw2
         NjcuMTAsMTkxMTEwMTEK
-    http_version: !binary |-
-      MS4x
+    http_version: '1.1'
   recorded_at: Thu, 28 Mar 2013 17:17:10 GMT
 - request:
     method: get
@@ -1123,65 +1077,43 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Y29udGVudC10eXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLm1zLWV4Y2Vs
-      !binary "c2V0LWNvb2tpZQ==":
-      - !binary |-
-        U0M9UlY9OkVEPXVzOyBleHBpcmVzPVN1biwgMTctSmFuLTIwMzggMTk6MTQ6
-        MDcgR01UOyBwYXRoPS9maW5hbmNlOyBkb21haW49Lmdvb2dsZS5jb20=
-      - !binary |-
-        UFJFRj1JRD1lYjMwMjlkZGEzM2Q1MGI5OlRNPTEzNjUwMDY1NTc6TE09MTM2
-        NTAwNjU1NzpTPVNlaTdoUGFvdXhJU2QtTEw7IGV4cGlyZXM9RnJpLCAwMy1B
-        cHItMjAxNSAxNjoyOToxNyBHTVQ7IHBhdGg9LzsgZG9tYWluPS5nb29nbGUu
-        Y29t
-      - !binary |-
-        TklEPTY3PWVrUUE1cDBKOHNMaEpLSUFLZTdxOGdNV2RWVjdSM3pXMVIzSjhv
-        a0hZdDZwclFtRk5qdk56N3Z6U1FLWTM2elFBZXZwY3lYamZWajU4RXRvcnJs
-        SFBZb21NVHp2YXMzTkNHTENfX0hwYzA0ZzlnaVhnVTBMdERiOGRlZ0NzRERf
-        O0RvbWFpbj0uZ29vZ2xlLmNvbTtQYXRoPS87RXhwaXJlcz1UaHUsIDAzLU9j
-        dC0yMDEzIDE2OjI5OjE3IEdNVDtIdHRwT25seQ==
-      !binary "ZGF0ZQ==":
-      - !binary |-
-        V2VkLCAwMyBBcHIgMjAxMyAxNjoyOToxNyBHTVQ=
-      !binary "ZXhwaXJlcw==":
-      - !binary |-
-        V2VkLCAwMyBBcHIgMjAxMyAxNjoyOToxNyBHTVQ=
-      !binary "Y2FjaGUtY29udHJvbA==":
-      - !binary |-
-        cHJpdmF0ZSwgbWF4LWFnZT0w
-      !binary "Y29udGVudC1kaXNwb3NpdGlvbg==":
-      - !binary |-
-        YXR0YWNobWVudDsgZmlsZW5hbWU9ImFhcGwuY3N2Ig==
-      !binary "eC1jb250ZW50LXR5cGUtb3B0aW9ucw==":
-      - !binary |-
-        bm9zbmlmZg==
-      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "cDNw":
-      - !binary |-
-        Q1A9IlRoaXMgaXMgbm90IGEgUDNQIHBvbGljeSEgU2VlIGh0dHA6Ly93d3cu
-        Z29vZ2xlLmNvbS9zdXBwb3J0L2FjY291bnRzL2Jpbi9hbnN3ZXIucHk/aGw9
-        ZW4mYW5zd2VyPTE1MTY1NyBmb3IgbW9yZSBpbmZvLiI=
-      !binary "eC1mcmFtZS1vcHRpb25z":
-      - !binary |-
-        U0FNRU9SSUdJTg==
-      !binary "eC14c3MtcHJvdGVjdGlvbg==":
-      - !binary |-
-        MTsgbW9kZT1ibG9jaw==
-      !binary "c2VydmVy":
-      - !binary |-
-        R1NF
+      content-type:
+      - application/vnd.ms-excel
+      set-cookie:
+      - SC=RV=:ED=us; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/finance; domain=.google.com
+      - PREF=ID=eb3029dda33d50b9:TM=1365006557:LM=1365006557:S=Sei7hPaouxISd-LL; expires=Fri,
+        03-Apr-2015 16:29:17 GMT; path=/; domain=.google.com
+      - NID=67=ekQA5p0J8sLhJKIAKe7q8gMWdVV7R3zW1R3J8okHYt6prQmFNjvNz7vzSQKY36zQAevpcyXjfVj58EtorrlHPYomMTzvas3NCGLC__Hpc04g9giXgU0LtDb8degCsDD_;Domain=.google.com;Path=/;Expires=Thu,
+        03-Oct-2013 16:29:17 GMT;HttpOnly
+      date:
+      - Wed, 03 Apr 2013 16:29:17 GMT
+      expires:
+      - Wed, 03 Apr 2013 16:29:17 GMT
+      cache-control:
+      - private, max-age=0
+      content-disposition:
+      - attachment; filename="aapl.csv"
+      x-content-type-options:
+      - nosniff
+      transfer-encoding:
+      - chunked
+      p3p:
+      - CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657
+        for more info."
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1313,8 +1245,7 @@ http_interactions:
         LjU5LDIxMjE0NDQ0CjQtT2N0LTEyLDY3MS4yNSw2NzQuMjUsNjY1LjU1LDY2
         Ni44MCwxMzI0MTI1OQozLU9jdC0xMiw2NjQuODYsNjcxLjg2LDY2Mi42Myw2
         NzEuNDUsMTUxNTI4MTcK
-    http_version: !binary |-
-      MS4x
+    http_version: '1.1'
   recorded_at: Wed, 03 Apr 2013 16:29:17 GMT
 - request:
     method: get
@@ -1324,7 +1255,7 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
@@ -1502,65 +1433,43 @@ http_interactions:
       string: ''
     headers:
       accept:
-      - ! '*/*'
+      - '*/*'
       user-agent:
       - Ruby
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Y29udGVudC10eXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLm1zLWV4Y2Vs
-      !binary "c2V0LWNvb2tpZQ==":
-      - !binary |-
-        U0M9UlY9OkVEPXVzOyBleHBpcmVzPVN1biwgMTctSmFuLTIwMzggMTk6MTQ6
-        MDcgR01UOyBwYXRoPS9maW5hbmNlOyBkb21haW49Lmdvb2dsZS5jb20=
-      - !binary |-
-        UFJFRj1JRD0yNGYyNWYxZjY2MGYwMzI3OlRNPTEzNjY5MDYzMDE6TE09MTM2
-        NjkwNjMwMzpTPWhVelVfVUZ0VFdMT2RDZDM7IGV4cGlyZXM9U2F0LCAyNS1B
-        cHItMjAxNSAxNjoxMTo0MyBHTVQ7IHBhdGg9LzsgZG9tYWluPS5nb29nbGUu
-        Y29t
-      - !binary |-
-        TklEPTY3PWxvSWd2Zy1aUlAwUGRLYlY0Q1pHVnZjUklsN2lXM184RmRHcUEy
-        bU1DQUxBa2F1LTdMcWdiaGhXMVlHZkdMOEVoUTdPNkxIakhqSlZOUXE4MEZa
-        TFJNTFA1YkRsQnM5X0lPWmtkY0p3V3h6ZTZUQl9NeW5jUlNxX2FST3FUUW5N
-        O0RvbWFpbj0uZ29vZ2xlLmNvbTtQYXRoPS87RXhwaXJlcz1GcmksIDI1LU9j
-        dC0yMDEzIDE2OjExOjQzIEdNVDtIdHRwT25seQ==
-      !binary "ZGF0ZQ==":
-      - !binary |-
-        VGh1LCAyNSBBcHIgMjAxMyAxNjoxMTo0MyBHTVQ=
-      !binary "ZXhwaXJlcw==":
-      - !binary |-
-        VGh1LCAyNSBBcHIgMjAxMyAxNjoxMTo0MyBHTVQ=
-      !binary "Y2FjaGUtY29udHJvbA==":
-      - !binary |-
-        cHJpdmF0ZSwgbWF4LWFnZT0w
-      !binary "Y29udGVudC1kaXNwb3NpdGlvbg==":
-      - !binary |-
-        YXR0YWNobWVudDsgZmlsZW5hbWU9ImFhcGwuY3N2Ig==
-      !binary "eC1jb250ZW50LXR5cGUtb3B0aW9ucw==":
-      - !binary |-
-        bm9zbmlmZg==
-      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "cDNw":
-      - !binary |-
-        Q1A9IlRoaXMgaXMgbm90IGEgUDNQIHBvbGljeSEgU2VlIGh0dHA6Ly93d3cu
-        Z29vZ2xlLmNvbS9zdXBwb3J0L2FjY291bnRzL2Jpbi9hbnN3ZXIucHk/aGw9
-        ZW4mYW5zd2VyPTE1MTY1NyBmb3IgbW9yZSBpbmZvLiI=
-      !binary "eC1mcmFtZS1vcHRpb25z":
-      - !binary |-
-        U0FNRU9SSUdJTg==
-      !binary "eC14c3MtcHJvdGVjdGlvbg==":
-      - !binary |-
-        MTsgbW9kZT1ibG9jaw==
-      !binary "c2VydmVy":
-      - !binary |-
-        R1NF
+      content-type:
+      - application/vnd.ms-excel
+      set-cookie:
+      - SC=RV=:ED=us; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/finance; domain=.google.com
+      - PREF=ID=24f25f1f660f0327:TM=1366906301:LM=1366906303:S=hUzU_UFtTWLOdCd3; expires=Sat,
+        25-Apr-2015 16:11:43 GMT; path=/; domain=.google.com
+      - NID=67=loIgvg-ZRP0PdKbV4CZGVvcRIl7iW3_8FdGqA2mMCALAkau-7LqgbhhW1YGfGL8EhQ7O6LHjHjJVNQq80FZLRMLP5bDlBs9_IOZkdcJwWxze6TB_MyncRSq_aROqTQnM;Domain=.google.com;Path=/;Expires=Fri,
+        25-Oct-2013 16:11:43 GMT;HttpOnly
+      date:
+      - Thu, 25 Apr 2013 16:11:43 GMT
+      expires:
+      - Thu, 25 Apr 2013 16:11:43 GMT
+      cache-control:
+      - private, max-age=0
+      content-disposition:
+      - attachment; filename="aapl.csv"
+      x-content-type-options:
+      - nosniff
+      transfer-encoding:
+      - chunked
+      p3p:
+      - CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657
+        for more info."
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1692,7 +1601,193 @@ http_interactions:
         LDE4MjE0MzUzCjI2LU9jdC0xMiw2MDkuNDMsNjE0LjAwLDU5MS4wMCw2MDQu
         MDAsMzYzNzIyNjIKMjUtT2N0LTEyLDYyMC4wMCw2MjIuMDAsNjA1LjU1LDYw
         OS41NCwyMzQ0MDE5OQo=
-    http_version: !binary |-
-      MS4x
+    http_version: '1.1'
   recorded_at: Thu, 25 Apr 2013 16:11:43 GMT
+- request:
+    method: get
+    uri: http://www.google.com/finance/historical?q=AAPL&startdate=2015-01-02&enddate=2015-07-02&output=csv
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - '*/*'
+      user-agent:
+      - Ruby
+      host:
+      - www.google.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/vnd.ms-excel
+      date:
+      - Thu, 02 Jul 2015 15:53:51 GMT
+      expires:
+      - Thu, 02 Jul 2015 15:53:51 GMT
+      cache-control:
+      - private, max-age=0
+      content-disposition:
+      - attachment; filename="aapl.csv"
+      x-content-type-options:
+      - nosniff
+      transfer-encoding:
+      - chunked
+      p3p:
+      - CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657
+        for more info."
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      set-cookie:
+      - SC=RV=:ED=us; expires=Fri, 01-Jan-2016 15:53:51 GMT; path=/finance; domain=.google.com
+      - PREF=ID=1111111111111111:TM=1435852431:LM=1435852431:V=1:S=M9CT0_HFXF3T00Si;
+        expires=Sat, 01-Jul-2017 15:53:51 GMT; path=/; domain=.google.com
+      - NID=69=qZgsXw9uMUzFvbhushky4iYjivrODQolaLDlAkgmlw00OQuYaBAuXpr9fcY2ruuJwzLN4K5sJLoDlma6c0tAhX3PZeJ2LPJEjx_itO27aCJ0his762GUs_WYCLShkBmI;Domain=.google.com;Path=/;Expires=Fri,
+        01-Jan-2016 15:53:51 GMT;HttpOnly
+      alternate-protocol:
+      - 80:quic,p=0
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        77u/RGF0ZSxPcGVuLEhpZ2gsTG93LENsb3NlLFZvbHVtZQoxLUp1bC0xNSwx
+        MjYuOTAsMTI2Ljk0LDEyNS45OSwxMjYuNjAsMzAyMzg4MTEKMzAtSnVuLTE1
+        LDEyNS41NywxMjYuMTIsMTI0Ljg2LDEyNS40Miw0NDM3MDY4MgoyOS1KdW4t
+        MTUsMTI1LjQ2LDEyNi40NywxMjQuNDgsMTI0LjUzLDQ5MTYxNDI3CjI2LUp1
+        bi0xNSwxMjcuNjcsMTI3Ljk5LDEyNi41MSwxMjYuNzUsNDQwNjY4NDEKMjUt
+        SnVuLTE1LDEyOC44NiwxMjkuMjAsMTI3LjUwLDEyNy41MCwzMTkzODEwMAoy
+        NC1KdW4tMTUsMTI3LjIxLDEyOS44MCwxMjcuMTIsMTI4LjExLDU1MjgwODU1
+        CjIzLUp1bi0xNSwxMjcuNDgsMTI3LjYxLDEyNi44OCwxMjcuMDMsMzAyNjg4
+        NjMKMjItSnVuLTE1LDEyNy40OSwxMjguMDYsMTI3LjA4LDEyNy42MSwzNDAz
+        OTM0NQoxOS1KdW4tMTUsMTI3LjcxLDEyNy44MiwxMjYuNDAsMTI2LjYwLDU0
+        NzE2ODg3CjE4LUp1bi0xNSwxMjcuMjMsMTI4LjMxLDEyNy4yMiwxMjcuODgs
+        MzU0MDcyMjAKMTctSnVuLTE1LDEyNy43MiwxMjcuODgsMTI2Ljc0LDEyNy4z
+        MCwzMjkxODA3MQoxNi1KdW4tMTUsMTI3LjAzLDEyNy44NSwxMjYuMzcsMTI3
+        LjYwLDMxNDk0MTMxCjE1LUp1bi0xNSwxMjYuMTAsMTI3LjI0LDEyNS43MSwx
+        MjYuOTIsNDM5ODg5NDYKMTItSnVuLTE1LDEyOC4xOCwxMjguMzMsMTI3LjEx
+        LDEyNy4xNywzNjg4NjI0NgoxMS1KdW4tMTUsMTI5LjE4LDEzMC4xOCwxMjgu
+        NDgsMTI4LjU5LDM1MzkwODg3CjEwLUp1bi0xNSwxMjcuOTIsMTI5LjM0LDEy
+        Ny44NSwxMjguODgsMzkwODcyNTAKOS1KdW4tMTUsMTI2LjcwLDEyOC4wOCwx
+        MjUuNjIsMTI3LjQyLDU2MDc1NDIwCjgtSnVuLTE1LDEyOC45MCwxMjkuMjEs
+        MTI2LjgzLDEyNy44MCw1MjY3NDc4Ngo1LUp1bi0xNSwxMjkuNTAsMTI5LjY5
+        LDEyOC4zNiwxMjguNjUsMzU2MjY4MDAKNC1KdW4tMTUsMTI5LjU4LDEzMC41
+        OCwxMjguOTEsMTI5LjM2LDM4NDUwMTE4CjMtSnVuLTE1LDEzMC42NiwxMzAu
+        OTQsMTI5LjkwLDEzMC4xMiwzMDk4MzU0MgoyLUp1bi0xNSwxMjkuODYsMTMw
+        LjY2LDEyOS4zMiwxMjkuOTYsMzM2Njc2MjcKMS1KdW4tMTUsMTMwLjI4LDEz
+        MS4zOSwxMzAuMDUsMTMwLjU0LDMyMTEyNzk3CjI5LU1heS0xNSwxMzEuMjMs
+        MTMxLjQ1LDEyOS45MCwxMzAuMjgsNTA4ODQ0NTIKMjgtTWF5LTE1LDEzMS44
+        NiwxMzEuOTUsMTMxLjEwLDEzMS43OCwzMDczMzMwOQoyNy1NYXktMTUsMTMw
+        LjM0LDEzMi4yNiwxMzAuMDUsMTMyLjA0LDQ1ODMzMjQ2CjI2LU1heS0xNSwx
+        MzIuNjAsMTMyLjkxLDEyOS4xMiwxMjkuNjIsNzA2OTc1NjAKMjItTWF5LTE1
+        LDEzMS42MCwxMzIuOTcsMTMxLjQwLDEzMi41NCw0NTU5NTk3MgoyMS1NYXkt
+        MTUsMTMwLjA3LDEzMS42MywxMjkuODMsMTMxLjM5LDM5NzMwMzY0CjIwLU1h
+        eS0xNSwxMzAuMDAsMTMwLjk4LDEyOS4zNCwxMzAuMDYsMzY0NTQ5MzIKMTkt
+        TWF5LTE1LDEzMC42OSwxMzAuODgsMTI5LjY0LDEzMC4wNyw0NDYzMzI0MAox
+        OC1NYXktMTUsMTI4LjM4LDEzMC43MiwxMjguMzYsMTMwLjE5LDUwODgyOTE4
+        CjE1LU1heS0xNSwxMjkuMDcsMTI5LjQ5LDEyOC4yMSwxMjguNzcsMzgyMDgw
+        MzQKMTQtTWF5LTE1LDEyNy40MSwxMjguOTUsMTI3LjE2LDEyOC45NSw0NTIw
+        MzQ1NgoxMy1NYXktMTUsMTI2LjE1LDEyNy4xOSwxMjUuODcsMTI2LjAxLDM0
+        Njk0MjM1CjEyLU1heS0xNSwxMjUuNjAsMTI2Ljg4LDEyNC44MiwxMjUuODYs
+        NDgxNjAwMzIKMTEtTWF5LTE1LDEyNy4zOSwxMjcuNTYsMTI1LjYyLDEyNi4z
+        Miw0MjAzNTc1Nwo4LU1heS0xNSwxMjYuNjgsMTI3LjYyLDEyNi4xMSwxMjcu
+        NjIsNTU1NTAzODIKNy1NYXktMTUsMTI0Ljc3LDEyNi4wOCwxMjQuMDIsMTI1
+        LjI2LDQzOTQwODk1CjYtTWF5LTE1LDEyNi41NiwxMjYuNzUsMTIzLjM2LDEy
+        NS4wMSw3MjE0MTAxMAo1LU1heS0xNSwxMjguMTUsMTI4LjQ1LDEyNS43OCwx
+        MjUuODAsNDkyNzE0MTYKNC1NYXktMTUsMTI5LjUwLDEzMC41NywxMjguMjYs
+        MTI4LjcwLDUwOTg4Mjc4CjEtTWF5LTE1LDEyNi4xMCwxMzAuMTMsMTI1LjMw
+        LDEyOC45NSw1ODUxMjYzOAozMC1BcHItMTUsMTI4LjY0LDEyNy44OCwxMjQu
+        NTgsMTI1LjE1LDgzMTk1NDIzCjI5LUFwci0xNSwxMzAuMTYsMTMxLjU5LDEy
+        OC4zMCwxMjguNjQsNjMzODYwODMKMjgtQXByLTE1LDEzNC40NiwxMzQuNTQs
+        MTI5LjU3LDEzMC41NiwxMTg5MjM5NzAKMjctQXByLTE1LDEzMi4zMSwxMzMu
+        MTMsMTMxLjE1LDEzMi42NSw5Njk1NDIwNwoyNC1BcHItMTUsMTMwLjQ5LDEz
+        MC42MywxMjkuMjMsMTMwLjI4LDQ0NTI1OTA1CjIzLUFwci0xNSwxMjguMzAs
+        MTMwLjQyLDEyOC4xNCwxMjkuNjcsNDU3NzA5MDIKMjItQXByLTE1LDEyNi45
+        OSwxMjguODcsMTI2LjMyLDEyOC42MiwzNzY1NDUwNQoyMS1BcHItMTUsMTI4
+        LjEwLDEyOC4yMCwxMjYuNjcsMTI2LjkxLDMyNDM1MDU3CjIwLUFwci0xNSwx
+        MjUuNTcsMTI4LjEyLDEyNS4xNywxMjcuNjAsNDcwNTQzMTAKMTctQXByLTE1
+        LDEyNS41NSwxMjYuMTQsMTI0LjQ2LDEyNC43NSw1MTk1NzA0NgoxNi1BcHIt
+        MTUsMTI2LjI4LDEyNy4xMCwxMjYuMTEsMTI2LjE3LDI4MzY4OTg3CjE1LUFw
+        ci0xNSwxMjYuNDEsMTI3LjEzLDEyNi4wMSwxMjYuNzgsMjg5NzA0MTkKMTQt
+        QXByLTE1LDEyNy4wMCwxMjcuMjksMTI1LjkxLDEyNi4zMCwyNTUyNDU5Mwox
+        My1BcHItMTUsMTI4LjM3LDEyOC41NywxMjYuNjEsMTI2Ljg1LDM2MzY1MTIz
+        CjEwLUFwci0xNSwxMjUuOTUsMTI3LjIxLDEyNS4yNiwxMjcuMTAsNDAxODc5
+        NTMKOS1BcHItMTUsMTI1Ljg1LDEyNi41OCwxMjQuNjYsMTI2LjU2LDMyNDgz
+        OTc0CjgtQXByLTE1LDEyNS44NSwxMjYuNDAsMTI0Ljk3LDEyNS42MCwzNzMy
+        OTI0Mwo3LUFwci0xNSwxMjcuNjQsMTI4LjEyLDEyNS45OCwxMjYuMDEsMzUw
+        MTIyNjgKNi1BcHItMTUsMTI0LjQ3LDEyNy41MSwxMjQuMzMsMTI3LjM1LDM3
+        MTkzOTc1CjItQXByLTE1LDEyNS4wMywxMjUuNTYsMTI0LjE5LDEyNS4zMiwz
+        MjIyMDEzMQoxLUFwci0xNSwxMjQuODIsMTI1LjEyLDEyMy4xMCwxMjQuMjUs
+        NDA2MjE0MzcKMzEtTWFyLTE1LDEyNi4wOSwxMjYuNDksMTI0LjM2LDEyNC40
+        Myw0MjA5MDU1MwozMC1NYXItMTUsMTI0LjA1LDEyNi40MCwxMjQuMDAsMTI2
+        LjM3LDQ3MDk5NjcwCjI3LU1hci0xNSwxMjQuNTcsMTI0LjcwLDEyMi45MSwx
+        MjMuMjUsMzk1NDYxNTEKMjYtTWFyLTE1LDEyMi43NiwxMjQuODgsMTIyLjYw
+        LDEyNC4yNCw0NzU3Mjg2OQoyNS1NYXItMTUsMTI2LjU0LDEyNi44MiwxMjMu
+        MzgsMTIzLjM4LDUxNjU1MTc3CjI0LU1hci0xNSwxMjcuMjMsMTI4LjA0LDEy
+        Ni41NiwxMjYuNjksMzI4NDIzMDQKMjMtTWFyLTE1LDEyNy4xMiwxMjcuODUs
+        MTI2LjUyLDEyNy4yMSwzNzcwOTY3NAoyMC1NYXItMTUsMTI4LjI1LDEyOC40
+        MCwxMjUuMTYsMTI1LjkwLDY4Njk1MTM2CjE5LU1hci0xNSwxMjguNzUsMTI5
+        LjI1LDEyNy40MCwxMjcuNTAsNDU4MDk0OTAKMTgtTWFyLTE1LDEyNy4wMCwx
+        MjkuMTYsMTI2LjM3LDEyOC40Nyw2NTI3MDk0NQoxNy1NYXItMTUsMTI1Ljkw
+        LDEyNy4zMiwxMjUuNjUsMTI3LjA0LDUxMDIzMTA0CjE2LU1hci0xNSwxMjMu
+        ODgsMTI0Ljk1LDEyMi44NywxMjQuOTUsMzU4NzQzMDAKMTMtTWFyLTE1LDEy
+        NC40MCwxMjUuNDAsMTIyLjU4LDEyMy41OSw1MTgyNzI4MwoxMi1NYXItMTUs
+        MTIyLjMxLDEyNC45MCwxMjEuNjMsMTI0LjQ1LDQ4MzYyNzE5CjExLU1hci0x
+        NSwxMjQuNzUsMTI0Ljc3LDEyMi4xMSwxMjIuMjQsNjg5Mzg5NzQKMTAtTWFy
+        LTE1LDEyNi40MSwxMjcuMjIsMTIzLjgwLDEyNC41MSw2ODg1NjU4Mgo5LU1h
+        ci0xNSwxMjcuOTYsMTI5LjU3LDEyNS4wNiwxMjcuMTQsODg1Mjg0ODcKNi1N
+        YXItMTUsMTI4LjQwLDEyOS4zNywxMjYuMjYsMTI2LjYwLDcyODQyMDYwCjUt
+        TWFyLTE1LDEyOC41OCwxMjguNzUsMTI1Ljc2LDEyNi40MSw1NjUxNzE0Ngo0
+        LU1hci0xNSwxMjkuMTAsMTI5LjU2LDEyOC4zMiwxMjguNTQsMzE2NjYzNDAK
+        My1NYXItMTUsMTI4Ljk2LDEyOS41MiwxMjguMDksMTI5LjM2LDM3ODE2Mjgz
+        CjItTWFyLTE1LDEyOS4yNSwxMzAuMjgsMTI4LjMwLDEyOS4wOSw0ODA5NjY2
+        MwoyNy1GZWItMTUsMTMwLjAwLDEzMC41NywxMjguMjQsMTI4LjQ2LDYyMDE0
+        ODQ3CjI2LUZlYi0xNSwxMjguNzgsMTMwLjg3LDEyNi42MSwxMzAuNDIsOTEy
+        ODc1MjkKMjUtRmViLTE1LDEzMS41NiwxMzEuNjAsMTI4LjE1LDEyOC43OSw3
+        NDcxMTc0NgoyNC1GZWItMTUsMTMyLjk0LDEzMy42MCwxMzEuMTcsMTMyLjE3
+        LDY5MjI4MTMwCjIzLUZlYi0xNSwxMzAuMDIsMTMzLjAwLDEyOS42NiwxMzMu
+        MDAsNzA5NzQxMTAKMjAtRmViLTE1LDEyOC42MiwxMjkuNTAsMTI4LjA1LDEy
+        OS41MCw0ODk0ODQxOQoxOS1GZWItMTUsMTI4LjQ4LDEyOS4wMywxMjguMzMs
+        MTI4LjQ1LDM3MzYyMzgxCjE4LUZlYi0xNSwxMjcuNjIsMTI4Ljc4LDEyNy40
+        NSwxMjguNzIsNDQ4OTE3MzcKMTctRmViLTE1LDEyNy40OSwxMjguODgsMTI2
+        LjkyLDEyNy44Myw2MzE1MjQwNQoxMy1GZWItMTUsMTI3LjI4LDEyNy4yOCwx
+        MjUuNjUsMTI3LjA4LDU0MjcyMjE5CjEyLUZlYi0xNSwxMjYuMDYsMTI3LjQ4
+        LDEyNS41NywxMjYuNDYsNzQ0NzQ0NjYKMTEtRmViLTE1LDEyMi43NywxMjQu
+        OTIsMTIyLjUwLDEyNC44OCw3MzU2MTc5NwoxMC1GZWItMTUsMTIwLjE3LDEy
+        Mi4xNSwxMjAuMTYsMTIyLjAyLDYyMDA4NTA2CjktRmViLTE1LDExOC41NSwx
+        MTkuODQsMTE4LjQzLDExOS43MiwzODg4OTc5Nwo2LUZlYi0xNSwxMjAuMDIs
+        MTIwLjI1LDExOC40NSwxMTguOTMsNDM3MDY1NjcKNS1GZWItMTUsMTIwLjAy
+        LDEyMC4yMywxMTkuMjUsMTE5Ljk0LDQyMjQ2MjQ1CjQtRmViLTE1LDExOC41
+        MCwxMjAuNTEsMTE4LjMxLDExOS41Niw3MDE0OTc0MwozLUZlYi0xNSwxMTgu
+        NTAsMTE5LjA5LDExNy42MSwxMTguNjUsNTE5MTU3NDkKMi1GZWItMTUsMTE4
+        LjA1LDExOS4xNywxMTYuMDgsMTE4LjYzLDYyNzM5MTAwCjMwLUphbi0xNSwx
+        MTguNDAsMTIwLjAwLDExNi44NSwxMTcuMTYsODM3NDU0NjEKMjktSmFuLTE1
+        LDExNi4zMiwxMTkuMTksMTE1LjU2LDExOC45MCw4NDQzNjQzMgoyOC1KYW4t
+        MTUsMTE3LjYyLDExOC4xMiwxMTUuMzEsMTE1LjMxLDE0NjQ3NzA2MwoyNy1K
+        YW4tMTUsMTEyLjQyLDExMi40OCwxMDkuMDMsMTA5LjE0LDk1NTY4NzQ5CjI2
+        LUphbi0xNSwxMTMuNzQsMTE0LjM2LDExMi44MCwxMTMuMTAsNTU2MTQ5NzkK
+        MjMtSmFuLTE1LDExMi4zMCwxMTMuNzUsMTExLjUzLDExMi45OCw0NjQ2NDgy
+        OAoyMi1KYW4tMTUsMTEwLjI2LDExMi40NywxMDkuNzIsMTEyLjQwLDUzNzk2
+        NDA5CjIxLUphbi0xNSwxMDguOTUsMTExLjA2LDEwOC4yNywxMDkuNTUsNDg1
+        NzU4OTcKMjAtSmFuLTE1LDEwNy44NCwxMDguOTcsMTA2LjUwLDEwOC43Miw0
+        OTg5OTkwNwoxNi1KYW4tMTUsMTA3LjAzLDEwNy41OCwxMDUuMjAsMTA1Ljk5
+        LDc4NTEzMzQ1CjE1LUphbi0xNSwxMTAuMDAsMTEwLjA2LDEwNi42NiwxMDYu
+        ODIsNjAwMTM5OTYKMTQtSmFuLTE1LDEwOS4wNCwxMTAuNDksMTA4LjUwLDEw
+        OS44MCw0ODk1NjU4OAoxMy1KYW4tMTUsMTExLjQzLDExMi44MCwxMDguOTEs
+        MTEwLjIyLDY3MDkxOTI4CjEyLUphbi0xNSwxMTIuNjAsMTEyLjYzLDEwOC44
+        MCwxMDkuMjUsNDk2NTA3OTAKOS1KYW4tMTUsMTEyLjY3LDExMy4yNSwxMTAu
+        MjEsMTEyLjAxLDUzNjk5NTI3CjgtSmFuLTE1LDEwOS4yMywxMTIuMTUsMTA4
+        LjcwLDExMS44OSw1OTM2NDU0Nwo3LUphbi0xNSwxMDcuMjAsMTA4LjIwLDEw
+        Ni43MCwxMDcuNzUsNDAxMDU5MzQKNi1KYW4tMTUsMTA2LjU0LDEwNy40Mywx
+        MDQuNjMsMTA2LjI2LDY1Nzk3MTE2CjUtSmFuLTE1LDEwOC4yOSwxMDguNjUs
+        MTA1LjQxLDEwNi4yNSw2NDI4NTQ5MQoyLUphbi0xNSwxMTEuMzksMTExLjQ0
+        LDEwNy4zNSwxMDkuMzMsNTMyMDQ2MjYK
+    http_version: '1.1'
+  recorded_at: Thu, 02 Jul 2015 15:53:51 GMT
 recorded_with: VCR 2.4.0

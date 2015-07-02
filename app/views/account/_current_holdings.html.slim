@@ -1,30 +1,32 @@
-table.headers-table
-  thead
-    tr
-      th
-        | SYMBOL
-      th
-        | Company Name
-      th
-        | Initial Prize
-      th
-        | # of Shares
-      th
-        | Actual Prize
-      th
-        | Gain/Loss
-      th
-        | History Rating  
-  tbody.portfolio
-    tr.divider-big
-      td
-      td
-      td
-      td
-      td
-      td
-      td
-    - @portfolio[:stocks].each do |stock_symbol, s|
-      = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
 - if @portfolio[:stocks].empty?
   em Your portfolio is empty! Make some purchases to start trading stocks.
+
+- else
+  table.headers-table
+    thead
+      tr
+        th
+          | SYMBOL
+        th
+          | Company Name
+        th
+          | Initial Prize
+        th
+          | # of Shares
+        th
+          | Actual Prize
+        th
+          | Gain/Loss
+        th
+          | History Rating  
+    tbody.portfolio
+      tr.divider-big
+        td
+        td
+        td
+        td
+        td
+        td
+        td
+      - @portfolio[:stocks].each do |stock_symbol, s|
+        = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}

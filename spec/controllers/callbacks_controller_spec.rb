@@ -13,7 +13,7 @@ describe CallbacksController do
     end
     it 'redirects to root' do
       get :google_oauth2
-      expect(response).to redirect_to '/'
+      expect(response).to redirect_to '/users/profile'
     end
   end
 
@@ -28,7 +28,7 @@ describe CallbacksController do
     end
     it 'redirects to root' do
       get :facebook
-      expect(response).to redirect_to '/'
+      expect(response).to redirect_to '/users/profile'
     end
   end
 
@@ -43,7 +43,7 @@ describe CallbacksController do
     end
     it 'redirects to root' do
       get :linkedin
-      expect(response).to redirect_to '/'
+      expect(response).to redirect_to '/users/profile'
     end
   end
 end

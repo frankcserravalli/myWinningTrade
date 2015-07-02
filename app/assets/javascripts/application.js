@@ -5,7 +5,7 @@
 //= require jquery.ui.slider
 //= require jquery.ui.tabs
 //= require jquery.html5-placeholder-shim
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require chosen-jquery
 //= require underscore
 //= require moment
@@ -24,8 +24,6 @@
 //= require jquery_nested_form
 //= require user_search
 //= require tutorialize
-
-//= require bootstrap.min
 
 //= require_tree .//stock
 //= require_self

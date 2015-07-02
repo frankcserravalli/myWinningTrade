@@ -5,15 +5,13 @@ class StockController < ApplicationController
     leader_board_results = UserAccountSummary.find_top_results(current_user.id)
     @world_leader_board = leader_board_results[0]
     @class_leader_board = leader_board_results[1]
-
-    # Setting up the new records in anticipation of an user creating an order
-    @buy_order = Buy.new
-
-    @stock = Finance.current_stock_details('AAPL')
   end
 
   def show
+    symbol = params[:id].upcase
+
     @stock = Finance.current_stock_details(symbol)
+
     @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
     # Setting up the new records in anticipation of an user creating an order
     @buy_order = Buy.new
