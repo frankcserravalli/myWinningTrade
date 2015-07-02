@@ -64,3 +64,9 @@ annotate:
 
 run-dev:
 	docker-compose run --rm --service-ports web
+
+clean-assets:
+	docker-compose run --rm web rake assets:clean
+
+precompile-assets:
+	docker-compose run --rm web rake assets:precompile
