@@ -104,7 +104,7 @@ end
 # ==========
 gem 'unicorn', '~> 4.6.2'
 gem 'figaro'
-
+gem 'orm_adapter'
 # ETC
 # ===
 gem 'fb_graph', '~> 2.6.5'
