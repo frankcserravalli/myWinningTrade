@@ -2,29 +2,31 @@
 = render partial: 'stock/sell_modal'
 
 div.stock-info
-  ul
-    li
-      span.header  = @stock.symbol
-      br
-      span.subheader.black = @stock.name
-    li
-      span.header STOCK IN PORTFOLIO
-      br
-      span.subheader.green
-        - if @portfolio[:stocks].empty?
-          | Waiting on gem
-        - else
-          #{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
-    li
-      span.header MONTHLY GAIN / LOSS
-      br
-      span.subheader.red
-        - if @portfolio[:stocks].empty?
-          | Waiting on gem
-        - else
-          #{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
-    li.button data-target="#buyModal" data-toggle="modal" type="button"  BUY
-    li.button data-target="#sellModal" data-toggle="modal" type="button" SELL
+  .col-md-3
+    span.header  = @stock.symbol
+    br
+    span.subheader.black = @stock.name
+  .col-md-3
+    span.header STOCK IN PORTFOLIO
+    br
+    span.subheader.green
+      - if @user_stock.nil?
+        | 0
+      - else
+        #{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
+  .col-md-3
+    span.header MONTHLY GAIN / LOSS
+    br
+    span.subheader.red
+      - if @user_stock.nil?
+        | 0
+      - else
+        #{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
+  .col-md-3.no-background
+    .col-md-6.button data-target="#buyModal" data-toggle="modal" type="button"  
+      | BUY
+    .col-md-6.buttonli.button.right data-target="#sellModal" data-toggle="modal" type="button" 
+      | SELL
 
 div.content#content
   div.widget-container#chartview
