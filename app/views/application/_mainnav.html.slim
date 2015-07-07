@@ -10,7 +10,7 @@
         = image_tag 'logo.png'
       li.no-hover.search#stock-search
         form.input-group
-          input.form-control placeholder=t('.symbol_placeholder', default: 'Start typing a stock name'.html_safe) type="text"
+          input.stock-name.form-control placeholder=t('.symbol_placeholder', default: 'Start typing a stock name'.html_safe) type="text"
       li.list-item-wrapper.no-hover
         ul.scroll-inner-list
           li.portfolio class=(controller.class == StockController and controller.action_name == 'dashboard' ? 'active' : '')

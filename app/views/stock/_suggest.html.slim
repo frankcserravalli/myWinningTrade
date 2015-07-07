@@ -30,7 +30,7 @@ table.headers-table
           td.portfolio-cell.stock-name = stock.name
           td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(stock.current_price)
           td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(stock.buy_price)
-          - stock_is_gaining = stock.percent_gain
+          - stock_is_gaining = stock.percent_change >= 0
           td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red')
               = '+' if stock_is_gaining
               = stock.percent_change

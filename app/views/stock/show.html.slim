@@ -21,7 +21,7 @@ div.stock-info
       - if @user_stock.nil?
         | 0
       - else
-        #{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
+        | $#{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
   .col-md-3.no-background
     .col-md-6.button data-target="#buyModal" data-toggle="modal" type="button"  
       | BUY
