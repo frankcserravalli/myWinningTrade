@@ -23,8 +23,7 @@ table.headers-table
         td
         td
         td
-      - %w(AAPL GE GOOG JPM).each do |suggestion|
-        - stock = Finance.current_stock_details(suggestion)
+      - @stock.zip(@suggestions).each do |stock, suggestion|
         tr.values-table onclick="redir('#{suggestion}')"
           td.portfolio-cell.stock-symbol = suggestion
           td.portfolio-cell.stock-name = stock.name

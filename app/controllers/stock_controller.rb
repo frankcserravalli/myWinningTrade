@@ -52,6 +52,11 @@ class StockController < ApplicationController
   end
 
   def markets
+    @stock = Array.new
+    @suggestions = ['AAPL', 'GE', 'GOOG', 'JPM']
+    @suggestions.each do |suggestion|
+      @stock.push(Finance.current_stock_details(suggestion))
+    end
     render 'account/markets'
   end
 
