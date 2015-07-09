@@ -1,0 +1,59 @@
+.modal#credits-pay-modal aria-labelledby="mySmallPayModal" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+        h4.modal-title Modal title
+      .modal-body
+        form.payment-form.row-fluid method="POST" action="/subscriptions/create"
+
+          div#stripe-error-message
+
+          br
+
+          span Name on Card
+
+          br
+
+          input.full-name type="text" size="70" autocomplete="off"
+
+          br
+
+          span Card Number
+
+          br
+
+          input.card-number type="text" size="20" autocomplete="off"
+
+          br
+
+          span Credit Card Verification Code
+
+          br
+
+          input.card-cvc type="password" maxlength="3" autocomplete="off"
+
+          br
+
+          span Expiration Date
+
+          br
+
+          = select_month nil, {add_month_numbers: true}, {name: nil, class: "card-expiry-month"}
+
+          = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, class: "card-expiry-year"}
+
+          = hidden_field_tag 'stripe_card_token'
+
+          = hidden_field_tag 'payment_plan', ""
+
+          = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
+
+          br
+
+          = button_tag "Submit Payment", class: "btn submit-new-subscription-button", type: "button"
+
+            /= link_to 'Back', subscriptions_path, class: "btn btn-primary back-button"
+
+
