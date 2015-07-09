@@ -1,4 +1,4 @@
-table width="100%"
+table.absolute-span width="100%" height="100%"
   tr
     td width="33.3333%"
       article.info-box.col-md-4#two-month onclick="select('#two-month', '.subscription-button')" 
@@ -45,8 +45,12 @@ table width="100%"
         .fee.center
           | $30 every year
 
-.css-shapes-preview.subscription-button type="button" data-toggle="modal" data-target=".pay-modal"
-  span
-    | CHECKOUT
+  tr
+    td
+    td
+    td
+      .css-shapes-preview.subscription-button type="button" data-toggle="modal" data-target=".pay-modal"
+        p
+          | CHECKOUT
 
 = render partial: 'subscriptions/pay_modal'

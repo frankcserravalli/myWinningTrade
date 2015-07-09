@@ -18,9 +18,9 @@ div.content#content
   div.second
     = form_tag('/user/update', method: "put") do
       = render partial: 'users/form'
-  div.third
+  div.third.absolute-span
     = render partial: "subscriptions/update_subscription"
-  div.fourth
+  div.fourth.absolute-span
     = render partial: "account_bonuses/form"
 
 
