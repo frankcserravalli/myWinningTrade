@@ -13,17 +13,17 @@
           input.stock-name.form-control placeholder=t('.symbol_placeholder', default: 'Start typing a stock name'.html_safe) type="text"
       li.list-item-wrapper.no-hover
         ul.scroll-inner-list
-          li.portfolio class=(controller.class == StockController and controller.action_name == 'dashboard' ? 'active' : '')
-            = image_tag (controller.class == StockController and controller.action_name == 'dashboard' ? 'portfolio-icon-active.png' : 'portfolio-icon.png')
+          li.portfolio class=(controller.action_name == 'dashboard' ? 'active' : '')
+            = image_tag (controller.action_name == 'dashboard' ? 'portfolio-icon-active.png' : 'portfolio-icon.png')
             = link_to("Portfolio", '/')
-          li.markets class=(controller.class == StockController and controller.action_name == 'markets' ? 'active' : '')
-            = image_tag (controller.class == StockController and controller.action_name == 'markets' ? 'market-icon-active.png' : 'market-icon.png')
+          li.markets class=(controller.action_name == 'markets' ? 'active' : '')
+            = image_tag (controller.action_name == 'markets' ? 'market-icon-active.png' : 'market-icon.png')
             = link_to("Markets", '/markets')
-          li.tutorial class=(controller.class == StockController and controller.action_name == '' ? 'active' : '')
-            = image_tag (controller.class == StockController and controller.action_name == '' ? 'tutorial-icon-active.png' : 'tutorial-icon.png')
+          li.tutorial class=(controller.action_name == '' ? 'active' : '')
+            = image_tag (controller.action_name == '' ? 'tutorial-icon-active.png' : 'tutorial-icon.png')
             | Tutorials
-          li.leaderboard class=(controller.class == StockController and controller.action_name == 'leaderboards' ? 'active' : '')
-            = image_tag (controller.class == StockController and controller.action_name == 'leaderboards' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
+          li.leaderboard class=(controller.action_name == 'leaderboards' ? 'active' : '')
+            = image_tag (controller.action_name == 'leaderboards' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
             = link_to("Leaderboards", '/leaderboards')
           li.no-hover
             br

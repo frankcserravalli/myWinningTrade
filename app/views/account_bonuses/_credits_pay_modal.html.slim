@@ -6,9 +6,9 @@
           span aria-hidden="true"  &times;
         h4.modal-title Modal title
       .modal-body
-        form.payment-form.row-fluid method="POST" action="/subscriptions/create"
+        form.payment-form.row-fluid method="POST" action="/account_bonuses/create"
 
-          div#stripe-error-message
+          div#stripe-error-message-bonuses
 
           br
 
@@ -46,13 +46,13 @@
 
           = hidden_field_tag 'stripe_card_token'
 
-          = hidden_field_tag 'payment_plan', ""
+          = hidden_field_tag 'bonus_option', ""
 
           = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
 
           br
 
-          = button_tag "Submit Payment", class: "btn submit-new-subscription-button", type: "button"
+          = button_tag "Submit Payment", class: "btn submit-account-bonus-button", type: "button"
 
             /= link_to 'Back', subscriptions_path, class: "btn btn-primary back-button"
 

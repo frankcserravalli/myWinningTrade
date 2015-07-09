@@ -1,7 +1,7 @@
 table.absolute-span width="100%" height="100%"
   tr
     td width="33.3333%"
-      article.info-box.col-md-4#two-month onclick="select('#two-month', '.subscription-button')" 
+      article.info-box.col-md-4#two-month.subscription-button value="two" onclick="select('#two-month', '.checkout-button')" 
         header.center.uppercase
           | Two Month Plan
         .main
@@ -16,7 +16,7 @@ table.absolute-span width="100%" height="100%"
           | $5 every two months
 
     td width="33.3333%"
-      article.info-box.col-md-4#six-month onclick="select('#six-month', '.subscription-button')"
+      article.info-box.col-md-4#six-month.subscription-button value="six" onclick="select('#six-month', '.checkout-button')"
         header.center.uppercase
           | SIX MONTH PLAN
         .main
@@ -31,7 +31,7 @@ table.absolute-span width="100%" height="100%"
           | $15 every six months
 
     td width="33.3333%"
-      article.info-box.col-md-4#one-year onclick="select('#one-year', '.subscription-button')"
+      article.info-box.col-md-4#one-year.subscription-button value="twelve" onclick="select('#one-year', '.checkout-button')"
         header.center.uppercase
           | ONE YEAR PLAN
         .main
@@ -49,7 +49,7 @@ table.absolute-span width="100%" height="100%"
     td
     td
     td
-      .css-shapes-preview.subscription-button type="button" data-toggle="modal" data-target="#subscription-pay-modal"
+      .css-shapes-preview.checkout-button type="button" data-toggle="modal" data-target="#subscription-pay-modal"
         p
           | CHECKOUT
 
