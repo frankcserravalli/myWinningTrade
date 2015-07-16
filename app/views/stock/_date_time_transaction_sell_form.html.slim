@@ -16,7 +16,7 @@
   .control-group
     label.control-label Your current cash
     .controls
-      #current_cash = number_to_currency(current_user.account_balance)
+      #current_cash = number_to_currency(signed_user.account_balance)
 
   .control-group
     label.control-label Shares remaining after sale
@@ -26,6 +26,6 @@
   .control-group
     label.control-label Your cash after selling:
     .controls
-      #cash_sell_calculation = number_to_currency(current_user.account_balance.to_f+@stock.current_bid.to_f)
+      #cash_sell_calculation = number_to_currency(signed_user.account_balance.to_f+@stock.current_bid.to_f)
 
   = f.submit 'Sell Later', class: 'btn-primary btn btn-large'

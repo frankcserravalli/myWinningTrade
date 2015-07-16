@@ -1,22 +1,21 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
 
   def profile
-    @user = current_user
+    @user = signed_user
   end
 
   def edit
-    @user = current_user
+    @user = signed_user
   end
 
   def update
-    if current_user.update_attributes(user_attributes)
-      current_user.save
+    if signed_user.update_attributes(user_attributes)
+      signed_user.save
       # Set the password_reset field to true
-      # current_user.update(password_reset: true)
+      # signed_user.update(password_reset: true)
       # check if they requested for a teacher status,
       # and if so request a pending teacher record
-      PendingTeacher.create(user_id: current_user.id) if params['teacher_request']
+      PendingTeacher.create(user_id: signed_user.id) if params['teacher_request']
       redirect_to profile_url, notice: I18n.t('flash.users.update.notice', default: 'Profile successfully updated.')
     else
       render 'edit'
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def trading_analysis_pdf
-    content = current_user.create_trading_analysis_pdf
+    content = signed_user.create_trading_analysis_pdf
     kit = PDFKit.new(content, page_size: 'Letter')
     kit.stylesheets << 'app/assets/stylesheets/pdf/pdf.css'
     kit.stylesheets << 'app/assets/stylesheets/pdf/bootstrap.min.css'

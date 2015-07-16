@@ -177,4 +177,6 @@ class ApplicationController < ActionController::Base
     user.save
     user
   end
+
+  helper_method :signed_user
 end

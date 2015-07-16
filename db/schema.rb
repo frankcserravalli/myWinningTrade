@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150625160332) do
+ActiveRecord::Schema.define(:version => 20150716201542) do
 
   create_table "date_time_transactions", :force => true do |t|
     t.integer  "user_stock_id"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20150625160332) do
     t.boolean  "premium_subscription",   :default => false
     t.string   "group",                  :default => "student"
     t.integer  "pending_teacher_id"
+    t.boolean  "guest",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

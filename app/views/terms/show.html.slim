@@ -93,7 +93,7 @@
       br/
   hr
 
-  - if current_user
+  - if signed_user
     = link_to accept_terms_path, method: :post, class: 'btn btn-large btn-primary', id: 'accept-terms' do
       strong I accept,
       '&nbsp;let me in already!
