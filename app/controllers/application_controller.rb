@@ -2,11 +2,11 @@ include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
 
   include UsersHelper
-  before_filter :require_acceptance_of_terms, if: :current_user
-  before_filter :load_portfolio, if: :current_user
+  before_filter :require_acceptance_of_terms, if: :signed_user
+  before_filter :load_portfolio, if: :signed_user
 
   def require_acceptance_of_terms
-    redirect_to terms_path and return unless current_user && current_user.accepted_terms?
+    redirect_to terms_path and return unless current_or_guest_user && current_or_guest_user.accepted_terms?
   end
 
   # Api authentication
@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
     when "Future"
       params[type].except!(:when, :measure, :price_target)
       params[type][:order_type] = @order_type
-      @order = DateTimeTransaction.new(params[type].merge(user: current_user))
+      @order = DateTimeTransaction.new(params[type].merge(user: current_or_guest_user))
     when "Stop-Loss"
       params[type].except!(:when, "execute_at(1i)", "execute_at(2i)", "execute_at(3i)", "execute_at(4i)", "execute_at(5i)")
       params[type][:order_type] = @order_type
-      @order = StopLossTransaction.new(params[type].merge(user: current_user))
+      @order = StopLossTransaction.new(params[type].merge(user: current_or_guest_user))
     end
     
     if @order
@@ -48,8 +48,8 @@ class ApplicationController < ActionController::Base
 
   # I've set the user_id default as zero in case user_id is not sent through
   def load_portfolio(user_id = 0)
-    if current_user
-      @user = current_user
+    if current_or_guest_user
+      @user = current_or_guest_user
     else
       #Stop the method here if no user_id params were sent through
       return if user_id.eql? 0
@@ -163,10 +163,18 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    if current_user.group == 'teacher'
+    if current_or_guest_user.group == 'teacher'
       groups_url
     else
       profile_url
     end
+  end
+
+  def signed_user
+    user = current_or_guest_user
+    return user if user.id
+    user.name = 'guest'
+    user.save
+    user
   end
 end

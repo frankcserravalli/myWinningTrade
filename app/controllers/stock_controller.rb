@@ -1,8 +1,7 @@
 class StockController < ApplicationController
-  before_filter :authenticate_user!
   def dashboard
     # This gives us the results of the leaders in the leader board
-    leader_board_results = UserAccountSummary.find_top_results(current_user.id)
+    leader_board_results = UserAccountSummary.find_top_results(signed_user.id)
     @world_leader_board = leader_board_results[0]
     @class_leader_board = leader_board_results[1]
   end
