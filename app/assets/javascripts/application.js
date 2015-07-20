@@ -28,6 +28,16 @@
 //= require_tree .//stock
 //= require_self
 
+//= require skins.min
+
+//= require slimscroll/jquery.slimscroll.min
+
+//= require beyond.min
+
+//= require charts/flot/flot-init
+//= require charts/flot/jquery.flot
+//= require charts/flot/jquery.flot.pie 
+
 
 Number.prototype.formatMoney = function(c, d, t){
 var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;

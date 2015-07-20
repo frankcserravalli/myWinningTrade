@@ -14,7 +14,7 @@ ul.secondary-nav
 
 div.content#content
   div.first
-    = render partial: 'account/current_holdings'
+    = render partial: 'account/summary'
   div.second
     = form_tag('/user/update', method: "put") do
       = render partial: 'users/form'
