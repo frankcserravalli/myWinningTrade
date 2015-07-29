@@ -33,12 +33,11 @@
             background-color: $green
             color: white
 
-.third
+.third,
+.fourth
   table
     width: 100%
     td
-      width: 33.3333%
-
       .info-box
         margin-top: 2em
         width: 100%
@@ -89,8 +88,11 @@
         &.green-selected
           header
             background-color: $green
-            padding-top: 1.5em
-            padding-bottom: 1.5em
+            padding-top: .9em
+            padding-bottom: .9em
+            font-weight: bold
+            font-size: 20px
+
           .fee
             padding-top: 1.5em
             padding-bottom: 1.5em
@@ -104,17 +106,24 @@
 
 .css-shapes-preview
   position: relative
-  width: 100%
+  width: 88%
   background-color: $button-disabled-gray
   -webkit-transform: skew(-20deg)
   transform: skew(-20deg)
 
   height: 60px
-  margin: 2em
-  width: 30%
-  float: right
+  margin: 0
+  padding: 0
+  float: none
+  margin-right: auto
+  margin-left: auto
 
   transition: all 0.5s
 
-  span
-    padding: 2em
+  p
+    padding-top: .8em
+    text-align: center
+    color: white
+    font-weight: bold
+    font-size: 20px
+    margin-bottom: 0

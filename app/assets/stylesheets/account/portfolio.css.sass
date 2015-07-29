@@ -1,42 +1,57 @@
 .stock-info
-  ul
-    margin: 0
-    padding: 0
-    padding-left: .8em
-    margin-top: 20px
-    margin-bottom: 20px
+  margin: 0
+  padding: 0
+  margin-top: 20px
+  position: absolute
+  top: 10px
+  right: 0
+  left: 0
+  width: 94.7%
+  margin-left: auto
+  margin-right: auto
 
-    li
-      list-style-type: none
-      float: left
-      padding: 1em
-      background-color: $white
-      padding-bottom: .5em
-      padding-top: .5em
-      margin-right: 10px
-      width: 23.1%
+  .col-md-3
+    list-style-type: none
+    float: left
+    padding: 1em
+    background-color: #ffffff
+    padding-bottom: 0.5em
+    padding-top: 0.5em
+    margin-right: 1%
+    width: 24%
 
-      span.header
-        font-size: 14px
-        color: $gray
+    &.no-background
+      background-color: transparent
+      margin: 0
+      padding: 0
+      float: right
 
-      span.subheader
-        font-size: 16px
-        font-weight: bold
+    span.header
+      font-size: 14px
+      color: $gray
 
-        &.black
-          color: $black
+    span.subheader
+      font-size: 16px
+      font-weight: bold
 
-      &.button
-        height: 56px
-        width: 12.6%
-        display: table-cell
-        text-align: center
-        vertical-align: middle
-        padding-top: .8em
-        font-size: 18px
-        color: $white
-        background-color: $separatorGray
+      &.black
+        color: $black
+
+    .button
+      height: 56px
+      display: table-cell
+      text-align: center
+      vertical-align: middle
+      padding-top: 0.8em
+      font-size: 18px
+      color: #ffffff
+      background-color: #4D4D4D
+      margin-right: 4%
+      width: 48%
+
+      &.right
+        margin-right: 0
+        float: right
 
 .content
   .headers-table
@@ -85,7 +100,7 @@
 
       .stock-symbol
         color: $darkGray
-        font-weight: 300
+        font-weight: 800
 
       .stock-history-rating
         text-align: center

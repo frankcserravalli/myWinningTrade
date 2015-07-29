@@ -1,6 +1,43 @@
-#stock-suggest
-  label = t('.trending_label', default: 'Popular Stocks')
-  ul
-    - %w(AAPL GE GOOG JPM).each do |suggestion|
-      li
-        = link_to suggestion, stock_path(suggestion)
+javascript:
+  function redir(stock_symbol){
+    window.location.href = 'stock/'.concat(stock_symbol)
+  }
+
+table.headers-table
+    thead
+      tr
+        th
+          | SYMBOL
+        th
+          | Company Name
+        th
+          | Opening Prize
+        th
+          | Actual Prize
+        th
+          | Gain/Loss
+    tbody.portfolio
+      tr.divider-big
+        td
+        td
+        td
+        td
+        td
+      - @stock.zip(@suggestions).each do |stock, suggestion|
+        tr.values-table onclick="redir('#{suggestion}')"
+          td.portfolio-cell.stock-symbol = suggestion
+          td.portfolio-cell.stock-name = stock.name
+          td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(stock.current_price)
+          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(stock.buy_price)
+          - stock_is_gaining = stock.percent_change >= 0
+          td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red')
+              = '+' if stock_is_gaining
+              = stock.percent_change
+              ' %
+
+        tr.divider-small
+          td
+          td
+          td
+          td
+          td

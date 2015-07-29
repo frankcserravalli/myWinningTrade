@@ -1,39 +1,35 @@
 - if signed_user
   footer.foo
-    ul.footer-tabs
-      li
+    .footer-tabs
+      .col-md-2
         = image_tag 'red-arrow-icon.png'
         | DJIA Futures
         br
         span.bold
           | 18000  -0.53%
-      li
+      .col-md-2
         = image_tag 'red-arrow-icon.png'
         | Stoxx 600
         br
         span.bold
           | 390.60  -1.35%
-      li
+      .col-md-2
         = image_tag 'red-arrow-icon.png'
         | U.S. 10 Yr
         br
         span.bold
           | -6/32 2.389%
-      li
+      .col-md-2
         = image_tag 'green-arrow-icon.png'
         | Crude Oil
         br
         span.bold
           | 59.85  0.35%
-      li
+      .col-md-2
         = image_tag 'green-arrow-icon.png'
         | Euro
         br
         span.bold
           | 1.1350  0.67%
-      li
-        = image_tag 'green-arrow-icon.png'
-        | Euro
-        br
-        span.bold
-          | 1.1350  0.67%
+      .col-md-2
+        .button.btn = link_to("Logout", destroy_user_session_path, method: :delete)

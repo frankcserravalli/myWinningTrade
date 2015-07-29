@@ -16,9 +16,9 @@ $(function() {
     // Here we check for empty fields of the user, and
     // if everything looks good we add details to card then process order
     if (payment_plan == "") {
-      $("#stripe-error-message").text("Please select a plan.");
+      $("#stripe-error-message-subscriptions").text("Please select a plan.");
     } else if (full_name == ""){
-      $("#stripe-error-message").text("Please enter a full name.");
+      $("#stripe-error-message-subscriptions").text("Please enter a full name.");
     } else {
       $(".submit-new-subscription-button").attr("disabled", true);
 
@@ -42,13 +42,13 @@ $(function() {
         if (status === 200) {
           $('#stripe_card_token').val(response.id);
 
-          $("#stripe-error-message").hide();
+          $("#stripe-error-message-subscriptions").hide();
 
           form.submit();
         } else {
           // Produce errors
 
-          $("#stripe-error-message").text(response.error.message);
+          $("#stripe-error-message-subscriptions").text(response.error.message);
 
           $(".submit-new-subscription-button").attr("disabled", false);
         }
@@ -75,15 +75,15 @@ $(function() {
   // Submit a Account Bonus
   $(".submit-account-bonus-button").click(function() {
 
-    payment_plan = $("#bonus-option").val();
+    payment_plan = $("#bonus_option").val();
 
     full_name = $(".full-name").val();
 
     // Here we check for empty fields and if everything is fine we submit the form
     if (payment_plan == "") {
-      $("#stripe-error-message").text("Please select a plan.");
+      $("#stripe-error-message-bonuses").text("Please select a plan.");
     } else if (full_name == ""){
-      $("#stripe-error-message").text("Please enter a full name.");
+      $("#stripe-error-message-bonuses").text("Please enter a full name.");
     } else {
       $(".submit-account-bonus-button").attr("disabled", true);
 
@@ -107,13 +107,13 @@ $(function() {
         if (status === 200) {
           $('#stripe_card_token').val(response.id);
 
-          $("#stripe-error-message").hide();
+          $("#stripe-error-message-bonuses").hide();
 
           form.submit();
         } else {
           // Produce errors
 
-          $("#stripe-error-message").text(response.error.message);
+          $("#stripe-error-message-bonuses").text(response.error.message);
 
           $(".submit-account-bonus-button").attr("disabled", false);
         }
@@ -145,11 +145,6 @@ $(document).ready(function() {
     value = $(this).attr("value");
 
     $('input[name="bonus_option"]').val(value);
-
-    // Here we deselect all buttons then attach an active button class to the button the user selected
-    $(".select-account-bonus-button").removeClass("selected-bonus-button").addClass("non-selected-bonus-button");
-
-    $(this).removeClass("non-selected-bonus-button");
 
     $(this).addClass("selected-bonus-button");
   });

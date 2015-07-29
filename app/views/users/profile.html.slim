@@ -7,10 +7,10 @@ ul.secondary-nav
     | Subscriptions
   li.fourth-tab
     | Buy Credits
-  li.fifth-tab
-    | Teacher Status
-  li.sixth-tab
-    | Other
+  //li.fifth-tab
+    //| Teacher Status
+  //li.sixth-tab
+    //| Other
 
 div.content#content
   div.first
@@ -18,9 +18,9 @@ div.content#content
   div.second
     = form_tag('/user/update', method: "put") do
       = render partial: 'users/form'
-  div.third
+  div.third.absolute-span
     = render partial: "subscriptions/update_subscription"
-  div.fourth
+  div.fourth.absolute-span
     = render partial: "account_bonuses/form"
 
 

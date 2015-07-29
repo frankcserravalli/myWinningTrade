@@ -6,9 +6,7 @@
           span aria-hidden="true"  &times;
         h4#myModalLabel.modal-title 
           span
-            | BUY
-          span
-            #{@stock.symbol} - #{@stock.name}
+            | BUY  #{@stock.symbol} - #{@stock.name}
       .modal-body
         = render partial: 'buy_form'
       .modal-footer
