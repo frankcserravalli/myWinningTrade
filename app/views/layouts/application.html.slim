@@ -10,9 +10,3 @@ html data-uuid=current_user.try(:id)
       .col-xs-12.col-md-9.main-content
         = yield
         = render 'footer'
-
-	javascript:
-		$(window).bind("load", function () {
-
-            InitiatePieChart.init();
-        });
