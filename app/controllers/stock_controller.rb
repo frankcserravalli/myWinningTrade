@@ -1,8 +1,7 @@
 class StockController < ApplicationController
-  before_filter :authenticate_user!
   def dashboard
     # This gives us the results of the leaders in the leader board
-    leader_board_results = UserAccountSummary.find_top_results(current_user.id)
+    leader_board_results = UserAccountSummary.find_top_results(signed_user.id)
     @world_leader_board = leader_board_results[0]
     @class_leader_board = leader_board_results[1]
   end
@@ -12,7 +11,7 @@ class StockController < ApplicationController
 
     @stock = Finance.current_stock_details(symbol)
 
-    @user_stock = current_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
+    @user_stock = signed_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
     # Setting up the new records in anticipation of an user creating an order
     @buy_order = Buy.new
     @short_sell_borrow_order = ShortSellBorrow.new
@@ -65,7 +64,7 @@ class StockController < ApplicationController
   end
 
   def trading_analysis
-    @stock_summary = current_user.stock_summary
+    @stock_summary = signed_user.stock_summary
   end
 
   private

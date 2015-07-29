@@ -110,6 +110,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-guests (0.3.3)
+      devise
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.7)
@@ -411,6 +413,7 @@ DEPENDENCIES
   country_select (~> 1.1.3)
   database_cleaner (~> 0.9.1)
   devise
+  devise-guests
   factory_girl_rails (~> 4.2.0)
   fakeweb (~> 1.3.0)
   fb_graph (~> 2.6.5)

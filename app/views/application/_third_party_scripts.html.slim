@@ -1,5 +1,5 @@
-- if current_user and @portfolio
-  = raw EnvolveChat::ChatRenderer.get_html '82002-RJboqLzaEcx8kCcIrihjxDvkJgyQAbqW', first_name: envolve_name_for(current_user,@portfolio)
+- if signed_user and @portfolio
+  = raw EnvolveChat::ChatRenderer.get_html '82002-RJboqLzaEcx8kCcIrihjxDvkJgyQAbqW', first_name: envolve_name_for(signed_user,@portfolio)
 
 javascript:
   var _gaq = _gaq || [];
@@ -23,4 +23,4 @@ javascript:
   _t.push = function(){if(typeof window.tutorialize !== 'undefined'){window.tutorialize.process(arguments[0]);}
   return Array.prototype.push.apply(this, arguments);};
   _t.push({publisher_id: '5155d5a94e5fe1e7ef002e8f'});
-  _t.push({user_id:'<%= escape_javascript current_user.id %>'});
+  _t.push({user_id:'<%= escape_javascript signed_user.id %>'});

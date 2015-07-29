@@ -4,7 +4,7 @@ html
   = render 'third_party_scripts'
 
   body class=controller_name
-    = render 'navbar' if current_user
+    = render 'navbar' if signed_user
     .container
       = render partial: 'flash', locals: { flash: flash }
       = yield

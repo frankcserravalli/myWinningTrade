@@ -26,7 +26,7 @@ article.info-box.col-md-6
     br
     br
 
-    -if current_user and current_user.group != "teacher"
+    -if signed_user and signed_user.group != "teacher"
       = image_tag 'teacher-status-icon.png'
       = check_box_tag 'teacher_request', "true", true
       span Request Teacher Status
