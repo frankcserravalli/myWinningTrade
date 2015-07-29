@@ -29,6 +29,7 @@
             br
           li.uppercase.navbar-secondary-text.no-hover
             | Allocation
+            = pie_chart({"Football" => 10, "Basketball" => 5}, id: "navbar-chart", colors: ['#8D7ABF', '#DF8F64', '#60B392', '#81CC98', 'A0D68A'], library: {backgroundColor: "transparent", legend: {textStyle: {color: 'white', fontSize: 14}}, chartArea: {left:10, top:10, width:'80%', height:'75%'}})
           li.uppercase.navbar-secondary-text.no-hover
             | MONTHLY GAIN / LOSS
             p.bold.font-size-16

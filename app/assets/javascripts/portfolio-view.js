@@ -4,7 +4,7 @@ $( document ).ready(function() {
   $('.third').hide();
   $('.fourth').hide();
   $('.fifth').hide();
-  $('.sixth').hide()
+  $('.sixth').hide();
 
     $('.first-tab').click(function (){
       remove_widget();
@@ -76,6 +76,18 @@ $( document ).ready(function() {
       $('.fourth').hide();
       $('.fifth').hide();
       $('.sixth').show();
+    });
+
+    $('.add-credits-button').click(function (){
+      remove_widget();
+      $('.secondary-active').removeClass('secondary-active');
+      $('.fourth-tab').addClass('secondary-active');
+      $('.first').hide();
+      $('.second').hide();
+      $('.third').hide();
+      $('.fifth').hide();
+      $('.sixth').hide();
+      $('.fourth').show();
     });
 });
 

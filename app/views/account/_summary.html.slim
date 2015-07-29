@@ -1,31 +1,49 @@
-.col-xs-12.col-md-6
-  .widget
-    .widget-header
-      span#title.widget-caption Pie Chart
-      .widget-buttons
-        a data-toggle="maximize" href="#" 
-          i.fa.fa-expand
-        a data-toggle="collapse" href="#" 
-          i.fa.fa-minus
-        a data-toggle="dispose" href="#" 
-          i.fa.fa-times
-    .widget-body
-      .row
-        .col-xs-12.col-md-3
-          .btn-toolbar.pull-left
-            .btn-group-vertical
-              button#example-1.btn.btn-default.btn-sm Default Options
-              button#example-2.btn.btn-default.btn-sm Without Legend
-              button#example-3.btn.btn-default.btn-sm Label Formatter
-              button#example-4.btn.btn-default.btn-sm Label Radius
-              button#example-5.btn.btn-default.btn-sm Label Styles #1
-              button#example-6.btn.btn-default.btn-sm Label Styles #2
-              button#example-7.btn.btn-default.btn-sm Hidden Labels
-              button#example-8.btn.btn-default.btn-sm Combined Slice
-              button#example-9.btn.btn-default.btn-sm Rectangular Pie
-              button#example-10.btn.btn-default.btn-sm Tilted Pie
-              button#example-11.btn.btn-default.btn-sm Donut Hole
-              button#example-12.btn.btn-default.btn-sm Interactivity
-        .col-xs-12.col-md-9
-          #pie-chart.chart.chart
-          /! <p id="description"></p
+- cash = current_user.account_balance
+- portfolio_value = @portfolio[:current_value]
+- account_value = cash + portfolio_value
+
+article.info-box.col-md-6.box-max-height
+  header.uppercase
+    | Overview
+  .main
+    p.uppercase.no-margin
+      | Net Assets
+    p.bold.font-size-16.color-separatorGray.no-margin
+      = number_to_currency(account_value)
+    = column_chart [['Year', 'Visitations', { role: 'style' } ],
+        ['2010', 10, 'color: gray'],
+        ['2010', 14, 'color: #76A7FA'],
+        ['2020', 16, 'opacity: 0.2'],
+        ['2040', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+        ['2040', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']], id: 'overview-chart', colors: ['#6DB577'], library: {chartArea: {left:30, top:30, width:'100%', height:'80%'}}
+
+article.info-box.col-md-6.box-max-height
+  header.uppercase
+    | Allocation
+  .main
+    = pie_chart({"Football" => 10, "Basketball" => 5}, colors: ['#8D7ABF', '#DF8F64', '#60B392', '#81CC98', 'A0D68A'], id: 'allocation-chart', library: {backgroundColor: "transparent", legend: {textStyle: {color: '#4D4D4D', fontSize: 16, alignment: 'center'}}, chartArea: {left:10, top:0, width:'80%', height:'316'}})
+
+article.info-box.col-md-6.box-max-height
+  header.uppercase
+    | Ballance
+  .main.box-min-height
+    p.uppercase.color-darkGray.no-margin
+      | Portfolio Market Value
+    p.bold.font-size-16.color-separatorGray.no-margin
+      = number_to_currency(portfolio_value)
+    br
+    p.uppercase.color-darkGray.no-margin
+      | Cash
+    p.bold.font-size-16.color-separatorGray.no-margin
+      = number_to_currency(cash)
+
+    br
+
+    .add-credits-button
+      p
+        | Add Credits
+
+article.info-box.col-md-6.box-max-height
+  header.uppercase
+    | Alerts
+  .main.box-min-height
