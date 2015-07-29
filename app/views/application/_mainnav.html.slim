@@ -1,6 +1,6 @@
-.col-md-3.mainnav
-  - if current_user and @portfolio
-    - cash = current_user.account_balance
+.col-xs-6.col-md-3.mainnav
+  - if signed_user and @portfolio
+    - cash = signed_user.account_balance
     - portfolio_value = @portfolio[:current_value]
     - portfolio_percent_gain = @portfolio[:percent_gain]
     - account_value = cash + portfolio_value
@@ -44,6 +44,6 @@
             p.bold.font-size-16.color-lightGray
               = number_to_currency(account_value)
       li.navbar-secondary-text.last.user class=(controller.class == UsersController and controller.action_name == 'profile' ? 'active' : '')
-        a.users-name href="#{profile_path}" = current_user.name
+        a.users-name href="#{profile_path}" = signed_user.name
         p.bold.font-size-16.color-lightGray
           = number_to_currency(cash)

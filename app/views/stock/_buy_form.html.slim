@@ -31,12 +31,12 @@
   .control-group
     label.control-label Your current cash
     .controls
-      #current_cash = number_to_currency(current_user.account_balance)
+      #current_cash = number_to_currency(signed_user.account_balance)
 
   .control-group
     label.control-label Your cash after purchase:
     .controls
-      #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
+      #cash_buy_calculation = number_to_currency(signed_user.account_balance.to_f-@stock.buy_price.to_f)
 
   .control-group
     a.btn-primary.btn.pull-right href="#share_buy_modal" role="button" data-toggle="modal" Buy Stocks and Share with Friends

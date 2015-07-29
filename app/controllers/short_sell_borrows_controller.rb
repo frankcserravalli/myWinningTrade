@@ -1,11 +1,10 @@
 class ShortSellBorrowsController < ApplicationController
-  before_filter :authenticate_user!
   before_filter {|controller| controller.when_to_execute_order("short_sell_borrow") }
 
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
-    @order = ShortSellBorrow.new(params[:short_sell_borrow].merge(user: current_user))
+    @order = ShortSellBorrow.new(params[:short_sell_borrow].merge(user: signed_user))
 
     if @order.place!(@stock_details)
       flash[:notice] = "Successfully shorted #{@order.volume} #{params[:stock_id]} for $#{-@order.value.round(2)}"

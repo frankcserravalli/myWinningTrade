@@ -1,5 +1,4 @@
 class SellsController < ApplicationController
-  before_filter :authenticate_user!
 
   # We don't want any orders executed when an user is visiting the linkedin or fb page when sigining in,
   # hence why we take it out
@@ -8,7 +7,7 @@ class SellsController < ApplicationController
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
-    @order = SellTransaction.new(params[:sell].merge(user: current_user))
+    @order = SellTransaction.new(params[:sell].merge(user: signed_user))
 
     if @order.place!(@stock_details)
       if params[:soc_network] == "linkedin"
@@ -34,9 +33,9 @@ class SellsController < ApplicationController
   end
 
   def callback_facebook
-    @current_user = current_user
+    @signed_user = signed_user
 
-    @order = Order.where(user_id: @current_user.id).first
+    @order = Order.where(user_id: @signed_user.id).first
 
     @stock_id = UserStock.find(@order.user_stock_id)
 
@@ -59,9 +58,9 @@ class SellsController < ApplicationController
   end
 
   def callback_linkedin
-    @current_user = current_user
+    @signed_user = signed_user
 
-    @order = Order.where(user_id: @current_user.id).first
+    @order = Order.where(user_id: @signed_user.id).first
 
     @stock_id = UserStock.find(@order.user_stock_id)
 

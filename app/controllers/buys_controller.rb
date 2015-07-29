@@ -5,13 +5,12 @@ class BuysController < ApplicationController
 
   # We don't want any orders executed when an user is visiting the linkedin or fb page when sigining in,
   # hence why we take it out
-  before_filter :authenticate_user!
   before_filter(:except => [:callback_facebook, :callback_linkedin]) { |controller| controller.when_to_execute_order('buy') }
 
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
-    @buy_order = Buy.new(params[:buy].merge(user: current_user))
+    @buy_order = Buy.new(params[:buy].merge(user: signed_user))
 
     # Here we check if the user decided to post on any of his social networks info about his latest trade
     if @buy_order.place!(@stock_details)
@@ -40,9 +39,9 @@ class BuysController < ApplicationController
   end
 
   def callback_facebook
-    @current_user = current_user
+    @signed_user = signed_user
 
-    @buy_order = Buy.where(user_id: @current_user.id).first
+    @buy_order = Buy.where(user_id: @signed_user.id).first
 
     @stock_id = UserStock.find(@buy_order.user_stock_id)
 
@@ -65,9 +64,9 @@ class BuysController < ApplicationController
   end
 
   def callback_linkedin
-    @current_user = current_user
+    @signed_user = signed_user
 
-    @buy_order = Buy.where(user_id: @current_user.id).first
+    @buy_order = Buy.where(user_id: @signed_user.id).first
 
     @stock_id = UserStock.find(@buy_order.user_stock_id)
 

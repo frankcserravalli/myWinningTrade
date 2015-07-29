@@ -77,6 +77,7 @@ end
 # OmniAuth
 # ========
 gem 'devise' # Normal Auth
+gem 'devise-guests'
 gem 'omniauth'
 gem 'omniauth-twitter', '~> 0.0.14'
 gem 'omniauth-facebook', '~> 1.4.1'

@@ -10,7 +10,8 @@ div.stock-info
     span.header STOCK IN PORTFOLIO
     br
     span.subheader.green
-      - if @user_stock.nil?
+      - pp @portfolio
+      - if @user_stock.nil? || @portfolio[:stocks].empty?
         | 0
       - else
         #{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
@@ -18,7 +19,7 @@ div.stock-info
     span.header MONTHLY GAIN / LOSS
     br
     span.subheader.red
-      - if @user_stock.nil?
+      - if @user_stock.nil? || @portfolio[:stocks].empty?
         | 0
       - else
         | $#{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
