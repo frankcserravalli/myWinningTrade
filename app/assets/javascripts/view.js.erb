@@ -1,10 +1,28 @@
 $( document ).ready(function() {
-    //$('.portfolio').click(function (){
-    //  $('.content').empty().html(".row
-    //                  .span12
-    //                    #chartview");
-   // });
+  responsvie_navbar();
 });
+
+$(window).bind('resize', function(e){
+  responsvie_navbar();
+  console.log("entre");
+});
+
+function responsvie_navbar (){
+  var wHeight = $( window ).height();
+
+  if (wHeight >= 825){
+    document.getElementById('allocation').className = ' allocation';
+    document.getElementById('monthly').className = ' monthly';
+    document.getElementById('market').className = ' market';
+    $('.scroll-inner-list').css("bottom", "0");
+  } 
+  else {
+    $('.scroll-inner-list').css("bottom", "76px");
+    $('.allocation').removeClass('allocation');
+    $('.monthly').removeClass('monthly');
+    $('.market').removeClass('market');
+  }
+}
 
 function show_stock_info (stock_symbol, name, shares, cost, percent){
   var div = document.createElement('div');
