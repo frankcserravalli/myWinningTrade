@@ -25,10 +25,10 @@
           li.leaderboard class=(controller.action_name == 'leaderboards' ? 'active' : '')
             = image_tag (controller.action_name == 'leaderboards' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
             = link_to("Leaderboards", '/leaderboards')
-          li#allocation.uppercase.navbar-secondary-text.no-hover.allocation
+          li#allocation.uppercase.navbar-secondary-text.no-hover
             | Allocation
             = pie_chart({"Football" => 10, "Basketball" => 5}, id: "navbar-chart", colors: ['#8D7ABF', '#DF8F64', '#60B392', '#81CC98', 'A0D68A'], library: {backgroundColor: "transparent", legend: {textStyle: {color: 'white', fontSize: 14}}, chartArea: {left:10, top:10, width:'80%', height:'75%'}})
-          li#monthly.uppercase.navbar-secondary-text.no-hover.monthly
+          li#monthly.uppercase.navbar-secondary-text.no-hover
             | MONTHLY GAIN / LOSS
             p.bold.font-size-16
               span class=(portfolio_is_gaining ? 'green' : 'red')
@@ -37,7 +37,7 @@
                 = '+' if portfolio_is_gaining
                 = portfolio_percent_gain
                 '%
-          li#market.uppercase.navbar-secondary-text.no-hover.market
+          li#market.uppercase.navbar-secondary-text.no-hover
             | PORTFOLIO MARKET VALUE
             p.bold.font-size-16.color-lightGray
               = number_to_currency(account_value)
