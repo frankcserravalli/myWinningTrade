@@ -11,9 +11,9 @@ function responsvie_navbar (){
   var wHeight = $( window ).height();
 
   if (wHeight >= 825){
-    document.getElementById('allocation').className = ' allocation';
-    document.getElementById('monthly').className = ' monthly';
-    document.getElementById('market').className = ' market';
+    document.getElementById('allocation').className += ' allocation';
+    document.getElementById('monthly').className += ' monthly';
+    document.getElementById('market').className += ' market';
     $('.scroll-inner-list').css("bottom", "0");
   } 
   else {
