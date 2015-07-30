@@ -2,26 +2,26 @@
 - portfolio_value = @portfolio[:current_value]
 - account_value = cash + portfolio_value
 
-article.info-box.col-md-6.box-max-height
-  header.uppercase
-    | Overview
-  .main
-    p.uppercase.no-margin
-      | Net Assets
-    p.bold.font-size-16.color-separatorGray.no-margin
-      = number_to_currency(account_value)
-    = column_chart [['Year', 'Visitations', { role: 'style' } ],
-        ['2010', 10, 'color: gray'],
-        ['2010', 14, 'color: #76A7FA'],
-        ['2020', 16, 'opacity: 0.2'],
-        ['2040', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
-        ['2040', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']], id: 'overview-chart', colors: ['#6DB577'], library: {chartArea: {left:30, top:30, width:'100%', height:'80%'}}
+//article.info-box.col-md-6.box-max-height
+//  header.uppercase
+//    | Overview
+//  .main
+//    p.uppercase.no-margin
+//      | Net Assets
+//    p.bold.font-size-16.color-separatorGray.no-margin
+//      = number_to_currency(account_value)
+//    = column_chart [['Year', 'Visitations', { role: 'style' } ],
+//        ['2010', 10, 'color: gray'],
+//        ['2010', 14, 'color: #76A7FA'],
+//       ['2020', 16, 'opacity: 0.2'],
+//        ['2040', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+//       ['2040', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']], id: 'overview-chart', colors: ['#6DB577'], library: {chartArea: {left:30, top:30, width:'100%', height:'80%'}}
 
-article.info-box.col-md-6.box-max-height
-  header.uppercase
-    | Allocation
-  .main
-    = pie_chart({"Football" => 10, "Basketball" => 5}, colors: ['#8D7ABF', '#DF8F64', '#60B392', '#81CC98', 'A0D68A'], id: 'allocation-chart', library: {backgroundColor: "transparent", legend: {textStyle: {color: '#4D4D4D', fontSize: 16, alignment: 'center'}}, chartArea: {left:10, top:0, width:'80%', height:'316'}})
+//article.info-box.col-md-6.box-max-height
+//  header.uppercase
+//    | Allocation
+//  .main
+//    = pie_chart({"Football" => 10, "Basketball" => 5}, colors: ['#8D7ABF', '#DF8F64', '#60B392', '#81CC98', 'A0D68A'], id: 'allocation-chart', library: {backgroundColor: "transparent", legend: {textStyle: {color: '#4D4D4D', fontSize: 16, alignment: 'center'}}, chartArea: {left:10, top:0, width:'80%', height:'316'}})
 
 article.info-box.col-md-6.box-max-height
   header.uppercase
@@ -43,7 +43,7 @@ article.info-box.col-md-6.box-max-height
       p
         | Add Credits
 
-article.info-box.col-md-6.box-max-height
-  header.uppercase
-    | Alerts
-  .main.box-min-height
+//article.info-box.col-md-6.box-max-height
+//  header.uppercase
+//    | Alerts
+//  .main.box-min-height
