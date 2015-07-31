@@ -163,7 +163,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    if current_or_guest_user.group == 'teacher'
+    if signed_user.group == 'teacher'
       groups_url
     else
       profile_url
