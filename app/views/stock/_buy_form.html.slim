@@ -1,44 +1,36 @@
 = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'buy_form'} do |f|
-  table
-    tr
-      td
-        | alert
-        input type="text" value="75" class="dial"
-    tr
-      td
-        table.control-group.stock-trend data-stock-symbol=@stock.symbol
-          tr
-            td
-              label.control-label Current price
-            td
-              .controls
-                .current-price#buy_price = number_to_currency(@stock.current_price)
+  .modal-row
+    .col-md-6 data-stock-symbol=@stock.symbol
+      label.control-label Current Price
+      .controls
+        .current-price.number#buy_price = number_to_currency(@stock.current_price)
 
-    tr
-      td= f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
-  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "buy" }
-  #hidden-buy-later
-    = render partial: 'stock/stock_later_field', locals: { f: f }
-  #hidden-buy-stop-loss
-    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
+    .col-md-6.right
+      label.control-label Current Cash
+      .controls
+        #current_cash.number = number_to_currency(signed_user.account_balance)
 
-  .control-group
-    label.control-label Total price to buy
-    .controls
-      #buy_price_calculation
-        span.amount = number_to_currency(@stock.buy_price)
-        span.fee_notice style='font-weight: normal; font-size: 80%' &nbsp;&nbsp;(incl. #{number_to_currency(Order::TRANSACTION_FEE, precision: 0)} transaction fee)
+    .col-md-4.selected
+      | At Market
+    .col-md-4.middle
+      | Future
+    .col-md-4
+      | Stop-Loss
 
-  .control-group
-    label.control-label Your current cash
-    .controls
-      #current_cash = number_to_currency(signed_user.account_balance)
+    .col-md-12
+      input.dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
 
-  .control-group
-    label.control-label Your cash after purchase:
-    .controls
-      #cash_buy_calculation = number_to_currency(signed_user.account_balance.to_f-@stock.buy_price.to_f)
+    .col-md-6.inverse.right-border
+      label.control-label Cash After Purchase:
+      .controls
+        #cash_buy_calculation.number = number_to_currency(signed_user.account_balance.to_f-@stock.buy_price.to_f)
 
-  .control-group
-    a.btn-primary.btn.pull-right href="#share_buy_modal" role="button" data-toggle="modal" Buy Stocks and Share with Friends
-    button.btn-primary.btn.pull-left name="commit" type="submit" value="no-share" Buy Stocks
+    .col-md-6.inverse.left-border
+      button.btn-primary.btn.pull-left name="commit" type="submit" value="no-share" Buy Stocks
+
+  //.control-group
+    //label.control-label Total price to buy
+    //.controls
+      //#buy_price_calculation
+        //span.amount = number_to_currency(@stock.buy_price)
+        //span.fee_notice style='font-weight: normal; font-size: 80%' &nbsp;&nbsp;(incl. #{number_to_currency(Order::TRANSACTION_FEE, precision: 0)} transaction fee)

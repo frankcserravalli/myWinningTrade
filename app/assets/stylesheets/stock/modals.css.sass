@@ -1,0 +1,65 @@
+.modal-header
+  background-color: $darkGray
+  color: white
+
+.modal-content
+  border-radius: 0
+
+  .modal-body
+    padding: 0
+
+    .modal-row
+      .number
+        font-weight: bold
+        color: $darkGray
+
+      .col-md-12
+        div
+          display: block!important
+          margin-left: auto
+          margin-right: auto
+          margin-top: 4em
+
+      .col-md-6
+        border-bottom: 4px solid $darkGray
+        padding: .5em
+
+        label
+          font-weight: 200
+          margin: 0
+          padding: 0
+
+        &.inverse
+          border-top: 4px solid $darkGray
+          border-bottom: 0
+
+        &.left-border
+          border-left: 2px solid $darkGray
+
+        &.right-border
+          border-right: 2px solid $darkGray
+
+      .col-md-4
+        text-align: center
+        padding: 1em
+        border-bottom: 4px solid $darkGray
+        background-color: $lighterGray
+        color: white
+        font-weight: bold
+        font-size: 18px
+
+        &.middle
+          border-right: 4px solid $darkGray
+          border-left: 4px solid $darkGray
+
+        &.selected
+          background-color: white
+          color: $darkGray
+          border-bottom-color: white
+
+    .right
+      text-align: right
+
+.modal-footer
+  border-radius: 0
+  padding: 0
