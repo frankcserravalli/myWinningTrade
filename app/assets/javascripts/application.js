@@ -3,6 +3,7 @@
 //= require jquery.ui.core
 //= require jquery.ui.autocomplete
 //= require jquery.ui.slider
+//= require jquery.knob.min
 //= require jquery.ui.tabs
 //= require jquery.html5-placeholder-shim
 //= require bootstrap-sprockets
