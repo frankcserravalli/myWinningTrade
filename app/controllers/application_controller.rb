@@ -1,12 +1,11 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
-
   include UsersHelper
   before_filter :require_acceptance_of_terms, if: :signed_user
   before_filter :load_portfolio, if: :signed_user
 
   def require_acceptance_of_terms
-    redirect_to terms_path and return unless current_or_guest_user && current_or_guest_user.accepted_terms?
+    redirect_to terms_path and return unless signed_user && signed_user.accepted_terms?
   end
 
   # Api authentication
@@ -48,18 +47,8 @@ class ApplicationController < ActionController::Base
 
   # I've set the user_id default as zero in case user_id is not sent through
   def load_portfolio(user_id = 0)
-    if current_or_guest_user
-      @user = current_or_guest_user
-    else
-      #Stop the method here if no user_id params were sent through
-      return if user_id.eql? 0
 
-      @user = User.find(user_id)
-    end
-
-    # Stop the method here if we can't find the user
-    return false unless @user
-
+    @user = signed_user || User.find(user_id)
     @portfolio = {}.tap do |p|
       user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
@@ -171,11 +160,14 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_user
-    user = current_or_guest_user
-    return user if user.id
-    user.name = 'guest'
-    user.save
-    user
+    if user_signed_in?
+      current_user
+    else
+      user = current_or_guest_user
+      user.name = 'Guest User'
+      user.save
+      user
+    end
   end
 
   helper_method :signed_user
