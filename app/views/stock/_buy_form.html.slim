@@ -10,23 +10,28 @@
       .controls
         #current_cash.number = number_to_currency(signed_user.account_balance)
 
-    .col-md-4.selected
+    .col-md-4.selected.market
       | At Market
-    .col-md-4.middle
+    .col-md-4.middle.future
       | Future
-    .col-md-4
+    .col-md-4.loss
       | Stop-Loss
+
+      input checked="checked" class="radio_buttons optional order" hidden="true" data-radio="when-radio" data-type="buy" id="buy_when_at_market" name="buy[when]" type="radio" value="At Market"
 
     .col-md-12
       input.dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
 
-    .col-md-6.inverse.right-border
+    .col-md-6.inverse.right-border.buy-button
       label.control-label Cash After Purchase:
       .controls
         #cash_buy_calculation.number = number_to_currency(signed_user.account_balance.to_f-@stock.buy_price.to_f)
 
-    .col-md-6.inverse.left-border
-      button.btn-primary.btn.pull-left name="commit" type="submit" value="no-share" Buy Stocks
+    .col-md-6.inverse.left-border.no-padding.buy-button
+      button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Buy Stocks
+
+    .col-md-12.inverse.left-border.no-padding.short-button
+      button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Short
 
   //.control-group
     //label.control-label Total price to buy

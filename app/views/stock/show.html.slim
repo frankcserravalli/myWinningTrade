@@ -11,7 +11,7 @@ div.stock-info
     br
     span.subheader.green
       - pp @portfolio
-      - if @user_stock.nil? || @portfolio[:stocks].empty?
+      - if @user_stock.nil? || @portfolio[:stocks].empty? || not(@portfolio[:shorts].empty?) || not(@portfolio[:pending_date_time_transactions].empty?) || not(@portfolio[:pending_stop_loss_transactions].empty?)
         | 0
       - else
         #{@user_stock.shares_owned} / $#{@portfolio[:stocks][@stock.symbol][:current_value]}
@@ -19,7 +19,7 @@ div.stock-info
     span.header MONTHLY GAIN / LOSS
     br
     span.subheader.red
-      - if @user_stock.nil? || @portfolio[:stocks].empty?
+      - if @user_stock.nil? || @portfolio[:stocks].empty? || not(@portfolio[:shorts].empty?) || not(@portfolio[:pending_date_time_transactions].empty?) || not(@portfolio[:pending_stop_loss_transactions].empty?)
         | 0
       - else
         | $#{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%

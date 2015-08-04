@@ -1,12 +1,14 @@
-#buyModal.modal.fade aria-labelledby="myBuyLabel" role="dialog" tabindex="-1" 
+#buyModal.modal.fade aria-labelledby="myBuyLabel" role="dialog" tabindex="-1"
   .modal-dialog role="document"
     .modal-content
       .modal-header
-        button.close aria-label="Close" data-dismiss="modal" type="button" 
+        button.close aria-label="Close" data-dismiss="modal" type="button"
           span aria-hidden="true"  &times;
-        h4#myModalLabel.modal-title 
+        h4#myModalLabel.modal-title
           span
             | BUY  #{@stock.symbol} - #{@stock.name}
+        .short-trigger
+          | SHORT
       .modal-body
         = render partial: 'buy_form'
       .modal-footer
