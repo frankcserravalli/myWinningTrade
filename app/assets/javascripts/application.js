@@ -5,6 +5,7 @@
 //= require jquery.ui.slider
 //= require jquery.knob.min
 //= require jquery.ui.tabs
+//= require jquery.ui.datepicker
 //= require jquery.html5-placeholder-shim
 //= require bootstrap-sprockets
 //= require chosen-jquery
@@ -16,6 +17,11 @@
 //= require portfolio-view
 //= require main_nav
 //= require buy_form
+
+//= require hammer.min
+//= require moment
+//= require KitKatClock.min
+//= reuquire jquery.datetimepicker
 
 //= require finance
 //= require submit_form_and_share

@@ -22,6 +22,21 @@
     .col-md-12
       input.dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
 
+    .col-md-6.datepicker-button.right-border.top-border
+      label
+        | Date
+      .current-date.number
+
+    .col-md-6.left-border.top-border
+      label
+        | Time
+      .current-time.number
+        | Please select a time
+
+    .col-md-6#datepicker.calendar.right-border
+
+    .col-md-6.left-border.picker-container
+
     .col-md-6.inverse.right-border.buy-button
       label.control-label Cash After Purchase:
       .controls
