@@ -30,8 +30,15 @@
     .col-md-6.left-border.top-border
       label
         | Time
-      .current-time.number
-        | Please select a time
+      .current-time.number.kitkat-clock-element
+        span.kitkat-hour
+          | 12
+        span
+          | :
+        span.kitkat-minute
+          | 00
+        span.kitkat-am-pm
+          | AM
 
     .col-md-6#datepicker.calendar.right-border
 

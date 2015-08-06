@@ -21,7 +21,8 @@
 //= require hammer.min
 //= require moment
 //= require KitKatClock.min
-//= reuquire jquery.datetimepicker
+//= require jquery.datetimepicker
+//= require clock
 
 //= require finance
 //= require submit_form_and_share
