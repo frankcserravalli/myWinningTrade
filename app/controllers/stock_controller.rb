@@ -8,7 +8,6 @@ class StockController < ApplicationController
 
   def show
     symbol = params[:id].upcase
-
     @stock = Finance.current_stock_details(symbol)
 
     @user_stock = signed_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
@@ -51,11 +50,12 @@ class StockController < ApplicationController
   end
 
   def markets
-    @stock = Array.new
     @suggestions = ['AAPL', 'GE', 'GOOG', 'JPM']
-    @suggestions.each do |suggestion|
-      @stock.push(Finance.current_stock_details(suggestion))
-    end
+    @nyse_suggestions = get_symbols('nyse')
+    @nasdaq_suggestions = get_symbols('nasdaq')
+    @stock = Finance.stock_details_for_list(@suggestions)
+    @nyse = Finance.stock_details_for_list(@nyse_suggestions[0..50])
+    @nasdaq = Finance.stock_details_for_list(@nasdaq_suggestions[0..50])
     render 'account/markets'
   end
 
@@ -71,5 +71,11 @@ class StockController < ApplicationController
 
   def symbol
     params.require(:id).upcase
+  end
+
+  def get_symbols(market)
+    require 'yahoo_finanza'
+    ycl = YahooFinanza::Client.new
+    ycl.symbols_by_market(market)
   end
 end
