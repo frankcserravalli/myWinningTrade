@@ -37,6 +37,11 @@ class Finance
       ycl.quotes(symbol_list)
     end
 
+    def stock_details_for_symbol(symbol)
+      ycl = YahooFinanza::Client.new
+      ycl.quote(symbol)
+    end
+
     def grab_alpha_or_beta
       csv = RestClient.get "download.finance.yahoo.com/d/quotes.csv", {:params => {:s => "SPY", :f => 'w0'}}
 
