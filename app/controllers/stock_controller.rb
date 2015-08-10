@@ -8,8 +8,7 @@ class StockController < ApplicationController
 
   def show
     symbol = params[:id].upcase
-    @stock = Finance.current_stock_details(symbol)
-
+    @stock = Finance.stock_details_for_symbol(symbol)
     @user_stock = signed_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
     # Setting up the new records in anticipation of an user creating an order
     @buy_order = Buy.new
