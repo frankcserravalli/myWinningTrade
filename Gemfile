@@ -92,6 +92,7 @@ gem 'omniauth-google-oauth2'
 # ========
 gem 'yql', '~> 0.0.2'
 gem 'rest-client', '~> 1.6.7'
+gem 'yahoo_finanza'
 
 # Guard
 # =====

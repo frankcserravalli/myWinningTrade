@@ -396,6 +396,8 @@ GEM
     wkhtmltopdf-binary (0.9.9.3)
     xpath (1.0.0)
       nokogiri (~> 1.3)
+    yahoo_finanza (0.0.1)
+      yql
     yql (0.0.2)
 
 PLATFORMS
@@ -469,6 +471,7 @@ DEPENDENCIES
   vcr (~> 2.4.0)
   will_paginate (~> 3.0.4)
   wkhtmltopdf-binary (~> 0.9.9.1)
+  yahoo_finanza
   yql (~> 0.0.2)
 
 BUNDLED WITH
