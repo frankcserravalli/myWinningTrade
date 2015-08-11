@@ -5,7 +5,7 @@ class StopLossTransactionsController < ApplicationController
     
     Rails.logger.info params
 
-    @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+    @stock_details = Finance.stock_details_for_symbol(params[:stock_id]) or raise ActiveRecord::RecordNotFound
     @stop_loss_transaction = StopLossTransaction.new(params[:stop_loss_transaction].merge(user: signed_user))
     
     if @stop_loss_transaction.place!(@stock_details)

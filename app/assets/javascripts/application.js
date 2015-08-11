@@ -23,6 +23,7 @@
 //= require KitKatClock.min
 //= require jquery.datetimepicker
 //= require clock
+//= require modal_slider
 
 //= require finance
 //= require submit_form_and_share

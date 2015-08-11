@@ -1,15 +1,45 @@
 $( document ).ready(function() {
   var date = "Please select a date";
+
+  $('.datepicker-button').hide();
+  $('.calendar').hide();
+  $('.picker-container').hide();
+  $('.timepicker-button').hide();
+
+  $('.slide').hide();
+
   $(function() {
     $( "#datepicker" ).datepicker({ 
       firstDay: 1,
       onSelect: function(dateText, object){
         console.log(dateText, object.selectedDay);
         $('.current-date').text(dateText);
+        $('.buy_execute_at_1i').val(object.selectedYear);
+        if (object.selectedMonth[0] == 0){
+          $('#buy_execute_at_2i').val(object.selectedMonth[1]+1);
+        } else{
+          $('#buy_execute_at_2i').val(object.selectedMonth+1);
+        }
+
+        if (object.selectedMonth[0] == 0){
+          $('#buy_execute_at_3i').val(object.selectedDay[1]);
+        } else{
+          $('#buy_execute_at_3i').val(object.selectedDay);
+        }
         date = dateText;
       }
     });
     $('.current-date').text(date);
+  });
+
+  $('.datepicker-button').click(function(){
+    $('.calendar').slideToggle()
+    $('.picker-container').slideToggle()
+  });
+
+  $('.timepicker-button').click(function(){
+    $('.calendar').slideToggle()
+    $('.picker-container').slideToggle()
   });
 
   var counter = 0;
@@ -61,6 +91,13 @@ $( document ).ready(function() {
     $('.market').addClass('selected');
 
     $('.order').val('At Market')
+
+    $('.datepicker-button').hide();
+    $('.calendar').hide();
+    $('.picker-container').hide();
+    $('.timepicker-button').hide();
+
+    $('.slide').hide();
   });
 
   $('.future').click(function (){
@@ -69,6 +106,11 @@ $( document ).ready(function() {
     $('.future').addClass('selected');
 
     $('.order').val('Future')
+
+    $('.datepicker-button').show();
+    $('.timepicker-button').show();
+
+    $('.slide').hide();
   });
 
   $('.loss').click(function (){
@@ -76,6 +118,13 @@ $( document ).ready(function() {
     $('.future').removeClass('selected');
     $('.loss').addClass('selected');
 
-    $('.order').val('Stop Loss')
+    $('.order').val('Stop-Loss')
+
+    $('.datepicker-button').hide();
+    $('.calendar').hide();
+    $('.picker-container').hide();
+    $('.timepicker-button').hide();
+
+    $('.slide').show();
   });
 });

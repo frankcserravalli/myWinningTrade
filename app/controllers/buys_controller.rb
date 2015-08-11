@@ -8,7 +8,7 @@ class BuysController < ApplicationController
   before_filter(:except => [:callback_facebook, :callback_linkedin]) { |controller| controller.when_to_execute_order('buy') }
 
   def create
-    @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+    @stock_details = Finance.stock_details_for_symbol(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
     @buy_order = Buy.new(params[:buy].merge(user: signed_user))
 
@@ -30,7 +30,7 @@ class BuysController < ApplicationController
         @stock_name = Stock.find_by_symbol(params[:stock_id])
 
         flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
-
+        pp "#{flash[:notice]}"
         redirect_to(stock_path(params[:stock_id]))
       end
     else

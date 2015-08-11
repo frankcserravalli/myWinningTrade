@@ -2,7 +2,7 @@ include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
   include UsersHelper
   before_filter :require_acceptance_of_terms, if: :signed_user
-  before_filter :load_portfolio, if: :signed_user
+  before_filter :load_portfolio
 
   def require_acceptance_of_terms
     redirect_to terms_path and return unless signed_user && signed_user.accepted_terms?
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   # Inside buys, sells, and short_sell_borrows controllers
   def when_to_execute_order(type)
-    @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+    @stock_details = Finance.stock_details_for_symbol(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
     @order_type = type
 
@@ -28,11 +28,11 @@ class ApplicationController < ActionController::Base
     when "Future"
       params[type].except!(:when, :measure, :price_target)
       params[type][:order_type] = @order_type
-      @order = DateTimeTransaction.new(params[type].merge(user: current_or_guest_user))
+      @order = DateTimeTransaction.new(params[type].merge(user: signed_user))
     when "Stop-Loss"
       params[type].except!(:when, "execute_at(1i)", "execute_at(2i)", "execute_at(3i)", "execute_at(4i)", "execute_at(5i)")
       params[type][:order_type] = @order_type
-      @order = StopLossTransaction.new(params[type].merge(user: current_or_guest_user))
+      @order = StopLossTransaction.new(params[type].merge(user: signed_user))
     end
     
     if @order
@@ -49,6 +49,7 @@ class ApplicationController < ActionController::Base
   def load_portfolio(user_id = 0)
 
     @user = signed_user || User.find(user_id)
+    # pp "User Stocks: #{@user.user_stocks.includes(:stock).first.stock.symbol}"
     @portfolio = {}.tap do |p|
       user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
       user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
@@ -57,9 +58,27 @@ class ApplicationController < ActionController::Base
       pending_stop_loss_transactions = @user.stop_loss_transactions.pending
       processed_stop_loss_transactions = @user.stop_loss_transactions.processed
       stock_symbols = user_stocks.map { |s| s.stock.symbol }
-      stock_details = Finance.stock_details_for_list(stock_symbols)
+      stock_details = if stock_symbols.count > 0
+                        if stock_symbols.count > 1
+                          Finance.stock_details_for_list(stock_symbols)
+                        else
+                          OpenStruct.new(
+                              stock_symbols.first.to_sym => Finance.stock_details_for_symbol(stock_symbols.first))
+                        end
+                      else
+                        OpenStruct.new
+                      end
       short_symbols = user_shorts.map { |s| s.stock.symbol }
-      short_details = Finance.stock_details_for_list(short_symbols)
+      short_details = if short_symbols.count > 0
+                        if short_symbols.count > 1
+                          Finance.stock_details_for_list(short_symbols)
+                        else
+                          OpenStruct.new(
+                            short_symbols.first.to_sym => Finance.stock_details_for_symbol(short_symbols.first))
+                        end
+                      else
+                        OpenStruct.new
+                      end
 
       p[:current_value] = 0
       p[:cash] = @user.account_balance.to_f
@@ -75,7 +94,7 @@ class ApplicationController < ActionController::Base
         stock_symbol = user_stock.stock.symbol
         details = stock_details[stock_symbol]
         purchase_value = user_stock.cost_basis.to_f * user_stock.shares_owned.to_f
-        current_price = details.current_price.to_f
+        current_price = details.PreviousClose.to_f unless details.nil?
         current_value = current_price * user_stock.shares_owned.to_f
         shares_owned = user_stock.shares_owned
         cost_basis = user_stock.cost_basis.to_f
@@ -99,7 +118,7 @@ class ApplicationController < ActionController::Base
         details = short_details[stock_symbol]
         # Purchase value not needed. We never subtracted for shorted stocks.
         #purchase_value = user_stock.short_cost_basis.to_f * user_stock.shares_borrowed.to_f
-        current_price = details.current_price.to_f
+        current_price = details.PreviousClose.to_f
         current_value = ((user_stock.short_cost_basis.to_f - current_price) * user_stock.shares_borrowed.to_f)
         shares_borrowed = user_stock.shares_borrowed
         short_cost_basis = user_stock.short_cost_basis.to_f

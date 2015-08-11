@@ -2,7 +2,7 @@ class ShortSellBorrowsController < ApplicationController
   before_filter {|controller| controller.when_to_execute_order("short_sell_borrow") }
 
   def create
-    @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+    @stock_details = Finance.stock_details_for_symbol(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
     @order = ShortSellBorrow.new(params[:short_sell_borrow].merge(user: signed_user))
 

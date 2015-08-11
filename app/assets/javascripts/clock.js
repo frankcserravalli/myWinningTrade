@@ -1,6 +1,34 @@
 $( document ).ready(function() {
 
     (function( $ ) {
+        var am = new Object(); // or just {}
+        am['12'] = 00;
+        am['01'] = 01;
+        am['02'] = 02;
+        am['03'] = 03;
+        am['04'] = 04;
+        am['05'] = 05;
+        am['06'] = 06;
+        am['07'] = 07;
+        am['08'] = 08;
+        am['09'] = 09;
+        am['10'] = 10;
+        am['11'] = 11;
+
+        var pm = new Object(); // or just {}
+        pm['12'] = 12;
+        pm['01'] = 13;
+        pm['02'] = 14;
+        pm['03'] = 15;
+        pm['04'] = 16;
+        pm['05'] = 17;
+        pm['06'] = 18;
+        pm['07'] = 19;
+        pm['08'] = 20;
+        pm['09'] = 21;
+        pm['10'] = 22;
+        pm['11'] = 23;
+
         function get_set(attr, val){
             if (val===true)
                 val="true";
@@ -130,12 +158,16 @@ $( document ).ready(function() {
                     marginTop:$(this).outerHeight()/-2,
                     marginLeft:$(this).outerWidth()/-2
                 });
+
+                
             });
             $(".kitkat-clock-minutes").children().each(function(){
                 $(this).css({
                     marginTop:$(this).outerHeight()/-2,
                     marginLeft:$(this).outerWidth()/-2
-                })
+                });
+
+
             });
             $(".kitkat-clock-am").on("click", function(){
                 get_set("is_am", true);
@@ -219,6 +251,15 @@ $( document ).ready(function() {
                             number=12;
                         get_set("hours", number);
                         $(".kitkat-hour").html(number);
+
+                        if (!get_set("is_am")){
+                          $('#buy_execute_at_4i').val(am[number]);
+                          console.log('hola')
+                        } else {
+                          $('#buy_execute_at_4i').val(pm[number]);
+                          console.log('hola')
+                        }
+                        
                         //$('.picker-container').append(' >' +use_event + ' ');
                         
                     }
@@ -229,6 +270,7 @@ $( document ).ready(function() {
                         if (number<10)
                             number="0"+number;
                         $(".kitkat-minute").html(number);
+                        $('#buy_execute_at_5i').val(number);
                     }
                 } else if ((use_event=="mouseup" ||
                                         use_event=="click") && get_set("hourmode")){

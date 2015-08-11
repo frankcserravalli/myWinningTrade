@@ -42,7 +42,7 @@ class DateTimeTransaction < ActiveRecord::Base
     # This method will place a date_time_transaction order
     # that will be executred at the specific date time
     # by a cron job.
-    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.name)
+    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.Name)
     unless (self.user_stock = user.user_stocks.where(stock_id: system_stock.id).first)
       self.user_stock = user.user_stocks.create!(stock: system_stock)
     end

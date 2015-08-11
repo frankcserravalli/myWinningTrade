@@ -3,31 +3,29 @@
     .col-md-6 data-stock-symbol=@stock.symbol
       label.control-label Current Price
       .controls
-        .current-price.number#buy_price = number_to_currency(@stock.current_price)
+        .current-price.number#buy_price = number_to_currency(@stock.PreviousClose)
 
     .col-md-6.right
       label.control-label Current Cash
       .controls
         #current_cash.number = number_to_currency(signed_user.account_balance)
 
-    .col-md-4.selected.market
+    .col-md-4.selected.market.tabs
       | At Market
-    .col-md-4.middle.future
+    .col-md-4.middle.future.tabs
       | Future
-    .col-md-4.loss
+    .col-md-4.loss.tabs
       | Stop-Loss
-
-      input checked="checked" class="radio_buttons optional order" hidden="true" data-radio="when-radio" data-type="buy" id="buy_when_at_market" name="buy[when]" type="radio" value="At Market"
 
     .col-md-12
       input.dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
 
-    .col-md-6.datepicker-button.right-border.top-border
+    .col-md-6.datepicker-button.right-border.top-border.no-bottom-border
       label
         | Date
       .current-date.number
 
-    .col-md-6.left-border.top-border
+    .col-md-6.left-border.top-border.timepicker-button.no-bottom-border
       label
         | Time
       .current-time.number.kitkat-clock-element
@@ -40,14 +38,48 @@
         span.kitkat-am-pm
           | AM
 
-    .col-md-6#datepicker.calendar.right-border
+    .col-md-6#datepicker.calendar.right-border.no-bottom-border.top-border
 
-    .col-md-6.left-border.picker-container
+    .col-md-6.left-border.picker-container.no-bottom-border.top-border
+
+    .col-md-12.slide.inverse
+      label.col-md-12
+        | Measure
+      .col-md-4.number.right
+        | Above
+      .col-md-4.measure
+      .col-md-4.number.left
+        | Below
+
+    .col-md-12.slide.inverse.center
+      label.col-md-12
+        | Price Target
+      span.number.target-price
+        | $#{@stock.PreviousClose}
+      .price-target.measure 
 
     .col-md-6.inverse.right-border.buy-button
       label.control-label Cash After Purchase:
       .controls
         #cash_buy_calculation.number = number_to_currency(signed_user.account_balance.to_f-@stock.buy_price.to_f)
+
+    input checked="checked" class="radio_buttons optional order" hidden="true" data-radio="when-radio" data-type="buy" id="buy_when_at_market" name="buy[when]" type="radio" value="At Market"
+
+    input checked="checked" class="datetime optional buy_execute_at_1i" hidden="true" id="buy_execute_at_1i" name="buy[execute_at(1i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_2i" name="buy[execute_at(2i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_3i" name="buy[execute_at(3i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_4i" name="buy[execute_at(4i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_5i" name="buy[execute_at(5i)]" value="null"
+
+    input checked="checked" class="select optional" hidden="true" id="buy_measure" name="buy[measure]" value="null"
+
+    input checked="checked" class="numeric float optional" hidden="true" id="buy_price_target" name="buy[price_target]" type="number" value="#{@stock.PreviousClose}"
+
+    li#get-price data-price="#{@stock.PreviousClose}"
 
     .col-md-6.inverse.left-border.no-padding.buy-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Buy Stocks
