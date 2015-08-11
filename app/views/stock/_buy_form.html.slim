@@ -79,7 +79,7 @@
 
     input checked="checked" class="numeric float optional" hidden="true" id="buy_price_target" name="buy[price_target]" type="number" value="#{@stock.PreviousClose}"
 
-    li#get-price data-price="#{@stock.PreviousClose}"
+    li#get-price data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}"
 
     .col-md-6.inverse.left-border.no-padding.buy-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Buy Stocks

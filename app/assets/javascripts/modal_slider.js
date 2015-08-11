@@ -12,7 +12,7 @@ $( document ).ready(function() {
 	  animate: "fast",
 	  value: price.dataset.price,
 	  min: 0,
-	  max: 300,
+	  max: price.dataset.cash,
 	  range: true,
 	  step: .01
 	});

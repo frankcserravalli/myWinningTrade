@@ -17,13 +17,17 @@
 //= require portfolio-view
 //= require main_nav
 //= require buy_form
+//= require sell_form
 
 //= require hammer.min
 //= require moment
 //= require KitKatClock.min
 //= require jquery.datetimepicker
 //= require clock
+//= require sell_clock
 //= require modal_slider
+
+//= require sell_modal_slider
 
 //= require finance
 //= require submit_form_and_share

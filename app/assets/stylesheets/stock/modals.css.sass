@@ -37,7 +37,8 @@
         &.top-border
           border-top: 4px solid $black
 
-        &.slide
+        &.slide, 
+        &.sell-slide
           padding-bottom: 1em
           label
             font-size: 16px
@@ -58,7 +59,8 @@
             &.right
               text-align: right
 
-          .measure
+          .measure,
+          .sell-measure
             border: 0
             background-image: none
             background-color: $lighterGray
@@ -72,10 +74,12 @@
               background-color: rgb(51, 51, 51)
               top: .4em!important
 
-            &.price-target
+            &.price-target,
+            &.sell-price-target
               margin-top: 1em
 
-          .target-price
+          .target-price,
+          .sell-target-price
             font-size: 16px
             border-bottom: 1px solid #333
 
@@ -140,7 +144,8 @@
     .right
       text-align: right
 
-    .picker-container
+    .picker-container,
+    .sell-picker-container
       background-color: #f2f2f2
       display: block
 
