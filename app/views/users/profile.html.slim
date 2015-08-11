@@ -7,8 +7,8 @@ ul.secondary-nav
     | Subscriptions
   li.fourth-tab
     | Buy Credits
-  //li.fifth-tab
-    //| Teacher Status
+  li.fifth-tab
+    | Teacher Status
   //li.sixth-tab
     //| Other
 
@@ -22,6 +22,8 @@ div.content#content
     = render partial: "subscriptions/update_subscription"
   div.fourth.absolute-span
     = render partial: "account_bonuses/form"
+  div.fifth.absolute-span
+    = render partial: "users/teacher_request"
 
 
 

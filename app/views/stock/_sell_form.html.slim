@@ -80,8 +80,11 @@
 
     input checked="checked" class="numeric float optional" hidden="true" id="sell_price_target" name="sell[price_target]" type="number" value="#{@stock.PreviousClose}"
 
-    li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="#{@user_stock.shares_owned}"
-
+    - if @user_stock
+      li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="#{@user_stock.shares_owned}"
+    - else
+      li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="0"
+      
     .col-md-6.inverse.left-border.no-padding.sell-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Sell Stocks
 

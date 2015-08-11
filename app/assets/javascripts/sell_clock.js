@@ -1,7 +1,5 @@
 $( document ).ready(function() {
 
-    
-
     (function( $ ) {
         var am = new Object(); // or just {}
         am['12'] = 00;
