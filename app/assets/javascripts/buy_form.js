@@ -1,6 +1,18 @@
 $( document ).ready(function() {
   var date = "Please select a date";
 
+  var data = document.getElementById('get-price-1');
+
+  $(".buy-dial").knob({
+    'min':0,
+    'max':(data.dataset.cash / data.dataset.price),
+    'change' : function (v) { 
+      var data = document.getElementById('get-price-1');
+      var cash_after = parseFloat(data.dataset.cash) - (v*parseFloat(data.dataset.price));
+      $('#cash_buy_calculation').text("$".concat(cash_after.toFixed(2)));
+    }
+  });
+
   $('.datepicker-button').hide();
   $('.calendar').hide();
   $('.picker-container').hide();

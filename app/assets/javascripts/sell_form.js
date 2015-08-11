@@ -1,6 +1,18 @@
 $( document ).ready(function() {
   var date = "Please select a date";
 
+  var data = document.getElementById('get-price-2');
+
+  $(".sell-dial").knob({
+    'min':0,
+    'max':data.dataset.shares,
+    'change' : function (v) { 
+      var data = document.getElementById('get-price-2');
+      var cash_after = parseFloat(data.dataset.cash) + (v*parseFloat(data.dataset.price));
+      $('#cash_sell_calculation').text("$".concat(cash_after.toFixed(2)));
+    }
+  });
+
   $('.sell-datepicker-button').hide();
   $('.sell-calendar').hide();
   $('.sell-picker-container').hide();

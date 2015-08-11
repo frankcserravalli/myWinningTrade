@@ -18,7 +18,7 @@
       | Stop-Loss
 
     .col-md-12
-      input.dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
+      input.dial.buy-dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
 
     .col-md-6.datepicker-button.right-border.top-border.no-bottom-border
       label
@@ -79,7 +79,7 @@
 
     input checked="checked" class="numeric float optional" hidden="true" id="buy_price_target" name="buy[price_target]" type="number" value="#{@stock.PreviousClose}"
 
-    li#get-price data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}"
+    li#get-price-1 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}"
 
     .col-md-6.inverse.left-border.no-padding.buy-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Buy Stocks

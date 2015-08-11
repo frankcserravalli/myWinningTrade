@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-	var price = document.getElementById('get-price');
+	var price = document.getElementById('get-price-2');
 
 	$( ".sell-measure" ).slider({
 	  animate: "fast",

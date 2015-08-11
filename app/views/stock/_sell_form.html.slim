@@ -7,7 +7,7 @@
         .current-price.number#sell_price = number_to_currency(@stock.PreviousClose)
 
     .col-md-6.right
-      label.control-label Current Cash
+      label.control-label Current Cash 
       .controls
         #current_cash.number = number_to_currency(signed_user.account_balance)
 
@@ -19,7 +19,7 @@
       | Stop-Loss
 
     .col-md-12
-      input.dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="sell_volume" name="sell[volume]"
+      input.dial.sell-dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="sell_volume" name="sell[volume]"
 
     .col-md-6.sell-datepicker-button.right-border.top-border.no-bottom-border
       label
@@ -80,7 +80,7 @@
 
     input checked="checked" class="numeric float optional" hidden="true" id="sell_price_target" name="sell[price_target]" type="number" value="#{@stock.PreviousClose}"
 
-    li#get-price data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}"
+    li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="#{@user_stock.shares_owned}"
 
     .col-md-6.inverse.left-border.no-padding.sell-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Sell Stocks
