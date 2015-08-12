@@ -1,5 +1,5 @@
 = simple_form_for @sell_order, as: :sell, url: stock_sell_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'sell_form'} do |f|
-  
+
   .modal-row
     .col-md-6 data-stock-symbol=@stock.symbol
       label.control-label Current Price
@@ -7,7 +7,7 @@
         .current-price.number#sell_price = number_to_currency(@stock.PreviousClose)
 
     .col-md-6.right
-      label.control-label Current Cash 
+      label.control-label Current Cash
       .controls
         #current_cash.number = number_to_currency(signed_user.account_balance)
 
@@ -57,7 +57,7 @@
         | Price Target
       span.number.sell-target-price
         | $#{@stock.PreviousClose}
-      .sell-price-target.sell-measure 
+      .sell-price-target.sell-measure
 
     .col-md-6.inverse.right-border.sell-button
       label.control-label Cash After Selling:
@@ -84,8 +84,6 @@
       li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="#{@user_stock.shares_owned}"
     - else
       li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="0"
-      
+
     .col-md-6.inverse.left-border.no-padding.sell-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Sell Stocks
-
-

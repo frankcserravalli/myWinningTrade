@@ -11,7 +11,7 @@ class SellTransaction
   end
 
   def place!(stock, *params)
-    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.name)
+    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.Name)
 
     unless (self.user_stock = user.user_stocks.where(stock_id: system_stock.id).first)
       self.user_stock = user.user_stocks.create!(stock: system_stock)
