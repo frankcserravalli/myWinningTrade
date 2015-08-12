@@ -32,4 +32,7 @@
         span.bold
           | 1.1350  0.67%
       .col-md-2-custom
-        .button.btn = link_to("Logout", destroy_user_session_path, method: :delete)
+        - if signed_user.guest
+          .button.btn = link_to("Login", new_user_session_path)
+        - else
+          .button.btn = link_to("Logout", destroy_user_session_path, method: :delete)
