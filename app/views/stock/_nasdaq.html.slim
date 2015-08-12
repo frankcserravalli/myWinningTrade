@@ -23,15 +23,16 @@ table.headers-table
         td
         td
         td
-      - @nyse_suggestions.each do |suggestion|
+      - @nasdaq.to_h.keys.each do |suggestion|
+        - pp @nasdaq[suggestion]
         tr.values-table onclick="redir('#{suggestion}')"
           td.portfolio-cell.stock-symbol = suggestion
-          td.portfolio-cell.stock-name = @nyse[suggestion].Name
-          td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(@nyse[suggestion].Open)
-          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(@nyse[suggestion].PreviousClose)
-          - stock_is_gaining = @nyse[suggestion].PercentChange && @nyse[suggestion].PercentChange.gsub('%', '').to_f >= 0
+          td.portfolio-cell.stock-name = @nasdaq[suggestion].Name
+          td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(@nasdaq[suggestion].Open)
+          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(@nasdaq[suggestion].PreviousClose)
+          - stock_is_gaining = @nasdaq[suggestion].PercentChange && @nasdaq[suggestion].PercentChange.gsub('%', '').to_f >= 0
           td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red')
-              = @nyse[suggestion].PercentChange
+              = @nasdaq[suggestion].PercentChange
 
         tr.divider-small
           td

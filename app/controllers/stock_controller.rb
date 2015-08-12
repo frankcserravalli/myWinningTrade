@@ -7,7 +7,6 @@ class StockController < ApplicationController
   end
 
   def show
-    symbol = params[:id].upcase
     @stock = Finance.stock_details_for_symbol(symbol)
     @user_stock = signed_user.user_stocks.includes(:stock).where('stocks.symbol' => symbol).first
     # Setting up the new records in anticipation of an user creating an order
@@ -20,13 +19,12 @@ class StockController < ApplicationController
     @stop_loss_buy_transaction = StopLossTransaction.new
     @stop_loss_sell_transaction = StopLossTransaction.new
     @stop_loss_short_transaction = StopLossTransaction.new
-
+    pp "Mother of yisus: #{@stock}" 
     if @stock.nil?
       alert = I18n.t(
         'flash.stock.invalid_symbol', symbol: symbol,
         default: 'No stock matches the symbol %{symbol}.')
-      #redirect_to dashboard_path, alert: alert
-      pp alert
+      redirect_to dashboard_path, alert: alert
     end
   end
 
@@ -55,11 +53,11 @@ class StockController < ApplicationController
 
   def markets
     @suggestions = ['AAPL', 'GE', 'GOOG', 'JPM']
-    @nyse_suggestions = get_symbols('nyse')
-    @nasdaq_suggestions = get_symbols('nasdaq')
+    @nyse_suggestions = get_symbols('nyse')[0..50]
+    @nasdaq_suggestions = get_symbols('nasdaq')[0..50]
     @stock = Finance.stock_details_for_list(@suggestions)
-    @nyse = Finance.stock_details_for_list(@nyse_suggestions[0..50])
-    @nasdaq = Finance.stock_details_for_list(@nasdaq_suggestions[0..50])
+    @nyse = Finance.stock_details_for_list(@nyse_suggestions)
+    @nasdaq = Finance.stock_details_for_list(@nasdaq_suggestions)
     render 'account/markets'
   end
 

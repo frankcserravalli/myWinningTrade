@@ -32,6 +32,7 @@ class Finance
     # Here we are asking Yahoo to return us information on multiple stocks,
     # where symbol_list represents those multiple stocks
     def stock_details_for_list(symbol_list)
+      pp "Hello: #{symbol_list}"
       return nil if symbol_list.empty?
       ycl = YahooFinanza::Client.new
       ycl.quotes(symbol_list)
