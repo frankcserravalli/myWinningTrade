@@ -49,6 +49,10 @@ class StockController < ApplicationController
     render partial: 'account/portfolio'
   end
 
+  def tutorial
+    render 'account/tutorial'
+  end
+
   def markets
     @suggestions = ['AAPL', 'GE', 'GOOG', 'JPM']
     @nyse_suggestions = get_symbols('nyse')

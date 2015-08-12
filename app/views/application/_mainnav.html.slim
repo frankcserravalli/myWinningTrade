@@ -21,7 +21,7 @@
             = link_to("Markets", '/markets')
           li.tutorial class=(controller.action_name == '' ? 'active' : '')
             = image_tag (controller.action_name == '' ? 'tutorial-icon-active.png' : 'tutorial-icon.png')
-            | Tutorials
+            = link_to("Tutorials", '/tutorial')
           li.leaderboard class=(controller.action_name == 'leaderboards' ? 'active' : '')
             = image_tag (controller.action_name == 'leaderboards' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
             = link_to("Leaderboards", '/leaderboards')
