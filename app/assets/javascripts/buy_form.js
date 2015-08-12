@@ -97,10 +97,9 @@ $( document ).ready(function() {
     $('#buy_form').attr('action', "/stock/".concat(id).concat("/buy"));
   });
 
-  $('.market').click(function (){
-    $('.future').removeClass('selected');
-    $('.loss').removeClass('selected');
-    $('.market').addClass('selected');
+  $('.at-market').click(function (){
+    $('.selected').removeClass('selected');
+    $('.at-market').addClass('selected');
 
     $('.order').val('At Market')
 
@@ -113,8 +112,7 @@ $( document ).ready(function() {
   });
 
   $('.future').click(function (){
-    $('.market').removeClass('selected');
-    $('.loss').removeClass('selected');
+    $('.selected').removeClass('selected');
     $('.future').addClass('selected');
 
     $('.order').val('Future')
@@ -126,8 +124,7 @@ $( document ).ready(function() {
   });
 
   $('.loss').click(function (){
-    $('.market').removeClass('selected');
-    $('.future').removeClass('selected');
+    $('.selected').removeClass('selected');
     $('.loss').addClass('selected');
 
     $('.order').val('Stop-Loss')
