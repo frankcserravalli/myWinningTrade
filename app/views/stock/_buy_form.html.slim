@@ -3,7 +3,7 @@
     .col-md-6 data-stock-symbol=@stock.symbol
       label.control-label Current Price
       .controls
-        .current-price.number#buy_price = number_to_currency(@stock.PreviousClose)
+        .current-price.number#buy_price = number_to_currency(@stock.Ask)
 
     .col-md-6.right
       label.control-label Current Cash
@@ -55,8 +55,8 @@
       label.col-md-12
         | Price Target
       span.number.target-price
-        | $#{@stock.PreviousClose}
-      .price-target.measure 
+        | $#{@stock.Ask}
+      .price-target.measure
 
     .col-md-6.inverse.right-border.buy-button
       label.control-label Cash After Purchase:
@@ -77,9 +77,9 @@
 
     input checked="checked" class="select optional" hidden="true" id="buy_measure" name="buy[measure]" value="null"
 
-    input checked="checked" class="numeric float optional" hidden="true" id="buy_price_target" name="buy[price_target]" type="number" value="#{@stock.PreviousClose}"
+    input checked="checked" class="numeric float optional" hidden="true" id="buy_price_target" name="buy[price_target]" type="number" value="#{@stock.Ask}"
 
-    li#get-price-1 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}"
+    li#get-price-1 data-price="#{@stock.Ask}" data-cash="#{signed_user.account_balance}"
 
     .col-md-6.inverse.left-border.no-padding.buy-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Buy Stocks

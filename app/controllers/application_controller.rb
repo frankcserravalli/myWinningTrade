@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
       params[type][:order_type] = @order_type
       @order = StopLossTransaction.new(params[type].merge(user: signed_user))
     end
-    
+
     if @order
       if@order.place!(@stock_details)
         flash[:notice] = "Order successfully placed"
@@ -85,8 +85,8 @@ class ApplicationController < ActionController::Base
       p[:purchase_value] = 0
       p[:stocks] = {}
       p[:shorts] = {}
-      p[:pending_date_time_transactions] = pending_date_time_transactions 
-      p[:processed_date_time_transactions] = processed_date_time_transactions 
+      p[:pending_date_time_transactions] = pending_date_time_transactions
+      p[:processed_date_time_transactions] = processed_date_time_transactions
       p[:pending_stop_loss_transactions] = pending_stop_loss_transactions
       p[:processed_stop_loss_transactions] = processed_stop_loss_transactions
 
@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
         stock_symbol = user_stock.stock.symbol
         details = stock_details[stock_symbol]
         purchase_value = user_stock.cost_basis.to_f * user_stock.shares_owned.to_f
-        current_price = details.PreviousClose.to_f unless details.nil?
+        current_price = details.Ask.to_f unless details.nil?
         current_value = current_price * user_stock.shares_owned.to_f
         shares_owned = user_stock.shares_owned
         cost_basis = user_stock.cost_basis.to_f
@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
           current_value: current_value,
           cost_basis: cost_basis,
           capital_gain: current_price - cost_basis,
-          percent_gain: percent_gain 
+          percent_gain: percent_gain
         }
         p[:current_value] += current_value
         p[:purchase_value] += purchase_value
@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
         details = short_details[stock_symbol]
         # Purchase value not needed. We never subtracted for shorted stocks.
         #purchase_value = user_stock.short_cost_basis.to_f * user_stock.shares_borrowed.to_f
-        current_price = details.PreviousClose.to_f
+        current_price = details.Ask.to_f
         current_value = ((user_stock.short_cost_basis.to_f - current_price) * user_stock.shares_borrowed.to_f)
         shares_borrowed = user_stock.shares_borrowed
         short_cost_basis = user_stock.short_cost_basis.to_f

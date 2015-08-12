@@ -25,12 +25,12 @@ class ShortSellBorrow < Order
   after_create :recalculate_user_stock_cost_basis
 
   def place!(stock, *params)
-    if stock.PreviousClose.to_f <= 0.0
+    if stock.Ask.to_f <= 0.0
       self.errors.add(:base, "Cannot purchase a stock that has zero value.")
       return false
     end
 
-    order_price = volume.to_f * stock.PreviousClose.to_f
+    order_price = volume.to_f * stock.Ask.to_f
 
     if user.account_balance < order_price
       self.errors.add(:user, "Insufficient funds, $#{(order_price - user.account_balance).round} more required to complete purchase.")
@@ -40,7 +40,7 @@ class ShortSellBorrow < Order
     super
     transaction do
       self.value = -order_price
-      self.price = stock.PreviousClose
+      self.price = stock.Ask
       #user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_borrowed, self.user_stock.shares_borrowed.to_i + volume.to_i)
 

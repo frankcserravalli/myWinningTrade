@@ -19,7 +19,7 @@ class StockController < ApplicationController
     @stop_loss_buy_transaction = StopLossTransaction.new
     @stop_loss_sell_transaction = StopLossTransaction.new
     @stop_loss_short_transaction = StopLossTransaction.new
-    pp "Mother of yisus: #{@stock}" 
+    pp "Mother of yisus: #{@stock}"
     if @stock.nil?
       alert = I18n.t(
         'flash.stock.invalid_symbol', symbol: symbol,
