@@ -10,9 +10,9 @@ $( document ).ready(function() {
 
 	$( ".sell-price-target" ).slider({
 	  animate: "fast",
-	  value: price.dataset.price,
+	  value: parseInt(price.dataset.price),
 	  min: 0,
-	  max: price.dataset.cash,
+	  max: parseInt(price.dataset.cash),
 	  range: true,
 	  step: .01
 	});

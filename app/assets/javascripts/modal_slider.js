@@ -1,6 +1,8 @@
 $( document ).ready(function() {
 	var price = document.getElementById('get-price-1');
 
+	$('#buy_measure').val('Above');
+
 	$( ".measure" ).slider({
 	  animate: "fast",
 	  values: 1,
@@ -10,9 +12,9 @@ $( document ).ready(function() {
 
 	$( ".price-target" ).slider({
 	  animate: "fast",
-	  value: price.dataset.price,
+	  value: parseInt(price.dataset.price),
 	  min: 0,
-	  max: price.dataset.cash,
+	  max: parseInt(price.dataset.price) + 2000,
 	  range: true,
 	  step: .01
 	});

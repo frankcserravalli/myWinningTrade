@@ -6,9 +6,9 @@ $( document ).ready(function() {
   $(".sell-dial").knob({
     'min':0,
     'max':data.dataset.shares,
-    'change' : function (v) { 
+    'change' : function (e) { 
       var data = document.getElementById('get-price-2');
-      var cash_after = parseFloat(data.dataset.cash) + (v*parseFloat(data.dataset.price));
+      var cash_after = parseFloat(data.dataset.cash) + (e*parseFloat(data.dataset.price));
       $('#cash_sell_calculation').text("$".concat(cash_after.toFixed(2)));
     }
   });
