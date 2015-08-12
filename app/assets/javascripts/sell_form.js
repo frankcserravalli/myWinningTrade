@@ -89,7 +89,7 @@ $( document ).ready(function() {
     $('.sell-future').removeClass('selected');
     $('.sell-loss').addClass('selected');
 
-    $('.sell-order').val('Stop-Loss')
+    $('.sell-order').val('Stop-Loss');
 
     $('.sell-datepicker-button').hide();
     $('.sell-calendar').hide();

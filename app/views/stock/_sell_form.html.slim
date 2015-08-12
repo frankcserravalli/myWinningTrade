@@ -64,7 +64,7 @@
       .controls
         #cash_sell_calculation.number = number_to_currency(signed_user.account_balance.to_f-@stock.sell_price.to_f)
 
-    input checked="checked" class="radio_buttons optional order" hidden="true" data-radio="when-radio" data-type="sell" id="sell_when_at_market" name="sell[when]" type="radio" value="At Market"
+    input checked="checked" class="radio_buttons optional sell-order" hidden="true" data-radio="when-radio" data-type="sell" id="sell_when_at_market" name="sell[when]" type="radio" value="At Market"
 
     input checked="checked" class="datetime optional sell_execute_at_1i" hidden="true" id="sell_execute_at_1i" name="sell[execute_at(1i)]" value="null"
 
