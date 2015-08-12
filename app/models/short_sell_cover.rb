@@ -21,17 +21,17 @@ class ShortSellCover < Order
   attr_accessible :short_sell_borrow
 
   def place!(stock, *params)
-    order_price = volume.to_f * stock.current_price.to_f
+    order_price = volume.to_f * stock.PreviousClose.to_f
     self.user_stock = self.user.user_stocks.includes(:stock).where('stocks.symbol' => stock.symbol).first
 
-    short_value = volume.to_f * stock.current_price.to_f
+    short_value = volume.to_f * stock.PreviousClose.to_f
     buy_value = volume.to_f * short_sell_borrow.price.to_f
     account_balance_change = buy_value - short_value
 
     transaction do
       self.value = order_price
-      self.price = stock.current_price
-      self.capital_gain = -(stock.current_price.to_f - short_sell_borrow.cost_basis)
+      self.price = stock.PreviousClose
+      self.capital_gain = -(stock.PreviousClose.to_f - short_sell_borrow.cost_basis)
 
       # Here we calculate the transaction capital minus taxes
       transaction_capital_less_tax = (self.capital_gain -= (self.capital_gain.to_f * 0.3).round(2))
