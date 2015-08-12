@@ -1,13 +1,13 @@
 = simple_form_for @sell_order, as: :sell, url: stock_sell_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'sell_form'} do |f|
-  
+
   .modal-row
     .col-md-6 data-stock-symbol=@stock.symbol
       label.control-label Current Price
       .controls
-        .current-price.number#sell_price = number_to_currency(@stock.PreviousClose)
+        .current-price.number#sell_price = number_to_currency(@stock.Ask)
 
     .col-md-6.right
-      label.control-label Current Cash 
+      label.control-label Current Cash
       .controls
         #current_cash.number = number_to_currency(signed_user.account_balance)
 
@@ -56,15 +56,15 @@
       label.col-md-12
         | Price Target
       span.number.sell-target-price
-        | $#{@stock.PreviousClose}
-      .sell-price-target.sell-measure 
+        | $#{@stock.Ask}
+      .sell-price-target.sell-measure
 
     .col-md-6.inverse.right-border.sell-button
       label.control-label Cash After Selling:
       .controls
         #cash_sell_calculation.number = number_to_currency(signed_user.account_balance.to_f-@stock.sell_price.to_f)
 
-    input checked="checked" class="radio_buttons optional order" hidden="true" data-radio="when-radio" data-type="sell" id="sell_when_at_market" name="sell[when]" type="radio" value="At Market"
+    input checked="checked" class="radio_buttons optional sell-order" hidden="true" data-radio="when-radio" data-type="sell" id="sell_when_at_market" name="sell[when]" type="radio" value="At Market"
 
     input checked="checked" class="datetime optional sell_execute_at_1i" hidden="true" id="sell_execute_at_1i" name="sell[execute_at(1i)]" value="null"
 
@@ -78,14 +78,12 @@
 
     input checked="checked" class="select optional" hidden="true" id="sell_measure" name="sell[measure]" value="null"
 
-    input checked="checked" class="numeric float optional" hidden="true" id="sell_price_target" name="sell[price_target]" type="number" value="#{@stock.PreviousClose}"
+    input checked="checked" class="numeric float optional" hidden="true" id="sell_price_target" name="sell[price_target]" type="number" value="#{@stock.Ask}"
 
     - if @user_stock
-      li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="#{@user_stock.shares_owned}"
+      li#get-price-2 data-price="#{@stock.Ask}" data-cash="#{signed_user.account_balance}" data-shares="#{@user_stock.shares_owned}"
     - else
-      li#get-price-2 data-price="#{@stock.PreviousClose}" data-cash="#{signed_user.account_balance}" data-shares="0"
-      
+      li#get-price-2 data-price="#{@stock.Ask}" data-cash="#{signed_user.account_balance}" data-shares="0"
+
     .col-md-6.inverse.left-border.no-padding.sell-button
       button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Sell Stocks
-
-

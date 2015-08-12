@@ -5,7 +5,7 @@ class SellsController < ApplicationController
   before_filter(:except => [:callback_facebook, :callback_linkedin]) {|controller| controller.when_to_execute_order('sell') }
 
   def create
-    @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+    @stock_details = Finance.stock_details_for_symbol(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
     @order = SellTransaction.new(params[:sell].merge(user: signed_user))
 

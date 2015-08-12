@@ -28,7 +28,7 @@ table.headers-table
           td.portfolio-cell.stock-symbol = suggestion
           td.portfolio-cell.stock-name = @stock[suggestion].Name
           td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(@stock[suggestion].Open)
-          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(@stock[suggestion].PreviousClose)
+          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(@stock[suggestion].Ask)
           - stock_is_gaining = @stock[suggestion].PercentChange && @stock[suggestion].PercentChange.gsub('%', '').to_f >= 0
           td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red')
               = @stock[suggestion].PercentChange
