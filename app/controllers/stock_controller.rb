@@ -3,9 +3,6 @@ require 'yahoo_finanza'
 class StockController < ApplicationController
   def dashboard
     # This gives us the results of the leaders in the leader board
-    leader_board_results = UserAccountSummary.find_top_results(signed_user.id)
-    @world_leader_board = leader_board_results[0]
-    @class_leader_board = leader_board_results[1]
   end
 
   def show
@@ -88,6 +85,10 @@ class StockController < ApplicationController
   end
 
   def leaderboards
+    leader_board_results = UserAccountSummary.find_top_results(signed_user.id)
+    @world_leader_board = leader_board_results[0]
+    pp @world_leader_board
+    @class_leader_board = leader_board_results[1]
     render 'account/leaderboards'
   end
 
