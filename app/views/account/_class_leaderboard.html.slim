@@ -18,7 +18,8 @@
           tr
             td.portfolio-cell = index + 1
             td.portfolio-cell = classmate.user.name
-            td.portfolio-cell = ((classmate.capital_total / 50000) * 100).round(2).to_s + "%"
+            - classmate_is_gaining = ((classmate.capital_total / 50000) * 100).round(2) >= 0
+            td.portfolio-cell class=(classmate_is_gaining ? 'green' : 'red') = ((classmate.capital_total / 50000) * 100).round(2).to_s + "%"
         tr.divider-small
           td
           td
