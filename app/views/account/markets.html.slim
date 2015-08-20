@@ -1,20 +1,13 @@
 ul.secondary-nav
-  li.first-tab
+  li.secondary-active.first-market-tab
     | Popular Stocks
-  li.second-tab
+  li.second-market-tab
     | NYSE
-  li.third-tab
+  li.third-market-tab
     | NASDAQ
-  li.fourth-tab
-    | TOP 50
+  li.fourth-market-tab
+    | TOP 100
 
 div.content#content
   div.widget-container
-  div.first
-    = render partial: 'stock/suggest'
-  div.second
-    = render partial: 'stock/nyse'
-  div.third
-    = render partial: 'stock/nasdaq'
-  div.fourth
-    = render partial: 'account/pending_positions'
+  = render partial: 'stock/suggest'
