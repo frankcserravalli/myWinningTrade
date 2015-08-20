@@ -37,4 +37,11 @@ MyWinningTrade::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.delivery_method = :letter_opener
+
+  # Sprockets Bootstrap Pre Compile Assets Error Fix
+
+  %w(stylesheets javascripts fonts images).each do |sub|
+    config.assets.paths << ::Bootstrap::Rails::Engine.root.join('assets', sub)
+  end
+  config.assets.precompile << %r(bootstrap/glyphicons-halflings-regular\.(?:eot|svg|ttf|woff)$)
 end
