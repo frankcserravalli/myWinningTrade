@@ -1,3 +1,5 @@
+require 'yahoo_finanza'
+
 class StockController < ApplicationController
   def dashboard
     # This gives us the results of the leaders in the leader board
@@ -52,13 +54,38 @@ class StockController < ApplicationController
   end
 
   def markets
-    @suggestions = ['AAPL', 'GE', 'GOOG', 'JPM']
-    @nyse_suggestions = get_symbols('nyse')[0..50]
-    @nasdaq_suggestions = get_symbols('nasdaq')[0..50]
+    ycl = YahooFinanza::Client.new
+    @suggestions = ycl.active_symbols
     @stock = Finance.stock_details_for_list(@suggestions)
-    @nyse = Finance.stock_details_for_list(@nyse_suggestions)
-    @nasdaq = Finance.stock_details_for_list(@nasdaq_suggestions)
     render 'account/markets'
+  end
+
+  def popular_market
+    ycl = YahooFinanza::Client.new
+    @suggestions = ycl.active_symbols
+    @stock = Finance.stock_details_for_list(@suggestions)
+    render partial: 'stock/suggest'
+  end
+
+  def nyse_market
+    ycl = YahooFinanza::Client.new
+    @nyse_suggestions = ycl.symbols_by_market('nyse')[0..50]
+    @nyse = Finance.stock_details_for_list(@nyse_suggestions)
+    render partial: 'stock/nyse'
+  end
+
+  def nasdaq_market
+    ycl = YahooFinanza::Client.new
+    @nasdaq_suggestions = ycl.symbols_by_market('nasdaq')[0..50]
+    @nasdaq = Finance.stock_details_for_list(@nasdaq_suggestions)
+    render partial: 'stock/nasdaq'
+  end
+
+  def top_100
+    ycl = YahooFinanza::Client.new
+    @top_100_suggestions = ycl.sp_symbols(100)
+    @top_100 = Finance.stock_details_for_list(@top_100_suggestions)
+    render partial: 'stock/top'
   end
 
   def leaderboards
@@ -73,11 +100,5 @@ class StockController < ApplicationController
 
   def symbol
     params.require(:id).upcase
-  end
-
-  def get_symbols(market)
-    require 'yahoo_finanza'
-    ycl = YahooFinanza::Client.new
-    ycl.symbols_by_market(market)
   end
 end

@@ -14,6 +14,10 @@ MyWinningTrade::Application.routes.draw do
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
   get '/markets', to: 'stock#markets'
+  get '/nyse_market', to: 'stock#nyse_market'
+  get '/nasdaq_market', to: 'stock#nasdaq_market'
+  get '/popular_market', to: 'stock#popular_market'
+  get '/top_100', to: 'stock#top_100'
 
   get '/tutorial', to: 'stock#tutorial'
 

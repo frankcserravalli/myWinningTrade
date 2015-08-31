@@ -7,6 +7,15 @@ GIT
       faraday
       multi_json
 
+GIT
+  remote: https://github.com/twbs/bootstrap-sass.git
+  revision: 04dd26fdde642b8e4443052347dab2cc165d43dc
+  branch: next
+  specs:
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -43,13 +52,10 @@ GEM
       rake (~> 10.4)
     arel (3.0.3)
     attr_required (1.0.0)
-    autoprefixer-rails (5.2.1)
+    autoprefixer-rails (5.2.1.2)
       execjs
       json
     bcrypt (3.1.10)
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -114,6 +120,8 @@ GEM
     devise-guests (0.3.3)
       devise
     diff-lcs (1.1.3)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     eventmachine (1.0.7)
     excon (0.45.3)
@@ -162,6 +170,8 @@ GEM
       multi_json (~> 1.8)
     high_voltage (1.2.4)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     httpclient (2.6.0.1)
     i18n (0.7.0)
     jasminerice (0.0.10)
@@ -194,6 +204,15 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     market_beat (0.2.0)
+    mechanize (2.7.2)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0.0)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     metaclass (0.0.4)
     method_source (0.8.2)
     migrant (1.4.3)
@@ -210,9 +229,12 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nested_form (0.3.2)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9.4)
     netrc (0.7.9)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    ntlm-http (0.1.1)
     oauth (0.4.7)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
@@ -384,6 +406,9 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     underscore-rails (1.4.4)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     unicorn (4.6.3)
       kgio (~> 2.6)
       rack
@@ -391,12 +416,15 @@ GEM
     vcr (2.4.0)
     warden (1.2.3)
       rack (>= 1.0)
+    webrobots (0.1.1)
     websocket (1.2.2)
     will_paginate (3.0.7)
     wkhtmltopdf-binary (0.9.9.3)
     xpath (1.0.0)
       nokogiri (~> 1.3)
-    yahoo_finanza (0.0.1)
+    yahoo_finanza (0.1.0)
+      mechanize
+      rest-client
       yql
     yql (0.0.2)
 
@@ -406,7 +434,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt
-  bootstrap-sass (~> 3.3.4)
+  bootstrap-sass!
   capybara (~> 2.0.2)
   chartkick
   chosen-rails (~> 0.9.11.2)
@@ -434,6 +462,7 @@ DEPENDENCIES
   letter_opener (~> 1.0.0)
   linkedin (~> 0.3.7)
   market_beat (~> 0.2.0)
+  mechanize
   migrant (~> 1.4.0)
   mocha (~> 0.10.5)
   momentjs-rails (~> 1.7.2)
@@ -471,8 +500,8 @@ DEPENDENCIES
   vcr (~> 2.4.0)
   will_paginate (~> 3.0.4)
   wkhtmltopdf-binary (~> 0.9.9.1)
-  yahoo_finanza
+  yahoo_finanza (~> 0.1.0)
   yql (~> 0.0.2)
 
 BUNDLED WITH
-   1.10.4
+   1.10.6

@@ -89,6 +89,60 @@ $( document ).ready(function() {
       $('.sixth').hide();
       $('.fourth').show();
     });
+
+    /******* New Methods *************/
+
+    $('.first-market-tab').click(function(){
+      $.ajax({
+        type: 'GET',
+        url: '/popular_market',
+        dataType: 'html',
+        success: function(data){
+          $('#content').html("<div class='widget-container'></div>" + data)
+        }
+      });
+      $('.secondary-active').removeClass('secondary-active');
+      $('.first-market-tab').addClass('secondary-active');
+    });
+
+    $('.second-market-tab').click(function(){
+      $.ajax({
+        type: 'GET',
+        url: '/nyse_market',
+        dataType: 'html',
+        success: function(data){
+          $('#content').html("<div class='widget-container'></div>" + data)
+        }
+      });
+      $('.secondary-active').removeClass('secondary-active');
+      $('.second-market-tab').addClass('secondary-active');
+    });
+
+    $('.third-market-tab').click(function(){
+      $.ajax({
+        type: 'GET',
+        url: '/nasdaq_market',
+        dataType: 'html',
+        success: function(data){
+          $('#content').html("<div class='widget-container'></div>" + data)
+        }
+      });
+      $('.secondary-active').removeClass('secondary-active');
+      $('.third-market-tab').addClass('secondary-active');
+    });
+
+    $('.fourth-market-tab').click(function(){
+      $.ajax({
+        type: 'GET',
+        url: '/top_100',
+        dataType: 'html',
+        success: function(data){
+          $('#content').html("<div class='widget-container'></div>" + data)
+        }
+      });
+      $('.secondary-active').removeClass('secondary-active');
+      $('.fourth-market-tab').addClass('secondary-active');
+    });
 });
 
 function remove_widget(){

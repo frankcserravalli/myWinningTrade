@@ -45,7 +45,7 @@ test-db-create:
 	docker-compose run -e RAILS_ENV=test --rm web rake db:create
 
 testit:
-	docker-compose run --rm web rspec 
+	docker-compose run --rm web rspec
 
 devise:
 	docker-compose run --rm web rails g devise:install
@@ -70,3 +70,6 @@ clean-assets:
 
 precompile-assets:
 	docker-compose run --rm web rake assets:precompile
+
+precompile-assets-dev:
+	docker-compose run -e RAILS_ENV=development --rm web rake assets:precompile
