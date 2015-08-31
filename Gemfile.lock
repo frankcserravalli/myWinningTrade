@@ -7,6 +7,15 @@ GIT
       faraday
       multi_json
 
+GIT
+  remote: https://github.com/twbs/bootstrap-sass.git
+  revision: 04dd26fdde642b8e4443052347dab2cc165d43dc
+  branch: next
+  specs:
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -43,13 +52,10 @@ GEM
       rake (~> 10.4)
     arel (3.0.3)
     attr_required (1.0.0)
-    autoprefixer-rails (5.2.1)
+    autoprefixer-rails (5.2.1.2)
       execjs
       json
     bcrypt (3.1.10)
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -428,7 +434,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt
-  bootstrap-sass (~> 3.3.4)
+  bootstrap-sass!
   capybara (~> 2.0.2)
   chartkick
   chosen-rails (~> 0.9.11.2)
