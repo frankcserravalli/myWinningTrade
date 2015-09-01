@@ -1,5 +1,5 @@
 class TeacherSessionsController < Devise::SessionsController
-  
+
   def create
     self.resource = warden.authenticate!(auth_options)
     set_flash_message(:notice, :signed_in) if is_flashing_format?
@@ -21,7 +21,6 @@ class TeacherSessionsController < Devise::SessionsController
   end
 
   def pending
-    pp "#{signed_user.email}, #{Figaro.env.admin}"
     redirect_to groups_url unless signed_user.email == Figaro.env.admin
     @teachers_pending = PendingTeacher.all
   end

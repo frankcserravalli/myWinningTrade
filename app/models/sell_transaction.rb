@@ -11,7 +11,7 @@ class SellTransaction
   end
 
   def place!(stock, *params)
-    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.Name)
+    system_stock = Stock.where(symbol: stock.Symbol).first_or_create!(name: stock.Name)
 
     unless (self.user_stock = user.user_stocks.where(stock_id: system_stock.id).first)
       self.user_stock = user.user_stocks.create!(stock: system_stock)
@@ -30,6 +30,7 @@ class SellTransaction
       	this_sale_volume = [buy.volume.to_i, volume_remaining_to_sell].min
         sell = Sell.new(volume: this_sale_volume, user: user, buy: buy)
         sell.place!(stock)
+        sell.save
         volume_remaining_to_sell -= this_sale_volume
         break if volume_remaining_to_sell == 0
       end

@@ -51,8 +51,8 @@ class ApplicationController < ActionController::Base
     @user = signed_user || User.find(user_id)
     # pp "User Stocks: #{@user.user_stocks.includes(:stock).first.stock.symbol}"
     @portfolio = {}.tap do |p|
-      user_stocks = @user.user_stocks.includes(:stock).with_shares_owned
-      user_shorts = @user.user_stocks.includes(:stock).with_shares_borrowed
+      user_stocks = @user.user_stocks.includes(:stock, :orders).with_shares_owned
+      user_shorts = @user.user_stocks.includes(:stock, :orders).with_shares_borrowed
       pending_date_time_transactions = @user.date_time_transactions.pending.upcoming
       processed_date_time_transactions = @user.date_time_transactions.processed
       pending_stop_loss_transactions = @user.stop_loss_transactions.pending
@@ -107,7 +107,8 @@ class ApplicationController < ActionController::Base
           current_value: current_value,
           cost_basis: cost_basis,
           capital_gain: current_price - cost_basis,
-          percent_gain: percent_gain
+          percent_gain: percent_gain,
+          orders: user_stock.orders.limit(5)
         }
         p[:current_value] += current_value
         p[:purchase_value] += purchase_value
@@ -130,6 +131,7 @@ class ApplicationController < ActionController::Base
           cost_basis: short_cost_basis,
           capital_gain: current_price - short_cost_basis,
           percent_gain: (-(current_price - short_cost_basis) * 100 / short_cost_basis).round(1)
+          orders: user_stock.orders.limit(5)
         }
         p[:current_value] += current_value
         p[:purchase_value] += current_value
