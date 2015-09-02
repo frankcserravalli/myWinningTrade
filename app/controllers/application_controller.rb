@@ -130,7 +130,7 @@ class ApplicationController < ActionController::Base
           current_value: current_value,
           cost_basis: short_cost_basis,
           capital_gain: current_price - short_cost_basis,
-          percent_gain: (-(current_price - short_cost_basis) * 100 / short_cost_basis).round(1)
+          percent_gain: (-(current_price - short_cost_basis) * 100 / short_cost_basis).round(1),
           orders: user_stock.orders.limit(5)
         }
         p[:current_value] += current_value
