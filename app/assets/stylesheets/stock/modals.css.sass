@@ -1,0 +1,278 @@
+.modal-header
+  background-color: $darkGray
+  color: white
+
+.modal-content
+  border-radius: 0
+
+  .dial
+    font-size: 42px!important
+
+  .modal-body
+    padding: 0
+
+    .modal-row
+      .number
+        font-weight: bold
+        color: $darkGray
+
+      .col-md-12
+        div
+          display: block!important
+          margin-left: auto
+          margin-right: auto
+          margin-top: 4em
+
+        button
+          width: 100%
+          height: 54px
+          border-radius: 0
+          background-color: $darkGray
+          border: 0
+
+        &.inverse
+          border-top: 4px solid $black
+          border-bottom: 0
+
+        &.no-bottom-border
+          border-bottom: 0
+
+        &.top-border
+          border-top: 4px solid $black
+
+        &.slide, 
+        &.sell-slide
+          padding-bottom: 1em
+          label
+            font-size: 16px
+            font-weight: 200
+            margin: 0
+            padding: 0
+            margin-top: .5em
+            margin-bottom: .5em
+          div
+            margin-top: 0
+
+          .col-md-4
+            padding-top: 0.6em
+
+            &.left
+              text-align: left
+
+            &.right
+              text-align: right
+
+          .measure,
+          .sell-measure
+            border: 0
+            background-image: none
+            background-color: $lighterGray
+            padding: 1em
+            border-radius: 20px
+            border-left: 19px solid #E6E6E6
+            border-right: 19px solid #E6E6E6
+            .ui-slider-handle
+              border-radius: 20px
+              background-image: none
+              background-color: rgb(51, 51, 51)
+              top: .4em!important
+
+            &.price-target,
+            &.sell-price-target
+              margin-top: 1em
+
+          .target-price,
+          .sell-target-price
+            font-size: 16px
+            border-bottom: 1px solid #333
+
+      .center
+        text-align: center
+
+
+      .col-md-6
+        border-bottom: 4px solid $black
+        padding: .5em
+
+        label
+          font-size: 16px
+          font-weight: 200
+          margin: 0
+          padding: 0
+
+        &.inverse
+          border-top: 4px solid $black
+          border-bottom: 0
+
+        &.left-border
+          border-left: 2px solid $black
+
+        &.right-border
+          border-right: 2px solid $black
+
+        &.top-border
+          border-top: 4px solid $black
+
+        &.no-bottom-border
+          border-bottom: 0
+
+        .kitkat-am-pm
+          font-size: 14px
+
+        button
+          width: 100%
+          height: 56px
+          border-radius: 0
+          background-color: $darkGray
+          border: 0
+
+      .tabs
+        text-align: center
+        padding: 1em
+        border-bottom: 4px solid $darkGray
+        background-color: $lighterGray
+        color: white
+        font-weight: bold
+        font-size: 18px
+
+        &.middle
+          border-right: 4px solid $darkGray
+          border-left: 4px solid $darkGray
+
+        &.selected
+          background-color: white
+          color: $darkGray
+          border-bottom-color: white
+
+    .right
+      text-align: right
+
+    .picker-container,
+    .sell-picker-container
+      background-color: #f2f2f2
+      display: block
+
+    .kitkat-container
+      clear: both
+      width: 250px
+      height: 248px
+      margin: auto
+      background-color: #f2f2f2
+      font-family: 'Roboto', sans-serif
+      color: #909090
+      display: block!important
+
+    .kitkat-time
+      height: 15%
+      width: 100%
+      background-color: #fff
+      text-align: center
+      font-size: 30pt
+      display: none
+
+    .kitkat-time-active
+      color: $darkGray
+
+    .kitkat-am-pm
+      font-size: 15pt
+      font-weight: bold
+      cursor: pointer
+
+    .kitkat-clock
+      height: 100%
+      width: 100%
+      position: relative
+      cursor: pointer
+
+    .kitkat-done
+      height: calc(10% - 1px)
+      border-top: 1px solid #CCC
+      width: 100%
+      text-align: center
+      font-size: 150%
+      cursor: pointer
+
+    .kitkat-hour, .kitkat-minute
+      cursor: pointer
+
+    .kitkat-clock-body
+      position: relative
+      top: 5%
+      left: 5%
+      width: 90%
+      height: 90%
+      border-radius: 50%
+      background-color: #fff
+
+    .kitkat-clock-hours, .kitkat-clock-minutes
+      position: absolute
+      top: 0px
+      left: 0px
+      width: 100%
+      height: 100%
+
+    .kitkat-clock-hand
+      position: absolute
+      top: 5%
+      left: calc(50% - 12pt)
+      width: 24pt
+      height: 90%
+      opacity: 1
+
+    .kitkat-clock-hand-line
+      position: absolute
+      top: 24pt
+      left: calc(50% - 2px)
+      width: 2px
+      height: calc(50% - 24pt)
+      background-color: $darkGray
+
+    .kitkat-clock-hand-end
+      position: absolute
+      top: 0px
+      left: 0px
+      width: 100%
+      height: 24pt
+      background-color: $darkGray
+      border-radius: 50%
+
+    .kitkat-clock-cover
+      position: absolute
+      top: 5%
+      left: 5%
+      width: 90%
+      height: 90%
+      border-radius: 50%
+
+    .kitkat-clock-am
+      position: absolute
+      left: 5px
+      bottom: 5px
+      width: 15%
+      height: 15%
+      background-color: #fff
+      border-radius: 50%
+      text-align: center
+      cursor: pointer
+
+    .kitkat-clock-pm
+      position: absolute
+      right: 5px
+      bottom: 5px
+      width: 15%
+      height: 15%
+      background-color: #fff
+      border-radius: 50%
+      text-align: center
+      cursor: pointer
+
+    .kitkat-clock-am-pm-active
+      background-color: $darkGray
+      color: #fff
+
+    .kitkat-clock-am span, .kitkat-clock-pm span
+      padding-top: calc(50% - 10px)
+      display: inline-block
+.modal-footer
+  border-radius: 0
+  padding: 0

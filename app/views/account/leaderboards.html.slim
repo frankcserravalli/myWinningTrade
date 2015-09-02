@@ -1,0 +1,11 @@
+ul.secondary-nav
+  li.first-tab
+    | Global Leaderboard
+  li.second-tab
+    | Class Leaderboard
+
+div.content
+  div.first
+    = render partial: 'account/world_leaderboard'
+  div.second
+    = render partial: 'account/class_leaderboard'

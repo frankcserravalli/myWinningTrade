@@ -1,71 +1,41 @@
-form.payment-form.row-fluid method="POST" action="/account_bonuses/create"
+table.absolute-span width="100%" height="100%"
+  tr
+    td width="33.3333%"
+      article.info-box.col-md-4#tudor.select-account-bonus-button value="option-4-bonus" onclick="select('#tudor', '.credits-button')" 
+        header.center.uppercase
+          | TUDOR
+        .main
+          | 250K Ubi $
+          br
+        .fee.center
+          | $4.99 US
 
-  br
+    td width="33.3333%"
+      article.info-box.col-md-4#paulson.select-account-bonus-button value="option-5-bonus" onclick="select('#paulson', '.credits-button')"
+        header.center.uppercase
+          | PAULSON
+        .main
+          | 500K Ubi $
+          br
+        .fee.center
+          | $6.99 US
 
-  .row-fluid.pagination-centered
-    div.span4.btn.select-account-bonus-button.non-selected-bonus-button value="option-1-bonus"  25k - Only 99 Cents
+    td width="33.3333%"
+      article.info-box.col-md-4#soros.select-account-bonus-button value="option-6-bonus" onclick="select('#soros', '.credits-button')"
+        header.center.uppercase
+          | SOROS
+        .main
+          | 1Mln Ubi $
+          br
+        .fee.center
+          | $9.99 US
 
-    div.span4.btn.select-account-bonus-button.non-selected-bonus-button value="option-2-bonus"  50k - $1.99
+  tr
+    td
+    td
+    td
+      .css-shapes-preview.credits-button type="button" data-toggle="modal" data-target="#credits-pay-modal"
+        p
+          | CHECKOUT
 
-    div.span4.btn.select-account-bonus-button.non-selected-bonus-button value="option-3-bonus" 100k - $2.99
-
-  br
-
-  .row-fluid.pagination-centered
-    div.span4.btn.select-account-bonus-button.non-selected-bonus-button value="option-4-bonus"  250k - $3.99
-
-    div.span4.btn.select-account-bonus-button.non-selected-bonus-button value="option-5-bonus"  500k - $4.99
-
-    div.span4.btn.select-account-bonus-button.non-selected-bonus-button value="option-6-bonus" 1 Million - $7.99
-
-  br
-
-  div#stripe-error-message
-
-  br
-
-  span Name on Card
-
-  br
-
-  input.full-name type="text" size="70" autocomplete="off"
-
-  br
-
-  span Card Number
-
-  br
-
-  input.card-number type="text" size="20" autocomplete="off"
-
-  br
-
-  span Credit Card Verification Code
-
-  br
-
-  input.card-cvc type="password" maxlength="3" autocomplete="off"
-
-  br
-
-  span Expiration Date
-
-  br
-
-  = select_month nil, {add_month_numbers: true}, {name: nil, class: "card-expiry-month"}
-
-  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, class: "card-expiry-year"}
-
-  = hidden_field_tag 'stripe_card_token'
-
-  = hidden_field_tag 'bonus_option', ""
-
-  = hidden_field_tag "authenticity_token", form_authenticity_token.to_s
-
-  br
-
-  = button_tag "Submit Payment", class: "btn submit-account-bonus-button", type: "button"
-
-    /= link_to 'Back', subscriptions_path, class: "btn btn-primary back-button"
-
-
+= render partial: 'account_bonuses/credits_pay_modal'

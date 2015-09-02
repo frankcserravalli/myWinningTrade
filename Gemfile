@@ -8,15 +8,22 @@ gem 'rails', '3.2.12'
 gem 'pg', '~> 0.14.1'
 
 group :assets do
-  gem 'jquery-rails', '~> 2.2.0'
-  gem 'jquery-ui-rails', '~> 3.0.1'
-  gem 'compass-rails', '~> 1.0.3'
-  gem 'sass-rails',   '~> 3.2.6'
+
+  gem "jquery-rails", "~> 2.2.0"
+
+  gem "jquery-ui-rails", "~> 3.0.1"
+
+  gem "compass-rails"
+
+  gem 'sass-rails'
+
   gem 'coffee-rails', '~> 3.2.2'
   gem 'therubyrhino', '~> 2.0.2'
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass_twitter_bootstrap', '~> 2.2.2.2'
-  gem 'momentjs-rails', '~> 1.7.2'
+
+  # gem 'bootstrap-sass', '~> 3.3.4'
+  gem 'bootstrap-sass', :git => 'https://github.com/twbs/bootstrap-sass.git', :branch => 'next'
+  gem "momentjs-rails", "~> 1.7.2"
 end
 
 # UI
@@ -71,6 +78,7 @@ end
 # OmniAuth
 # ========
 gem 'devise' # Normal Auth
+gem 'devise-guests'
 gem 'omniauth'
 gem 'omniauth-twitter', '~> 0.0.14'
 gem 'omniauth-facebook', '~> 1.4.1'
@@ -85,6 +93,8 @@ gem 'omniauth-google-oauth2'
 # ========
 gem 'yql', '~> 0.0.2'
 gem 'rest-client', '~> 1.6.7'
+gem 'mechanize'
+gem 'yahoo_finanza', '~> 0.1.0'
 
 # Guard
 # =====
@@ -98,7 +108,7 @@ end
 # ==========
 gem 'unicorn', '~> 4.6.2'
 gem 'figaro'
-
+gem 'orm_adapter'
 # ETC
 # ===
 gem 'fb_graph', '~> 2.6.5'
@@ -114,3 +124,5 @@ gem 'pdfkit', '~> 0.5.3'
 gem 'wkhtmltopdf-binary', '~> 0.9.9.1'
 gem 'rack-rewrite', '~> 1.3.3'
 gem 'strong_parameters'
+
+gem "chartkick"

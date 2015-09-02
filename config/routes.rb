@@ -13,6 +13,16 @@ MyWinningTrade::Application.routes.draw do
   get '/dashboard', to: 'stock#dashboard'
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
+  get '/markets', to: 'stock#markets'
+  get '/nyse_market', to: 'stock#nyse_market'
+  get '/nasdaq_market', to: 'stock#nasdaq_market'
+  get '/popular_market', to: 'stock#popular_market'
+  get '/top_100', to: 'stock#top_100'
+
+  get '/tutorial', to: 'stock#tutorial'
+
+  get '/leaderboards', to: 'stock#leaderboards'
+
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
 
@@ -23,6 +33,7 @@ MyWinningTrade::Application.routes.draw do
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
   get '/users/profile', to: 'users#profile', as: 'profile'
+
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
 

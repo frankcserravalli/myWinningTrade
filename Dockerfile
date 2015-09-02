@@ -24,7 +24,7 @@ COPY Gemfile.lock $APP_HOME/Gemfile.lock
 
 # Setup bundler
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
-    BUNDLE_JOBS=4
+    BUNDLE_JOBS=20
 
 # Run bundler to setup the rails app
 RUN bundle install

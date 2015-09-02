@@ -1,6 +1,31 @@
-ul#portfolio
-  - if @portfolio[:shorts].empty?
-    span You have no shorted stocks.
-  - else
-     - @portfolio[:shorts].each do |stock_symbol, s|
-       = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}
+- if @portfolio[:shorts].empty?
+  span You have no shorted stocks.
+- else
+    table.headers-table
+      thead
+        tr
+          th
+            | SYMBOL
+          th
+            | Company Name
+          th
+            | Initial Prize
+          th
+            | # of Shares
+          th
+            | Actual Prize
+          th
+            | Gain/Loss
+          th
+            | History Rating
+      tbody.portfolio
+        tr.divider-big
+          td
+          td
+          td
+          td
+          td
+          td
+          td
+        - @portfolio[:shorts].each do |stock_symbol, s|
+          = render partial: 'account/portfolio_row', locals: {stock_symbol: stock_symbol, s: s}

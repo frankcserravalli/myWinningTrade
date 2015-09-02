@@ -1,12 +1,12 @@
 doctype 5
-html data-uuid=current_user.try(:id)
+html data-uuid=signed_user.try(:id)
   = render 'head'
   = render 'third_party_scripts'
 
 
   body class=controller_name
-    = render 'navbar'
-    = render partial: 'account/infobar'
-    .container
-      = render partial: 'flash', locals: { flash: flash }
-      = yield
+    .container-fluid
+      = render 'mainnav'
+      .col-xs-12.col-md-9.main-content
+        = yield
+        = render 'footer'

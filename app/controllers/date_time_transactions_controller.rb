@@ -1,11 +1,10 @@
 class DateTimeTransactionsController < ApplicationController
-  before_filter :authenticate_user!
   after_filter :flash_alert, :only => :create
   
   def create
 
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
-    @date_time_transaction = DateTimeTransaction.new(params[:date_time_transaction].merge(user: current_user))
+    @date_time_transaction = DateTimeTransaction.new(params[:date_time_transaction].merge(user: signed_user))
     
     if @date_time_transaction.place!(@stock_details)
       flash[:notice] = "Order successfully placed"
@@ -19,7 +18,7 @@ class DateTimeTransactionsController < ApplicationController
     Rails.logger.info params
     exit
     @date_time_transaction = DateTimeTransaction.find_by_id(params[:stock_id])
-    if @date_time_transaction && current_user.id == @date_time_transaction.user_id
+    if @date_time_transaction && signed_user.id == @date_time_transaction.user_id
       if @date_time_transaction.delete
         flash[:notice] = "Order successfully deleted"
       else

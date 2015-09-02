@@ -1,0 +1,129 @@
+.mainnav
+  background-color: $darkGray
+  padding-left: 0
+  padding-right: 0
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+  .navbar
+    padding: 0
+    margin: 0
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+
+    li
+      padding-top: 1em
+      padding-bottom: 1em
+      font-size: 18px
+      color: $lightGray
+      padding-left: 10px
+      background-color: $darkGray
+      border-top: 2px solid $separatorGray
+      border-bottom: 2px solid $separatorGray
+
+      &.active
+        border-left: 4px solid $green
+        background-color: $black
+
+        & > a
+          color: $white
+          text-decoration: none
+
+      &:hover
+        border-left: 4px solid $green
+        background-color: $black
+        color: $white
+
+        & > a
+          color: $white
+          text-decoration: none
+
+      &.no-hover
+        border-left: none
+        background-color: $darkGray
+        color: $lightGray
+        border-bottom: 2px solid $separatorGray
+
+      &.list-item-wrapper
+        margin: 0
+        padding: 0
+
+        ul.scroll-inner-list
+          margin: 0
+          padding: 0
+          position: absolute
+          right: 0
+          left: 0
+          bottom: 0
+          top: 140px
+          overflow-y: scroll
+
+          li.allocation
+            position: absolute
+            bottom: 233px
+            left: 0
+            right: 0
+
+          li.monthly
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 154px
+
+          li.market
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 76px
+
+          li
+            div#navbar-chart
+              height: 140px!important
+
+      &.navbar-secondary-text
+        font-size: 14px
+        color: $lighterGray
+
+      &.brand
+        padding-left: 30px
+        border-top: 0
+
+      &.last
+        border-bottom: 0
+
+      &.user
+        position: absolute
+        right: 0
+        left: 0
+        bottom: 0
+
+      .input-group
+        width: 97%
+
+        input
+          border-radius: 5px
+
+      .users-name
+        font-size: 14px
+        color: $lighterGray
+        font-weight: 400
+
+      p
+        padding-top: 5px
+        margin-bottom: 0px
+
+      a
+        color: $lightGray
+        text-decoration: none
+
+      img
+        padding-right: 15px
+
+
+

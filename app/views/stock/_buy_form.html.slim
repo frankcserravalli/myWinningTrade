@@ -1,33 +1,95 @@
 = simple_form_for @buy_order, url: stock_buy_path(stock_id: params[:id]), html: { class: 'form-horizontal order-form', id: 'buy_form'} do |f|
-  .control-group.stock-trend data-stock-symbol=@stock.symbol
-    label.control-label Current price
-    .controls
-      .current-price#buy_price = number_to_currency(@stock.current_price)
+  .modal-row
+    .col-md-6 data-stock-symbol=@stock.symbol
+      label.control-label Current Price
+      .controls
+        .current-price.number#buy_price = number_to_currency(@stock.Ask)
 
-  = f.input :volume, :label => "Volume to buy", input_html: { value: 1, maxlength: 10 }
-  = render partial: 'stock/stock_when_radio_field', locals: { f: f, order_type: "buy" }
-  #hidden-buy-later
-    = render partial: 'stock/stock_later_field', locals: { f: f }
-  #hidden-buy-stop-loss
-    = render partial: 'stock/stock_stop_loss_fields', locals: { f: f }
+    .col-md-6.right
+      label.control-label Current Cash
+      .controls
+        #current_cash.number = number_to_currency(signed_user.account_balance)
 
-  .control-group
-    label.control-label Total price to buy
-    .controls
-      #buy_price_calculation
-        span.amount = number_to_currency(@stock.buy_price)
-        span.fee_notice style='font-weight: normal; font-size: 80%' &nbsp;&nbsp;(incl. #{number_to_currency(Order::TRANSACTION_FEE, precision: 0)} transaction fee)
+    .col-md-4.selected.at-market.tabs
+      | At Market
+    .col-md-4.middle.future.tabs
+      | Future
+    .col-md-4.loss.tabs
+      | Stop-Loss
 
-  .control-group
-    label.control-label Your current cash
-    .controls
-      #current_cash = number_to_currency(current_user.account_balance)
+    .col-md-12
+      input.dial.buy-dial type="text" value="1" data-angleOffset="-125" data-angleArc="250" data-cursor="true" data-fgColor="#333333" data-width="300" data-height="300" id="buy_volume" name="buy[volume]"
 
-  .control-group
-    label.control-label Your cash after purchase:
-    .controls
-      #cash_buy_calculation = number_to_currency(current_user.account_balance.to_f-@stock.buy_price.to_f)
+    .col-md-6.datepicker-button.right-border.top-border.no-bottom-border
+      label
+        | Date
+      .current-date.number
 
-  .control-group
-    a.btn-primary.btn.pull-right href="#share_buy_modal" role="button" data-toggle="modal" Buy Stocks and Share with Friends
-    button.btn-primary.btn.pull-left name="commit" type="submit" value="no-share" Buy Stocks
+    .col-md-6.left-border.top-border.timepicker-button.no-bottom-border
+      label
+        | Time
+      .current-time.number.kitkat-clock-element
+        span.kitkat-hour
+          | 12
+        span
+          | :
+        span.kitkat-minute
+          | 00
+        span.kitkat-am-pm
+          | AM
+
+    .col-md-6#datepicker.calendar.right-border.no-bottom-border.top-border
+
+    .col-md-6.left-border.picker-container.no-bottom-border.top-border
+
+    .col-md-12.slide.inverse
+      label.col-md-12
+        | Measure
+      .col-md-4.number.right
+        | Above
+      .col-md-4.measure
+      .col-md-4.number.left
+        | Below
+
+    .col-md-12.slide.inverse.center
+      label.col-md-12
+        | Price Target
+      span.number.target-price
+        | $#{@stock.Ask}
+      .price-target.measure
+
+    .col-md-6.inverse.right-border.buy-button
+      label.control-label Cash After Purchase:
+      .controls
+        #cash_buy_calculation.number = number_to_currency(signed_user.account_balance.to_f-@stock.buy_price.to_f)
+
+    input checked="checked" class="radio_buttons optional order" hidden="true" data-radio="when-radio" data-type="buy" id="buy_when_at_market" name="buy[when]" type="radio" value="At Market"
+
+    input checked="checked" class="datetime optional buy_execute_at_1i" hidden="true" id="buy_execute_at_1i" name="buy[execute_at(1i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_2i" name="buy[execute_at(2i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_3i" name="buy[execute_at(3i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_4i" name="buy[execute_at(4i)]" value="null"
+
+    input checked="checked" class="datetime optional" hidden="true" id="buy_execute_at_5i" name="buy[execute_at(5i)]" value="null"
+
+    input checked="checked" class="select optional" hidden="true" id="buy_measure" name="buy[measure]" value="null"
+
+    input checked="checked" class="numeric float optional" hidden="true" id="buy_price_target" name="buy[price_target]" type="number" value="#{@stock.Ask}"
+
+    li#get-price-1 data-price="#{@stock.Ask}" data-cash="#{signed_user.account_balance}"
+
+    .col-md-6.inverse.left-border.no-padding.buy-button
+      button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Buy Stocks
+
+    .col-md-12.inverse.left-border.no-padding.short-button
+      button.btn-primary.btn.pull-left.uppercase name="commit" type="submit" value="no-share" Short
+
+  //.control-group
+    //label.control-label Total price to buy
+    //.controls
+      //#buy_price_calculation
+        //span.amount = number_to_currency(@stock.buy_price)
+        //span.fee_notice style='font-weight: normal; font-size: 80%' &nbsp;&nbsp;(incl. #{number_to_currency(Order::TRANSACTION_FEE, precision: 0)} transaction fee)

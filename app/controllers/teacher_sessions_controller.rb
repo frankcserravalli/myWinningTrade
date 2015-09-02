@@ -1,5 +1,4 @@
 class TeacherSessionsController < Devise::SessionsController
-  before_filter :authenticate_user!, except: [:new, :create]
 
   def create
     self.resource = warden.authenticate!(auth_options)
@@ -12,17 +11,17 @@ class TeacherSessionsController < Devise::SessionsController
   end
 
   def request_upgrade
-    notice = if PendingTeacher.find_by_user_id(current_user.id)
+    notice = if PendingTeacher.find_by_user_id(signed_user.id)
                I18n.t('flash.sessions.create.notice', default: 'Request Pending!')
              else
-               current_user.create_pending_teacher
+               signed_user.create_pending_teacher
                I18n.t('flash.sessions.create.notice', default: 'Request Sent!')
              end
     redirect_to profile_url, notice: notice
   end
 
   def pending
-    redirect_to groups_url unless current_user.email == Figaro.env.admin
+    redirect_to groups_url unless signed_user.email == Figaro.env.admin
     @teachers_pending = PendingTeacher.all
   end
 

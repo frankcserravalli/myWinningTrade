@@ -32,5 +32,5 @@ $(document).ready ->
 
   autocomplete.data("autocomplete")._renderItem = (ul, item) ->
     $("<li></li>").data('item.autocomplete', item)
-                  .append("<a><span class='tip'>#{item.exchDisp}</span> #{item.symbol} <br /><small>#{item.name}</small></a>")
+                  .append("<a><span class='tip'>#{item.exchDisp}</span> <span class='symbol'>#{item.symbol}</span> <br /><small>#{item.name}</small></a>")
                   .appendTo(ul)

@@ -1,8 +1,11 @@
 require 'spec_helper'
-
+require 'devise'
 describe SubscriptionsController do
-  before do
-    @user = authenticate
+  include Devise::TestHelpers
+  before(:each) do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    @user = FactoryGirl.create(:user, :sign_in)
+    sign_in @user
   end
 
   context "a good user" do
