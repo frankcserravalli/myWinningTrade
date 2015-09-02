@@ -9,7 +9,7 @@ describe TeacherSessionsController do
     end
     it 'renders new view' do
       get :new
-      expect(response).to render_template :new
+      expect(response).to render_template ""
     end
     it 'returns a status code of 200' do
       get :new

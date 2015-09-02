@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Order" do
   before(:all) do
     VCR.use_cassette('quote') do
-      @stock_details = Finance.current_stock_details('AAPL')
+      @stock_details = Finance.stock_details_for_symbol('AAPL')
     end
   end
 
@@ -18,10 +18,10 @@ describe "Order" do
     end
 
     it "should reflect a credit for buying a stock" do
-      @stock_details.current_price = "20.00"
+      @stock_details.Ask = "20.00"
 
       @order.place!(@stock_details)
-      @order.value.to_f.should == -(20.00 * 2.0) - Order::TRANSACTION_FEE
+      @order.value.to_f.should == (20.00 * 2.0) + Order::TRANSACTION_FEE
     end
 
     it "should import a system stock if it does not yet exist" do
@@ -33,7 +33,7 @@ describe "Order" do
 
     it "should accept a buy for elligible users and stocks" do
       @order.place!(@stock_details).should be_true
-      user.reload.account_balance.to_f.should == 50000.0 + user.orders.last.value.to_f
+      user.reload.account_balance.to_f.should == 50000.0 -  user.orders.last.value.to_f
     end
 
     it "should not accept a buy for a user with insufficient funds" do
@@ -60,7 +60,7 @@ describe "Order" do
     end
 
     it 'calculates capital gain / loss on each sale relating to its relevant buy' do
-      current_price = @stock_details.current_price.to_f
+      current_price = @stock_details.Ask.to_f
       stock_volume = 50.0
       buy = new_buy(current_price, stock_volume, user, user_stock)
 
@@ -74,7 +74,7 @@ describe "Order" do
 
     end
 
-    it 'should have a positive capital gain when the stock price increases' do 
+    it 'should have a positive capital gain when the stock price increases' do
       buy_price = 0.01
       stock_volume = 50.0
       buy = new_buy(buy_price, stock_volume, user, user_stock)
@@ -86,7 +86,7 @@ describe "Order" do
 
     end
 
-    it 'should have a negative capital gain when the stock price decreases' do 
+    it 'should have a negative capital gain when the stock price decreases' do
       buy_price = 99999.00
       stock_volume = 50.0
       buy = new_buy(buy_price, stock_volume, user, user_stock)

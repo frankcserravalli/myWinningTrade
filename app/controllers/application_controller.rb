@@ -1,7 +1,7 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
   include UsersHelper
-  before_filter :require_acceptance_of_terms, if: :signed_user
+  # before_filter :require_acceptance_of_terms, if: :signed_user
   before_filter :load_portfolio
 
   def require_acceptance_of_terms
