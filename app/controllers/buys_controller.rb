@@ -30,7 +30,6 @@ class BuysController < ApplicationController
         @stock_name = Stock.find_by_symbol(params[:stock_id])
 
         flash[:notice] = "Successfully purchased #{@buy_order.volume} #{@stock_name.name} stocks for $#{-@buy_order.value.round(2)} (incl. $6 transaction fee)."
-        pp "#{flash[:notice]}"
         redirect_to(stock_path(params[:stock_id]))
       end
     else

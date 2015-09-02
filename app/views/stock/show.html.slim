@@ -10,7 +10,6 @@ div.stock-info
     span.header STOCK IN PORTFOLIO
     br
     span.subheader.green
-      - pp @portfolio
       - if @user_stock.nil? || @portfolio[:stocks].empty? || not(@portfolio[:shorts].empty?) || not(@portfolio[:pending_date_time_transactions].empty?) || not(@portfolio[:pending_stop_loss_transactions].empty?)
         | 0
       - else
