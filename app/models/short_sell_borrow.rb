@@ -39,11 +39,11 @@ class ShortSellBorrow < Order
 
     super
     transaction do
-      self.value = -order_price
+      self.value = order_price
       self.price = stock.Ask
       #user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_borrowed, self.user_stock.shares_borrowed.to_i + volume.to_i)
-
+      self.capital_gain = stock.Ask.to_f - self.cost_basis
       save.tap { |successful| raise ActiveRecord::Rollback unless successful }
     end
   end
