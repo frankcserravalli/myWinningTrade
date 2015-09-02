@@ -69,7 +69,7 @@ class Buy < Order
       self.price = stock.Ask
       user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_owned, self.user_stock.shares_owned.to_i + volume.to_i)
-      self.capital_gain = stock.Ask.to_f - self.cost_basis
+      self.capital_gain = self.price.to_f - self.cost_basis.to_f
 
       save.tap { |successful| raise ActiveRecord::Rollback unless successful }
     end
