@@ -193,6 +193,39 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def market_groups
+    groups = OpenStruct.new(
+      big: Array.new, mid: Array.new,
+      small: Array.new, micro: Array.new)
+
+    ycl = YahooFinanza::Client.new
+    signed_user.stocks.each do |stock|
+      quote = ycl.quote(stock.symbol)
+      quote[:id] = stock.id
+      market_cap = quote.Ask.to_f * quote.Volume.to_f
+      case market_cap
+      when 0..300000000 then groups.micro.push(quote)
+      when 300000000..2000000000 then groups.small.push(quote)
+      when 2000000000..10000000000 then groups.mid.push(quote)
+      else groups.big.push(quote) end
+    end
+    groups
+  end
+
+  def chart_values
+    slices = OpenStruct.new(
+      big: 0, mid: 0, small: 0, micro: 0,
+      cash: signed_user.account_balance)
+    groups = market_groups
+    groups.to_h.keys.each do |key|
+      groups[key].each do |stock|
+        total = stock.Ask.to_f * signed_user.user_stocks.where(id: stock.id).first.shares_owned
+        slices[key] += total
+      end
+    end
+    slices.to_h
+  end
+
   def featured_stocks (limit = 4)
     ycl = YahooFinanza::Client.new
     @suggestions = ycl.active_symbols.shuffle
@@ -200,5 +233,5 @@ class ApplicationController < ActionController::Base
     return @stock
   end
 
-  helper_method :signed_user, :featured_stocks
+  helper_method :signed_user, :featured_stocks, :chart_values
 end
