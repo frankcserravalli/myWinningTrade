@@ -101,6 +101,7 @@ class ApplicationController < ActionController::Base
         percent_gain = ((current_price - cost_basis) * 100 / cost_basis).round(1)
         percent_gain = 0.0 if percent_gain.to_s == "Infinity"
         p[:stocks][stock_symbol] = {
+          id: user_stock.stock.id,
           name: user_stock.stock.name,
           current_price: current_price,
           shares_owned: shares_owned,

@@ -17,7 +17,8 @@
         tr.values-table
           td.portfolio-cell = index + 1
           td.portfolio-cell = user.user.name
-          td.portfolio-cell = ((user.capital_total / 50000) * 100).round(2).to_s + "%"
+          - capital_is_gaining = ((user.capital_total / 50000) * 100).round(2) >= 0
+          td.portfolio-cell class=(capital_is_gaining ? 'green' : 'red') = ((user.capital_total / 50000) * 100).round(2).to_s + "%"
         tr.divider-small
           td
           td
