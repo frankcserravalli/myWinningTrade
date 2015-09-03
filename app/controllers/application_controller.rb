@@ -1,6 +1,7 @@
 include ActionView::Helpers::DateHelper
 class ApplicationController < ActionController::Base
   include UsersHelper
+  require 'yahoo_finanza'
   # before_filter :require_acceptance_of_terms, if: :signed_user
   before_filter :load_portfolio
 
@@ -192,5 +193,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :signed_user
+  def featured_stocks (limit = 4)
+    ycl = YahooFinanza::Client.new
+    @suggestions = ycl.active_symbols.shuffle
+    @stock = Finance.stock_details_for_list(@suggestions[0..limit])
+    return @stock
+  end
+
+  helper_method :signed_user, :featured_stocks
 end
