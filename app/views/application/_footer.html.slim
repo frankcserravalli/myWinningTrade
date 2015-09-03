@@ -1,36 +1,20 @@
+javascript:
+  function redir(stock_symbol){
+    window.location.href = 'stock/'.concat(stock_symbol);
+  }
+
 - if signed_user
   footer.foo
     .footer-tabs
-      .col-md-2-custom
-        = image_tag 'red-arrow-icon.png'
-        | DJIA Futures
-        br
-        span.bold
-          | 18000  -0.53%
-      .col-md-2-custom
-        = image_tag 'red-arrow-icon.png'
-        | Stoxx 600
-        br
-        span.bold
-          | 390.60  -1.35%
-      .col-md-2-custom
-        = image_tag 'red-arrow-icon.png'
-        | U.S. 10 Yr
-        br
-        span.bold
-          | -6/32 2.389%
-      .col-md-2-custom
-        = image_tag 'green-arrow-icon.png'
-        | Crude Oil
-        br
-        span.bold
-          | 59.85  0.35%
-      .col-md-2-custom
-        = image_tag 'green-arrow-icon.png'
-        | Euro
-        br
-        span.bold
-          | 1.1350  0.67%
+      - stocks = featured_stocks
+      - stocks.to_h.keys.each do |symbol|
+        - stock_is_gaining = stocks[symbol].Change.to_f >= 0
+        .col-md-2-custom.cursor-pointer onclick="redir('#{symbol}')"
+          = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png')
+          | #{stocks[symbol].Symbol}
+          br
+          span.bold
+            | #{stocks[symbol].Ask} #{stocks[symbol].PercentChange}
       .col-md-2-custom
         - if signed_user.guest
           .button.btn = link_to("Login", new_user_session_path)

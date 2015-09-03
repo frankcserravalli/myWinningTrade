@@ -23,9 +23,9 @@ div.stock-info
       - else
         | $#{@user_stock.cost_basis} / #{@portfolio[:stocks][@stock.symbol][:percent_gain]}%
   .col-md-3.no-background
-    .col-md-6.button data-target="#buyModal" data-toggle="modal" type="button"
+    .col-md-6.button.cursor-pointer data-target="#buyModal" data-toggle="modal" type="button"
       | BUY
-    .col-md-6.buttonli.button.right data-target="#sellModal" data-toggle="modal" type="button"
+    .col-md-6.cursor-pointer.button.right data-target="#sellModal" data-toggle="modal" type="button"
       | SELL
 
 div.content#content
