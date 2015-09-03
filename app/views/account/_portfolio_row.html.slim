@@ -1,10 +1,22 @@
 javascript:
   function redir(stock_symbol){
-    window.location.href = 'stock/'.concat(stock_symbol)
+    window.location.href = 'stock/'.concat(stock_symbol);
   }
 
-tr.values-table onclick="redir('#{stock_symbol}')"
-    td.portfolio-cell.stock-symbol = stock_symbol
+  function dropdownToggle(dropdown) {
+    var elem = $(".dropdown-" + dropdown);
+    elem.slideToggle( function() {
+      if (elem.css("display") != "none") {
+        $(".dropdown-icon-" + dropdown).attr("src", "/assets/close-dropdown-icon.svg");
+      } else {
+        $(".dropdown-icon-" + dropdown).attr("src", "/assets/open-dropdown-icon.svg");
+      }
+    });
+  }
+
+table.no-margin-top.portfolio.table-layout-fixed
+  tr.values-table
+    td.width-10-percent.portfolio-cell.stock-symbol onclick="redir('#{stock_symbol}')" = stock_symbol
     td.portfolio-cell.stock-name = s[:name]
     td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])
     td.portfolio-cell.user_stock-shares_owned rel='tooltip' title='Shares you own' = "#{pluralize(s[:shares_owned],'share')}"
@@ -15,14 +27,17 @@ tr.values-table onclick="redir('#{stock_symbol}')"
         = s[:percent_gain]
         ' %
     td.portfolio-cell.stock-history-rating
-      = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png')
+      = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png'), :class => "arrow-img"
+      = image_tag 'open-dropdown-icon.svg', :class => "dropdown-icon dropdown-icon-#{s[:id]}", :onclick => "dropdownToggle('#{s[:id]}')"
       // = image_tag 'history-rating-open-icon.png'
 
-tr.divider-small
-  td
-  td
-  td
-  td
-  td
-  td
-  td
+  tr.divider-small
+    td
+    td
+    td
+    td
+    td
+    td
+    td
+
+= render partial: 'account/transaction_dropdown', locals: {stock_symbol: stock_symbol, s: s}

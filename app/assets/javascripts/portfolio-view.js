@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+  $('.dropdown-wrapper').hide();
+
   $('.first-tab').addClass('secondary-active');
   $('.second').hide();
   $('.third').hide();

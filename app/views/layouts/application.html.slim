@@ -5,8 +5,11 @@ html data-uuid=signed_user.try(:id)
 
 
   body class=controller_name
-    .container-fluid
-      = render 'mainnav'
-      .col-xs-12.col-md-9.main-content
-        = yield
-        = render 'footer'
+    - if controller_name == 'registrations' or controller_name == 'sessions'
+      = yield
+    - else
+      .container-fluid
+        = render 'mainnav'
+        .col-xs-12.col-md-9.main-content
+          = yield
+          = render 'footer'
