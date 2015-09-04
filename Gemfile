@@ -7,7 +7,7 @@ gem 'rails', '3.2.12'
 # ========
 gem 'pg', '~> 0.14.1'
 
-group :assets do
+#group :assets do
 
   gem "jquery-rails", "~> 2.2.0"
 
@@ -24,7 +24,7 @@ group :assets do
   # gem 'bootstrap-sass', '~> 3.3.4'
   gem 'bootstrap-sass', :git => 'https://github.com/twbs/bootstrap-sass.git', :branch => 'next'
   gem "momentjs-rails", "~> 1.7.2"
-end
+#end
 
 # UI
 # ===
