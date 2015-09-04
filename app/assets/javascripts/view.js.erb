@@ -1,0 +1,132 @@
+$( document ).ready(function() {
+  responsvie_navbar();
+
+  $('#portfolio').click(function(){
+    var url = $('#portfolio').find('a').attr('href');
+    window.location.href = url;
+  });
+
+  $('#markets').click(function(){
+    var url = $('#markets').find('a').attr('href');
+    window.location.href = url;
+  });
+
+  $('#tutorial').click(function(){
+    var url = $('#tutorial').find('a').attr('href');
+    window.location.href = url;
+  });
+
+  $('#leaderboard').click(function(){
+    var url = $('#leaderboard').find('a').attr('href');
+    window.location.href = url;
+  });
+
+  $('#user').click(function(){
+    var url = $('#user').find('a').attr('href');
+    window.location.href = url;
+  });
+
+});
+
+$(window).bind('resize', function(e){
+  responsvie_navbar();
+});
+
+function responsvie_navbar (){
+  var wHeight = $( window ).height();
+
+  if (wHeight >= 825){
+    document.getElementById('allocation').className += ' allocation';
+    document.getElementById('monthly').className += ' monthly';
+    document.getElementById('market').className += ' market';
+    $('.scroll-inner-list').css("bottom", "0");
+  } 
+  else {
+    $('.scroll-inner-list').css("bottom", "76px");
+    $('.allocation').removeClass('allocation');
+    $('.monthly').removeClass('monthly');
+    $('.market').removeClass('market');
+  }
+}
+
+function show_stock_info (stock_symbol, name, shares, cost, percent){
+  var div = document.createElement('div');
+
+  div.className = 'stock-info';
+
+  div.innerHTML = '<ul>\
+                    <li><span class="header">'.concat(stock_symbol).concat('</span><br /><span class="subheader black">'.concat(name).concat('</span></li>\
+                    <li><span class="header">STOCK IN PORTFOLIO</span><br /><span class="subheader green">'.concat(shares).concat('/ 8,167.34 $</span></li>\
+                    <li><span class="header">MONTHLY GAIN / LOSS</span><br /><span class="subheader red">'.concat(cost).concat('/').concat(percent).concat('</span></li>\
+                    <li type="button" data-toggle="modal" data-target="#myModal" class="button">BUY</li>\
+                    <li class="button"><span>SELL</span></li>\
+                  </ul>'))));
+
+  var content = document.getElementById('content');
+
+  if (content.firstChild === null){
+    content.appendChild(div);
+  }
+  else{
+    content.insertBefore(div, content.firstChild);
+  }
+}
+
+function modal_inner_content (stock_symbol, name, shares, cost, percent){
+  var div = document.createElement('div');
+
+  $('.modal-body').innerHTML = '<ul>\
+                    <li><span class="header">'.concat(stock_symbol).concat('</span><br /><span class="subheader black">'.concat(name).concat('</span></li>\
+                    <li><span class="header">STOCK IN PORTFOLIO</span><br /><span class="subheader green">'.concat(shares).concat('/ 8,167.34 $</span></li>\
+                    <li><span class="header">MONTHLY GAIN / LOSS</span><br /><span class="subheader red">'.concat(cost).concat('/').concat(percent).concat('</span></li>\
+                    <li type="button" data-toggle="modal" data-target="#myModal" class="button">BUY</li>\
+                    <li class="button"><span>SELL</span></li>\
+                  </ul>'))));
+}
+
+function show_tradingview_widget (stock_symbol){
+  $('.first').hide();
+  $('.second').hide();
+  $('.third').hide();
+  $('.fourth').hide();
+  $('.fifth').hide();
+  $('.sixth').hide();
+
+  //window.location.hash = stock_symbol;
+
+  //show_stock_info(stock_symbol, name, shares, cost, percent);
+
+  //modal_inner_content (stock_symbol, name, shares, cost, percent);
+
+  stock_symbol = stock_symbol.toLowerCase();
+
+  $('.widget-container').attr('id', 'chartview');
+  var height = $('.content').height() - 20
+  var width = $('.content').width() - 20
+
+  var MyWinningTrade = new Object();
+
+  var tradingview_widget_options = {};
+  tradingview_widget_options.autosize  = false;
+  tradingview_widget_options.width  = width;
+  tradingview_widget_options.height = height;
+  tradingview_widget_options.symbol = stock_symbol;
+  tradingview_widget_options.interval = 'D';
+  tradingview_widget_options.toolbar_bg = '#3c5063';
+  tradingview_widget_options.allow_symbol_change = false;
+  tradingview_widget_options.container_id = 'chartview';
+  tradingview_widget_options.save_image = false;
+  tradingview_widget_options.news = true;
+
+  new TradingView.widget(tradingview_widget_options);
+}
+
+function select(id, button_class){
+  $('.green-selected').removeClass('green-selected');
+  $('.selected').removeClass('selected');
+
+  $(id).addClass('green-selected');
+  $(id).addClass('selected');
+
+  $(button_class).addClass('green-background');
+}

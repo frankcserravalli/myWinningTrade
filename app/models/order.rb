@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  price            :decimal(10, 2)
+#  volume           :integer
+#  type             :string(15)
+#  value            :decimal(10, 2)
+#  user_stock_id    :integer
+#  created_at       :timestamp(6)
+#  updated_at       :timestamp(6)
+#  cost_basis       :decimal(10, 2)
+#  volume_remaining :integer
+#  capital_gain     :decimal(10, 2)
+#
+
 class Order < ActiveRecord::Base
   TRANSACTION_FEE = 6.0
 
@@ -33,7 +51,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :user_stock_id, :user_id
 
   def place!(stock)
-    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.name)
+    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.Name)
     unless (self.user_stock = user.user_stocks.where(stock_id: system_stock.id).first)
       self.user_stock = user.user_stocks.create!(stock: system_stock)
     end

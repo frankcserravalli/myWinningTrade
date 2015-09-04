@@ -1,0 +1,55 @@
+div class="dropdown-wrapper dropdown-#{s[:id]} dashboard-tab-box"
+  table.portfolio.no-margin-top
+    tr.divider-mid
+      td
+      td
+      td
+      td
+      td
+      td
+  table.headers-table.transactions.no-margin-top
+    thead
+      tr
+        th.bold
+          | Action
+        th
+          | Date
+        th
+          | Purchase Prize
+        th
+          | # of Shares
+        th
+          | Sale Prize
+        th
+          | Gain/Loss
+    tbody.portfolio
+      tr.divider-mid
+        td
+        td
+        td
+        td
+        td
+        td
+      - s[:orders].each do |order|
+        tr.values-table
+          td.portfolio-cell.bold = order.type
+          td.portfolio-cell = order.created_at.strftime('%d %b, %Y')
+          td.portfolio-cell = order.price
+          td.portfolio-cell = order.volume
+          td.portfolio-cell = order.value
+          - stock_is_gaining = (order.capital_gain && order.capital_gain >= 0)
+          td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red') = order.capital_gain or " "
+        tr.divider-small
+          td
+          td
+          td
+          td
+          td
+          td
+
+  a.trading-link
+    span
+      | Full Trading History
+
+  table.portfolio.no-margin-top
+    tr.divider-mid

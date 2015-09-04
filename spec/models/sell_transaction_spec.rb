@@ -8,7 +8,7 @@ describe 'SellTransaction' do
 
   before(:all) do
     VCR.use_cassette('quote') do
-      @stock_details = Finance.current_stock_details('AAPL')
+      @stock_details = Finance.stock_details_for_symbol('AAPL')
     end
   end
 
@@ -41,4 +41,3 @@ describe 'SellTransaction' do
   end
 
 end
-

@@ -1,0 +1,55 @@
+.main-content
+  float: right
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  .secondary-nav
+    padding: 0
+    padding-top: 20px
+    width: 94.7%
+    margin-left: auto
+    margin-right: auto
+    position: absolute
+    left: 0
+    right: 0
+    li
+      display: block
+      float: left
+      padding: 1.5em
+      padding-left: 2em
+      padding-right: 2em
+      font-size: 16px
+      color: $secondary-navbar-links-gray
+      &.secondary-active
+        background-color: $lighterGray
+        border-bottom: 4px solid $gray
+        color: $black
+      &:hover
+        background-color: $lighterGray
+        border-bottom: 4px solid $gray
+        color: $black
+
+  .content
+    width: 94.7%
+    border-top: 2px solid $gray
+    background-color: $lighterGray
+    margin-right: auto
+    margin-left: auto
+    margin-top: 5.3em
+
+    position: absolute
+    top: 20px
+    bottom: 115px
+    right: 0
+    left: 0
+    overflow-y: scroll
+
+    #chartview
+      width: 100%
+
+      iframe
+        display: block
+        margin-right: auto
+        margin-left: auto
+        width: 100%

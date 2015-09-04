@@ -1,12 +1,43 @@
-li
-  = link_to stock_path(stock_symbol) do
-    .portfolio-cell.stock-symbol = stock_symbol
-    .portfolio-cell.stock-name = s[:name]
-    .portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])
-    .portfolio-cell.user_stock-shares_owned rel='tooltip' title='Shares you own' = "#{pluralize(s[:shares_owned],'share')}"
-    .portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(s[:cost_basis])
+javascript:
+  function redir(stock_symbol){
+    window.location.href = 'stock/'.concat(stock_symbol);
+  }
+
+  function dropdownToggle(dropdown) {
+    var elem = $(".dropdown-" + dropdown);
+    elem.slideToggle( function() {
+      if (elem.css("display") != "none") {
+        $(".dropdown-icon-" + dropdown).attr("src", "/assets/close-dropdown-icon.svg");
+      } else {
+        $(".dropdown-icon-" + dropdown).attr("src", "/assets/open-dropdown-icon.svg");
+      }
+    });
+  }
+
+table.no-margin-top.portfolio.table-layout-fixed
+  tr.values-table
+    td.width-10-percent.portfolio-cell.stock-symbol onclick="redir('#{stock_symbol}')" = stock_symbol
+    td.portfolio-cell.stock-name = s[:name]
+    td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(s[:current_price])
+    td.portfolio-cell.user_stock-shares_owned rel='tooltip' title='Shares you own' = "#{pluralize(s[:shares_owned],'share')}"
+    td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(s[:cost_basis])
     - stock_is_gaining = s[:percent_gain] >= 0
-    .portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'trending-up' : 'trending-down')
-      = '+' if stock_is_gaining
-      = s[:percent_gain]
-      ' %
+    td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red')
+        = '+' if stock_is_gaining
+        = s[:percent_gain]
+        ' %
+    td.portfolio-cell.stock-history-rating
+      = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png'), :class => "arrow-img"
+      = image_tag 'open-dropdown-icon.svg', :class => "dropdown-icon dropdown-icon-#{s[:id]}", :onclick => "dropdownToggle('#{s[:id]}')"
+      // = image_tag 'history-rating-open-icon.png'
+
+  tr.divider-small
+    td
+    td
+    td
+    td
+    td
+    td
+    td
+
+= render partial: 'account/transaction_dropdown', locals: {stock_symbol: stock_symbol, s: s}

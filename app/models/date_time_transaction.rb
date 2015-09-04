@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: date_time_transactions
+#
+#  id            :integer          not null, primary key
+#  user_stock_id :integer
+#  user_id       :integer
+#  volume        :integer
+#  order_type    :string(255)
+#  status        :string(255)      default("pending")
+#  execute_at    :timestamp(6)
+#  updated_at    :timestamp(6)
+#  created_at    :timestamp(6)
+#
+
 class DateTimeTransaction < ActiveRecord::Base
   validate :execute_at_is_in_future
   validate :check_for_valid_volume
@@ -27,7 +42,7 @@ class DateTimeTransaction < ActiveRecord::Base
     # This method will place a date_time_transaction order
     # that will be executred at the specific date time
     # by a cron job.
-    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.name)
+    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.Name)
     unless (self.user_stock = user.user_stocks.where(stock_id: system_stock.id).first)
       self.user_stock = user.user_stocks.create!(stock: system_stock)
     end

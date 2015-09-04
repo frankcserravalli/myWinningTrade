@@ -1,5 +1,4 @@
 class TermsController < ApplicationController
-  skip_before_filter :require_login
   skip_before_filter :require_acceptance_of_terms
 
 
@@ -7,7 +6,7 @@ class TermsController < ApplicationController
   end
 
   def accept
-    current_user.update_attribute :accepted_terms, true and redirect_to dashboard_path
+    signed_user.update_attribute :accepted_terms, true and redirect_to dashboard_path
   end
 
 end

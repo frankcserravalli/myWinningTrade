@@ -1,17 +1,16 @@
 development:
   adapter: postgresql
   database: my_winning_trade_development
-  user: jason
-  password: password
-  host: localhost
+  username: postgres
+  port: <%= ENV['MYWINNINGTRADE_DB_1_PORT_5432_TCP_PORT'] %>
+  host: <%= ENV['MYWINNINGTRADE_DB_1_PORT_5432_TCP_ADDR'] %>
 
 test:
   adapter: postgresql
   database: my_winning_trade_test
-  user: jason
-  password: password
-  host: localhost
-  template: template0
+  username: postgres
+  port: <%= ENV['MYWINNINGTRADE_DB_1_PORT_5432_TCP_PORT'] %>
+  host: <%= ENV['MYWINNINGTRADE_DB_1_PORT_5432_TCP_ADDR'] %>
 
 production:
   adapter: postgresql

@@ -4,13 +4,8 @@
   border: 1px solid #e4e4e4
   padding: 10px
 
-// add padding for navbar
-body
-  padding-top: ($navbarHeight * 2) + 10px
-  background: url(tiny_grid.png)
-
-
 .navbar
+  border: none
   a
     +transition(color 0.4s)
     &.brand
@@ -19,7 +14,7 @@ body
       font-family: 'Shanti', 'open sans'
       &:hover
         +text-shadow(0 0 1px $linkColor)
-        color: #4b6275
+        color: #4E6377
 
 .navbar .nav > li > a
   padding: 16px 10px 16px
@@ -60,7 +55,6 @@ table.boxify
     text-shadow: 0 1px 1px #000
     .navbar-text
       margin-right: 10px
-      color: #fff
       em
         margin-right: 1em
     .myportfolio
@@ -179,3 +173,17 @@ button::-moz-focus-inner
   border: 0
   outline-style: none
 
+.first-tab,
+.second-tab,
+.third-tab,
+.fourth-tab,
+.fifth-tab,
+.sixth-tab,
+.seventh-tab,
+.stock-symbol,
+.first-market-tab,
+.second-market-tab,
+.third-market-tab,
+.fourth-market-tab,
+.navbar-tab
+  cursor: pointer

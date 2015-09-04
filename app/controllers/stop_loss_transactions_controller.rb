@@ -5,8 +5,8 @@ class StopLossTransactionsController < ApplicationController
     
     Rails.logger.info params
 
-    @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
-    @stop_loss_transaction = StopLossTransaction.new(params[:stop_loss_transaction].merge(user: current_user))
+    @stock_details = Finance.stock_details_for_symbol(params[:stock_id]) or raise ActiveRecord::RecordNotFound
+    @stop_loss_transaction = StopLossTransaction.new(params[:stop_loss_transaction].merge(user: signed_user))
     
     if @stop_loss_transaction.place!(@stock_details)
       flash[:notice] = "Order successfully placed"
@@ -17,7 +17,7 @@ class StopLossTransactionsController < ApplicationController
 
   def destroy
     @stop_loss_transaction = StopLossTransaction.find_by_id(params[:stock_id])
-    if @stop_loss_transaction && current_user.id == @stop_loss_transaction.user_id
+    if @stop_loss_transaction && signed_user.id == @stop_loss_transaction.user_id
       if @stop_loss_transaction.delete
         flash[:notice] = "Order successfully deleted"
       else

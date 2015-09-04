@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  price            :decimal(10, 2)
+#  volume           :integer
+#  type             :string(15)
+#  value            :decimal(10, 2)
+#  user_stock_id    :integer
+#  created_at       :timestamp(6)
+#  updated_at       :timestamp(6)
+#  cost_basis       :decimal(10, 2)
+#  volume_remaining :integer
+#  capital_gain     :decimal(10, 2)
+#
+
 class Buy < Order
 
   scope :with_volume_remaining, where{ volume_remaining > 0 }
@@ -9,12 +27,12 @@ class Buy < Order
   attr_accessor :flash_cover
 
   def place!(stock, *params)
-    if stock.current_price.to_f <= 0.0
+    if stock.Ask.to_f <= 0.0
       self.errors.add(:base, "Cannot purchase a stock that has zero value.")
       return false
     end
 
-    order_price = volume.to_f * stock.current_price.to_f + TRANSACTION_FEE
+    order_price = volume.to_f * stock.Ask.to_f + TRANSACTION_FEE
 
     if user.account_balance < order_price
       self.errors.add(:user, "Insufficient funds, $#{(order_price - user.account_balance).round} more required to complete purchase.")
@@ -47,10 +65,11 @@ class Buy < Order
     end
 
     transaction do
-      self.value = -order_price
-      self.price = stock.current_price
+      self.value = order_price
+      self.price = stock.Ask
       user.update_attribute(:account_balance, user.account_balance - order_price)
       self.user_stock.update_attribute(:shares_owned, self.user_stock.shares_owned.to_i + volume.to_i)
+      self.capital_gain = self.price.to_f - self.cost_basis.to_f
 
       save.tap { |successful| raise ActiveRecord::Rollback unless successful }
     end

@@ -1,0 +1,13 @@
+ul.secondary-nav
+  li.secondary-active.first-market-tab
+    | Popular Stocks
+  li.second-market-tab
+    | NYSE
+  li.third-market-tab
+    | NASDAQ
+  li.fourth-market-tab
+    | TOP 100
+
+div.content#content
+  div.widget-container
+  = render partial: 'stock/suggest'

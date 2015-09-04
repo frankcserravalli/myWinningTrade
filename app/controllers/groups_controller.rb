@@ -1,9 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :redirect_not_signed_in_user
-
-  skip_before_filter :require_login, :require_iphone_login
-
-  skip_before_filter :require_acceptance_of_terms, if: :current_user
+  # skip_before_filter :require_acceptance_of_terms, if: :signed_user
 
   def new
     @group = Group.new
@@ -11,8 +7,8 @@ class GroupsController < ApplicationController
 
   def index
     # Finding the groups that relate only to the ones the teacher created
-    if current_user.group != "teacher"
-      pending_teacher = PendingTeacher.find_by_user_id(current_user.id)
+    if signed_user.group != "teacher"
+      pending_teacher = PendingTeacher.find_by_user_id(signed_user.id)
 
       if pending_teacher
         flash[:notice] = "Your request is pending."
@@ -26,7 +22,7 @@ class GroupsController < ApplicationController
 
     end
 
-    @groups = Group.where(user_id: current_user.id)
+    @groups = Group.where(user_id: signed_user.id)
   end
 
   def edit
@@ -99,7 +95,7 @@ class GroupsController < ApplicationController
 
   # This method is used to redirect users who are not signed in
   def redirect_not_signed_in_user
-    unless current_user
+    unless signed_user
       redirect_to teacher_sign_in_url
     end
   end

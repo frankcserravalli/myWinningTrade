@@ -1,0 +1,54 @@
+/ <h2>Sign up</h2>
+
+/ <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+/   <%= f.error_notification %>
+
+/   <div class="form-inputs">
+/     <%= f.input :name, required: true, autofocus: true %>
+/     <%= f.input :email, required: true, autofocus: true %>
+/     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+/     <%= f.input :password_confirmation, required: true %>
+/   </div>
+
+/   <div class="form-actions">
+/     <%= f.button :submit, "Sign up" %>
+/   </div>
+/ <% end %>
+
+/ <%= render "devise/shared/links" %>
+
+
+#edit_profile.container
+  .row
+    .span12
+      h1 Create Your Account
+
+  .row
+    .span12
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.input :name, required: true, autofocus: true
+
+        br
+
+        = f.input :email, required: true, autofocus: true
+
+        br
+
+        = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+
+        br
+
+        = f.input :password_confirmation, required: true
+
+        br
+
+        -if signed_user and signed_user.group != "teacher"
+          span "Request Teacher Status"
+          = check_box_tag 'teacher_request', "true", true
+
+          br
+          br
+
+        = submit_tag "Submit", class: "btn btn-success sign-up-user-submit-btn"
+
+        = link_to 'Back', new_user_session_path, class: "btn btn-primary"

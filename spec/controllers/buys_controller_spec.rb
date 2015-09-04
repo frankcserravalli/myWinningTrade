@@ -1,8 +1,12 @@
 require 'spec_helper'
 
+require 'devise'
 describe BuysController do
-  before do
-    @user = authenticate
+  include Devise::TestHelpers
+  before(:each) do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    @user = FactoryGirl.create(:user, :sign_in)
+    sign_in @user
   end
 
   it "should create a buy for a user" do

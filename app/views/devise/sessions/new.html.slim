@@ -1,0 +1,37 @@
+/ <h2>Log in</h2>
+
+/ <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+/   <div class="form-inputs">
+/     <%= f.input :email, required: false, autofocus: true %>
+/     <%= f.input :password, required: false %>
+/     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+/   </div>
+
+/   <div class="form-actions">
+/     <%= f.button :submit, "Log in" %>
+/   </div>
+/ <% end %>
+
+/ <%= render "devise/shared/links" %>
+
+h1 Sign In
+
+br
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  
+  = f.input :email, required: false, autofocus: true
+  br
+
+  = f.input :password, required: false
+
+  br
+
+  = f.button :submit, "Sign in", class: "btn btn-success"
+
+= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary"
+
+br
+br
+
+= link_to "Teacher Sign In", teacher_sign_in_url, class:"btn btn-primary"

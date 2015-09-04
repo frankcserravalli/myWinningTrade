@@ -2,7 +2,7 @@
   .navbar-inner
     .container
       = link_to t('.brand', default: 'My Winning Trade'), root_path, class: 'brand'
-      - if current_user
+      - if signed_user
         nav.nav.pull-right
           li
             -if params[:controller] == "stock" and params[:action] == "dashboard"
@@ -10,18 +10,18 @@
             -elsif params[:controller] == "stock" and params[:action] == "show"
               a.trading-tutorial Tutorial
           li
-            a.users-name href="#{profile_path}" = current_user.name
+            a.users-name href="#{profile_path}" = signed_user.name
           li
-            - if current_user.premium_subscription.eql? false
+            - if signed_user.premium_subscription.eql? false
               a href="#{subscriptions_path}" Subscribe
             - else
               a href="#{subscriptions_path}" Subscription
 
           li
-            = link_to logout_path do
+            = link_to destroy_user_session_path, method: :delete do
               i.icon-signout
               = t('.log_out', default: 'Log out')
-      -elsif teacher_current_user
+      -elsif teacher_signed_user
         nav.nav.pull-right
           li
             = link_to "Classes", groups_path

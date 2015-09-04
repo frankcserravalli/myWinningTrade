@@ -1,13 +1,48 @@
-ul#portfolio
-  -unless @portfolio[:pending_stop_loss_transactions].empty?
-    table.table
+- unless @portfolio[:pending_stop_loss_transactions].empty?
+  table.headers-table
+    thead
+      tr
+        th
+          | ACTION
+        th
+          | Amount
+        th
+          | Symbol
+        th
+          | Above / Below
+        th
+          | Remove
+
+    tbody.portfolio
+      tr.divider-big
+        td
+        td
+        td
+        td
+        td
+
       - @portfolio[:pending_stop_loss_transactions].each do |trans|
         - @sl_type = trans.order_type
         - @sl_type = "Short" if @sl_type == "ShortSellBorrow"
-        tr
-          td #{@sl_type} #{trans.volume} #{trans.user_stock.stock.symbol} if price is #{trans.measure.downcase} #{number_to_currency(trans.price_target)}
+        tr.values-table
+          td.portfolio-cell.stock-symbol.uppercase
+            | #{@sl_type}
+          td.portfolio-cell.stock-name
+            | #{trans.volume}
+          td.portfolio-cell.stock-name
+            | #{trans.user_stock.stock.symbol}
+          td.portfolio-cell.stock-name
+            | if price is #{trans.measure.downcase}
+          td.portfolio-cell.stock-name = link_to("Cancel", stock_stop_loss_transaction_path(trans.id), :method => :delete, :class => "delete", :confirm => "Are you sure you want to cancel this order?")
+
+        tr.divider-small
           td
-            span.pull-right
-              = link_to("Cancel", stock_stop_loss_transaction_path(trans.id), :method => :delete, :class => "delete", :confirm => "Are you sure you want to cancel this order?")
-  -else
-    p You have no stop-loss positions.
+          td
+          td
+          td
+          td
+          td
+          td
+
+- else
+  p You have no stop-loss positions.

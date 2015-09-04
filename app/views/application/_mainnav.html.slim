@@ -1,0 +1,47 @@
+.col-xs-6.col-md-3.mainnav
+  - if signed_user and @portfolio
+    - cash = signed_user.account_balance
+    - portfolio_value = @portfolio[:current_value]
+    - portfolio_percent_gain = @portfolio[:percent_gain]
+    - account_value = cash + portfolio_value
+    - portfolio_is_gaining = (portfolio_percent_gain >= 0)
+    nav.navbar
+      li.brand.no-hover
+        = image_tag 'logo.png'
+      li.no-hover.search#stock-search
+        form.input-group
+          input.stock-name.form-control placeholder=t('.symbol_placeholder', default: 'Start typing a stock name'.html_safe) type="text"
+      li.list-item-wrapper.no-hover
+        ul.scroll-inner-list
+          li.navbar-tab#portfolio class=(controller.action_name == 'dashboard' ? 'active' : '')
+            = image_tag (controller.action_name == 'dashboard' ? 'portfolio-icon-active.png' : 'portfolio-icon.png')
+            = link_to("Portfolio", '/')
+          li.navbar-tab#markets class=(controller.action_name == 'markets' ? 'active' : '')
+            = image_tag (controller.action_name == 'markets' ? 'market-icon-active.png' : 'market-icon.png')
+            = link_to("Markets", '/markets')
+          li.navbar-tab#tutorial class=(controller.action_name == '' ? 'active' : '')
+            = image_tag (controller.action_name == '' ? 'tutorial-icon-active.png' : 'tutorial-icon.png')
+            = link_to("Tutorials", '/tutorial')
+          li.navbar-tab#leaderboard class=(controller.action_name == 'leaderboards' ? 'active' : '')
+            = image_tag (controller.action_name == 'leaderboards' ? 'leaderboard-icon-active.png' : 'leaderboard-icon.png')
+            = link_to("Leaderboards", '/leaderboards')
+          li#allocation.uppercase.navbar-secondary-text.no-hover
+            | Allocation
+            = pie_chart(chart_values, id: "navbar-chart", colors: ['#8D7ABF', '#DF8F64', '#60B392', '#81CC98', 'A0D68A'], library: {backgroundColor: "transparent", legend: {textStyle: {color: 'white', fontSize: 14}}, chartArea: {left:10, top:10, width:'80%', height:'75%'}})
+          li#monthly.uppercase.navbar-secondary-text.no-hover
+            | MONTHLY GAIN / LOSS
+            p.bold.font-size-16
+              span class=(portfolio_is_gaining ? 'green' : 'red')
+                = number_to_currency(portfolio_value)
+                ' /
+                = '+' if portfolio_is_gaining
+                = portfolio_percent_gain
+                '%
+          li#market.uppercase.navbar-secondary-text.no-hover
+            | PORTFOLIO MARKET VALUE
+            p.bold.font-size-16.color-lightGray
+              = number_to_currency(account_value)
+      li.navbar-tab.navbar-secondary-text.last.user#user class=(controller.class == UsersController and controller.action_name == 'profile' ? 'active' : '')
+        a.users-name href="#{profile_path}" = signed_user.name
+        p.bold.font-size-16.color-lightGray
+          = number_to_currency(cash)

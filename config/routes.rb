@@ -1,23 +1,27 @@
 MyWinningTrade::Application.routes.draw do
-
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
+  devise_scope :user do
+    resources :teacher_sessions, only: [:create]
+    get 'teacher/sign_in' => 'teacher_sessions#new'
+    get 'teacher/request_upgrade' => 'teacher_sessions#request_upgrade'
+    post 'teacher/verify' => 'teacher_sessions#verify'
+    post 'teacher/remove_pending' => 'teacher_sessions#remove_pending'
+    get 'teacher/pending' => 'teacher_sessions#pending'
+  end
   root to: redirect('/dashboard')
-
-  match '/auth/:provider/callback', to: 'sessions#create'
-
-  post 'sessions/create', to: 'sessions#create'
-
-  get '/auth/failure', to: 'sessions#new'
 
   get '/dashboard', to: 'stock#dashboard'
   get '/user/trading_analysis', to: 'stock#trading_analysis'
 
-  get '/login', to: 'sessions#new'
-  get '/logout', to: 'sessions#destroy'
+  get '/markets', to: 'stock#markets'
+  get '/nyse_market', to: 'stock#nyse_market'
+  get '/nasdaq_market', to: 'stock#nasdaq_market'
+  get '/popular_market', to: 'stock#popular_market'
+  get '/top_100', to: 'stock#top_100'
 
-  get '/AboutUs', to: 'sessions#aboutus'
-  get '/Education', to: 'sessions#education'
-  get '/Press', to: 'sessions#press'
-  get '/Portal', to: 'sessions#loginportal'
+  get '/tutorial', to: 'stock#tutorial'
+
+  get '/leaderboards', to: 'stock#leaderboards'
 
   get '/terms', to: 'terms#show', as: :terms
   post '/terms/accept', to: 'terms#accept', as: :accept_terms
@@ -29,11 +33,9 @@ MyWinningTrade::Application.routes.draw do
   get 'sells/callback_facebook', to: 'sells#callback_facebook'
 
   get '/users/profile', to: 'users#profile', as: 'profile'
-  get '/signin', to: 'users#sign_in'
-  get '/signup', to: 'users#sign_up'
+
   get '/user/edit', to: 'users#edit'
   put '/user/update', to: 'users#update'
-  post '/user/create', to: 'users#create'
 
   get '/trading_analysis_pdf', to: 'users#trading_analysis_pdf'
 
@@ -42,23 +44,11 @@ MyWinningTrade::Application.routes.draw do
   match '/subscriptions/destroy', to: 'subscriptions#destroy'
   match '/subscriptions/update', to: 'subscriptions#update'
 
-  resources :teacher_sessions, only: [:create]
-  get 'teacher/sign_in', to: 'teacher_sessions#new'
-  get 'teacher/request_upgrade', to: 'teacher_sessions#request_upgrade'
-  post 'teacher/verify', to: 'teacher_sessions#verify'
-  post 'teacher/remove_pending', to: 'teacher_sessions#remove_pending'
-  get 'teacher/pending', to: 'teacher_sessions#pending'
-  delete 'teacher/log_out', to: 'teacher_sessions#destroy'
-
-  get "account_bonuses", to: "account_bonuses#show"
-  post "account_bonuses/create"
+  get 'account_bonuses', to: 'account_bonuses#show'
+  post 'account_bonuses/create'
 
   resources :groups
   get '/search_students', to: 'groups#search_students'
-
-  #get 'new_group', to: 'groups#new'
-
-  get '/joestest', to: 'users#test'
 
   resources :stock, only: :show, constraints: { id: /[a-zA-Z0-9\.\-]{1,20}/ } do
     member do
@@ -80,8 +70,6 @@ MyWinningTrade::Application.routes.draw do
   end
 
   resources :orders, only: [:index]
-
-  root to: redirect('/dashboard')
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
@@ -116,5 +104,4 @@ MyWinningTrade::Application.routes.draw do
       resource :stop_loss_transactions, only: [:create, :destroy]
     end
   end
-
 end

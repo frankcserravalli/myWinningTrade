@@ -45,7 +45,7 @@ class AccountBonusesController < ApplicationController
 
       redirect_to account_bonuses_path, notice: I18n.t('flash.users.update.notice', default: e.to_s)
     else
-      current_user.add_capital_to_account(params[:bonus_option])
+      signed_user.add_capital_to_account(params[:bonus_option])
 
       redirect_to profile_path, notice: I18n.t('flash.users.update.notice', default: "Account bonus added!")
     end

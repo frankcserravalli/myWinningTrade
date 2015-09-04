@@ -1,0 +1,12 @@
+#sellModal.modal.fade aria-labelledby="mySellLabel" role="dialog" tabindex="-1" 
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+        h4#myModalLabel.modal-title
+          span
+            | SELL #{@stock.symbol} - #{@stock.Name}
+      .modal-body
+        = render partial: 'sell_form'
+      .modal-footer

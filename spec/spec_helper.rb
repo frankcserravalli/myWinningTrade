@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'devise'
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -23,12 +24,12 @@ VCR.configure do |c|
 end
 
 module AuthenticationHelper
-  def authenticate
-    create(:user).tap do |user|
-      subject.send('current_user=', user)
-    end
-  end
-end
+   def authenticate
+     create(:user).tap do |user|
+       subject.send('current_user=', user)
+     end
+   end
+ end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -41,6 +42,8 @@ RSpec.configure do |config|
     ]
     DatabaseCleaner.strategy = :transaction
   end
+
+  config.include Request::JsonHelpers, type: [:request, :controller]
 
   config.before(:each) do
     DatabaseCleaner.start

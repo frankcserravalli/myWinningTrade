@@ -2,7 +2,7 @@ class ShortSellCoversController < ApplicationController
   def create
     @stock_details = Finance.current_stock_details(params[:stock_id]) or raise ActiveRecord::RecordNotFound
 
-    @order = ShortTransaction.new(params[:short_sell_cover].merge(user: current_user))
+    @order = ShortTransaction.new(params[:short_sell_cover].merge(user: signed_user))
 
     if @order.place!(@stock_details)
       flash[:notice] = "Successfully covered #{@order.volume} shares from #{params[:stock_id]}"
