@@ -219,7 +219,8 @@ class ApplicationController < ActionController::Base
     groups = market_groups
     groups.to_h.keys.each do |key|
       groups[key].each do |stock|
-        shares_owned = signed_user.user_stocks.where(id: stock.id).first.shares_owned || 0
+        user_stock = signed_user.user_stocks.where(id: stock.id).first
+        shares_owned = user_stock ? user_stock.shares_owned : 0
         total = stock.Ask.to_f * shares_owned
         slices[key] += total
       end
