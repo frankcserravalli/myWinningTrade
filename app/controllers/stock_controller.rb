@@ -65,7 +65,7 @@ class StockController < ApplicationController
   end
 
   def nyse_market
-    @nyse = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.nyse[0..50]).run
+    @nyse = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.nyse[0..20]).run
     respond_to do |format|
       format.html { render partial: 'stock/nyse' }
       format.json { render json: { stock: @nyse
@@ -75,7 +75,7 @@ class StockController < ApplicationController
   end
 
   def nasdaq_market
-    @nasdaq = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.nasdaq[0..50]).run
+    @nasdaq = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.nasdaq[0..20]).run
     respond_to do |format|
       format.json { render json: { stock: @nasdaq
         .map { |stock| stock.to_h }
@@ -85,7 +85,7 @@ class StockController < ApplicationController
   end
 
   def top_100
-    @top_100 = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.sp_500[0..50]).run
+    @top_100 = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.sp_500[0..20]).run
     respond_to do |format|
       format.json { render json: { stock: @top_100
         .map { |stock| stock.to_h }
