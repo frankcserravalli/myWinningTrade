@@ -230,9 +230,7 @@ class ApplicationController < ActionController::Base
 
   def featured_stocks (limit = 4)
     ycl = YahooFinanza::Client.new
-    @suggestions = ycl.active_symbols.shuffle
-    @stock = Finance.stock_details_for_list(@suggestions[0..limit])
-    return @stock
+    ycl.popular_stock_quotes.shuffle[0..limit]
   end
 
   helper_method :signed_user, :featured_stocks, :chart_values

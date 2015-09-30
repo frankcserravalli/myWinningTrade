@@ -50,38 +50,48 @@ class StockController < ApplicationController
   end
 
   def markets
-    ycl = YahooFinanza::Client.new
-    @suggestions = ycl.active_symbols
-    @stock = Finance.stock_details_for_list(@suggestions)
+    @stocks = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::ActiveStockWorker.new.get_active_stocks).run
     render 'account/markets'
   end
 
   def popular_market
-    ycl = YahooFinanza::Client.new
-    @suggestions = ycl.active_symbols
-    @stock = Finance.stock_details_for_list(@suggestions)
-    render partial: 'stock/suggest'
+    @stocks = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::ActiveStockWorker.new.get_active_stocks).run
+    respond_to do |format|
+      format.json { render json: { stock: @stocks
+        .map { |stock| stock.to_h }
+        .each { |stock| stock[:gain] = is_gain? stock[:percent_change] } } }
+      format.html { render partial: 'stock/suggest' }
+    end
   end
 
   def nyse_market
-    ycl = YahooFinanza::Client.new
-    @nyse_suggestions = ycl.symbols_by_market('nyse')[0..50]
-    @nyse = Finance.stock_details_for_list(@nyse_suggestions)
-    render partial: 'stock/nyse'
+    @nyse = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.nyse[0..50]).run
+    respond_to do |format|
+      format.html { render partial: 'stock/nyse' }
+      format.json { render json: { stock: @nyse
+        .map { |stock| stock.to_h }
+        .each { |stock| stock[:gain] = is_gain? stock[:percent_change] } } }
+    end
   end
 
   def nasdaq_market
-    ycl = YahooFinanza::Client.new
-    @nasdaq_suggestions = ycl.symbols_by_market('nasdaq')[0..50]
-    @nasdaq = Finance.stock_details_for_list(@nasdaq_suggestions)
-    render partial: 'stock/nasdaq'
+    @nasdaq = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.nasdaq[0..50]).run
+    respond_to do |format|
+      format.json { render json: { stock: @nasdaq
+        .map { |stock| stock.to_h }
+        .each { |stock| stock[:gain] = is_gain? stock[:percent_change] } } }
+      format.html { render partial: 'stock/nasdaq' }
+    end
   end
 
   def top_100
-    ycl = YahooFinanza::Client.new
-    @top_100_suggestions = ycl.sp_symbols(100)
-    @top_100 = Finance.stock_details_for_list(@top_100_suggestions)
-    render partial: 'stock/top'
+    @top_100 = YahooFinanza::MultiQuoteWorker.new(YahooFinanza::Constants.sp_500[0..50]).run
+    respond_to do |format|
+      format.json { render json: { stock: @top_100
+        .map { |stock| stock.to_h }
+        .each { |stock| stock[:gain] = is_gain? stock[:percent_change] } } }
+      format.html { render partial: 'stock/top' }
+    end
   end
 
   def leaderboards
@@ -97,6 +107,10 @@ class StockController < ApplicationController
   end
 
   private
+
+  def is_gain? percent
+    (percent && percent.gsub('%', '').to_f >= 0)
+  end
 
   def symbol
     params.require(:id).upcase

@@ -1,4 +1,8 @@
 $( document ).ready(function() {
+
+  // var source = $('#mustache').html();
+  var template = Handlebars.templates.stocks
+
   $('.dropdown-wrapper').hide();
 
   $('.first-tab').addClass('secondary-active');
@@ -98,9 +102,11 @@ $( document ).ready(function() {
       $.ajax({
         type: 'GET',
         url: '/popular_market',
-        dataType: 'html',
+        dataType: 'json',
+        contentType: 'application/json',
+        accept: 'application/json',
         success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
+          $('#portfolio-stach').html(template(data));
         }
       });
       $('.secondary-active').removeClass('secondary-active');
@@ -111,9 +117,11 @@ $( document ).ready(function() {
       $.ajax({
         type: 'GET',
         url: '/nyse_market',
-        dataType: 'html',
+        dataType: 'json',
+        contentType: 'application/json',
+        accept: 'application/json',
         success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
+          $('#portfolio-stach').html(template(data));
         }
       });
       $('.secondary-active').removeClass('secondary-active');
@@ -124,9 +132,11 @@ $( document ).ready(function() {
       $.ajax({
         type: 'GET',
         url: '/nasdaq_market',
-        dataType: 'html',
+        dataType: 'json',
+        contentType: 'application/json',
+        accept: 'application/json',
         success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
+          $('#portfolio-stach').html(template(data));
         }
       });
       $('.secondary-active').removeClass('secondary-active');
@@ -137,9 +147,11 @@ $( document ).ready(function() {
       $.ajax({
         type: 'GET',
         url: '/top_100',
-        dataType: 'html',
+        dataType: 'json',
+        contentType: 'application/json',
+        accept: 'application/json',
         success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
+          $('#portfolio-stach').html(template(data));
         }
       });
       $('.secondary-active').removeClass('secondary-active');
