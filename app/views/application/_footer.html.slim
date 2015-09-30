@@ -1,23 +1,22 @@
-javascript:
-  function redir(stock_symbol){
-    window.location.href = '/stock/'.concat(stock_symbol);
-  }
-
-- if signed_user
-  footer.foo
-    .footer-tabs
-      - stocks = featured_stocks
-      - pp stocks
-      - stocks.each do |stock|
-        - stock_is_gaining = stock.Change.to_f >= 0
-        .col-md-2-custom.cursor-pointer onclick="redir('#{stock.symbol}')"
-          = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png')
-          | #{stock.symbol}
-          br
-          span.bold
-            | #{stock.ask} #{stock.percent_change}
-      .col-md-2-custom
-        - if signed_user.guest
-          .button.btn = link_to("Login", new_user_session_path)
-        - else
-          .button.btn = link_to("Logout", destroy_user_session_path, method: :delete)
+/ javascript:
+/   function redir(stock_symbol){
+/     window.location.href = '/stock/'.concat(stock_symbol);
+/   }
+/
+/ - if signed_user
+/   footer.foo
+/     .footer-tabs
+/     - stocks = featured_stocks
+/     - stocks.each do |stock|
+/       - stock_is_gaining = stock.change.to_f >= 0
+/       .col-md-2-custom.cursor-pointer onclick="redir('#{stock.symbol}')"
+/         = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png')
+/           | #{stock.symbol}
+/         br
+/         span.bold
+/           | #{stock.ask} #{stock.percent_change}
+/   .col-md-2-custom
+/     - if signed_user.guest
+/       .button.btn = link_to("Login", new_user_session_path)
+/     - else
+/       .button.btn = link_to("Logout", destroy_user_session_path, method: :delete)

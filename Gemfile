@@ -21,9 +21,9 @@ group :assets do
   gem 'therubyrhino', '~> 2.0.2'
   gem 'uglifier', '>= 1.0.3'
 
-  # gem 'bootstrap-sass', '~> 3.3.4'
-  gem 'bootstrap-sass', :git => 'https://github.com/twbs/bootstrap-sass.git', :branch => 'next'
+  gem 'bootstrap-sass', '~> 3.3.4'
   gem "momentjs-rails", "~> 1.7.2"
+  # gem 'bootstrap-sass', :git => 'https://github.com/twbs/bootstrap-sass.git', :branch => 'next'
 end
 
 # UI
@@ -94,7 +94,7 @@ gem 'omniauth-google-oauth2'
 gem 'yql', '~> 0.0.2'
 gem 'rest-client', '~> 1.6.7'
 gem 'mechanize'
-gem 'yahoo_finanza', '~> 0.1.0'
+gem 'yahoo_finanza', '~> 0.4.0'
 
 # Guard
 # =====
