@@ -60,7 +60,7 @@ describe "Order" do
     end
 
     it 'calculates capital gain / loss on each sale relating to its relevant buy' do
-      current_price = @stock_details.`ask`.to_f
+      current_price = @stock_details.ask.to_f
       stock_volume = 50.0
       buy = new_buy(current_price, stock_volume, user, user_stock)
 
