@@ -10,9 +10,9 @@ describe "Finance" do
 			quote = @api.stock_details_for_symbol('AAPL')
 
 			quote.symbol.should == 'AAPL'
-			quote.Name.should == 'Apple Inc.'
+			quote.name.should == 'Apple Inc.'
 
-			[:Name, :Symbol, :Ask, :Open, :PreviousClose, :Volume].each do |key|
+			[:name, :symbol, :ask, :open, :previous_close, :volume].each do |key|
 				quote.respond_to?(key).should be_true
 			end
 		end
@@ -21,16 +21,16 @@ describe "Finance" do
   it "should return the nil if a stock symbol in the list is invalid" do
     VCR.use_cassette('multiple_quotes') do
       quote = @api.stock_details_for_list(['AAPL', 'GOOG', 'fake'])
-      quote.to_h.keys.should == [:AAPL, :GOOG]
-      quote[:fake].should be_nil
+      quote.map { |quote| quote.symbol.to_sym }.should == [:AAPL, :GOOG]
+      quote.select { |quote| quote.symbol == 'fake' }.empty?.should eq true
     end
   end
 
   it "should return the details of a list of stocks" do
     VCR.use_cassette('multiple_quotes') do
       quote = @api.stock_details_for_list(['AAPL', 'GOOG'])
-      quote.to_h.keys.should == [:AAPL, :GOOG]
-      quote['AAPL'].symbol.should == 'AAPL'
+      quote.map { |quote| quote.symbol.to_sym }.should == [:AAPL, :GOOG]
+      quote.select { |s| s.symbol == 'AAPL' }.first.symbol.should == 'AAPL'
     end
   end
 

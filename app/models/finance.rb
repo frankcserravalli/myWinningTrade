@@ -33,7 +33,7 @@ class Finance
     # where symbol_list represents those multiple stocks
     def stock_details_for_list(symbol_list)
       return nil if symbol_list.empty?
-      YahooFinanza::MultiQuoteWorker.new(symbol_list).run
+      clean_quotes(YahooFinanza::MultiQuoteWorker.new(symbol_list).run)
     end
 
     def stock_details_for_symbol(symbol)
@@ -179,6 +179,12 @@ class Finance
         else
           value
       end
+    end
+
+    private
+
+    def clean_quotes quotes
+      quotes.reject { |quote| quote.name == nil }
     end
   end
 end
