@@ -18,7 +18,7 @@ class StockController < ApplicationController
     @stop_loss_buy_transaction = StopLossTransaction.new
     @stop_loss_sell_transaction = StopLossTransaction.new
     @stop_loss_short_transaction = StopLossTransaction.new
-    if @stock.nil?
+    if @stock
       alert = I18n.t(
         'flash.stock.invalid_symbol', symbol: symbol,
         default: 'No stock matches the symbol %{symbol}.')

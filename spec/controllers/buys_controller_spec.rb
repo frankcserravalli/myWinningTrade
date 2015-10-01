@@ -15,7 +15,6 @@ describe BuysController do
     end
 
     @user.user_stocks.collect { |s| s.stock.symbol }.should include('AAPL')
-
     response.should redirect_to(stock_path('AAPL'))
   end
 

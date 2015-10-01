@@ -33,13 +33,11 @@ class Finance
     # where symbol_list represents those multiple stocks
     def stock_details_for_list(symbol_list)
       return nil if symbol_list.empty?
-      ycl = YahooFinanza::Client.new
-      ycl.quotes(symbol_list)
+      YahooFinanza::MultiQuoteWorker.new(symbol_list).run
     end
 
     def stock_details_for_symbol(symbol)
-      ycl = YahooFinanza::Client.new
-      ycl.quote(symbol)
+      YahooFinanza::SingleQuoteWorker.new(symbol).run
     end
 
     def grab_alpha_or_beta
