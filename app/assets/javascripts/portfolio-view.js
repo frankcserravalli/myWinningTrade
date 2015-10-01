@@ -1,4 +1,11 @@
+var d = Array();
 $( document ).ready(function() {
+  var template = Handlebars.templates.stocks
+  getData('/popular_market', 0);
+  getData('/nyse_market', 1);
+  getData('/nasdaq_market', 2);
+  getData('/top_100', 3);
+
   $('.dropdown-wrapper').hide();
 
   $('.first-tab').addClass('secondary-active');
@@ -95,53 +102,25 @@ $( document ).ready(function() {
     /******* New Methods *************/
 
     $('.first-market-tab').click(function(){
-      $.ajax({
-        type: 'GET',
-        url: '/popular_market',
-        dataType: 'html',
-        success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
-        }
-      });
+      $('#portfolio-stach').html(template(d[0]));
       $('.secondary-active').removeClass('secondary-active');
       $('.first-market-tab').addClass('secondary-active');
     });
 
     $('.second-market-tab').click(function(){
-      $.ajax({
-        type: 'GET',
-        url: '/nyse_market',
-        dataType: 'html',
-        success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
-        }
-      });
+      $('#portfolio-stach').html(template(d[1]));
       $('.secondary-active').removeClass('secondary-active');
       $('.second-market-tab').addClass('secondary-active');
     });
 
     $('.third-market-tab').click(function(){
-      $.ajax({
-        type: 'GET',
-        url: '/nasdaq_market',
-        dataType: 'html',
-        success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
-        }
-      });
+      $('#portfolio-stach').html(template(d[2]));
       $('.secondary-active').removeClass('secondary-active');
       $('.third-market-tab').addClass('secondary-active');
     });
 
     $('.fourth-market-tab').click(function(){
-      $.ajax({
-        type: 'GET',
-        url: '/top_100',
-        dataType: 'html',
-        success: function(data){
-          $('#content').html("<div class='widget-container'></div>" + data)
-        }
-      });
+      $('#portfolio-stach').html(template(d[3]));
       $('.secondary-active').removeClass('secondary-active');
       $('.fourth-market-tab').addClass('secondary-active');
     });
@@ -154,4 +133,17 @@ function remove_widget(){
   for (var i = 0; i < iframes.length; i++) {
       iframes[i].parentNode.removeChild(iframes[i]);
   }
+}
+
+function getData(url, index){
+  $.ajax({
+    type: 'GET',
+    url: url,
+    dataType: 'json',
+    contentType: 'application/json',
+    accept: 'application/json',
+    success: function(data){
+      d[index] = data;
+    }
+  });
 }

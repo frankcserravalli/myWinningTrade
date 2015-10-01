@@ -16,22 +16,22 @@ table.headers-table
           | Actual Prize
         th
           | Gain/Loss
-    tbody.portfolio
+    tbody.portfolio#portfolio-stach
       tr.divider-big
         td
         td
         td
         td
         td
-      - @suggestions.each do |suggestion|
-        tr.values-table onclick="redir('#{suggestion}')"
-          td.portfolio-cell.stock-symbol = suggestion
-          td.portfolio-cell.stock-name = @stock[suggestion].Name
-          td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(@stock[suggestion].Open)
-          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(@stock[suggestion].Ask)
-          - stock_is_gaining = @stock[suggestion].PercentChange && @stock[suggestion].PercentChange.gsub('%', '').to_f >= 0
+      - @stocks.each do |stock|
+        tr.values-table onclick="redir('#{stock.symbol}')"
+          td.portfolio-cell.stock-symbol = stock.symbol
+          td.portfolio-cell.stock-name = stock.name
+          td.portfolio-cell.stock-current_price rel='tooltip' title='Current price' = number_to_currency(stock.open)
+          td.portfolio-cell.stock-cost_basis rel='tooltip' title='Cost basis / share' = number_to_currency(stock.ask)
+          - stock_is_gaining = stock.percent_change && stock.percent_change.gsub('%', '').to_f >= 0
           td.portfolio-cell.stock-capital_gain style='font-weight: bold' rel='tooltip' title='Capital gain' class=(stock_is_gaining ? 'green' : 'red')
-              = @stock[suggestion].PercentChange
+              = stock.percent_change
 
         tr.divider-small
           td

@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :user_stock_id, :user_id
 
   def place!(stock)
-    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.Name)
+    system_stock = Stock.where(symbol: stock.symbol).first_or_create!(name: stock.name)
     unless (self.user_stock = user.user_stocks.where(stock_id: system_stock.id).first)
       self.user_stock = user.user_stocks.create!(stock: system_stock)
     end

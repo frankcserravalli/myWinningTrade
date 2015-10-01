@@ -7,14 +7,14 @@ javascript:
   footer.foo
     .footer-tabs
       - stocks = featured_stocks
-      - stocks.to_h.keys.each do |symbol|
-        - stock_is_gaining = stocks[symbol].Change.to_f >= 0
-        .col-md-2-custom.cursor-pointer onclick="redir('#{symbol}')"
+      - stocks.each do |stock|
+        - stock_is_gaining = stock.change.to_f >= 0
+        .col-md-2-custom.cursor-pointer onclick="redir('#{stock.symbol}')"
           = image_tag (stock_is_gaining ? 'green-arrow-icon.png' : 'red-arrow-icon.png')
-          | #{stocks[symbol].Symbol}
+          | #{stock.symbol}
           br
           span.bold
-            | #{stocks[symbol].Ask} #{stocks[symbol].PercentChange}
+            | #{stock.ask} #{stock.percent_change}
       .col-md-2-custom
         - if signed_user.guest
           .button.btn = link_to("Login", new_user_session_path)

@@ -18,7 +18,7 @@ describe "Order" do
     end
 
     it "should reflect a credit for buying a stock" do
-      @stock_details.Ask = "20.00"
+      @stock_details.ask = "20.00"
 
       @order.place!(@stock_details)
       @order.value.to_f.should == (20.00 * 2.0) + Order::TRANSACTION_FEE
@@ -60,7 +60,7 @@ describe "Order" do
     end
 
     it 'calculates capital gain / loss on each sale relating to its relevant buy' do
-      current_price = @stock_details.Ask.to_f
+      current_price = @stock_details.ask.to_f
       stock_volume = 50.0
       buy = new_buy(current_price, stock_volume, user, user_stock)
 
