@@ -428,7 +428,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt
-  bootstrap-sass (~> 3.3.4)
+  bootstrap-sass (~> 3.3.5)
   capybara (~> 2.0.2)
   chartkick
   chosen-rails (~> 0.9.11.2)
@@ -496,6 +496,3 @@ DEPENDENCIES
   wkhtmltopdf-binary (~> 0.9.9.1)
   yahoo_finanza (~> 0.4.0)
   yql (~> 0.0.2)
-
-BUNDLED WITH
-   1.10.6
